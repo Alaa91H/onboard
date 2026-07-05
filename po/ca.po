@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: onboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-06 20:21+0200\n"
+"POT-Creation-Date: 2026-07-05 21:38+0200\n"
 "PO-Revision-Date: 2016-09-16 06:57+0000\n"
 "Last-Translator: JoanColl <Unknown>\n"
 "Language-Team: Catalan <ca@li.org>\n"
@@ -62,35 +62,35 @@ msgstr ""
 "S'ha trobat un identificador clau '{}' duplicat en el fitxer de l'esquema de "
 "color. Els identificadors clau han de ser únics."
 
-#: ../Onboard/Config.py:243
+#: ../Onboard/Config.py:244
 msgid "Layout file ({}) or name"
 msgstr "Fitxer de disposició ({}) o nom"
 
-#: ../Onboard/Config.py:246
+#: ../Onboard/Config.py:247
 msgid "Theme file (.theme) or name"
 msgstr "Fitxer de tema (.theme) o nom"
 
-#: ../Onboard/Config.py:248
+#: ../Onboard/Config.py:249
 msgid "Window size, widthxheight"
 msgstr "Mida de la finestra, amplada per alçada"
 
-#: ../Onboard/Config.py:249
+#: ../Onboard/Config.py:250
 msgid "Window x position"
 msgstr "Posició [X] de la finestra"
 
-#: ../Onboard/Config.py:250
+#: ../Onboard/Config.py:251
 msgid "Window y position"
 msgstr "Posició [Y] de la finestra"
 
-#: ../Onboard/Config.py:255
+#: ../Onboard/Config.py:256
 msgid "Start in XEmbed mode, e.g. for gnome-screensaver"
 msgstr "Inicia en mode XEmbed, p.e. per a gnome-screensaver"
 
-#: ../Onboard/Config.py:258
+#: ../Onboard/Config.py:259
 msgid "Allow multiple Onboard instances"
 msgstr "Permet múltiples instànces de l'Onboard"
 
-#: ../Onboard/Config.py:261
+#: ../Onboard/Config.py:262
 msgid ""
 "Silently fail to start in the given desktop environments. DESKTOPS is a "
 "comma-separated list of XDG desktop names, e.g. GNOME for GNOME Shell."
@@ -99,7 +99,7 @@ msgstr ""
 "una llista d'escriptoris XDG separats per comes; p.e. GNOME per a GNOME "
 "Shell."
 
-#: ../Onboard/Config.py:267
+#: ../Onboard/Config.py:268
 msgid ""
 "Delay showing the initial keyboard window by STARTUP_DELAY seconds (default "
 "0.0)."
@@ -107,11 +107,11 @@ msgstr ""
 "Retard en mostrar la finestra inicial del teclat per STARTUP_DELAY segons "
 "(per defecte 0.0)."
 
-#: ../Onboard/Config.py:271
+#: ../Onboard/Config.py:272
 msgid "Keep aspect ratio when resizing the window"
 msgstr "Manté les proporcions quan es redimensiona la finestra."
 
-#: ../Onboard/Config.py:273
+#: ../Onboard/Config.py:274
 msgid ""
 "Override auto-detection and manually select quirks\n"
 "QUIRKS={metacity|compiz|mutter}"
@@ -119,35 +119,35 @@ msgstr ""
 "Sobreescriu l'auto-detecció i selecciona manualment el compositor \n"
 "COMPOSITOR={metacity|compiz|mutter}"
 
-#: ../Onboard/Config.py:400
+#: ../Onboard/Config.py:401
 msgid "Migrating user directory '{}' to '{}'."
 msgstr "S'està migrant el directori d'usuari «{}» a «{}»."
 
 #. honor XDG spec
 #. python >2.5
-#: ../Onboard/Config.py:408
+#: ../Onboard/Config.py:409
 msgid "failed to migrate user directory. "
 msgstr "Fallada al migrar el directori d'usuari "
 
-#: ../Onboard/Config.py:887
+#: ../Onboard/Config.py:888
 #, python-brace-format
 msgid "layout '{filename}' does not exist"
 msgstr "la disposició «{filename}» no existeix"
 
-#: ../Onboard/Config.py:928
+#: ../Onboard/Config.py:929
 #, python-brace-format
 msgid "theme '{filename}' does not exist"
 msgstr "el tema «{filename}» no existeix"
 
-#: ../Onboard/Config.py:953
+#: ../Onboard/Config.py:954
 msgid "Loading theme from '{}'"
 msgstr "S'està carregant el tema de «{}»"
 
-#: ../Onboard/Config.py:957
+#: ../Onboard/Config.py:958
 msgid "Unable to read theme '{}'"
 msgstr "No s'ha pogut llegir el tema «{}»"
 
-#: ../Onboard/Config.py:1198
+#: ../Onboard/Config.py:1199
 msgid ""
 "Enabling auto-show requires Gnome Accessibility.\n"
 "\n"
@@ -163,7 +163,7 @@ msgstr ""
 "\n"
 "Voleu activar l'accessibilitat ara?"
 
-#: ../Onboard/Config.py:1952
+#: ../Onboard/Config.py:1953
 #, python-brace-format
 msgid "color scheme '{filename}' does not exist"
 msgstr "l'esquema de color «{filename}» no existeix"
@@ -252,31 +252,31 @@ msgstr ""
 msgid "Failed to get gsettings value. "
 msgstr "No s'ha pogut llegir el valor del Gsettings. "
 
-#: ../Onboard/Indicator.py:56
+#: ../Onboard/Indicator.py:52
 msgid "_Show Onboard"
 msgstr "_Mostra l'Onboard"
 
-#: ../Onboard/Indicator.py:57
+#: ../Onboard/Indicator.py:53
 msgid "_Hide Onboard"
 msgstr "_Oculta l'Onboard"
 
 #. Translators: label of a menu item. It used to be stock item
 #. STOCK_PREFERENCES until Gtk 3.10 deprecated those.
-#: ../Onboard/Indicator.py:83
+#: ../Onboard/Indicator.py:79
 msgid "_Preferences"
 msgstr "_Preferències"
 
-#: ../Onboard/Indicator.py:91
+#: ../Onboard/Indicator.py:96
 msgid "_Help"
 msgstr "_Ajuda"
 
 #. Translators: label of a menu item. It used to be stock item
 #. STOCK_QUIT until Gtk 3.10 deprecated those.
-#: ../Onboard/Indicator.py:102
+#: ../Onboard/Indicator.py:107
 msgid "_Quit"
 msgstr "_Surt"
 
-#: ../Onboard/Indicator.py:228 ../Onboard/Indicator.py:231
+#: ../Onboard/Indicator.py:237 ../Onboard/Indicator.py:240
 msgid "Onboard on-screen keyboard"
 msgstr "Teclat en pantalla  Onboard"
 
@@ -389,7 +389,6 @@ msgstr "Les meves disposicions"
 #: ../Onboard/LanguageSupport.py:174 ../Onboard/SpellChecker.py:634
 #: ../Onboard/SpellChecker.py:670 ../Onboard/SpellChecker.py:709
 #: ../Onboard/SpellChecker.py:723 ../Onboard/Timer.py:179
-#: ../Onboard/pypredict/tools/filter.py:382
 msgid "Failed to execute '{}', {}"
 msgstr "Ha fallat l'execució '{}', {}"
 
@@ -638,7 +637,7 @@ msgid "Flat"
 msgstr "Pla"
 
 #. Key style with simple gradients
-#: ../Onboard/settings.py:1631 ../settings_theme_dialog.ui.h:6
+#: ../Onboard/settings.py:1631
 msgid "Gradient"
 msgstr "Degradat"
 
@@ -883,7 +882,7 @@ msgid "Scroll"
 msgstr "Desplç"
 
 #. translators: this is a 'tooltip' of the key_template 'layer2' in keyboard layout 'key_defs.xml'
-#: ../data/layoutstrings.py:88 ../data/layoutstrings.py:340 ../settings.ui.h:27
+#: ../data/layoutstrings.py:88 ../data/layoutstrings.py:340
 msgid "Snippets"
 msgstr "Retalls"
 
@@ -1328,1271 +1327,932 @@ msgstr ""
 msgid "onscreen;keyboard;accessibility;utility;"
 msgstr ""
 
-#: ../settings.ui.h:1
-msgid "Key-repeat"
-msgstr "Repetició de tecla"
-
-#: ../settings.ui.h:2
-msgid "International character selection"
-msgstr "Selecció de caràcters internacionals"
-
-#: ../settings.ui.h:3
-msgid "never"
-msgstr "mai"
-
-#: ../settings.ui.h:4
-msgid "1 minute"
-msgstr "1 minut"
-
-#: ../settings.ui.h:5
-msgid "5 minutes"
-msgstr "5 minuts"
-
-#: ../settings.ui.h:6
-msgid "10 minutes"
-msgstr "10 minuts"
-
-#: ../settings.ui.h:7
-msgid "30 minutes"
-msgstr "30 minuts"
-
-#: ../settings.ui.h:8
-msgid "1 hour"
-msgstr "1 hora"
-
-#: ../settings.ui.h:9
-msgid "3 hours"
-msgstr "3 hores"
-
-#: ../settings.ui.h:10
-msgid "forever"
-msgstr "per sempre"
-
-#: ../settings.ui.h:11
-msgid "GTK"
-msgstr "GTK"
-
-#: ../settings.ui.h:12
-msgid "XInput"
-msgstr "XInput"
-
-#: ../settings.ui.h:13
-msgid "Auto"
-msgstr "Auto"
-
-#: ../settings.ui.h:14
-msgid "XTest"
-msgstr "XTest"
-
-#: ../settings.ui.h:15
-msgid "uinput"
-msgstr "uinput"
-
-#: ../settings.ui.h:16
-msgid "AT-SPI"
-msgstr "AT-SPI"
-
-#: ../settings.ui.h:17
-msgid "Remember nothing"
-msgstr "No recordis res"
-
-#: ../settings.ui.h:18
-msgid "Don't remember new words"
-msgstr "No recordis les paraules noves"
-
-#: ../settings.ui.h:19
-msgid "None"
-msgstr "Cap"
-
-#: ../settings.ui.h:20
-msgid "Movement only"
-msgstr "Només moviment"
-
-#: ../settings.ui.h:21
-msgid "Corners"
-msgstr "Cantonades"
-
-#: ../settings.ui.h:22
-msgid "All corners and edges"
-msgstr "Totes les cantonades i vores"
-
-#: ../settings.ui.h:23
-msgid "General"
-msgstr "General"
-
-#: ../settings.ui.h:24
-msgid "Window"
-msgstr "Finestra"
-
-#: ../settings.ui.h:25
-msgid "Layout"
-msgstr "Disposició"
-
-#: ../settings.ui.h:26
-msgid "Theme"
-msgstr "Tema"
-
-#: ../settings.ui.h:28 ../settings_theme_dialog.ui.h:9
-msgid "Keyboard"
-msgstr "Teclat"
-
-#: ../settings.ui.h:29
-msgid "Auto-show"
-msgstr ""
-
-#: ../settings.ui.h:30
-msgid "Typing Assistance"
-msgstr "Assistència d'escriptura"
-
-#: ../settings.ui.h:31
-msgid "Universal Access"
-msgstr "Accés universal"
-
-#: ../settings.ui.h:32
-msgid "Only move when necessary"
-msgstr "Mou sols quan calgui"
-
-#: ../settings.ui.h:33
-msgid "Follow the active window"
-msgstr "Segueix a la finestra activa"
-
-#: ../settings.ui.h:34
-msgid "Latch, then lock"
-msgstr "Fixa, després bloca"
-
-#: ../settings.ui.h:35
-msgid "Latch, double-click to lock"
-msgstr "Fixa, feu un doble clic per blocar"
-
-#: ../settings.ui.h:36
-msgid "Latch only"
-msgstr "Sols fixa"
-
-#: ../settings.ui.h:37
-msgid "Lock only"
-msgstr "Sols bloca"
-
-#: ../settings.ui.h:38
-msgid "Push button"
-msgstr "Pulsador"
-
-#: ../settings.ui.h:39
-msgid "none"
-msgstr "cap"
-
-#: ../settings.ui.h:40
-msgid "single-touch"
-msgstr "d'un sol toc"
-
-#: ../settings.ui.h:41
-msgid "multi-touch"
-msgstr "de pulsació múltiple"
-
-#: ../settings.ui.h:42
-msgctxt "Label of the main close button of the preferences dialog."
-msgid "_Close"
-msgstr "Tan_ca"
-
-#: ../settings.ui.h:43
-msgid "_Auto-show when editing text"
-msgstr "Mostra _automàticament durant l'edició de text"
-
-#: ../settings.ui.h:44
-msgid ""
-"Show Onboard when there is a recognized text window in focus. Requires Gnome "
-"Accessibility."
-msgstr ""
-"Mostra l'Onboard quan hi hagi una finestra de text reconeguda en el focus. "
-"Requereix les funcions d'accessibilitat del GNOME."
-
-#: ../settings.ui.h:45
-msgid "Start Onboard _hidden"
-msgstr "Inicia l'Onboard en mode _ocult"
-
-#: ../settings.ui.h:46
-msgid "Start Onboard hidden."
-msgstr "Inicia l'Onboard en mode ocult."
-
-#: ../settings.ui.h:47
-msgid "Show/Hide options"
-msgstr "Mostra/Oculta les opcions"
-
-#: ../settings.ui.h:48
-msgid "Show floating _icon when Onboard is hidden"
-msgstr "Mostra una _icona flotant quan s'oculti l'Onboard"
-
-#: ../settings.ui.h:49
-msgid ""
-"Show a floating icon on the desktop when Onboard is hidden. A click on the "
-"icon makes Onboard reappear."
-msgstr ""
-"Mostra una icona flotant a l'escriptori quan l'Onboard estigui ocult. En fer "
-"clic a la icona es mostrarà l'Onboard."
-
-#: ../settings.ui.h:50
-msgid "Show when _unlocking the screen"
-msgstr "Mostra quan es _desbloqui la pantalla"
-
-#: ../settings.ui.h:51
-msgid ""
-"Show Onboard when the dialog to unlock the screen appears; this way Onboard "
-"can be used for example to enter the password to dismiss the screensaver "
-"when it is set to ask for it."
-msgstr ""
-"Mostra l'Onboard quan aparegui el diàleg de desbloquejar la pantalla. "
-"D'aquesta manera es pot utilitzar l'Onboard per introduir la contrasenya "
-"quan s'hagi d'introduir aquesta en l'estalvi de pantalla."
-
-#: ../settings.ui.h:52
-msgid "Show _tooltips"
-msgstr "Mostra els _indicadors de funció"
-
-#: ../settings.ui.h:53
-msgid "Show tooltips for the keyboard&apos;s buttons."
-msgstr "Mostra els indicadors de funció per als botons del teclat."
-
-#: ../settings.ui.h:54
-msgid "Show tooltips for the keyboard's buttons."
-msgstr "Mostra els indicadors de funció per als botons del teclat."
-
-#: ../settings.ui.h:55
-msgid "_Show status icon"
-msgstr "_Mostra la icona d'estat"
-
-#: ../settings.ui.h:56
-msgid "Show the status item. A click on that icon hides or shows Onboard."
-msgstr ""
-"Mostra l'element d'estat. En fer un clic a aquesta icona s'ocultarà o es "
-"mostrarà l'Onboard."
-
-#: ../settings.ui.h:57
-msgid "Status icon _provider:"
-msgstr "_Proveïdor d'icones d'estat"
-
-#: ../settings.ui.h:58
-msgid ""
-"<b>AppIndicator</b> (default) is recommended for broadest compatibility. A "
-"middle click on the icon shows the keyboard. In KDE Plasma a left click does "
-"the same.\n"
-"\n"
-"<b>GtkStatusIcon</b> isn't supported well anymore by various desktop "
-"environments, but generally allows to show the keyboard on left click.\n"
-"\n"
-"Requires restart."
-msgstr ""
-"Es recomana l'<b>AppIndicator</b> (predeterminat) per a una compatibilitat "
-"el més àmplia possible. Un clic amb el botó del mig del ratolí mostra el "
-"teclat. Al KDE Plasma un clic amb el botó esquerre fa el mateix.\n"
-"\n"
-"<b>GtkStatusIcon</b> no te un bon suport a diversos entorns d'escriptori, "
-"però generalment permet mostrar el teclat amb un clic amb el botó esquerre.\n"
-"\n"
-"Requereix un reinici."
-
-#: ../settings.ui.h:63
-msgid "Desktop Integration"
-msgstr "Integració amb l'escriptori"
-
-#: ../settings.ui.h:64
-msgid "Dock to screen edge"
-msgstr "Acobla a la vora"
-
-#: ../settings.ui.h:65
-msgid "Dock the keyboard to the edge of the screen."
-msgstr "Acobla el teclat a la vora de la pantalla."
-
-#: ../settings.ui.h:66
-msgctxt "Label of settings button on preferences page Window."
-msgid "_Settings"
-msgstr "_Configuració"
-
-#: ../settings.ui.h:67
-msgid "Docking"
-msgstr "Acoblament"
-
-#: ../settings.ui.h:68
-msgid "Show window _decoration"
-msgstr "Mostra la _decoració de la finestra"
-
-#: ../settings.ui.h:69
-msgid "Show window caption and frame."
-msgstr "Mostra el marc i el títol de la finestra."
-
-#: ../settings.ui.h:70
-msgid "Show always on visible _workspace"
-msgstr "Mostra sempre en l'espai de _treball visible"
-
-#: ../settings.ui.h:71
-msgid "&quot;Sticky&quot; mode for keyboard and floating icon."
-msgstr "Mode «adhesiu» per al teclat i la icona flotant."
-
-#: ../settings.ui.h:72
-msgid "\"Sticky\" mode for keyboard and floating icon."
-msgstr "Mode «adhesiu» per al teclat i la icona flotant."
-
-#: ../settings.ui.h:73
-msgid "_Force window to top"
-msgstr "_Força la finestra a la part superior"
-
-#: ../settings.ui.h:74
-msgid "Try harder to keep Onboard above anything on-screen."
-msgstr "Intenta mantenir l'Onboard per sobre de qualsevol cosa a la pantalla."
-
-#: ../settings.ui.h:75
-msgid "Keep _aspect ratio"
-msgstr "Mantingues la relació de l'_aspecte"
-
-#: ../settings.ui.h:76
-msgid "Constrain window size to the layout&apos;s aspect ratio."
-msgstr "Adapta la mida de la finestra a la relació d'aspecte del disseny."
-
-#: ../settings.ui.h:77
-msgid "Constrain window size to the layout's aspect ratio."
-msgstr ""
-"Restringeix la mida de la finestra a la relació de l'aspecte de la "
-"disposició."
-
-#: ../settings.ui.h:78
-msgid "Floating Window Options"
-msgstr "Opcions de finestra  flotant"
-
-#: ../settings.ui.h:79
-msgid "Window options"
-msgstr "Opcions de finestra"
-
-#: ../settings.ui.h:80
-msgid "Wind_ow:"
-msgstr "_Finestra:"
-
-#: ../settings.ui.h:81
-msgid "Transparency of the whole keyboard window. Requires compositing."
-msgstr "Transparència en tota la finestra del teclat. Cal composició."
-
-#: ../settings.ui.h:82 ../settings_theme_dialog.ui.h:5
-msgid "_Background:"
-msgstr "F_ons:"
-
-#: ../settings.ui.h:83
-msgid "Transparency of the keyboard background"
-msgstr "Transparència del fons del teclat"
-
-#: ../settings.ui.h:84
-msgid "_No background"
-msgstr "_Sense fons"
-
-#: ../settings.ui.h:85
-msgid "Show the desktop through the gaps between keys."
-msgstr "Mostra l'escriptori a través dels espais entre les tecles."
-
-#: ../settings.ui.h:86
-msgid "Transparency"
-msgstr "Transparència"
-
-#: ../settings.ui.h:87
-msgid "Set _transparency to"
-msgstr "Estableix la _transparència a"
-
-#: ../settings.ui.h:88
-msgid "Enable inactive transparency. Requires compositing."
-msgstr "Habilita la transparència inactiva. Cal composició."
-
-#: ../settings.ui.h:89
-msgid ""
-"Transparency when the pointer leaves the keyboard. Requires compositing."
-msgstr "Transparència quan el punter deixa el teclat. Cal composició."
-
-#: ../settings.ui.h:90
-msgid "after"
-msgstr "després de"
-
-#: ../settings.ui.h:91
-msgid "Delay in seconds until the inactive transparency takes effect."
-msgstr "Retard en segons fins que té efecte la transparència d'inactivitat."
-
-#: ../settings.ui.h:92
-msgid "seconds"
-msgstr "segons"
-
-#: ../settings.ui.h:93
-msgid "When Inactive"
-msgstr "Quan estigui inactiu"
-
-#: ../settings.ui.h:94
-msgid "_Window handles of the keyboard window:"
-msgstr ""
-
-#: ../settings.ui.h:95
-msgid "_Window handles of the floating icon:"
-msgstr ""
-
-#: ../settings.ui.h:96
-msgid "Resize Protection"
-msgstr "Redimensiona la protecció"
-
-#: ../settings.ui.h:97
-msgid "Name"
-msgstr "Nom"
-
-#: ../settings.ui.h:98
-msgid "Description"
-msgstr "Descripció"
-
-#: ../settings.ui.h:99
-msgctxt "Label of new layout button on preferences page Layout."
-msgid "_New"
-msgstr "_Nou"
-
-#: ../settings.ui.h:100
-msgctxt "Label of delete layout button on preferences page Layout."
-msgid "_Delete"
-msgstr "_Suprimeix"
-
-#: ../settings.ui.h:101
-msgctxt "Label of open folder button on preferences page Layout."
-msgid "_Open layouts folder"
-msgstr "_Obre la carpeta de les disposicions"
-
-#: ../settings.ui.h:102
-msgctxt "Label of about layout button on preferences page Layout."
-msgid "_About"
-msgstr "Qu_ant a"
-
-#: ../settings.ui.h:103
-msgctxt "Label of new theme button on preferences page Theme."
-msgid "_New"
-msgstr "_Nou"
-
-#: ../settings.ui.h:104
-msgctxt "Label of delete theme  button on preferences page Theme."
-msgid "_Delete"
-msgstr "_Suprimeix"
-
-#: ../settings.ui.h:105
-msgctxt "Label of customize theme button on preferences page Theme."
-msgid "C_ustomize theme"
-msgstr "_Personalitza el tema"
-
-#: ../settings.ui.h:106
-msgid "Follow _system theme"
-msgstr "Utilitza el tema del _sistema"
-
-#: ../settings.ui.h:107
-msgid "Remember what Onboard theme was last used for every system theme."
-msgstr ""
-"Recorda quan es va utilitzar per últim cop el tema de l'Onboard per cada "
-"tema del sistema."
-
-#: ../settings.ui.h:108
-msgid ""
-"Snippets are pieces of text which are entered when the corresponding button "
-"in Onboard is pressed."
-msgstr ""
-"Els retalls són fragments de text que s'introdueixen en prémer el "
-"corresponent botó a l'onBoard."
-
-#: ../settings.ui.h:109
-msgctxt "Label of add snippet button on preferences page Snippets."
-msgid "_Add"
-msgstr "_Afegeix"
-
-#: ../settings.ui.h:110
-msgctxt "Label of remove snippet button on preferences page Snippets."
-msgid "_Remove"
-msgstr "_Elimina"
-
-#: ../settings.ui.h:111
-msgid "Play sound"
-msgstr "Reprodueix un so"
-
-#: ../settings.ui.h:112
-msgid "Play click sound on keypress."
-msgstr "Reprodueix so en cada pulsació de tecla."
-
-#: ../settings.ui.h:113
-msgid "Place sound in space"
-msgstr "Ubica el so a l'espai"
-
-#: ../settings.ui.h:114
-msgid ""
-"Place sound in space between speakers depending on the key's position on "
-"screen"
-msgstr ""
-"Ubica el so a l'espai entre els altaveus depenent de la posició de la tecla "
-"a la pantalla"
-
-#: ../settings.ui.h:115
-msgid "Show label popups"
-msgstr "Mostra els elements emergents d'etiqueta"
-
-#: ../settings.ui.h:116
-msgid "Show label popups above pressed keys."
-msgstr "Mostra els elements emergents d'etiqueta sobre les tecles premudes."
-
-#: ../settings.ui.h:117
-msgid "Popup size:"
-msgstr ""
-
-#: ../settings.ui.h:118
-msgid "Key-press Feedback"
-msgstr "Resposta de pulsació de tecla"
-
-#: ../settings.ui.h:119
-msgid "Show secondary labels"
-msgstr "Mostra les etiquetes secundàries"
-
-#: ../settings.ui.h:120
-msgid "Show characters reachable with or without the shift key."
-msgstr "Mostra els caràcters assolibles amb o sense la tecla de majúscules."
-
-#: ../settings.ui.h:121
-msgid "Key Labels"
-msgstr "Etiquetes de tecla"
-
-#: ../settings.ui.h:122
-msgid "Upper case on right click"
-msgstr "Majúscula en fer un clic amb el botó dret del ratolí"
-
-#: ../settings.ui.h:123
-msgid "Temporarily enable SHIFT when clicking with the secondary button."
-msgstr ""
-"Habilita temporalment la tecla Majúscules en clicar amb el botó secundari."
-
-#: ../settings.ui.h:124
-msgid "Key Behaviour"
-msgstr "Comportament de tecla"
-
-#: ../settings.ui.h:125
-msgid "_Long press action:"
-msgstr "Acció de pulsació _llarga:"
-
-#: ../settings.ui.h:126
-msgid ""
-"Choose between key-repeat or long-press menus. Mainly affects alpha-numeric "
-"keys."
-msgstr ""
-"Escolliu entre menús de repetició-de-tecla i mantenir-premut. Afecta "
-"principalment tecles alfanumèriques."
-
-#: ../settings.ui.h:127
-msgid "Modifier _behavior:"
-msgstr "_Comportament del modificador:"
-
-#: ../settings.ui.h:128
-msgid "Behavior of modifier and layer keys."
-msgstr "Comportament de les tecles modificadores i de capes."
-
-#: ../settings.ui.h:129
-msgid "Modifier auto-release delay in seconds:"
-msgstr "Retard d'alliberament automàtic de modificador en segons:"
-
-#: ../settings.ui.h:130
-msgid ""
-"Seconds of inactivity until active modifiers and layer keys are released. 0 "
-"to disable."
-msgstr ""
-"Segons d'inactivitat fins que les tecles modificadores o de capa són "
-"alliberades. 0 per a desactivar."
-
-#: ../settings.ui.h:131
-msgid "Modifier auto-release after hide in seconds:"
-msgstr "Alliberament automàtic de modificador després d'amagar en segons:"
-
-#: ../settings.ui.h:132
-msgid ""
-"Time after hiding the keyboard in seconds until latched and locked modifiers "
-"and layer keys are released automatically. Leave at 0.0 to not automatically "
-"release them."
-msgstr ""
-"Temps després d'amagar el teclat en segons, fins que els modificadors "
-"enganxats i blocats i les tecles de capes s'alliberen automàticament. Deixeu-"
-"ho a 0.0 per no alliberar-los automàticament."
-
-#: ../settings.ui.h:133
-msgid "0,00"
-msgstr "0,00"
-
-#: ../settings.ui.h:134
-msgid "Key Behavior"
-msgstr "Comportament de tecla"
-
-#: ../settings.ui.h:135
-msgid "_Touch input:"
-msgstr "Entrada de _Toca"
-
-#: ../settings.ui.h:136
-msgid "_Input event source:"
-msgstr "Font d'esdeven_iment d'entrada:"
-
-#: ../settings.ui.h:137
-msgid ""
-"Choose &apos;XInput&apos; for more reliable typing into text entries with "
-"pop-up selections. The &apos;GTK&apos; option offers better compatibility, "
-"but typing may fail in the presence of pointer grabs, e.g. with open pop-up "
-"windows."
-msgstr ""
-"Escolliu &apos;XInput&apos; per escriure de manera més fiable a les entrades "
-"de text i seleccions emergents. L'opció &apos;GTK&apos; ofereix més "
-"compatibilitat, però l'escriptura pot fallar en presència de captures del "
-"punter, per exemple amb finestres emergents."
-
-#: ../settings.ui.h:138
-msgid ""
-"Choose 'XInput' for more reliable typing into text entries with pop-up "
-"selections. The 'GTK' option offers better compatibility, but typing may "
-"fail in the presence of pointer grabs, e.g. with open pop-up windows."
-msgstr ""
-"Escolliu «Xinput»per a una escriptura més fiable amb seleccions emergents. "
-"L'opció «GTK» ofereix millor compatibilitat, però l'escriptura pot fallar en "
-"presència de captures de punter, per exemple amb finestres emergents."
-
-#: ../settings.ui.h:139
-msgid "Input Options"
-msgstr "Opcions d'entrada"
-
-#: ../settings.ui.h:140
-msgid "Delay between keystrokes in milliseconds:"
-msgstr "Retard entre les pulsacions de tecla en milisegons:"
-
-#: ../settings.ui.h:141
-msgid ""
-"Increase this if key-strokes get lost when inserting word suggestions or "
-"snippets into Firefox or other Gtk-2 applications. Has no effect on Gtk-3 "
-"applications."
-msgstr ""
-"Incrementeu això si es perden pulsacions de tecles quan s'insereixen "
-"suggeriments o fragments de paraules al Firefox o altres aplicacions Gtk-2. "
-"No te cap efecte sobre aplicacions Gtk-3."
-
-#: ../settings.ui.h:142
-msgid "Key-stroke generator"
-msgstr "Generador de pulsacions de tecles"
-
-#: ../settings.ui.h:143
-msgid ""
-"<b>Auto</b>: let Onboard decide, recommended.\n"
-"\n"
-"<b>XTest</b> is the default for all X based desktop environments.\n"
-"\n"
-"<b>uinput</b> should be available on all linux-based systems, including X, "
-"Wayland and MIR-based desktops, but requires write permission for /dev/"
-"uinput.\n"
-"\n"
-"<b>AT-SPI</b> has limited support for key-stroke generation, and is only "
-"recommended for testing."
-msgstr ""
-"<b>Auto</b>: deixa que l'Onboard decideixi, recomanat.\n"
-"\n"
-"<b>XTest</b> és l'opció per defecte per a tos els entorns d'escriptori "
-"basats en les X.\n"
-"\n"
-"<b>uinput</b> hauria d'estar disponible a tots els sistemes basats en linux, "
-"incloent-hi X, Wayland i escriptoris basats en el MIR, però requereix "
-"permisos d'escriptura per a /dev/uinput.\n"
-"\n"
-"<b>AT-SPI</b> té un suport limitat per a la generació de pulsacions de "
-"tecles, i sols es recomana per a proves."
-
-#: ../settings.ui.h:150
-msgid "Key-stroke Generation"
-msgstr "Generació de pulsació de tecles"
-
-#: ../settings.ui.h:151
-msgid "Popup time [s]:"
-msgstr ""
-
-#: ../settings.ui.h:152
-msgid "Affects how long a key popup stays open."
-msgstr ""
-
-#: ../settings.ui.h:153
-msgid "0.15"
-msgstr ""
-
-#: ../settings.ui.h:154
+#~ msgid "Key-repeat"
+#~ msgstr "Repetició de tecla"
+
+#~ msgid "International character selection"
+#~ msgstr "Selecció de caràcters internacionals"
+
+#~ msgid "never"
+#~ msgstr "mai"
+
+#~ msgid "1 minute"
+#~ msgstr "1 minut"
+
+#~ msgid "5 minutes"
+#~ msgstr "5 minuts"
+
+#~ msgid "10 minutes"
+#~ msgstr "10 minuts"
+
+#~ msgid "30 minutes"
+#~ msgstr "30 minuts"
+
+#~ msgid "1 hour"
+#~ msgstr "1 hora"
+
+#~ msgid "3 hours"
+#~ msgstr "3 hores"
+
+#~ msgid "forever"
+#~ msgstr "per sempre"
+
+#~ msgid "GTK"
+#~ msgstr "GTK"
+
+#~ msgid "XInput"
+#~ msgstr "XInput"
+
+#~ msgid "Auto"
+#~ msgstr "Auto"
+
+#~ msgid "XTest"
+#~ msgstr "XTest"
+
+#~ msgid "uinput"
+#~ msgstr "uinput"
+
+#~ msgid "AT-SPI"
+#~ msgstr "AT-SPI"
+
+#~ msgid "Remember nothing"
+#~ msgstr "No recordis res"
+
+#~ msgid "Don't remember new words"
+#~ msgstr "No recordis les paraules noves"
+
+#~ msgid "None"
+#~ msgstr "Cap"
+
+#~ msgid "Movement only"
+#~ msgstr "Només moviment"
+
+#~ msgid "Corners"
+#~ msgstr "Cantonades"
+
+#~ msgid "All corners and edges"
+#~ msgstr "Totes les cantonades i vores"
+
+#~ msgid "General"
+#~ msgstr "General"
+
+#~ msgid "Window"
+#~ msgstr "Finestra"
+
+#~ msgid "Layout"
+#~ msgstr "Disposició"
+
+#~ msgid "Theme"
+#~ msgstr "Tema"
+
+#~ msgid "Keyboard"
+#~ msgstr "Teclat"
+
+#~ msgid "Typing Assistance"
+#~ msgstr "Assistència d'escriptura"
+
+#~ msgid "Universal Access"
+#~ msgstr "Accés universal"
+
+#~ msgid "Only move when necessary"
+#~ msgstr "Mou sols quan calgui"
+
+#~ msgid "Follow the active window"
+#~ msgstr "Segueix a la finestra activa"
+
+#~ msgid "Latch, then lock"
+#~ msgstr "Fixa, després bloca"
+
+#~ msgid "Latch, double-click to lock"
+#~ msgstr "Fixa, feu un doble clic per blocar"
+
+#~ msgid "Latch only"
+#~ msgstr "Sols fixa"
+
+#~ msgid "Lock only"
+#~ msgstr "Sols bloca"
+
+#~ msgid "Push button"
+#~ msgstr "Pulsador"
+
+#~ msgid "none"
+#~ msgstr "cap"
+
+#~ msgid "single-touch"
+#~ msgstr "d'un sol toc"
+
+#~ msgid "multi-touch"
+#~ msgstr "de pulsació múltiple"
+
+#~ msgctxt "Label of the main close button of the preferences dialog."
+#~ msgid "_Close"
+#~ msgstr "Tan_ca"
+
+#~ msgid "_Auto-show when editing text"
+#~ msgstr "Mostra _automàticament durant l'edició de text"
+
+#~ msgid ""
+#~ "Show Onboard when there is a recognized text window in focus. Requires "
+#~ "Gnome Accessibility."
+#~ msgstr ""
+#~ "Mostra l'Onboard quan hi hagi una finestra de text reconeguda en el "
+#~ "focus. Requereix les funcions d'accessibilitat del GNOME."
+
+#~ msgid "Start Onboard _hidden"
+#~ msgstr "Inicia l'Onboard en mode _ocult"
+
+#~ msgid "Start Onboard hidden."
+#~ msgstr "Inicia l'Onboard en mode ocult."
+
+#~ msgid "Show/Hide options"
+#~ msgstr "Mostra/Oculta les opcions"
+
+#~ msgid "Show floating _icon when Onboard is hidden"
+#~ msgstr "Mostra una _icona flotant quan s'oculti l'Onboard"
+
+#~ msgid ""
+#~ "Show a floating icon on the desktop when Onboard is hidden. A click on "
+#~ "the icon makes Onboard reappear."
+#~ msgstr ""
+#~ "Mostra una icona flotant a l'escriptori quan l'Onboard estigui ocult. En "
+#~ "fer clic a la icona es mostrarà l'Onboard."
+
+#~ msgid "Show when _unlocking the screen"
+#~ msgstr "Mostra quan es _desbloqui la pantalla"
+
+#~ msgid ""
+#~ "Show Onboard when the dialog to unlock the screen appears; this way "
+#~ "Onboard can be used for example to enter the password to dismiss the "
+#~ "screensaver when it is set to ask for it."
+#~ msgstr ""
+#~ "Mostra l'Onboard quan aparegui el diàleg de desbloquejar la pantalla. "
+#~ "D'aquesta manera es pot utilitzar l'Onboard per introduir la contrasenya "
+#~ "quan s'hagi d'introduir aquesta en l'estalvi de pantalla."
+
+#~ msgid "Show _tooltips"
+#~ msgstr "Mostra els _indicadors de funció"
+
+#~ msgid "Show tooltips for the keyboard&apos;s buttons."
+#~ msgstr "Mostra els indicadors de funció per als botons del teclat."
+
+#~ msgid "Show tooltips for the keyboard's buttons."
+#~ msgstr "Mostra els indicadors de funció per als botons del teclat."
+
+#~ msgid "_Show status icon"
+#~ msgstr "_Mostra la icona d'estat"
+
+#~ msgid "Show the status item. A click on that icon hides or shows Onboard."
+#~ msgstr ""
+#~ "Mostra l'element d'estat. En fer un clic a aquesta icona s'ocultarà o es "
+#~ "mostrarà l'Onboard."
+
+#~ msgid "Status icon _provider:"
+#~ msgstr "_Proveïdor d'icones d'estat"
+
+#~ msgid ""
+#~ "<b>AppIndicator</b> (default) is recommended for broadest compatibility. "
+#~ "A middle click on the icon shows the keyboard. In KDE Plasma a left click "
+#~ "does the same.\n"
+#~ "\n"
+#~ "<b>GtkStatusIcon</b> isn't supported well anymore by various desktop "
+#~ "environments, but generally allows to show the keyboard on left click.\n"
+#~ "\n"
+#~ "Requires restart."
+#~ msgstr ""
+#~ "Es recomana l'<b>AppIndicator</b> (predeterminat) per a una "
+#~ "compatibilitat el més àmplia possible. Un clic amb el botó del mig del "
+#~ "ratolí mostra el teclat. Al KDE Plasma un clic amb el botó esquerre fa el "
+#~ "mateix.\n"
+#~ "\n"
+#~ "<b>GtkStatusIcon</b> no te un bon suport a diversos entorns d'escriptori, "
+#~ "però generalment permet mostrar el teclat amb un clic amb el botó "
+#~ "esquerre.\n"
+#~ "\n"
+#~ "Requereix un reinici."
+
+#~ msgid "Desktop Integration"
+#~ msgstr "Integració amb l'escriptori"
+
+#~ msgid "Dock to screen edge"
+#~ msgstr "Acobla a la vora"
+
+#~ msgid "Dock the keyboard to the edge of the screen."
+#~ msgstr "Acobla el teclat a la vora de la pantalla."
+
+#~ msgctxt "Label of settings button on preferences page Window."
+#~ msgid "_Settings"
+#~ msgstr "_Configuració"
+
+#~ msgid "Docking"
+#~ msgstr "Acoblament"
+
+#~ msgid "Show window _decoration"
+#~ msgstr "Mostra la _decoració de la finestra"
+
+#~ msgid "Show window caption and frame."
+#~ msgstr "Mostra el marc i el títol de la finestra."
+
+#~ msgid "Show always on visible _workspace"
+#~ msgstr "Mostra sempre en l'espai de _treball visible"
+
+#~ msgid "&quot;Sticky&quot; mode for keyboard and floating icon."
+#~ msgstr "Mode «adhesiu» per al teclat i la icona flotant."
+
+#~ msgid "\"Sticky\" mode for keyboard and floating icon."
+#~ msgstr "Mode «adhesiu» per al teclat i la icona flotant."
+
+#~ msgid "_Force window to top"
+#~ msgstr "_Força la finestra a la part superior"
+
+#~ msgid "Try harder to keep Onboard above anything on-screen."
+#~ msgstr ""
+#~ "Intenta mantenir l'Onboard per sobre de qualsevol cosa a la pantalla."
+
+#~ msgid "Keep _aspect ratio"
+#~ msgstr "Mantingues la relació de l'_aspecte"
+
+#~ msgid "Constrain window size to the layout&apos;s aspect ratio."
+#~ msgstr "Adapta la mida de la finestra a la relació d'aspecte del disseny."
+
+#~ msgid "Constrain window size to the layout's aspect ratio."
+#~ msgstr ""
+#~ "Restringeix la mida de la finestra a la relació de l'aspecte de la "
+#~ "disposició."
+
+#~ msgid "Floating Window Options"
+#~ msgstr "Opcions de finestra  flotant"
+
+#~ msgid "Window options"
+#~ msgstr "Opcions de finestra"
+
+#~ msgid "Wind_ow:"
+#~ msgstr "_Finestra:"
+
+#~ msgid "Transparency of the whole keyboard window. Requires compositing."
+#~ msgstr "Transparència en tota la finestra del teclat. Cal composició."
+
+#~ msgid "_Background:"
+#~ msgstr "F_ons:"
+
+#~ msgid "Transparency of the keyboard background"
+#~ msgstr "Transparència del fons del teclat"
+
+#~ msgid "_No background"
+#~ msgstr "_Sense fons"
+
+#~ msgid "Show the desktop through the gaps between keys."
+#~ msgstr "Mostra l'escriptori a través dels espais entre les tecles."
+
+#~ msgid "Transparency"
+#~ msgstr "Transparència"
+
+#~ msgid "Set _transparency to"
+#~ msgstr "Estableix la _transparència a"
+
+#~ msgid "Enable inactive transparency. Requires compositing."
+#~ msgstr "Habilita la transparència inactiva. Cal composició."
+
+#~ msgid ""
+#~ "Transparency when the pointer leaves the keyboard. Requires compositing."
+#~ msgstr "Transparència quan el punter deixa el teclat. Cal composició."
+
+#~ msgid "after"
+#~ msgstr "després de"
+
+#~ msgid "Delay in seconds until the inactive transparency takes effect."
+#~ msgstr "Retard en segons fins que té efecte la transparència d'inactivitat."
+
+#~ msgid "seconds"
+#~ msgstr "segons"
+
+#~ msgid "When Inactive"
+#~ msgstr "Quan estigui inactiu"
+
+#~ msgid "Resize Protection"
+#~ msgstr "Redimensiona la protecció"
+
+#~ msgid "Name"
+#~ msgstr "Nom"
+
+#~ msgid "Description"
+#~ msgstr "Descripció"
+
+#~ msgctxt "Label of new layout button on preferences page Layout."
+#~ msgid "_New"
+#~ msgstr "_Nou"
+
+#~ msgctxt "Label of delete layout button on preferences page Layout."
+#~ msgid "_Delete"
+#~ msgstr "_Suprimeix"
+
+#~ msgctxt "Label of open folder button on preferences page Layout."
+#~ msgid "_Open layouts folder"
+#~ msgstr "_Obre la carpeta de les disposicions"
+
+#~ msgctxt "Label of about layout button on preferences page Layout."
+#~ msgid "_About"
+#~ msgstr "Qu_ant a"
+
+#~ msgctxt "Label of new theme button on preferences page Theme."
+#~ msgid "_New"
+#~ msgstr "_Nou"
+
+#~ msgctxt "Label of delete theme  button on preferences page Theme."
+#~ msgid "_Delete"
+#~ msgstr "_Suprimeix"
+
+#~ msgctxt "Label of customize theme button on preferences page Theme."
+#~ msgid "C_ustomize theme"
+#~ msgstr "_Personalitza el tema"
+
+#~ msgid "Follow _system theme"
+#~ msgstr "Utilitza el tema del _sistema"
+
+#~ msgid "Remember what Onboard theme was last used for every system theme."
+#~ msgstr ""
+#~ "Recorda quan es va utilitzar per últim cop el tema de l'Onboard per cada "
+#~ "tema del sistema."
+
+#~ msgid ""
+#~ "Snippets are pieces of text which are entered when the corresponding "
+#~ "button in Onboard is pressed."
+#~ msgstr ""
+#~ "Els retalls són fragments de text que s'introdueixen en prémer el "
+#~ "corresponent botó a l'onBoard."
+
+#~ msgctxt "Label of add snippet button on preferences page Snippets."
+#~ msgid "_Add"
+#~ msgstr "_Afegeix"
+
+#~ msgctxt "Label of remove snippet button on preferences page Snippets."
+#~ msgid "_Remove"
+#~ msgstr "_Elimina"
+
+#~ msgid "Play sound"
+#~ msgstr "Reprodueix un so"
+
+#~ msgid "Play click sound on keypress."
+#~ msgstr "Reprodueix so en cada pulsació de tecla."
+
+#~ msgid "Place sound in space"
+#~ msgstr "Ubica el so a l'espai"
+
+#~ msgid ""
+#~ "Place sound in space between speakers depending on the key's position on "
+#~ "screen"
+#~ msgstr ""
+#~ "Ubica el so a l'espai entre els altaveus depenent de la posició de la "
+#~ "tecla a la pantalla"
+
+#~ msgid "Show label popups"
+#~ msgstr "Mostra els elements emergents d'etiqueta"
+
+#~ msgid "Show label popups above pressed keys."
+#~ msgstr "Mostra els elements emergents d'etiqueta sobre les tecles premudes."
+
+#~ msgid "Key-press Feedback"
+#~ msgstr "Resposta de pulsació de tecla"
+
+#~ msgid "Show secondary labels"
+#~ msgstr "Mostra les etiquetes secundàries"
+
+#~ msgid "Show characters reachable with or without the shift key."
+#~ msgstr "Mostra els caràcters assolibles amb o sense la tecla de majúscules."
+
+#~ msgid "Key Labels"
+#~ msgstr "Etiquetes de tecla"
+
+#~ msgid "Upper case on right click"
+#~ msgstr "Majúscula en fer un clic amb el botó dret del ratolí"
+
+#~ msgid "Temporarily enable SHIFT when clicking with the secondary button."
+#~ msgstr ""
+#~ "Habilita temporalment la tecla Majúscules en clicar amb el botó secundari."
+
+#~ msgid "Key Behaviour"
+#~ msgstr "Comportament de tecla"
+
+#~ msgid "_Long press action:"
+#~ msgstr "Acció de pulsació _llarga:"
+
+#~ msgid ""
+#~ "Choose between key-repeat or long-press menus. Mainly affects alpha-"
+#~ "numeric keys."
+#~ msgstr ""
+#~ "Escolliu entre menús de repetició-de-tecla i mantenir-premut. Afecta "
+#~ "principalment tecles alfanumèriques."
+
+#~ msgid "Modifier _behavior:"
+#~ msgstr "_Comportament del modificador:"
+
+#~ msgid "Behavior of modifier and layer keys."
+#~ msgstr "Comportament de les tecles modificadores i de capes."
+
+#~ msgid "Modifier auto-release delay in seconds:"
+#~ msgstr "Retard d'alliberament automàtic de modificador en segons:"
+
+#~ msgid ""
+#~ "Seconds of inactivity until active modifiers and layer keys are released. "
+#~ "0 to disable."
+#~ msgstr ""
+#~ "Segons d'inactivitat fins que les tecles modificadores o de capa són "
+#~ "alliberades. 0 per a desactivar."
+
+#~ msgid "Modifier auto-release after hide in seconds:"
+#~ msgstr "Alliberament automàtic de modificador després d'amagar en segons:"
+
+#~ msgid ""
+#~ "Time after hiding the keyboard in seconds until latched and locked "
+#~ "modifiers and layer keys are released automatically. Leave at 0.0 to not "
+#~ "automatically release them."
+#~ msgstr ""
+#~ "Temps després d'amagar el teclat en segons, fins que els modificadors "
+#~ "enganxats i blocats i les tecles de capes s'alliberen automàticament. "
+#~ "Deixeu-ho a 0.0 per no alliberar-los automàticament."
+
+#~ msgid "0,00"
+#~ msgstr "0,00"
+
+#~ msgid "Key Behavior"
+#~ msgstr "Comportament de tecla"
+
+#~ msgid "_Touch input:"
+#~ msgstr "Entrada de _Toca"
+
+#~ msgid "_Input event source:"
+#~ msgstr "Font d'esdeven_iment d'entrada:"
+
+#~ msgid ""
+#~ "Choose &apos;XInput&apos; for more reliable typing into text entries with "
+#~ "pop-up selections. The &apos;GTK&apos; option offers better "
+#~ "compatibility, but typing may fail in the presence of pointer grabs, e.g. "
+#~ "with open pop-up windows."
+#~ msgstr ""
+#~ "Escolliu &apos;XInput&apos; per escriure de manera més fiable a les "
+#~ "entrades de text i seleccions emergents. L'opció &apos;GTK&apos; ofereix "
+#~ "més compatibilitat, però l'escriptura pot fallar en presència de captures "
+#~ "del punter, per exemple amb finestres emergents."
+
+#~ msgid ""
+#~ "Choose 'XInput' for more reliable typing into text entries with pop-up "
+#~ "selections. The 'GTK' option offers better compatibility, but typing may "
+#~ "fail in the presence of pointer grabs, e.g. with open pop-up windows."
+#~ msgstr ""
+#~ "Escolliu «Xinput»per a una escriptura més fiable amb seleccions "
+#~ "emergents. L'opció «GTK» ofereix millor compatibilitat, però l'escriptura "
+#~ "pot fallar en presència de captures de punter, per exemple amb finestres "
+#~ "emergents."
+
+#~ msgid "Input Options"
+#~ msgstr "Opcions d'entrada"
+
+#~ msgid "Delay between keystrokes in milliseconds:"
+#~ msgstr "Retard entre les pulsacions de tecla en milisegons:"
+
+#~ msgid ""
+#~ "Increase this if key-strokes get lost when inserting word suggestions or "
+#~ "snippets into Firefox or other Gtk-2 applications. Has no effect on Gtk-3 "
+#~ "applications."
+#~ msgstr ""
+#~ "Incrementeu això si es perden pulsacions de tecles quan s'insereixen "
+#~ "suggeriments o fragments de paraules al Firefox o altres aplicacions "
+#~ "Gtk-2. No te cap efecte sobre aplicacions Gtk-3."
+
+#~ msgid "Key-stroke generator"
+#~ msgstr "Generador de pulsacions de tecles"
+
+#~ msgid ""
+#~ "<b>Auto</b>: let Onboard decide, recommended.\n"
+#~ "\n"
+#~ "<b>XTest</b> is the default for all X based desktop environments.\n"
+#~ "\n"
+#~ "<b>uinput</b> should be available on all linux-based systems, including "
+#~ "X, Wayland and MIR-based desktops, but requires write permission for /dev/"
+#~ "uinput.\n"
+#~ "\n"
+#~ "<b>AT-SPI</b> has limited support for key-stroke generation, and is only "
+#~ "recommended for testing."
+#~ msgstr ""
+#~ "<b>Auto</b>: deixa que l'Onboard decideixi, recomanat.\n"
+#~ "\n"
+#~ "<b>XTest</b> és l'opció per defecte per a tos els entorns d'escriptori "
+#~ "basats en les X.\n"
+#~ "\n"
+#~ "<b>uinput</b> hauria d'estar disponible a tots els sistemes basats en "
+#~ "linux, incloent-hi X, Wayland i escriptoris basats en el MIR, però "
+#~ "requereix permisos d'escriptura per a /dev/uinput.\n"
+#~ "\n"
+#~ "<b>AT-SPI</b> té un suport limitat per a la generació de pulsacions de "
+#~ "tecles, i sols es recomana per a proves."
+
+#~ msgid "Key-stroke Generation"
+#~ msgstr "Generació de pulsació de tecles"
+
 #, fuzzy
-msgid "Animation"
-msgstr "Acció:"
-
-#: ../settings.ui.h:155
-msgid "Advanced"
-msgstr "Avançat"
-
-#: ../settings.ui.h:156
-msgid ""
-"Show Onboard when there is a recognized text entry in focus. Requires Gnome "
-"Accessibility."
-msgstr ""
-
-#: ../settings.ui.h:157
-msgid "Keyboard movement strategy:"
-msgstr ""
-
-#: ../settings.ui.h:158
-msgid "Chose how the keyboard window moves when a text entry is activated."
-msgstr ""
-"Escolliu com es mou la finestra de teclat quan s'activa una entrada de text."
-
-#: ../settings.ui.h:159
-msgid "_Hide when typing on a physical keyboard"
-msgstr ""
-
-#: ../settings.ui.h:160
-msgid ""
-"Hide Onboard when any key is pressed on a physical keyboard. Requires input "
-"event source \"XInput\"."
-msgstr ""
-"Amaga l'Onboard quan es prem qualsevol tecla a un teclat físic. Requereix la "
-"font d'esdeveniment d'entrada «XInput»."
-
-#: ../settings.ui.h:161
-msgid "Stay hidden:"
-msgstr "Mantingues-ho ocult:"
-
-#: ../settings.ui.h:162
-msgid ""
-"Once hidden by a physical key-press, auto-show is paused. Select the pause "
-"duration here."
-msgstr ""
-"Un cop amagada per una pulsació de tecla, la mostra automàtica es pausa. "
-"Seleccioneu la duració de la pausa aquí."
-
-#: ../settings.ui.h:163
-msgid "Auto-show only in tablet mode"
-msgstr ""
-
-#: ../settings.ui.h:164
-msgid ""
-"Requires driver support for SW_TABLET_MODE and a running instance of acpid."
-msgstr ""
-
-#: ../settings.ui.h:165
-msgid ""
-"Alternatively, some devices generate key events on entering and leaving "
-"tablet mode. Run 'xinput test-xi2 3 ' to find these key presses and enter "
-"their 'detail' values below."
-msgstr ""
-
-#: ../settings.ui.h:166
-msgid "Hotkey received when entering tablet mode:"
-msgstr ""
-
-#: ../settings.ui.h:167
-msgid "Hotkey received when leaving tablet mode:"
-msgstr ""
-
-#: ../settings.ui.h:168
-msgid "File that contains the current device state:"
-msgstr ""
-
-#: ../settings.ui.h:169
-msgid "Regular expression to match for tablet-mode:"
-msgstr ""
-
-#: ../settings.ui.h:170
-msgid "Convertible Devices"
-msgstr ""
-
-#: ../settings.ui.h:171
-msgid "Don't auto-show while external keyboards are connected"
-msgstr ""
-
-#: ../settings.ui.h:172
-msgid "Detected keyboard devices:"
-msgstr ""
-
-#: ../settings.ui.h:173
-msgid ""
-"Check 'Ignore' for devices that are always connected and should not block "
-"auto-show."
-msgstr ""
-
-#: ../settings.ui.h:174
-msgid "External Keyboards"
-msgstr ""
-
-#: ../settings.ui.h:175
-msgid "Show _suggestions"
-msgstr "Mostra _suggeriments"
-
-#: ../settings.ui.h:176
-msgid "Enable word completion and prediction."
-msgstr "Activa finalització de paraules i text predictiu."
-
-#: ../settings.ui.h:177
-msgid "Show spelling suggestions"
-msgstr "Mostra suggeriments d'ortografia"
-
-#: ../settings.ui.h:178
-msgid "Check spelling of the word at or before the cursor."
-msgstr "Comprova l'ortografia de la paraula abans o davant del cursor."
-
-#: ../settings.ui.h:179
-msgid "_Learn from typed text"
-msgstr "_Aprèn del text introduït"
-
-#: ../settings.ui.h:180
-msgid ""
-"Remember new words, their recency and frequency to improve the suggestions "
-"over time."
-msgstr ""
-"Recorda noves paraules, la seva novetat i freqüència per a millorar els "
-"suggeriments."
-
-#: ../settings.ui.h:181
-msgid "Insert word _separators"
-msgstr "Insereix _separadors de paraula"
-
-#: ../settings.ui.h:182
-msgid ""
-"Add and remove spaces when inserting word suggestions followed by "
-"punctuation characters."
-msgstr ""
-"Insereix o elimina espais quan s'insereixin suggeriments de paraula seguits "
-"de caràcters de puntuació."
-
-#: ../settings.ui.h:183
-msgid "Options"
-msgstr "Opcions"
-
-#: ../settings.ui.h:184
-msgid "Show more suggestions arrow"
-msgstr "Mostra la fletxa de més suggeriments"
-
-#: ../settings.ui.h:185
-msgid "Step forward and backward through the available suggestions."
-msgstr "Ves endavant o endarrere a través dels suggeriments disponibles."
-
-#: ../settings.ui.h:186
-msgid "Show button to pause learning"
-msgstr "Mostra un botó per fer una pausa en l'aprenentatge de paraules"
-
-#: ../settings.ui.h:187
-msgid "Words typed while this button is pressed won't be remembered."
-msgstr ""
-"Les paraules introduïdes quan aquest botó estigui premut no es recordaran."
-
-#: ../settings.ui.h:188
-msgid "Show lan_guage switcher"
-msgstr "Mostra el commutador de llen_gües"
-
-#: ../settings.ui.h:189
-msgid "Show a button for language selection."
-msgstr "Mostra un botó de selecció d'idioma."
-
-#: ../settings.ui.h:190
-msgid "Buttons"
-msgstr "Botons"
-
-#: ../settings.ui.h:191
-msgid "Word Suggestions"
-msgstr "Suggeriments de paraules"
-
-#: ../settings.ui.h:192
-msgid "Auto-capitalize while typing"
-msgstr "Posa amb majúscula mentre s'escriu automàticament"
-
-#: ../settings.ui.h:193
-msgid "Automatically capitalize sentence begins and name words."
-msgstr "Posa automàticament amb majúscula inici de frase i noms."
-
-#: ../settings.ui.h:194
-msgid "Auto-correct spelling"
-msgstr "Corregeix l'ortografia automàticament"
-
-#: ../settings.ui.h:195
-msgid "Automatically correct the last word."
-msgstr "Corregeix la darrera paraula automàticament."
-
-#: ../settings.ui.h:196
-msgid "The spell check engine to use."
-msgstr "El motor de verificació de l'ortografia a usar."
-
-#: ../settings.ui.h:197
-msgid "Spell-check backend:"
-msgstr "Rerefons de verificació de l'ortografia:"
-
-#: ../settings.ui.h:198
-msgid "Auto-correction"
-msgstr "Correcció automàtica"
-
-#: ../settings.ui.h:199
-msgid "While  learning is paused:"
-msgstr "Mentre l'aprenentatge estigui pausat:"
-
-#: ../settings.ui.h:200
-msgid "Learning"
-msgstr "Aprenentatge"
-
-#: ../settings.ui.h:201
-msgid "Enable  keyboard _scanning"
-msgstr "Habilita l'_escaneig del teclat"
-
-#: ../settings.ui.h:202
-msgctxt ""
-"Label of keyboard scanning settings button on preferences page Universal "
-"Access."
-msgid "Sc_anner Settings"
-msgstr "Paràmetres de l'es_càner"
-
-#: ../settings.ui.h:203
-msgid "Keyboard Scanning"
-msgstr "Escaneig del teclat"
-
-#: ../settings.ui.h:204
-msgid "_Delay:"
-msgstr "_Retard:"
-
-#: ../settings.ui.h:205
-msgid "_Motion threshold:"
-msgstr "Llindar de _moviment:"
-
-#: ../settings.ui.h:206
-msgid "Time in seconds before a click is triggered."
-msgstr "El temps, en segons, abans que es generi un clic."
-
-#: ../settings.ui.h:207
-msgid "Distance in pixels before movement will be recognized."
-msgstr "La distància en píxels abans que es reconegui el moviment."
-
-#: ../settings.ui.h:208
-msgid "Hide hover click window"
-msgstr "Amaga la finestra de clic de passar per sobre"
-
-#: ../settings.ui.h:209
-msgid "Hide the system-provided hover click window while Onboard is running."
-msgstr ""
-"Oculta la finestra del sistema de clic en mantenir mentre s'executa "
-"l'Onboard."
-
-#: ../settings.ui.h:210
-msgid "Enable click type window on exit"
-msgstr "Habilita la finestra de tipus de clic en sortir"
-
-#: ../settings.ui.h:211
-msgid ""
-"Always enable the system-provided hover click window when exiting Onboard."
-msgstr ""
-"Sempre habilita la finestra del sistema de clic en mantenir en sortir de "
-"l'Onboard."
-
-#: ../settings.ui.h:212
-msgid "Hover Click"
-msgstr "Clic en mantenir"
-
-#: ../settings_docking_dialog.ui.h:1
-msgid "Top"
-msgstr "Superior"
-
-#: ../settings_docking_dialog.ui.h:2
-msgid "Bottom"
-msgstr "Inferior"
-
-#: ../settings_docking_dialog.ui.h:3
-msgid "Active Monitor"
-msgstr "Monitor actiu"
-
-#: ../settings_docking_dialog.ui.h:4
-msgid "Primary Monitor"
-msgstr "Monitor principal"
-
-#: ../settings_docking_dialog.ui.h:5
-msgid "Monitor 0"
-msgstr "Monitor 0"
-
-#: ../settings_docking_dialog.ui.h:6
-msgid "Monitor 1"
-msgstr "Monitor 1"
-
-#: ../settings_docking_dialog.ui.h:7
-msgid "Monitor 2"
-msgstr "Monitor 2"
-
-#: ../settings_docking_dialog.ui.h:8
-msgid "Monitor 3"
-msgstr "Monitor 3"
-
-#: ../settings_docking_dialog.ui.h:9
-msgid "Monitor 4"
-msgstr "Monitor 4"
-
-#: ../settings_docking_dialog.ui.h:10
-msgid "Monitor 5"
-msgstr "Monitor 5"
-
-#: ../settings_docking_dialog.ui.h:11
-msgid "Monitor 6"
-msgstr "Monitor 6"
-
-#: ../settings_docking_dialog.ui.h:12
-msgid "Monitor 7"
-msgstr "Monitor 7"
-
-#: ../settings_docking_dialog.ui.h:13
-msgid "Monitor 8"
-msgstr "Monitor 8"
-
-#: ../settings_docking_dialog.ui.h:14
-msgid "Docking settings"
-msgstr "Configuracions de l'acoblament"
-
-#: ../settings_docking_dialog.ui.h:15
-msgctxt "Label of the close button of the docking settings dialog."
-msgid "_Close"
-msgstr "Tan_ca"
-
-#: ../settings_docking_dialog.ui.h:16
-msgid "Shrink workarea"
-msgstr "Disminuir l'àrea de treball"
-
-#: ../settings_docking_dialog.ui.h:17
-msgid "Shrink the available space for maximized windows."
-msgstr "Disminuir l'espai disponible per les finestres maximitzades"
-
-#: ../settings_docking_dialog.ui.h:18
-msgid "Expand on landscape screens"
-msgstr "Expandeix en vista horitzontal"
-
-#: ../settings_docking_dialog.ui.h:19
-msgid "Expand keyboard to the width of the workarea."
-msgstr "Expandeix el teclat a l'amplada de l'àrea de treball."
-
-#: ../settings_docking_dialog.ui.h:20
-msgid "Expand on portrait screens"
-msgstr "Expandeix en vista vertical"
-
-#: ../settings_docking_dialog.ui.h:21
-msgid "Dock to screen edge:"
-msgstr "Acobla a la vora de la pantalla:"
-
-#: ../settings_docking_dialog.ui.h:22
-msgid "Dock to monitor:"
-msgstr "Acobla al monitor:"
-
-#: ../settings_scanner_dialog.ui.h:1
-msgid "Automatic scan for 1 switch"
-msgstr "Exploració automàtica per a 1 commutador"
-
-#: ../settings_scanner_dialog.ui.h:2
-msgid "Critical overscan for 1 switch"
-msgstr "Sobre-exploració crítica per a 1 commutador"
-
-#: ../settings_scanner_dialog.ui.h:3
-msgid "Step scan for 2 switches"
-msgstr "Exploració en passos per a 2 commutadors"
-
-#: ../settings_scanner_dialog.ui.h:4
-msgid "Directed scan for 3 or 5 switches"
-msgstr "Exploració dirigida per 3 o 5 interruptors"
-
-#: ../settings_scanner_dialog.ui.h:5
-msgid "Scanner Settings"
-msgstr "Paràmetres de l'escàner"
-
-#: ../settings_scanner_dialog.ui.h:6
-msgctxt "Label of the close button of the scanner settings dialog."
-msgid "_Close"
-msgstr "Tan_ca"
-
-#: ../settings_scanner_dialog.ui.h:7
-msgid "Select a scanning _profile:"
-msgstr "Seleccioneu un _perfil d'escaneig:"
-
-#: ../settings_scanner_dialog.ui.h:8
-msgid "_Step interval:"
-msgstr "Interval de _pas:"
-
-#: ../settings_scanner_dialog.ui.h:9
-msgid "Sc_an cycles:"
-msgstr "_Cicles d'escaneig:"
-
-#: ../settings_scanner_dialog.ui.h:10
-msgid ""
-"The time the scanner rests on a key or group before moving to the next. (in "
-"seconds)"
-msgstr ""
-"Interval de temps on l'escàner es manté en una tecla o un grup abans de "
-"moure a la següent. (en segons)"
-
-#: ../settings_scanner_dialog.ui.h:11
-msgid ""
-"The number of times the scanner cycles through the entire keyboard before it "
-"stops."
-msgstr ""
-"El número de cops que l'escaneig recorre tot el teclat abans d'aturar-se."
-
-#: ../settings_scanner_dialog.ui.h:12
-msgid "Step _only during switch down"
-msgstr "S_ols ves per passos quan el commutador està abaixat"
-
-#: ../settings_scanner_dialog.ui.h:13
-msgid "Progress the highlight only while the switch is held down."
-msgstr "Progressa sobre el resaltat sols quan el commutador és premut."
-
-#: ../settings_scanner_dialog.ui.h:14
-msgid "_Forward interval:"
-msgstr "_Interval cap endavant:"
-
-#: ../settings_scanner_dialog.ui.h:15
-msgid "_Backtrack interval:"
-msgstr "Interval de _retrocés"
-
-#: ../settings_scanner_dialog.ui.h:16
-msgid ""
-"The time the scanner rests on a key  while progressing forward. (in seconds)"
-msgstr ""
-"El temps que l'escàner es manté en una tecla mentre segueix endavant. (en "
-"segons)"
-
-#: ../settings_scanner_dialog.ui.h:17
-msgid ""
-"The time the scanner rests on a key  while moving backwards. (in seconds)"
-msgstr ""
-"El temps que l'escàner es manté en una tecla mentre es mou enrere. (en "
-"segons)"
-
-#: ../settings_scanner_dialog.ui.h:18
-msgid "Backtrack _steps:"
-msgstr "Pa_ssos de retrocés:"
-
-#: ../settings_scanner_dialog.ui.h:19
-msgid "The number of keys the scanner steps back before moving forward again."
-msgstr ""
-"El nombre de tecles que l'escàner torna enrere abans de seguir endavant "
-"altra vegada."
-
-#: ../settings_scanner_dialog.ui.h:20
-msgid "_Alternate switch actions"
-msgstr "Accions de commutador _alternatives"
-
-#: ../settings_scanner_dialog.ui.h:21
-msgid ""
-"Swap the scan actions after every key activation. The Step action will "
-"become the Activate action and vice versa."
-msgstr ""
-"Intercanvia les accions d'escaneig després d'activar cada tecla. L'acció "
-"\"pas\" esdevindrà l'acció \"activar\" i viceversa."
-
-#: ../settings_scanner_dialog.ui.h:22
-msgid "Profiles"
-msgstr "Perfils"
-
-#: ../settings_scanner_dialog.ui.h:23
-msgid "_Select an input device:"
-msgstr "Selecciona un di_spositiu d'entrada:"
-
-#: ../settings_scanner_dialog.ui.h:24
-msgid "_Use this device only for scanning"
-msgstr "_Utilitza aquest dispositiu només per escanejar"
-
-#: ../settings_scanner_dialog.ui.h:25
-msgid ""
-"The selected device should not control the system mouse cursor or the "
-"keyboard caret."
-msgstr ""
-"El dispositiu seleccionat no hauria de controlar el cursor del ratolí del "
-"sistema o el cursor del teclat."
-
-#: ../settings_scanner_dialog.ui.h:26
-msgid "Input Device"
-msgstr "Dispositiu d'entrada"
-
-#: ../settings_theme_dialog.ui.h:1
-msgid "Customize Theme"
-msgstr "Personalitza el tema"
-
-#: ../settings_theme_dialog.ui.h:2
-msgctxt "Label of the revert button of the theme settings dialog."
-msgid "_Revert"
-msgstr "_Reverteix"
-
-#: ../settings_theme_dialog.ui.h:3
-msgctxt "Label of the close button of the theme settings dialog."
-msgid "_Close"
-msgstr "Tan_ca"
-
-#: ../settings_theme_dialog.ui.h:4
-msgid "Color Sche_me"
-msgstr "Esque_ma de colors"
-
-#: ../settings_theme_dialog.ui.h:7
-msgid "_Angle:"
-msgstr "_Angle:"
-
-#: ../settings_theme_dialog.ui.h:8
-msgid "Light Direction"
-msgstr "Direcció de la llum"
-
-#: ../settings_theme_dialog.ui.h:10
-msgid "_Style:"
-msgstr "E_stil:"
-
-#: ../settings_theme_dialog.ui.h:11
-msgid "R_oundness:"
-msgstr "Arr_odoniment"
-
-#: ../settings_theme_dialog.ui.h:12
-msgid "S_ize:"
-msgstr "M_ida:"
-
-#: ../settings_theme_dialog.ui.h:13
-msgid "B_order width:"
-msgstr "Amplada de la v_ora"
-
-#: ../settings_theme_dialog.ui.h:14
-msgid "Key Style"
-msgstr "Estil de tecles"
-
-#: ../settings_theme_dialog.ui.h:15
-msgid "_Key:"
-msgstr "Te_cla:"
-
-#: ../settings_theme_dialog.ui.h:16
-msgid "_Border:"
-msgstr "Vora:"
-
-#: ../settings_theme_dialog.ui.h:17
-msgid "Gradients"
-msgstr "Degradats"
-
-#: ../settings_theme_dialog.ui.h:18
-msgid "_Strength:"
-msgstr "Inten_sitat:"
-
-#: ../settings_theme_dialog.ui.h:19
-msgid "Shadow"
-msgstr "Ombra"
-
-#: ../settings_theme_dialog.ui.h:20
-msgid "Keys"
-msgstr "Tecles"
-
-#: ../settings_theme_dialog.ui.h:21
-msgid "_Font:"
-msgstr "Tipus de _lletra:"
-
-#: ../settings_theme_dialog.ui.h:22
-msgid "_Attributes:"
-msgstr "_Atributs:"
-
-#: ../settings_theme_dialog.ui.h:23
-msgid "Font"
-msgstr "Tipus de lletra"
-
-#: ../settings_theme_dialog.ui.h:24
-msgid "I_ndependent size"
-msgstr "Mida i_ndependent"
-
-#: ../settings_theme_dialog.ui.h:25
-msgid "_Super key:"
-msgstr "Tecla _super"
-
-#: ../settings_theme_dialog.ui.h:26
-msgid "Label Override"
-msgstr "Etiqueta sobreescrita"
-
-#: ../settings_theme_dialog.ui.h:27
-msgid "Labels"
-msgstr "Etiquetes"
+#~ msgid "Animation"
+#~ msgstr "Acció:"
+
+#~ msgid "Advanced"
+#~ msgstr "Avançat"
+
+#~ msgid "Chose how the keyboard window moves when a text entry is activated."
+#~ msgstr ""
+#~ "Escolliu com es mou la finestra de teclat quan s'activa una entrada de "
+#~ "text."
+
+#~ msgid ""
+#~ "Hide Onboard when any key is pressed on a physical keyboard. Requires "
+#~ "input event source \"XInput\"."
+#~ msgstr ""
+#~ "Amaga l'Onboard quan es prem qualsevol tecla a un teclat físic. Requereix "
+#~ "la font d'esdeveniment d'entrada «XInput»."
+
+#~ msgid "Stay hidden:"
+#~ msgstr "Mantingues-ho ocult:"
+
+#~ msgid ""
+#~ "Once hidden by a physical key-press, auto-show is paused. Select the "
+#~ "pause duration here."
+#~ msgstr ""
+#~ "Un cop amagada per una pulsació de tecla, la mostra automàtica es pausa. "
+#~ "Seleccioneu la duració de la pausa aquí."
+
+#~ msgid "Show _suggestions"
+#~ msgstr "Mostra _suggeriments"
+
+#~ msgid "Enable word completion and prediction."
+#~ msgstr "Activa finalització de paraules i text predictiu."
+
+#~ msgid "Show spelling suggestions"
+#~ msgstr "Mostra suggeriments d'ortografia"
+
+#~ msgid "Check spelling of the word at or before the cursor."
+#~ msgstr "Comprova l'ortografia de la paraula abans o davant del cursor."
+
+#~ msgid "_Learn from typed text"
+#~ msgstr "_Aprèn del text introduït"
+
+#~ msgid ""
+#~ "Remember new words, their recency and frequency to improve the "
+#~ "suggestions over time."
+#~ msgstr ""
+#~ "Recorda noves paraules, la seva novetat i freqüència per a millorar els "
+#~ "suggeriments."
+
+#~ msgid "Insert word _separators"
+#~ msgstr "Insereix _separadors de paraula"
+
+#~ msgid ""
+#~ "Add and remove spaces when inserting word suggestions followed by "
+#~ "punctuation characters."
+#~ msgstr ""
+#~ "Insereix o elimina espais quan s'insereixin suggeriments de paraula "
+#~ "seguits de caràcters de puntuació."
+
+#~ msgid "Options"
+#~ msgstr "Opcions"
+
+#~ msgid "Show more suggestions arrow"
+#~ msgstr "Mostra la fletxa de més suggeriments"
+
+#~ msgid "Step forward and backward through the available suggestions."
+#~ msgstr "Ves endavant o endarrere a través dels suggeriments disponibles."
+
+#~ msgid "Show button to pause learning"
+#~ msgstr "Mostra un botó per fer una pausa en l'aprenentatge de paraules"
+
+#~ msgid "Words typed while this button is pressed won't be remembered."
+#~ msgstr ""
+#~ "Les paraules introduïdes quan aquest botó estigui premut no es recordaran."
+
+#~ msgid "Show lan_guage switcher"
+#~ msgstr "Mostra el commutador de llen_gües"
+
+#~ msgid "Show a button for language selection."
+#~ msgstr "Mostra un botó de selecció d'idioma."
+
+#~ msgid "Buttons"
+#~ msgstr "Botons"
+
+#~ msgid "Word Suggestions"
+#~ msgstr "Suggeriments de paraules"
+
+#~ msgid "Auto-capitalize while typing"
+#~ msgstr "Posa amb majúscula mentre s'escriu automàticament"
+
+#~ msgid "Automatically capitalize sentence begins and name words."
+#~ msgstr "Posa automàticament amb majúscula inici de frase i noms."
+
+#~ msgid "Auto-correct spelling"
+#~ msgstr "Corregeix l'ortografia automàticament"
+
+#~ msgid "Automatically correct the last word."
+#~ msgstr "Corregeix la darrera paraula automàticament."
+
+#~ msgid "The spell check engine to use."
+#~ msgstr "El motor de verificació de l'ortografia a usar."
+
+#~ msgid "Spell-check backend:"
+#~ msgstr "Rerefons de verificació de l'ortografia:"
+
+#~ msgid "Auto-correction"
+#~ msgstr "Correcció automàtica"
+
+#~ msgid "While  learning is paused:"
+#~ msgstr "Mentre l'aprenentatge estigui pausat:"
+
+#~ msgid "Learning"
+#~ msgstr "Aprenentatge"
+
+#~ msgid "Enable  keyboard _scanning"
+#~ msgstr "Habilita l'_escaneig del teclat"
+
+#~ msgctxt ""
+#~ "Label of keyboard scanning settings button on preferences page Universal "
+#~ "Access."
+#~ msgid "Sc_anner Settings"
+#~ msgstr "Paràmetres de l'es_càner"
+
+#~ msgid "Keyboard Scanning"
+#~ msgstr "Escaneig del teclat"
+
+#~ msgid "_Delay:"
+#~ msgstr "_Retard:"
+
+#~ msgid "_Motion threshold:"
+#~ msgstr "Llindar de _moviment:"
+
+#~ msgid "Time in seconds before a click is triggered."
+#~ msgstr "El temps, en segons, abans que es generi un clic."
+
+#~ msgid "Distance in pixels before movement will be recognized."
+#~ msgstr "La distància en píxels abans que es reconegui el moviment."
+
+#~ msgid "Hide hover click window"
+#~ msgstr "Amaga la finestra de clic de passar per sobre"
+
+#~ msgid ""
+#~ "Hide the system-provided hover click window while Onboard is running."
+#~ msgstr ""
+#~ "Oculta la finestra del sistema de clic en mantenir mentre s'executa "
+#~ "l'Onboard."
+
+#~ msgid "Enable click type window on exit"
+#~ msgstr "Habilita la finestra de tipus de clic en sortir"
+
+#~ msgid ""
+#~ "Always enable the system-provided hover click window when exiting Onboard."
+#~ msgstr ""
+#~ "Sempre habilita la finestra del sistema de clic en mantenir en sortir de "
+#~ "l'Onboard."
+
+#~ msgid "Hover Click"
+#~ msgstr "Clic en mantenir"
+
+#~ msgid "Top"
+#~ msgstr "Superior"
+
+#~ msgid "Bottom"
+#~ msgstr "Inferior"
+
+#~ msgid "Active Monitor"
+#~ msgstr "Monitor actiu"
+
+#~ msgid "Primary Monitor"
+#~ msgstr "Monitor principal"
+
+#~ msgid "Monitor 0"
+#~ msgstr "Monitor 0"
+
+#~ msgid "Monitor 1"
+#~ msgstr "Monitor 1"
+
+#~ msgid "Monitor 2"
+#~ msgstr "Monitor 2"
+
+#~ msgid "Monitor 3"
+#~ msgstr "Monitor 3"
+
+#~ msgid "Monitor 4"
+#~ msgstr "Monitor 4"
+
+#~ msgid "Monitor 5"
+#~ msgstr "Monitor 5"
+
+#~ msgid "Monitor 6"
+#~ msgstr "Monitor 6"
+
+#~ msgid "Monitor 7"
+#~ msgstr "Monitor 7"
+
+#~ msgid "Monitor 8"
+#~ msgstr "Monitor 8"
+
+#~ msgid "Docking settings"
+#~ msgstr "Configuracions de l'acoblament"
+
+#~ msgctxt "Label of the close button of the docking settings dialog."
+#~ msgid "_Close"
+#~ msgstr "Tan_ca"
+
+#~ msgid "Shrink workarea"
+#~ msgstr "Disminuir l'àrea de treball"
+
+#~ msgid "Shrink the available space for maximized windows."
+#~ msgstr "Disminuir l'espai disponible per les finestres maximitzades"
+
+#~ msgid "Expand on landscape screens"
+#~ msgstr "Expandeix en vista horitzontal"
+
+#~ msgid "Expand keyboard to the width of the workarea."
+#~ msgstr "Expandeix el teclat a l'amplada de l'àrea de treball."
+
+#~ msgid "Expand on portrait screens"
+#~ msgstr "Expandeix en vista vertical"
+
+#~ msgid "Dock to screen edge:"
+#~ msgstr "Acobla a la vora de la pantalla:"
+
+#~ msgid "Dock to monitor:"
+#~ msgstr "Acobla al monitor:"
+
+#~ msgid "Automatic scan for 1 switch"
+#~ msgstr "Exploració automàtica per a 1 commutador"
+
+#~ msgid "Critical overscan for 1 switch"
+#~ msgstr "Sobre-exploració crítica per a 1 commutador"
+
+#~ msgid "Step scan for 2 switches"
+#~ msgstr "Exploració en passos per a 2 commutadors"
+
+#~ msgid "Directed scan for 3 or 5 switches"
+#~ msgstr "Exploració dirigida per 3 o 5 interruptors"
+
+#~ msgid "Scanner Settings"
+#~ msgstr "Paràmetres de l'escàner"
+
+#~ msgctxt "Label of the close button of the scanner settings dialog."
+#~ msgid "_Close"
+#~ msgstr "Tan_ca"
+
+#~ msgid "Select a scanning _profile:"
+#~ msgstr "Seleccioneu un _perfil d'escaneig:"
+
+#~ msgid "_Step interval:"
+#~ msgstr "Interval de _pas:"
+
+#~ msgid "Sc_an cycles:"
+#~ msgstr "_Cicles d'escaneig:"
+
+#~ msgid ""
+#~ "The time the scanner rests on a key or group before moving to the next. "
+#~ "(in seconds)"
+#~ msgstr ""
+#~ "Interval de temps on l'escàner es manté en una tecla o un grup abans de "
+#~ "moure a la següent. (en segons)"
+
+#~ msgid ""
+#~ "The number of times the scanner cycles through the entire keyboard before "
+#~ "it stops."
+#~ msgstr ""
+#~ "El número de cops que l'escaneig recorre tot el teclat abans d'aturar-se."
+
+#~ msgid "Step _only during switch down"
+#~ msgstr "S_ols ves per passos quan el commutador està abaixat"
+
+#~ msgid "Progress the highlight only while the switch is held down."
+#~ msgstr "Progressa sobre el resaltat sols quan el commutador és premut."
+
+#~ msgid "_Forward interval:"
+#~ msgstr "_Interval cap endavant:"
+
+#~ msgid "_Backtrack interval:"
+#~ msgstr "Interval de _retrocés"
+
+#~ msgid ""
+#~ "The time the scanner rests on a key  while progressing forward. (in "
+#~ "seconds)"
+#~ msgstr ""
+#~ "El temps que l'escàner es manté en una tecla mentre segueix endavant. (en "
+#~ "segons)"
+
+#~ msgid ""
+#~ "The time the scanner rests on a key  while moving backwards. (in seconds)"
+#~ msgstr ""
+#~ "El temps que l'escàner es manté en una tecla mentre es mou enrere. (en "
+#~ "segons)"
+
+#~ msgid "Backtrack _steps:"
+#~ msgstr "Pa_ssos de retrocés:"
+
+#~ msgid ""
+#~ "The number of keys the scanner steps back before moving forward again."
+#~ msgstr ""
+#~ "El nombre de tecles que l'escàner torna enrere abans de seguir endavant "
+#~ "altra vegada."
+
+#~ msgid "_Alternate switch actions"
+#~ msgstr "Accions de commutador _alternatives"
+
+#~ msgid ""
+#~ "Swap the scan actions after every key activation. The Step action will "
+#~ "become the Activate action and vice versa."
+#~ msgstr ""
+#~ "Intercanvia les accions d'escaneig després d'activar cada tecla. L'acció "
+#~ "\"pas\" esdevindrà l'acció \"activar\" i viceversa."
+
+#~ msgid "Profiles"
+#~ msgstr "Perfils"
+
+#~ msgid "_Select an input device:"
+#~ msgstr "Selecciona un di_spositiu d'entrada:"
+
+#~ msgid "_Use this device only for scanning"
+#~ msgstr "_Utilitza aquest dispositiu només per escanejar"
+
+#~ msgid ""
+#~ "The selected device should not control the system mouse cursor or the "
+#~ "keyboard caret."
+#~ msgstr ""
+#~ "El dispositiu seleccionat no hauria de controlar el cursor del ratolí del "
+#~ "sistema o el cursor del teclat."
+
+#~ msgid "Input Device"
+#~ msgstr "Dispositiu d'entrada"
+
+#~ msgid "Customize Theme"
+#~ msgstr "Personalitza el tema"
+
+#~ msgctxt "Label of the revert button of the theme settings dialog."
+#~ msgid "_Revert"
+#~ msgstr "_Reverteix"
+
+#~ msgctxt "Label of the close button of the theme settings dialog."
+#~ msgid "_Close"
+#~ msgstr "Tan_ca"
+
+#~ msgid "Color Sche_me"
+#~ msgstr "Esque_ma de colors"
+
+#~ msgid "_Angle:"
+#~ msgstr "_Angle:"
+
+#~ msgid "Light Direction"
+#~ msgstr "Direcció de la llum"
+
+#~ msgid "_Style:"
+#~ msgstr "E_stil:"
+
+#~ msgid "R_oundness:"
+#~ msgstr "Arr_odoniment"
+
+#~ msgid "S_ize:"
+#~ msgstr "M_ida:"
+
+#~ msgid "B_order width:"
+#~ msgstr "Amplada de la v_ora"
+
+#~ msgid "Key Style"
+#~ msgstr "Estil de tecles"
+
+#~ msgid "_Key:"
+#~ msgstr "Te_cla:"
+
+#~ msgid "_Border:"
+#~ msgstr "Vora:"
+
+#~ msgid "Gradients"
+#~ msgstr "Degradats"
+
+#~ msgid "_Strength:"
+#~ msgstr "Inten_sitat:"
+
+#~ msgid "Shadow"
+#~ msgstr "Ombra"
+
+#~ msgid "Keys"
+#~ msgstr "Tecles"
+
+#~ msgid "_Font:"
+#~ msgstr "Tipus de _lletra:"
+
+#~ msgid "_Attributes:"
+#~ msgstr "_Atributs:"
+
+#~ msgid "Font"
+#~ msgstr "Tipus de lletra"
+
+#~ msgid "I_ndependent size"
+#~ msgstr "Mida i_ndependent"
+
+#~ msgid "_Super key:"
+#~ msgstr "Tecla _super"
+
+#~ msgid "Label Override"
+#~ msgstr "Etiqueta sobreescrita"
+
+#~ msgid "Labels"
+#~ msgstr "Etiquetes"
 
 #~ msgid "Quit onBoard"
 #~ msgstr "Surt de l'onBoard"

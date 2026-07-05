@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: onboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-06 20:21+0200\n"
+"POT-Creation-Date: 2026-07-05 21:38+0200\n"
 "PO-Revision-Date: 2011-10-11 14:52+0000\n"
 "Last-Translator: Vilson Gjeci <vilsongjeci@gmail.com>\n"
 "Language-Team: Albanian <sq@li.org>\n"
@@ -63,35 +63,35 @@ msgstr ""
 "key_id '{}' e dyfishtë u gjet në skedarin e skemës së ngjyrave. Key_id-të "
 "duhet të jenë vetëm një herë."
 
-#: ../Onboard/Config.py:243
+#: ../Onboard/Config.py:244
 msgid "Layout file ({}) or name"
 msgstr "Dalja e skedarit ({}) ose emri"
 
-#: ../Onboard/Config.py:246
+#: ../Onboard/Config.py:247
 msgid "Theme file (.theme) or name"
 msgstr "Skedari i temës (.theme) ose emri"
 
-#: ../Onboard/Config.py:248
+#: ../Onboard/Config.py:249
 msgid "Window size, widthxheight"
 msgstr "Përmasa e dritares gjerësi x lartësi"
 
-#: ../Onboard/Config.py:249
+#: ../Onboard/Config.py:250
 msgid "Window x position"
 msgstr "Pozicioni x i dritares"
 
-#: ../Onboard/Config.py:250
+#: ../Onboard/Config.py:251
 msgid "Window y position"
 msgstr "Pozicioni y i dritares"
 
-#: ../Onboard/Config.py:255
+#: ../Onboard/Config.py:256
 msgid "Start in XEmbed mode, e.g. for gnome-screensaver"
 msgstr "Nis mënyrën XEmbed, p.sh. për gnome-screensaver"
 
-#: ../Onboard/Config.py:258
+#: ../Onboard/Config.py:259
 msgid "Allow multiple Onboard instances"
 msgstr "Lejo instanca të shumta të onboard"
 
-#: ../Onboard/Config.py:261
+#: ../Onboard/Config.py:262
 msgid ""
 "Silently fail to start in the given desktop environments. DESKTOPS is a "
 "comma-separated list of XDG desktop names, e.g. GNOME for GNOME Shell."
@@ -99,17 +99,17 @@ msgstr ""
 "Dështim në heshtje të fillojë në mjediset desktop të dhëna.  DESKTOP është "
 "nje listë e emrave të XDG ndarë e me presje, si p.sh. GNOME për GNOME Shell."
 
-#: ../Onboard/Config.py:267
+#: ../Onboard/Config.py:268
 msgid ""
 "Delay showing the initial keyboard window by STARTUP_DELAY seconds (default "
 "0.0)."
 msgstr ""
 
-#: ../Onboard/Config.py:271
+#: ../Onboard/Config.py:272
 msgid "Keep aspect ratio when resizing the window"
 msgstr "Ruaj përmasat kur ripërmason dritaren"
 
-#: ../Onboard/Config.py:273
+#: ../Onboard/Config.py:274
 msgid ""
 "Override auto-detection and manually select quirks\n"
 "QUIRKS={metacity|compiz|mutter}"
@@ -117,35 +117,35 @@ msgstr ""
 "Mbishkruaj vetë dallimin dhe vendos quirks në mënyrë manuale\n"
 "QUIRKS={metacity|compiz|mutter}"
 
-#: ../Onboard/Config.py:400
+#: ../Onboard/Config.py:401
 msgid "Migrating user directory '{}' to '{}'."
 msgstr "Duke migruar drejtorinë e përdoruesit '{}' tek '{}'."
 
 #. honor XDG spec
 #. python >2.5
-#: ../Onboard/Config.py:408
+#: ../Onboard/Config.py:409
 msgid "failed to migrate user directory. "
 msgstr "dështova në migrimin e drejtorisë së përdoruesit. "
 
-#: ../Onboard/Config.py:887
+#: ../Onboard/Config.py:888
 #, python-brace-format
 msgid "layout '{filename}' does not exist"
 msgstr "shtresa '{filename}' nuk ekziston"
 
-#: ../Onboard/Config.py:928
+#: ../Onboard/Config.py:929
 #, python-brace-format
 msgid "theme '{filename}' does not exist"
 msgstr "tema '{filename}' nuk ekziston"
 
-#: ../Onboard/Config.py:953
+#: ../Onboard/Config.py:954
 msgid "Loading theme from '{}'"
 msgstr "Duke ngarkuar temën nga '{}'"
 
-#: ../Onboard/Config.py:957
+#: ../Onboard/Config.py:958
 msgid "Unable to read theme '{}'"
 msgstr "Nuk jam në gjendje të lexoj temën '{}'"
 
-#: ../Onboard/Config.py:1198
+#: ../Onboard/Config.py:1199
 msgid ""
 "Enabling auto-show requires Gnome Accessibility.\n"
 "\n"
@@ -162,7 +162,7 @@ msgstr ""
 "\n"
 "Ta aktivizoj hyrjen tani?"
 
-#: ../Onboard/Config.py:1952
+#: ../Onboard/Config.py:1953
 #, python-brace-format
 msgid "color scheme '{filename}' does not exist"
 msgstr "skema e ngjyrave '{filename}' nuk ekziston"
@@ -247,31 +247,31 @@ msgstr ""
 msgid "Failed to get gsettings value. "
 msgstr "Dështova në marrjen e vlerës për gsettings. "
 
-#: ../Onboard/Indicator.py:56
+#: ../Onboard/Indicator.py:52
 msgid "_Show Onboard"
 msgstr "_Shfaq Onboard"
 
-#: ../Onboard/Indicator.py:57
+#: ../Onboard/Indicator.py:53
 msgid "_Hide Onboard"
 msgstr "_Fshihe Onboard"
 
 #. Translators: label of a menu item. It used to be stock item
 #. STOCK_PREFERENCES until Gtk 3.10 deprecated those.
-#: ../Onboard/Indicator.py:83
+#: ../Onboard/Indicator.py:79
 msgid "_Preferences"
 msgstr "_Preferimet"
 
-#: ../Onboard/Indicator.py:91
+#: ../Onboard/Indicator.py:96
 msgid "_Help"
 msgstr "_Ndihmë"
 
 #. Translators: label of a menu item. It used to be stock item
 #. STOCK_QUIT until Gtk 3.10 deprecated those.
-#: ../Onboard/Indicator.py:102
+#: ../Onboard/Indicator.py:107
 msgid "_Quit"
 msgstr "_Dalja"
 
-#: ../Onboard/Indicator.py:228 ../Onboard/Indicator.py:231
+#: ../Onboard/Indicator.py:237 ../Onboard/Indicator.py:240
 msgid "Onboard on-screen keyboard"
 msgstr "Tastierë në ekran"
 
@@ -380,7 +380,6 @@ msgstr ""
 #: ../Onboard/LanguageSupport.py:174 ../Onboard/SpellChecker.py:634
 #: ../Onboard/SpellChecker.py:670 ../Onboard/SpellChecker.py:709
 #: ../Onboard/SpellChecker.py:723 ../Onboard/Timer.py:179
-#: ../Onboard/pypredict/tools/filter.py:382
 msgid "Failed to execute '{}', {}"
 msgstr "Dështova në ekzekutimin e '{}', {}"
 
@@ -625,7 +624,7 @@ msgid "Flat"
 msgstr "I Sheshtë"
 
 #. Key style with simple gradients
-#: ../Onboard/settings.py:1631 ../settings_theme_dialog.ui.h:6
+#: ../Onboard/settings.py:1631
 msgid "Gradient"
 msgstr "Shkallëzor"
 
@@ -870,7 +869,7 @@ msgid "Scroll"
 msgstr "Scroll"
 
 #. translators: this is a 'tooltip' of the key_template 'layer2' in keyboard layout 'key_defs.xml'
-#: ../data/layoutstrings.py:88 ../data/layoutstrings.py:340 ../settings.ui.h:27
+#: ../data/layoutstrings.py:88 ../data/layoutstrings.py:340
 msgid "Snippets"
 msgstr "Snippets"
 
@@ -1315,1231 +1314,761 @@ msgstr ""
 msgid "onscreen;keyboard;accessibility;utility;"
 msgstr ""
 
-#: ../settings.ui.h:1
-msgid "Key-repeat"
-msgstr ""
-
-#: ../settings.ui.h:2
-msgid "International character selection"
-msgstr ""
-
-#: ../settings.ui.h:3
-msgid "never"
-msgstr "kurrë"
-
-#: ../settings.ui.h:4
-msgid "1 minute"
-msgstr "1 minutë"
-
-#: ../settings.ui.h:5
-msgid "5 minutes"
-msgstr "5 minuta"
-
-#: ../settings.ui.h:6
-msgid "10 minutes"
-msgstr "10 minuta"
-
-#: ../settings.ui.h:7
-msgid "30 minutes"
-msgstr "30 minuta"
-
-#: ../settings.ui.h:8
-msgid "1 hour"
-msgstr "1 orë"
-
-#: ../settings.ui.h:9
-msgid "3 hours"
-msgstr "3 orë"
-
-#: ../settings.ui.h:10
-msgid "forever"
-msgstr "përgjithmonë"
-
-#: ../settings.ui.h:11
-msgid "GTK"
-msgstr "GTK"
-
-#: ../settings.ui.h:12
-msgid "XInput"
-msgstr "XInput"
-
-#: ../settings.ui.h:13
-msgid "Auto"
-msgstr "Auto"
-
-#: ../settings.ui.h:14
-msgid "XTest"
-msgstr "XTest"
-
-#: ../settings.ui.h:15
-msgid "uinput"
-msgstr "uinput"
-
-#: ../settings.ui.h:16
-msgid "AT-SPI"
-msgstr "AT-SPI"
-
-#: ../settings.ui.h:17
-msgid "Remember nothing"
-msgstr ""
-
-#: ../settings.ui.h:18
-msgid "Don't remember new words"
-msgstr ""
-
-#: ../settings.ui.h:19
-msgid "None"
-msgstr "Asnjë"
-
-#: ../settings.ui.h:20
-msgid "Movement only"
-msgstr ""
-
-#: ../settings.ui.h:21
-msgid "Corners"
-msgstr "Cepat"
-
-#: ../settings.ui.h:22
-msgid "All corners and edges"
-msgstr "Të gjithë cepat dhe kufijtë"
-
-#: ../settings.ui.h:23
-msgid "General"
-msgstr "Të Përgjithshme"
-
-#: ../settings.ui.h:24
-msgid "Window"
-msgstr "Dritare"
-
-#: ../settings.ui.h:25
-msgid "Layout"
-msgstr "Planimetria"
-
-#: ../settings.ui.h:26
-msgid "Theme"
-msgstr "Temë"
-
-#: ../settings.ui.h:28 ../settings_theme_dialog.ui.h:9
-msgid "Keyboard"
-msgstr "Tastiera"
-
-#: ../settings.ui.h:29
-msgid "Auto-show"
-msgstr ""
-
-#: ../settings.ui.h:30
-msgid "Typing Assistance"
-msgstr "Ndihmë për Shtypjen"
-
-#: ../settings.ui.h:31
-msgid "Universal Access"
-msgstr "Hyrje Universale"
-
-#: ../settings.ui.h:32
-msgid "Only move when necessary"
-msgstr ""
-
-#: ../settings.ui.h:33
-msgid "Follow the active window"
-msgstr ""
-
-#: ../settings.ui.h:34
-msgid "Latch, then lock"
-msgstr ""
-
-#: ../settings.ui.h:35
-msgid "Latch, double-click to lock"
-msgstr ""
-
-#: ../settings.ui.h:36
-msgid "Latch only"
-msgstr ""
-
-#: ../settings.ui.h:37
-msgid "Lock only"
-msgstr "Vetëm blloko"
-
-#: ../settings.ui.h:38
-msgid "Push button"
-msgstr "Shtyp butonin"
-
-#: ../settings.ui.h:39
-msgid "none"
-msgstr "asnjë"
-
-#: ../settings.ui.h:40
-msgid "single-touch"
-msgstr "një prekje"
-
-#: ../settings.ui.h:41
-msgid "multi-touch"
-msgstr "shumë prekje"
-
-#: ../settings.ui.h:42
-msgctxt "Label of the main close button of the preferences dialog."
-msgid "_Close"
-msgstr "_Mbylle"
-
-#: ../settings.ui.h:43
-msgid "_Auto-show when editing text"
-msgstr "_Vetëshfaqe kur modifikon tekstin"
-
-#: ../settings.ui.h:44
-msgid ""
-"Show Onboard when there is a recognized text window in focus. Requires Gnome "
-"Accessibility."
-msgstr ""
-"Shfaq Onboard kur një dritare e njohur teksti është në fokus. Kërkon Hyrje "
-"në Gnome."
-
-#: ../settings.ui.h:45
-msgid "Start Onboard _hidden"
-msgstr "Nise Onboard _të fshehur"
-
-#: ../settings.ui.h:46
-msgid "Start Onboard hidden."
-msgstr "Nise Onboard të fshehur."
-
-#: ../settings.ui.h:47
-msgid "Show/Hide options"
-msgstr "Shfaq/Fshih opsionet"
-
-#: ../settings.ui.h:48
-msgid "Show floating _icon when Onboard is hidden"
-msgstr "Shfaq _ikonën lundruese kur Onboard është fshehur"
-
-#: ../settings.ui.h:49
-msgid ""
-"Show a floating icon on the desktop when Onboard is hidden. A click on the "
-"icon makes Onboard reappear."
-msgstr ""
-"Shfaq një ikonë lundruese në ekran kur Onboard është i fshehur. Një klikim "
-"në ikonë e bën Onboard që të rishfaqet."
-
-#: ../settings.ui.h:50
-msgid "Show when _unlocking the screen"
-msgstr "Shfaqe kur _zhbllokon erkanin"
-
-#: ../settings.ui.h:51
-msgid ""
-"Show Onboard when the dialog to unlock the screen appears; this way Onboard "
-"can be used for example to enter the password to dismiss the screensaver "
-"when it is set to ask for it."
-msgstr ""
-"Shfaq Onboard kur shfaqet dialogu për të zhbllokuar ekranin; në këtë mënyrë "
-"Onboard mund të përdoret përshembull për të vendosur fjalëkalimin për të "
-"hequr screensaver kur është vendosur që të kërkojë për të."
-
-#: ../settings.ui.h:52
-msgid "Show _tooltips"
-msgstr "Shfaq _kshillat"
-
-#: ../settings.ui.h:53
-msgid "Show tooltips for the keyboard&apos;s buttons."
-msgstr "Shfaq këshillat për butonat e tastierës&apos;."
-
-#: ../settings.ui.h:54
-msgid "Show tooltips for the keyboard's buttons."
-msgstr "Shfaq këshillat për butonat e tastierës"
-
-#: ../settings.ui.h:55
-msgid "_Show status icon"
-msgstr "_Shfaq ikonën e gjendjes"
-
-#: ../settings.ui.h:56
-msgid "Show the status item. A click on that icon hides or shows Onboard."
-msgstr ""
-"Shfaq gjendjen e temës. Një klikim në atë ikonë fsheh ose shfaq Onboard."
-
-#: ../settings.ui.h:57
-msgid "Status icon _provider:"
-msgstr ""
-
-#: ../settings.ui.h:58
-msgid ""
-"<b>AppIndicator</b> (default) is recommended for broadest compatibility. A "
-"middle click on the icon shows the keyboard. In KDE Plasma a left click does "
-"the same.\n"
-"\n"
-"<b>GtkStatusIcon</b> isn't supported well anymore by various desktop "
-"environments, but generally allows to show the keyboard on left click.\n"
-"\n"
-"Requires restart."
-msgstr ""
-
-#: ../settings.ui.h:63
-msgid "Desktop Integration"
-msgstr "Integrimi i Desktopit"
-
-#: ../settings.ui.h:64
-msgid "Dock to screen edge"
-msgstr "Kalo dokun në cep të ekranit"
-
-#: ../settings.ui.h:65
-msgid "Dock the keyboard to the edge of the screen."
-msgstr "Mbështet tastierën në buzë të ekranit."
-
-#: ../settings.ui.h:66
-msgctxt "Label of settings button on preferences page Window."
-msgid "_Settings"
-msgstr "_Parametrat"
-
-#: ../settings.ui.h:67
-msgid "Docking"
-msgstr "Mbështetja"
-
-#: ../settings.ui.h:68
-msgid "Show window _decoration"
-msgstr "Shfaq _dekorimin e dritares"
-
-#: ../settings.ui.h:69
-msgid "Show window caption and frame."
-msgstr "Shfaq gërmat dhe kornizën e dritares."
-
-#: ../settings.ui.h:70
-msgid "Show always on visible _workspace"
-msgstr "Shfaqe gjithmonë të dukshme në _Hapësirën e dukshme të punës"
-
-#: ../settings.ui.h:71
-msgid "&quot;Sticky&quot; mode for keyboard and floating icon."
-msgstr "&quot;Ngjitëse&quot; mënyrë për tastierën dhe ikonën lundruese."
-
-#: ../settings.ui.h:72
-msgid "\"Sticky\" mode for keyboard and floating icon."
-msgstr "\"Ngjitëse\" mënyrë për tastierën dhe ikonën lundruese."
-
-#: ../settings.ui.h:73
-msgid "_Force window to top"
-msgstr "_Detyro dritaren që të qëndrojë në krye"
-
-#: ../settings.ui.h:74
-msgid "Try harder to keep Onboard above anything on-screen."
-msgstr "Përpiqu shumë për ta mbajtur Onboard mbi çdo gjë në ekran."
-
-#: ../settings.ui.h:75
-msgid "Keep _aspect ratio"
-msgstr "Mbaje shkallën e _pamjes"
-
-#: ../settings.ui.h:76
-msgid "Constrain window size to the layout&apos;s aspect ratio."
-msgstr "Ndrysho përmasat e dritares në proporcion me layout&apos;s"
-
-#: ../settings.ui.h:77
-msgid "Constrain window size to the layout's aspect ratio."
-msgstr "Rregulloje përmasën e dritares sipas përmasës së ekranit."
-
-#: ../settings.ui.h:78
-msgid "Floating Window Options"
-msgstr "Opsionet e Dritareve Lundruese"
-
-#: ../settings.ui.h:79
-msgid "Window options"
-msgstr "Opsionet e dritares"
-
-#: ../settings.ui.h:80
-msgid "Wind_ow:"
-msgstr "Drit_arja:"
-
-#: ../settings.ui.h:81
-msgid "Transparency of the whole keyboard window. Requires compositing."
-msgstr "Tejdukshmëri e të gjithë dritares së tastierës. Kërkon përbërje."
-
-#: ../settings.ui.h:82 ../settings_theme_dialog.ui.h:5
-msgid "_Background:"
-msgstr "_Sfondi:"
-
-#: ../settings.ui.h:83
-msgid "Transparency of the keyboard background"
-msgstr "Tejukshmëria e sfondit të tastierës"
-
-#: ../settings.ui.h:84
-msgid "_No background"
-msgstr "_Nuk ka sfond"
-
-#: ../settings.ui.h:85
-msgid "Show the desktop through the gaps between keys."
-msgstr "Shfaq desktopin në hapësirat midis butonave."
-
-#: ../settings.ui.h:86
-msgid "Transparency"
-msgstr "Tejdukshmëri"
-
-#: ../settings.ui.h:87
-msgid "Set _transparency to"
-msgstr "Vendos _transparencën tek"
-
-#: ../settings.ui.h:88
-msgid "Enable inactive transparency. Requires compositing."
-msgstr "Aktivizo transparencën jo aktive. Kërkon përzierje."
-
-#: ../settings.ui.h:89
-msgid ""
-"Transparency when the pointer leaves the keyboard. Requires compositing."
-msgstr "Tejdukshmëri kur shenjuesi e lë tastierën. Kërkon përbërje."
-
-#: ../settings.ui.h:90
-msgid "after"
-msgstr "pas"
-
-#: ../settings.ui.h:91
-msgid "Delay in seconds until the inactive transparency takes effect."
-msgstr "Vonesa në sekonda deri sa transparenca jo aktive bëhet e efektshme."
-
-#: ../settings.ui.h:92
-msgid "seconds"
-msgstr "sekonda"
-
-#: ../settings.ui.h:93
-msgid "When Inactive"
-msgstr "Kur nuk Është Aktive"
-
-#: ../settings.ui.h:94
-msgid "_Window handles of the keyboard window:"
-msgstr ""
-
-#: ../settings.ui.h:95
-msgid "_Window handles of the floating icon:"
-msgstr ""
-
-#: ../settings.ui.h:96
-msgid "Resize Protection"
-msgstr "Ripërmaso Mbrojtjen"
-
-#: ../settings.ui.h:97
-msgid "Name"
-msgstr "Emri"
-
-#: ../settings.ui.h:98
-msgid "Description"
-msgstr "Përshkrimi"
-
-#: ../settings.ui.h:99
-msgctxt "Label of new layout button on preferences page Layout."
-msgid "_New"
-msgstr "I _Ri"
-
-#: ../settings.ui.h:100
-msgctxt "Label of delete layout button on preferences page Layout."
-msgid "_Delete"
-msgstr "_Fshije"
-
-#: ../settings.ui.h:101
-msgctxt "Label of open folder button on preferences page Layout."
-msgid "_Open layouts folder"
-msgstr "_Hap dosjen e shtresave"
-
-#: ../settings.ui.h:102
-msgctxt "Label of about layout button on preferences page Layout."
-msgid "_About"
-msgstr "_Rreth"
-
-#: ../settings.ui.h:103
-msgctxt "Label of new theme button on preferences page Theme."
-msgid "_New"
-msgstr "I _Ri"
-
-#: ../settings.ui.h:104
-msgctxt "Label of delete theme  button on preferences page Theme."
-msgid "_Delete"
-msgstr "_Fshije"
-
-#: ../settings.ui.h:105
-msgctxt "Label of customize theme button on preferences page Theme."
-msgid "C_ustomize theme"
-msgstr "P_ërshtat temën"
-
-#: ../settings.ui.h:106
-msgid "Follow _system theme"
-msgstr "Ndiq temën e _sistemit"
-
-#: ../settings.ui.h:107
-msgid "Remember what Onboard theme was last used for every system theme."
-msgstr ""
-"Mba mend cila temë e Onboard u përdor e fundit për çdo temë të sistemit."
-
-#: ../settings.ui.h:108
-msgid ""
-"Snippets are pieces of text which are entered when the corresponding button "
-"in Onboard is pressed."
-msgstr ""
-"Snippets janë copëza teksti të cilat vendosen kur shtypet butoni "
-"korrespondues Onboard."
-
-#: ../settings.ui.h:109
-msgctxt "Label of add snippet button on preferences page Snippets."
-msgid "_Add"
-msgstr "_Shto"
-
-#: ../settings.ui.h:110
-msgctxt "Label of remove snippet button on preferences page Snippets."
-msgid "_Remove"
-msgstr "_Hiq"
-
-#: ../settings.ui.h:111
-msgid "Play sound"
-msgstr "Luaj zërin"
-
-#: ../settings.ui.h:112
-msgid "Play click sound on keypress."
-msgstr "Luaj zë me klikim kur shtyp butonat"
-
-#: ../settings.ui.h:113
-msgid "Place sound in space"
-msgstr ""
-
-#: ../settings.ui.h:114
-msgid ""
-"Place sound in space between speakers depending on the key's position on "
-"screen"
-msgstr ""
-
-#: ../settings.ui.h:115
-msgid "Show label popups"
-msgstr "Shfaq dritaret e etiketave"
-
-#: ../settings.ui.h:116
-msgid "Show label popups above pressed keys."
-msgstr "Trego etiketa kërcyese mbi butonat e shtypur"
-
-#: ../settings.ui.h:117
-msgid "Popup size:"
-msgstr ""
-
-#: ../settings.ui.h:118
-msgid "Key-press Feedback"
-msgstr "Këshilla për Shtypjen e Butonave"
-
-#: ../settings.ui.h:119
-msgid "Show secondary labels"
-msgstr "Shfaq etiketat dytësore"
-
-#: ../settings.ui.h:120
-msgid "Show characters reachable with or without the shift key."
-msgstr "Shfaq gërmat që arrihen me apo pa butonin shift."
-
-#: ../settings.ui.h:121
-msgid "Key Labels"
-msgstr "Etiketat e Butonave"
-
-#: ../settings.ui.h:122
-msgid "Upper case on right click"
-msgstr ""
-
-#: ../settings.ui.h:123
-msgid "Temporarily enable SHIFT when clicking with the secondary button."
-msgstr ""
-
-#: ../settings.ui.h:124
-msgid "Key Behaviour"
-msgstr ""
-
-#: ../settings.ui.h:125
-msgid "_Long press action:"
-msgstr "_Veprimi për shtypje të zgjatur:"
-
-#: ../settings.ui.h:126
-msgid ""
-"Choose between key-repeat or long-press menus. Mainly affects alpha-numeric "
-"keys."
-msgstr ""
-"Zgjidh midis përsëritjes së butonave apo menuve që shtypen për një kohë të "
-"gjatë. Kryesisht do të ndikojë në butonat alfanumerikë."
-
-#: ../settings.ui.h:127
-msgid "Modifier _behavior:"
-msgstr "Ndryshues _sjellje:"
-
-#: ../settings.ui.h:128
-msgid "Behavior of modifier and layer keys."
-msgstr "Sjellja e nryshuesit dhe tastave të shtresës."
-
-#: ../settings.ui.h:129
-msgid "Modifier auto-release delay in seconds:"
-msgstr ""
-
-#: ../settings.ui.h:130
-msgid ""
-"Seconds of inactivity until active modifiers and layer keys are released. 0 "
-"to disable."
-msgstr ""
-"Sekondat pa aktivitet derisa ndryshuesit aktivë dhe tastat e shtresës janë "
-"leshuar. 0 që të caktivizosh."
-
-#: ../settings.ui.h:131
-msgid "Modifier auto-release after hide in seconds:"
-msgstr ""
-
-#: ../settings.ui.h:132
-msgid ""
-"Time after hiding the keyboard in seconds until latched and locked modifiers "
-"and layer keys are released automatically. Leave at 0.0 to not automatically "
-"release them."
-msgstr ""
-
-#: ../settings.ui.h:133
-msgid "0,00"
-msgstr "0,00"
-
-#: ../settings.ui.h:134
-msgid "Key Behavior"
-msgstr "Sjellja e Butonave"
-
-#: ../settings.ui.h:135
-msgid "_Touch input:"
-msgstr ""
-
-#: ../settings.ui.h:136
-msgid "_Input event source:"
-msgstr "_Burimi i hyrjes së ngjarjes"
-
-#: ../settings.ui.h:137
-msgid ""
-"Choose &apos;XInput&apos; for more reliable typing into text entries with "
-"pop-up selections. The &apos;GTK&apos; option offers better compatibility, "
-"but typing may fail in the presence of pointer grabs, e.g. with open pop-up "
-"windows."
-msgstr ""
-"Zgjidh &apos;XInput&apos; për shtypje më të besueshme në hyrjet e tekstit me "
-"zgjedhje tabelash. Opsioni &apos;GTK&apos; ofron përputhshmëri më të mirë, "
-"por shtypja mund të dështojë në praninë e kapësave të shenjuesit, psh. me "
-"dritaret kërcyese."
-
-#: ../settings.ui.h:138
-msgid ""
-"Choose 'XInput' for more reliable typing into text entries with pop-up "
-"selections. The 'GTK' option offers better compatibility, but typing may "
-"fail in the presence of pointer grabs, e.g. with open pop-up windows."
-msgstr ""
-"Zgjidh 'Xinput' për shtypje më të besueshme në hyrjet e tekstit me zgjedhje "
-"kërcyese. Opsioni 'GTK' ofron përputhshmëri më të mirë, por shtypja mund të "
-"dështojë në praninë e kapësave të shenjuesit, psh. me dritaret kërcyese."
-
-#: ../settings.ui.h:139
-msgid "Input Options"
-msgstr "Opsionet e Hyrjes"
-
-#: ../settings.ui.h:140
-msgid "Delay between keystrokes in milliseconds:"
-msgstr ""
-
-#: ../settings.ui.h:141
-msgid ""
-"Increase this if key-strokes get lost when inserting word suggestions or "
-"snippets into Firefox or other Gtk-2 applications. Has no effect on Gtk-3 "
-"applications."
-msgstr ""
-
-#: ../settings.ui.h:142
-msgid "Key-stroke generator"
-msgstr ""
-
-#: ../settings.ui.h:143
-msgid ""
-"<b>Auto</b>: let Onboard decide, recommended.\n"
-"\n"
-"<b>XTest</b> is the default for all X based desktop environments.\n"
-"\n"
-"<b>uinput</b> should be available on all linux-based systems, including X, "
-"Wayland and MIR-based desktops, but requires write permission for /dev/"
-"uinput.\n"
-"\n"
-"<b>AT-SPI</b> has limited support for key-stroke generation, and is only "
-"recommended for testing."
-msgstr ""
-
-#: ../settings.ui.h:150
-msgid "Key-stroke Generation"
-msgstr ""
-
-#: ../settings.ui.h:151
-msgid "Popup time [s]:"
-msgstr ""
-
-#: ../settings.ui.h:152
-msgid "Affects how long a key popup stays open."
-msgstr ""
-
-#: ../settings.ui.h:153
-msgid "0.15"
-msgstr ""
-
-#: ../settings.ui.h:154
+#~ msgid "never"
+#~ msgstr "kurrë"
+
+#~ msgid "1 minute"
+#~ msgstr "1 minutë"
+
+#~ msgid "5 minutes"
+#~ msgstr "5 minuta"
+
+#~ msgid "10 minutes"
+#~ msgstr "10 minuta"
+
+#~ msgid "30 minutes"
+#~ msgstr "30 minuta"
+
+#~ msgid "1 hour"
+#~ msgstr "1 orë"
+
+#~ msgid "3 hours"
+#~ msgstr "3 orë"
+
+#~ msgid "forever"
+#~ msgstr "përgjithmonë"
+
+#~ msgid "GTK"
+#~ msgstr "GTK"
+
+#~ msgid "XInput"
+#~ msgstr "XInput"
+
+#~ msgid "Auto"
+#~ msgstr "Auto"
+
+#~ msgid "XTest"
+#~ msgstr "XTest"
+
+#~ msgid "uinput"
+#~ msgstr "uinput"
+
+#~ msgid "AT-SPI"
+#~ msgstr "AT-SPI"
+
+#~ msgid "None"
+#~ msgstr "Asnjë"
+
+#~ msgid "Corners"
+#~ msgstr "Cepat"
+
+#~ msgid "All corners and edges"
+#~ msgstr "Të gjithë cepat dhe kufijtë"
+
+#~ msgid "General"
+#~ msgstr "Të Përgjithshme"
+
+#~ msgid "Window"
+#~ msgstr "Dritare"
+
+#~ msgid "Layout"
+#~ msgstr "Planimetria"
+
+#~ msgid "Theme"
+#~ msgstr "Temë"
+
+#~ msgid "Keyboard"
+#~ msgstr "Tastiera"
+
+#~ msgid "Typing Assistance"
+#~ msgstr "Ndihmë për Shtypjen"
+
+#~ msgid "Universal Access"
+#~ msgstr "Hyrje Universale"
+
+#~ msgid "Lock only"
+#~ msgstr "Vetëm blloko"
+
+#~ msgid "Push button"
+#~ msgstr "Shtyp butonin"
+
+#~ msgid "none"
+#~ msgstr "asnjë"
+
+#~ msgid "single-touch"
+#~ msgstr "një prekje"
+
+#~ msgid "multi-touch"
+#~ msgstr "shumë prekje"
+
+#~ msgctxt "Label of the main close button of the preferences dialog."
+#~ msgid "_Close"
+#~ msgstr "_Mbylle"
+
+#~ msgid "_Auto-show when editing text"
+#~ msgstr "_Vetëshfaqe kur modifikon tekstin"
+
+#~ msgid ""
+#~ "Show Onboard when there is a recognized text window in focus. Requires "
+#~ "Gnome Accessibility."
+#~ msgstr ""
+#~ "Shfaq Onboard kur një dritare e njohur teksti është në fokus. Kërkon "
+#~ "Hyrje në Gnome."
+
+#~ msgid "Start Onboard _hidden"
+#~ msgstr "Nise Onboard _të fshehur"
+
+#~ msgid "Start Onboard hidden."
+#~ msgstr "Nise Onboard të fshehur."
+
+#~ msgid "Show/Hide options"
+#~ msgstr "Shfaq/Fshih opsionet"
+
+#~ msgid "Show floating _icon when Onboard is hidden"
+#~ msgstr "Shfaq _ikonën lundruese kur Onboard është fshehur"
+
+#~ msgid ""
+#~ "Show a floating icon on the desktop when Onboard is hidden. A click on "
+#~ "the icon makes Onboard reappear."
+#~ msgstr ""
+#~ "Shfaq një ikonë lundruese në ekran kur Onboard është i fshehur. Një "
+#~ "klikim në ikonë e bën Onboard që të rishfaqet."
+
+#~ msgid "Show when _unlocking the screen"
+#~ msgstr "Shfaqe kur _zhbllokon erkanin"
+
+#~ msgid ""
+#~ "Show Onboard when the dialog to unlock the screen appears; this way "
+#~ "Onboard can be used for example to enter the password to dismiss the "
+#~ "screensaver when it is set to ask for it."
+#~ msgstr ""
+#~ "Shfaq Onboard kur shfaqet dialogu për të zhbllokuar ekranin; në këtë "
+#~ "mënyrë Onboard mund të përdoret përshembull për të vendosur fjalëkalimin "
+#~ "për të hequr screensaver kur është vendosur që të kërkojë për të."
+
+#~ msgid "Show _tooltips"
+#~ msgstr "Shfaq _kshillat"
+
+#~ msgid "Show tooltips for the keyboard&apos;s buttons."
+#~ msgstr "Shfaq këshillat për butonat e tastierës&apos;."
+
+#~ msgid "Show tooltips for the keyboard's buttons."
+#~ msgstr "Shfaq këshillat për butonat e tastierës"
+
+#~ msgid "_Show status icon"
+#~ msgstr "_Shfaq ikonën e gjendjes"
+
+#~ msgid "Show the status item. A click on that icon hides or shows Onboard."
+#~ msgstr ""
+#~ "Shfaq gjendjen e temës. Një klikim në atë ikonë fsheh ose shfaq Onboard."
+
+#~ msgid "Desktop Integration"
+#~ msgstr "Integrimi i Desktopit"
+
+#~ msgid "Dock to screen edge"
+#~ msgstr "Kalo dokun në cep të ekranit"
+
+#~ msgid "Dock the keyboard to the edge of the screen."
+#~ msgstr "Mbështet tastierën në buzë të ekranit."
+
+#~ msgctxt "Label of settings button on preferences page Window."
+#~ msgid "_Settings"
+#~ msgstr "_Parametrat"
+
+#~ msgid "Docking"
+#~ msgstr "Mbështetja"
+
+#~ msgid "Show window _decoration"
+#~ msgstr "Shfaq _dekorimin e dritares"
+
+#~ msgid "Show window caption and frame."
+#~ msgstr "Shfaq gërmat dhe kornizën e dritares."
+
+#~ msgid "Show always on visible _workspace"
+#~ msgstr "Shfaqe gjithmonë të dukshme në _Hapësirën e dukshme të punës"
+
+#~ msgid "&quot;Sticky&quot; mode for keyboard and floating icon."
+#~ msgstr "&quot;Ngjitëse&quot; mënyrë për tastierën dhe ikonën lundruese."
+
+#~ msgid "\"Sticky\" mode for keyboard and floating icon."
+#~ msgstr "\"Ngjitëse\" mënyrë për tastierën dhe ikonën lundruese."
+
+#~ msgid "_Force window to top"
+#~ msgstr "_Detyro dritaren që të qëndrojë në krye"
+
+#~ msgid "Try harder to keep Onboard above anything on-screen."
+#~ msgstr "Përpiqu shumë për ta mbajtur Onboard mbi çdo gjë në ekran."
+
+#~ msgid "Keep _aspect ratio"
+#~ msgstr "Mbaje shkallën e _pamjes"
+
+#~ msgid "Constrain window size to the layout&apos;s aspect ratio."
+#~ msgstr "Ndrysho përmasat e dritares në proporcion me layout&apos;s"
+
+#~ msgid "Constrain window size to the layout's aspect ratio."
+#~ msgstr "Rregulloje përmasën e dritares sipas përmasës së ekranit."
+
+#~ msgid "Floating Window Options"
+#~ msgstr "Opsionet e Dritareve Lundruese"
+
+#~ msgid "Window options"
+#~ msgstr "Opsionet e dritares"
+
+#~ msgid "Wind_ow:"
+#~ msgstr "Drit_arja:"
+
+#~ msgid "Transparency of the whole keyboard window. Requires compositing."
+#~ msgstr "Tejdukshmëri e të gjithë dritares së tastierës. Kërkon përbërje."
+
+#~ msgid "_Background:"
+#~ msgstr "_Sfondi:"
+
+#~ msgid "Transparency of the keyboard background"
+#~ msgstr "Tejukshmëria e sfondit të tastierës"
+
+#~ msgid "_No background"
+#~ msgstr "_Nuk ka sfond"
+
+#~ msgid "Show the desktop through the gaps between keys."
+#~ msgstr "Shfaq desktopin në hapësirat midis butonave."
+
+#~ msgid "Transparency"
+#~ msgstr "Tejdukshmëri"
+
+#~ msgid "Set _transparency to"
+#~ msgstr "Vendos _transparencën tek"
+
+#~ msgid "Enable inactive transparency. Requires compositing."
+#~ msgstr "Aktivizo transparencën jo aktive. Kërkon përzierje."
+
+#~ msgid ""
+#~ "Transparency when the pointer leaves the keyboard. Requires compositing."
+#~ msgstr "Tejdukshmëri kur shenjuesi e lë tastierën. Kërkon përbërje."
+
+#~ msgid "after"
+#~ msgstr "pas"
+
+#~ msgid "Delay in seconds until the inactive transparency takes effect."
+#~ msgstr "Vonesa në sekonda deri sa transparenca jo aktive bëhet e efektshme."
+
+#~ msgid "seconds"
+#~ msgstr "sekonda"
+
+#~ msgid "When Inactive"
+#~ msgstr "Kur nuk Është Aktive"
+
+#~ msgid "Resize Protection"
+#~ msgstr "Ripërmaso Mbrojtjen"
+
+#~ msgid "Name"
+#~ msgstr "Emri"
+
+#~ msgid "Description"
+#~ msgstr "Përshkrimi"
+
+#~ msgctxt "Label of new layout button on preferences page Layout."
+#~ msgid "_New"
+#~ msgstr "I _Ri"
+
+#~ msgctxt "Label of delete layout button on preferences page Layout."
+#~ msgid "_Delete"
+#~ msgstr "_Fshije"
+
+#~ msgctxt "Label of open folder button on preferences page Layout."
+#~ msgid "_Open layouts folder"
+#~ msgstr "_Hap dosjen e shtresave"
+
+#~ msgctxt "Label of about layout button on preferences page Layout."
+#~ msgid "_About"
+#~ msgstr "_Rreth"
+
+#~ msgctxt "Label of new theme button on preferences page Theme."
+#~ msgid "_New"
+#~ msgstr "I _Ri"
+
+#~ msgctxt "Label of delete theme  button on preferences page Theme."
+#~ msgid "_Delete"
+#~ msgstr "_Fshije"
+
+#~ msgctxt "Label of customize theme button on preferences page Theme."
+#~ msgid "C_ustomize theme"
+#~ msgstr "P_ërshtat temën"
+
+#~ msgid "Follow _system theme"
+#~ msgstr "Ndiq temën e _sistemit"
+
+#~ msgid "Remember what Onboard theme was last used for every system theme."
+#~ msgstr ""
+#~ "Mba mend cila temë e Onboard u përdor e fundit për çdo temë të sistemit."
+
+#~ msgid ""
+#~ "Snippets are pieces of text which are entered when the corresponding "
+#~ "button in Onboard is pressed."
+#~ msgstr ""
+#~ "Snippets janë copëza teksti të cilat vendosen kur shtypet butoni "
+#~ "korrespondues Onboard."
+
+#~ msgctxt "Label of add snippet button on preferences page Snippets."
+#~ msgid "_Add"
+#~ msgstr "_Shto"
+
+#~ msgctxt "Label of remove snippet button on preferences page Snippets."
+#~ msgid "_Remove"
+#~ msgstr "_Hiq"
+
+#~ msgid "Play sound"
+#~ msgstr "Luaj zërin"
+
+#~ msgid "Play click sound on keypress."
+#~ msgstr "Luaj zë me klikim kur shtyp butonat"
+
+#~ msgid "Show label popups"
+#~ msgstr "Shfaq dritaret e etiketave"
+
+#~ msgid "Show label popups above pressed keys."
+#~ msgstr "Trego etiketa kërcyese mbi butonat e shtypur"
+
+#~ msgid "Key-press Feedback"
+#~ msgstr "Këshilla për Shtypjen e Butonave"
+
+#~ msgid "Show secondary labels"
+#~ msgstr "Shfaq etiketat dytësore"
+
+#~ msgid "Show characters reachable with or without the shift key."
+#~ msgstr "Shfaq gërmat që arrihen me apo pa butonin shift."
+
+#~ msgid "Key Labels"
+#~ msgstr "Etiketat e Butonave"
+
+#~ msgid "_Long press action:"
+#~ msgstr "_Veprimi për shtypje të zgjatur:"
+
+#~ msgid ""
+#~ "Choose between key-repeat or long-press menus. Mainly affects alpha-"
+#~ "numeric keys."
+#~ msgstr ""
+#~ "Zgjidh midis përsëritjes së butonave apo menuve që shtypen për një kohë "
+#~ "të gjatë. Kryesisht do të ndikojë në butonat alfanumerikë."
+
+#~ msgid "Modifier _behavior:"
+#~ msgstr "Ndryshues _sjellje:"
+
+#~ msgid "Behavior of modifier and layer keys."
+#~ msgstr "Sjellja e nryshuesit dhe tastave të shtresës."
+
+#~ msgid ""
+#~ "Seconds of inactivity until active modifiers and layer keys are released. "
+#~ "0 to disable."
+#~ msgstr ""
+#~ "Sekondat pa aktivitet derisa ndryshuesit aktivë dhe tastat e shtresës "
+#~ "janë leshuar. 0 që të caktivizosh."
+
+#~ msgid "0,00"
+#~ msgstr "0,00"
+
+#~ msgid "Key Behavior"
+#~ msgstr "Sjellja e Butonave"
+
+#~ msgid "_Input event source:"
+#~ msgstr "_Burimi i hyrjes së ngjarjes"
+
+#~ msgid ""
+#~ "Choose &apos;XInput&apos; for more reliable typing into text entries with "
+#~ "pop-up selections. The &apos;GTK&apos; option offers better "
+#~ "compatibility, but typing may fail in the presence of pointer grabs, e.g. "
+#~ "with open pop-up windows."
+#~ msgstr ""
+#~ "Zgjidh &apos;XInput&apos; për shtypje më të besueshme në hyrjet e tekstit "
+#~ "me zgjedhje tabelash. Opsioni &apos;GTK&apos; ofron përputhshmëri më të "
+#~ "mirë, por shtypja mund të dështojë në praninë e kapësave të shenjuesit, "
+#~ "psh. me dritaret kërcyese."
+
+#~ msgid ""
+#~ "Choose 'XInput' for more reliable typing into text entries with pop-up "
+#~ "selections. The 'GTK' option offers better compatibility, but typing may "
+#~ "fail in the presence of pointer grabs, e.g. with open pop-up windows."
+#~ msgstr ""
+#~ "Zgjidh 'Xinput' për shtypje më të besueshme në hyrjet e tekstit me "
+#~ "zgjedhje kërcyese. Opsioni 'GTK' ofron përputhshmëri më të mirë, por "
+#~ "shtypja mund të dështojë në praninë e kapësave të shenjuesit, psh. me "
+#~ "dritaret kërcyese."
+
+#~ msgid "Input Options"
+#~ msgstr "Opsionet e Hyrjes"
+
 #, fuzzy
-msgid "Animation"
-msgstr "Veprimi:"
-
-#: ../settings.ui.h:155
-msgid "Advanced"
-msgstr "Të Avancuara"
-
-#: ../settings.ui.h:156
-msgid ""
-"Show Onboard when there is a recognized text entry in focus. Requires Gnome "
-"Accessibility."
-msgstr ""
-
-#: ../settings.ui.h:157
-msgid "Keyboard movement strategy:"
-msgstr ""
-
-#: ../settings.ui.h:158
-msgid "Chose how the keyboard window moves when a text entry is activated."
-msgstr ""
-
-#: ../settings.ui.h:159
-msgid "_Hide when typing on a physical keyboard"
-msgstr ""
-
-#: ../settings.ui.h:160
-msgid ""
-"Hide Onboard when any key is pressed on a physical keyboard. Requires input "
-"event source \"XInput\"."
-msgstr ""
-
-#: ../settings.ui.h:161
-msgid "Stay hidden:"
-msgstr ""
-
-#: ../settings.ui.h:162
-msgid ""
-"Once hidden by a physical key-press, auto-show is paused. Select the pause "
-"duration here."
-msgstr ""
-
-#: ../settings.ui.h:163
-msgid "Auto-show only in tablet mode"
-msgstr ""
-
-#: ../settings.ui.h:164
-msgid ""
-"Requires driver support for SW_TABLET_MODE and a running instance of acpid."
-msgstr ""
-
-#: ../settings.ui.h:165
-msgid ""
-"Alternatively, some devices generate key events on entering and leaving "
-"tablet mode. Run 'xinput test-xi2 3 ' to find these key presses and enter "
-"their 'detail' values below."
-msgstr ""
-
-#: ../settings.ui.h:166
-msgid "Hotkey received when entering tablet mode:"
-msgstr ""
-
-#: ../settings.ui.h:167
-msgid "Hotkey received when leaving tablet mode:"
-msgstr ""
-
-#: ../settings.ui.h:168
-msgid "File that contains the current device state:"
-msgstr ""
-
-#: ../settings.ui.h:169
-msgid "Regular expression to match for tablet-mode:"
-msgstr ""
-
-#: ../settings.ui.h:170
-msgid "Convertible Devices"
-msgstr ""
-
-#: ../settings.ui.h:171
-msgid "Don't auto-show while external keyboards are connected"
-msgstr ""
-
-#: ../settings.ui.h:172
-msgid "Detected keyboard devices:"
-msgstr ""
-
-#: ../settings.ui.h:173
-msgid ""
-"Check 'Ignore' for devices that are always connected and should not block "
-"auto-show."
-msgstr ""
-
-#: ../settings.ui.h:174
-msgid "External Keyboards"
-msgstr ""
-
-#: ../settings.ui.h:175
-msgid "Show _suggestions"
-msgstr "Shfaq _sugjerimet"
-
-#: ../settings.ui.h:176
-msgid "Enable word completion and prediction."
-msgstr "Aktivizo kompletimin dhe parashikimin e fjalëve."
-
-#: ../settings.ui.h:177
-msgid "Show spelling suggestions"
-msgstr "Shfaq sugjerime të gërmëzimit"
-
-#: ../settings.ui.h:178
-msgid "Check spelling of the word at or before the cursor."
-msgstr "Kontrollo gërmëzimin e fjalës tek ose përpara kursorit."
-
-#: ../settings.ui.h:179
-msgid "_Learn from typed text"
-msgstr "_Mëso nga teksti i shtypur"
-
-#: ../settings.ui.h:180
-msgid ""
-"Remember new words, their recency and frequency to improve the suggestions "
-"over time."
-msgstr ""
-"Mba mend fjalët e reja, moshën e tyre dhe shpeshtësinë për të përmirësuar "
-"sugjerimet me kalimin e kohës."
-
-#: ../settings.ui.h:181
-msgid "Insert word _separators"
-msgstr "Vendos _ndarës të fjalëve"
-
-#: ../settings.ui.h:182
-msgid ""
-"Add and remove spaces when inserting word suggestions followed by "
-"punctuation characters."
-msgstr ""
-"Shto dhe hiq hapësira kur vendos sugjerime të fjalëve të ndjekura nga "
-"karaktere pikëzimi."
-
-#: ../settings.ui.h:183
-msgid "Options"
-msgstr "Opsionet"
-
-#: ../settings.ui.h:184
-msgid "Show more suggestions arrow"
-msgstr ""
-
-#: ../settings.ui.h:185
-msgid "Step forward and backward through the available suggestions."
-msgstr ""
-
-#: ../settings.ui.h:186
-msgid "Show button to pause learning"
-msgstr "Shfaq butonin për të vendosur të mësuarit në pauzë"
-
-#: ../settings.ui.h:187
-msgid "Words typed while this button is pressed won't be remembered."
-msgstr "Fjalët e shtypura kur ky buton është shtypur nuk do të mbahen mend."
-
-#: ../settings.ui.h:188
-msgid "Show lan_guage switcher"
-msgstr "Shfaq ndryshuesin e gju_hëve"
-
-#: ../settings.ui.h:189
-msgid "Show a button for language selection."
-msgstr "Shfaq një buton për përzgjedhjen e gjuhës."
-
-#: ../settings.ui.h:190
-msgid "Buttons"
-msgstr "Butonat"
-
-#: ../settings.ui.h:191
-msgid "Word Suggestions"
-msgstr "Sugjerime të Fjalëve"
-
-#: ../settings.ui.h:192
-msgid "Auto-capitalize while typing"
-msgstr "Vetë kapitalizoje gjatë shtypjes"
-
-#: ../settings.ui.h:193
-msgid "Automatically capitalize sentence begins and name words."
-msgstr ""
-"Kapitalizo automatikisht fillimin e fjalive dhe fillimin e fjalëve emra."
-
-#: ../settings.ui.h:194
-msgid "Auto-correct spelling"
-msgstr "Vetë-korrigjo gërmëzimin"
-
-#: ../settings.ui.h:195
-msgid "Automatically correct the last word."
-msgstr "Automatikisht korrigjo fjalën e fundit."
-
-#: ../settings.ui.h:196
-msgid "The spell check engine to use."
-msgstr "Cili motor kontrollues i gërmëzimit do të përdoret."
-
-#: ../settings.ui.h:197
-msgid "Spell-check backend:"
-msgstr "Mbështetësi i kontrollorit të gërmëzimit:"
-
-#: ../settings.ui.h:198
-msgid "Auto-correction"
-msgstr "Vetë-korrigjim"
-
-#: ../settings.ui.h:199
-msgid "While  learning is paused:"
-msgstr ""
-
-#: ../settings.ui.h:200
-msgid "Learning"
-msgstr "Mësim"
-
-#: ../settings.ui.h:201
-msgid "Enable  keyboard _scanning"
-msgstr "Aktivizo _skanimin me tastierë"
-
-#: ../settings.ui.h:202
-msgctxt ""
-"Label of keyboard scanning settings button on preferences page Universal "
-"Access."
-msgid "Sc_anner Settings"
-msgstr "Parametrat e Sk_anerit"
-
-#: ../settings.ui.h:203
-msgid "Keyboard Scanning"
-msgstr "Skanimi me Tastierë"
-
-#: ../settings.ui.h:204
-msgid "_Delay:"
-msgstr "_Vonesa:"
-
-#: ../settings.ui.h:205
-msgid "_Motion threshold:"
-msgstr "_Kufiri i lëvizjes:"
-
-#: ../settings.ui.h:206
-msgid "Time in seconds before a click is triggered."
-msgstr "Koha në sekonda përpara se të shkaktohet një klikim."
-
-#: ../settings.ui.h:207
-msgid "Distance in pixels before movement will be recognized."
-msgstr "Distanca në piksel para se të njihet levizja."
-
-#: ../settings.ui.h:208
-msgid "Hide hover click window"
-msgstr "Fshih dritaren që rri pezull"
-
-#: ../settings.ui.h:209
-msgid "Hide the system-provided hover click window while Onboard is running."
-msgstr ""
-"Fshihe dritaren me klikim qëndrimi që jep sistemi kur është nisur Onboard."
-
-#: ../settings.ui.h:210
-msgid "Enable click type window on exit"
-msgstr "Aktivizo modalitetin e klikimit në dritare kur të dalesh"
-
-#: ../settings.ui.h:211
-msgid ""
-"Always enable the system-provided hover click window when exiting Onboard."
-msgstr ""
-"Gjithmonë aktivizoje klikimin me qëndrim mbi dritaren që jep sistem kur del "
-"nga Onboard."
-
-#: ../settings.ui.h:212
-msgid "Hover Click"
-msgstr "Mbi Kliko"
-
-#: ../settings_docking_dialog.ui.h:1
-msgid "Top"
-msgstr "Kreu"
-
-#: ../settings_docking_dialog.ui.h:2
-msgid "Bottom"
-msgstr "Fundi"
-
-#: ../settings_docking_dialog.ui.h:3
-msgid "Active Monitor"
-msgstr "Monitori Aktiv"
-
-#: ../settings_docking_dialog.ui.h:4
-msgid "Primary Monitor"
-msgstr "Monitori Kryesor"
-
-#: ../settings_docking_dialog.ui.h:5
-msgid "Monitor 0"
-msgstr "Monitori 0"
-
-#: ../settings_docking_dialog.ui.h:6
-msgid "Monitor 1"
-msgstr "Monitori 1"
-
-#: ../settings_docking_dialog.ui.h:7
-msgid "Monitor 2"
-msgstr "Monitori 2"
-
-#: ../settings_docking_dialog.ui.h:8
-msgid "Monitor 3"
-msgstr "Monitori 3"
-
-#: ../settings_docking_dialog.ui.h:9
-msgid "Monitor 4"
-msgstr "Monitori 4"
-
-#: ../settings_docking_dialog.ui.h:10
-msgid "Monitor 5"
-msgstr "Monitori 5"
-
-#: ../settings_docking_dialog.ui.h:11
-msgid "Monitor 6"
-msgstr "Monitori 6"
-
-#: ../settings_docking_dialog.ui.h:12
-msgid "Monitor 7"
-msgstr "Monitori 7"
-
-#: ../settings_docking_dialog.ui.h:13
-msgid "Monitor 8"
-msgstr "Monitori 8"
-
-#: ../settings_docking_dialog.ui.h:14
-msgid "Docking settings"
-msgstr "Konfigurimet e mbështetjes"
-
-#: ../settings_docking_dialog.ui.h:15
-msgctxt "Label of the close button of the docking settings dialog."
-msgid "_Close"
-msgstr "_Mbylle"
-
-#: ../settings_docking_dialog.ui.h:16
-msgid "Shrink workarea"
-msgstr "Ngushto sipërfaqen e punës"
-
-#: ../settings_docking_dialog.ui.h:17
-msgid "Shrink the available space for maximized windows."
-msgstr "Ngushto hapësiren e mundshme për dritare të maksimizuara."
-
-#: ../settings_docking_dialog.ui.h:18
-msgid "Expand on landscape screens"
-msgstr "Zgjero në pamjen e ekranit"
-
-#: ../settings_docking_dialog.ui.h:19
-msgid "Expand keyboard to the width of the workarea."
-msgstr "Zgjero tastierën në madhesinë e siperfaqes së punës."
-
-#: ../settings_docking_dialog.ui.h:20
-msgid "Expand on portrait screens"
-msgstr "Zgjero në ekrane portret."
-
-#: ../settings_docking_dialog.ui.h:21
-msgid "Dock to screen edge:"
-msgstr "Mbeshtet në buze të ekranit."
-
-#: ../settings_docking_dialog.ui.h:22
-msgid "Dock to monitor:"
-msgstr "Dock për monitorin:"
-
-#: ../settings_scanner_dialog.ui.h:1
-msgid "Automatic scan for 1 switch"
-msgstr "Skanim automatik për çelësin 1"
-
-#: ../settings_scanner_dialog.ui.h:2
-msgid "Critical overscan for 1 switch"
-msgstr "Mbiskanim kritikpër një çelës"
-
-#: ../settings_scanner_dialog.ui.h:3
-msgid "Step scan for 2 switches"
-msgstr "Skanim i hapit për 2 çelësa"
-
-#: ../settings_scanner_dialog.ui.h:4
-msgid "Directed scan for 3 or 5 switches"
-msgstr "Skanim i drejtuar për 3 apo 5 çelësa"
-
-#: ../settings_scanner_dialog.ui.h:5
-msgid "Scanner Settings"
-msgstr "Parametrat e Skanerit"
-
-#: ../settings_scanner_dialog.ui.h:6
-msgctxt "Label of the close button of the scanner settings dialog."
-msgid "_Close"
-msgstr "_Mbylle"
-
-#: ../settings_scanner_dialog.ui.h:7
-msgid "Select a scanning _profile:"
-msgstr "Zgjidh një _profil skanimi:"
-
-#: ../settings_scanner_dialog.ui.h:8
-msgid "_Step interval:"
-msgstr "Intervali i _hapit:"
-
-#: ../settings_scanner_dialog.ui.h:9
-msgid "Sc_an cycles:"
-msgstr "Ciklet e sk_animit:"
-
-#: ../settings_scanner_dialog.ui.h:10
-msgid ""
-"The time the scanner rests on a key or group before moving to the next. (in "
-"seconds)"
-msgstr ""
-"Koha që skaneri qëndron në një çelës ose grup para se të lëvizë tek tjetri. "
-"(në sekonda)"
-
-#: ../settings_scanner_dialog.ui.h:11
-msgid ""
-"The number of times the scanner cycles through the entire keyboard before it "
-"stops."
-msgstr ""
-"Numri i herëve që skaneri ciklon në të gjithë tastierën para se të ndalojë."
-
-#: ../settings_scanner_dialog.ui.h:12
-msgid "Step _only during switch down"
-msgstr "Nise _vetëm gjatë shtypjes së çelësit"
-
-#: ../settings_scanner_dialog.ui.h:13
-msgid "Progress the highlight only while the switch is held down."
-msgstr "Përpunoje të përzgjedhurën vetëm kur çelësi mbahet i shtypur."
-
-#: ../settings_scanner_dialog.ui.h:14
-msgid "_Forward interval:"
-msgstr "_Intervali i shkuarjes _përpara:"
-
-#: ../settings_scanner_dialog.ui.h:15
-msgid "_Backtrack interval:"
-msgstr "Intervali i gjurmimi _mbrapsht:"
-
-#: ../settings_scanner_dialog.ui.h:16
-msgid ""
-"The time the scanner rests on a key  while progressing forward. (in seconds)"
-msgstr ""
-"Koha sa skaneri qëndron në një çelës ndërkohë që përparon përpara. (në "
-"sekonda)"
-
-#: ../settings_scanner_dialog.ui.h:17
-msgid ""
-"The time the scanner rests on a key  while moving backwards. (in seconds)"
-msgstr ""
-"Koha sa skaneri qëndron në një çelës ndërkohë që lëviz mbrapsht. (në sekonda)"
-
-#: ../settings_scanner_dialog.ui.h:18
-msgid "Backtrack _steps:"
-msgstr "_Hapat e gjurmimit mbrapsht:"
-
-#: ../settings_scanner_dialog.ui.h:19
-msgid "The number of keys the scanner steps back before moving forward again."
-msgstr ""
-"Numri i çelësave që skaneri bën mbrapsht para se të ecë përpara përsëri."
-
-#: ../settings_scanner_dialog.ui.h:20
-msgid "_Alternate switch actions"
-msgstr "Veprimet e ndryshuesit _alternativ"
-
-#: ../settings_scanner_dialog.ui.h:21
-msgid ""
-"Swap the scan actions after every key activation. The Step action will "
-"become the Activate action and vice versa."
-msgstr ""
-"Ndrysho veprimet e skanerit pas çdo aktivizimi të çelësit. Veprimi i Hapit "
-"do bëhet veprimi i aktivizimit dhe anasjelltas."
-
-#: ../settings_scanner_dialog.ui.h:22
-msgid "Profiles"
-msgstr "Profilet"
-
-#: ../settings_scanner_dialog.ui.h:23
-msgid "_Select an input device:"
-msgstr "_Zgjidh një pajisje për hyrje:"
-
-#: ../settings_scanner_dialog.ui.h:24
-msgid "_Use this device only for scanning"
-msgstr "_Përdore këtë pajisje vetëm për skanim"
-
-#: ../settings_scanner_dialog.ui.h:25
-msgid ""
-"The selected device should not control the system mouse cursor or the "
-"keyboard caret."
-msgstr ""
-"Pajisja e përzgjedhur nuk duhet të kontrollojë kursorin e miut të sistemit "
-"apo grupin e tastierës."
-
-#: ../settings_scanner_dialog.ui.h:26
-msgid "Input Device"
-msgstr "Pajisje Hyrëse"
-
-#: ../settings_theme_dialog.ui.h:1
-msgid "Customize Theme"
-msgstr "Personalizo Temën"
-
-#: ../settings_theme_dialog.ui.h:2
-msgctxt "Label of the revert button of the theme settings dialog."
-msgid "_Revert"
-msgstr "_Rikthe"
-
-#: ../settings_theme_dialog.ui.h:3
-msgctxt "Label of the close button of the theme settings dialog."
-msgid "_Close"
-msgstr "_Mbyll"
-
-#: ../settings_theme_dialog.ui.h:4
-msgid "Color Sche_me"
-msgstr "Ske_ma e Ngjyrave"
-
-#: ../settings_theme_dialog.ui.h:7
-msgid "_Angle:"
-msgstr "_Këndi:"
-
-#: ../settings_theme_dialog.ui.h:8
-msgid "Light Direction"
-msgstr "Drejtimi i Dritës"
-
-#: ../settings_theme_dialog.ui.h:10
-msgid "_Style:"
-msgstr "_Stili:"
-
-#: ../settings_theme_dialog.ui.h:11
-msgid "R_oundness:"
-msgstr "R_rumbullakësia:"
-
-#: ../settings_theme_dialog.ui.h:12
-msgid "S_ize:"
-msgstr "P_ërmasa:"
-
-#: ../settings_theme_dialog.ui.h:13
-msgid "B_order width:"
-msgstr "B_order gjerësia:"
-
-#: ../settings_theme_dialog.ui.h:14
-msgid "Key Style"
-msgstr "Stili i Çelësit"
-
-#: ../settings_theme_dialog.ui.h:15
-msgid "_Key:"
-msgstr "_Tasti:"
-
-#: ../settings_theme_dialog.ui.h:16
-msgid "_Border:"
-msgstr "_Korniza:"
-
-#: ../settings_theme_dialog.ui.h:17
-msgid "Gradients"
-msgstr "Gradientët"
-
-#: ../settings_theme_dialog.ui.h:18
-msgid "_Strength:"
-msgstr "_Forca:"
-
-#: ../settings_theme_dialog.ui.h:19
-msgid "Shadow"
-msgstr "Hija"
-
-#: ../settings_theme_dialog.ui.h:20
-msgid "Keys"
-msgstr "Butonat"
-
-#: ../settings_theme_dialog.ui.h:21
-msgid "_Font:"
-msgstr "_Gërma:"
-
-#: ../settings_theme_dialog.ui.h:22
-msgid "_Attributes:"
-msgstr "_Atributet:"
-
-#: ../settings_theme_dialog.ui.h:23
-msgid "Font"
-msgstr "Gërma"
-
-#: ../settings_theme_dialog.ui.h:24
-msgid "I_ndependent size"
-msgstr "P_ërmasë e Pavarur"
-
-#: ../settings_theme_dialog.ui.h:25
-msgid "_Super key:"
-msgstr "_Super çelësi:"
-
-#: ../settings_theme_dialog.ui.h:26
-msgid "Label Override"
-msgstr "Mbishkrim i etiketave"
-
-#: ../settings_theme_dialog.ui.h:27
-msgid "Labels"
-msgstr "Etiketat"
+#~ msgid "Animation"
+#~ msgstr "Veprimi:"
+
+#~ msgid "Advanced"
+#~ msgstr "Të Avancuara"
+
+#~ msgid "Show _suggestions"
+#~ msgstr "Shfaq _sugjerimet"
+
+#~ msgid "Enable word completion and prediction."
+#~ msgstr "Aktivizo kompletimin dhe parashikimin e fjalëve."
+
+#~ msgid "Show spelling suggestions"
+#~ msgstr "Shfaq sugjerime të gërmëzimit"
+
+#~ msgid "Check spelling of the word at or before the cursor."
+#~ msgstr "Kontrollo gërmëzimin e fjalës tek ose përpara kursorit."
+
+#~ msgid "_Learn from typed text"
+#~ msgstr "_Mëso nga teksti i shtypur"
+
+#~ msgid ""
+#~ "Remember new words, their recency and frequency to improve the "
+#~ "suggestions over time."
+#~ msgstr ""
+#~ "Mba mend fjalët e reja, moshën e tyre dhe shpeshtësinë për të përmirësuar "
+#~ "sugjerimet me kalimin e kohës."
+
+#~ msgid "Insert word _separators"
+#~ msgstr "Vendos _ndarës të fjalëve"
+
+#~ msgid ""
+#~ "Add and remove spaces when inserting word suggestions followed by "
+#~ "punctuation characters."
+#~ msgstr ""
+#~ "Shto dhe hiq hapësira kur vendos sugjerime të fjalëve të ndjekura nga "
+#~ "karaktere pikëzimi."
+
+#~ msgid "Options"
+#~ msgstr "Opsionet"
+
+#~ msgid "Show button to pause learning"
+#~ msgstr "Shfaq butonin për të vendosur të mësuarit në pauzë"
+
+#~ msgid "Words typed while this button is pressed won't be remembered."
+#~ msgstr "Fjalët e shtypura kur ky buton është shtypur nuk do të mbahen mend."
+
+#~ msgid "Show lan_guage switcher"
+#~ msgstr "Shfaq ndryshuesin e gju_hëve"
+
+#~ msgid "Show a button for language selection."
+#~ msgstr "Shfaq një buton për përzgjedhjen e gjuhës."
+
+#~ msgid "Buttons"
+#~ msgstr "Butonat"
+
+#~ msgid "Word Suggestions"
+#~ msgstr "Sugjerime të Fjalëve"
+
+#~ msgid "Auto-capitalize while typing"
+#~ msgstr "Vetë kapitalizoje gjatë shtypjes"
+
+#~ msgid "Automatically capitalize sentence begins and name words."
+#~ msgstr ""
+#~ "Kapitalizo automatikisht fillimin e fjalive dhe fillimin e fjalëve emra."
+
+#~ msgid "Auto-correct spelling"
+#~ msgstr "Vetë-korrigjo gërmëzimin"
+
+#~ msgid "Automatically correct the last word."
+#~ msgstr "Automatikisht korrigjo fjalën e fundit."
+
+#~ msgid "The spell check engine to use."
+#~ msgstr "Cili motor kontrollues i gërmëzimit do të përdoret."
+
+#~ msgid "Spell-check backend:"
+#~ msgstr "Mbështetësi i kontrollorit të gërmëzimit:"
+
+#~ msgid "Auto-correction"
+#~ msgstr "Vetë-korrigjim"
+
+#~ msgid "Learning"
+#~ msgstr "Mësim"
+
+#~ msgid "Enable  keyboard _scanning"
+#~ msgstr "Aktivizo _skanimin me tastierë"
+
+#~ msgctxt ""
+#~ "Label of keyboard scanning settings button on preferences page Universal "
+#~ "Access."
+#~ msgid "Sc_anner Settings"
+#~ msgstr "Parametrat e Sk_anerit"
+
+#~ msgid "Keyboard Scanning"
+#~ msgstr "Skanimi me Tastierë"
+
+#~ msgid "_Delay:"
+#~ msgstr "_Vonesa:"
+
+#~ msgid "_Motion threshold:"
+#~ msgstr "_Kufiri i lëvizjes:"
+
+#~ msgid "Time in seconds before a click is triggered."
+#~ msgstr "Koha në sekonda përpara se të shkaktohet një klikim."
+
+#~ msgid "Distance in pixels before movement will be recognized."
+#~ msgstr "Distanca në piksel para se të njihet levizja."
+
+#~ msgid "Hide hover click window"
+#~ msgstr "Fshih dritaren që rri pezull"
+
+#~ msgid ""
+#~ "Hide the system-provided hover click window while Onboard is running."
+#~ msgstr ""
+#~ "Fshihe dritaren me klikim qëndrimi që jep sistemi kur është nisur Onboard."
+
+#~ msgid "Enable click type window on exit"
+#~ msgstr "Aktivizo modalitetin e klikimit në dritare kur të dalesh"
+
+#~ msgid ""
+#~ "Always enable the system-provided hover click window when exiting Onboard."
+#~ msgstr ""
+#~ "Gjithmonë aktivizoje klikimin me qëndrim mbi dritaren që jep sistem kur "
+#~ "del nga Onboard."
+
+#~ msgid "Hover Click"
+#~ msgstr "Mbi Kliko"
+
+#~ msgid "Top"
+#~ msgstr "Kreu"
+
+#~ msgid "Bottom"
+#~ msgstr "Fundi"
+
+#~ msgid "Active Monitor"
+#~ msgstr "Monitori Aktiv"
+
+#~ msgid "Primary Monitor"
+#~ msgstr "Monitori Kryesor"
+
+#~ msgid "Monitor 0"
+#~ msgstr "Monitori 0"
+
+#~ msgid "Monitor 1"
+#~ msgstr "Monitori 1"
+
+#~ msgid "Monitor 2"
+#~ msgstr "Monitori 2"
+
+#~ msgid "Monitor 3"
+#~ msgstr "Monitori 3"
+
+#~ msgid "Monitor 4"
+#~ msgstr "Monitori 4"
+
+#~ msgid "Monitor 5"
+#~ msgstr "Monitori 5"
+
+#~ msgid "Monitor 6"
+#~ msgstr "Monitori 6"
+
+#~ msgid "Monitor 7"
+#~ msgstr "Monitori 7"
+
+#~ msgid "Monitor 8"
+#~ msgstr "Monitori 8"
+
+#~ msgid "Docking settings"
+#~ msgstr "Konfigurimet e mbështetjes"
+
+#~ msgctxt "Label of the close button of the docking settings dialog."
+#~ msgid "_Close"
+#~ msgstr "_Mbylle"
+
+#~ msgid "Shrink workarea"
+#~ msgstr "Ngushto sipërfaqen e punës"
+
+#~ msgid "Shrink the available space for maximized windows."
+#~ msgstr "Ngushto hapësiren e mundshme për dritare të maksimizuara."
+
+#~ msgid "Expand on landscape screens"
+#~ msgstr "Zgjero në pamjen e ekranit"
+
+#~ msgid "Expand keyboard to the width of the workarea."
+#~ msgstr "Zgjero tastierën në madhesinë e siperfaqes së punës."
+
+#~ msgid "Expand on portrait screens"
+#~ msgstr "Zgjero në ekrane portret."
+
+#~ msgid "Dock to screen edge:"
+#~ msgstr "Mbeshtet në buze të ekranit."
+
+#~ msgid "Dock to monitor:"
+#~ msgstr "Dock për monitorin:"
+
+#~ msgid "Automatic scan for 1 switch"
+#~ msgstr "Skanim automatik për çelësin 1"
+
+#~ msgid "Critical overscan for 1 switch"
+#~ msgstr "Mbiskanim kritikpër një çelës"
+
+#~ msgid "Step scan for 2 switches"
+#~ msgstr "Skanim i hapit për 2 çelësa"
+
+#~ msgid "Directed scan for 3 or 5 switches"
+#~ msgstr "Skanim i drejtuar për 3 apo 5 çelësa"
+
+#~ msgid "Scanner Settings"
+#~ msgstr "Parametrat e Skanerit"
+
+#~ msgctxt "Label of the close button of the scanner settings dialog."
+#~ msgid "_Close"
+#~ msgstr "_Mbylle"
+
+#~ msgid "Select a scanning _profile:"
+#~ msgstr "Zgjidh një _profil skanimi:"
+
+#~ msgid "_Step interval:"
+#~ msgstr "Intervali i _hapit:"
+
+#~ msgid "Sc_an cycles:"
+#~ msgstr "Ciklet e sk_animit:"
+
+#~ msgid ""
+#~ "The time the scanner rests on a key or group before moving to the next. "
+#~ "(in seconds)"
+#~ msgstr ""
+#~ "Koha që skaneri qëndron në një çelës ose grup para se të lëvizë tek "
+#~ "tjetri. (në sekonda)"
+
+#~ msgid ""
+#~ "The number of times the scanner cycles through the entire keyboard before "
+#~ "it stops."
+#~ msgstr ""
+#~ "Numri i herëve që skaneri ciklon në të gjithë tastierën para se të "
+#~ "ndalojë."
+
+#~ msgid "Step _only during switch down"
+#~ msgstr "Nise _vetëm gjatë shtypjes së çelësit"
+
+#~ msgid "Progress the highlight only while the switch is held down."
+#~ msgstr "Përpunoje të përzgjedhurën vetëm kur çelësi mbahet i shtypur."
+
+#~ msgid "_Forward interval:"
+#~ msgstr "_Intervali i shkuarjes _përpara:"
+
+#~ msgid "_Backtrack interval:"
+#~ msgstr "Intervali i gjurmimi _mbrapsht:"
+
+#~ msgid ""
+#~ "The time the scanner rests on a key  while progressing forward. (in "
+#~ "seconds)"
+#~ msgstr ""
+#~ "Koha sa skaneri qëndron në një çelës ndërkohë që përparon përpara. (në "
+#~ "sekonda)"
+
+#~ msgid ""
+#~ "The time the scanner rests on a key  while moving backwards. (in seconds)"
+#~ msgstr ""
+#~ "Koha sa skaneri qëndron në një çelës ndërkohë që lëviz mbrapsht. (në "
+#~ "sekonda)"
+
+#~ msgid "Backtrack _steps:"
+#~ msgstr "_Hapat e gjurmimit mbrapsht:"
+
+#~ msgid ""
+#~ "The number of keys the scanner steps back before moving forward again."
+#~ msgstr ""
+#~ "Numri i çelësave që skaneri bën mbrapsht para se të ecë përpara përsëri."
+
+#~ msgid "_Alternate switch actions"
+#~ msgstr "Veprimet e ndryshuesit _alternativ"
+
+#~ msgid ""
+#~ "Swap the scan actions after every key activation. The Step action will "
+#~ "become the Activate action and vice versa."
+#~ msgstr ""
+#~ "Ndrysho veprimet e skanerit pas çdo aktivizimi të çelësit. Veprimi i "
+#~ "Hapit do bëhet veprimi i aktivizimit dhe anasjelltas."
+
+#~ msgid "Profiles"
+#~ msgstr "Profilet"
+
+#~ msgid "_Select an input device:"
+#~ msgstr "_Zgjidh një pajisje për hyrje:"
+
+#~ msgid "_Use this device only for scanning"
+#~ msgstr "_Përdore këtë pajisje vetëm për skanim"
+
+#~ msgid ""
+#~ "The selected device should not control the system mouse cursor or the "
+#~ "keyboard caret."
+#~ msgstr ""
+#~ "Pajisja e përzgjedhur nuk duhet të kontrollojë kursorin e miut të "
+#~ "sistemit apo grupin e tastierës."
+
+#~ msgid "Input Device"
+#~ msgstr "Pajisje Hyrëse"
+
+#~ msgid "Customize Theme"
+#~ msgstr "Personalizo Temën"
+
+#~ msgctxt "Label of the revert button of the theme settings dialog."
+#~ msgid "_Revert"
+#~ msgstr "_Rikthe"
+
+#~ msgctxt "Label of the close button of the theme settings dialog."
+#~ msgid "_Close"
+#~ msgstr "_Mbyll"
+
+#~ msgid "Color Sche_me"
+#~ msgstr "Ske_ma e Ngjyrave"
+
+#~ msgid "_Angle:"
+#~ msgstr "_Këndi:"
+
+#~ msgid "Light Direction"
+#~ msgstr "Drejtimi i Dritës"
+
+#~ msgid "_Style:"
+#~ msgstr "_Stili:"
+
+#~ msgid "R_oundness:"
+#~ msgstr "R_rumbullakësia:"
+
+#~ msgid "S_ize:"
+#~ msgstr "P_ërmasa:"
+
+#~ msgid "B_order width:"
+#~ msgstr "B_order gjerësia:"
+
+#~ msgid "Key Style"
+#~ msgstr "Stili i Çelësit"
+
+#~ msgid "_Key:"
+#~ msgstr "_Tasti:"
+
+#~ msgid "_Border:"
+#~ msgstr "_Korniza:"
+
+#~ msgid "Gradients"
+#~ msgstr "Gradientët"
+
+#~ msgid "_Strength:"
+#~ msgstr "_Forca:"
+
+#~ msgid "Shadow"
+#~ msgstr "Hija"
+
+#~ msgid "Keys"
+#~ msgstr "Butonat"
+
+#~ msgid "_Font:"
+#~ msgstr "_Gërma:"
+
+#~ msgid "_Attributes:"
+#~ msgstr "_Atributet:"
+
+#~ msgid "Font"
+#~ msgstr "Gërma"
+
+#~ msgid "I_ndependent size"
+#~ msgstr "P_ërmasë e Pavarur"
+
+#~ msgid "_Super key:"
+#~ msgstr "_Super çelësi:"
+
+#~ msgid "Label Override"
+#~ msgstr "Mbishkrim i etiketave"
+
+#~ msgid "Labels"
+#~ msgstr "Etiketat"
 
 #~ msgid "Show settings"
 #~ msgstr "Shfaq parametrat"

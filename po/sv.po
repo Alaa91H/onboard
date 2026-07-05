@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: onboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-06 20:21+0200\n"
+"POT-Creation-Date: 2026-07-05 21:38+0200\n"
 "PO-Revision-Date: 2014-05-20 18:27+0000\n"
 "Last-Translator: Alexander Andjelkovic <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -62,35 +62,35 @@ msgstr ""
 "Dubblett av Key_id ”{}” hittades i färgschemafil. Key_id får bara förekomma "
 "en gång."
 
-#: ../Onboard/Config.py:243
+#: ../Onboard/Config.py:244
 msgid "Layout file ({}) or name"
 msgstr "Layout-fil ({}) eller -namn"
 
-#: ../Onboard/Config.py:246
+#: ../Onboard/Config.py:247
 msgid "Theme file (.theme) or name"
 msgstr "Temafil (.theme) eller -namn"
 
-#: ../Onboard/Config.py:248
+#: ../Onboard/Config.py:249
 msgid "Window size, widthxheight"
 msgstr "Fönsterstorlek, bredd x höjd"
 
-#: ../Onboard/Config.py:249
+#: ../Onboard/Config.py:250
 msgid "Window x position"
 msgstr "Fönstrets x-position"
 
-#: ../Onboard/Config.py:250
+#: ../Onboard/Config.py:251
 msgid "Window y position"
 msgstr "Fönstrets y-position"
 
-#: ../Onboard/Config.py:255
+#: ../Onboard/Config.py:256
 msgid "Start in XEmbed mode, e.g. for gnome-screensaver"
 msgstr "Starta i XEmbed-läge, t.ex. för gnome-screensaver"
 
-#: ../Onboard/Config.py:258
+#: ../Onboard/Config.py:259
 msgid "Allow multiple Onboard instances"
 msgstr "Tillåt flera instanser av Onboard"
 
-#: ../Onboard/Config.py:261
+#: ../Onboard/Config.py:262
 msgid ""
 "Silently fail to start in the given desktop environments. DESKTOPS is a "
 "comma-separated list of XDG desktop names, e.g. GNOME for GNOME Shell."
@@ -99,7 +99,7 @@ msgstr ""
 "är en komma-avdelad lista över XDG-skrivbordsnamn, t.ex. GNOME för GNOME "
 "Shell."
 
-#: ../Onboard/Config.py:267
+#: ../Onboard/Config.py:268
 msgid ""
 "Delay showing the initial keyboard window by STARTUP_DELAY seconds (default "
 "0.0)."
@@ -107,11 +107,11 @@ msgstr ""
 "Fördröj visningen av första tangentbordsfönstret med STARTUP_DELAY sekunder "
 "(förval är 0,0)."
 
-#: ../Onboard/Config.py:271
+#: ../Onboard/Config.py:272
 msgid "Keep aspect ratio when resizing the window"
 msgstr "Behåll bildproportioner när fönsterstorleken ändras"
 
-#: ../Onboard/Config.py:273
+#: ../Onboard/Config.py:274
 msgid ""
 "Override auto-detection and manually select quirks\n"
 "QUIRKS={metacity|compiz|mutter}"
@@ -119,35 +119,35 @@ msgstr ""
 "Åsidosätt autoupptäckt och välj quirks manuellt\n"
 "QUIRKS={metacity|compiz|mutter}"
 
-#: ../Onboard/Config.py:400
+#: ../Onboard/Config.py:401
 msgid "Migrating user directory '{}' to '{}'."
 msgstr "Migrerar användarkatalogen \"{}\" till \"{}\"."
 
 #. honor XDG spec
 #. python >2.5
-#: ../Onboard/Config.py:408
+#: ../Onboard/Config.py:409
 msgid "failed to migrate user directory. "
 msgstr "misslyckades att migrera användarkatalogen. "
 
-#: ../Onboard/Config.py:887
+#: ../Onboard/Config.py:888
 #, python-brace-format
 msgid "layout '{filename}' does not exist"
 msgstr "layouten \"{filename}\" finns inte"
 
-#: ../Onboard/Config.py:928
+#: ../Onboard/Config.py:929
 #, python-brace-format
 msgid "theme '{filename}' does not exist"
 msgstr "temat \"{filename}\" finns inte"
 
-#: ../Onboard/Config.py:953
+#: ../Onboard/Config.py:954
 msgid "Loading theme from '{}'"
 msgstr "Läser in tema från \"{}\""
 
-#: ../Onboard/Config.py:957
+#: ../Onboard/Config.py:958
 msgid "Unable to read theme '{}'"
 msgstr "Kunde inte läsa temat \"{}\""
 
-#: ../Onboard/Config.py:1198
+#: ../Onboard/Config.py:1199
 msgid ""
 "Enabling auto-show requires Gnome Accessibility.\n"
 "\n"
@@ -163,7 +163,7 @@ msgstr ""
 "\n"
 "Aktivera hjälpmedelsfunktioner nu?"
 
-#: ../Onboard/Config.py:1952
+#: ../Onboard/Config.py:1953
 #, python-brace-format
 msgid "color scheme '{filename}' does not exist"
 msgstr "färgschemat \"{filename}\" finns inte"
@@ -245,31 +245,31 @@ msgstr ""
 msgid "Failed to get gsettings value. "
 msgstr "Kunde inte hämta värde från gsettings. "
 
-#: ../Onboard/Indicator.py:56
+#: ../Onboard/Indicator.py:52
 msgid "_Show Onboard"
 msgstr "Vi_sa Onboard"
 
-#: ../Onboard/Indicator.py:57
+#: ../Onboard/Indicator.py:53
 msgid "_Hide Onboard"
 msgstr "_Dölj Onboard"
 
 #. Translators: label of a menu item. It used to be stock item
 #. STOCK_PREFERENCES until Gtk 3.10 deprecated those.
-#: ../Onboard/Indicator.py:83
+#: ../Onboard/Indicator.py:79
 msgid "_Preferences"
 msgstr "_Inställningar"
 
-#: ../Onboard/Indicator.py:91
+#: ../Onboard/Indicator.py:96
 msgid "_Help"
 msgstr ""
 
 #. Translators: label of a menu item. It used to be stock item
 #. STOCK_QUIT until Gtk 3.10 deprecated those.
-#: ../Onboard/Indicator.py:102
+#: ../Onboard/Indicator.py:107
 msgid "_Quit"
 msgstr "_Avsluta"
 
-#: ../Onboard/Indicator.py:228 ../Onboard/Indicator.py:231
+#: ../Onboard/Indicator.py:237 ../Onboard/Indicator.py:240
 msgid "Onboard on-screen keyboard"
 msgstr "Onboard skärmtangentbord"
 
@@ -381,7 +381,6 @@ msgstr ""
 #: ../Onboard/LanguageSupport.py:174 ../Onboard/SpellChecker.py:634
 #: ../Onboard/SpellChecker.py:670 ../Onboard/SpellChecker.py:709
 #: ../Onboard/SpellChecker.py:723 ../Onboard/Timer.py:179
-#: ../Onboard/pypredict/tools/filter.py:382
 msgid "Failed to execute '{}', {}"
 msgstr "Misslyckades att köra \"{}\", {}"
 
@@ -623,7 +622,7 @@ msgid "Flat"
 msgstr "Platt"
 
 #. Key style with simple gradients
-#: ../Onboard/settings.py:1631 ../settings_theme_dialog.ui.h:6
+#: ../Onboard/settings.py:1631
 msgid "Gradient"
 msgstr "Gradient"
 
@@ -868,7 +867,7 @@ msgid "Scroll"
 msgstr "Scroll"
 
 #. translators: this is a 'tooltip' of the key_template 'layer2' in keyboard layout 'key_defs.xml'
-#: ../data/layoutstrings.py:88 ../data/layoutstrings.py:340 ../settings.ui.h:27
+#: ../data/layoutstrings.py:88 ../data/layoutstrings.py:340
 msgid "Snippets"
 msgstr "Textsnuttar"
 
@@ -1313,1250 +1312,870 @@ msgstr ""
 msgid "onscreen;keyboard;accessibility;utility;"
 msgstr ""
 
-#: ../settings.ui.h:1
-msgid "Key-repeat"
-msgstr "Tangentupprepning"
-
-#: ../settings.ui.h:2
-msgid "International character selection"
-msgstr "Val av internationella tecken"
-
-#: ../settings.ui.h:3
-msgid "never"
-msgstr "aldrig"
-
-#: ../settings.ui.h:4
-msgid "1 minute"
-msgstr "1 minut"
-
-#: ../settings.ui.h:5
-msgid "5 minutes"
-msgstr "5 minuter"
-
-#: ../settings.ui.h:6
-msgid "10 minutes"
-msgstr "10 minuter"
-
-#: ../settings.ui.h:7
-msgid "30 minutes"
-msgstr "30 minuter"
-
-#: ../settings.ui.h:8
-msgid "1 hour"
-msgstr "1 timme"
-
-#: ../settings.ui.h:9
-msgid "3 hours"
-msgstr "3 timmar"
-
-#: ../settings.ui.h:10
-msgid "forever"
-msgstr "alltid"
-
-#: ../settings.ui.h:11
-msgid "GTK"
-msgstr "GTK"
-
-#: ../settings.ui.h:12
-msgid "XInput"
-msgstr "XInput"
-
-#: ../settings.ui.h:13
-msgid "Auto"
-msgstr "Auto"
-
-#: ../settings.ui.h:14
-msgid "XTest"
-msgstr "XTest"
-
-#: ../settings.ui.h:15
-msgid "uinput"
-msgstr "uinput"
-
-#: ../settings.ui.h:16
-msgid "AT-SPI"
-msgstr "AT-SPI"
-
-#: ../settings.ui.h:17
-msgid "Remember nothing"
-msgstr "Kom inte ihåg något"
-
-#: ../settings.ui.h:18
-msgid "Don't remember new words"
-msgstr "Kom inte ihåg nya ord"
-
-#: ../settings.ui.h:19
-msgid "None"
-msgstr "Ingen"
-
-#: ../settings.ui.h:20
-msgid "Movement only"
-msgstr "Bara rörelse"
-
-#: ../settings.ui.h:21
-msgid "Corners"
-msgstr "Hörn"
-
-#: ../settings.ui.h:22
-msgid "All corners and edges"
-msgstr "Alla hörn och kanter"
-
-#: ../settings.ui.h:23
-msgid "General"
-msgstr "Allmänt"
-
-#: ../settings.ui.h:24
-msgid "Window"
-msgstr "Fönster"
-
-#: ../settings.ui.h:25
-msgid "Layout"
-msgstr "Layout"
-
-#: ../settings.ui.h:26
-msgid "Theme"
-msgstr "Tema"
-
-#: ../settings.ui.h:28 ../settings_theme_dialog.ui.h:9
-msgid "Keyboard"
-msgstr "Tangentbord"
-
-#: ../settings.ui.h:29
-msgid "Auto-show"
-msgstr ""
-
-#: ../settings.ui.h:30
-msgid "Typing Assistance"
-msgstr "Skrivhjälp"
-
-#: ../settings.ui.h:31
-msgid "Universal Access"
-msgstr "Hjälpmedel"
-
-#: ../settings.ui.h:32
-msgid "Only move when necessary"
-msgstr ""
-
-#: ../settings.ui.h:33
-msgid "Follow the active window"
-msgstr ""
-
-#: ../settings.ui.h:34
-msgid "Latch, then lock"
-msgstr "Kläm, sedan lås"
-
-#: ../settings.ui.h:35
-msgid "Latch, double-click to lock"
-msgstr "Kläm, dubbelklick för att låsa"
-
-#: ../settings.ui.h:36
-msgid "Latch only"
-msgstr "Kläm bara"
-
-#: ../settings.ui.h:37
-msgid "Lock only"
-msgstr "Lås bara"
-
-#: ../settings.ui.h:38
-msgid "Push button"
-msgstr "Tryckknapp"
-
-#: ../settings.ui.h:39
-msgid "none"
-msgstr "inga"
-
-#: ../settings.ui.h:40
-msgid "single-touch"
-msgstr "enkeltryck"
-
-#: ../settings.ui.h:41
-msgid "multi-touch"
-msgstr "flertryck"
-
-#: ../settings.ui.h:42
-msgctxt "Label of the main close button of the preferences dialog."
-msgid "_Close"
-msgstr "St_äng"
-
-#: ../settings.ui.h:43
-msgid "_Auto-show when editing text"
-msgstr "Visa _automatiskt när text redigeras"
-
-#: ../settings.ui.h:44
-msgid ""
-"Show Onboard when there is a recognized text window in focus. Requires Gnome "
-"Accessibility."
-msgstr ""
-"Visa Onboard när ett textfönster har fokus. Kräver Gnome Accessibility "
-"(Hjälpmedel)."
-
-#: ../settings.ui.h:45
-msgid "Start Onboard _hidden"
-msgstr "Starta Onboard _dold"
-
-#: ../settings.ui.h:46
-msgid "Start Onboard hidden."
-msgstr "Starta Onboard dold."
-
-#: ../settings.ui.h:47
-msgid "Show/Hide options"
-msgstr "Visa/Dölj alternativ"
-
-#: ../settings.ui.h:48
-msgid "Show floating _icon when Onboard is hidden"
-msgstr "Visa flytande _ikon när Onboard har dolts"
-
-#: ../settings.ui.h:49
-msgid ""
-"Show a floating icon on the desktop when Onboard is hidden. A click on the "
-"icon makes Onboard reappear."
-msgstr ""
-"Visa en flytande ikon på skrivbordet när Onboard är dolt. Genom att klicka "
-"på ikonen kommer Onboard att visa sig på nytt."
-
-#: ../settings.ui.h:50
-msgid "Show when _unlocking the screen"
-msgstr "Visa när skärmen låses _upp"
-
-#: ../settings.ui.h:51
-msgid ""
-"Show Onboard when the dialog to unlock the screen appears; this way Onboard "
-"can be used for example to enter the password to dismiss the screensaver "
-"when it is set to ask for it."
-msgstr ""
-"Visa Onboard när dialogen för att låsa upp skärmen visar sig. På detta sätt "
-"kan Onboard användas till att skriva in lösenordet och stänga av "
-"skärmsläckaren."
-
-#: ../settings.ui.h:52
-msgid "Show _tooltips"
-msgstr "Visa info_ruta"
-
-#: ../settings.ui.h:53
-msgid "Show tooltips for the keyboard&apos;s buttons."
-msgstr "Visa inforuta för tangentbordets knappar."
-
-#: ../settings.ui.h:54
-msgid "Show tooltips for the keyboard's buttons."
-msgstr "Visa inforuta för tangentbordets knappar."
-
-#: ../settings.ui.h:55
-msgid "_Show status icon"
-msgstr "_Visa statusikon"
-
-#: ../settings.ui.h:56
-msgid "Show the status item. A click on that icon hides or shows Onboard."
-msgstr ""
-"Visa statusobjektet. Genom att klicka på ikonen kan Onboard visas eller "
-"döljas."
-
-#: ../settings.ui.h:57
-msgid "Status icon _provider:"
-msgstr ""
-
-#: ../settings.ui.h:58
-msgid ""
-"<b>AppIndicator</b> (default) is recommended for broadest compatibility. A "
-"middle click on the icon shows the keyboard. In KDE Plasma a left click does "
-"the same.\n"
-"\n"
-"<b>GtkStatusIcon</b> isn't supported well anymore by various desktop "
-"environments, but generally allows to show the keyboard on left click.\n"
-"\n"
-"Requires restart."
-msgstr ""
-"<b>AppIndicator</b> (förval) rekommenderas för bredast kompatibilitet. Ett "
-"mittenklick på ikonen visar tangentbordet. I KDE Plasma används ett "
-"vänsterklick istället.\n"
-"\n"
-"<b>GtkStatusIcon</b> stöds inte särskilt väl längre av de olika "
-"skrivbordsmiljöerna, men låter dig generellt visa tangentbordet med ett "
-"vänsterklick.\n"
-"\n"
-"Kräver omstart."
-
-#: ../settings.ui.h:63
-msgid "Desktop Integration"
-msgstr "Skrivbordsintegration"
-
-#: ../settings.ui.h:64
-msgid "Dock to screen edge"
-msgstr "Fäst vid skärmkanten"
-
-#: ../settings.ui.h:65
-msgid "Dock the keyboard to the edge of the screen."
-msgstr "Fäst tangentbordet till skärmkanten."
-
-#: ../settings.ui.h:66
-msgctxt "Label of settings button on preferences page Window."
-msgid "_Settings"
-msgstr "In_ställningar"
-
-#: ../settings.ui.h:67
-msgid "Docking"
-msgstr "Dockning"
-
-#: ../settings.ui.h:68
-msgid "Show window _decoration"
-msgstr "Visa fönster_dekorationer"
-
-#: ../settings.ui.h:69
-msgid "Show window caption and frame."
-msgstr "Visa fönstertitel och ram."
-
-#: ../settings.ui.h:70
-msgid "Show always on visible _workspace"
-msgstr "Visa alltid på synlig _arbetsyta"
-
-#: ../settings.ui.h:71
-msgid "&quot;Sticky&quot; mode for keyboard and floating icon."
-msgstr "&quot;Klistrigt&quot; läge för tangentbord och flytande ikon."
-
-#: ../settings.ui.h:72
-msgid "\"Sticky\" mode for keyboard and floating icon."
-msgstr "”Klistrigt” läge för tangentbord och flytande ikon."
-
-#: ../settings.ui.h:73
-msgid "_Force window to top"
-msgstr "_Tvinga fönstret till toppen"
-
-#: ../settings.ui.h:74
-msgid "Try harder to keep Onboard above anything on-screen."
-msgstr ""
-"Gör större ansträngningar för att hålla Onboard ovanför allt annat som visas "
-"på skärmen."
-
-#: ../settings.ui.h:75
-msgid "Keep _aspect ratio"
-msgstr "Behåll _bildförhållande"
-
-#: ../settings.ui.h:76
-msgid "Constrain window size to the layout&apos;s aspect ratio."
-msgstr "Begränsa fönsterstorleken till layoutens proportioner."
-
-#: ../settings.ui.h:77
-msgid "Constrain window size to the layout's aspect ratio."
-msgstr "Begränsa fönsterstorleken till layoutens proportioner."
-
-#: ../settings.ui.h:78
-msgid "Floating Window Options"
-msgstr "Valmöjligheter för flytande fönster"
-
-#: ../settings.ui.h:79
-msgid "Window options"
-msgstr "Fönsteralternativ"
-
-#: ../settings.ui.h:80
-msgid "Wind_ow:"
-msgstr "Fönste_r:"
-
-#: ../settings.ui.h:81
-msgid "Transparency of the whole keyboard window. Requires compositing."
-msgstr ""
-"Genomskinlighet för hela tangentbordsfönstret. Kräver sammansatt grafik."
-
-#: ../settings.ui.h:82 ../settings_theme_dialog.ui.h:5
-msgid "_Background:"
-msgstr "_Bakgrund:"
-
-#: ../settings.ui.h:83
-msgid "Transparency of the keyboard background"
-msgstr "Genomskinlighet för tangentbordets bakgrund"
-
-#: ../settings.ui.h:84
-msgid "_No background"
-msgstr "_Ingen bakgrund"
-
-#: ../settings.ui.h:85
-msgid "Show the desktop through the gaps between keys."
-msgstr "Visa skrivbordet genom mellanrummen mellan tangenterna."
-
-#: ../settings.ui.h:86
-msgid "Transparency"
-msgstr "Genomskinlighet"
-
-#: ../settings.ui.h:87
-msgid "Set _transparency to"
-msgstr "Sätt _genomskinlighet till"
-
-#: ../settings.ui.h:88
-msgid "Enable inactive transparency. Requires compositing."
-msgstr "Aktivera genomskinlighet vid inaktivitet. Kräver sammansatt grafik."
-
-#: ../settings.ui.h:89
-msgid ""
-"Transparency when the pointer leaves the keyboard. Requires compositing."
-msgstr ""
-"Genomskinlighet när muspekaren lämnar tangentbordet. Kräver komposition."
-
-#: ../settings.ui.h:90
-msgid "after"
-msgstr "efter"
-
-#: ../settings.ui.h:91
-msgid "Delay in seconds until the inactive transparency takes effect."
-msgstr ""
-"Fördröjning i sekunder tills den inaktiva genomskinligheten träder i kraft."
-
-#: ../settings.ui.h:92
-msgid "seconds"
-msgstr "sekunder"
-
-#: ../settings.ui.h:93
-msgid "When Inactive"
-msgstr "Vid inaktivitet"
-
-#: ../settings.ui.h:94
-msgid "_Window handles of the keyboard window:"
-msgstr ""
-
-#: ../settings.ui.h:95
-msgid "_Window handles of the floating icon:"
-msgstr ""
-
-#: ../settings.ui.h:96
-msgid "Resize Protection"
-msgstr "Förstoringsskydd"
-
-#: ../settings.ui.h:97
-msgid "Name"
-msgstr "Namn"
-
-#: ../settings.ui.h:98
-msgid "Description"
-msgstr "Beskrivning"
-
-#: ../settings.ui.h:99
-msgctxt "Label of new layout button on preferences page Layout."
-msgid "_New"
-msgstr "_Ny"
-
-#: ../settings.ui.h:100
-msgctxt "Label of delete layout button on preferences page Layout."
-msgid "_Delete"
-msgstr "Ra_dera"
-
-#: ../settings.ui.h:101
-msgctxt "Label of open folder button on preferences page Layout."
-msgid "_Open layouts folder"
-msgstr "_Öppna layoutmapp"
-
-#: ../settings.ui.h:102
-msgctxt "Label of about layout button on preferences page Layout."
-msgid "_About"
-msgstr "_Om"
-
-#: ../settings.ui.h:103
-msgctxt "Label of new theme button on preferences page Theme."
-msgid "_New"
-msgstr "_Nytt"
-
-#: ../settings.ui.h:104
-msgctxt "Label of delete theme  button on preferences page Theme."
-msgid "_Delete"
-msgstr "Ra_dera"
-
-#: ../settings.ui.h:105
-msgctxt "Label of customize theme button on preferences page Theme."
-msgid "C_ustomize theme"
-msgstr "A_npassa tema"
-
-#: ../settings.ui.h:106
-msgid "Follow _system theme"
-msgstr "Följ _systemtema"
-
-#: ../settings.ui.h:107
-msgid "Remember what Onboard theme was last used for every system theme."
-msgstr "Kom ihåg vilket Onboard-tema som användes senast för varje systemtema."
-
-#: ../settings.ui.h:108
-msgid ""
-"Snippets are pieces of text which are entered when the corresponding button "
-"in Onboard is pressed."
-msgstr ""
-"Textsnuttar är delar av text som matas in när motsvarande knapp i Onboard "
-"trycks ner."
-
-#: ../settings.ui.h:109
-msgctxt "Label of add snippet button on preferences page Snippets."
-msgid "_Add"
-msgstr "_Lägg till"
-
-#: ../settings.ui.h:110
-msgctxt "Label of remove snippet button on preferences page Snippets."
-msgid "_Remove"
-msgstr "Ta bo_rt"
-
-#: ../settings.ui.h:111
-msgid "Play sound"
-msgstr "Spela upp ljud"
-
-#: ../settings.ui.h:112
-msgid "Play click sound on keypress."
-msgstr "Spela klickljud vid tangenttryck."
-
-#: ../settings.ui.h:113
-msgid "Place sound in space"
-msgstr ""
-
-#: ../settings.ui.h:114
-msgid ""
-"Place sound in space between speakers depending on the key's position on "
-"screen"
-msgstr ""
-
-#: ../settings.ui.h:115
-msgid "Show label popups"
-msgstr "Visa etikettbubblor"
-
-#: ../settings.ui.h:116
-msgid "Show label popups above pressed keys."
-msgstr "Visa etikettbubblor ovanför nedtryckta tangenter."
-
-#: ../settings.ui.h:117
-msgid "Popup size:"
-msgstr ""
-
-#: ../settings.ui.h:118
-msgid "Key-press Feedback"
-msgstr "Återkoppling för tangenttryck"
-
-#: ../settings.ui.h:119
-msgid "Show secondary labels"
-msgstr "Visa sekundära etiketter"
-
-#: ../settings.ui.h:120
-msgid "Show characters reachable with or without the shift key."
-msgstr "Visa tecken som kan nås med eller utan skifttangenten."
-
-#: ../settings.ui.h:121
-msgid "Key Labels"
-msgstr "Tangentetiketter"
-
-#: ../settings.ui.h:122
-msgid "Upper case on right click"
-msgstr ""
-
-#: ../settings.ui.h:123
-msgid "Temporarily enable SHIFT when clicking with the secondary button."
-msgstr ""
-
-#: ../settings.ui.h:124
-msgid "Key Behaviour"
-msgstr ""
-
-#: ../settings.ui.h:125
-msgid "_Long press action:"
-msgstr "Åtgärd för _långt tryck:"
-
-#: ../settings.ui.h:126
-msgid ""
-"Choose between key-repeat or long-press menus. Mainly affects alpha-numeric "
-"keys."
-msgstr ""
-"Välj mellan upprepning eller långtrycksmenyer. Påverkar i regel bara "
-"alfanumeriska tangenter."
-
-#: ../settings.ui.h:127
-msgid "Modifier _behavior:"
-msgstr "Modifierar_beteende:"
-
-#: ../settings.ui.h:128
-msgid "Behavior of modifier and layer keys."
-msgstr "Beteende för modifierar- och lagertangenter."
-
-#: ../settings.ui.h:129
-msgid "Modifier auto-release delay in seconds:"
-msgstr "Autosläpp modifierare, fördröjning sekunder:"
-
-#: ../settings.ui.h:130
-msgid ""
-"Seconds of inactivity until active modifiers and layer keys are released. 0 "
-"to disable."
-msgstr ""
-"Sekunders inaktivitet innan aktiva modifierar- och lagertangenter släpps. 0 "
-"för att inaktivera."
-
-#: ../settings.ui.h:131
-msgid "Modifier auto-release after hide in seconds:"
-msgstr ""
-
-#: ../settings.ui.h:132
-msgid ""
-"Time after hiding the keyboard in seconds until latched and locked modifiers "
-"and layer keys are released automatically. Leave at 0.0 to not automatically "
-"release them."
-msgstr ""
-
-#: ../settings.ui.h:133
-msgid "0,00"
-msgstr "0,00"
-
-#: ../settings.ui.h:134
-msgid "Key Behavior"
-msgstr "Tangentbeteende"
-
-#: ../settings.ui.h:135
-msgid "_Touch input:"
-msgstr "_Pekskärmsinmatning:"
-
-#: ../settings.ui.h:136
-msgid "_Input event source:"
-msgstr "_Mata in händelsekälla:"
-
-#: ../settings.ui.h:137
-msgid ""
-"Choose &apos;XInput&apos; for more reliable typing into text entries with "
-"pop-up selections. The &apos;GTK&apos; option offers better compatibility, "
-"but typing may fail in the presence of pointer grabs, e.g. with open pop-up "
-"windows."
-msgstr ""
-"Välj &apos;XInput&apos; för mer pålitlig inmatning i textrutor med "
-"förslagsbubblor. &apos;GTK&apos;-alternativet ger bättre kompatibilitet, men "
-"inmatningen kan misslyckas om andra fönster tar kontroll över pekaren."
-
-#: ../settings.ui.h:138
-msgid ""
-"Choose 'XInput' for more reliable typing into text entries with pop-up "
-"selections. The 'GTK' option offers better compatibility, but typing may "
-"fail in the presence of pointer grabs, e.g. with open pop-up windows."
-msgstr ""
-"Välj ”XInput” för mer pålitlig inmatning i textrutor med förslagsbubblor. "
-"”GTK”-alternativet ger bättre kompatibilitet, men inmatningen kan misslyckas "
-"om andra fönster tar kontroll över pekaren."
-
-#: ../settings.ui.h:139
-msgid "Input Options"
-msgstr "Inmatningsalternativ"
-
-#: ../settings.ui.h:140
-msgid "Delay between keystrokes in milliseconds:"
-msgstr "Fördröjning mellan tangenttryck i millisekunder:"
-
-#: ../settings.ui.h:141
-msgid ""
-"Increase this if key-strokes get lost when inserting word suggestions or "
-"snippets into Firefox or other Gtk-2 applications. Has no effect on Gtk-3 "
-"applications."
-msgstr ""
-"Öka det här om tangenttryck tappas bort när ordförslag eller snuttar matas "
-"in i Firefox eller andra Gtk-2-program. Påverkar inte Gtk-3-program."
-
-#: ../settings.ui.h:142
-msgid "Key-stroke generator"
-msgstr "Tangenttryckgenerator"
-
-#: ../settings.ui.h:143
-msgid ""
-"<b>Auto</b>: let Onboard decide, recommended.\n"
-"\n"
-"<b>XTest</b> is the default for all X based desktop environments.\n"
-"\n"
-"<b>uinput</b> should be available on all linux-based systems, including X, "
-"Wayland and MIR-based desktops, but requires write permission for /dev/"
-"uinput.\n"
-"\n"
-"<b>AT-SPI</b> has limited support for key-stroke generation, and is only "
-"recommended for testing."
-msgstr ""
-"<b>Auto</b>: Låt Onboard bestämma, rekommenderas.\n"
-"\n"
-"<b>XTest</b> är förvalet för alla X-baserade skrivbordsmiljöer.\n"
-"\n"
-"<b>uinput</b> bör finnas på alla linux-baserade system, inklusive X, Wayland "
-"och MIR-baserade skrivbord, men kräver skrivtillstånd för /dev/uinput.\n"
-"\n"
-"<b>AT-SPI</b> har begränsat stöd för tangenttryckgenerering och "
-"rekommenderas bara för tester."
-
-#: ../settings.ui.h:150
-msgid "Key-stroke Generation"
-msgstr "Tangenttryckgenerering"
-
-#: ../settings.ui.h:151
-msgid "Popup time [s]:"
-msgstr ""
-
-#: ../settings.ui.h:152
-msgid "Affects how long a key popup stays open."
-msgstr ""
-
-#: ../settings.ui.h:153
-msgid "0.15"
-msgstr ""
-
-#: ../settings.ui.h:154
+#~ msgid "Key-repeat"
+#~ msgstr "Tangentupprepning"
+
+#~ msgid "International character selection"
+#~ msgstr "Val av internationella tecken"
+
+#~ msgid "never"
+#~ msgstr "aldrig"
+
+#~ msgid "1 minute"
+#~ msgstr "1 minut"
+
+#~ msgid "5 minutes"
+#~ msgstr "5 minuter"
+
+#~ msgid "10 minutes"
+#~ msgstr "10 minuter"
+
+#~ msgid "30 minutes"
+#~ msgstr "30 minuter"
+
+#~ msgid "1 hour"
+#~ msgstr "1 timme"
+
+#~ msgid "3 hours"
+#~ msgstr "3 timmar"
+
+#~ msgid "forever"
+#~ msgstr "alltid"
+
+#~ msgid "GTK"
+#~ msgstr "GTK"
+
+#~ msgid "XInput"
+#~ msgstr "XInput"
+
+#~ msgid "Auto"
+#~ msgstr "Auto"
+
+#~ msgid "XTest"
+#~ msgstr "XTest"
+
+#~ msgid "uinput"
+#~ msgstr "uinput"
+
+#~ msgid "AT-SPI"
+#~ msgstr "AT-SPI"
+
+#~ msgid "Remember nothing"
+#~ msgstr "Kom inte ihåg något"
+
+#~ msgid "Don't remember new words"
+#~ msgstr "Kom inte ihåg nya ord"
+
+#~ msgid "None"
+#~ msgstr "Ingen"
+
+#~ msgid "Movement only"
+#~ msgstr "Bara rörelse"
+
+#~ msgid "Corners"
+#~ msgstr "Hörn"
+
+#~ msgid "All corners and edges"
+#~ msgstr "Alla hörn och kanter"
+
+#~ msgid "General"
+#~ msgstr "Allmänt"
+
+#~ msgid "Window"
+#~ msgstr "Fönster"
+
+#~ msgid "Layout"
+#~ msgstr "Layout"
+
+#~ msgid "Theme"
+#~ msgstr "Tema"
+
+#~ msgid "Keyboard"
+#~ msgstr "Tangentbord"
+
+#~ msgid "Typing Assistance"
+#~ msgstr "Skrivhjälp"
+
+#~ msgid "Universal Access"
+#~ msgstr "Hjälpmedel"
+
+#~ msgid "Latch, then lock"
+#~ msgstr "Kläm, sedan lås"
+
+#~ msgid "Latch, double-click to lock"
+#~ msgstr "Kläm, dubbelklick för att låsa"
+
+#~ msgid "Latch only"
+#~ msgstr "Kläm bara"
+
+#~ msgid "Lock only"
+#~ msgstr "Lås bara"
+
+#~ msgid "Push button"
+#~ msgstr "Tryckknapp"
+
+#~ msgid "none"
+#~ msgstr "inga"
+
+#~ msgid "single-touch"
+#~ msgstr "enkeltryck"
+
+#~ msgid "multi-touch"
+#~ msgstr "flertryck"
+
+#~ msgctxt "Label of the main close button of the preferences dialog."
+#~ msgid "_Close"
+#~ msgstr "St_äng"
+
+#~ msgid "_Auto-show when editing text"
+#~ msgstr "Visa _automatiskt när text redigeras"
+
+#~ msgid ""
+#~ "Show Onboard when there is a recognized text window in focus. Requires "
+#~ "Gnome Accessibility."
+#~ msgstr ""
+#~ "Visa Onboard när ett textfönster har fokus. Kräver Gnome Accessibility "
+#~ "(Hjälpmedel)."
+
+#~ msgid "Start Onboard _hidden"
+#~ msgstr "Starta Onboard _dold"
+
+#~ msgid "Start Onboard hidden."
+#~ msgstr "Starta Onboard dold."
+
+#~ msgid "Show/Hide options"
+#~ msgstr "Visa/Dölj alternativ"
+
+#~ msgid "Show floating _icon when Onboard is hidden"
+#~ msgstr "Visa flytande _ikon när Onboard har dolts"
+
+#~ msgid ""
+#~ "Show a floating icon on the desktop when Onboard is hidden. A click on "
+#~ "the icon makes Onboard reappear."
+#~ msgstr ""
+#~ "Visa en flytande ikon på skrivbordet när Onboard är dolt. Genom att "
+#~ "klicka på ikonen kommer Onboard att visa sig på nytt."
+
+#~ msgid "Show when _unlocking the screen"
+#~ msgstr "Visa när skärmen låses _upp"
+
+#~ msgid ""
+#~ "Show Onboard when the dialog to unlock the screen appears; this way "
+#~ "Onboard can be used for example to enter the password to dismiss the "
+#~ "screensaver when it is set to ask for it."
+#~ msgstr ""
+#~ "Visa Onboard när dialogen för att låsa upp skärmen visar sig. På detta "
+#~ "sätt kan Onboard användas till att skriva in lösenordet och stänga av "
+#~ "skärmsläckaren."
+
+#~ msgid "Show _tooltips"
+#~ msgstr "Visa info_ruta"
+
+#~ msgid "Show tooltips for the keyboard&apos;s buttons."
+#~ msgstr "Visa inforuta för tangentbordets knappar."
+
+#~ msgid "Show tooltips for the keyboard's buttons."
+#~ msgstr "Visa inforuta för tangentbordets knappar."
+
+#~ msgid "_Show status icon"
+#~ msgstr "_Visa statusikon"
+
+#~ msgid "Show the status item. A click on that icon hides or shows Onboard."
+#~ msgstr ""
+#~ "Visa statusobjektet. Genom att klicka på ikonen kan Onboard visas eller "
+#~ "döljas."
+
+#~ msgid ""
+#~ "<b>AppIndicator</b> (default) is recommended for broadest compatibility. "
+#~ "A middle click on the icon shows the keyboard. In KDE Plasma a left click "
+#~ "does the same.\n"
+#~ "\n"
+#~ "<b>GtkStatusIcon</b> isn't supported well anymore by various desktop "
+#~ "environments, but generally allows to show the keyboard on left click.\n"
+#~ "\n"
+#~ "Requires restart."
+#~ msgstr ""
+#~ "<b>AppIndicator</b> (förval) rekommenderas för bredast kompatibilitet. "
+#~ "Ett mittenklick på ikonen visar tangentbordet. I KDE Plasma används ett "
+#~ "vänsterklick istället.\n"
+#~ "\n"
+#~ "<b>GtkStatusIcon</b> stöds inte särskilt väl längre av de olika "
+#~ "skrivbordsmiljöerna, men låter dig generellt visa tangentbordet med ett "
+#~ "vänsterklick.\n"
+#~ "\n"
+#~ "Kräver omstart."
+
+#~ msgid "Desktop Integration"
+#~ msgstr "Skrivbordsintegration"
+
+#~ msgid "Dock to screen edge"
+#~ msgstr "Fäst vid skärmkanten"
+
+#~ msgid "Dock the keyboard to the edge of the screen."
+#~ msgstr "Fäst tangentbordet till skärmkanten."
+
+#~ msgctxt "Label of settings button on preferences page Window."
+#~ msgid "_Settings"
+#~ msgstr "In_ställningar"
+
+#~ msgid "Docking"
+#~ msgstr "Dockning"
+
+#~ msgid "Show window _decoration"
+#~ msgstr "Visa fönster_dekorationer"
+
+#~ msgid "Show window caption and frame."
+#~ msgstr "Visa fönstertitel och ram."
+
+#~ msgid "Show always on visible _workspace"
+#~ msgstr "Visa alltid på synlig _arbetsyta"
+
+#~ msgid "&quot;Sticky&quot; mode for keyboard and floating icon."
+#~ msgstr "&quot;Klistrigt&quot; läge för tangentbord och flytande ikon."
+
+#~ msgid "\"Sticky\" mode for keyboard and floating icon."
+#~ msgstr "”Klistrigt” läge för tangentbord och flytande ikon."
+
+#~ msgid "_Force window to top"
+#~ msgstr "_Tvinga fönstret till toppen"
+
+#~ msgid "Try harder to keep Onboard above anything on-screen."
+#~ msgstr ""
+#~ "Gör större ansträngningar för att hålla Onboard ovanför allt annat som "
+#~ "visas på skärmen."
+
+#~ msgid "Keep _aspect ratio"
+#~ msgstr "Behåll _bildförhållande"
+
+#~ msgid "Constrain window size to the layout&apos;s aspect ratio."
+#~ msgstr "Begränsa fönsterstorleken till layoutens proportioner."
+
+#~ msgid "Constrain window size to the layout's aspect ratio."
+#~ msgstr "Begränsa fönsterstorleken till layoutens proportioner."
+
+#~ msgid "Floating Window Options"
+#~ msgstr "Valmöjligheter för flytande fönster"
+
+#~ msgid "Window options"
+#~ msgstr "Fönsteralternativ"
+
+#~ msgid "Wind_ow:"
+#~ msgstr "Fönste_r:"
+
+#~ msgid "Transparency of the whole keyboard window. Requires compositing."
+#~ msgstr ""
+#~ "Genomskinlighet för hela tangentbordsfönstret. Kräver sammansatt grafik."
+
+#~ msgid "_Background:"
+#~ msgstr "_Bakgrund:"
+
+#~ msgid "Transparency of the keyboard background"
+#~ msgstr "Genomskinlighet för tangentbordets bakgrund"
+
+#~ msgid "_No background"
+#~ msgstr "_Ingen bakgrund"
+
+#~ msgid "Show the desktop through the gaps between keys."
+#~ msgstr "Visa skrivbordet genom mellanrummen mellan tangenterna."
+
+#~ msgid "Transparency"
+#~ msgstr "Genomskinlighet"
+
+#~ msgid "Set _transparency to"
+#~ msgstr "Sätt _genomskinlighet till"
+
+#~ msgid "Enable inactive transparency. Requires compositing."
+#~ msgstr "Aktivera genomskinlighet vid inaktivitet. Kräver sammansatt grafik."
+
+#~ msgid ""
+#~ "Transparency when the pointer leaves the keyboard. Requires compositing."
+#~ msgstr ""
+#~ "Genomskinlighet när muspekaren lämnar tangentbordet. Kräver komposition."
+
+#~ msgid "after"
+#~ msgstr "efter"
+
+#~ msgid "Delay in seconds until the inactive transparency takes effect."
+#~ msgstr ""
+#~ "Fördröjning i sekunder tills den inaktiva genomskinligheten träder i "
+#~ "kraft."
+
+#~ msgid "seconds"
+#~ msgstr "sekunder"
+
+#~ msgid "When Inactive"
+#~ msgstr "Vid inaktivitet"
+
+#~ msgid "Resize Protection"
+#~ msgstr "Förstoringsskydd"
+
+#~ msgid "Name"
+#~ msgstr "Namn"
+
+#~ msgid "Description"
+#~ msgstr "Beskrivning"
+
+#~ msgctxt "Label of new layout button on preferences page Layout."
+#~ msgid "_New"
+#~ msgstr "_Ny"
+
+#~ msgctxt "Label of delete layout button on preferences page Layout."
+#~ msgid "_Delete"
+#~ msgstr "Ra_dera"
+
+#~ msgctxt "Label of open folder button on preferences page Layout."
+#~ msgid "_Open layouts folder"
+#~ msgstr "_Öppna layoutmapp"
+
+#~ msgctxt "Label of about layout button on preferences page Layout."
+#~ msgid "_About"
+#~ msgstr "_Om"
+
+#~ msgctxt "Label of new theme button on preferences page Theme."
+#~ msgid "_New"
+#~ msgstr "_Nytt"
+
+#~ msgctxt "Label of delete theme  button on preferences page Theme."
+#~ msgid "_Delete"
+#~ msgstr "Ra_dera"
+
+#~ msgctxt "Label of customize theme button on preferences page Theme."
+#~ msgid "C_ustomize theme"
+#~ msgstr "A_npassa tema"
+
+#~ msgid "Follow _system theme"
+#~ msgstr "Följ _systemtema"
+
+#~ msgid "Remember what Onboard theme was last used for every system theme."
+#~ msgstr ""
+#~ "Kom ihåg vilket Onboard-tema som användes senast för varje systemtema."
+
+#~ msgid ""
+#~ "Snippets are pieces of text which are entered when the corresponding "
+#~ "button in Onboard is pressed."
+#~ msgstr ""
+#~ "Textsnuttar är delar av text som matas in när motsvarande knapp i Onboard "
+#~ "trycks ner."
+
+#~ msgctxt "Label of add snippet button on preferences page Snippets."
+#~ msgid "_Add"
+#~ msgstr "_Lägg till"
+
+#~ msgctxt "Label of remove snippet button on preferences page Snippets."
+#~ msgid "_Remove"
+#~ msgstr "Ta bo_rt"
+
+#~ msgid "Play sound"
+#~ msgstr "Spela upp ljud"
+
+#~ msgid "Play click sound on keypress."
+#~ msgstr "Spela klickljud vid tangenttryck."
+
+#~ msgid "Show label popups"
+#~ msgstr "Visa etikettbubblor"
+
+#~ msgid "Show label popups above pressed keys."
+#~ msgstr "Visa etikettbubblor ovanför nedtryckta tangenter."
+
+#~ msgid "Key-press Feedback"
+#~ msgstr "Återkoppling för tangenttryck"
+
+#~ msgid "Show secondary labels"
+#~ msgstr "Visa sekundära etiketter"
+
+#~ msgid "Show characters reachable with or without the shift key."
+#~ msgstr "Visa tecken som kan nås med eller utan skifttangenten."
+
+#~ msgid "Key Labels"
+#~ msgstr "Tangentetiketter"
+
+#~ msgid "_Long press action:"
+#~ msgstr "Åtgärd för _långt tryck:"
+
+#~ msgid ""
+#~ "Choose between key-repeat or long-press menus. Mainly affects alpha-"
+#~ "numeric keys."
+#~ msgstr ""
+#~ "Välj mellan upprepning eller långtrycksmenyer. Påverkar i regel bara "
+#~ "alfanumeriska tangenter."
+
+#~ msgid "Modifier _behavior:"
+#~ msgstr "Modifierar_beteende:"
+
+#~ msgid "Behavior of modifier and layer keys."
+#~ msgstr "Beteende för modifierar- och lagertangenter."
+
+#~ msgid "Modifier auto-release delay in seconds:"
+#~ msgstr "Autosläpp modifierare, fördröjning sekunder:"
+
+#~ msgid ""
+#~ "Seconds of inactivity until active modifiers and layer keys are released. "
+#~ "0 to disable."
+#~ msgstr ""
+#~ "Sekunders inaktivitet innan aktiva modifierar- och lagertangenter släpps. "
+#~ "0 för att inaktivera."
+
+#~ msgid "0,00"
+#~ msgstr "0,00"
+
+#~ msgid "Key Behavior"
+#~ msgstr "Tangentbeteende"
+
+#~ msgid "_Touch input:"
+#~ msgstr "_Pekskärmsinmatning:"
+
+#~ msgid "_Input event source:"
+#~ msgstr "_Mata in händelsekälla:"
+
+#~ msgid ""
+#~ "Choose &apos;XInput&apos; for more reliable typing into text entries with "
+#~ "pop-up selections. The &apos;GTK&apos; option offers better "
+#~ "compatibility, but typing may fail in the presence of pointer grabs, e.g. "
+#~ "with open pop-up windows."
+#~ msgstr ""
+#~ "Välj &apos;XInput&apos; för mer pålitlig inmatning i textrutor med "
+#~ "förslagsbubblor. &apos;GTK&apos;-alternativet ger bättre kompatibilitet, "
+#~ "men inmatningen kan misslyckas om andra fönster tar kontroll över pekaren."
+
+#~ msgid ""
+#~ "Choose 'XInput' for more reliable typing into text entries with pop-up "
+#~ "selections. The 'GTK' option offers better compatibility, but typing may "
+#~ "fail in the presence of pointer grabs, e.g. with open pop-up windows."
+#~ msgstr ""
+#~ "Välj ”XInput” för mer pålitlig inmatning i textrutor med förslagsbubblor. "
+#~ "”GTK”-alternativet ger bättre kompatibilitet, men inmatningen kan "
+#~ "misslyckas om andra fönster tar kontroll över pekaren."
+
+#~ msgid "Input Options"
+#~ msgstr "Inmatningsalternativ"
+
+#~ msgid "Delay between keystrokes in milliseconds:"
+#~ msgstr "Fördröjning mellan tangenttryck i millisekunder:"
+
+#~ msgid ""
+#~ "Increase this if key-strokes get lost when inserting word suggestions or "
+#~ "snippets into Firefox or other Gtk-2 applications. Has no effect on Gtk-3 "
+#~ "applications."
+#~ msgstr ""
+#~ "Öka det här om tangenttryck tappas bort när ordförslag eller snuttar "
+#~ "matas in i Firefox eller andra Gtk-2-program. Påverkar inte Gtk-3-program."
+
+#~ msgid "Key-stroke generator"
+#~ msgstr "Tangenttryckgenerator"
+
+#~ msgid ""
+#~ "<b>Auto</b>: let Onboard decide, recommended.\n"
+#~ "\n"
+#~ "<b>XTest</b> is the default for all X based desktop environments.\n"
+#~ "\n"
+#~ "<b>uinput</b> should be available on all linux-based systems, including "
+#~ "X, Wayland and MIR-based desktops, but requires write permission for /dev/"
+#~ "uinput.\n"
+#~ "\n"
+#~ "<b>AT-SPI</b> has limited support for key-stroke generation, and is only "
+#~ "recommended for testing."
+#~ msgstr ""
+#~ "<b>Auto</b>: Låt Onboard bestämma, rekommenderas.\n"
+#~ "\n"
+#~ "<b>XTest</b> är förvalet för alla X-baserade skrivbordsmiljöer.\n"
+#~ "\n"
+#~ "<b>uinput</b> bör finnas på alla linux-baserade system, inklusive X, "
+#~ "Wayland och MIR-baserade skrivbord, men kräver skrivtillstånd för /dev/"
+#~ "uinput.\n"
+#~ "\n"
+#~ "<b>AT-SPI</b> har begränsat stöd för tangenttryckgenerering och "
+#~ "rekommenderas bara för tester."
+
+#~ msgid "Key-stroke Generation"
+#~ msgstr "Tangenttryckgenerering"
+
 #, fuzzy
-msgid "Animation"
-msgstr "Åtgärd:"
-
-#: ../settings.ui.h:155
-msgid "Advanced"
-msgstr "Avancerad"
-
-#: ../settings.ui.h:156
-msgid ""
-"Show Onboard when there is a recognized text entry in focus. Requires Gnome "
-"Accessibility."
-msgstr ""
-
-#: ../settings.ui.h:157
-msgid "Keyboard movement strategy:"
-msgstr ""
-
-#: ../settings.ui.h:158
-msgid "Chose how the keyboard window moves when a text entry is activated."
-msgstr ""
-
-#: ../settings.ui.h:159
-msgid "_Hide when typing on a physical keyboard"
-msgstr ""
-
-#: ../settings.ui.h:160
-msgid ""
-"Hide Onboard when any key is pressed on a physical keyboard. Requires input "
-"event source \"XInput\"."
-msgstr ""
-"Dölj Onboard när en tangent trycks ned på ett fysiskt tangentbord. Kräver "
-"källa för indatahändelse: \"XInput\"."
-
-#: ../settings.ui.h:161
-msgid "Stay hidden:"
-msgstr "Förbli dolt:"
-
-#: ../settings.ui.h:162
-msgid ""
-"Once hidden by a physical key-press, auto-show is paused. Select the pause "
-"duration here."
-msgstr ""
-"När Onboard döljs av ett fysiskt tangenttryck pausas auto-visa. Välj hur "
-"lång pausen ska vara här."
-
-#: ../settings.ui.h:163
-msgid "Auto-show only in tablet mode"
-msgstr ""
-
-#: ../settings.ui.h:164
-msgid ""
-"Requires driver support for SW_TABLET_MODE and a running instance of acpid."
-msgstr ""
-
-#: ../settings.ui.h:165
-msgid ""
-"Alternatively, some devices generate key events on entering and leaving "
-"tablet mode. Run 'xinput test-xi2 3 ' to find these key presses and enter "
-"their 'detail' values below."
-msgstr ""
-
-#: ../settings.ui.h:166
-msgid "Hotkey received when entering tablet mode:"
-msgstr ""
-
-#: ../settings.ui.h:167
-msgid "Hotkey received when leaving tablet mode:"
-msgstr ""
-
-#: ../settings.ui.h:168
-msgid "File that contains the current device state:"
-msgstr ""
-
-#: ../settings.ui.h:169
-msgid "Regular expression to match for tablet-mode:"
-msgstr ""
-
-#: ../settings.ui.h:170
-msgid "Convertible Devices"
-msgstr ""
-
-#: ../settings.ui.h:171
-msgid "Don't auto-show while external keyboards are connected"
-msgstr ""
-
-#: ../settings.ui.h:172
-msgid "Detected keyboard devices:"
-msgstr ""
-
-#: ../settings.ui.h:173
-msgid ""
-"Check 'Ignore' for devices that are always connected and should not block "
-"auto-show."
-msgstr ""
-
-#: ../settings.ui.h:174
-msgid "External Keyboards"
-msgstr ""
-
-#: ../settings.ui.h:175
-msgid "Show _suggestions"
-msgstr "Visa _förslag"
-
-#: ../settings.ui.h:176
-msgid "Enable word completion and prediction."
-msgstr "Aktivera ordkomplettering och förutsägning."
-
-#: ../settings.ui.h:177
-msgid "Show spelling suggestions"
-msgstr "Visa stavningsförslag"
-
-#: ../settings.ui.h:178
-msgid "Check spelling of the word at or before the cursor."
-msgstr "Kontrollera stavningen av ordet vid eller före markören."
-
-#: ../settings.ui.h:179
-msgid "_Learn from typed text"
-msgstr "_Lär av skriven text"
-
-#: ../settings.ui.h:180
-msgid ""
-"Remember new words, their recency and frequency to improve the suggestions "
-"over time."
-msgstr ""
-"Kom ihåg nya ord, deras aktualitet och frekvens för att förbättra förslagen "
-"över tid."
-
-#: ../settings.ui.h:181
-msgid "Insert word _separators"
-msgstr "Klistra in ord_avdelare"
-
-#: ../settings.ui.h:182
-msgid ""
-"Add and remove spaces when inserting word suggestions followed by "
-"punctuation characters."
-msgstr ""
-"Lägg till och ta bort mellanslag när infört ordförslag följs av skiljetecken."
-
-#: ../settings.ui.h:183
-msgid "Options"
-msgstr "Alternativ"
-
-#: ../settings.ui.h:184
-msgid "Show more suggestions arrow"
-msgstr ""
-
-#: ../settings.ui.h:185
-msgid "Step forward and backward through the available suggestions."
-msgstr ""
-
-#: ../settings.ui.h:186
-msgid "Show button to pause learning"
-msgstr "Visa knapp för att stanna upp inlärning"
-
-#: ../settings.ui.h:187
-msgid "Words typed while this button is pressed won't be remembered."
-msgstr ""
-"Ord som skrivs medan denna knapp är intryckt kommer inte bli ihågkomna."
-
-#: ../settings.ui.h:188
-msgid "Show lan_guage switcher"
-msgstr "Visa språ_kbytare"
-
-#: ../settings.ui.h:189
-msgid "Show a button for language selection."
-msgstr "Visa en knapp för val av språk."
-
-#: ../settings.ui.h:190
-msgid "Buttons"
-msgstr "Knappar"
-
-#: ../settings.ui.h:191
-msgid "Word Suggestions"
-msgstr "Ordförslag"
-
-#: ../settings.ui.h:192
-msgid "Auto-capitalize while typing"
-msgstr "Gör automatiskt versalisering vid skrivande"
-
-#: ../settings.ui.h:193
-msgid "Automatically capitalize sentence begins and name words."
-msgstr "Automatisk stor bokstav när mening inleds och för egennamn."
-
-#: ../settings.ui.h:194
-msgid "Auto-correct spelling"
-msgstr "Korrigera stavningen automatiskt"
-
-#: ../settings.ui.h:195
-msgid "Automatically correct the last word."
-msgstr "Korrigera det sista ordet automatiskt."
-
-#: ../settings.ui.h:196
-msgid "The spell check engine to use."
-msgstr "Stavningskontrollmotor att använda."
-
-#: ../settings.ui.h:197
-msgid "Spell-check backend:"
-msgstr "Stavningskontrollbakände:"
-
-#: ../settings.ui.h:198
-msgid "Auto-correction"
-msgstr "Automatisk korrigering"
-
-#: ../settings.ui.h:199
-msgid "While  learning is paused:"
-msgstr "Medan inlärning är pausad:"
-
-#: ../settings.ui.h:200
-msgid "Learning"
-msgstr "Inlärning"
-
-#: ../settings.ui.h:201
-msgid "Enable  keyboard _scanning"
-msgstr "Aktivera tangentbordsavsö_kning"
-
-#: ../settings.ui.h:202
-msgctxt ""
-"Label of keyboard scanning settings button on preferences page Universal "
-"Access."
-msgid "Sc_anner Settings"
-msgstr "Inställningar för avsök_ning"
-
-#: ../settings.ui.h:203
-msgid "Keyboard Scanning"
-msgstr "Tangentbordsavsökning"
-
-#: ../settings.ui.h:204
-msgid "_Delay:"
-msgstr "_Fördröjning:"
-
-#: ../settings.ui.h:205
-msgid "_Motion threshold:"
-msgstr "Tröskelvärde för _rörelse:"
-
-#: ../settings.ui.h:206
-msgid "Time in seconds before a click is triggered."
-msgstr "Tid i sekunder innan ett klick utlöses."
-
-#: ../settings.ui.h:207
-msgid "Distance in pixels before movement will be recognized."
-msgstr "Avstånd i pixlar innan rörelse känns av."
-
-#: ../settings.ui.h:208
-msgid "Hide hover click window"
-msgstr "Dölj uppehållsklickfönster"
-
-#: ../settings.ui.h:209
-msgid "Hide the system-provided hover click window while Onboard is running."
-msgstr "Dölj systemets flytande klickfönster medan Onboard körs."
-
-#: ../settings.ui.h:210
-msgid "Enable click type window on exit"
-msgstr "Aktivera klicktypfönster vid avslut"
-
-#: ../settings.ui.h:211
-msgid ""
-"Always enable the system-provided hover click window when exiting Onboard."
-msgstr "Aktivera alltid systemets flytande klickfönster när Onboard avslutas."
-
-#: ../settings.ui.h:212
-msgid "Hover Click"
-msgstr "Uppehållsklick"
-
-#: ../settings_docking_dialog.ui.h:1
-msgid "Top"
-msgstr "Högst upp"
-
-#: ../settings_docking_dialog.ui.h:2
-msgid "Bottom"
-msgstr "Längst ner"
-
-#: ../settings_docking_dialog.ui.h:3
-msgid "Active Monitor"
-msgstr "Aktiv skärm"
-
-#: ../settings_docking_dialog.ui.h:4
-msgid "Primary Monitor"
-msgstr "Primär skärm"
-
-#: ../settings_docking_dialog.ui.h:5
-msgid "Monitor 0"
-msgstr "Skärm 0"
-
-#: ../settings_docking_dialog.ui.h:6
-msgid "Monitor 1"
-msgstr "Skärm 1"
-
-#: ../settings_docking_dialog.ui.h:7
-msgid "Monitor 2"
-msgstr "Skärm 2"
-
-#: ../settings_docking_dialog.ui.h:8
-msgid "Monitor 3"
-msgstr "Skärm 3"
-
-#: ../settings_docking_dialog.ui.h:9
-msgid "Monitor 4"
-msgstr "Skärm 4"
-
-#: ../settings_docking_dialog.ui.h:10
-msgid "Monitor 5"
-msgstr "Skärm 5"
-
-#: ../settings_docking_dialog.ui.h:11
-msgid "Monitor 6"
-msgstr "Skärm 6"
-
-#: ../settings_docking_dialog.ui.h:12
-msgid "Monitor 7"
-msgstr "Skärm 7"
-
-#: ../settings_docking_dialog.ui.h:13
-msgid "Monitor 8"
-msgstr "Skärm 8"
-
-#: ../settings_docking_dialog.ui.h:14
-msgid "Docking settings"
-msgstr "Dockningsinställningar"
-
-#: ../settings_docking_dialog.ui.h:15
-msgctxt "Label of the close button of the docking settings dialog."
-msgid "_Close"
-msgstr "St_äng"
-
-#: ../settings_docking_dialog.ui.h:16
-msgid "Shrink workarea"
-msgstr "Förminska arbetsyta"
-
-#: ../settings_docking_dialog.ui.h:17
-msgid "Shrink the available space for maximized windows."
-msgstr "Förminska det tillgängliga utrymmet för maximerade fönster."
-
-#: ../settings_docking_dialog.ui.h:18
-msgid "Expand on landscape screens"
-msgstr "Utöka på liggande skärmar"
-
-#: ../settings_docking_dialog.ui.h:19
-msgid "Expand keyboard to the width of the workarea."
-msgstr "Utöka tangentbordet till arbetsytans bredd."
-
-#: ../settings_docking_dialog.ui.h:20
-msgid "Expand on portrait screens"
-msgstr "Utöka på stående skärmar"
-
-#: ../settings_docking_dialog.ui.h:21
-msgid "Dock to screen edge:"
-msgstr "Docka till skärmkant:"
-
-#: ../settings_docking_dialog.ui.h:22
-msgid "Dock to monitor:"
-msgstr "Docka till skärm:"
-
-#: ../settings_scanner_dialog.ui.h:1
-msgid "Automatic scan for 1 switch"
-msgstr "Automatisk skanning för 1 byte"
-
-#: ../settings_scanner_dialog.ui.h:2
-msgid "Critical overscan for 1 switch"
-msgstr "Kritisk avsökning för ett byte"
-
-#: ../settings_scanner_dialog.ui.h:3
-msgid "Step scan for 2 switches"
-msgstr "Stega avsökning för två byten"
-
-#: ../settings_scanner_dialog.ui.h:4
-msgid "Directed scan for 3 or 5 switches"
-msgstr "Riktad skanning för 3 eller 5 byten"
-
-#: ../settings_scanner_dialog.ui.h:5
-msgid "Scanner Settings"
-msgstr "Inställningar för avsökning"
-
-#: ../settings_scanner_dialog.ui.h:6
-msgctxt "Label of the close button of the scanner settings dialog."
-msgid "_Close"
-msgstr "St_äng"
-
-#: ../settings_scanner_dialog.ui.h:7
-msgid "Select a scanning _profile:"
-msgstr "Välj en avsöknings_profil:"
-
-#: ../settings_scanner_dialog.ui.h:8
-msgid "_Step interval:"
-msgstr "_Stegintervall:"
-
-#: ../settings_scanner_dialog.ui.h:9
-msgid "Sc_an cycles:"
-msgstr "Avsökningscykl_er:"
-
-#: ../settings_scanner_dialog.ui.h:10
-msgid ""
-"The time the scanner rests on a key or group before moving to the next. (in "
-"seconds)"
-msgstr ""
-"Tiden som skannern vilar på en tangent eller grupp innan den går vidare till "
-"nästa. (sekunder)"
-
-#: ../settings_scanner_dialog.ui.h:11
-msgid ""
-"The number of times the scanner cycles through the entire keyboard before it "
-"stops."
-msgstr "Antal gånger skannern går igenom hela tangentbordet innan den stannar."
-
-#: ../settings_scanner_dialog.ui.h:12
-msgid "Step _only during switch down"
-msgstr "Ste_ga endast när bytaren är nere"
-
-#: ../settings_scanner_dialog.ui.h:13
-msgid "Progress the highlight only while the switch is held down."
-msgstr "Gå vidare med markeringen endast när bytaren hålls nere."
-
-#: ../settings_scanner_dialog.ui.h:14
-msgid "_Forward interval:"
-msgstr "_Framåtintervall:"
-
-#: ../settings_scanner_dialog.ui.h:15
-msgid "_Backtrack interval:"
-msgstr "_Bakåtintervall:"
-
-#: ../settings_scanner_dialog.ui.h:16
-msgid ""
-"The time the scanner rests on a key  while progressing forward. (in seconds)"
-msgstr "Tiden skannern vilar på en tangent innan den jobbar vidare. (sekunder)"
-
-#: ../settings_scanner_dialog.ui.h:17
-msgid ""
-"The time the scanner rests on a key  while moving backwards. (in seconds)"
-msgstr "Tiden skannern vilar på en tangent innan den jobbar bakåt. (sekunder)"
-
-#: ../settings_scanner_dialog.ui.h:18
-msgid "Backtrack _steps:"
-msgstr "Bakåt_steg:"
-
-#: ../settings_scanner_dialog.ui.h:19
-msgid "The number of keys the scanner steps back before moving forward again."
-msgstr "Antal tangenter skannern stegar bakåt innan den går framåt igen."
-
-#: ../settings_scanner_dialog.ui.h:20
-msgid "_Alternate switch actions"
-msgstr "_Alternativa bytåtgärder"
-
-#: ../settings_scanner_dialog.ui.h:21
-msgid ""
-"Swap the scan actions after every key activation. The Step action will "
-"become the Activate action and vice versa."
-msgstr ""
-"Byt skanneråtgärder efter varje tangentaktivering. Stegåtgärden kommer bli "
-"Aktiveringsåtgärden, och vice versa."
-
-#: ../settings_scanner_dialog.ui.h:22
-msgid "Profiles"
-msgstr "Profiler"
-
-#: ../settings_scanner_dialog.ui.h:23
-msgid "_Select an input device:"
-msgstr "_Välj en inmatningsenhet:"
-
-#: ../settings_scanner_dialog.ui.h:24
-msgid "_Use this device only for scanning"
-msgstr "A_nvänd endast denna enhet för avsökning"
-
-#: ../settings_scanner_dialog.ui.h:25
-msgid ""
-"The selected device should not control the system mouse cursor or the "
-"keyboard caret."
-msgstr ""
-"Den valda enheten bör inte kontrollera systemets muspekare eller "
-"tangentbordets markör."
-
-#: ../settings_scanner_dialog.ui.h:26
-msgid "Input Device"
-msgstr "Inmatningsenhet"
-
-#: ../settings_theme_dialog.ui.h:1
-msgid "Customize Theme"
-msgstr "Anpassa tema"
-
-#: ../settings_theme_dialog.ui.h:2
-msgctxt "Label of the revert button of the theme settings dialog."
-msgid "_Revert"
-msgstr "_Återställ"
-
-#: ../settings_theme_dialog.ui.h:3
-msgctxt "Label of the close button of the theme settings dialog."
-msgid "_Close"
-msgstr "St_äng"
-
-#: ../settings_theme_dialog.ui.h:4
-msgid "Color Sche_me"
-msgstr "Färgsche_ma"
-
-#: ../settings_theme_dialog.ui.h:7
-msgid "_Angle:"
-msgstr "_Vinkel:"
-
-#: ../settings_theme_dialog.ui.h:8
-msgid "Light Direction"
-msgstr "Ljusriktning"
-
-#: ../settings_theme_dialog.ui.h:10
-msgid "_Style:"
-msgstr "_Stil:"
-
-#: ../settings_theme_dialog.ui.h:11
-msgid "R_oundness:"
-msgstr "R_undhet:"
-
-#: ../settings_theme_dialog.ui.h:12
-msgid "S_ize:"
-msgstr "St_orlek:"
-
-#: ../settings_theme_dialog.ui.h:13
-msgid "B_order width:"
-msgstr "Kantbre_dd:"
-
-#: ../settings_theme_dialog.ui.h:14
-msgid "Key Style"
-msgstr "Tangentstil"
-
-#: ../settings_theme_dialog.ui.h:15
-msgid "_Key:"
-msgstr "_Tangent:"
-
-#: ../settings_theme_dialog.ui.h:16
-msgid "_Border:"
-msgstr "_Kant:"
-
-#: ../settings_theme_dialog.ui.h:17
-msgid "Gradients"
-msgstr "Gradienter"
-
-#: ../settings_theme_dialog.ui.h:18
-msgid "_Strength:"
-msgstr "_Styrka:"
-
-#: ../settings_theme_dialog.ui.h:19
-msgid "Shadow"
-msgstr "Skugga"
-
-#: ../settings_theme_dialog.ui.h:20
-msgid "Keys"
-msgstr "Tangenter"
-
-#: ../settings_theme_dialog.ui.h:21
-msgid "_Font:"
-msgstr "T_ypsnitt:"
-
-#: ../settings_theme_dialog.ui.h:22
-msgid "_Attributes:"
-msgstr "_Attribut:"
-
-#: ../settings_theme_dialog.ui.h:23
-msgid "Font"
-msgstr "Typsnitt"
-
-#: ../settings_theme_dialog.ui.h:24
-msgid "I_ndependent size"
-msgstr "Oberoe_nde storlek"
-
-#: ../settings_theme_dialog.ui.h:25
-msgid "_Super key:"
-msgstr "_Supertangent:"
-
-#: ../settings_theme_dialog.ui.h:26
-msgid "Label Override"
-msgstr "Åsidosätt etikett"
-
-#: ../settings_theme_dialog.ui.h:27
-msgid "Labels"
-msgstr "Etiketter"
+#~ msgid "Animation"
+#~ msgstr "Åtgärd:"
+
+#~ msgid "Advanced"
+#~ msgstr "Avancerad"
+
+#~ msgid ""
+#~ "Hide Onboard when any key is pressed on a physical keyboard. Requires "
+#~ "input event source \"XInput\"."
+#~ msgstr ""
+#~ "Dölj Onboard när en tangent trycks ned på ett fysiskt tangentbord. Kräver "
+#~ "källa för indatahändelse: \"XInput\"."
+
+#~ msgid "Stay hidden:"
+#~ msgstr "Förbli dolt:"
+
+#~ msgid ""
+#~ "Once hidden by a physical key-press, auto-show is paused. Select the "
+#~ "pause duration here."
+#~ msgstr ""
+#~ "När Onboard döljs av ett fysiskt tangenttryck pausas auto-visa. Välj hur "
+#~ "lång pausen ska vara här."
+
+#~ msgid "Show _suggestions"
+#~ msgstr "Visa _förslag"
+
+#~ msgid "Enable word completion and prediction."
+#~ msgstr "Aktivera ordkomplettering och förutsägning."
+
+#~ msgid "Show spelling suggestions"
+#~ msgstr "Visa stavningsförslag"
+
+#~ msgid "Check spelling of the word at or before the cursor."
+#~ msgstr "Kontrollera stavningen av ordet vid eller före markören."
+
+#~ msgid "_Learn from typed text"
+#~ msgstr "_Lär av skriven text"
+
+#~ msgid ""
+#~ "Remember new words, their recency and frequency to improve the "
+#~ "suggestions over time."
+#~ msgstr ""
+#~ "Kom ihåg nya ord, deras aktualitet och frekvens för att förbättra "
+#~ "förslagen över tid."
+
+#~ msgid "Insert word _separators"
+#~ msgstr "Klistra in ord_avdelare"
+
+#~ msgid ""
+#~ "Add and remove spaces when inserting word suggestions followed by "
+#~ "punctuation characters."
+#~ msgstr ""
+#~ "Lägg till och ta bort mellanslag när infört ordförslag följs av "
+#~ "skiljetecken."
+
+#~ msgid "Options"
+#~ msgstr "Alternativ"
+
+#~ msgid "Show button to pause learning"
+#~ msgstr "Visa knapp för att stanna upp inlärning"
+
+#~ msgid "Words typed while this button is pressed won't be remembered."
+#~ msgstr ""
+#~ "Ord som skrivs medan denna knapp är intryckt kommer inte bli ihågkomna."
+
+#~ msgid "Show lan_guage switcher"
+#~ msgstr "Visa språ_kbytare"
+
+#~ msgid "Show a button for language selection."
+#~ msgstr "Visa en knapp för val av språk."
+
+#~ msgid "Buttons"
+#~ msgstr "Knappar"
+
+#~ msgid "Word Suggestions"
+#~ msgstr "Ordförslag"
+
+#~ msgid "Auto-capitalize while typing"
+#~ msgstr "Gör automatiskt versalisering vid skrivande"
+
+#~ msgid "Automatically capitalize sentence begins and name words."
+#~ msgstr "Automatisk stor bokstav när mening inleds och för egennamn."
+
+#~ msgid "Auto-correct spelling"
+#~ msgstr "Korrigera stavningen automatiskt"
+
+#~ msgid "Automatically correct the last word."
+#~ msgstr "Korrigera det sista ordet automatiskt."
+
+#~ msgid "The spell check engine to use."
+#~ msgstr "Stavningskontrollmotor att använda."
+
+#~ msgid "Spell-check backend:"
+#~ msgstr "Stavningskontrollbakände:"
+
+#~ msgid "Auto-correction"
+#~ msgstr "Automatisk korrigering"
+
+#~ msgid "While  learning is paused:"
+#~ msgstr "Medan inlärning är pausad:"
+
+#~ msgid "Learning"
+#~ msgstr "Inlärning"
+
+#~ msgid "Enable  keyboard _scanning"
+#~ msgstr "Aktivera tangentbordsavsö_kning"
+
+#~ msgctxt ""
+#~ "Label of keyboard scanning settings button on preferences page Universal "
+#~ "Access."
+#~ msgid "Sc_anner Settings"
+#~ msgstr "Inställningar för avsök_ning"
+
+#~ msgid "Keyboard Scanning"
+#~ msgstr "Tangentbordsavsökning"
+
+#~ msgid "_Delay:"
+#~ msgstr "_Fördröjning:"
+
+#~ msgid "_Motion threshold:"
+#~ msgstr "Tröskelvärde för _rörelse:"
+
+#~ msgid "Time in seconds before a click is triggered."
+#~ msgstr "Tid i sekunder innan ett klick utlöses."
+
+#~ msgid "Distance in pixels before movement will be recognized."
+#~ msgstr "Avstånd i pixlar innan rörelse känns av."
+
+#~ msgid "Hide hover click window"
+#~ msgstr "Dölj uppehållsklickfönster"
+
+#~ msgid ""
+#~ "Hide the system-provided hover click window while Onboard is running."
+#~ msgstr "Dölj systemets flytande klickfönster medan Onboard körs."
+
+#~ msgid "Enable click type window on exit"
+#~ msgstr "Aktivera klicktypfönster vid avslut"
+
+#~ msgid ""
+#~ "Always enable the system-provided hover click window when exiting Onboard."
+#~ msgstr ""
+#~ "Aktivera alltid systemets flytande klickfönster när Onboard avslutas."
+
+#~ msgid "Hover Click"
+#~ msgstr "Uppehållsklick"
+
+#~ msgid "Top"
+#~ msgstr "Högst upp"
+
+#~ msgid "Bottom"
+#~ msgstr "Längst ner"
+
+#~ msgid "Active Monitor"
+#~ msgstr "Aktiv skärm"
+
+#~ msgid "Primary Monitor"
+#~ msgstr "Primär skärm"
+
+#~ msgid "Monitor 0"
+#~ msgstr "Skärm 0"
+
+#~ msgid "Monitor 1"
+#~ msgstr "Skärm 1"
+
+#~ msgid "Monitor 2"
+#~ msgstr "Skärm 2"
+
+#~ msgid "Monitor 3"
+#~ msgstr "Skärm 3"
+
+#~ msgid "Monitor 4"
+#~ msgstr "Skärm 4"
+
+#~ msgid "Monitor 5"
+#~ msgstr "Skärm 5"
+
+#~ msgid "Monitor 6"
+#~ msgstr "Skärm 6"
+
+#~ msgid "Monitor 7"
+#~ msgstr "Skärm 7"
+
+#~ msgid "Monitor 8"
+#~ msgstr "Skärm 8"
+
+#~ msgid "Docking settings"
+#~ msgstr "Dockningsinställningar"
+
+#~ msgctxt "Label of the close button of the docking settings dialog."
+#~ msgid "_Close"
+#~ msgstr "St_äng"
+
+#~ msgid "Shrink workarea"
+#~ msgstr "Förminska arbetsyta"
+
+#~ msgid "Shrink the available space for maximized windows."
+#~ msgstr "Förminska det tillgängliga utrymmet för maximerade fönster."
+
+#~ msgid "Expand on landscape screens"
+#~ msgstr "Utöka på liggande skärmar"
+
+#~ msgid "Expand keyboard to the width of the workarea."
+#~ msgstr "Utöka tangentbordet till arbetsytans bredd."
+
+#~ msgid "Expand on portrait screens"
+#~ msgstr "Utöka på stående skärmar"
+
+#~ msgid "Dock to screen edge:"
+#~ msgstr "Docka till skärmkant:"
+
+#~ msgid "Dock to monitor:"
+#~ msgstr "Docka till skärm:"
+
+#~ msgid "Automatic scan for 1 switch"
+#~ msgstr "Automatisk skanning för 1 byte"
+
+#~ msgid "Critical overscan for 1 switch"
+#~ msgstr "Kritisk avsökning för ett byte"
+
+#~ msgid "Step scan for 2 switches"
+#~ msgstr "Stega avsökning för två byten"
+
+#~ msgid "Directed scan for 3 or 5 switches"
+#~ msgstr "Riktad skanning för 3 eller 5 byten"
+
+#~ msgid "Scanner Settings"
+#~ msgstr "Inställningar för avsökning"
+
+#~ msgctxt "Label of the close button of the scanner settings dialog."
+#~ msgid "_Close"
+#~ msgstr "St_äng"
+
+#~ msgid "Select a scanning _profile:"
+#~ msgstr "Välj en avsöknings_profil:"
+
+#~ msgid "_Step interval:"
+#~ msgstr "_Stegintervall:"
+
+#~ msgid "Sc_an cycles:"
+#~ msgstr "Avsökningscykl_er:"
+
+#~ msgid ""
+#~ "The time the scanner rests on a key or group before moving to the next. "
+#~ "(in seconds)"
+#~ msgstr ""
+#~ "Tiden som skannern vilar på en tangent eller grupp innan den går vidare "
+#~ "till nästa. (sekunder)"
+
+#~ msgid ""
+#~ "The number of times the scanner cycles through the entire keyboard before "
+#~ "it stops."
+#~ msgstr ""
+#~ "Antal gånger skannern går igenom hela tangentbordet innan den stannar."
+
+#~ msgid "Step _only during switch down"
+#~ msgstr "Ste_ga endast när bytaren är nere"
+
+#~ msgid "Progress the highlight only while the switch is held down."
+#~ msgstr "Gå vidare med markeringen endast när bytaren hålls nere."
+
+#~ msgid "_Forward interval:"
+#~ msgstr "_Framåtintervall:"
+
+#~ msgid "_Backtrack interval:"
+#~ msgstr "_Bakåtintervall:"
+
+#~ msgid ""
+#~ "The time the scanner rests on a key  while progressing forward. (in "
+#~ "seconds)"
+#~ msgstr ""
+#~ "Tiden skannern vilar på en tangent innan den jobbar vidare. (sekunder)"
+
+#~ msgid ""
+#~ "The time the scanner rests on a key  while moving backwards. (in seconds)"
+#~ msgstr ""
+#~ "Tiden skannern vilar på en tangent innan den jobbar bakåt. (sekunder)"
+
+#~ msgid "Backtrack _steps:"
+#~ msgstr "Bakåt_steg:"
+
+#~ msgid ""
+#~ "The number of keys the scanner steps back before moving forward again."
+#~ msgstr "Antal tangenter skannern stegar bakåt innan den går framåt igen."
+
+#~ msgid "_Alternate switch actions"
+#~ msgstr "_Alternativa bytåtgärder"
+
+#~ msgid ""
+#~ "Swap the scan actions after every key activation. The Step action will "
+#~ "become the Activate action and vice versa."
+#~ msgstr ""
+#~ "Byt skanneråtgärder efter varje tangentaktivering. Stegåtgärden kommer "
+#~ "bli Aktiveringsåtgärden, och vice versa."
+
+#~ msgid "Profiles"
+#~ msgstr "Profiler"
+
+#~ msgid "_Select an input device:"
+#~ msgstr "_Välj en inmatningsenhet:"
+
+#~ msgid "_Use this device only for scanning"
+#~ msgstr "A_nvänd endast denna enhet för avsökning"
+
+#~ msgid ""
+#~ "The selected device should not control the system mouse cursor or the "
+#~ "keyboard caret."
+#~ msgstr ""
+#~ "Den valda enheten bör inte kontrollera systemets muspekare eller "
+#~ "tangentbordets markör."
+
+#~ msgid "Input Device"
+#~ msgstr "Inmatningsenhet"
+
+#~ msgid "Customize Theme"
+#~ msgstr "Anpassa tema"
+
+#~ msgctxt "Label of the revert button of the theme settings dialog."
+#~ msgid "_Revert"
+#~ msgstr "_Återställ"
+
+#~ msgctxt "Label of the close button of the theme settings dialog."
+#~ msgid "_Close"
+#~ msgstr "St_äng"
+
+#~ msgid "Color Sche_me"
+#~ msgstr "Färgsche_ma"
+
+#~ msgid "_Angle:"
+#~ msgstr "_Vinkel:"
+
+#~ msgid "Light Direction"
+#~ msgstr "Ljusriktning"
+
+#~ msgid "_Style:"
+#~ msgstr "_Stil:"
+
+#~ msgid "R_oundness:"
+#~ msgstr "R_undhet:"
+
+#~ msgid "S_ize:"
+#~ msgstr "St_orlek:"
+
+#~ msgid "B_order width:"
+#~ msgstr "Kantbre_dd:"
+
+#~ msgid "Key Style"
+#~ msgstr "Tangentstil"
+
+#~ msgid "_Key:"
+#~ msgstr "_Tangent:"
+
+#~ msgid "_Border:"
+#~ msgstr "_Kant:"
+
+#~ msgid "Gradients"
+#~ msgstr "Gradienter"
+
+#~ msgid "_Strength:"
+#~ msgstr "_Styrka:"
+
+#~ msgid "Shadow"
+#~ msgstr "Skugga"
+
+#~ msgid "Keys"
+#~ msgstr "Tangenter"
+
+#~ msgid "_Font:"
+#~ msgstr "T_ypsnitt:"
+
+#~ msgid "_Attributes:"
+#~ msgstr "_Attribut:"
+
+#~ msgid "Font"
+#~ msgstr "Typsnitt"
+
+#~ msgid "I_ndependent size"
+#~ msgstr "Oberoe_nde storlek"
+
+#~ msgid "_Super key:"
+#~ msgstr "_Supertangent:"
+
+#~ msgid "Label Override"
+#~ msgstr "Åsidosätt etikett"
+
+#~ msgid "Labels"
+#~ msgstr "Etiketter"
 
 #~ msgid "Quit onBoard"
 #~ msgstr "Avsluta onBoard"

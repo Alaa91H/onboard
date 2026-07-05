@@ -75,6 +75,35 @@ def get_session_type_label():
     return "X11"
 
 
+def is_xwayland():
+    """
+    True if this process is using the X11 GDK backend while the session
+    itself is Wayland -- i.e. talking to the display via XWayland rather
+    than natively (e.g. GDK_BACKEND=x11 forced, or a toolkit fallback).
+    """
+    display = Gdk.Display.get_default()
+    if display is not None and "X11" in type(display).__name__:
+        if os.environ.get("WAYLAND_DISPLAY"):
+            return True
+        if os.environ.get("XDG_SESSION_TYPE", "").lower() == "wayland":
+            return True
+    return False
+
+
+def get_display_backend_label():
+    """
+    Short human-readable label of the actual display backend in use:
+    'Wayland', 'XWayland', or 'X11'. Intended for status displays
+    (e.g. the indicator menu/tooltip), not for branching logic --
+    use is_wayland() for that.
+    """
+    if is_wayland():
+        return "Wayland"
+    if is_xwayland():
+        return "XWayland"
+    return "X11"
+
+
 def is_kde_plasma():
     """
     True if we're running inside a KDE Plasma session. Used to enable the

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: onboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-08 20:21+0200\n"
+"POT-Creation-Date: 2026-07-05 21:38+0200\n"
 "PO-Revision-Date: 2026-06-08 00:00+0000\n"
 "Last-Translator: dongshengyuan <dongshengyuan@uniontech.com>\n"
 "Language-Team: Tibetan <bo@li.org>\n"
@@ -57,35 +57,35 @@ msgid ""
 "once."
 msgstr "ཚོས་གཞི་ཡིག་ཆ་ནང་key_id '{}'བསྡུར་ཟིན་རྙེད། Key_id རེ་རེ་ལ་ཐེངས་གཅིག་ཙམ་མངོན་དགོས།"
 
-#: ../Onboard/Config.py:243
+#: ../Onboard/Config.py:244
 msgid "Layout file ({}) or name"
 msgstr "བཀོད་གཞི་ཡིག་ཆ་ ({}) ཡང་ན་མིང་།"
 
-#: ../Onboard/Config.py:246
+#: ../Onboard/Config.py:247
 msgid "Theme file (.theme) or name"
 msgstr "ཁ་བྱང་ཡིག་ཆ་ (.theme) ཡང་ན་མིང་།"
 
-#: ../Onboard/Config.py:248
+#: ../Onboard/Config.py:249
 msgid "Window size, widthxheight"
 msgstr "སྒེའུ་ཁུང་གི་ཆེ་ཆུང་། ཞེང་ཚད་xམཐོ་ཚད་"
 
-#: ../Onboard/Config.py:249
+#: ../Onboard/Config.py:250
 msgid "Window x position"
 msgstr "སྒེའུ་ཁུང་གི་x གནས་ས།"
 
-#: ../Onboard/Config.py:250
+#: ../Onboard/Config.py:251
 msgid "Window y position"
 msgstr "སྒེའུ་ཁུང་གི་y གནས་ས།"
 
-#: ../Onboard/Config.py:255
+#: ../Onboard/Config.py:256
 msgid "Start in XEmbed mode, e.g. for gnome-screensaver"
 msgstr "XEmbed ཚུལ་ནང་འགོ་བཙུགས། དཔེར་ན་ gnome-screensaver ལ།"
 
-#: ../Onboard/Config.py:258
+#: ../Onboard/Config.py:259
 msgid "Allow multiple Onboard instances"
 msgstr "Onboard གི་ལས་གཞི་མང་བ་བཀོལ་སྤྱོད་གནང་།"
 
-#: ../Onboard/Config.py:261
+#: ../Onboard/Config.py:262
 msgid ""
 "Silently fail to start in the given desktop environments. DESKTOPS is a "
 "comma-separated list of XDG desktop names, e.g. GNOME for GNOME Shell."
@@ -93,17 +93,17 @@ msgstr ""
 "ཅོག་ངོས་ཁོར་ཡུག་གང་རུང་ནང་སྒུག་མེད་པར་འགོ་ཚུགས་མི་ཐུབ། DESKTOPS ནི་XDG ཅོག་ངོས་མིང་གི་ཤད་འབྱེད་"
 "ཐོ་ཡིག་རེད། དཔེར་ན། GNOME for GNOME Shell།"
 
-#: ../Onboard/Config.py:267
+#: ../Onboard/Config.py:268
 msgid ""
 "Delay showing the initial keyboard window by STARTUP_DELAY seconds (default "
 "0.0)."
 msgstr ""
 
-#: ../Onboard/Config.py:271
+#: ../Onboard/Config.py:272
 msgid "Keep aspect ratio when resizing the window"
 msgstr "སྒེའུ་ཁུང་ཚད་བཅོས་སྐབས་གཟུགས་ཚད་ཉར།"
 
-#: ../Onboard/Config.py:273
+#: ../Onboard/Config.py:274
 msgid ""
 "Override auto-detection and manually select quirks\n"
 "QUIRKS={metacity|compiz|mutter}"
@@ -111,35 +111,35 @@ msgstr ""
 "རང་འགུལ་ངོས་འཛིན་བསྒྱུར་ཏེ་ལག་སོགས་ཀྱིས་གདམ།\n"
 "QUIRKS={metacity|compiz|mutter}"
 
-#: ../Onboard/Config.py:400
+#: ../Onboard/Config.py:401
 msgid "Migrating user directory '{}' to '{}'."
 msgstr "སྤྱོད་མཁན་གྱི་ཡིག་ཆའི་ཕྱོགས་ '{}' ནས་ '{}' ལ་གནས་སྤོ་བྱེད་བཞིན།"
 
 #. honor XDG spec
 #. python >2.5
-#: ../Onboard/Config.py:408
+#: ../Onboard/Config.py:409
 msgid "failed to migrate user directory. "
 msgstr "སྤྱོད་མཁན་གྱི་ཡིག་ཆའི་ཕྱོགས་གནས་སྤོ་མི་ཐུབ། "
 
-#: ../Onboard/Config.py:887
+#: ../Onboard/Config.py:888
 #, python-brace-format
 msgid "layout '{filename}' does not exist"
 msgstr "བཀོད་གཞི་ '{filename}' མེད།"
 
-#: ../Onboard/Config.py:928
+#: ../Onboard/Config.py:929
 #, python-brace-format
 msgid "theme '{filename}' does not exist"
 msgstr "ཁ་བྱང་ '{filename}' མེད།"
 
-#: ../Onboard/Config.py:953
+#: ../Onboard/Config.py:954
 msgid "Loading theme from '{}'"
 msgstr "ཁ་བྱང་ '{}' ནས་ལོད་བྱེད་བཞིན།"
 
-#: ../Onboard/Config.py:957
+#: ../Onboard/Config.py:958
 msgid "Unable to read theme '{}'"
 msgstr "ཁ་བྱང་ '{}' ཀློག་མི་ཐུབ།"
 
-#: ../Onboard/Config.py:1198
+#: ../Onboard/Config.py:1199
 msgid ""
 "Enabling auto-show requires Gnome Accessibility.\n"
 "\n"
@@ -154,7 +154,7 @@ msgstr ""
 "\n"
 "ད་ལྟ་ཐོབ་ལམ་བསྐུལ་སློང་དམ།"
 
-#: ../Onboard/Config.py:1952
+#: ../Onboard/Config.py:1953
 #, python-brace-format
 msgid "color scheme '{filename}' does not exist"
 msgstr "ཚོས་གཞི་ཐིག་དྲིལ་ '{filename}' མེད།"
@@ -232,31 +232,31 @@ msgstr ""
 msgid "Failed to get gsettings value. "
 msgstr "gsettings གི་དོན་རྟགས་ལེན་མི་ཐུབ། "
 
-#: ../Onboard/Indicator.py:56
+#: ../Onboard/Indicator.py:52
 msgid "_Show Onboard"
 msgstr "Onboard མངོན་པར་བྱེད།(_S)"
 
-#: ../Onboard/Indicator.py:57
+#: ../Onboard/Indicator.py:53
 msgid "_Hide Onboard"
 msgstr "Onboard སྦ།(_H)"
 
 #. Translators: label of a menu item. It used to be stock item
 #. STOCK_PREFERENCES until Gtk 3.10 deprecated those.
-#: ../Onboard/Indicator.py:83
+#: ../Onboard/Indicator.py:79
 msgid "_Preferences"
 msgstr ""
 
-#: ../Onboard/Indicator.py:91
+#: ../Onboard/Indicator.py:96
 msgid "_Help"
 msgstr ""
 
 #. Translators: label of a menu item. It used to be stock item
 #. STOCK_QUIT until Gtk 3.10 deprecated those.
-#: ../Onboard/Indicator.py:102
+#: ../Onboard/Indicator.py:107
 msgid "_Quit"
 msgstr "ཕྱིར་འབུད།(_Q)"
 
-#: ../Onboard/Indicator.py:228 ../Onboard/Indicator.py:231
+#: ../Onboard/Indicator.py:237 ../Onboard/Indicator.py:240
 msgid "Onboard on-screen keyboard"
 msgstr "Onboard བརྙན་ཤེལ་མཐེབ་གཞོང་།"
 

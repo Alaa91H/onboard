@@ -234,7 +234,8 @@ class Config(ConfigObject):
             ver = version("onboard")
         except PackageNotFoundError:
             ver = "unknown"
-        ver = ver.replace('.post', '-') 
+        ver = ver.replace('.post', '-')
+        self.version = ver
         # parse command line
         parser = OptionParser(version=ver)
         group = OptionGroup(parser, "General Options")

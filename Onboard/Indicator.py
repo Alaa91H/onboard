@@ -29,6 +29,7 @@ from gi.repository import GObject, Gtk
 
 from Onboard.definitions import StatusIconProviderEnum
 from Onboard.utils import unicode_str, run_script
+from Onboard import WaylandUtils
 
 import logging
 _logger = logging.getLogger("Indicator")
@@ -79,6 +80,15 @@ class ContextMenu(GObject.GObject):
             settings_item.set_use_underline(True)
             settings_item.connect("activate", self._on_settings_clicked)
             menu.append(settings_item)
+
+        item = Gtk.SeparatorMenuItem.new()
+        menu.append(item)
+
+        info_label = Gtk.MenuItem.new_with_label(
+            "Onboard {} ({})".format(
+                config.version, WaylandUtils.get_display_backend_label()))
+        info_label.set_sensitive(False)
+        menu.append(info_label)
 
         item = Gtk.SeparatorMenuItem.new()
         menu.append(item)
@@ -179,6 +189,9 @@ class Indicator():
             backends = [BackendAppIndicator,
                         BackendGtkStatusIcon]
 
+        tooltip = "Onboard {} ({})".format(
+            config.version, WaylandUtils.get_display_backend_label())
+
         self._backend = None
         for backend in backends:
             try:
@@ -194,6 +207,7 @@ class Indicator():
 
         if self._backend is not None:
             self._backend.set_visible(False)
+            self._backend.set_tooltip(tooltip)
 
     def cleanup(self):
         if self._backend:
@@ -231,6 +245,9 @@ class BackendBase():
     def cleanup(self):
         pass
 
+    def set_tooltip(self, text):
+        pass
+
     def get_menu(self):
         return self._menu
 
@@ -244,13 +261,17 @@ class BackendGtkStatusIcon(BackendBase):
 
         self._status_icon = Gtk.StatusIcon(icon_name=self.icon_name)
         self._status_icon.connect("activate",
-                                  lambda x:
-                                  self._menu.on_show_keyboard_toggle())
+                                  lambda icon:
+                                  self._menu.popup(1, Gtk.get_current_event_time(),
+                                                   icon, self._menu_position_func))
         self._status_icon.connect("popup-menu",
                                   self._on_status_icon_popup_menu)
 
     def set_visible(self, visible):
         self._status_icon.set_visible(visible)
+
+    def set_tooltip(self, text):
+        self._status_icon.set_tooltip_text(text)
 
     def _on_status_icon_popup_menu(self, status_icon, button, activate_time):
         """
@@ -317,6 +338,12 @@ class BackendAppIndicator(BackendBase):
 
     def cleanup(self):
         pass
+
+    def set_tooltip(self, text):
+        # AppIndicator has no hover tooltip; title/description is the
+        # closest equivalent and is shown by some desktops (e.g. KDE).
+        self._indicator.set_title(text)
+        self._indicator.set_icon_full(self.icon_name, text)
 
     def set_visible(self, visible):
         self._set_indicator_active(visible)
