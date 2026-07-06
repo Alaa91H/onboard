@@ -63,7 +63,8 @@ clean_commits() {
         | grep -v '^\s*$' \
         | grep -Eiv '^merge (pull request|branch)' \
         | grep -Eiv '^update (version|changelog)' \
-        | sort -u
+        | sort -u \
+        || true
 }
 
 RAW_COMMITS=$(clean_commits "$RAW_COMMITS")
@@ -114,11 +115,90 @@ FIXES=$(filter_new "$FIXES")
 INTERNAL=$(filter_new "$INTERNAL")
 OTHER=$(filter_new "$OTHER")
 
-# --- Exit if nothing new ---
+# --- Release current version (used by both paths below) ---
+
+release_current() {
+    local NEW_VERSION="$LAST_VERSION"
+    local NEW_BASE="$UPSTREAM"
+    echo "→ Releasing current version: $NEW_VERSION"
+    read -p "OK? [Y/n] " c
+    [[ "$c" =~ ^[Nn]$ ]] && exit 1
+
+    local SCRIPT_DIR
+    SCRIPT_DIR="$(dirname "$0")"
+
+    if [ -x "$SCRIPT_DIR/refresh-translations.sh" ]; then
+        echo "🌐 Refreshing translations..."
+        bash "$SCRIPT_DIR/refresh-translations.sh"
+    else
+        echo "⚠️  refresh-translations.sh not found or not executable, skipping."
+    fi
+
+    echo "🐍 Python-Version → $NEW_VERSION"
+    sed -i -E "s/version *= *'[^']*'/version = '${NEW_VERSION}'/" setup.py
+    sed -i "s/^# Onboard .*/# Onboard ${NEW_VERSION}/" README.md
+    if ! git diff --quiet -- setup.py README.md; then
+        git add setup.py README.md
+        git commit -m "Update version: $NEW_VERSION"
+        git push
+    fi
+
+    echo "🔨 Building Debian packages..."
+    bash "$SCRIPT_DIR/build_debs.sh"
+
+    local TAG="v$NEW_VERSION"
+    echo "🏷  Tagging $TAG"
+    git tag -s "$TAG" -m "Release $NEW_VERSION" 2>/dev/null || echo "Tag already exists"
+    git push origin "$TAG" 2>/dev/null || echo "Tag already pushed"
+
+    if command -v gh >/dev/null; then
+        local TARBALL_PATH="$SCRIPT_DIR/build/debs/onboard_${NEW_BASE}.orig.tar.gz"
+        local CHANGELOG_NOTES
+        CHANGELOG_NOTES=$(awk "/^onboard \($NEW_VERSION\)/,/^ -- /" "$CHANGELOG" | grep "^\s*\*" | sed "s/^\s*\* //")
+        if [ -f "$TARBALL_PATH" ]; then
+            gpg --batch --yes --detach-sign --armor "$TARBALL_PATH"
+            if gh release view "$TAG" >/dev/null 2>&1; then
+                gh release upload "$TAG" "$TARBALL_PATH" "${TARBALL_PATH}.asc" --clobber
+                gh release edit "$TAG" --notes "$CHANGELOG_NOTES"
+            else
+                gh release create "$TAG" --title "$NEW_VERSION" --notes "$CHANGELOG_NOTES" "$TARBALL_PATH" "${TARBALL_PATH}.asc"
+            fi
+        else
+            if gh release view "$TAG" >/dev/null 2>&1; then
+                gh release edit "$TAG" --notes "$CHANGELOG_NOTES"
+            else
+                gh release create "$TAG" --title "$NEW_VERSION" --notes "$CHANGELOG_NOTES" || true
+            fi
+        fi
+    fi
+    echo "✅ Fertig."
+}
+
+# --- Version parsing (needed even if nothing new, for the fallback release path) ---
+
+LAST_VERSION=$(dpkg-parsechangelog -S Version)
+UPSTREAM="${LAST_VERSION%-*}"
+REV="${LAST_VERSION##*-}"
+
+IFS='.' read -r MAJOR MINOR PATCH <<< "$UPSTREAM"
+
+# --- Exit if nothing new (but still allow a re-release or a plain version bump) ---
 
 if [ -z "${FEATURES}${FIXES}${INTERNAL}${OTHER}" ]; then
     echo "✔ Keine neuen Changelog-Einträge."
-    exit 0
+    read -p "[c] aktuelle Version erneut releasen  [w] normal weiter (Revision/Version wählen)  [N] abbrechen: " nothing_new_choice
+    case "$nothing_new_choice" in
+        [cC])
+            release_current
+            exit 0
+            ;;
+        [wW])
+            OTHER="No user-visible changes."
+            ;;
+        *)
+            exit 0
+            ;;
+    esac
 fi
 
 # --- Vorschau anzeigen ---
@@ -131,55 +211,13 @@ echo "📋 Neue Einträge:"
 [ -n "$OTHER" ]    && echo "$OTHER"    | sed 's/^/  [Other]   /'
 echo ""
 
-# --- Version parsing ---
-
-LAST_VERSION=$(dpkg-parsechangelog -S Version)
-UPSTREAM="${LAST_VERSION%-*}"
-REV="${LAST_VERSION##*-}"
-
-IFS='.' read -r MAJOR MINOR PATCH <<< "$UPSTREAM"
-
 echo "Aktuelle Version: $LAST_VERSION"
 echo "[b] major  [m] minor  [p] patch  [r] revision (Standard)  [c] release current"
 read -p "Wahl [r]: " choice
 
 if [[ "$choice" =~ ^[cC]$ ]]; then
     DIST="release"
-    NEW_VERSION="$LAST_VERSION"
-    NEW_BASE="$UPSTREAM"
-    echo "→ Releasing current version: $NEW_VERSION"
-    read -p "OK? [Y/n] " c
-    [[ "$c" =~ ^[Nn]$ ]] && exit 1
-
-    SCRIPT_DIR="$(dirname "$0")"
-    echo "🔨 Building Debian packages..."
-    bash "$SCRIPT_DIR/build_debs.sh"
-
-    TAG="v$NEW_VERSION"
-    echo "🏷  Tagging $TAG"
-    git tag -s "$TAG" -m "Release $NEW_VERSION" 2>/dev/null || echo "Tag already exists"
-    git push origin "$TAG" 2>/dev/null || echo "Tag already pushed"
-
-    if command -v gh >/dev/null; then
-        TARBALL_PATH="$SCRIPT_DIR/build/debs/onboard_${NEW_BASE}.orig.tar.gz"
-        CHANGELOG_NOTES=$(awk "/^onboard \($NEW_VERSION\)/,/^ -- /" "$CHANGELOG" | grep "^\s*\*" | sed "s/^\s*\* //")
-        if [ -f "$TARBALL_PATH" ]; then
-            gpg --batch --yes --detach-sign --armor "$TARBALL_PATH"
-            if gh release view "$TAG" >/dev/null 2>&1; then
-                gh release upload "$TAG" "$TARBALL_PATH" "${TARBALL_PATH}.asc" --clobber
-                gh release edit "$TAG" --notes "$CHANGELOG_NOTES"
-            else
-                gh release create "$TAG" --title "Onboard $NEW_VERSION" --notes "$CHANGELOG_NOTES" "$TARBALL_PATH" "${TARBALL_PATH}.asc"
-            fi
-        else
-            if gh release view "$TAG" >/dev/null 2>&1; then
-                gh release edit "$TAG" --notes "$CHANGELOG_NOTES"
-            else
-                gh release create "$TAG" --title "Onboard $NEW_VERSION" --notes "$CHANGELOG_NOTES" || true
-            fi
-        fi
-    fi
-    echo "✅ Fertig."
+    release_current
     exit 0
 fi
 
@@ -305,6 +343,14 @@ git push
 # --- Tag & GitHub Release (nur bei release) ---
 
 if [ "$DIST" = "release" ]; then
+    SCRIPT_DIR="$(dirname "$0")"
+    if [ -x "$SCRIPT_DIR/refresh-translations.sh" ]; then
+        echo "🌐 Refreshing translations..."
+        bash "$SCRIPT_DIR/refresh-translations.sh"
+    else
+        echo "⚠️  refresh-translations.sh not found or not executable, skipping."
+    fi
+
     TAG="v$NEW_VERSION"
     echo "🏷  Tagging $TAG"
 
@@ -330,14 +376,14 @@ if [ "$DIST" = "release" ]; then
             echo "✅ Tarball signed: $ASC_PATH"
 
             gh release create "$TAG" \
-                --title "Onboard $NEW_VERSION" \
+                --title "$NEW_VERSION" \
                 --notes "$NOTES" \
                 "$TARBALL_PATH" \
                 "$ASC_PATH"
         else
             echo "⚠️  Tarball nicht gefunden: $TARBALL_PATH"
             gh release create "$TAG" \
-                --title "Onboard $NEW_VERSION" \
+                --title "$NEW_VERSION" \
                 --notes "$NOTES"
         fi
     fi
