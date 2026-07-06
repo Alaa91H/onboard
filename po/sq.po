@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: onboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-05 21:38+0200\n"
+"POT-Creation-Date: 2026-07-06 14:30+0200\n"
 "PO-Revision-Date: 2011-10-11 14:52+0000\n"
 "Last-Translator: Vilson Gjeci <vilsongjeci@gmail.com>\n"
 "Language-Team: Albanian <sq@li.org>\n"
@@ -257,21 +257,21 @@ msgstr "_Fshihe Onboard"
 
 #. Translators: label of a menu item. It used to be stock item
 #. STOCK_PREFERENCES until Gtk 3.10 deprecated those.
-#: ../Onboard/Indicator.py:79
+#: ../Onboard/Indicator.py:93
 msgid "_Preferences"
 msgstr "_Preferimet"
 
-#: ../Onboard/Indicator.py:96
+#: ../Onboard/Indicator.py:101
 msgid "_Help"
 msgstr "_Ndihmë"
 
 #. Translators: label of a menu item. It used to be stock item
 #. STOCK_QUIT until Gtk 3.10 deprecated those.
-#: ../Onboard/Indicator.py:107
+#: ../Onboard/Indicator.py:112
 msgid "_Quit"
 msgstr "_Dalja"
 
-#: ../Onboard/Indicator.py:237 ../Onboard/Indicator.py:240
+#: ../Onboard/Indicator.py:242 ../Onboard/Indicator.py:245
 msgid "Onboard on-screen keyboard"
 msgstr "Tastierë në ekran"
 
