@@ -67,11 +67,25 @@ class ContextMenu(GObject.GObject):
         # but not in unity or unity2D.
         menu.connect_object("show", ContextMenu.update_items, self)
 
+        info_label = Gtk.MenuItem()
+        info_gtklabel = Gtk.Label()
+        info_gtklabel.set_markup(
+            "<b>Onboard {} ({})</b>".format(
+                config.version, WaylandUtils.get_display_backend_label()))
+        info_gtklabel.set_halign(Gtk.Align.START)
+        info_label.add(info_gtklabel)
+        menu.append(info_label)
+
+        item = Gtk.SeparatorMenuItem.new()
+        menu.append(item)
+
+
         show_item = Gtk.MenuItem.new_with_label(self._show_label)
         show_item.set_use_underline(True)
         show_item.connect_object("activate",
                                  ContextMenu.on_show_keyboard_toggle, self)
         menu.append(show_item)
+        self._show_item = show_item
 
         if not config.lockdown.disable_preferences:
             # Translators: label of a menu item. It used to be stock item
@@ -80,15 +94,6 @@ class ContextMenu(GObject.GObject):
             settings_item.set_use_underline(True)
             settings_item.connect("activate", self._on_settings_clicked)
             menu.append(settings_item)
-
-        item = Gtk.SeparatorMenuItem.new()
-        menu.append(item)
-
-        info_label = Gtk.MenuItem.new_with_label(
-            "Onboard {} ({})".format(
-                config.version, WaylandUtils.get_display_backend_label()))
-        info_label.set_sensitive(False)
-        menu.append(info_label)
 
         item = Gtk.SeparatorMenuItem.new()
         menu.append(item)
@@ -125,9 +130,9 @@ class ContextMenu(GObject.GObject):
     def update_items(self):
         if self._keyboard:
             if self._keyboard.is_visible():
-                self._menu.get_children()[0].set_label(self._hide_label)
+                self._show_item.set_label(self._hide_label)
             else:
-                self._menu.get_children()[0].set_label(self._show_label)
+                self._show_item.set_label(self._show_label)
 
     def _on_settings_clicked(self, widget):
         run_script("sokSettings")
@@ -322,7 +327,7 @@ class BackendAppIndicator(BackendBase):
 
         self._indicator.set_menu(menu._menu)
         self._indicator.set_secondary_activate_target(
-            menu._menu.get_children()[0])
+            menu._show_item)
 
         # Connect to the "activate" signal for left-click handling.
         # The library handles the D-Bus Activate method and emits this
