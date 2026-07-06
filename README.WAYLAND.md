@@ -21,8 +21,11 @@ phase of Wayland support adds a usable experience on Wayland.
   or after clicking on a key, or fail to refresh completely (displaying the default layout while actually typing in the current layout).
   On KDE we subscribe to `org.kde.KeyboardLayouts.layoutChanged` so the keys should refresh immediately.
   Similar mechanisms for other compositors are not implemented yet.
-- Try implementing the `virtual-keyboard-v1` Wayland backend — would remove the `/dev/uinput` permission requirement
-  on the compositors that support it.
+- Try implementing the `virtual-keyboard-v1` Wayland backend — would remove the `/dev/uinput` permission
+  requirement on the compositors that support it.
+- Negotiate client-side decoration via the `xdg-decoration` protocol so the
+  "Show window decoration" preference works natively on KDE (currently
+  needs a manual KWin `noborder` window rule as a workaround).
 
 ## Setup
 
@@ -116,6 +119,16 @@ Wayland `app_id="onboard"`. The rule sets `acceptfocus=false` so KWin
 never gives the keyboard window keyboard focus, even on click. The window
 itself remains a regular GTK toplevel — so dragging it by its frame works,
 resizing works.
+
+**Window decoration:** KWin draws its own server-side decoration for
+regular `xdg-shell` toplevels and ignores the GTK-side
+`window_decoration` preference (`gtk_window_set_decorated()`) unless the
+app explicitly negotiates client-side decoration via the
+`xdg-decoration` protocol, which Onboard does not do yet. So unchecking
+"Show window decoration" in Onboard's preferences has no visible effect
+under KDE. If you want a borderless keyboard window on KDE, add
+`noborder=true` / `noborderrule=2` to the window rule below (see
+Troubleshooting).
 
 ### GNOME Mutter (native Wayland via bundled Shell extension)
 
@@ -226,6 +239,22 @@ If it does, try reloading the rules:
 ```sh
 qdbus6 org.kde.KWin /KWin reconfigure
 ```
+
+### Titlebar/border still shown on KDE despite "Show window decoration" being off
+
+This is expected with Onboard's current implementation, not a bug:
+KWin ignores the GTK-side decoration hint for regular toplevels and
+draws its own server-side decoration regardless. Add a `noborder` rule
+for Onboard:
+
+```sh
+sed -i '/^\[onboard\]/a noborder = true\nnoborderrule = 2' ~/.config/kwinrulesrc
+qdbus6 org.kde.KWin /KWin reconfigure
+```
+
+Then restart Onboard. Support for negotiating client-side decoration
+via `xdg-decoration` (so the in-app preference works natively on KDE
+too) is on the TODO list.
 
 ### Onboard cannot type and steals focus on GNOME
 
