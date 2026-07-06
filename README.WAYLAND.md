@@ -1,7 +1,7 @@
 # Running Onboard on Wayland
 
 Onboard's primary target has historically been X11/Xorg. Initial
-phase of Wayland support adds a usable experience on Wayland.
+phase of Wayland support adds an ustable experience on Wayland.
 
 - KDE Plasma - ✅ should work well.
 - GNOME Mutter - ✅ should work well via a bundled GNOME Shell extension or an automatic XWayland fallback.
