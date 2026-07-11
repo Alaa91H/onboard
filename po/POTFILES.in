@@ -74,3 +74,7 @@ settings.ui
 settings_docking_dialog.ui
 settings_scanner_dialog.ui
 settings_theme_dialog.ui
+settings.ui
+settings_docking_dialog.ui
+settings_scanner_dialog.ui
+settings_theme_dialog.ui
