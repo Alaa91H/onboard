@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: onboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-06 14:30+0200\n"
+"POT-Creation-Date: 2026-07-11 18:54+0200\n"
 "PO-Revision-Date: 2026-06-08 00:00+0000\n"
 "Last-Translator: dongshengyuan <dongshengyuan@uniontech.com>\n"
 "Language-Team: Tibetan <bo@li.org>\n"
@@ -598,7 +598,7 @@ msgid "Flat"
 msgstr "མལ་ལ།"
 
 #. Key style with simple gradients
-#: ../Onboard/settings.py:1631
+#: ../Onboard/settings.py:1631 ../settings_theme_dialog.ui.h:6
 msgid "Gradient"
 msgstr "རིམ་བཞིན་འགྱུར་ཚོས།"
 
@@ -843,7 +843,7 @@ msgid "Scroll"
 msgstr "འཁྱིལ་བ།"
 
 #. translators: this is a 'tooltip' of the key_template 'layer2' in keyboard layout 'key_defs.xml'
-#: ../data/layoutstrings.py:88 ../data/layoutstrings.py:340
+#: ../data/layoutstrings.py:88 ../data/layoutstrings.py:340 ../settings.ui.h:27
 msgid "Snippets"
 msgstr "ཚིག་ཤོག་ཕྲན།"
 
@@ -1288,585 +1288,1230 @@ msgstr ""
 msgid "onscreen;keyboard;accessibility;utility;"
 msgstr ""
 
-#~ msgid "GTK"
-#~ msgstr "GTK"
-
-#~ msgid "XInput"
-#~ msgstr "XInput"
-
-#~ msgid "XTest"
-#~ msgstr "XTest"
-
-#~ msgid "AT-SPI"
-#~ msgstr "AT-SPI"
-
-#~ msgid "None"
-#~ msgstr "མེད།"
-
-#~ msgid "All corners and edges"
-#~ msgstr "ཟུར་དང་མཐའ་ཀུན་"
-
-#~ msgid "General"
-#~ msgstr "སྤྱིར་བཏང་"
-
-#~ msgid "Window"
-#~ msgstr "སྒེའུ་ཁུང་།"
-
-#~ msgid "Layout"
-#~ msgstr "བཀོད་གཞི།"
-
-#~ msgid "Theme"
-#~ msgstr "ལྟ་བཀོད།"
-
-#~ msgid "Keyboard"
-#~ msgstr "མཐེབ་གཞོང་།"
-
-#~ msgid "Typing Assistance"
-#~ msgstr "ཡིག་འབྲི་རོགས་རམ་"
-
-#~ msgid "Universal Access"
-#~ msgstr "ཀུན་ལ་ཐོབ་ལམ་"
-
-#~ msgid "none"
-#~ msgstr "མེད།"
-
-#~ msgid "single-touch"
-#~ msgstr "གཅིག་རེག་"
-
-#~ msgid "multi-touch"
-#~ msgstr "མང་རེག་"
-
-#~ msgid "_Auto-show when editing text"
-#~ msgstr "ཡིག་ཆ་རྩོམ་སྒྲིག་སྐབས་རང་འགུལ་མངོན།(_A)"
-
-#~ msgid ""
-#~ "Show Onboard when there is a recognized text window in focus. Requires "
-#~ "Gnome Accessibility."
-#~ msgstr ""
-#~ "ངོས་འཛིན་བྱས་པའི་ཡིག་ཆ་སྒེའུ་ཁུང་ལ་དམིགས་བསལ་བྱེད་སྐབས་Onboard མངོན། GNOME ཐོབ་ལམ་དགོས།"
-
-#~ msgid "Start Onboard _hidden"
-#~ msgstr "Onboard སྦས་པའི་ངང་འགོ་འཛུགས།(_H)"
-
-#~ msgid "Start Onboard hidden."
-#~ msgstr "Onboard སྦས་པའི་ངང་འགོ་འཛུགས།"
-
-#~ msgid "Show/Hide options"
-#~ msgstr "མངོན་པ་/སྦས་པའི་གདམ་ཀ།"
-
-#~ msgid "Show floating _icon when Onboard is hidden"
-#~ msgstr "Onboard སྦས་སྐབས་འཕྱིང་བའི་རིས་མཚན་མངོན།(_I)"
-
-#~ msgid ""
-#~ "Show a floating icon on the desktop when Onboard is hidden. A click on "
-#~ "the icon makes Onboard reappear."
-#~ msgstr ""
-#~ "Onboard སྦས་སྐབས་ཅོག་ངོས་སུ་འཕྱིང་བའི་རིས་མཚན་མངོན། རིས་མཚན་ལ་གཅིག་མནན་ན་Onboard ཡང་"
-#~ "མངོན་འགྱུར།"
-
-#~ msgid "Show when _unlocking the screen"
-#~ msgstr "བརྙན་ཤེལ་ཁ་ཕྱེ་སྐབས་མངོན།(_U)"
-
-#~ msgid ""
-#~ "Show Onboard when the dialog to unlock the screen appears; this way "
-#~ "Onboard can be used for example to enter the password to dismiss the "
-#~ "screensaver when it is set to ask for it."
-#~ msgstr ""
-#~ "བརྙན་ཤེལ་ཁ་ཕྱེ་བའི་ཀླད་གཤིས་མངོན་སྐབས་Onboard སྟོན། འདི་ལྟར་Onboard ལ་གསང་ཨང་བཙུགས་ཏེ་"
-#~ "བརྙན་ཤེལ་སྲུང་མ་ཕྱིར་འབུད་བྱེད་ཆོག"
-
-#~ msgid "Show _tooltips"
-#~ msgstr "གསལ་བཤད་མངོན།(_T)"
-
-#~ msgid "Show tooltips for the keyboard&apos;s buttons."
-#~ msgstr "མཐེབ་གཞོང་གི་མཐེབ་རྣམས་ཀྱི་གསལ་བཤད་མངོན།"
-
-#~ msgid "Show tooltips for the keyboard's buttons."
-#~ msgstr "མཐེབ་གཞོང་གི་མཐེབ་རྣམས་ཀྱི་གསལ་བཤད་མངོན།"
-
-#~ msgid "_Show status icon"
-#~ msgstr "གནས་ཚུལ་རིས་མཚན་མངོན།(_S)"
-
-#~ msgid "Show the status item. A click on that icon hides or shows Onboard."
-#~ msgstr "གནས་ཚུལ་ཚན་མངོན། རིས་མཚན་ལ་མནན་ན་Onboard སྦས་པའམ་མངོན་འགྱུར།"
-
-#~ msgid "Desktop Integration"
-#~ msgstr "ཅོག་ངོས་ཟུང་འབྲེལ།"
-
-#~ msgid "Dock to screen edge"
-#~ msgstr "མཐེབ་གཞོང་སྐྱེད་སྲིད་ཀྱི་མཐའ་རུ་འཇགས།"
-
-#~ msgid "Dock the keyboard to the edge of the screen."
-#~ msgstr "མཐེབ་གཞོང་སྐྱེད་སྲིད་ཀྱི་མཐའ་རུ་འཇག"
-
-#~ msgid "Docking"
-#~ msgstr "མཐའ་འཇགས།"
-
-#~ msgid "Show window _decoration"
-#~ msgstr "སྒེའུ་ཁུང་བརྒྱན་ཆས་མངོན།(_D)"
-
-#~ msgid "Show window caption and frame."
-#~ msgstr "སྒེའུ་ཁུང་ཁ་བྱང་དང་གཞུང་ཁུང་མངོན།"
-
-#~ msgid "Show always on visible _workspace"
-#~ msgstr "མཐོང་ཐུབ་ལས་ཀའི་ཐང་ལ་རྟག་ཏུ་མངོན།(_W)"
-
-#~ msgid "&quot;Sticky&quot; mode for keyboard and floating icon."
-#~ msgstr "&quot;གནས་བརྟན&quot; བཀོད་སྒྲིག་མཐེབ་གཞོང་དང་འཕྱར་རིས་མཚན་ལ་སྤྱོད།"
-
-#~ msgid "\"Sticky\" mode for keyboard and floating icon."
-#~ msgstr "གནས་བརྟན་བཀོད་སྒྲིག་མཐེབ་གཞོང་དང་འཕྱར་རིས་མཚན་ལ་སྤྱོད།"
-
-#~ msgid "_Force window to top"
-#~ msgstr "སྒེའུ་ཁུང་མཐོ་ཤོས་སུ་བཏང།(_F)"
-
-#~ msgid "Try harder to keep Onboard above anything on-screen."
-#~ msgstr "Onboard སྐྱེད་སྲིད་སྟེང་གི་ཅི་ལའང་གོང་དུ་གནས་པར་བྱེད་པར་འབད།"
-
-#~ msgid "Keep _aspect ratio"
-#~ msgstr "གཞི་ཚད་སྲུང།(_A)"
-
-#~ msgid "Constrain window size to the layout&apos;s aspect ratio."
-#~ msgstr "སྒེའུ་ཁུང་ཚད་བཀོད་གཞིའི་གཟུགས་ཚད་ལ་འཚམས།"
-
-#~ msgid "Constrain window size to the layout's aspect ratio."
-#~ msgstr "སྒེའུ་ཁུང་གི་ཚད་བཀོད་ཐབས་ཀྱི་གཟུགས་ཚད་ལ་འཚམས།"
-
-#~ msgid "Floating Window Options"
-#~ msgstr "འཕྱར་སྒེའུ་ཁུང་གི་གདམ་ཀ།"
-
-#~ msgid "Window options"
-#~ msgstr "སྒེའུ་ཁུང་གི་གདམ་ཀ།"
-
-#~ msgid "Wind_ow:"
-#~ msgstr "སྒེའུ་ཁུང་།(_O):"
-
-#~ msgid "Transparency of the whole keyboard window. Requires compositing."
-#~ msgstr "མཐེབ་གཞོང་སྒེའུ་ཁུང་ཡོངས་ཀྱི་གསལ་ཐིག ཕུད་སྤར་དགོས།"
-
-#~ msgid "_Background:"
-#~ msgstr "རྒྱབ་ལྗོངས།(_B):"
-
-#~ msgid "Transparency of the keyboard background"
-#~ msgstr "མཐེབ་གཞོང་གི་རྒྱབ་ལྗོངས་ཀྱི་གསལ་ཐིག"
-
-#~ msgid "_No background"
-#~ msgstr "རྒྱབ་ལྗོངས་མེད།(_N)"
-
-#~ msgid "Show the desktop through the gaps between keys."
-#~ msgstr "མཐེབ་གཞོང་གི་བར་སྟོང་བརྒྱུད་ལྟར་གྱི་ཐང་སྟོན།"
-
-#~ msgid "Transparency"
-#~ msgstr "གསལ་ཐིག"
-
-#~ msgid "Set _transparency to"
-#~ msgstr "གསལ་ཐིག་སྒྲིག།"
-
-#~ msgid "Enable inactive transparency. Requires compositing."
-#~ msgstr "ཤུགས་མེད་གསལ་ཐིག་བསྐྱེད། ཕུད་སྤར་དགོས།"
-
-#~ msgid ""
-#~ "Transparency when the pointer leaves the keyboard. Requires compositing."
-#~ msgstr "མར་གཏུག་མཐེབ་གཞོང་ལས་ཐོན་སྐབས་གསལ་ཐིག ཕུད་སྤར་དགོས།"
-
-#~ msgid "after"
-#~ msgstr "རྗེས་སུ།"
-
-#~ msgid "Delay in seconds until the inactive transparency takes effect."
-#~ msgstr "ཤུགས་མེད་གསལ་ཐིག་འཇུག་སྐབས་ཀྱི་སྐར་ཆར་སྒུག་སྡུར།"
-
-#~ msgid "seconds"
-#~ msgstr "སྐར་ཆ།"
-
-#~ msgid "When Inactive"
-#~ msgstr "ཤུགས་མེད་སྐབས།"
-
-#~ msgid "Resize Protection"
-#~ msgstr "ཚད་འགྱུར་སྲུང་སྐྱོབ།"
-
-#~ msgid "Name"
-#~ msgstr "མིང།"
-
-#~ msgid "Description"
-#~ msgstr "འགྲེལ་བཤད།"
-
-#~ msgid "Follow _system theme"
-#~ msgstr "རྒྱུད་མའི་ལྟ་བཀོད་བེད།(_S)"
-
-#~ msgid "Remember what Onboard theme was last used for every system theme."
-#~ msgstr "རྒྱུད་མའི་ལྟ་བཀོད་རེ་རེར་Onboard་ལྟ་བཀོད་གང་ཞིག་ཐ་མར་བེད་སྤྱོད་བྱས་པ་དྲན།"
-
-#~ msgid ""
-#~ "Snippets are pieces of text which are entered when the corresponding "
-#~ "button in Onboard is pressed."
-#~ msgstr "ཚིག་ཤོག་ཕྲན་ནི་Onboard ཀྱི་མཐེབ་གཞུང་མནན་སྐབས་ཡིག་ཚུར་འཇུག་པའི་ཡིག་ཆ་ཆུང་ཞིག་རེད།"
-
-#~ msgid "Play sound"
-#~ msgstr "སྒྲ་སྒྲོག"
-
-#~ msgid "Play click sound on keypress."
-#~ msgstr "མཐེབ་ཐེབས་སྐབས་ཀྱི་ཐེབས་སྒྲ་སྒྲོག"
-
-#~ msgid "Show label popups"
-#~ msgstr "ཀུང་ཙེའི་འཕུར་ལྡེབས་སྟོན།"
-
-#~ msgid "Show label popups above pressed keys."
-#~ msgstr "ཐེབས་མཐེབ་གི་སྟེང་དུ་ཀུང་ཙེའི་འཕུར་ལྡེབས་སྟོན།"
-
-#~ msgid "Key-press Feedback"
-#~ msgstr "མཐེབ་ཐེབས་ལན་འདེབས།"
-
-#~ msgid "Show secondary labels"
-#~ msgstr "ཀུང་ཙེ་གཉིས་པ་སྟོན།"
-
-#~ msgid "Show characters reachable with or without the shift key."
-#~ msgstr "ཤིཧྥཊ་མཐེབ་མེད་ཡང་ཡོད་ཀྱང་ཐོབ་ཐུབ་པའི་ཡིག་ཆ་སྟོན།"
-
-#~ msgid "Key Labels"
-#~ msgstr "མཐེབ་ཀུང་ཙེ།"
-
-#~ msgid "_Long press action:"
-#~ msgstr "རིང་ཐེབས་བྱེད་པ།(_L):"
-
-#~ msgid ""
-#~ "Choose between key-repeat or long-press menus. Mainly affects alpha-"
-#~ "numeric keys."
-#~ msgstr ""
-#~ "མཐེབ་གཅེས་བསྐྱར་དུ་གནོན་པའམ་རིང་མོར་གནོན་པའི་དཀར་ཆག་གཉིས་ཀྱི་བར་ནས་འདེམས། ཕལ་ཆེར་ཨང་ཡིག་"
-#~ "དང་ཡིག་འབྲུའི་མཐེབ་ལ་ཤུགས་རྐྱེན་ཡོད།"
-
-#~ msgid "Modifier _behavior:"
-#~ msgstr "བཅོས་སྒྱུར་མཐེབ་ཀྱི་_བྱེད་སྒོ།"
-
-#~ msgid "Behavior of modifier and layer keys."
-#~ msgstr "བཅོས་སྒྱུར་མཐེབ་དང་གང་རིམ་མཐེབ་ཀྱི་བྱེད་སྒོ།"
-
-#~ msgid ""
-#~ "Seconds of inactivity until active modifiers and layer keys are released. "
-#~ "0 to disable."
-#~ msgstr "བཅོས་སྒྱུར་མཐེབ་དང་གང་རིམ་མཐེབ་འགྲོལ་བར་བྱ་བ་མེད་པའི་སྐར་ཆ། ལེགས་མེད་བཟོ་ན་0 བཀོད།"
-
-#~ msgid "Key Behavior"
-#~ msgstr "མཐེབ་ཀྱི་བྱེད་སྒོ"
-
-#~ msgid "_Input event source:"
-#~ msgstr "_ནང་འཇུག་གི་འབྱུང་ཁུངས།"
-
-#~ msgid ""
-#~ "Choose &apos;XInput&apos; for more reliable typing into text entries with "
-#~ "pop-up selections. The &apos;GTK&apos; option offers better "
-#~ "compatibility, but typing may fail in the presence of pointer grabs, e.g. "
-#~ "with open pop-up windows."
-#~ msgstr ""
-#~ "&apos;XInput&apos; འདེམས་ན་ཤད་འཐེན་ཡོད་པའི་ཡིག་འཇུག་ས་གནས་སུ་ཡིག་གཞུག་ལེགས་ཤོས། "
-#~ "&apos;GTK&apos; གདམ་ཀའི་ཐུན་མཐུན་ལེགས་ཡིན་ཀྱང་མར་ཐོན་སྒེའུ་ཁུང་ཕྱེ་ཡོད་སྐབས་ཡིག་གཞུག་ལོག་"
-#~ "ཆགས་སྲིད།"
-
-#~ msgid ""
-#~ "Choose 'XInput' for more reliable typing into text entries with pop-up "
-#~ "selections. The 'GTK' option offers better compatibility, but typing may "
-#~ "fail in the presence of pointer grabs, e.g. with open pop-up windows."
-#~ msgstr ""
-#~ "'XInput' འདེམས་ན་ཤད་འཐེན་ཡོད་པའི་ཡིག་འཇུག་ས་གནས་སུ་ཡིག་གཞུག་ལེགས་ཤོས། 'GTK' གདམ་ཀའི་"
-#~ "ཐུན་མཐུན་ལེགས་ཡིན་ཀྱང་མར་ཐོན་སྒེའུ་ཁུང་ཕྱེ་ཡོད་སྐབས་ཡིག་གཞུག་ལོག་ཆགས་སྲིད།"
-
-#~ msgid "Input Options"
-#~ msgstr "ནང་འཇུག་གི་གདམ་ཀ"
-
+#: ../settings.ui.h:1
 #, fuzzy
-#~ msgid "Animation"
-#~ msgstr "འགུལ་ཤུགས།"
-
-#~ msgid "Advanced"
-#~ msgstr "རྒྱས་བཤད"
-
-#~ msgid "Show _suggestions"
-#~ msgstr "_གདམ་ཀ་མངོན་པར་བྱེད།"
-
-#~ msgid "Enable word completion and prediction."
-#~ msgstr "ཚིག་མཐར་སྐྱོང་དང་ཀློང་སྟོན་ཤུགས་སྐྱེད།"
-
-#~ msgid "Show spelling suggestions"
-#~ msgstr "འབྲི་ཐབས་ཀྱི་གདམ་ཀ་མངོན་པར་བྱེད།"
-
-#~ msgid "Check spelling of the word at or before the cursor."
-#~ msgstr "གཡོ་འདེགས་ཀར་ཡམ་གཡོ་འདེགས་ཀའི་སྔར་གྱི་ཚིག་གི་འབྲི་ཐབས་ཞིབ་བཤེར།"
-
-#~ msgid "_Learn from typed text"
-#~ msgstr "ཡིག་གཞུག་ཡིག་ཆ་ལས་_སློབ་སྦྱོང་བྱེད།"
-
-#~ msgid ""
-#~ "Remember new words, their recency and frequency to improve the "
-#~ "suggestions over time."
-#~ msgstr "གདམ་ཀ་ལེགས་བཟོ་རུ་ཚིག་གསར་དང་དེའི་དུས་ཐོག་དང་ཐེངས་གྲངས་དྲན།"
-
-#~ msgid "Insert word _separators"
-#~ msgstr "ཚིག་_བར་འཇུག"
-
-#~ msgid ""
-#~ "Add and remove spaces when inserting word suggestions followed by "
-#~ "punctuation characters."
-#~ msgstr "ཚད་མཚོན་ཡིག་རྟགས་རྗེས་ཀྱི་ཚིག་གདམ་ཀ་འཇུག་སྐབས་སྟོང་གཞི་སྣོན་དང་འདོར།"
-
-#~ msgid "Options"
-#~ msgstr "གདམ་ཀ"
-
-#~ msgid "Show button to pause learning"
-#~ msgstr "སློབ་སྦྱོང་འགོག་སྡོད་བྱེད་པའི་ཐེབས་མངོན་པར་བྱེད།"
-
-#~ msgid "Words typed while this button is pressed won't be remembered."
-#~ msgstr "ཐེབས་འདི་གནོན་པའི་དུས་སུ་ཡིག་གཞུག་ཚིག་དྲན་གཟུང་མི་བྱེད།"
-
-#~ msgid "Show lan_guage switcher"
-#~ msgstr "_སྐད་ཡིག་བརྗེ་མཐེབ་མངོན་པར་བྱེད།"
-
-#~ msgid "Show a button for language selection."
-#~ msgstr "སྐད་ཡིག་འདེམས་པའི་ཐེབས་མངོན་པར་བྱེད།"
-
-#~ msgid "Buttons"
-#~ msgstr "ཐེབས"
-
-#~ msgid "Word Suggestions"
-#~ msgstr "ཚིག་གི་གདམ་ཀ"
-
-#~ msgid "Auto-capitalize while typing"
-#~ msgstr "འབྲི་སྐབས་རང་འགུལ་གྱིས་ཡིག་གེ་ཆེན་པོར་བཟོ་བ།"
-
-#~ msgid "Automatically capitalize sentence begins and name words."
-#~ msgstr "ཚིག་གྲུབ་ཀྱི་མགོ་དང་མིང་གི་ཡིག་གེ་རང་འགུལ་གྱིས་ཆེན་པོར་བཟོ་བ།"
-
-#~ msgid "Auto-correct spelling"
-#~ msgstr "རང་འགུལ་གྱིས་སྐད་ཡིག་བཟོ་བཅོས།"
-
-#~ msgid "Automatically correct the last word."
-#~ msgstr "མཐའ་མའི་ཚིག་རང་འགུལ་གྱིས་བཟོ་བཅོས་བྱེད་པ།"
-
-#~ msgid "The spell check engine to use."
-#~ msgstr "སྤྱད་མི་སྐད་ཡིག་ཞིབ་བཤེར་འཕྲུལ་ཆས།"
-
-#~ msgid "Spell-check backend:"
-#~ msgstr "སྐད་ཡིག་ཞིབ་བཤེར་རྒྱབ་གཞི།"
-
-#~ msgid "Auto-correction"
-#~ msgstr "རང་འགུལ་བཟོ་བཅོས།"
-
-#~ msgid "Enable  keyboard _scanning"
-#~ msgstr "མཐེབ་གཞོང་བར་གཅོད་བསྐུལ་སློང་།(_S)"
-
-#~ msgid "Keyboard Scanning"
-#~ msgstr "མཐེབ་གཞོང་བར་གཅོད།"
-
-#~ msgid "_Delay:"
-#~ msgstr "སྒུག་སྡུར།(_D):"
-
-#~ msgid "_Motion threshold:"
-#~ msgstr "གཡོ་བའི་ཚད་གཞི།(_M):"
-
-#~ msgid "Time in seconds before a click is triggered."
-#~ msgstr "མཐེབ་གང་ཞིག་བརྡ་སྐུལ་བའི་སྔོན་གྱི་སྐར་ཆའི་གྲངས།"
-
-#~ msgid "Distance in pixels before movement will be recognized."
-#~ msgstr "གཡོ་བ་ངོས་འཛིན་སྔོན་གྱི་རྣམ་གྲངས་ཀྱི་སྤར་ཚད།"
-
-#~ msgid "Hide hover click window"
-#~ msgstr "སྒུག་མཐེབ་ཀྱི་སྒེའུ་ཁུང་སྦ་བ།"
-
-#~ msgid ""
-#~ "Hide the system-provided hover click window while Onboard is running."
-#~ msgstr "Onboard འཁོར་བཞིན་པའི་སྐབས་མ་ལག་གིས་བསྐྲུན་པའི་སྒུག་མཐེབ་སྒེའུ་ཁུང་སྦ་བ།"
-
-#~ msgid "Enable click type window on exit"
-#~ msgstr "ཕྱིར་འབུད་སྐབས་མཐེབ་ཀླད་སྒེའུ་ཁུང་སྤྱད་པར་བྱ།"
-
-#~ msgid ""
-#~ "Always enable the system-provided hover click window when exiting Onboard."
-#~ msgstr "Onboard ལས་ཕྱིར་འབུད་སྐབས་མ་ལག་གིས་བསྐྲུན་པའི་སྒུག་མཐེབ་སྒེའུ་ཁུང་རྟག་ཏུ་ལེགས་གྲུབ།"
-
-#~ msgid "Hover Click"
-#~ msgstr "སྒུག་མཐེབ།"
-
-#~ msgid "Top"
-#~ msgstr "སྟེང་།"
-
-#~ msgid "Bottom"
-#~ msgstr "འོག"
-
-#~ msgid "Docking settings"
-#~ msgstr "མཐུད་སྒྲིག་འགོད།"
-
-#~ msgid "Shrink workarea"
-#~ msgstr "ལས་ཁུལ་བསྡུ་བ།"
-
-#~ msgid "Shrink the available space for maximized windows."
-#~ msgstr "སྒེའུ་ཁུང་ཆེས་ཆེར་བཏང་སྐབས་སྤྱོད་ཆོག་པའི་ས་ཁོངས་བསྡུ་བ།"
-
-#~ msgid "Expand on landscape screens"
-#~ msgstr "ཞིང་ཐིག་གཞི་གཏན་འབེབས་སྐབས་མཐེབ་གཞོང་རྒྱ་སྟོང་བཟོ་བ།"
-
-#~ msgid "Expand keyboard to the width of the workarea."
-#~ msgstr "མཐེབ་གཞོང་ལས་ཁུལ་གྱི་ཕྱོགས་རྒྱར་རྒྱ་སྟོང་བཟོ་བ།"
-
-#~ msgid "Expand on portrait screens"
-#~ msgstr "སྲང་ཐིག་གཞི་གཏན་འབེབས་སྐབས་མཐེབ་གཞོང་རྒྱ་སྟོང་བཟོ་བ།"
-
-#~ msgid "Dock to screen edge:"
-#~ msgstr "གཞི་གཏན་འབེབས་ཀྱི་མཐའ་རུ་མཐུད།"
-
-#~ msgid "Automatic scan for 1 switch"
-#~ msgstr "མཐེབ་གཅིག་ལ་རང་འགུལ་བར་གཟིགས།"
-
-#~ msgid "Critical overscan for 1 switch"
-#~ msgstr "མཐེབ་གཅིག་ལ་གཞི་རྩའི་མང་དུ་བར་གཟིགས།"
-
-#~ msgid "Step scan for 2 switches"
-#~ msgstr "མཐེབ་གཞོང་གཉིས་ལ་གྲལ་རིམ་སྐར་མ།"
-
-#~ msgid "Directed scan for 3 or 5 switches"
-#~ msgstr "མཐེབ་གཞོང་གསུམ་ཡང་ན་ལྔར་ངོས་འཛིན་སྐར་མ།"
-
-#~ msgid "Scanner Settings"
-#~ msgstr "བར་གཅོད་སྒྲིག་འགོད།"
-
-#~ msgid "Select a scanning _profile:"
-#~ msgstr "བར་གཅོད་(_p)རྣམ་གཞག་འདེམས།"
-
-#~ msgid "_Step interval:"
-#~ msgstr "གྲལ་རིམ་བར་སྟོང་།(_S):"
-
-#~ msgid "Sc_an cycles:"
-#~ msgstr "བར་གཅོད་འཁོར་ལོ།(_a):"
-
-#~ msgid ""
-#~ "The time the scanner rests on a key or group before moving to the next. "
-#~ "(in seconds)"
-#~ msgstr "བར་གཅོད་འཕྲུལ་ཆས་མཐེབ་གཅིག་གམ་ཚོགས་པའི་སྟེང་དུ་སྡོད་སྐབས་ཀྱི་དུས་ཚོད། (སྐར་ཆ།)"
-
-#~ msgid ""
-#~ "The number of times the scanner cycles through the entire keyboard before "
-#~ "it stops."
-#~ msgstr "བར་གཅོད་འཕྲུལ་ཆས་ཆད་སྔོན་མཐེབ་གཞོང་ཡོངས་བར་གཅོད་བྱེད་མི་འཁོར་ལོའི་གྲངས།"
-
-#~ msgid "Step _only during switch down"
-#~ msgstr "མཐེབ་གཞི་ནུབ་སྐབས་གྲལ་རིམ་མ་གཏོགས་མི་འགྱུར།(_O)"
-
-#~ msgid "Progress the highlight only while the switch is held down."
-#~ msgstr "མཐེབ་གཞི་བཟུང་བཞིན་པའི་སྐབས་མཚོན་རྟགས་མ་གཏོགས་མི་འགྱུར།"
-
-#~ msgid "_Forward interval:"
-#~ msgstr "མདུན་དུ་བར་སྟོང་།(_F):"
-
-#~ msgid "_Backtrack interval:"
-#~ msgstr "རྒྱབ་ཏུ་བར་སྟོང་།(_B):"
-
-#~ msgid ""
-#~ "The time the scanner rests on a key  while progressing forward. (in "
-#~ "seconds)"
-#~ msgstr "བར་གཅོད་འཕྲུལ་ཆས་མདུན་ལ་འགྲོ་སྐབས་མཐེབ་གང་ཞིག་སྟེང་དུ་སྡོད་སྐབས་ཀྱི་དུས་ཚོད། (སྐར་ཆ།)"
-
-#~ msgid ""
-#~ "The time the scanner rests on a key  while moving backwards. (in seconds)"
-#~ msgstr "བར་གཅོད་འཕྲུལ་ཆས་རྒྱབ་ལ་ལོག་སྐབས་མཐེབ་གང་ཞིག་སྟེང་དུ་སྡོད་སྐབས་ཀྱི་དུས་ཚོད། (སྐར་ཆ།)"
-
-#~ msgid "Backtrack _steps:"
-#~ msgstr "རྒྱབ་ལ་གྲལ་རིམ།(_s):"
-
-#~ msgid ""
-#~ "The number of keys the scanner steps back before moving forward again."
-#~ msgstr "བར་གཅོད་འཕྲུལ་ཆས་ཡང་བསྐྱར་མདུན་ལ་འགྲོ་སྔོན་རྒྱབ་ལ་གཏོར་པའི་མཐེབ་གྲངས།"
-
-#~ msgid "_Alternate switch actions"
-#~ msgstr "_མཐེབ་གཞོང་བརྗེ་སྤོས་བྱེད་སྒོ།"
-
-#~ msgid ""
-#~ "Swap the scan actions after every key activation. The Step action will "
-#~ "become the Activate action and vice versa."
-#~ msgstr ""
-#~ "མཐེབ་གང་རུང་བཀོལ་སྤྱོད་བྱས་རྗེས་བར་གཅོད་བྱེད་སྒོ་བརྗེ་སྤོས་བྱ། གོ་རིམ་བྱེད་སྒོ་བཀོལ་སྤྱོད་བྱེད་སྒོར་འགྱུར་"
-#~ "ཞིང་། བཀོལ་སྤྱོད་བྱེད་སྒོ་ཡང་གོ་རིམ་བྱེད་སྒོར་འགྱུར།"
-
-#~ msgid "Profiles"
-#~ msgstr "རྣམ་གཞག"
-
-#~ msgid "_Select an input device:"
-#~ msgstr "_འཇུག་སྣོན་ཡོ་བྱད་འདེམས།:"
-
-#~ msgid "_Use this device only for scanning"
-#~ msgstr "_འདི་བར་གཅོད་ལ་ཁོ་ན་སྤྱོད།"
-
-#~ msgid ""
-#~ "The selected device should not control the system mouse cursor or the "
-#~ "keyboard caret."
-#~ msgstr ""
-#~ "འདེམས་ཟིན་པའི་ཡོ་བྱད་ཀྱིས་མ་ལག་གི་བྱི་བའི་འཁོར་ལོ་འམ་མཐེབ་གཞོང་གི་འཁོར་ལོ་གཏོང་འཆར་མི་རུང་།"
-
-#~ msgid "Input Device"
-#~ msgstr "འཇུག་སྣོན་ཡོ་བྱད།"
-
-#~ msgid "Customize Theme"
-#~ msgstr "དབྱིབས་རིགས་རང་སྒྲུབ།"
-
-#~ msgid "Color Sche_me"
-#~ msgstr "ཚོས་གཞི་ཐིག་_དྲིལ།"
-
-#~ msgid "_Angle:"
-#~ msgstr "_གྲུ་ཟུར།:"
-
-#~ msgid "Light Direction"
-#~ msgstr "འོད་ཀྱི་ཕྱོགས།"
-
-#~ msgid "_Style:"
-#~ msgstr "_རྣམ་པ།:"
-
-#~ msgid "R_oundness:"
-#~ msgstr "ཟུར་_རིལ།:"
-
-#~ msgid "S_ize:"
-#~ msgstr "ཆེ་_ཆུང།:"
-
-#~ msgid "B_order width:"
-#~ msgstr "མཐའ་_རྒྱུའི་ཞེང་།:"
-
-#~ msgid "Key Style"
-#~ msgstr "མཐེབ་གཞོང་རྣམ་པ།"
-
-#~ msgid "_Key:"
-#~ msgstr "_མཐེབ།:"
-
-#~ msgid "_Border:"
-#~ msgstr "_མཐའ་རྒྱུ།:"
-
-#~ msgid "Gradients"
-#~ msgstr "རིམ་བཞིན་འགྱུར་ཚོས།"
-
-#~ msgid "_Strength:"
-#~ msgstr "_ནུས་ཤུགས།:"
-
-#~ msgid "Shadow"
-#~ msgstr "གྲིབ་མ།"
-
-#~ msgid "Keys"
-#~ msgstr "མཐེབ་གཞོང།"
-
-#~ msgid "_Font:"
-#~ msgstr "_ཡིག་གཟུགས།:"
-
-#~ msgid "_Attributes:"
-#~ msgstr "_རང་བཞིན།:"
-
-#~ msgid "Font"
-#~ msgstr "ཡིག་གཟུགས།"
-
-#~ msgid "I_ndependent size"
-#~ msgstr "རང་_དབང་ཆེ་ཆུང།"
-
-#~ msgid "_Super key:"
-#~ msgstr "_རྒྱལ་ཆེན་མཐེབ།:"
-
-#~ msgid "Label Override"
-#~ msgstr "ཡིག་རྟགས་མངོན་སྤེལ།"
-
-#~ msgid "Labels"
-#~ msgstr "ཡིག་རྟགས།"
+msgid "Key-repeat"
+msgstr "མཐེབ་ཡང་བསྐྱར།"
+
+#: ../settings.ui.h:2
+#, fuzzy
+msgid "International character selection"
+msgstr "རྒྱལ་སྤྱིའི་ཡིག་རྟགས་འདེམས་པ།"
+
+#: ../settings.ui.h:3
+msgid "never"
+msgstr ""
+
+#: ../settings.ui.h:4
+msgid "1 minute"
+msgstr ""
+
+#: ../settings.ui.h:5
+msgid "5 minutes"
+msgstr ""
+
+#: ../settings.ui.h:6
+msgid "10 minutes"
+msgstr ""
+
+#: ../settings.ui.h:7
+msgid "30 minutes"
+msgstr ""
+
+#: ../settings.ui.h:8
+msgid "1 hour"
+msgstr ""
+
+#: ../settings.ui.h:9
+msgid "3 hours"
+msgstr ""
+
+#: ../settings.ui.h:10
+msgid "forever"
+msgstr ""
+
+#: ../settings.ui.h:11
+msgid "GTK"
+msgstr "GTK"
+
+#: ../settings.ui.h:12
+msgid "XInput"
+msgstr "XInput"
+
+#: ../settings.ui.h:13
+msgid "Auto"
+msgstr ""
+
+#: ../settings.ui.h:14
+msgid "XTest"
+msgstr "XTest"
+
+#: ../settings.ui.h:15
+#, fuzzy
+msgid "uinput"
+msgstr "XInput"
+
+#: ../settings.ui.h:16
+msgid "AT-SPI"
+msgstr "AT-SPI"
+
+#: ../settings.ui.h:17
+msgid "Remember nothing"
+msgstr ""
+
+#: ../settings.ui.h:18
+msgid "Don't remember new words"
+msgstr ""
+
+#: ../settings.ui.h:19
+msgid "None"
+msgstr "མེད།"
+
+#: ../settings.ui.h:20
+msgid "Movement only"
+msgstr ""
+
+#: ../settings.ui.h:21
+#, fuzzy
+msgid "Corners"
+msgstr "ཟུར་ཁོ་ན།"
+
+#: ../settings.ui.h:22
+msgid "All corners and edges"
+msgstr "ཟུར་དང་མཐའ་ཀུན་"
+
+#: ../settings.ui.h:23
+msgid "General"
+msgstr "སྤྱིར་བཏང་"
+
+#: ../settings.ui.h:24
+msgid "Window"
+msgstr "སྒེའུ་ཁུང་།"
+
+#: ../settings.ui.h:25
+msgid "Layout"
+msgstr "བཀོད་གཞི།"
+
+#: ../settings.ui.h:26
+msgid "Theme"
+msgstr "ལྟ་བཀོད།"
+
+#: ../settings.ui.h:28 ../settings_theme_dialog.ui.h:9
+msgid "Keyboard"
+msgstr "མཐེབ་གཞོང་།"
+
+#: ../settings.ui.h:29
+msgid "Auto-show"
+msgstr ""
+
+#: ../settings.ui.h:30
+msgid "Typing Assistance"
+msgstr "ཡིག་འབྲི་རོགས་རམ་"
+
+#: ../settings.ui.h:31
+msgid "Universal Access"
+msgstr "ཀུན་ལ་ཐོབ་ལམ་"
+
+#: ../settings.ui.h:32
+msgid "Only move when necessary"
+msgstr ""
+
+#: ../settings.ui.h:33
+msgid "Follow the active window"
+msgstr ""
+
+#: ../settings.ui.h:34
+#, fuzzy
+msgid "Latch, then lock"
+msgstr "འཇུས་ནས་སྒོ་ལྕགས་གཏོང་།"
+
+#: ../settings.ui.h:35
+#, fuzzy
+msgid "Latch, double-click to lock"
+msgstr "འཇུས་ནས་ཉིས་མནན་སྒོ་ལྕགས་གཏོང་།"
+
+#: ../settings.ui.h:36
+#, fuzzy
+msgid "Latch only"
+msgstr "འཇུས་པ་ཙམ།"
+
+#: ../settings.ui.h:37
+#, fuzzy
+msgid "Lock only"
+msgstr "སྒོ་ལྕགས་ཙམ།"
+
+#: ../settings.ui.h:38
+#, fuzzy
+msgid "Push button"
+msgstr "ཐེབས་གང་རུང་མནན་རོགས།..."
+
+#: ../settings.ui.h:39
+msgid "none"
+msgstr "མེད།"
+
+#: ../settings.ui.h:40
+msgid "single-touch"
+msgstr "གཅིག་རེག་"
+
+#: ../settings.ui.h:41
+msgid "multi-touch"
+msgstr "མང་རེག་"
+
+#: ../settings.ui.h:42
+msgctxt "Label of the main close button of the preferences dialog."
+msgid "_Close"
+msgstr ""
+
+#: ../settings.ui.h:43
+msgid "_Auto-show when editing text"
+msgstr "ཡིག་ཆ་རྩོམ་སྒྲིག་སྐབས་རང་འགུལ་མངོན།(_A)"
+
+#: ../settings.ui.h:44
+msgid ""
+"Show Onboard when there is a recognized text window in focus. Requires Gnome "
+"Accessibility."
+msgstr ""
+"ངོས་འཛིན་བྱས་པའི་ཡིག་ཆ་སྒེའུ་ཁུང་ལ་དམིགས་བསལ་བྱེད་སྐབས་Onboard མངོན། GNOME ཐོབ་ལམ་དགོས།"
+
+#: ../settings.ui.h:45
+msgid "Start Onboard _hidden"
+msgstr "Onboard སྦས་པའི་ངང་འགོ་འཛུགས།(_H)"
+
+#: ../settings.ui.h:46
+msgid "Start Onboard hidden."
+msgstr "Onboard སྦས་པའི་ངང་འགོ་འཛུགས།"
+
+#: ../settings.ui.h:47
+msgid "Show/Hide options"
+msgstr "མངོན་པ་/སྦས་པའི་གདམ་ཀ།"
+
+#: ../settings.ui.h:48
+msgid "Show floating _icon when Onboard is hidden"
+msgstr "Onboard སྦས་སྐབས་འཕྱིང་བའི་རིས་མཚན་མངོན།(_I)"
+
+#: ../settings.ui.h:49
+msgid ""
+"Show a floating icon on the desktop when Onboard is hidden. A click on the "
+"icon makes Onboard reappear."
+msgstr ""
+"Onboard སྦས་སྐབས་ཅོག་ངོས་སུ་འཕྱིང་བའི་རིས་མཚན་མངོན། རིས་མཚན་ལ་གཅིག་མནན་ན་Onboard ཡང་མངོན་"
+"འགྱུར།"
+
+#: ../settings.ui.h:50
+msgid "Show when _unlocking the screen"
+msgstr "བརྙན་ཤེལ་ཁ་ཕྱེ་སྐབས་མངོན།(_U)"
+
+#: ../settings.ui.h:51
+msgid ""
+"Show Onboard when the dialog to unlock the screen appears; this way Onboard "
+"can be used for example to enter the password to dismiss the screensaver "
+"when it is set to ask for it."
+msgstr ""
+"བརྙན་ཤེལ་ཁ་ཕྱེ་བའི་ཀླད་གཤིས་མངོན་སྐབས་Onboard སྟོན། འདི་ལྟར་Onboard ལ་གསང་ཨང་བཙུགས་ཏེ་བརྙན་"
+"ཤེལ་སྲུང་མ་ཕྱིར་འབུད་བྱེད་ཆོག"
+
+#: ../settings.ui.h:52
+msgid "Show _tooltips"
+msgstr "གསལ་བཤད་མངོན།(_T)"
+
+#: ../settings.ui.h:53
+msgid "Show tooltips for the keyboard&apos;s buttons."
+msgstr "མཐེབ་གཞོང་གི་མཐེབ་རྣམས་ཀྱི་གསལ་བཤད་མངོན།"
+
+#: ../settings.ui.h:54
+msgid "Show tooltips for the keyboard's buttons."
+msgstr "མཐེབ་གཞོང་གི་མཐེབ་རྣམས་ཀྱི་གསལ་བཤད་མངོན།"
+
+#: ../settings.ui.h:55
+msgid "_Show status icon"
+msgstr "གནས་ཚུལ་རིས་མཚན་མངོན།(_S)"
+
+#: ../settings.ui.h:56
+msgid "Show the status item. A click on that icon hides or shows Onboard."
+msgstr "གནས་ཚུལ་ཚན་མངོན། རིས་མཚན་ལ་མནན་ན་Onboard སྦས་པའམ་མངོན་འགྱུར།"
+
+#: ../settings.ui.h:57
+msgid "Status icon _provider:"
+msgstr ""
+
+#: ../settings.ui.h:58
+msgid ""
+"<b>AppIndicator</b> (default) is recommended for broadest compatibility. A "
+"middle click on the icon shows the keyboard. In KDE Plasma a left click does "
+"the same.\n"
+"\n"
+"<b>GtkStatusIcon</b> isn't supported well anymore by various desktop "
+"environments, but generally allows to show the keyboard on left click.\n"
+"\n"
+"Requires restart."
+msgstr ""
+
+#: ../settings.ui.h:63
+msgid "Desktop Integration"
+msgstr "ཅོག་ངོས་ཟུང་འབྲེལ།"
+
+#: ../settings.ui.h:64
+msgid "Dock to screen edge"
+msgstr "མཐེབ་གཞོང་སྐྱེད་སྲིད་ཀྱི་མཐའ་རུ་འཇགས།"
+
+#: ../settings.ui.h:65
+msgid "Dock the keyboard to the edge of the screen."
+msgstr "མཐེབ་གཞོང་སྐྱེད་སྲིད་ཀྱི་མཐའ་རུ་འཇག"
+
+#: ../settings.ui.h:66
+#, fuzzy
+msgctxt "Label of settings button on preferences page Window."
+msgid "_Settings"
+msgstr "སྒྲིག་འགོད།(_S)"
+
+#: ../settings.ui.h:67
+msgid "Docking"
+msgstr "མཐའ་འཇགས།"
+
+#: ../settings.ui.h:68
+msgid "Show window _decoration"
+msgstr "སྒེའུ་ཁུང་བརྒྱན་ཆས་མངོན།(_D)"
+
+#: ../settings.ui.h:69
+msgid "Show window caption and frame."
+msgstr "སྒེའུ་ཁུང་ཁ་བྱང་དང་གཞུང་ཁུང་མངོན།"
+
+#: ../settings.ui.h:70
+msgid "Show always on visible _workspace"
+msgstr "མཐོང་ཐུབ་ལས་ཀའི་ཐང་ལ་རྟག་ཏུ་མངོན།(_W)"
+
+#: ../settings.ui.h:71
+msgid "&quot;Sticky&quot; mode for keyboard and floating icon."
+msgstr "&quot;གནས་བརྟན&quot; བཀོད་སྒྲིག་མཐེབ་གཞོང་དང་འཕྱར་རིས་མཚན་ལ་སྤྱོད།"
+
+#: ../settings.ui.h:72
+msgid "\"Sticky\" mode for keyboard and floating icon."
+msgstr "གནས་བརྟན་བཀོད་སྒྲིག་མཐེབ་གཞོང་དང་འཕྱར་རིས་མཚན་ལ་སྤྱོད།"
+
+#: ../settings.ui.h:73
+msgid "_Force window to top"
+msgstr "སྒེའུ་ཁུང་མཐོ་ཤོས་སུ་བཏང།(_F)"
+
+#: ../settings.ui.h:74
+msgid "Try harder to keep Onboard above anything on-screen."
+msgstr "Onboard སྐྱེད་སྲིད་སྟེང་གི་ཅི་ལའང་གོང་དུ་གནས་པར་བྱེད་པར་འབད།"
+
+#: ../settings.ui.h:75
+msgid "Keep _aspect ratio"
+msgstr "གཞི་ཚད་སྲུང།(_A)"
+
+#: ../settings.ui.h:76
+msgid "Constrain window size to the layout&apos;s aspect ratio."
+msgstr "སྒེའུ་ཁུང་ཚད་བཀོད་གཞིའི་གཟུགས་ཚད་ལ་འཚམས།"
+
+#: ../settings.ui.h:77
+msgid "Constrain window size to the layout's aspect ratio."
+msgstr "སྒེའུ་ཁུང་གི་ཚད་བཀོད་ཐབས་ཀྱི་གཟུགས་ཚད་ལ་འཚམས།"
+
+#: ../settings.ui.h:78
+msgid "Floating Window Options"
+msgstr "འཕྱར་སྒེའུ་ཁུང་གི་གདམ་ཀ།"
+
+#: ../settings.ui.h:79
+msgid "Window options"
+msgstr "སྒེའུ་ཁུང་གི་གདམ་ཀ།"
+
+#: ../settings.ui.h:80
+msgid "Wind_ow:"
+msgstr "སྒེའུ་ཁུང་།(_O):"
+
+#: ../settings.ui.h:81
+msgid "Transparency of the whole keyboard window. Requires compositing."
+msgstr "མཐེབ་གཞོང་སྒེའུ་ཁུང་ཡོངས་ཀྱི་གསལ་ཐིག ཕུད་སྤར་དགོས།"
+
+#: ../settings.ui.h:82 ../settings_theme_dialog.ui.h:5
+msgid "_Background:"
+msgstr "རྒྱབ་ལྗོངས།(_B):"
+
+#: ../settings.ui.h:83
+msgid "Transparency of the keyboard background"
+msgstr "མཐེབ་གཞོང་གི་རྒྱབ་ལྗོངས་ཀྱི་གསལ་ཐིག"
+
+#: ../settings.ui.h:84
+msgid "_No background"
+msgstr "རྒྱབ་ལྗོངས་མེད།(_N)"
+
+#: ../settings.ui.h:85
+msgid "Show the desktop through the gaps between keys."
+msgstr "མཐེབ་གཞོང་གི་བར་སྟོང་བརྒྱུད་ལྟར་གྱི་ཐང་སྟོན།"
+
+#: ../settings.ui.h:86
+msgid "Transparency"
+msgstr "གསལ་ཐིག"
+
+#: ../settings.ui.h:87
+msgid "Set _transparency to"
+msgstr "གསལ་ཐིག་སྒྲིག།"
+
+#: ../settings.ui.h:88
+msgid "Enable inactive transparency. Requires compositing."
+msgstr "ཤུགས་མེད་གསལ་ཐིག་བསྐྱེད། ཕུད་སྤར་དགོས།"
+
+#: ../settings.ui.h:89
+msgid ""
+"Transparency when the pointer leaves the keyboard. Requires compositing."
+msgstr "མར་གཏུག་མཐེབ་གཞོང་ལས་ཐོན་སྐབས་གསལ་ཐིག ཕུད་སྤར་དགོས།"
+
+#: ../settings.ui.h:90
+msgid "after"
+msgstr "རྗེས་སུ།"
+
+#: ../settings.ui.h:91
+msgid "Delay in seconds until the inactive transparency takes effect."
+msgstr "ཤུགས་མེད་གསལ་ཐིག་འཇུག་སྐབས་ཀྱི་སྐར་ཆར་སྒུག་སྡུར།"
+
+#: ../settings.ui.h:92
+msgid "seconds"
+msgstr "སྐར་ཆ།"
+
+#: ../settings.ui.h:93
+msgid "When Inactive"
+msgstr "ཤུགས་མེད་སྐབས།"
+
+#: ../settings.ui.h:94
+msgid "_Window handles of the keyboard window:"
+msgstr ""
+
+#: ../settings.ui.h:95
+msgid "_Window handles of the floating icon:"
+msgstr ""
+
+#: ../settings.ui.h:96
+msgid "Resize Protection"
+msgstr "ཚད་འགྱུར་སྲུང་སྐྱོབ།"
+
+#: ../settings.ui.h:97
+msgid "Name"
+msgstr "མིང།"
+
+#: ../settings.ui.h:98
+msgid "Description"
+msgstr "འགྲེལ་བཤད།"
+
+#: ../settings.ui.h:99
+msgctxt "Label of new layout button on preferences page Layout."
+msgid "_New"
+msgstr ""
+
+#: ../settings.ui.h:100
+msgctxt "Label of delete layout button on preferences page Layout."
+msgid "_Delete"
+msgstr ""
+
+#: ../settings.ui.h:101
+#, fuzzy
+msgctxt "Label of open folder button on preferences page Layout."
+msgid "_Open layouts folder"
+msgstr "བཀོད་གཞི་ཡིག་ཁུག་ཁ་ཕྱེ།(_O)"
+
+#: ../settings.ui.h:102
+msgctxt "Label of about layout button on preferences page Layout."
+msgid "_About"
+msgstr ""
+
+#: ../settings.ui.h:103
+msgctxt "Label of new theme button on preferences page Theme."
+msgid "_New"
+msgstr ""
+
+#: ../settings.ui.h:104
+msgctxt "Label of delete theme  button on preferences page Theme."
+msgid "_Delete"
+msgstr ""
+
+#: ../settings.ui.h:105
+#, fuzzy
+msgctxt "Label of customize theme button on preferences page Theme."
+msgid "C_ustomize theme"
+msgstr "ལྟ་བཀོད་རང་སྒྲིག།(_U)"
+
+#: ../settings.ui.h:106
+msgid "Follow _system theme"
+msgstr "རྒྱུད་མའི་ལྟ་བཀོད་བེད།(_S)"
+
+#: ../settings.ui.h:107
+msgid "Remember what Onboard theme was last used for every system theme."
+msgstr "རྒྱུད་མའི་ལྟ་བཀོད་རེ་རེར་Onboard་ལྟ་བཀོད་གང་ཞིག་ཐ་མར་བེད་སྤྱོད་བྱས་པ་དྲན།"
+
+#: ../settings.ui.h:108
+msgid ""
+"Snippets are pieces of text which are entered when the corresponding button "
+"in Onboard is pressed."
+msgstr "ཚིག་ཤོག་ཕྲན་ནི་Onboard ཀྱི་མཐེབ་གཞུང་མནན་སྐབས་ཡིག་ཚུར་འཇུག་པའི་ཡིག་ཆ་ཆུང་ཞིག་རེད།"
+
+#: ../settings.ui.h:109
+msgctxt "Label of add snippet button on preferences page Snippets."
+msgid "_Add"
+msgstr ""
+
+#: ../settings.ui.h:110
+msgctxt "Label of remove snippet button on preferences page Snippets."
+msgid "_Remove"
+msgstr ""
+
+#: ../settings.ui.h:111
+msgid "Play sound"
+msgstr "སྒྲ་སྒྲོག"
+
+#: ../settings.ui.h:112
+msgid "Play click sound on keypress."
+msgstr "མཐེབ་ཐེབས་སྐབས་ཀྱི་ཐེབས་སྒྲ་སྒྲོག"
+
+#: ../settings.ui.h:113
+#, fuzzy
+msgid "Place sound in space"
+msgstr "མཐེབ་ཐེབས་སྐབས་ཀྱི་ཐེབས་སྒྲ་སྒྲོག"
+
+#: ../settings.ui.h:114
+msgid ""
+"Place sound in space between speakers depending on the key's position on "
+"screen"
+msgstr ""
+
+#: ../settings.ui.h:115
+msgid "Show label popups"
+msgstr "ཀུང་ཙེའི་འཕུར་ལྡེབས་སྟོན།"
+
+#: ../settings.ui.h:116
+msgid "Show label popups above pressed keys."
+msgstr "ཐེབས་མཐེབ་གི་སྟེང་དུ་ཀུང་ཙེའི་འཕུར་ལྡེབས་སྟོན།"
+
+#: ../settings.ui.h:117
+msgid "Popup size:"
+msgstr ""
+
+#: ../settings.ui.h:118
+msgid "Key-press Feedback"
+msgstr "མཐེབ་ཐེབས་ལན་འདེབས།"
+
+#: ../settings.ui.h:119
+msgid "Show secondary labels"
+msgstr "ཀུང་ཙེ་གཉིས་པ་སྟོན།"
+
+#: ../settings.ui.h:120
+msgid "Show characters reachable with or without the shift key."
+msgstr "ཤིཧྥཊ་མཐེབ་མེད་ཡང་ཡོད་ཀྱང་ཐོབ་ཐུབ་པའི་ཡིག་ཆ་སྟོན།"
+
+#: ../settings.ui.h:121
+msgid "Key Labels"
+msgstr "མཐེབ་ཀུང་ཙེ།"
+
+#: ../settings.ui.h:122
+msgid "Upper case on right click"
+msgstr ""
+
+#: ../settings.ui.h:123
+msgid "Temporarily enable SHIFT when clicking with the secondary button."
+msgstr ""
+
+#: ../settings.ui.h:124
+#, fuzzy
+msgid "Key Behaviour"
+msgstr "མཐེབ་ཀྱི་བྱེད་སྒོ"
+
+#: ../settings.ui.h:125
+msgid "_Long press action:"
+msgstr "རིང་ཐེབས་བྱེད་པ།(_L):"
+
+#: ../settings.ui.h:126
+msgid ""
+"Choose between key-repeat or long-press menus. Mainly affects alpha-numeric "
+"keys."
+msgstr ""
+"མཐེབ་གཅེས་བསྐྱར་དུ་གནོན་པའམ་རིང་མོར་གནོན་པའི་དཀར་ཆག་གཉིས་ཀྱི་བར་ནས་འདེམས། ཕལ་ཆེར་ཨང་ཡིག་དང་"
+"ཡིག་འབྲུའི་མཐེབ་ལ་ཤུགས་རྐྱེན་ཡོད།"
+
+#: ../settings.ui.h:127
+msgid "Modifier _behavior:"
+msgstr "བཅོས་སྒྱུར་མཐེབ་ཀྱི་_བྱེད་སྒོ།"
+
+#: ../settings.ui.h:128
+msgid "Behavior of modifier and layer keys."
+msgstr "བཅོས་སྒྱུར་མཐེབ་དང་གང་རིམ་མཐེབ་ཀྱི་བྱེད་སྒོ།"
+
+#: ../settings.ui.h:129
+#, fuzzy
+msgid "Modifier auto-release delay in seconds:"
+msgstr "བཅོས་སྒྱུར་མཐེབ་རང་འགྲོལ་སྒུག་སྡོད།:"
+
+#: ../settings.ui.h:130
+msgid ""
+"Seconds of inactivity until active modifiers and layer keys are released. 0 "
+"to disable."
+msgstr "བཅོས་སྒྱུར་མཐེབ་དང་གང་རིམ་མཐེབ་འགྲོལ་བར་བྱ་བ་མེད་པའི་སྐར་ཆ། ལེགས་མེད་བཟོ་ན་0 བཀོད།"
+
+#: ../settings.ui.h:131
+#, fuzzy
+msgid "Modifier auto-release after hide in seconds:"
+msgstr "བཅོས་སྒྱུར་མཐེབ་རང་འགྲོལ་སྒུག་སྡོད།:"
+
+#: ../settings.ui.h:132
+msgid ""
+"Time after hiding the keyboard in seconds until latched and locked modifiers "
+"and layer keys are released automatically. Leave at 0.0 to not automatically "
+"release them."
+msgstr ""
+
+#: ../settings.ui.h:133
+msgid "0,00"
+msgstr ""
+
+#: ../settings.ui.h:134
+msgid "Key Behavior"
+msgstr "མཐེབ་ཀྱི་བྱེད་སྒོ"
+
+#: ../settings.ui.h:135
+msgid "_Touch input:"
+msgstr ""
+
+#: ../settings.ui.h:136
+msgid "_Input event source:"
+msgstr "_ནང་འཇུག་གི་འབྱུང་ཁུངས།"
+
+#: ../settings.ui.h:137
+msgid ""
+"Choose &apos;XInput&apos; for more reliable typing into text entries with "
+"pop-up selections. The &apos;GTK&apos; option offers better compatibility, "
+"but typing may fail in the presence of pointer grabs, e.g. with open pop-up "
+"windows."
+msgstr ""
+"&apos;XInput&apos; འདེམས་ན་ཤད་འཐེན་ཡོད་པའི་ཡིག་འཇུག་ས་གནས་སུ་ཡིག་གཞུག་ལེགས་ཤོས། "
+"&apos;GTK&apos; གདམ་ཀའི་ཐུན་མཐུན་ལེགས་ཡིན་ཀྱང་མར་ཐོན་སྒེའུ་ཁུང་ཕྱེ་ཡོད་སྐབས་ཡིག་གཞུག་ལོག་ཆགས་"
+"སྲིད།"
+
+#: ../settings.ui.h:138
+msgid ""
+"Choose 'XInput' for more reliable typing into text entries with pop-up "
+"selections. The 'GTK' option offers better compatibility, but typing may "
+"fail in the presence of pointer grabs, e.g. with open pop-up windows."
+msgstr ""
+"'XInput' འདེམས་ན་ཤད་འཐེན་ཡོད་པའི་ཡིག་འཇུག་ས་གནས་སུ་ཡིག་གཞུག་ལེགས་ཤོས། 'GTK' གདམ་ཀའི་ཐུན་"
+"མཐུན་ལེགས་ཡིན་ཀྱང་མར་ཐོན་སྒེའུ་ཁུང་ཕྱེ་ཡོད་སྐབས་ཡིག་གཞུག་ལོག་ཆགས་སྲིད།"
+
+#: ../settings.ui.h:139
+msgid "Input Options"
+msgstr "ནང་འཇུག་གི་གདམ་ཀ"
+
+#: ../settings.ui.h:140
+msgid "Delay between keystrokes in milliseconds:"
+msgstr ""
+
+#: ../settings.ui.h:141
+msgid ""
+"Increase this if key-strokes get lost when inserting word suggestions or "
+"snippets into Firefox or other Gtk-2 applications. Has no effect on Gtk-3 "
+"applications."
+msgstr ""
+
+#: ../settings.ui.h:142
+#, fuzzy
+msgid "Key-stroke generator"
+msgstr "མཐེབ་གནོན་བསྐྲུན་པ།(_G):"
+
+#: ../settings.ui.h:143
+msgid ""
+"<b>Auto</b>: let Onboard decide, recommended.\n"
+"\n"
+"<b>XTest</b> is the default for all X based desktop environments.\n"
+"\n"
+"<b>uinput</b> should be available on all linux-based systems, including X, "
+"Wayland and MIR-based desktops, but requires write permission for /dev/"
+"uinput.\n"
+"\n"
+"<b>AT-SPI</b> has limited support for key-stroke generation, and is only "
+"recommended for testing."
+msgstr ""
+
+#: ../settings.ui.h:150
+#, fuzzy
+msgid "Key-stroke Generation"
+msgstr "མཐེབ་གནོན་བསྐྲུན་པ།(_G):"
+
+#: ../settings.ui.h:151
+msgid "Popup time [s]:"
+msgstr ""
+
+#: ../settings.ui.h:152
+msgid "Affects how long a key popup stays open."
+msgstr ""
+
+#: ../settings.ui.h:153
+msgid "0.15"
+msgstr ""
+
+#: ../settings.ui.h:154
+#, fuzzy
+msgid "Animation"
+msgstr "འགུལ་ཤུགས།"
+
+#: ../settings.ui.h:155
+msgid "Advanced"
+msgstr "རྒྱས་བཤད"
+
+#: ../settings.ui.h:156
+#, fuzzy
+msgid ""
+"Show Onboard when there is a recognized text entry in focus. Requires Gnome "
+"Accessibility."
+msgstr ""
+"ངོས་འཛིན་བྱས་པའི་ཡིག་ཆ་སྒེའུ་ཁུང་ལ་དམིགས་བསལ་བྱེད་སྐབས་Onboard མངོན། GNOME ཐོབ་ལམ་དགོས།"
+
+#: ../settings.ui.h:157
+msgid "Keyboard movement strategy:"
+msgstr ""
+
+#: ../settings.ui.h:158
+msgid "Chose how the keyboard window moves when a text entry is activated."
+msgstr ""
+
+#: ../settings.ui.h:159
+msgid "_Hide when typing on a physical keyboard"
+msgstr ""
+
+#: ../settings.ui.h:160
+msgid ""
+"Hide Onboard when any key is pressed on a physical keyboard. Requires input "
+"event source \"XInput\"."
+msgstr ""
+
+#: ../settings.ui.h:161
+#, fuzzy
+msgid "Stay hidden:"
+msgstr "Onboard སྦས་པའི་ངང་འགོ་འཛུགས།"
+
+#: ../settings.ui.h:162
+msgid ""
+"Once hidden by a physical key-press, auto-show is paused. Select the pause "
+"duration here."
+msgstr ""
+
+#: ../settings.ui.h:163
+#, fuzzy
+msgid "Auto-show only in tablet mode"
+msgstr "ཡིག་ཆ་རྩོམ་སྒྲིག་སྐབས་རང་འགུལ་མངོན།(_A)"
+
+#: ../settings.ui.h:164
+msgid ""
+"Requires driver support for SW_TABLET_MODE and a running instance of acpid."
+msgstr ""
+
+#: ../settings.ui.h:165
+msgid ""
+"Alternatively, some devices generate key events on entering and leaving "
+"tablet mode. Run 'xinput test-xi2 3 ' to find these key presses and enter "
+"their 'detail' values below."
+msgstr ""
+
+#: ../settings.ui.h:166
+msgid "Hotkey received when entering tablet mode:"
+msgstr ""
+
+#: ../settings.ui.h:167
+msgid "Hotkey received when leaving tablet mode:"
+msgstr ""
+
+#: ../settings.ui.h:168
+msgid "File that contains the current device state:"
+msgstr ""
+
+#: ../settings.ui.h:169
+msgid "Regular expression to match for tablet-mode:"
+msgstr ""
+
+#: ../settings.ui.h:170
+msgid "Convertible Devices"
+msgstr ""
+
+#: ../settings.ui.h:171
+msgid "Don't auto-show while external keyboards are connected"
+msgstr ""
+
+#: ../settings.ui.h:172
+msgid "Detected keyboard devices:"
+msgstr ""
+
+#: ../settings.ui.h:173
+msgid ""
+"Check 'Ignore' for devices that are always connected and should not block "
+"auto-show."
+msgstr ""
+
+#: ../settings.ui.h:174
+#, fuzzy
+msgid "External Keyboards"
+msgstr "མཐེབ་གཞོང་ལས་ཕྱིར་འབུད།"
+
+#: ../settings.ui.h:175
+msgid "Show _suggestions"
+msgstr "_གདམ་ཀ་མངོན་པར་བྱེད།"
+
+#: ../settings.ui.h:176
+msgid "Enable word completion and prediction."
+msgstr "ཚིག་མཐར་སྐྱོང་དང་ཀློང་སྟོན་ཤུགས་སྐྱེད།"
+
+#: ../settings.ui.h:177
+msgid "Show spelling suggestions"
+msgstr "འབྲི་ཐབས་ཀྱི་གདམ་ཀ་མངོན་པར་བྱེད།"
+
+#: ../settings.ui.h:178
+msgid "Check spelling of the word at or before the cursor."
+msgstr "གཡོ་འདེགས་ཀར་ཡམ་གཡོ་འདེགས་ཀའི་སྔར་གྱི་ཚིག་གི་འབྲི་ཐབས་ཞིབ་བཤེར།"
+
+#: ../settings.ui.h:179
+msgid "_Learn from typed text"
+msgstr "ཡིག་གཞུག་ཡིག་ཆ་ལས་_སློབ་སྦྱོང་བྱེད།"
+
+#: ../settings.ui.h:180
+msgid ""
+"Remember new words, their recency and frequency to improve the suggestions "
+"over time."
+msgstr "གདམ་ཀ་ལེགས་བཟོ་རུ་ཚིག་གསར་དང་དེའི་དུས་ཐོག་དང་ཐེངས་གྲངས་དྲན།"
+
+#: ../settings.ui.h:181
+msgid "Insert word _separators"
+msgstr "ཚིག་_བར་འཇུག"
+
+#: ../settings.ui.h:182
+msgid ""
+"Add and remove spaces when inserting word suggestions followed by "
+"punctuation characters."
+msgstr "ཚད་མཚོན་ཡིག་རྟགས་རྗེས་ཀྱི་ཚིག་གདམ་ཀ་འཇུག་སྐབས་སྟོང་གཞི་སྣོན་དང་འདོར།"
+
+#: ../settings.ui.h:183
+msgid "Options"
+msgstr "གདམ་ཀ"
+
+#: ../settings.ui.h:184
+#, fuzzy
+msgid "Show more suggestions arrow"
+msgstr "_གདམ་ཀ་མངོན་པར་བྱེད།"
+
+#: ../settings.ui.h:185
+msgid "Step forward and backward through the available suggestions."
+msgstr ""
+
+#: ../settings.ui.h:186
+msgid "Show button to pause learning"
+msgstr "སློབ་སྦྱོང་འགོག་སྡོད་བྱེད་པའི་ཐེབས་མངོན་པར་བྱེད།"
+
+#: ../settings.ui.h:187
+msgid "Words typed while this button is pressed won't be remembered."
+msgstr "ཐེབས་འདི་གནོན་པའི་དུས་སུ་ཡིག་གཞུག་ཚིག་དྲན་གཟུང་མི་བྱེད།"
+
+#: ../settings.ui.h:188
+msgid "Show lan_guage switcher"
+msgstr "_སྐད་ཡིག་བརྗེ་མཐེབ་མངོན་པར་བྱེད།"
+
+#: ../settings.ui.h:189
+msgid "Show a button for language selection."
+msgstr "སྐད་ཡིག་འདེམས་པའི་ཐེབས་མངོན་པར་བྱེད།"
+
+#: ../settings.ui.h:190
+msgid "Buttons"
+msgstr "ཐེབས"
+
+#: ../settings.ui.h:191
+msgid "Word Suggestions"
+msgstr "ཚིག་གི་གདམ་ཀ"
+
+#: ../settings.ui.h:192
+msgid "Auto-capitalize while typing"
+msgstr "འབྲི་སྐབས་རང་འགུལ་གྱིས་ཡིག་གེ་ཆེན་པོར་བཟོ་བ།"
+
+#: ../settings.ui.h:193
+msgid "Automatically capitalize sentence begins and name words."
+msgstr "ཚིག་གྲུབ་ཀྱི་མགོ་དང་མིང་གི་ཡིག་གེ་རང་འགུལ་གྱིས་ཆེན་པོར་བཟོ་བ།"
+
+#: ../settings.ui.h:194
+msgid "Auto-correct spelling"
+msgstr "རང་འགུལ་གྱིས་སྐད་ཡིག་བཟོ་བཅོས།"
+
+#: ../settings.ui.h:195
+msgid "Automatically correct the last word."
+msgstr "མཐའ་མའི་ཚིག་རང་འགུལ་གྱིས་བཟོ་བཅོས་བྱེད་པ།"
+
+#: ../settings.ui.h:196
+msgid "The spell check engine to use."
+msgstr "སྤྱད་མི་སྐད་ཡིག་ཞིབ་བཤེར་འཕྲུལ་ཆས།"
+
+#: ../settings.ui.h:197
+msgid "Spell-check backend:"
+msgstr "སྐད་ཡིག་ཞིབ་བཤེར་རྒྱབ་གཞི།"
+
+#: ../settings.ui.h:198
+msgid "Auto-correction"
+msgstr "རང་འགུལ་བཟོ་བཅོས།"
+
+#: ../settings.ui.h:199
+msgid "While  learning is paused:"
+msgstr ""
+
+#: ../settings.ui.h:200
+#, fuzzy
+msgid "Learning"
+msgstr "སློབ་གཉེར་ལྟེང་བཞག།"
+
+#: ../settings.ui.h:201
+msgid "Enable  keyboard _scanning"
+msgstr "མཐེབ་གཞོང་བར་གཅོད་བསྐུལ་སློང་།(_S)"
+
+#: ../settings.ui.h:202
+#, fuzzy
+msgctxt ""
+"Label of keyboard scanning settings button on preferences page Universal "
+"Access."
+msgid "Sc_anner Settings"
+msgstr "བར་གཟིགས་སྒྲིག་འགོད།(_n)"
+
+#: ../settings.ui.h:203
+msgid "Keyboard Scanning"
+msgstr "མཐེབ་གཞོང་བར་གཅོད།"
+
+#: ../settings.ui.h:204
+msgid "_Delay:"
+msgstr "སྒུག་སྡུར།(_D):"
+
+#: ../settings.ui.h:205
+msgid "_Motion threshold:"
+msgstr "གཡོ་བའི་ཚད་གཞི།(_M):"
+
+#: ../settings.ui.h:206
+msgid "Time in seconds before a click is triggered."
+msgstr "མཐེབ་གང་ཞིག་བརྡ་སྐུལ་བའི་སྔོན་གྱི་སྐར་ཆའི་གྲངས།"
+
+#: ../settings.ui.h:207
+msgid "Distance in pixels before movement will be recognized."
+msgstr "གཡོ་བ་ངོས་འཛིན་སྔོན་གྱི་རྣམ་གྲངས་ཀྱི་སྤར་ཚད།"
+
+#: ../settings.ui.h:208
+msgid "Hide hover click window"
+msgstr "སྒུག་མཐེབ་ཀྱི་སྒེའུ་ཁུང་སྦ་བ།"
+
+#: ../settings.ui.h:209
+msgid "Hide the system-provided hover click window while Onboard is running."
+msgstr "Onboard འཁོར་བཞིན་པའི་སྐབས་མ་ལག་གིས་བསྐྲུན་པའི་སྒུག་མཐེབ་སྒེའུ་ཁུང་སྦ་བ།"
+
+#: ../settings.ui.h:210
+msgid "Enable click type window on exit"
+msgstr "ཕྱིར་འབུད་སྐབས་མཐེབ་ཀླད་སྒེའུ་ཁུང་སྤྱད་པར་བྱ།"
+
+#: ../settings.ui.h:211
+msgid ""
+"Always enable the system-provided hover click window when exiting Onboard."
+msgstr "Onboard ལས་ཕྱིར་འབུད་སྐབས་མ་ལག་གིས་བསྐྲུན་པའི་སྒུག་མཐེབ་སྒེའུ་ཁུང་རྟག་ཏུ་ལེགས་གྲུབ།"
+
+#: ../settings.ui.h:212
+msgid "Hover Click"
+msgstr "སྒུག་མཐེབ།"
+
+#: ../settings_docking_dialog.ui.h:1
+msgid "Top"
+msgstr "སྟེང་།"
+
+#: ../settings_docking_dialog.ui.h:2
+msgid "Bottom"
+msgstr "འོག"
+
+#: ../settings_docking_dialog.ui.h:3
+msgid "Active Monitor"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:4
+msgid "Primary Monitor"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:5
+msgid "Monitor 0"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:6
+msgid "Monitor 1"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:7
+msgid "Monitor 2"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:8
+msgid "Monitor 3"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:9
+msgid "Monitor 4"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:10
+msgid "Monitor 5"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:11
+msgid "Monitor 6"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:12
+msgid "Monitor 7"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:13
+msgid "Monitor 8"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:14
+msgid "Docking settings"
+msgstr "མཐུད་སྒྲིག་འགོད།"
+
+#: ../settings_docking_dialog.ui.h:15
+msgctxt "Label of the close button of the docking settings dialog."
+msgid "_Close"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:16
+msgid "Shrink workarea"
+msgstr "ལས་ཁུལ་བསྡུ་བ།"
+
+#: ../settings_docking_dialog.ui.h:17
+msgid "Shrink the available space for maximized windows."
+msgstr "སྒེའུ་ཁུང་ཆེས་ཆེར་བཏང་སྐབས་སྤྱོད་ཆོག་པའི་ས་ཁོངས་བསྡུ་བ།"
+
+#: ../settings_docking_dialog.ui.h:18
+msgid "Expand on landscape screens"
+msgstr "ཞིང་ཐིག་གཞི་གཏན་འབེབས་སྐབས་མཐེབ་གཞོང་རྒྱ་སྟོང་བཟོ་བ།"
+
+#: ../settings_docking_dialog.ui.h:19
+msgid "Expand keyboard to the width of the workarea."
+msgstr "མཐེབ་གཞོང་ལས་ཁུལ་གྱི་ཕྱོགས་རྒྱར་རྒྱ་སྟོང་བཟོ་བ།"
+
+#: ../settings_docking_dialog.ui.h:20
+msgid "Expand on portrait screens"
+msgstr "སྲང་ཐིག་གཞི་གཏན་འབེབས་སྐབས་མཐེབ་གཞོང་རྒྱ་སྟོང་བཟོ་བ།"
+
+#: ../settings_docking_dialog.ui.h:21
+msgid "Dock to screen edge:"
+msgstr "གཞི་གཏན་འབེབས་ཀྱི་མཐའ་རུ་མཐུད།"
+
+#: ../settings_docking_dialog.ui.h:22
+msgid "Dock to monitor:"
+msgstr ""
+
+#: ../settings_scanner_dialog.ui.h:1
+msgid "Automatic scan for 1 switch"
+msgstr "མཐེབ་གཅིག་ལ་རང་འགུལ་བར་གཟིགས།"
+
+#: ../settings_scanner_dialog.ui.h:2
+msgid "Critical overscan for 1 switch"
+msgstr "མཐེབ་གཅིག་ལ་གཞི་རྩའི་མང་དུ་བར་གཟིགས།"
+
+#: ../settings_scanner_dialog.ui.h:3
+msgid "Step scan for 2 switches"
+msgstr "མཐེབ་གཞོང་གཉིས་ལ་གྲལ་རིམ་སྐར་མ།"
+
+#: ../settings_scanner_dialog.ui.h:4
+msgid "Directed scan for 3 or 5 switches"
+msgstr "མཐེབ་གཞོང་གསུམ་ཡང་ན་ལྔར་ངོས་འཛིན་སྐར་མ།"
+
+#: ../settings_scanner_dialog.ui.h:5
+msgid "Scanner Settings"
+msgstr "བར་གཅོད་སྒྲིག་འགོད།"
+
+#: ../settings_scanner_dialog.ui.h:6
+msgctxt "Label of the close button of the scanner settings dialog."
+msgid "_Close"
+msgstr ""
+
+#: ../settings_scanner_dialog.ui.h:7
+msgid "Select a scanning _profile:"
+msgstr "བར་གཅོད་(_p)རྣམ་གཞག་འདེམས།"
+
+#: ../settings_scanner_dialog.ui.h:8
+msgid "_Step interval:"
+msgstr "གྲལ་རིམ་བར་སྟོང་།(_S):"
+
+#: ../settings_scanner_dialog.ui.h:9
+msgid "Sc_an cycles:"
+msgstr "བར་གཅོད་འཁོར་ལོ།(_a):"
+
+#: ../settings_scanner_dialog.ui.h:10
+msgid ""
+"The time the scanner rests on a key or group before moving to the next. (in "
+"seconds)"
+msgstr "བར་གཅོད་འཕྲུལ་ཆས་མཐེབ་གཅིག་གམ་ཚོགས་པའི་སྟེང་དུ་སྡོད་སྐབས་ཀྱི་དུས་ཚོད། (སྐར་ཆ།)"
+
+#: ../settings_scanner_dialog.ui.h:11
+msgid ""
+"The number of times the scanner cycles through the entire keyboard before it "
+"stops."
+msgstr "བར་གཅོད་འཕྲུལ་ཆས་ཆད་སྔོན་མཐེབ་གཞོང་ཡོངས་བར་གཅོད་བྱེད་མི་འཁོར་ལོའི་གྲངས།"
+
+#: ../settings_scanner_dialog.ui.h:12
+msgid "Step _only during switch down"
+msgstr "མཐེབ་གཞི་ནུབ་སྐབས་གྲལ་རིམ་མ་གཏོགས་མི་འགྱུར།(_O)"
+
+#: ../settings_scanner_dialog.ui.h:13
+msgid "Progress the highlight only while the switch is held down."
+msgstr "མཐེབ་གཞི་བཟུང་བཞིན་པའི་སྐབས་མཚོན་རྟགས་མ་གཏོགས་མི་འགྱུར།"
+
+#: ../settings_scanner_dialog.ui.h:14
+msgid "_Forward interval:"
+msgstr "མདུན་དུ་བར་སྟོང་།(_F):"
+
+#: ../settings_scanner_dialog.ui.h:15
+msgid "_Backtrack interval:"
+msgstr "རྒྱབ་ཏུ་བར་སྟོང་།(_B):"
+
+#: ../settings_scanner_dialog.ui.h:16
+msgid ""
+"The time the scanner rests on a key  while progressing forward. (in seconds)"
+msgstr "བར་གཅོད་འཕྲུལ་ཆས་མདུན་ལ་འགྲོ་སྐབས་མཐེབ་གང་ཞིག་སྟེང་དུ་སྡོད་སྐབས་ཀྱི་དུས་ཚོད། (སྐར་ཆ།)"
+
+#: ../settings_scanner_dialog.ui.h:17
+msgid ""
+"The time the scanner rests on a key  while moving backwards. (in seconds)"
+msgstr "བར་གཅོད་འཕྲུལ་ཆས་རྒྱབ་ལ་ལོག་སྐབས་མཐེབ་གང་ཞིག་སྟེང་དུ་སྡོད་སྐབས་ཀྱི་དུས་ཚོད། (སྐར་ཆ།)"
+
+#: ../settings_scanner_dialog.ui.h:18
+msgid "Backtrack _steps:"
+msgstr "རྒྱབ་ལ་གྲལ་རིམ།(_s):"
+
+#: ../settings_scanner_dialog.ui.h:19
+msgid "The number of keys the scanner steps back before moving forward again."
+msgstr "བར་གཅོད་འཕྲུལ་ཆས་ཡང་བསྐྱར་མདུན་ལ་འགྲོ་སྔོན་རྒྱབ་ལ་གཏོར་པའི་མཐེབ་གྲངས།"
+
+#: ../settings_scanner_dialog.ui.h:20
+msgid "_Alternate switch actions"
+msgstr "_མཐེབ་གཞོང་བརྗེ་སྤོས་བྱེད་སྒོ།"
+
+#: ../settings_scanner_dialog.ui.h:21
+msgid ""
+"Swap the scan actions after every key activation. The Step action will "
+"become the Activate action and vice versa."
+msgstr ""
+"མཐེབ་གང་རུང་བཀོལ་སྤྱོད་བྱས་རྗེས་བར་གཅོད་བྱེད་སྒོ་བརྗེ་སྤོས་བྱ། གོ་རིམ་བྱེད་སྒོ་བཀོལ་སྤྱོད་བྱེད་སྒོར་འགྱུར་ཞིང་། "
+"བཀོལ་སྤྱོད་བྱེད་སྒོ་ཡང་གོ་རིམ་བྱེད་སྒོར་འགྱུར།"
+
+#: ../settings_scanner_dialog.ui.h:22
+msgid "Profiles"
+msgstr "རྣམ་གཞག"
+
+#: ../settings_scanner_dialog.ui.h:23
+msgid "_Select an input device:"
+msgstr "_འཇུག་སྣོན་ཡོ་བྱད་འདེམས།:"
+
+#: ../settings_scanner_dialog.ui.h:24
+msgid "_Use this device only for scanning"
+msgstr "_འདི་བར་གཅོད་ལ་ཁོ་ན་སྤྱོད།"
+
+#: ../settings_scanner_dialog.ui.h:25
+msgid ""
+"The selected device should not control the system mouse cursor or the "
+"keyboard caret."
+msgstr "འདེམས་ཟིན་པའི་ཡོ་བྱད་ཀྱིས་མ་ལག་གི་བྱི་བའི་འཁོར་ལོ་འམ་མཐེབ་གཞོང་གི་འཁོར་ལོ་གཏོང་འཆར་མི་རུང་།"
+
+#: ../settings_scanner_dialog.ui.h:26
+msgid "Input Device"
+msgstr "འཇུག་སྣོན་ཡོ་བྱད།"
+
+#: ../settings_theme_dialog.ui.h:1
+msgid "Customize Theme"
+msgstr "དབྱིབས་རིགས་རང་སྒྲུབ།"
+
+#: ../settings_theme_dialog.ui.h:2
+msgctxt "Label of the revert button of the theme settings dialog."
+msgid "_Revert"
+msgstr ""
+
+#: ../settings_theme_dialog.ui.h:3
+msgctxt "Label of the close button of the theme settings dialog."
+msgid "_Close"
+msgstr ""
+
+#: ../settings_theme_dialog.ui.h:4
+msgid "Color Sche_me"
+msgstr "ཚོས་གཞི་ཐིག་_དྲིལ།"
+
+#: ../settings_theme_dialog.ui.h:7
+msgid "_Angle:"
+msgstr "_གྲུ་ཟུར།:"
+
+#: ../settings_theme_dialog.ui.h:8
+msgid "Light Direction"
+msgstr "འོད་ཀྱི་ཕྱོགས།"
+
+#: ../settings_theme_dialog.ui.h:10
+msgid "_Style:"
+msgstr "_རྣམ་པ།:"
+
+#: ../settings_theme_dialog.ui.h:11
+msgid "R_oundness:"
+msgstr "ཟུར་_རིལ།:"
+
+#: ../settings_theme_dialog.ui.h:12
+msgid "S_ize:"
+msgstr "ཆེ་_ཆུང།:"
+
+#: ../settings_theme_dialog.ui.h:13
+msgid "B_order width:"
+msgstr "མཐའ་_རྒྱུའི་ཞེང་།:"
+
+#: ../settings_theme_dialog.ui.h:14
+msgid "Key Style"
+msgstr "མཐེབ་གཞོང་རྣམ་པ།"
+
+#: ../settings_theme_dialog.ui.h:15
+msgid "_Key:"
+msgstr "_མཐེབ།:"
+
+#: ../settings_theme_dialog.ui.h:16
+msgid "_Border:"
+msgstr "_མཐའ་རྒྱུ།:"
+
+#: ../settings_theme_dialog.ui.h:17
+msgid "Gradients"
+msgstr "རིམ་བཞིན་འགྱུར་ཚོས།"
+
+#: ../settings_theme_dialog.ui.h:18
+msgid "_Strength:"
+msgstr "_ནུས་ཤུགས།:"
+
+#: ../settings_theme_dialog.ui.h:19
+msgid "Shadow"
+msgstr "གྲིབ་མ།"
+
+#: ../settings_theme_dialog.ui.h:20
+msgid "Keys"
+msgstr "མཐེབ་གཞོང།"
+
+#: ../settings_theme_dialog.ui.h:21
+msgid "_Font:"
+msgstr "_ཡིག་གཟུགས།:"
+
+#: ../settings_theme_dialog.ui.h:22
+msgid "_Attributes:"
+msgstr "_རང་བཞིན།:"
+
+#: ../settings_theme_dialog.ui.h:23
+msgid "Font"
+msgstr "ཡིག་གཟུགས།"
+
+#: ../settings_theme_dialog.ui.h:24
+msgid "I_ndependent size"
+msgstr "རང་_དབང་ཆེ་ཆུང།"
+
+#: ../settings_theme_dialog.ui.h:25
+msgid "_Super key:"
+msgstr "_རྒྱལ་ཆེན་མཐེབ།:"
+
+#: ../settings_theme_dialog.ui.h:26
+msgid "Label Override"
+msgstr "ཡིག་རྟགས་མངོན་སྤེལ།"
+
+#: ../settings_theme_dialog.ui.h:27
+msgid "Labels"
+msgstr "ཡིག་རྟགས།"
 
 #~ msgid ""
 #~ "Switch\n"
@@ -2076,9 +2721,6 @@ msgstr ""
 #~ msgid "No file manager to open layout folder"
 #~ msgstr "བཀོད་གཞི་ཡིག་ཁུག་ཁ་ཕྱེ་བའི་ཡིག་ཆ་འཛིན་སྐྱོང་མེད།"
 
-#~ msgid "Corners only"
-#~ msgstr "ཟུར་ཁོ་ན།"
-
 #~ msgid "_Universal Access Panel"
 #~ msgstr "ཀུན་ལ་ཐོབ་ལམ་ཚན་ཤོག(_U)"
 
@@ -2150,35 +2792,11 @@ msgstr ""
 #~ msgid "All files"
 #~ msgstr "ཡིག་ཆ་ཀུན།"
 
-#~ msgid "key-repeat"
-#~ msgstr "མཐེབ་ཡང་བསྐྱར།"
-
-#~ msgid "lock only"
-#~ msgstr "སྒོ་ལྕགས་ཙམ།"
-
-#~ msgid "international character selection"
-#~ msgstr "རྒྱལ་སྤྱིའི་ཡིག་རྟགས་འདེམས་པ།"
-
 #~ msgid "Atspi unavailable, word prediction may not be fully functional"
 #~ msgstr "Atspi སྤྱོད་མི་ཐུབ། ཚིག་ཀློང་སྟོན་བྱེད་ལས་ཧྲིལ་པོ་མི་ལག་ལེན་ཐུབ།"
 
 #~ msgid "1"
 #~ msgstr "1"
-
-#~ msgid "latch, then lock"
-#~ msgstr "འཇུས་ནས་སྒོ་ལྕགས་གཏོང་།"
-
-#~ msgid "latch, double-click to lock"
-#~ msgstr "འཇུས་ནས་ཉིས་མནན་སྒོ་ལྕགས་གཏོང་།"
-
-#~ msgid "latch only"
-#~ msgstr "འཇུས་པ་ཙམ།"
-
-#~ msgid "Key-stroke _generation:"
-#~ msgstr "མཐེབ་གནོན་བསྐྲུན་པ།(_G):"
-
-#~ msgid "Modifier auto-release delay:"
-#~ msgstr "བཅོས་སྒྱུར་མཐེབ་རང་འགྲོལ་སྒུག་སྡོད།:"
 
 #~ msgid "_Touch input (requires restart):"
 #~ msgstr "རེག་གནོན་ནང་འཇུག། (ཡང་བསྐྱར་འགོ་འཛུགས་དགོས།)(_T):"
@@ -2200,18 +2818,6 @@ msgstr ""
 
 #~ msgid "column"
 #~ msgstr "ཀེར་རྒྱུད།"
-
-#~ msgid "_Settings"
-#~ msgstr "སྒྲིག་འགོད།(_S)"
-
-#~ msgid "_Open layouts folder"
-#~ msgstr "བཀོད་གཞི་ཡིག་ཁུག་ཁ་ཕྱེ།(_O)"
-
-#~ msgid "C_ustomize theme"
-#~ msgstr "ལྟ་བཀོད་རང་སྒྲིག།(_U)"
-
-#~ msgid "Sc_anner Settings"
-#~ msgstr "བར་གཟིགས་སྒྲིག་འགོད།(_n)"
 
 #~ msgid "Flexible onscreen keyboard for GNOME"
 #~ msgstr "GNOME གི་ཆེད་བརྙན་ཤེལ་མཐེབ་གཞོང་ལྷུག་པོ།"

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: onboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-06 14:30+0200\n"
+"POT-Creation-Date: 2026-07-11 18:54+0200\n"
 "PO-Revision-Date: 2014-03-06 23:50+0000\n"
 "Last-Translator: Anthony Harrington 😁 <untaintableangel@ubuntu.com>\n"
 "Language-Team: English (United Kingdom) <en_GB@li.org>\n"
@@ -617,7 +617,7 @@ msgid "Flat"
 msgstr "Flat"
 
 #. Key style with simple gradients
-#: ../Onboard/settings.py:1631
+#: ../Onboard/settings.py:1631 ../settings_theme_dialog.ui.h:6
 msgid "Gradient"
 msgstr "Gradient"
 
@@ -862,7 +862,7 @@ msgid "Scroll"
 msgstr "Scroll"
 
 #. translators: this is a 'tooltip' of the key_template 'layer2' in keyboard layout 'key_defs.xml'
-#: ../data/layoutstrings.py:88 ../data/layoutstrings.py:340
+#: ../data/layoutstrings.py:88 ../data/layoutstrings.py:340 ../settings.ui.h:27
 msgid "Snippets"
 msgstr "Snippets"
 
@@ -1307,916 +1307,1263 @@ msgstr ""
 msgid "onscreen;keyboard;accessibility;utility;"
 msgstr ""
 
-#~ msgid "Key-repeat"
-#~ msgstr "Key-repeat"
-
-#~ msgid "International character selection"
-#~ msgstr "International character selection"
-
-#~ msgid "never"
-#~ msgstr "never"
-
-#~ msgid "1 minute"
-#~ msgstr "1 minute"
-
-#~ msgid "5 minutes"
-#~ msgstr "5 minutes"
-
-#~ msgid "10 minutes"
-#~ msgstr "10 minutes"
-
-#~ msgid "30 minutes"
-#~ msgstr "30 minutes"
-
-#~ msgid "1 hour"
-#~ msgstr "1 hour"
-
-#~ msgid "3 hours"
-#~ msgstr "3 hours"
-
-#~ msgid "forever"
-#~ msgstr "forever"
-
-#~ msgid "GTK"
-#~ msgstr "GTK"
-
-#~ msgid "XInput"
-#~ msgstr "XInput"
-
-#~ msgid "Auto"
-#~ msgstr "Auto"
-
-#~ msgid "XTest"
-#~ msgstr "XTest"
-
-#~ msgid "uinput"
-#~ msgstr "uinput"
-
-#~ msgid "AT-SPI"
-#~ msgstr "AT-SPI"
-
-#~ msgid "Remember nothing"
-#~ msgstr "Remember nothing"
-
-#~ msgid "Don't remember new words"
-#~ msgstr "Don't remember new words"
-
-#~ msgid "None"
-#~ msgstr "None"
-
-#~ msgid "Movement only"
-#~ msgstr "Movement only"
-
-#~ msgid "Corners"
-#~ msgstr "Corners"
-
-#~ msgid "All corners and edges"
-#~ msgstr "All corners and edges"
-
-#~ msgid "General"
-#~ msgstr "General"
-
-#~ msgid "Window"
-#~ msgstr "Window"
-
-#~ msgid "Layout"
-#~ msgstr "Layout"
-
-#~ msgid "Theme"
-#~ msgstr "Theme"
-
-#~ msgid "Keyboard"
-#~ msgstr "Keyboard"
-
-#~ msgid "Typing Assistance"
-#~ msgstr "Typing Assistance"
-
-#~ msgid "Universal Access"
-#~ msgstr "Universal Access"
-
-#~ msgid "Only move when necessary"
-#~ msgstr "Only move when necessary"
-
-#~ msgid "Follow the active window"
-#~ msgstr "Follow the active window"
-
-#~ msgid "Latch, then lock"
-#~ msgstr "Latch, then lock"
-
-#~ msgid "Latch, double-click to lock"
-#~ msgstr "Latch, double-click to lock"
-
-#~ msgid "Latch only"
-#~ msgstr "Latch only"
-
-#~ msgid "Lock only"
-#~ msgstr "Lock only"
-
-#~ msgid "Push button"
-#~ msgstr "Push button"
-
-#~ msgid "none"
-#~ msgstr "none"
-
-#~ msgid "single-touch"
-#~ msgstr "single-touch"
-
-#~ msgid "multi-touch"
-#~ msgstr "multi-touch"
-
-#~ msgctxt "Label of the main close button of the preferences dialog."
-#~ msgid "_Close"
-#~ msgstr "_Close"
-
-#~ msgid "_Auto-show when editing text"
-#~ msgstr "_Auto-show when editing text"
-
-#~ msgid ""
-#~ "Show Onboard when there is a recognized text window in focus. Requires "
-#~ "Gnome Accessibility."
-#~ msgstr ""
-#~ "Show Onboard when there is a recognised text window in focus. Requires "
-#~ "Gnome Accessibility."
-
-#~ msgid "Start Onboard _hidden"
-#~ msgstr "Start Onboard _hidden"
-
-#~ msgid "Start Onboard hidden."
-#~ msgstr "Start Onboard hidden."
-
-#~ msgid "Show/Hide options"
-#~ msgstr "Show/Hide options"
-
-#~ msgid "Show floating _icon when Onboard is hidden"
-#~ msgstr "Show floating _icon when Onboard is hidden"
-
-#~ msgid ""
-#~ "Show a floating icon on the desktop when Onboard is hidden. A click on "
-#~ "the icon makes Onboard reappear."
-#~ msgstr ""
-#~ "Show a floating icon on the desktop when Onboard is hidden. A click on "
-#~ "the icon makes Onboard reappear."
-
-#~ msgid "Show when _unlocking the screen"
-#~ msgstr "Show when _unlocking the screen"
-
-#~ msgid ""
-#~ "Show Onboard when the dialog to unlock the screen appears; this way "
-#~ "Onboard can be used for example to enter the password to dismiss the "
-#~ "screensaver when it is set to ask for it."
-#~ msgstr ""
-#~ "Show Onboard when the dialogue to unlock the screen appears; this way "
-#~ "Onboard can be used for example to enter the password to dismiss the "
-#~ "screensaver when it is set to ask for it."
-
-#~ msgid "Show _tooltips"
-#~ msgstr "Show _tooltips"
-
-#~ msgid "Show tooltips for the keyboard&apos;s buttons."
-#~ msgstr "Show tooltips for the keyboard&apos;s buttons."
-
-#~ msgid "Show tooltips for the keyboard's buttons."
-#~ msgstr "Show tooltips for the keyboard's buttons."
-
-#~ msgid "_Show status icon"
-#~ msgstr "_Show status icon"
-
-#~ msgid "Show the status item. A click on that icon hides or shows Onboard."
-#~ msgstr "Show the status item. A click on that icon hides or shows Onboard."
-
-#~ msgid "Status icon _provider:"
-#~ msgstr "Status icon _provider:"
-
-#~ msgid ""
-#~ "<b>AppIndicator</b> (default) is recommended for broadest compatibility. "
-#~ "A middle click on the icon shows the keyboard. In KDE Plasma a left click "
-#~ "does the same.\n"
-#~ "\n"
-#~ "<b>GtkStatusIcon</b> isn't supported well anymore by various desktop "
-#~ "environments, but generally allows to show the keyboard on left click.\n"
-#~ "\n"
-#~ "Requires restart."
-#~ msgstr ""
-#~ "<b>AppIndicator</b> (default) is recommended for broadest compatibility. "
-#~ "A middle click on the icon shows the keyboard. In KDE Plasma, a left "
-#~ "click does the same.\n"
-#~ "\n"
-#~ "<b>GtkStatusIcon</b> isn't well supported by various desktop environments "
-#~ "anymore, but generally allows to show the keyboard on left click.\n"
-#~ "\n"
-#~ "Requires restart."
-
-#~ msgid "Desktop Integration"
-#~ msgstr "Desktop Integration"
-
-#~ msgid "Dock to screen edge"
-#~ msgstr "Dock to screen edge"
-
-#~ msgid "Dock the keyboard to the edge of the screen."
-#~ msgstr "Dock the keyboard to the edge of the screen."
-
-#~ msgctxt "Label of settings button on preferences page Window."
-#~ msgid "_Settings"
-#~ msgstr "_Settings"
-
-#~ msgid "Docking"
-#~ msgstr "Docking"
-
-#~ msgid "Show window _decoration"
-#~ msgstr "Show window _decoration"
-
-#~ msgid "Show window caption and frame."
-#~ msgstr "Show window caption and frame."
-
-#~ msgid "Show always on visible _workspace"
-#~ msgstr "Show always on visible _workspace"
-
-#~ msgid "&quot;Sticky&quot; mode for keyboard and floating icon."
-#~ msgstr "&quot;Sticky&quot; mode for keyboard and floating icon."
-
-#~ msgid "\"Sticky\" mode for keyboard and floating icon."
-#~ msgstr "\"Sticky\" mode for keyboard and floating icon."
-
-#~ msgid "_Force window to top"
-#~ msgstr "_Force window to top"
-
-#~ msgid "Try harder to keep Onboard above anything on-screen."
-#~ msgstr "Try harder to keep Onboard above anything on-screen."
-
-#~ msgid "Keep _aspect ratio"
-#~ msgstr "Keep _aspect ratio"
-
-#~ msgid "Constrain window size to the layout&apos;s aspect ratio."
-#~ msgstr "Constrain window size to the layout&apos;s aspect ratio."
-
-#~ msgid "Constrain window size to the layout's aspect ratio."
-#~ msgstr "Constrain window size to the layout's aspect ratio."
-
-#~ msgid "Floating Window Options"
-#~ msgstr "Floating Window Options"
-
-#~ msgid "Window options"
-#~ msgstr "Window options"
-
-#~ msgid "Wind_ow:"
-#~ msgstr "Wind_ow:"
-
-#~ msgid "Transparency of the whole keyboard window. Requires compositing."
-#~ msgstr "Transparency of the whole keyboard window. Requires compositing."
-
-#~ msgid "_Background:"
-#~ msgstr "_Background:"
-
-#~ msgid "Transparency of the keyboard background"
-#~ msgstr "Transparency of the keyboard background"
-
-#~ msgid "_No background"
-#~ msgstr "_No background"
-
-#~ msgid "Show the desktop through the gaps between keys."
-#~ msgstr "Show the desktop through the gaps between keys."
-
-#~ msgid "Transparency"
-#~ msgstr "Transparency"
-
-#~ msgid "Set _transparency to"
-#~ msgstr "Set _transparency to"
-
-#~ msgid "Enable inactive transparency. Requires compositing."
-#~ msgstr "Enable inactive transparency. Requires compositing."
-
-#~ msgid ""
-#~ "Transparency when the pointer leaves the keyboard. Requires compositing."
-#~ msgstr ""
-#~ "Transparency when the pointer leaves the keyboard. Requires compositing."
-
-#~ msgid "after"
-#~ msgstr "after"
-
-#~ msgid "Delay in seconds until the inactive transparency takes effect."
-#~ msgstr "Delay in seconds until the inactive transparency takes effect."
-
-#~ msgid "seconds"
-#~ msgstr "seconds"
-
-#~ msgid "When Inactive"
-#~ msgstr "When Inactive"
-
-#~ msgid "Resize Protection"
-#~ msgstr "Resize Protection"
-
-#~ msgid "Name"
-#~ msgstr "Name"
-
-#~ msgid "Description"
-#~ msgstr "Description"
-
-#~ msgctxt "Label of new layout button on preferences page Layout."
-#~ msgid "_New"
-#~ msgstr "_New"
-
-#~ msgctxt "Label of delete layout button on preferences page Layout."
-#~ msgid "_Delete"
-#~ msgstr "_Delete"
-
-#~ msgctxt "Label of open folder button on preferences page Layout."
-#~ msgid "_Open layouts folder"
-#~ msgstr "_Open layouts folder"
-
-#~ msgctxt "Label of about layout button on preferences page Layout."
-#~ msgid "_About"
-#~ msgstr "_About"
-
-#~ msgctxt "Label of new theme button on preferences page Theme."
-#~ msgid "_New"
-#~ msgstr "_New"
-
-#~ msgctxt "Label of delete theme  button on preferences page Theme."
-#~ msgid "_Delete"
-#~ msgstr "_Delete"
-
-#~ msgctxt "Label of customize theme button on preferences page Theme."
-#~ msgid "C_ustomize theme"
-#~ msgstr "C_ustomise theme"
-
-#~ msgid "Follow _system theme"
-#~ msgstr "Follow _system theme"
-
-#~ msgid "Remember what Onboard theme was last used for every system theme."
-#~ msgstr "Remember what Onboard theme was last used for every system theme."
-
-#~ msgid ""
-#~ "Snippets are pieces of text which are entered when the corresponding "
-#~ "button in Onboard is pressed."
-#~ msgstr ""
-#~ "Snippets are pieces of text which are entered when the corresponding "
-#~ "button in Onboard is pressed."
-
-#~ msgctxt "Label of add snippet button on preferences page Snippets."
-#~ msgid "_Add"
-#~ msgstr "_Add"
-
-#~ msgctxt "Label of remove snippet button on preferences page Snippets."
-#~ msgid "_Remove"
-#~ msgstr "_Remove"
-
-#~ msgid "Play sound"
-#~ msgstr "Play sound"
-
-#~ msgid "Play click sound on keypress."
-#~ msgstr "Play click sound on keypress."
-
-#~ msgid "Place sound in space"
-#~ msgstr "Place sound in space"
-
-#~ msgid ""
-#~ "Place sound in space between speakers depending on the key's position on "
-#~ "screen"
-#~ msgstr ""
-#~ "Place sound in space between speakers depending on the key's position on "
-#~ "screen"
-
-#~ msgid "Show label popups"
-#~ msgstr "Show label popups"
-
-#~ msgid "Show label popups above pressed keys."
-#~ msgstr "Show label popups above pressed keys."
-
-#~ msgid "Key-press Feedback"
-#~ msgstr "Key-press Feedback"
-
-#~ msgid "Show secondary labels"
-#~ msgstr "Show secondary labels"
-
-#~ msgid "Show characters reachable with or without the shift key."
-#~ msgstr "Show characters reachable with or without the shift key."
-
-#~ msgid "Key Labels"
-#~ msgstr "Key Labels"
-
-#~ msgid "Upper case on right click"
-#~ msgstr "Upper case on right click"
-
-#~ msgid "Temporarily enable SHIFT when clicking with the secondary button."
-#~ msgstr "Temporarily enable SHIFT when clicking with the secondary button."
-
-#~ msgid "Key Behaviour"
-#~ msgstr "Key Behaviour"
-
-#~ msgid "_Long press action:"
-#~ msgstr "_Long press action:"
-
-#~ msgid ""
-#~ "Choose between key-repeat or long-press menus. Mainly affects alpha-"
-#~ "numeric keys."
-#~ msgstr ""
-#~ "Choose between key-repeat or long-press menus. Mainly affects alpha-"
-#~ "numeric keys."
-
-#~ msgid "Modifier _behavior:"
-#~ msgstr "Modifier _behaviour:"
-
-#~ msgid "Behavior of modifier and layer keys."
-#~ msgstr "Behaviour of modifier and layer keys."
-
-#~ msgid "Modifier auto-release delay in seconds:"
-#~ msgstr "Modifier auto-release delay in seconds:"
-
-#~ msgid ""
-#~ "Seconds of inactivity until active modifiers and layer keys are released. "
-#~ "0 to disable."
-#~ msgstr ""
-#~ "Seconds of inactivity until active modifiers and layer keys are released. "
-#~ "0 to disable."
-
-#~ msgid "Modifier auto-release after hide in seconds:"
-#~ msgstr "Modifier auto-release after hide in seconds:"
-
-#~ msgid ""
-#~ "Time after hiding the keyboard in seconds until latched and locked "
-#~ "modifiers and layer keys are released automatically. Leave at 0.0 to not "
-#~ "automatically release them."
-#~ msgstr ""
-#~ "Time after hiding the keyboard in seconds until latched and locked "
-#~ "modifiers and layer keys are released automatically. Leave at 0.0 to not "
-#~ "automatically release them."
-
-#~ msgid "0,00"
-#~ msgstr "0,00"
-
-#~ msgid "Key Behavior"
-#~ msgstr "Key Behaviour"
-
-#~ msgid "_Touch input:"
-#~ msgstr "_Touch input:"
-
-#~ msgid "_Input event source:"
-#~ msgstr "_Input event source:"
-
-#~ msgid ""
-#~ "Choose &apos;XInput&apos; for more reliable typing into text entries with "
-#~ "pop-up selections. The &apos;GTK&apos; option offers better "
-#~ "compatibility, but typing may fail in the presence of pointer grabs, e.g. "
-#~ "with open pop-up windows."
-#~ msgstr ""
-#~ "Choose &apos;XInput&apos; for more reliable typing into text entries with "
-#~ "pop-up selections. The &apos;GTK&apos; option offers better "
-#~ "compatibility, but typing may fail in the presence of pointer grabs, e.g. "
-#~ "with open pop-up windows."
-
-#~ msgid ""
-#~ "Choose 'XInput' for more reliable typing into text entries with pop-up "
-#~ "selections. The 'GTK' option offers better compatibility, but typing may "
-#~ "fail in the presence of pointer grabs, e.g. with open pop-up windows."
-#~ msgstr ""
-#~ "Choose 'XInput' for more reliable typing into text entries with pop-up "
-#~ "selections. The 'GTK' option offers better compatibility, but typing may "
-#~ "fail in the presence of pointer grabs, e.g. with open pop-up windows."
-
-#~ msgid "Input Options"
-#~ msgstr "Input Options"
-
-#~ msgid "Delay between keystrokes in milliseconds:"
-#~ msgstr "Delay between keystrokes in milliseconds:"
-
-#~ msgid ""
-#~ "Increase this if key-strokes get lost when inserting word suggestions or "
-#~ "snippets into Firefox or other Gtk-2 applications. Has no effect on Gtk-3 "
-#~ "applications."
-#~ msgstr ""
-#~ "Increase this if key-strokes get lost when inserting word suggestions or "
-#~ "snippets into Firefox or other Gtk-2 applications. Has no effect on Gtk-3 "
-#~ "applications."
-
-#~ msgid "Key-stroke generator"
-#~ msgstr "Key-stroke generator"
-
-#~ msgid ""
-#~ "<b>Auto</b>: let Onboard decide, recommended.\n"
-#~ "\n"
-#~ "<b>XTest</b> is the default for all X based desktop environments.\n"
-#~ "\n"
-#~ "<b>uinput</b> should be available on all linux-based systems, including "
-#~ "X, Wayland and MIR-based desktops, but requires write permission for /dev/"
-#~ "uinput.\n"
-#~ "\n"
-#~ "<b>AT-SPI</b> has limited support for key-stroke generation, and is only "
-#~ "recommended for testing."
-#~ msgstr ""
-#~ "<b>Auto</b>: let Onboard decide, recommended.\n"
-#~ "\n"
-#~ "<b>XTest</b> is the default for all X based desktop environments.\n"
-#~ "\n"
-#~ "<b>uinput</b> should be available on all linux-based systems, including "
-#~ "X, Wayland and MIR-based desktops, but requires write permission for /dev/"
-#~ "uinput.\n"
-#~ "\n"
-#~ "<b>AT-SPI</b> has limited support for key-stroke generation, and is only "
-#~ "recommended for testing."
-
-#~ msgid "Key-stroke Generation"
-#~ msgstr "Key-stroke Generation"
-
+#: ../settings.ui.h:1
+msgid "Key-repeat"
+msgstr "Key-repeat"
+
+#: ../settings.ui.h:2
+msgid "International character selection"
+msgstr "International character selection"
+
+#: ../settings.ui.h:3
+msgid "never"
+msgstr "never"
+
+#: ../settings.ui.h:4
+msgid "1 minute"
+msgstr "1 minute"
+
+#: ../settings.ui.h:5
+msgid "5 minutes"
+msgstr "5 minutes"
+
+#: ../settings.ui.h:6
+msgid "10 minutes"
+msgstr "10 minutes"
+
+#: ../settings.ui.h:7
+msgid "30 minutes"
+msgstr "30 minutes"
+
+#: ../settings.ui.h:8
+msgid "1 hour"
+msgstr "1 hour"
+
+#: ../settings.ui.h:9
+msgid "3 hours"
+msgstr "3 hours"
+
+#: ../settings.ui.h:10
+msgid "forever"
+msgstr "forever"
+
+#: ../settings.ui.h:11
+msgid "GTK"
+msgstr "GTK"
+
+#: ../settings.ui.h:12
+msgid "XInput"
+msgstr "XInput"
+
+#: ../settings.ui.h:13
+msgid "Auto"
+msgstr "Auto"
+
+#: ../settings.ui.h:14
+msgid "XTest"
+msgstr "XTest"
+
+#: ../settings.ui.h:15
+msgid "uinput"
+msgstr "uinput"
+
+#: ../settings.ui.h:16
+msgid "AT-SPI"
+msgstr "AT-SPI"
+
+#: ../settings.ui.h:17
+msgid "Remember nothing"
+msgstr "Remember nothing"
+
+#: ../settings.ui.h:18
+msgid "Don't remember new words"
+msgstr "Don't remember new words"
+
+#: ../settings.ui.h:19
+msgid "None"
+msgstr "None"
+
+#: ../settings.ui.h:20
+msgid "Movement only"
+msgstr "Movement only"
+
+#: ../settings.ui.h:21
+msgid "Corners"
+msgstr "Corners"
+
+#: ../settings.ui.h:22
+msgid "All corners and edges"
+msgstr "All corners and edges"
+
+#: ../settings.ui.h:23
+msgid "General"
+msgstr "General"
+
+#: ../settings.ui.h:24
+msgid "Window"
+msgstr "Window"
+
+#: ../settings.ui.h:25
+msgid "Layout"
+msgstr "Layout"
+
+#: ../settings.ui.h:26
+msgid "Theme"
+msgstr "Theme"
+
+#: ../settings.ui.h:28 ../settings_theme_dialog.ui.h:9
+msgid "Keyboard"
+msgstr "Keyboard"
+
+#: ../settings.ui.h:29
 #, fuzzy
-#~ msgid "Animation"
-#~ msgstr "Action:"
-
-#~ msgid "Advanced"
-#~ msgstr "Advanced"
-
-#~ msgid "Chose how the keyboard window moves when a text entry is activated."
-#~ msgstr ""
-#~ "Choose how the keyboard window moves when a text entry is activated."
-
-#~ msgid ""
-#~ "Hide Onboard when any key is pressed on a physical keyboard. Requires "
-#~ "input event source \"XInput\"."
-#~ msgstr ""
-#~ "Hide Onboard when any key is pressed on a physical keyboard. Requires "
-#~ "input event source \"XInput\"."
-
-#~ msgid "Stay hidden:"
-#~ msgstr "Stay hidden:"
-
-#~ msgid ""
-#~ "Once hidden by a physical key-press, auto-show is paused. Select the "
-#~ "pause duration here."
-#~ msgstr ""
-#~ "Once hidden by a physical key-press, auto-show is paused. Select the "
-#~ "pause duration here."
-
-#~ msgid "Show _suggestions"
-#~ msgstr "Show _suggestions"
-
-#~ msgid "Enable word completion and prediction."
-#~ msgstr "Enable word completion and prediction."
-
-#~ msgid "Show spelling suggestions"
-#~ msgstr "Show spelling suggestions"
-
-#~ msgid "Check spelling of the word at or before the cursor."
-#~ msgstr "Check spelling of the word at or before the cursor."
-
-#~ msgid "_Learn from typed text"
-#~ msgstr "_Learn from typed text"
-
-#~ msgid ""
-#~ "Remember new words, their recency and frequency to improve the "
-#~ "suggestions over time."
-#~ msgstr ""
-#~ "Remember new words, their recency and frequency, to improve the "
-#~ "suggestions over time."
-
-#~ msgid "Insert word _separators"
-#~ msgstr "Insert word _separators"
-
-#~ msgid ""
-#~ "Add and remove spaces when inserting word suggestions followed by "
-#~ "punctuation characters."
-#~ msgstr ""
-#~ "Add and remove spaces when inserting word suggestions followed by "
-#~ "punctuation characters."
-
-#~ msgid "Options"
-#~ msgstr "Options"
-
-#~ msgid "Show more suggestions arrow"
-#~ msgstr "Show more suggestions arrow"
-
-#~ msgid "Step forward and backward through the available suggestions."
-#~ msgstr "Step forward and backward through the available suggestions."
-
-#~ msgid "Show button to pause learning"
-#~ msgstr "Show button to pause learning"
-
-#~ msgid "Words typed while this button is pressed won't be remembered."
-#~ msgstr "While this button is pressed, typed words will not be remembered."
-
-#~ msgid "Show lan_guage switcher"
-#~ msgstr "Show lan_guage switcher"
-
-#~ msgid "Show a button for language selection."
-#~ msgstr "Show a button for language selection."
-
-#~ msgid "Buttons"
-#~ msgstr "Buttons"
-
-#~ msgid "Word Suggestions"
-#~ msgstr "Word Suggestions"
-
-#~ msgid "Auto-capitalize while typing"
-#~ msgstr "Auto-capitalise while typing"
-
-#~ msgid "Automatically capitalize sentence begins and name words."
-#~ msgstr "Automatically capitalise the start of sentences and proper nouns."
-
-#~ msgid "Auto-correct spelling"
-#~ msgstr "Auto-correct spelling"
-
-#~ msgid "Automatically correct the last word."
-#~ msgstr "Automatically correct the last word."
-
-#~ msgid "The spell check engine to use."
-#~ msgstr "The spell check engine to use."
-
-#~ msgid "Spell-check backend:"
-#~ msgstr "Spell-check backend:"
-
-#~ msgid "Auto-correction"
-#~ msgstr "Auto-correction"
-
-#~ msgid "While  learning is paused:"
-#~ msgstr "While  learning is paused:"
-
-#~ msgid "Learning"
-#~ msgstr "Learning"
-
-#~ msgid "Enable  keyboard _scanning"
-#~ msgstr "Enable keyboard _scanning"
-
-#~ msgctxt ""
-#~ "Label of keyboard scanning settings button on preferences page Universal "
-#~ "Access."
-#~ msgid "Sc_anner Settings"
-#~ msgstr "Sc_anner Settings"
-
-#~ msgid "Keyboard Scanning"
-#~ msgstr "Keyboard Scanning"
-
-#~ msgid "_Delay:"
-#~ msgstr "_Delay:"
-
-#~ msgid "_Motion threshold:"
-#~ msgstr "_Motion threshold:"
-
-#~ msgid "Time in seconds before a click is triggered."
-#~ msgstr "Time in seconds before a click is triggered."
-
-#~ msgid "Distance in pixels before movement will be recognized."
-#~ msgstr "Distance in pixels before movement will be recognised."
-
-#~ msgid "Hide hover click window"
-#~ msgstr "Hide hover click window"
-
-#~ msgid ""
-#~ "Hide the system-provided hover click window while Onboard is running."
-#~ msgstr ""
-#~ "Hide the system-provided hover click window while Onboard is running."
-
-#~ msgid "Enable click type window on exit"
-#~ msgstr "Enable click type window on exit"
-
-#~ msgid ""
-#~ "Always enable the system-provided hover click window when exiting Onboard."
-#~ msgstr ""
-#~ "Always enable the system-provided hover click window when exiting Onboard."
-
-#~ msgid "Hover Click"
-#~ msgstr "Hover Click"
-
-#~ msgid "Top"
-#~ msgstr "Top"
-
-#~ msgid "Bottom"
-#~ msgstr "Bottom"
-
-#~ msgid "Active Monitor"
-#~ msgstr "Active Monitor"
-
-#~ msgid "Primary Monitor"
-#~ msgstr "Primary Monitor"
-
-#~ msgid "Monitor 0"
-#~ msgstr "Monitor 0"
-
-#~ msgid "Monitor 1"
-#~ msgstr "Monitor 1"
-
-#~ msgid "Monitor 2"
-#~ msgstr "Monitor 2"
-
-#~ msgid "Monitor 3"
-#~ msgstr "Monitor 3"
-
-#~ msgid "Monitor 4"
-#~ msgstr "Monitor 4"
-
-#~ msgid "Monitor 5"
-#~ msgstr "Monitor 5"
-
-#~ msgid "Monitor 6"
-#~ msgstr "Monitor 6"
-
-#~ msgid "Monitor 7"
-#~ msgstr "Monitor 7"
-
-#~ msgid "Monitor 8"
-#~ msgstr "Monitor 8"
-
-#~ msgid "Docking settings"
-#~ msgstr "Docking settings"
-
-#~ msgctxt "Label of the close button of the docking settings dialog."
-#~ msgid "_Close"
-#~ msgstr "_Close"
-
-#~ msgid "Shrink workarea"
-#~ msgstr "Shrink work area"
-
-#~ msgid "Shrink the available space for maximized windows."
-#~ msgstr "Shrink the available space for maximised windows."
-
-#~ msgid "Expand on landscape screens"
-#~ msgstr "Expand on landscape screens"
-
-#~ msgid "Expand keyboard to the width of the workarea."
-#~ msgstr "Expand keyboard to the width of the work area."
-
-#~ msgid "Expand on portrait screens"
-#~ msgstr "Expand on portrait screens"
-
-#~ msgid "Dock to screen edge:"
-#~ msgstr "Dock to screen edge:"
-
-#~ msgid "Dock to monitor:"
-#~ msgstr "Dock to monitor:"
-
-#~ msgid "Automatic scan for 1 switch"
-#~ msgstr "Automatic scan for 1 switch"
-
-#~ msgid "Critical overscan for 1 switch"
-#~ msgstr "Critical overscan for 1 switch"
-
-#~ msgid "Step scan for 2 switches"
-#~ msgstr "Step scan for 2 switches"
-
-#~ msgid "Directed scan for 3 or 5 switches"
-#~ msgstr "Directed scan for 3 or 5 switches"
-
-#~ msgid "Scanner Settings"
-#~ msgstr "Scanner Settings"
-
-#~ msgctxt "Label of the close button of the scanner settings dialog."
-#~ msgid "_Close"
-#~ msgstr "_Close"
-
-#~ msgid "Select a scanning _profile:"
-#~ msgstr "Select a scanning _profile:"
-
-#~ msgid "_Step interval:"
-#~ msgstr "_Step interval:"
-
-#~ msgid "Sc_an cycles:"
-#~ msgstr "Sc_an cycles:"
-
-#~ msgid ""
-#~ "The time the scanner rests on a key or group before moving to the next. "
-#~ "(in seconds)"
-#~ msgstr ""
-#~ "The time the scanner rests on a key or group before moving to the next. "
-#~ "(in seconds)"
-
-#~ msgid ""
-#~ "The number of times the scanner cycles through the entire keyboard before "
-#~ "it stops."
-#~ msgstr ""
-#~ "The number of times the scanner cycles through the entire keyboard before "
-#~ "it stops."
-
-#~ msgid "Step _only during switch down"
-#~ msgstr "Step _only during switch down"
-
-#~ msgid "Progress the highlight only while the switch is held down."
-#~ msgstr "Progress the highlight only while the switch is held down."
-
-#~ msgid "_Forward interval:"
-#~ msgstr "_Forward interval:"
-
-#~ msgid "_Backtrack interval:"
-#~ msgstr "_Backtrack interval:"
-
-#~ msgid ""
-#~ "The time the scanner rests on a key  while progressing forward. (in "
-#~ "seconds)"
-#~ msgstr ""
-#~ "The time the scanner rests on a key  while progressing forward. (in "
-#~ "seconds)"
-
-#~ msgid ""
-#~ "The time the scanner rests on a key  while moving backwards. (in seconds)"
-#~ msgstr ""
-#~ "The time the scanner rests on a key  while moving backwards. (in seconds)"
-
-#~ msgid "Backtrack _steps:"
-#~ msgstr "Backtrack _steps:"
-
-#~ msgid ""
-#~ "The number of keys the scanner steps back before moving forward again."
-#~ msgstr ""
-#~ "The number of keys the scanner steps back before moving forward again."
-
-#~ msgid "_Alternate switch actions"
-#~ msgstr "_Alternate switch actions"
-
-#~ msgid ""
-#~ "Swap the scan actions after every key activation. The Step action will "
-#~ "become the Activate action and vice versa."
-#~ msgstr ""
-#~ "Swap the scan actions after every key activation. The Step action will "
-#~ "become the Activate action and vice versa."
-
-#~ msgid "Profiles"
-#~ msgstr "Profiles"
-
-#~ msgid "_Select an input device:"
-#~ msgstr "_Select an input device:"
-
-#~ msgid "_Use this device only for scanning"
-#~ msgstr "_Use this device only for scanning"
-
-#~ msgid ""
-#~ "The selected device should not control the system mouse cursor or the "
-#~ "keyboard caret."
-#~ msgstr ""
-#~ "The selected device should not control the system mouse cursor or the "
-#~ "keyboard caret."
-
-#~ msgid "Input Device"
-#~ msgstr "Input Device"
-
-#~ msgid "Customize Theme"
-#~ msgstr "Customise Theme"
-
-#~ msgctxt "Label of the revert button of the theme settings dialog."
-#~ msgid "_Revert"
-#~ msgstr "_Revert"
-
-#~ msgctxt "Label of the close button of the theme settings dialog."
-#~ msgid "_Close"
-#~ msgstr "_Close"
-
-#~ msgid "Color Sche_me"
-#~ msgstr "Colour Sche_me"
-
-#~ msgid "_Angle:"
-#~ msgstr "_Angle:"
-
-#~ msgid "Light Direction"
-#~ msgstr "Light Direction"
-
-#~ msgid "_Style:"
-#~ msgstr "_Style:"
-
-#~ msgid "R_oundness:"
-#~ msgstr "R_oundness:"
-
-#~ msgid "S_ize:"
-#~ msgstr "S_ize:"
-
-#~ msgid "B_order width:"
-#~ msgstr "B_order width:"
-
-#~ msgid "Key Style"
-#~ msgstr "Key Style"
-
-#~ msgid "_Key:"
-#~ msgstr "_Key:"
-
-#~ msgid "_Border:"
-#~ msgstr "_Border:"
-
-#~ msgid "Gradients"
-#~ msgstr "Gradients"
-
-#~ msgid "_Strength:"
-#~ msgstr "_Strength:"
-
-#~ msgid "Shadow"
-#~ msgstr "Shadow"
-
-#~ msgid "Keys"
-#~ msgstr "Keys"
-
-#~ msgid "_Font:"
-#~ msgstr "_Font:"
-
-#~ msgid "_Attributes:"
-#~ msgstr "_Attributes:"
-
-#~ msgid "Font"
-#~ msgstr "Font"
-
-#~ msgid "I_ndependent size"
-#~ msgstr "I_ndependent size"
-
-#~ msgid "_Super key:"
-#~ msgstr "_Super key:"
-
-#~ msgid "Label Override"
-#~ msgstr "Label Override"
-
-#~ msgid "Labels"
-#~ msgstr "Labels"
+msgid "Auto-show"
+msgstr "Auto"
+
+#: ../settings.ui.h:30
+msgid "Typing Assistance"
+msgstr "Typing Assistance"
+
+#: ../settings.ui.h:31
+msgid "Universal Access"
+msgstr "Universal Access"
+
+#: ../settings.ui.h:32
+msgid "Only move when necessary"
+msgstr "Only move when necessary"
+
+#: ../settings.ui.h:33
+msgid "Follow the active window"
+msgstr "Follow the active window"
+
+#: ../settings.ui.h:34
+msgid "Latch, then lock"
+msgstr "Latch, then lock"
+
+#: ../settings.ui.h:35
+msgid "Latch, double-click to lock"
+msgstr "Latch, double-click to lock"
+
+#: ../settings.ui.h:36
+msgid "Latch only"
+msgstr "Latch only"
+
+#: ../settings.ui.h:37
+msgid "Lock only"
+msgstr "Lock only"
+
+#: ../settings.ui.h:38
+msgid "Push button"
+msgstr "Push button"
+
+#: ../settings.ui.h:39
+msgid "none"
+msgstr "none"
+
+#: ../settings.ui.h:40
+msgid "single-touch"
+msgstr "single-touch"
+
+#: ../settings.ui.h:41
+msgid "multi-touch"
+msgstr "multi-touch"
+
+#: ../settings.ui.h:42
+msgctxt "Label of the main close button of the preferences dialog."
+msgid "_Close"
+msgstr "_Close"
+
+#: ../settings.ui.h:43
+msgid "_Auto-show when editing text"
+msgstr "_Auto-show when editing text"
+
+#: ../settings.ui.h:44
+msgid ""
+"Show Onboard when there is a recognized text window in focus. Requires Gnome "
+"Accessibility."
+msgstr ""
+"Show Onboard when there is a recognised text window in focus. Requires Gnome "
+"Accessibility."
+
+#: ../settings.ui.h:45
+msgid "Start Onboard _hidden"
+msgstr "Start Onboard _hidden"
+
+#: ../settings.ui.h:46
+msgid "Start Onboard hidden."
+msgstr "Start Onboard hidden."
+
+#: ../settings.ui.h:47
+msgid "Show/Hide options"
+msgstr "Show/Hide options"
+
+#: ../settings.ui.h:48
+msgid "Show floating _icon when Onboard is hidden"
+msgstr "Show floating _icon when Onboard is hidden"
+
+#: ../settings.ui.h:49
+msgid ""
+"Show a floating icon on the desktop when Onboard is hidden. A click on the "
+"icon makes Onboard reappear."
+msgstr ""
+"Show a floating icon on the desktop when Onboard is hidden. A click on the "
+"icon makes Onboard reappear."
+
+#: ../settings.ui.h:50
+msgid "Show when _unlocking the screen"
+msgstr "Show when _unlocking the screen"
+
+#: ../settings.ui.h:51
+msgid ""
+"Show Onboard when the dialog to unlock the screen appears; this way Onboard "
+"can be used for example to enter the password to dismiss the screensaver "
+"when it is set to ask for it."
+msgstr ""
+"Show Onboard when the dialogue to unlock the screen appears; this way "
+"Onboard can be used for example to enter the password to dismiss the "
+"screensaver when it is set to ask for it."
+
+#: ../settings.ui.h:52
+msgid "Show _tooltips"
+msgstr "Show _tooltips"
+
+#: ../settings.ui.h:53
+msgid "Show tooltips for the keyboard&apos;s buttons."
+msgstr "Show tooltips for the keyboard&apos;s buttons."
+
+#: ../settings.ui.h:54
+msgid "Show tooltips for the keyboard's buttons."
+msgstr "Show tooltips for the keyboard's buttons."
+
+#: ../settings.ui.h:55
+msgid "_Show status icon"
+msgstr "_Show status icon"
+
+#: ../settings.ui.h:56
+msgid "Show the status item. A click on that icon hides or shows Onboard."
+msgstr "Show the status item. A click on that icon hides or shows Onboard."
+
+#: ../settings.ui.h:57
+msgid "Status icon _provider:"
+msgstr "Status icon _provider:"
+
+#: ../settings.ui.h:58
+msgid ""
+"<b>AppIndicator</b> (default) is recommended for broadest compatibility. A "
+"middle click on the icon shows the keyboard. In KDE Plasma a left click does "
+"the same.\n"
+"\n"
+"<b>GtkStatusIcon</b> isn't supported well anymore by various desktop "
+"environments, but generally allows to show the keyboard on left click.\n"
+"\n"
+"Requires restart."
+msgstr ""
+"<b>AppIndicator</b> (default) is recommended for broadest compatibility. A "
+"middle click on the icon shows the keyboard. In KDE Plasma, a left click "
+"does the same.\n"
+"\n"
+"<b>GtkStatusIcon</b> isn't well supported by various desktop environments "
+"anymore, but generally allows to show the keyboard on left click.\n"
+"\n"
+"Requires restart."
+
+#: ../settings.ui.h:63
+msgid "Desktop Integration"
+msgstr "Desktop Integration"
+
+#: ../settings.ui.h:64
+msgid "Dock to screen edge"
+msgstr "Dock to screen edge"
+
+#: ../settings.ui.h:65
+msgid "Dock the keyboard to the edge of the screen."
+msgstr "Dock the keyboard to the edge of the screen."
+
+#: ../settings.ui.h:66
+msgctxt "Label of settings button on preferences page Window."
+msgid "_Settings"
+msgstr "_Settings"
+
+#: ../settings.ui.h:67
+msgid "Docking"
+msgstr "Docking"
+
+#: ../settings.ui.h:68
+msgid "Show window _decoration"
+msgstr "Show window _decoration"
+
+#: ../settings.ui.h:69
+msgid "Show window caption and frame."
+msgstr "Show window caption and frame."
+
+#: ../settings.ui.h:70
+msgid "Show always on visible _workspace"
+msgstr "Show always on visible _workspace"
+
+#: ../settings.ui.h:71
+msgid "&quot;Sticky&quot; mode for keyboard and floating icon."
+msgstr "&quot;Sticky&quot; mode for keyboard and floating icon."
+
+#: ../settings.ui.h:72
+msgid "\"Sticky\" mode for keyboard and floating icon."
+msgstr "\"Sticky\" mode for keyboard and floating icon."
+
+#: ../settings.ui.h:73
+msgid "_Force window to top"
+msgstr "_Force window to top"
+
+#: ../settings.ui.h:74
+msgid "Try harder to keep Onboard above anything on-screen."
+msgstr "Try harder to keep Onboard above anything on-screen."
+
+#: ../settings.ui.h:75
+msgid "Keep _aspect ratio"
+msgstr "Keep _aspect ratio"
+
+#: ../settings.ui.h:76
+msgid "Constrain window size to the layout&apos;s aspect ratio."
+msgstr "Constrain window size to the layout&apos;s aspect ratio."
+
+#: ../settings.ui.h:77
+msgid "Constrain window size to the layout's aspect ratio."
+msgstr "Constrain window size to the layout's aspect ratio."
+
+#: ../settings.ui.h:78
+msgid "Floating Window Options"
+msgstr "Floating Window Options"
+
+#: ../settings.ui.h:79
+msgid "Window options"
+msgstr "Window options"
+
+#: ../settings.ui.h:80
+msgid "Wind_ow:"
+msgstr "Wind_ow:"
+
+#: ../settings.ui.h:81
+msgid "Transparency of the whole keyboard window. Requires compositing."
+msgstr "Transparency of the whole keyboard window. Requires compositing."
+
+#: ../settings.ui.h:82 ../settings_theme_dialog.ui.h:5
+msgid "_Background:"
+msgstr "_Background:"
+
+#: ../settings.ui.h:83
+msgid "Transparency of the keyboard background"
+msgstr "Transparency of the keyboard background"
+
+#: ../settings.ui.h:84
+msgid "_No background"
+msgstr "_No background"
+
+#: ../settings.ui.h:85
+msgid "Show the desktop through the gaps between keys."
+msgstr "Show the desktop through the gaps between keys."
+
+#: ../settings.ui.h:86
+msgid "Transparency"
+msgstr "Transparency"
+
+#: ../settings.ui.h:87
+msgid "Set _transparency to"
+msgstr "Set _transparency to"
+
+#: ../settings.ui.h:88
+msgid "Enable inactive transparency. Requires compositing."
+msgstr "Enable inactive transparency. Requires compositing."
+
+#: ../settings.ui.h:89
+msgid ""
+"Transparency when the pointer leaves the keyboard. Requires compositing."
+msgstr ""
+"Transparency when the pointer leaves the keyboard. Requires compositing."
+
+#: ../settings.ui.h:90
+msgid "after"
+msgstr "after"
+
+#: ../settings.ui.h:91
+msgid "Delay in seconds until the inactive transparency takes effect."
+msgstr "Delay in seconds until the inactive transparency takes effect."
+
+#: ../settings.ui.h:92
+msgid "seconds"
+msgstr "seconds"
+
+#: ../settings.ui.h:93
+msgid "When Inactive"
+msgstr "When Inactive"
+
+#: ../settings.ui.h:94
+msgid "_Window handles of the keyboard window:"
+msgstr ""
+
+#: ../settings.ui.h:95
+#, fuzzy
+msgid "_Window handles of the floating icon:"
+msgstr "_Window handles:"
+
+#: ../settings.ui.h:96
+msgid "Resize Protection"
+msgstr "Resize Protection"
+
+#: ../settings.ui.h:97
+msgid "Name"
+msgstr "Name"
+
+#: ../settings.ui.h:98
+msgid "Description"
+msgstr "Description"
+
+#: ../settings.ui.h:99
+msgctxt "Label of new layout button on preferences page Layout."
+msgid "_New"
+msgstr "_New"
+
+#: ../settings.ui.h:100
+msgctxt "Label of delete layout button on preferences page Layout."
+msgid "_Delete"
+msgstr "_Delete"
+
+#: ../settings.ui.h:101
+msgctxt "Label of open folder button on preferences page Layout."
+msgid "_Open layouts folder"
+msgstr "_Open layouts folder"
+
+#: ../settings.ui.h:102
+msgctxt "Label of about layout button on preferences page Layout."
+msgid "_About"
+msgstr "_About"
+
+#: ../settings.ui.h:103
+msgctxt "Label of new theme button on preferences page Theme."
+msgid "_New"
+msgstr "_New"
+
+#: ../settings.ui.h:104
+msgctxt "Label of delete theme  button on preferences page Theme."
+msgid "_Delete"
+msgstr "_Delete"
+
+#: ../settings.ui.h:105
+msgctxt "Label of customize theme button on preferences page Theme."
+msgid "C_ustomize theme"
+msgstr "C_ustomise theme"
+
+#: ../settings.ui.h:106
+msgid "Follow _system theme"
+msgstr "Follow _system theme"
+
+#: ../settings.ui.h:107
+msgid "Remember what Onboard theme was last used for every system theme."
+msgstr "Remember what Onboard theme was last used for every system theme."
+
+#: ../settings.ui.h:108
+msgid ""
+"Snippets are pieces of text which are entered when the corresponding button "
+"in Onboard is pressed."
+msgstr ""
+"Snippets are pieces of text which are entered when the corresponding button "
+"in Onboard is pressed."
+
+#: ../settings.ui.h:109
+msgctxt "Label of add snippet button on preferences page Snippets."
+msgid "_Add"
+msgstr "_Add"
+
+#: ../settings.ui.h:110
+msgctxt "Label of remove snippet button on preferences page Snippets."
+msgid "_Remove"
+msgstr "_Remove"
+
+#: ../settings.ui.h:111
+msgid "Play sound"
+msgstr "Play sound"
+
+#: ../settings.ui.h:112
+msgid "Play click sound on keypress."
+msgstr "Play click sound on keypress."
+
+#: ../settings.ui.h:113
+msgid "Place sound in space"
+msgstr "Place sound in space"
+
+#: ../settings.ui.h:114
+msgid ""
+"Place sound in space between speakers depending on the key's position on "
+"screen"
+msgstr ""
+"Place sound in space between speakers depending on the key's position on "
+"screen"
+
+#: ../settings.ui.h:115
+msgid "Show label popups"
+msgstr "Show label popups"
+
+#: ../settings.ui.h:116
+msgid "Show label popups above pressed keys."
+msgstr "Show label popups above pressed keys."
+
+#: ../settings.ui.h:117
+msgid "Popup size:"
+msgstr ""
+
+#: ../settings.ui.h:118
+msgid "Key-press Feedback"
+msgstr "Key-press Feedback"
+
+#: ../settings.ui.h:119
+msgid "Show secondary labels"
+msgstr "Show secondary labels"
+
+#: ../settings.ui.h:120
+msgid "Show characters reachable with or without the shift key."
+msgstr "Show characters reachable with or without the shift key."
+
+#: ../settings.ui.h:121
+msgid "Key Labels"
+msgstr "Key Labels"
+
+#: ../settings.ui.h:122
+msgid "Upper case on right click"
+msgstr "Upper case on right click"
+
+#: ../settings.ui.h:123
+msgid "Temporarily enable SHIFT when clicking with the secondary button."
+msgstr "Temporarily enable SHIFT when clicking with the secondary button."
+
+#: ../settings.ui.h:124
+msgid "Key Behaviour"
+msgstr "Key Behaviour"
+
+#: ../settings.ui.h:125
+msgid "_Long press action:"
+msgstr "_Long press action:"
+
+#: ../settings.ui.h:126
+msgid ""
+"Choose between key-repeat or long-press menus. Mainly affects alpha-numeric "
+"keys."
+msgstr ""
+"Choose between key-repeat or long-press menus. Mainly affects alpha-numeric "
+"keys."
+
+#: ../settings.ui.h:127
+msgid "Modifier _behavior:"
+msgstr "Modifier _behaviour:"
+
+#: ../settings.ui.h:128
+msgid "Behavior of modifier and layer keys."
+msgstr "Behaviour of modifier and layer keys."
+
+#: ../settings.ui.h:129
+msgid "Modifier auto-release delay in seconds:"
+msgstr "Modifier auto-release delay in seconds:"
+
+#: ../settings.ui.h:130
+msgid ""
+"Seconds of inactivity until active modifiers and layer keys are released. 0 "
+"to disable."
+msgstr ""
+"Seconds of inactivity until active modifiers and layer keys are released. 0 "
+"to disable."
+
+#: ../settings.ui.h:131
+msgid "Modifier auto-release after hide in seconds:"
+msgstr "Modifier auto-release after hide in seconds:"
+
+#: ../settings.ui.h:132
+msgid ""
+"Time after hiding the keyboard in seconds until latched and locked modifiers "
+"and layer keys are released automatically. Leave at 0.0 to not automatically "
+"release them."
+msgstr ""
+"Time after hiding the keyboard in seconds until latched and locked modifiers "
+"and layer keys are released automatically. Leave at 0.0 to not automatically "
+"release them."
+
+#: ../settings.ui.h:133
+msgid "0,00"
+msgstr "0,00"
+
+#: ../settings.ui.h:134
+msgid "Key Behavior"
+msgstr "Key Behaviour"
+
+#: ../settings.ui.h:135
+msgid "_Touch input:"
+msgstr "_Touch input:"
+
+#: ../settings.ui.h:136
+msgid "_Input event source:"
+msgstr "_Input event source:"
+
+#: ../settings.ui.h:137
+msgid ""
+"Choose &apos;XInput&apos; for more reliable typing into text entries with "
+"pop-up selections. The &apos;GTK&apos; option offers better compatibility, "
+"but typing may fail in the presence of pointer grabs, e.g. with open pop-up "
+"windows."
+msgstr ""
+"Choose &apos;XInput&apos; for more reliable typing into text entries with "
+"pop-up selections. The &apos;GTK&apos; option offers better compatibility, "
+"but typing may fail in the presence of pointer grabs, e.g. with open pop-up "
+"windows."
+
+#: ../settings.ui.h:138
+msgid ""
+"Choose 'XInput' for more reliable typing into text entries with pop-up "
+"selections. The 'GTK' option offers better compatibility, but typing may "
+"fail in the presence of pointer grabs, e.g. with open pop-up windows."
+msgstr ""
+"Choose 'XInput' for more reliable typing into text entries with pop-up "
+"selections. The 'GTK' option offers better compatibility, but typing may "
+"fail in the presence of pointer grabs, e.g. with open pop-up windows."
+
+#: ../settings.ui.h:139
+msgid "Input Options"
+msgstr "Input Options"
+
+#: ../settings.ui.h:140
+msgid "Delay between keystrokes in milliseconds:"
+msgstr "Delay between keystrokes in milliseconds:"
+
+#: ../settings.ui.h:141
+msgid ""
+"Increase this if key-strokes get lost when inserting word suggestions or "
+"snippets into Firefox or other Gtk-2 applications. Has no effect on Gtk-3 "
+"applications."
+msgstr ""
+"Increase this if key-strokes get lost when inserting word suggestions or "
+"snippets into Firefox or other Gtk-2 applications. Has no effect on Gtk-3 "
+"applications."
+
+#: ../settings.ui.h:142
+msgid "Key-stroke generator"
+msgstr "Key-stroke generator"
+
+#: ../settings.ui.h:143
+msgid ""
+"<b>Auto</b>: let Onboard decide, recommended.\n"
+"\n"
+"<b>XTest</b> is the default for all X based desktop environments.\n"
+"\n"
+"<b>uinput</b> should be available on all linux-based systems, including X, "
+"Wayland and MIR-based desktops, but requires write permission for /dev/"
+"uinput.\n"
+"\n"
+"<b>AT-SPI</b> has limited support for key-stroke generation, and is only "
+"recommended for testing."
+msgstr ""
+"<b>Auto</b>: let Onboard decide, recommended.\n"
+"\n"
+"<b>XTest</b> is the default for all X based desktop environments.\n"
+"\n"
+"<b>uinput</b> should be available on all linux-based systems, including X, "
+"Wayland and MIR-based desktops, but requires write permission for /dev/"
+"uinput.\n"
+"\n"
+"<b>AT-SPI</b> has limited support for key-stroke generation, and is only "
+"recommended for testing."
+
+#: ../settings.ui.h:150
+msgid "Key-stroke Generation"
+msgstr "Key-stroke Generation"
+
+#: ../settings.ui.h:151
+msgid "Popup time [s]:"
+msgstr ""
+
+#: ../settings.ui.h:152
+msgid "Affects how long a key popup stays open."
+msgstr ""
+
+#: ../settings.ui.h:153
+msgid "0.15"
+msgstr ""
+
+#: ../settings.ui.h:154
+#, fuzzy
+msgid "Animation"
+msgstr "Action:"
+
+#: ../settings.ui.h:155
+msgid "Advanced"
+msgstr "Advanced"
+
+#: ../settings.ui.h:156
+#, fuzzy
+msgid ""
+"Show Onboard when there is a recognized text entry in focus. Requires Gnome "
+"Accessibility."
+msgstr ""
+"Show Onboard when there is a recognised text window in focus. Requires Gnome "
+"Accessibility."
+
+#: ../settings.ui.h:157
+msgid "Keyboard movement strategy:"
+msgstr ""
+
+#: ../settings.ui.h:158
+msgid "Chose how the keyboard window moves when a text entry is activated."
+msgstr "Choose how the keyboard window moves when a text entry is activated."
+
+#: ../settings.ui.h:159
+msgid "_Hide when typing on a physical keyboard"
+msgstr ""
+
+#: ../settings.ui.h:160
+msgid ""
+"Hide Onboard when any key is pressed on a physical keyboard. Requires input "
+"event source \"XInput\"."
+msgstr ""
+"Hide Onboard when any key is pressed on a physical keyboard. Requires input "
+"event source \"XInput\"."
+
+#: ../settings.ui.h:161
+msgid "Stay hidden:"
+msgstr "Stay hidden:"
+
+#: ../settings.ui.h:162
+msgid ""
+"Once hidden by a physical key-press, auto-show is paused. Select the pause "
+"duration here."
+msgstr ""
+"Once hidden by a physical key-press, auto-show is paused. Select the pause "
+"duration here."
+
+#: ../settings.ui.h:163
+#, fuzzy
+msgid "Auto-show only in tablet mode"
+msgstr "_Auto-show when editing text"
+
+#: ../settings.ui.h:164
+msgid ""
+"Requires driver support for SW_TABLET_MODE and a running instance of acpid."
+msgstr ""
+
+#: ../settings.ui.h:165
+msgid ""
+"Alternatively, some devices generate key events on entering and leaving "
+"tablet mode. Run 'xinput test-xi2 3 ' to find these key presses and enter "
+"their 'detail' values below."
+msgstr ""
+
+#: ../settings.ui.h:166
+msgid "Hotkey received when entering tablet mode:"
+msgstr ""
+
+#: ../settings.ui.h:167
+msgid "Hotkey received when leaving tablet mode:"
+msgstr ""
+
+#: ../settings.ui.h:168
+msgid "File that contains the current device state:"
+msgstr ""
+
+#: ../settings.ui.h:169
+msgid "Regular expression to match for tablet-mode:"
+msgstr ""
+
+#: ../settings.ui.h:170
+msgid "Convertible Devices"
+msgstr ""
+
+#: ../settings.ui.h:171
+msgid "Don't auto-show while external keyboards are connected"
+msgstr ""
+
+#: ../settings.ui.h:172
+msgid "Detected keyboard devices:"
+msgstr ""
+
+#: ../settings.ui.h:173
+msgid ""
+"Check 'Ignore' for devices that are always connected and should not block "
+"auto-show."
+msgstr ""
+
+#: ../settings.ui.h:174
+#, fuzzy
+msgid "External Keyboards"
+msgstr "Quit Keyboard"
+
+#: ../settings.ui.h:175
+msgid "Show _suggestions"
+msgstr "Show _suggestions"
+
+#: ../settings.ui.h:176
+msgid "Enable word completion and prediction."
+msgstr "Enable word completion and prediction."
+
+#: ../settings.ui.h:177
+msgid "Show spelling suggestions"
+msgstr "Show spelling suggestions"
+
+#: ../settings.ui.h:178
+msgid "Check spelling of the word at or before the cursor."
+msgstr "Check spelling of the word at or before the cursor."
+
+#: ../settings.ui.h:179
+msgid "_Learn from typed text"
+msgstr "_Learn from typed text"
+
+#: ../settings.ui.h:180
+msgid ""
+"Remember new words, their recency and frequency to improve the suggestions "
+"over time."
+msgstr ""
+"Remember new words, their recency and frequency, to improve the suggestions "
+"over time."
+
+#: ../settings.ui.h:181
+msgid "Insert word _separators"
+msgstr "Insert word _separators"
+
+#: ../settings.ui.h:182
+msgid ""
+"Add and remove spaces when inserting word suggestions followed by "
+"punctuation characters."
+msgstr ""
+"Add and remove spaces when inserting word suggestions followed by "
+"punctuation characters."
+
+#: ../settings.ui.h:183
+msgid "Options"
+msgstr "Options"
+
+#: ../settings.ui.h:184
+msgid "Show more suggestions arrow"
+msgstr "Show more suggestions arrow"
+
+#: ../settings.ui.h:185
+msgid "Step forward and backward through the available suggestions."
+msgstr "Step forward and backward through the available suggestions."
+
+#: ../settings.ui.h:186
+msgid "Show button to pause learning"
+msgstr "Show button to pause learning"
+
+#: ../settings.ui.h:187
+msgid "Words typed while this button is pressed won't be remembered."
+msgstr "While this button is pressed, typed words will not be remembered."
+
+#: ../settings.ui.h:188
+msgid "Show lan_guage switcher"
+msgstr "Show lan_guage switcher"
+
+#: ../settings.ui.h:189
+msgid "Show a button for language selection."
+msgstr "Show a button for language selection."
+
+#: ../settings.ui.h:190
+msgid "Buttons"
+msgstr "Buttons"
+
+#: ../settings.ui.h:191
+msgid "Word Suggestions"
+msgstr "Word Suggestions"
+
+#: ../settings.ui.h:192
+msgid "Auto-capitalize while typing"
+msgstr "Auto-capitalise while typing"
+
+#: ../settings.ui.h:193
+msgid "Automatically capitalize sentence begins and name words."
+msgstr "Automatically capitalise the start of sentences and proper nouns."
+
+#: ../settings.ui.h:194
+msgid "Auto-correct spelling"
+msgstr "Auto-correct spelling"
+
+#: ../settings.ui.h:195
+msgid "Automatically correct the last word."
+msgstr "Automatically correct the last word."
+
+#: ../settings.ui.h:196
+msgid "The spell check engine to use."
+msgstr "The spell check engine to use."
+
+#: ../settings.ui.h:197
+msgid "Spell-check backend:"
+msgstr "Spell-check backend:"
+
+#: ../settings.ui.h:198
+msgid "Auto-correction"
+msgstr "Auto-correction"
+
+#: ../settings.ui.h:199
+msgid "While  learning is paused:"
+msgstr "While  learning is paused:"
+
+#: ../settings.ui.h:200
+msgid "Learning"
+msgstr "Learning"
+
+#: ../settings.ui.h:201
+msgid "Enable  keyboard _scanning"
+msgstr "Enable keyboard _scanning"
+
+#: ../settings.ui.h:202
+msgctxt ""
+"Label of keyboard scanning settings button on preferences page Universal "
+"Access."
+msgid "Sc_anner Settings"
+msgstr "Sc_anner Settings"
+
+#: ../settings.ui.h:203
+msgid "Keyboard Scanning"
+msgstr "Keyboard Scanning"
+
+#: ../settings.ui.h:204
+msgid "_Delay:"
+msgstr "_Delay:"
+
+#: ../settings.ui.h:205
+msgid "_Motion threshold:"
+msgstr "_Motion threshold:"
+
+#: ../settings.ui.h:206
+msgid "Time in seconds before a click is triggered."
+msgstr "Time in seconds before a click is triggered."
+
+#: ../settings.ui.h:207
+msgid "Distance in pixels before movement will be recognized."
+msgstr "Distance in pixels before movement will be recognised."
+
+#: ../settings.ui.h:208
+msgid "Hide hover click window"
+msgstr "Hide hover click window"
+
+#: ../settings.ui.h:209
+msgid "Hide the system-provided hover click window while Onboard is running."
+msgstr "Hide the system-provided hover click window while Onboard is running."
+
+#: ../settings.ui.h:210
+msgid "Enable click type window on exit"
+msgstr "Enable click type window on exit"
+
+#: ../settings.ui.h:211
+msgid ""
+"Always enable the system-provided hover click window when exiting Onboard."
+msgstr ""
+"Always enable the system-provided hover click window when exiting Onboard."
+
+#: ../settings.ui.h:212
+msgid "Hover Click"
+msgstr "Hover Click"
+
+#: ../settings_docking_dialog.ui.h:1
+msgid "Top"
+msgstr "Top"
+
+#: ../settings_docking_dialog.ui.h:2
+msgid "Bottom"
+msgstr "Bottom"
+
+#: ../settings_docking_dialog.ui.h:3
+msgid "Active Monitor"
+msgstr "Active Monitor"
+
+#: ../settings_docking_dialog.ui.h:4
+msgid "Primary Monitor"
+msgstr "Primary Monitor"
+
+#: ../settings_docking_dialog.ui.h:5
+msgid "Monitor 0"
+msgstr "Monitor 0"
+
+#: ../settings_docking_dialog.ui.h:6
+msgid "Monitor 1"
+msgstr "Monitor 1"
+
+#: ../settings_docking_dialog.ui.h:7
+msgid "Monitor 2"
+msgstr "Monitor 2"
+
+#: ../settings_docking_dialog.ui.h:8
+msgid "Monitor 3"
+msgstr "Monitor 3"
+
+#: ../settings_docking_dialog.ui.h:9
+msgid "Monitor 4"
+msgstr "Monitor 4"
+
+#: ../settings_docking_dialog.ui.h:10
+msgid "Monitor 5"
+msgstr "Monitor 5"
+
+#: ../settings_docking_dialog.ui.h:11
+msgid "Monitor 6"
+msgstr "Monitor 6"
+
+#: ../settings_docking_dialog.ui.h:12
+msgid "Monitor 7"
+msgstr "Monitor 7"
+
+#: ../settings_docking_dialog.ui.h:13
+msgid "Monitor 8"
+msgstr "Monitor 8"
+
+#: ../settings_docking_dialog.ui.h:14
+msgid "Docking settings"
+msgstr "Docking settings"
+
+#: ../settings_docking_dialog.ui.h:15
+msgctxt "Label of the close button of the docking settings dialog."
+msgid "_Close"
+msgstr "_Close"
+
+#: ../settings_docking_dialog.ui.h:16
+msgid "Shrink workarea"
+msgstr "Shrink work area"
+
+#: ../settings_docking_dialog.ui.h:17
+msgid "Shrink the available space for maximized windows."
+msgstr "Shrink the available space for maximised windows."
+
+#: ../settings_docking_dialog.ui.h:18
+msgid "Expand on landscape screens"
+msgstr "Expand on landscape screens"
+
+#: ../settings_docking_dialog.ui.h:19
+msgid "Expand keyboard to the width of the workarea."
+msgstr "Expand keyboard to the width of the work area."
+
+#: ../settings_docking_dialog.ui.h:20
+msgid "Expand on portrait screens"
+msgstr "Expand on portrait screens"
+
+#: ../settings_docking_dialog.ui.h:21
+msgid "Dock to screen edge:"
+msgstr "Dock to screen edge:"
+
+#: ../settings_docking_dialog.ui.h:22
+msgid "Dock to monitor:"
+msgstr "Dock to monitor:"
+
+#: ../settings_scanner_dialog.ui.h:1
+msgid "Automatic scan for 1 switch"
+msgstr "Automatic scan for 1 switch"
+
+#: ../settings_scanner_dialog.ui.h:2
+msgid "Critical overscan for 1 switch"
+msgstr "Critical overscan for 1 switch"
+
+#: ../settings_scanner_dialog.ui.h:3
+msgid "Step scan for 2 switches"
+msgstr "Step scan for 2 switches"
+
+#: ../settings_scanner_dialog.ui.h:4
+msgid "Directed scan for 3 or 5 switches"
+msgstr "Directed scan for 3 or 5 switches"
+
+#: ../settings_scanner_dialog.ui.h:5
+msgid "Scanner Settings"
+msgstr "Scanner Settings"
+
+#: ../settings_scanner_dialog.ui.h:6
+msgctxt "Label of the close button of the scanner settings dialog."
+msgid "_Close"
+msgstr "_Close"
+
+#: ../settings_scanner_dialog.ui.h:7
+msgid "Select a scanning _profile:"
+msgstr "Select a scanning _profile:"
+
+#: ../settings_scanner_dialog.ui.h:8
+msgid "_Step interval:"
+msgstr "_Step interval:"
+
+#: ../settings_scanner_dialog.ui.h:9
+msgid "Sc_an cycles:"
+msgstr "Sc_an cycles:"
+
+#: ../settings_scanner_dialog.ui.h:10
+msgid ""
+"The time the scanner rests on a key or group before moving to the next. (in "
+"seconds)"
+msgstr ""
+"The time the scanner rests on a key or group before moving to the next. (in "
+"seconds)"
+
+#: ../settings_scanner_dialog.ui.h:11
+msgid ""
+"The number of times the scanner cycles through the entire keyboard before it "
+"stops."
+msgstr ""
+"The number of times the scanner cycles through the entire keyboard before it "
+"stops."
+
+#: ../settings_scanner_dialog.ui.h:12
+msgid "Step _only during switch down"
+msgstr "Step _only during switch down"
+
+#: ../settings_scanner_dialog.ui.h:13
+msgid "Progress the highlight only while the switch is held down."
+msgstr "Progress the highlight only while the switch is held down."
+
+#: ../settings_scanner_dialog.ui.h:14
+msgid "_Forward interval:"
+msgstr "_Forward interval:"
+
+#: ../settings_scanner_dialog.ui.h:15
+msgid "_Backtrack interval:"
+msgstr "_Backtrack interval:"
+
+#: ../settings_scanner_dialog.ui.h:16
+msgid ""
+"The time the scanner rests on a key  while progressing forward. (in seconds)"
+msgstr ""
+"The time the scanner rests on a key  while progressing forward. (in seconds)"
+
+#: ../settings_scanner_dialog.ui.h:17
+msgid ""
+"The time the scanner rests on a key  while moving backwards. (in seconds)"
+msgstr ""
+"The time the scanner rests on a key  while moving backwards. (in seconds)"
+
+#: ../settings_scanner_dialog.ui.h:18
+msgid "Backtrack _steps:"
+msgstr "Backtrack _steps:"
+
+#: ../settings_scanner_dialog.ui.h:19
+msgid "The number of keys the scanner steps back before moving forward again."
+msgstr "The number of keys the scanner steps back before moving forward again."
+
+#: ../settings_scanner_dialog.ui.h:20
+msgid "_Alternate switch actions"
+msgstr "_Alternate switch actions"
+
+#: ../settings_scanner_dialog.ui.h:21
+msgid ""
+"Swap the scan actions after every key activation. The Step action will "
+"become the Activate action and vice versa."
+msgstr ""
+"Swap the scan actions after every key activation. The Step action will "
+"become the Activate action and vice versa."
+
+#: ../settings_scanner_dialog.ui.h:22
+msgid "Profiles"
+msgstr "Profiles"
+
+#: ../settings_scanner_dialog.ui.h:23
+msgid "_Select an input device:"
+msgstr "_Select an input device:"
+
+#: ../settings_scanner_dialog.ui.h:24
+msgid "_Use this device only for scanning"
+msgstr "_Use this device only for scanning"
+
+#: ../settings_scanner_dialog.ui.h:25
+msgid ""
+"The selected device should not control the system mouse cursor or the "
+"keyboard caret."
+msgstr ""
+"The selected device should not control the system mouse cursor or the "
+"keyboard caret."
+
+#: ../settings_scanner_dialog.ui.h:26
+msgid "Input Device"
+msgstr "Input Device"
+
+#: ../settings_theme_dialog.ui.h:1
+msgid "Customize Theme"
+msgstr "Customise Theme"
+
+#: ../settings_theme_dialog.ui.h:2
+msgctxt "Label of the revert button of the theme settings dialog."
+msgid "_Revert"
+msgstr "_Revert"
+
+#: ../settings_theme_dialog.ui.h:3
+msgctxt "Label of the close button of the theme settings dialog."
+msgid "_Close"
+msgstr "_Close"
+
+#: ../settings_theme_dialog.ui.h:4
+msgid "Color Sche_me"
+msgstr "Colour Sche_me"
+
+#: ../settings_theme_dialog.ui.h:7
+msgid "_Angle:"
+msgstr "_Angle:"
+
+#: ../settings_theme_dialog.ui.h:8
+msgid "Light Direction"
+msgstr "Light Direction"
+
+#: ../settings_theme_dialog.ui.h:10
+msgid "_Style:"
+msgstr "_Style:"
+
+#: ../settings_theme_dialog.ui.h:11
+msgid "R_oundness:"
+msgstr "R_oundness:"
+
+#: ../settings_theme_dialog.ui.h:12
+msgid "S_ize:"
+msgstr "S_ize:"
+
+#: ../settings_theme_dialog.ui.h:13
+msgid "B_order width:"
+msgstr "B_order width:"
+
+#: ../settings_theme_dialog.ui.h:14
+msgid "Key Style"
+msgstr "Key Style"
+
+#: ../settings_theme_dialog.ui.h:15
+msgid "_Key:"
+msgstr "_Key:"
+
+#: ../settings_theme_dialog.ui.h:16
+msgid "_Border:"
+msgstr "_Border:"
+
+#: ../settings_theme_dialog.ui.h:17
+msgid "Gradients"
+msgstr "Gradients"
+
+#: ../settings_theme_dialog.ui.h:18
+msgid "_Strength:"
+msgstr "_Strength:"
+
+#: ../settings_theme_dialog.ui.h:19
+msgid "Shadow"
+msgstr "Shadow"
+
+#: ../settings_theme_dialog.ui.h:20
+msgid "Keys"
+msgstr "Keys"
+
+#: ../settings_theme_dialog.ui.h:21
+msgid "_Font:"
+msgstr "_Font:"
+
+#: ../settings_theme_dialog.ui.h:22
+msgid "_Attributes:"
+msgstr "_Attributes:"
+
+#: ../settings_theme_dialog.ui.h:23
+msgid "Font"
+msgstr "Font"
+
+#: ../settings_theme_dialog.ui.h:24
+msgid "I_ndependent size"
+msgstr "I_ndependent size"
+
+#: ../settings_theme_dialog.ui.h:25
+msgid "_Super key:"
+msgstr "_Super key:"
+
+#: ../settings_theme_dialog.ui.h:26
+msgid "Label Override"
+msgstr "Label Override"
+
+#: ../settings_theme_dialog.ui.h:27
+msgid "Labels"
+msgstr "Labels"
 
 #~ msgid "Quit onBoard"
 #~ msgstr "Quit onBoard"
@@ -2809,6 +3156,3 @@ msgstr ""
 
 #~ msgid "User layouts"
 #~ msgstr "User layouts"
-
-#~ msgid "_Window handles:"
-#~ msgstr "_Window handles:"

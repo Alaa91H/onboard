@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: onboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-06 14:30+0200\n"
+"POT-Creation-Date: 2026-07-11 18:54+0200\n"
 "PO-Revision-Date: 2012-03-17 11:48+0000\n"
 "Last-Translator: Redmar <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
@@ -621,7 +621,7 @@ msgid "Flat"
 msgstr "Plat"
 
 #. Key style with simple gradients
-#: ../Onboard/settings.py:1631
+#: ../Onboard/settings.py:1631 ../settings_theme_dialog.ui.h:6
 msgid "Gradient"
 msgstr "Gradiënt"
 
@@ -866,7 +866,7 @@ msgid "Scroll"
 msgstr "Scroll Lock"
 
 #. translators: this is a 'tooltip' of the key_template 'layer2' in keyboard layout 'key_defs.xml'
-#: ../data/layoutstrings.py:88 ../data/layoutstrings.py:340
+#: ../data/layoutstrings.py:88 ../data/layoutstrings.py:340 ../settings.ui.h:27
 msgid "Snippets"
 msgstr "Fragmenten"
 
@@ -1312,664 +1312,1263 @@ msgstr ""
 msgid "onscreen;keyboard;accessibility;utility;"
 msgstr ""
 
-#~ msgid "International character selection"
-#~ msgstr "Selectie voor internationale tekens"
-
-#~ msgid "never"
-#~ msgstr "nooit"
-
-#~ msgid "1 minute"
-#~ msgstr "1 minuut"
-
-#~ msgid "5 minutes"
-#~ msgstr "5 minuten"
-
-#~ msgid "10 minutes"
-#~ msgstr "10 minuten"
-
-#~ msgid "30 minutes"
-#~ msgstr "30 minuten"
-
-#~ msgid "1 hour"
-#~ msgstr "1 uur"
-
-#~ msgid "3 hours"
-#~ msgstr "3 uur"
-
-#~ msgid "forever"
-#~ msgstr "voor altijd"
-
-#~ msgid "GTK"
-#~ msgstr "GTK"
-
-#~ msgid "XInput"
-#~ msgstr "XInput"
-
-#~ msgid "XTest"
-#~ msgstr "XTest"
-
-#~ msgid "AT-SPI"
-#~ msgstr "AT-SPI"
-
-#~ msgid "Remember nothing"
-#~ msgstr "Niets onthouden"
-
-#~ msgid "Don't remember new words"
-#~ msgstr "Nieuwe woorden niet onthouden"
-
-#~ msgid "None"
-#~ msgstr "Geen"
-
-#~ msgid "Corners"
-#~ msgstr "Hoeken"
-
-#~ msgid "All corners and edges"
-#~ msgstr "Alle hoeken en randen"
-
-#~ msgid "General"
-#~ msgstr "Algemeen"
-
-#~ msgid "Window"
-#~ msgstr "Venster"
-
-#~ msgid "Layout"
-#~ msgstr "Indeling"
-
-#~ msgid "Theme"
-#~ msgstr "Thema"
-
-#~ msgid "Keyboard"
-#~ msgstr "Toetsenbord"
-
-#~ msgid "Typing Assistance"
-#~ msgstr "Typhulp"
-
-#~ msgid "Universal Access"
-#~ msgstr "Universele toegang"
-
-#~ msgid "none"
-#~ msgstr "geen"
-
-#~ msgid "single-touch"
-#~ msgstr "eentoetsbediening"
-
-#~ msgid "multi-touch"
-#~ msgstr "meertoetsbediening"
-
-#~ msgid "_Auto-show when editing text"
-#~ msgstr "_Automatisch tonen bij het bewerken van tekst"
-
-#~ msgid ""
-#~ "Show Onboard when there is a recognized text window in focus. Requires "
-#~ "Gnome Accessibility."
-#~ msgstr ""
-#~ "Onboard tonen wanneer de focus op een tekst-venster rust. Vereist Gnome "
-#~ "Accessibility."
-
-#~ msgid "Start Onboard _hidden"
-#~ msgstr "Onboard op de _achtergrond starten"
-
-#~ msgid "Start Onboard hidden."
-#~ msgstr "Onboard op de achtergrond starten."
-
-#~ msgid "Show/Hide options"
-#~ msgstr "Toon/Verberg opties"
-
-#~ msgid "Show floating _icon when Onboard is hidden"
-#~ msgstr "Zwevend p_ictogram tonen wanneer Onboard verborgen is"
-
-#~ msgid ""
-#~ "Show a floating icon on the desktop when Onboard is hidden. A click on "
-#~ "the icon makes Onboard reappear."
-#~ msgstr ""
-#~ "Een zwevend pictogram op het bureaublad tonen wanneer Onboard verborgen "
-#~ "is. Met een klik op het pictogram komt Onboard weer tevoorschijn."
-
-#~ msgid "Show when _unlocking the screen"
-#~ msgstr "Onboard tonen wanneer het scherm _ontgrendeld wordt"
-
-#~ msgid ""
-#~ "Show Onboard when the dialog to unlock the screen appears; this way "
-#~ "Onboard can be used for example to enter the password to dismiss the "
-#~ "screensaver when it is set to ask for it."
-#~ msgstr ""
-#~ "Toon Onboard wanneer het dialoogvenster om het scherm te ontgrendelen "
-#~ "verschijnt; op deze manier kan Onboard gebruikt worden om bijvoorbeeld "
-#~ "het wachtwoord in te voeren om het beeldscherm te ontgrendelen."
-
-#~ msgid "Show _tooltips"
-#~ msgstr "_Tooltips weergeven"
-
-#~ msgid "Show tooltips for the keyboard&apos;s buttons."
-#~ msgstr "Tooltips voor de toetsen weergeven."
-
-#~ msgid "Show tooltips for the keyboard's buttons."
-#~ msgstr "Tooltips voor de knoppen van het toetsenbord weergeven."
-
-#~ msgid "_Show status icon"
-#~ msgstr "_Statuspictogram weergeven"
-
-#~ msgid "Show the status item. A click on that icon hides or shows Onboard."
-#~ msgstr ""
-#~ "Het statuspictogram tonen. Klik op het pictogram om Onboard weer te geven "
-#~ "of te verbergen."
-
-#~ msgid "Desktop Integration"
-#~ msgstr "Bureaubladintegratie"
-
-#~ msgid "Dock to screen edge"
-#~ msgstr "Aan de schermrand vastpinnen"
-
-#~ msgid "Dock the keyboard to the edge of the screen."
-#~ msgstr "Het toetsenbord vastzetten aan de rand van het scherm."
-
-#~ msgid "Docking"
-#~ msgstr "Docking"
-
-#~ msgid "Show window _decoration"
-#~ msgstr "Venster_decoratie tonen"
-
-#~ msgid "Show window caption and frame."
-#~ msgstr "Vensterbijschrift en kader tonen."
-
-#~ msgid "Show always on visible _workspace"
-#~ msgstr "Altijd op actieve _werkblad"
-
-#~ msgid "&quot;Sticky&quot; mode for keyboard and floating icon."
-#~ msgstr "&quot;Sticky&quot;-modus voor toetsenbord en zwevend pictogram."
-
-#~ msgid "\"Sticky\" mode for keyboard and floating icon."
-#~ msgstr "\"Sticky\"-modus voor toetsenbord en zwevend pictogram."
-
-#~ msgid "_Force window to top"
-#~ msgstr "Venster op voorgrond _forceren"
-
-#~ msgid "Try harder to keep Onboard above anything on-screen."
-#~ msgstr "Onboard op de voorgrond proberen te houden."
-
-#~ msgid "Keep _aspect ratio"
-#~ msgstr "_Aspect ratio behuden"
-
-#~ msgid "Constrain window size to the layout&apos;s aspect ratio."
-#~ msgstr "Grootte van het venster beperken tot layout&apos;s beeldverhouding"
-
-#~ msgid "Constrain window size to the layout's aspect ratio."
-#~ msgstr ""
-#~ "Beperk de grootte van het venster zodat het binnen de aspect-ratio van de "
-#~ "indeling valt."
-
-#~ msgid "Floating Window Options"
-#~ msgstr "Zwevende-vensters opties"
-
-#~ msgid "Window options"
-#~ msgstr "Vensteropties"
-
-#~ msgid "Wind_ow:"
-#~ msgstr "_Venster:"
-
-#~ msgid "Transparency of the whole keyboard window. Requires compositing."
-#~ msgstr ""
-#~ "Doorzichtigheid van het gehele toetsenbordvenster. Dit vereist "
-#~ "compositing."
-
-#~ msgid "_Background:"
-#~ msgstr "_Achtergrond:"
-
-#~ msgid "Transparency of the keyboard background"
-#~ msgstr "Doorzichtigheid van de toetsenbordachtergrond."
-
-#~ msgid "_No background"
-#~ msgstr "_Geen achtergrond"
-
-#~ msgid "Show the desktop through the gaps between keys."
-#~ msgstr "De bureaubladachtergrond laten zien tussen de toetsen."
-
-#~ msgid "Transparency"
-#~ msgstr "Doorzichtig"
-
-#~ msgid "Set _transparency to"
-#~ msgstr "_Doorzichtigheid instellen op"
-
-#~ msgid "Enable inactive transparency. Requires compositing."
-#~ msgstr "Inactieve doorzichtigheid inschakelen. Vereist compositing."
-
-#~ msgid ""
-#~ "Transparency when the pointer leaves the keyboard. Requires compositing."
-#~ msgstr ""
-#~ "Doorzichtig wanneer de aanwijzer het toetsenbord verlaat. Dit vereist "
-#~ "compositing."
-
-#~ msgid "after"
-#~ msgstr "na"
-
-#~ msgid "Delay in seconds until the inactive transparency takes effect."
-#~ msgstr ""
-#~ "Vertraging in seconden totdat de inactieve doorzichtigheid effect heeft."
-
-#~ msgid "seconds"
-#~ msgstr "seconden"
-
-#~ msgid "When Inactive"
-#~ msgstr "Bij inactiviteit"
-
-#~ msgid "Resize Protection"
-#~ msgstr "Grootte aanpassen"
-
-#~ msgid "Name"
-#~ msgstr "Naam"
-
-#~ msgid "Description"
-#~ msgstr "Beschrijving"
-
-#~ msgid "Follow _system theme"
-#~ msgstr "_Systeemthema aanhouden"
-
-#~ msgid "Remember what Onboard theme was last used for every system theme."
-#~ msgstr ""
-#~ "Voor elk systeemthema onthouden welk Onboard-thema het laatst gebruikt "
-#~ "werd."
-
-#~ msgid ""
-#~ "Snippets are pieces of text which are entered when the corresponding "
-#~ "button in Onboard is pressed."
-#~ msgstr ""
-#~ "Fragmenten zijn stukjes tekst die ingevoegd worden als de bijbehorende "
-#~ "knop in Onboard wordt ingedrukt."
-
-#~ msgid "Play sound"
-#~ msgstr "Geluid afspelen"
-
-#~ msgid "Play click sound on keypress."
-#~ msgstr "Klikgeluid afpelen als op een toets wordt gedrukt"
-
-#~ msgid "Show label popups"
-#~ msgstr "Label popups weergeven"
-
-#~ msgid "Show label popups above pressed keys."
-#~ msgstr "Label popups boven ingedrukte toetsen weergeven"
-
-#~ msgid "Key-press Feedback"
-#~ msgstr "Respons bij knopgebruik"
-
-#~ msgid "Show secondary labels"
-#~ msgstr "Secundaire labels weergeven"
-
-#~ msgid "Show characters reachable with or without the shift key."
-#~ msgstr "Met of zonder shift-toets bereikbare karakters weergeven"
-
-#~ msgid "Key Labels"
-#~ msgstr "Toetslabels"
-
-#~ msgid "_Long press action:"
-#~ msgstr "Hande_ling bij lange toetsdruk:"
-
-#~ msgid ""
-#~ "Choose between key-repeat or long-press menus. Mainly affects alpha-"
-#~ "numeric keys."
-#~ msgstr ""
-#~ "Kies tussen toetsherhaling of lange toetsdruk menu's. Heeft hoofdzakelijk "
-#~ "invloed op alfanumerieke toetsen."
-
-#~ msgid "Modifier _behavior:"
-#~ msgstr "_Gedrag optietoets:"
-
-#~ msgid "Behavior of modifier and layer keys."
-#~ msgstr "Gedrag van aanpassings- en laagtoetsen."
-
-#~ msgid ""
-#~ "Seconds of inactivity until active modifiers and layer keys are released. "
-#~ "0 to disable."
-#~ msgstr ""
-#~ "Seconden van inactiviteit totdat de geactiveerde aanpassingstoetsen en "
-#~ "laagtoetsen worden vrijgegeven. Kies 0 om uit te schakelen."
-
-#~ msgid "0,00"
-#~ msgstr "0,00"
-
-#~ msgid "Key Behavior"
-#~ msgstr "Toetsgedrag"
-
-#~ msgid "_Input event source:"
-#~ msgstr "_Invoergebeurtenis bron:"
-
-#~ msgid ""
-#~ "Choose &apos;XInput&apos; for more reliable typing into text entries with "
-#~ "pop-up selections. The &apos;GTK&apos; option offers better "
-#~ "compatibility, but typing may fail in the presence of pointer grabs, e.g. "
-#~ "with open pop-up windows."
-#~ msgstr ""
-#~ "Kies &apos;XInput&apos; voor betrouwbaarder typen in tekstinvoer met pop-"
-#~ "up selecties. De &apos;GTK&apos; optie biedt betere compatibiliteit, maar "
-#~ "typen kan onbetrouwbaar zijn in de buurt van pointer grijpers, bijv. bij "
-#~ "open pop-up vensters."
-
-#~ msgid ""
-#~ "Choose 'XInput' for more reliable typing into text entries with pop-up "
-#~ "selections. The 'GTK' option offers better compatibility, but typing may "
-#~ "fail in the presence of pointer grabs, e.g. with open pop-up windows."
-#~ msgstr ""
-#~ "Kies 'XInput' voor betrouwbaarder typen in tekstinvoer met pop-up "
-#~ "selecties. De 'GTK' optie biedt betere compatibiliteit, maar typen kan "
-#~ "onbetrouwbaar zijn in de buurt van pointer grijpers, bijv. bij open pop-"
-#~ "up vensters."
-
-#~ msgid "Input Options"
-#~ msgstr "Invoeropties"
-
-#~ msgid "Delay between keystrokes in milliseconds:"
-#~ msgstr "Vertraging tussen toetsaanslagen in milliseconden"
-
+#: ../settings.ui.h:1
+msgid "Key-repeat"
+msgstr ""
+
+#: ../settings.ui.h:2
+msgid "International character selection"
+msgstr "Selectie voor internationale tekens"
+
+#: ../settings.ui.h:3
+msgid "never"
+msgstr "nooit"
+
+#: ../settings.ui.h:4
+msgid "1 minute"
+msgstr "1 minuut"
+
+#: ../settings.ui.h:5
+msgid "5 minutes"
+msgstr "5 minuten"
+
+#: ../settings.ui.h:6
+msgid "10 minutes"
+msgstr "10 minuten"
+
+#: ../settings.ui.h:7
+msgid "30 minutes"
+msgstr "30 minuten"
+
+#: ../settings.ui.h:8
+msgid "1 hour"
+msgstr "1 uur"
+
+#: ../settings.ui.h:9
+msgid "3 hours"
+msgstr "3 uur"
+
+#: ../settings.ui.h:10
+msgid "forever"
+msgstr "voor altijd"
+
+#: ../settings.ui.h:11
+msgid "GTK"
+msgstr "GTK"
+
+#: ../settings.ui.h:12
+msgid "XInput"
+msgstr "XInput"
+
+#: ../settings.ui.h:13
+msgid "Auto"
+msgstr ""
+
+#: ../settings.ui.h:14
+msgid "XTest"
+msgstr "XTest"
+
+#: ../settings.ui.h:15
 #, fuzzy
-#~ msgid "Animation"
-#~ msgstr "Actie"
-
-#~ msgid "Advanced"
-#~ msgstr "Geavanceerd"
-
-#~ msgid "Show _suggestions"
-#~ msgstr "_Suggesties weergeven"
-
-#~ msgid "Enable word completion and prediction."
-#~ msgstr "Woordaanvulling en -voorspelling inschakelen."
-
-#~ msgid "Show spelling suggestions"
-#~ msgstr "Spellingsuggesties weergeven"
-
-#~ msgid "Check spelling of the word at or before the cursor."
-#~ msgstr "Spelling voor of onder de cursor controleren."
-
-#~ msgid "_Learn from typed text"
-#~ msgstr "_Leren van getypte tekst"
-
-#~ msgid ""
-#~ "Remember new words, their recency and frequency to improve the "
-#~ "suggestions over time."
-#~ msgstr ""
-#~ "Nieuwe woorden, hun recentheid en frequentie onthouden om mettertijd de "
-#~ "suggesties te verbeteren."
-
-#~ msgid "Insert word _separators"
-#~ msgstr "_Scheidingstekens invoegen"
-
-#~ msgid ""
-#~ "Add and remove spaces when inserting word suggestions followed by "
-#~ "punctuation characters."
-#~ msgstr ""
-#~ "Spaties toevoegen en verwijderen bij het invoegen van woordsuggesties die "
-#~ "door interpunctietekens worden gevolgd."
-
-#~ msgid "Options"
-#~ msgstr "Opties"
-
-#~ msgid "Show button to pause learning"
-#~ msgstr "Toon knop om leren te onderbreken"
-
-#~ msgid "Words typed while this button is pressed won't be remembered."
-#~ msgstr ""
-#~ "Woorden die worden ingetikt terwijl deze knop is ingedrukt, zullen niet "
-#~ "worden onthouden."
-
-#~ msgid "Show lan_guage switcher"
-#~ msgstr "Talen_wisselaar tonen"
-
-#~ msgid "Show a button for language selection."
-#~ msgstr "Toon een knop voor taalkeuze."
-
-#~ msgid "Buttons"
-#~ msgstr "Knoppen"
-
-#~ msgid "Word Suggestions"
-#~ msgstr "Woordsuggesties"
-
-#~ msgid "Auto-capitalize while typing"
-#~ msgstr "Automatische hoofdletters tijdens typen"
-
-#~ msgid "Automatically capitalize sentence begins and name words."
-#~ msgstr "Automatisch hoofdletters aan het begin van een zin en bij namen."
-
-#~ msgid "Auto-correct spelling"
-#~ msgstr "Spelling automatisch corrigeren."
-
-#~ msgid "Automatically correct the last word."
-#~ msgstr "Laatste woord automatisch corrigeren."
-
-#~ msgid "The spell check engine to use."
-#~ msgstr "De te gebruiken spellingscontrole."
-
-#~ msgid "Spell-check backend:"
-#~ msgstr "Spellingscontrole backend:"
-
-#~ msgid "Auto-correction"
-#~ msgstr "Autocorrectie"
-
-#~ msgid "Enable  keyboard _scanning"
-#~ msgstr "Toetsenbord-_scanning inschakelen"
-
-#~ msgid "Keyboard Scanning"
-#~ msgstr "Toetsenbord-scanning"
-
-#~ msgid "_Delay:"
-#~ msgstr "_Vertraging:"
-
-#~ msgid "_Motion threshold:"
-#~ msgstr "Be_wegingsdrempel:"
-
-#~ msgid "Time in seconds before a click is triggered."
-#~ msgstr "Tijd in seconden voordat een klik geactiveerd wordt"
-
-#~ msgid "Distance in pixels before movement will be recognized."
-#~ msgstr "Afstand in pixels voordat beweging herkend wordt."
-
-#~ msgid "Hide hover click window"
-#~ msgstr "Venster voor zwevende klik verbergen"
-
-#~ msgid ""
-#~ "Hide the system-provided hover click window while Onboard is running."
-#~ msgstr ""
-#~ "Het door het systeem geleverde zweefklik-venster altijd verbergen als "
-#~ "Onboard actief is."
-
-#~ msgid "Enable click type window on exit"
-#~ msgstr "Kliktype-venster inschakelen bij afsluiten"
-
-#~ msgid ""
-#~ "Always enable the system-provided hover click window when exiting Onboard."
-#~ msgstr ""
-#~ "Het door het systeem geleverde zweefklik-venster altijd inschakelen "
-#~ "wanneer Onboard afgesloten wordt."
-
-#~ msgid "Hover Click"
-#~ msgstr "Zweefklik"
-
-#~ msgid "Top"
-#~ msgstr "Begin"
-
-#~ msgid "Bottom"
-#~ msgstr "Einde"
-
-#~ msgid "Docking settings"
-#~ msgstr "Vastpin-instellingen"
-
-#~ msgid "Shrink workarea"
-#~ msgstr "Werkgebied verkleinen"
-
-#~ msgid "Shrink the available space for maximized windows."
-#~ msgstr "De beschikbare ruimte voor gemaximaliseerde vensters verkleinen."
-
-#~ msgid "Expand on landscape screens"
-#~ msgstr "Vergroten op schermen met landschapsoriëntatie"
-
-#~ msgid "Expand keyboard to the width of the workarea."
-#~ msgstr "Vergroot toetsenbord tot de breedte van het werkgebied."
-
-#~ msgid "Expand on portrait screens"
-#~ msgstr "Vergroten op schermen met portretoriëntatie"
-
-#~ msgid "Dock to screen edge:"
-#~ msgstr "Aan schermrand vastpinnen:"
-
-#~ msgid "Automatic scan for 1 switch"
-#~ msgstr "Automatisch scannen voor 1 schakelaar"
-
-#~ msgid "Critical overscan for 1 switch"
-#~ msgstr "Kritieke overscan voor 1 schakelaar"
-
-#~ msgid "Step scan for 2 switches"
-#~ msgstr "Stap-scan voor 2 schakelaars"
-
-#~ msgid "Directed scan for 3 or 5 switches"
-#~ msgstr "Gerichte scan voor 3 of 5 schakelaars"
-
-#~ msgid "Scanner Settings"
-#~ msgstr "Scanner-instellingen"
-
-#~ msgid "Select a scanning _profile:"
-#~ msgstr "Selecteer een scanning_profiel:"
-
-#~ msgid "_Step interval:"
-#~ msgstr "_Stap interval:"
-
-#~ msgid "Sc_an cycles:"
-#~ msgstr "Sc_ancycli"
-
-#~ msgid ""
-#~ "The time the scanner rests on a key or group before moving to the next. "
-#~ "(in seconds)"
-#~ msgstr ""
-#~ "De tijd dat de scanner op een toets of groep rust alvorens naar de "
-#~ "volgende te gaan. (in seconden)"
-
-#~ msgid ""
-#~ "The number of times the scanner cycles through the entire keyboard before "
-#~ "it stops."
-#~ msgstr "Het aantal keren dat de scanner over het hele toetsenbord gaat."
-
-#~ msgid "Step _only during switch down"
-#~ msgstr "_Alleen stappen als schakelaar ingedrukt is"
-
-#~ msgid "Progress the highlight only while the switch is held down."
-#~ msgstr "De markering alleen verplaatsen als de schakelaar ingedrukt is."
-
-#~ msgid "_Forward interval:"
-#~ msgstr "Interval voor _vooruit:"
-
-#~ msgid "_Backtrack interval:"
-#~ msgstr "Interval voor _achteruit"
-
-#~ msgid ""
-#~ "The time the scanner rests on a key  while progressing forward. (in "
-#~ "seconds)"
-#~ msgstr ""
-#~ "De tijd dat de scanner op een toets rust bij het vooruit-scannen. (in "
-#~ "seconden)"
-
-#~ msgid ""
-#~ "The time the scanner rests on a key  while moving backwards. (in seconds)"
-#~ msgstr ""
-#~ "De tijd dat de scanner op een toets rust bij het achteruit-scannen. (in "
-#~ "seconden)"
-
-#~ msgid "Backtrack _steps:"
-#~ msgstr "Achteruit _stappen:"
-
-#~ msgid ""
-#~ "The number of keys the scanner steps back before moving forward again."
-#~ msgstr ""
-#~ "Het aantal toetsen dat de scanner achteruit gaat, alvorens weer vooruit "
-#~ "te gaan."
-
-#~ msgid "_Alternate switch actions"
-#~ msgstr "_Schakelaar-acties omwisselen"
-
-#~ msgid ""
-#~ "Swap the scan actions after every key activation. The Step action will "
-#~ "become the Activate action and vice versa."
-#~ msgstr ""
-#~ "De scanactie wisselen na elke toetsactivering. De stapactie wordt de "
-#~ "activeeractie en omgekeerd."
-
-#~ msgid "Profiles"
-#~ msgstr "Profielen"
-
-#~ msgid "_Select an input device:"
-#~ msgstr "_Selecteer een invoerapparaat:"
-
-#~ msgid "_Use this device only for scanning"
-#~ msgstr "Dit apparaat _alleen voor scannen gebruiken"
-
-#~ msgid ""
-#~ "The selected device should not control the system mouse cursor or the "
-#~ "keyboard caret."
-#~ msgstr "Het geselecteerde apparaat mag de muis of cursor niet bedienen."
-
-#~ msgid "Input Device"
-#~ msgstr "Invoerapparaat"
-
-#~ msgid "Customize Theme"
-#~ msgstr "Thema aanpassen"
-
-#~ msgid "Color Sche_me"
-#~ msgstr "Kleurensche_ma"
-
-#~ msgid "_Angle:"
-#~ msgstr "_Hoek:"
-
-#~ msgid "Light Direction"
-#~ msgstr "lichtrichting"
-
-#~ msgid "_Style:"
-#~ msgstr "_Stijl:"
-
-#~ msgid "R_oundness:"
-#~ msgstr "R_onde hoeken:"
-
-#~ msgid "S_ize:"
-#~ msgstr "_Grootte:"
-
-#~ msgid "B_order width:"
-#~ msgstr "R_andbreedte"
-
-#~ msgid "Key Style"
-#~ msgstr "Toetsenstijl"
-
-#~ msgid "_Key:"
-#~ msgstr "_Toets:"
-
-#~ msgid "_Border:"
-#~ msgstr "_Rand:"
-
-#~ msgid "Gradients"
-#~ msgstr "Kleurverloop"
-
-#~ msgid "_Strength:"
-#~ msgstr "_Sterkte:"
-
-#~ msgid "Shadow"
-#~ msgstr "Schaduw"
-
-#~ msgid "Keys"
-#~ msgstr "Toetsen"
-
-#~ msgid "_Font:"
-#~ msgstr "_Lettertype"
-
-#~ msgid "_Attributes:"
-#~ msgstr "_Attributen:"
-
-#~ msgid "Font"
-#~ msgstr "Lettertype"
-
-#~ msgid "I_ndependent size"
-#~ msgstr "O_nafhankelijke grootte"
-
-#~ msgid "_Super key:"
-#~ msgstr "_Super-toets:"
-
-#~ msgid "Label Override"
-#~ msgstr "Label overschrijven"
-
-#~ msgid "Labels"
-#~ msgstr "Labels"
+msgid "uinput"
+msgstr "XInput"
+
+#: ../settings.ui.h:16
+msgid "AT-SPI"
+msgstr "AT-SPI"
+
+#: ../settings.ui.h:17
+msgid "Remember nothing"
+msgstr "Niets onthouden"
+
+#: ../settings.ui.h:18
+msgid "Don't remember new words"
+msgstr "Nieuwe woorden niet onthouden"
+
+#: ../settings.ui.h:19
+msgid "None"
+msgstr "Geen"
+
+#: ../settings.ui.h:20
+msgid "Movement only"
+msgstr ""
+
+#: ../settings.ui.h:21
+msgid "Corners"
+msgstr "Hoeken"
+
+#: ../settings.ui.h:22
+msgid "All corners and edges"
+msgstr "Alle hoeken en randen"
+
+#: ../settings.ui.h:23
+msgid "General"
+msgstr "Algemeen"
+
+#: ../settings.ui.h:24
+msgid "Window"
+msgstr "Venster"
+
+#: ../settings.ui.h:25
+msgid "Layout"
+msgstr "Indeling"
+
+#: ../settings.ui.h:26
+msgid "Theme"
+msgstr "Thema"
+
+#: ../settings.ui.h:28 ../settings_theme_dialog.ui.h:9
+msgid "Keyboard"
+msgstr "Toetsenbord"
+
+#: ../settings.ui.h:29
+msgid "Auto-show"
+msgstr ""
+
+#: ../settings.ui.h:30
+msgid "Typing Assistance"
+msgstr "Typhulp"
+
+#: ../settings.ui.h:31
+msgid "Universal Access"
+msgstr "Universele toegang"
+
+#: ../settings.ui.h:32
+msgid "Only move when necessary"
+msgstr ""
+
+#: ../settings.ui.h:33
+msgid "Follow the active window"
+msgstr ""
+
+#: ../settings.ui.h:34
+msgid "Latch, then lock"
+msgstr ""
+
+#: ../settings.ui.h:35
+#, fuzzy
+msgid "Latch, double-click to lock"
+msgstr "Dubbelklikken om te vergrendelen"
+
+#: ../settings.ui.h:36
+#, fuzzy
+msgid "Latch only"
+msgstr "Slot"
+
+#: ../settings.ui.h:37
+#, fuzzy
+msgid "Lock only"
+msgstr "Vergrendelen"
+
+#: ../settings.ui.h:38
+#, fuzzy
+msgid "Push button"
+msgstr "Druk op een knop…"
+
+#: ../settings.ui.h:39
+msgid "none"
+msgstr "geen"
+
+#: ../settings.ui.h:40
+msgid "single-touch"
+msgstr "eentoetsbediening"
+
+#: ../settings.ui.h:41
+msgid "multi-touch"
+msgstr "meertoetsbediening"
+
+#: ../settings.ui.h:42
+msgctxt "Label of the main close button of the preferences dialog."
+msgid "_Close"
+msgstr ""
+
+#: ../settings.ui.h:43
+msgid "_Auto-show when editing text"
+msgstr "_Automatisch tonen bij het bewerken van tekst"
+
+#: ../settings.ui.h:44
+msgid ""
+"Show Onboard when there is a recognized text window in focus. Requires Gnome "
+"Accessibility."
+msgstr ""
+"Onboard tonen wanneer de focus op een tekst-venster rust. Vereist Gnome "
+"Accessibility."
+
+#: ../settings.ui.h:45
+msgid "Start Onboard _hidden"
+msgstr "Onboard op de _achtergrond starten"
+
+#: ../settings.ui.h:46
+msgid "Start Onboard hidden."
+msgstr "Onboard op de achtergrond starten."
+
+#: ../settings.ui.h:47
+msgid "Show/Hide options"
+msgstr "Toon/Verberg opties"
+
+#: ../settings.ui.h:48
+msgid "Show floating _icon when Onboard is hidden"
+msgstr "Zwevend p_ictogram tonen wanneer Onboard verborgen is"
+
+#: ../settings.ui.h:49
+msgid ""
+"Show a floating icon on the desktop when Onboard is hidden. A click on the "
+"icon makes Onboard reappear."
+msgstr ""
+"Een zwevend pictogram op het bureaublad tonen wanneer Onboard verborgen is. "
+"Met een klik op het pictogram komt Onboard weer tevoorschijn."
+
+#: ../settings.ui.h:50
+msgid "Show when _unlocking the screen"
+msgstr "Onboard tonen wanneer het scherm _ontgrendeld wordt"
+
+#: ../settings.ui.h:51
+msgid ""
+"Show Onboard when the dialog to unlock the screen appears; this way Onboard "
+"can be used for example to enter the password to dismiss the screensaver "
+"when it is set to ask for it."
+msgstr ""
+"Toon Onboard wanneer het dialoogvenster om het scherm te ontgrendelen "
+"verschijnt; op deze manier kan Onboard gebruikt worden om bijvoorbeeld het "
+"wachtwoord in te voeren om het beeldscherm te ontgrendelen."
+
+#: ../settings.ui.h:52
+msgid "Show _tooltips"
+msgstr "_Tooltips weergeven"
+
+#: ../settings.ui.h:53
+msgid "Show tooltips for the keyboard&apos;s buttons."
+msgstr "Tooltips voor de toetsen weergeven."
+
+#: ../settings.ui.h:54
+msgid "Show tooltips for the keyboard's buttons."
+msgstr "Tooltips voor de knoppen van het toetsenbord weergeven."
+
+#: ../settings.ui.h:55
+msgid "_Show status icon"
+msgstr "_Statuspictogram weergeven"
+
+#: ../settings.ui.h:56
+msgid "Show the status item. A click on that icon hides or shows Onboard."
+msgstr ""
+"Het statuspictogram tonen. Klik op het pictogram om Onboard weer te geven of "
+"te verbergen."
+
+#: ../settings.ui.h:57
+msgid "Status icon _provider:"
+msgstr ""
+
+#: ../settings.ui.h:58
+msgid ""
+"<b>AppIndicator</b> (default) is recommended for broadest compatibility. A "
+"middle click on the icon shows the keyboard. In KDE Plasma a left click does "
+"the same.\n"
+"\n"
+"<b>GtkStatusIcon</b> isn't supported well anymore by various desktop "
+"environments, but generally allows to show the keyboard on left click.\n"
+"\n"
+"Requires restart."
+msgstr ""
+
+#: ../settings.ui.h:63
+msgid "Desktop Integration"
+msgstr "Bureaubladintegratie"
+
+#: ../settings.ui.h:64
+msgid "Dock to screen edge"
+msgstr "Aan de schermrand vastpinnen"
+
+#: ../settings.ui.h:65
+msgid "Dock the keyboard to the edge of the screen."
+msgstr "Het toetsenbord vastzetten aan de rand van het scherm."
+
+#: ../settings.ui.h:66
+#, fuzzy
+msgctxt "Label of settings button on preferences page Window."
+msgid "_Settings"
+msgstr "In_stellingen"
+
+#: ../settings.ui.h:67
+msgid "Docking"
+msgstr "Docking"
+
+#: ../settings.ui.h:68
+msgid "Show window _decoration"
+msgstr "Venster_decoratie tonen"
+
+#: ../settings.ui.h:69
+msgid "Show window caption and frame."
+msgstr "Vensterbijschrift en kader tonen."
+
+#: ../settings.ui.h:70
+msgid "Show always on visible _workspace"
+msgstr "Altijd op actieve _werkblad"
+
+#: ../settings.ui.h:71
+msgid "&quot;Sticky&quot; mode for keyboard and floating icon."
+msgstr "&quot;Sticky&quot;-modus voor toetsenbord en zwevend pictogram."
+
+#: ../settings.ui.h:72
+msgid "\"Sticky\" mode for keyboard and floating icon."
+msgstr "\"Sticky\"-modus voor toetsenbord en zwevend pictogram."
+
+#: ../settings.ui.h:73
+msgid "_Force window to top"
+msgstr "Venster op voorgrond _forceren"
+
+#: ../settings.ui.h:74
+msgid "Try harder to keep Onboard above anything on-screen."
+msgstr "Onboard op de voorgrond proberen te houden."
+
+#: ../settings.ui.h:75
+msgid "Keep _aspect ratio"
+msgstr "_Aspect ratio behuden"
+
+#: ../settings.ui.h:76
+msgid "Constrain window size to the layout&apos;s aspect ratio."
+msgstr "Grootte van het venster beperken tot layout&apos;s beeldverhouding"
+
+#: ../settings.ui.h:77
+msgid "Constrain window size to the layout's aspect ratio."
+msgstr ""
+"Beperk de grootte van het venster zodat het binnen de aspect-ratio van de "
+"indeling valt."
+
+#: ../settings.ui.h:78
+msgid "Floating Window Options"
+msgstr "Zwevende-vensters opties"
+
+#: ../settings.ui.h:79
+msgid "Window options"
+msgstr "Vensteropties"
+
+#: ../settings.ui.h:80
+msgid "Wind_ow:"
+msgstr "_Venster:"
+
+#: ../settings.ui.h:81
+msgid "Transparency of the whole keyboard window. Requires compositing."
+msgstr ""
+"Doorzichtigheid van het gehele toetsenbordvenster. Dit vereist compositing."
+
+#: ../settings.ui.h:82 ../settings_theme_dialog.ui.h:5
+msgid "_Background:"
+msgstr "_Achtergrond:"
+
+#: ../settings.ui.h:83
+msgid "Transparency of the keyboard background"
+msgstr "Doorzichtigheid van de toetsenbordachtergrond."
+
+#: ../settings.ui.h:84
+msgid "_No background"
+msgstr "_Geen achtergrond"
+
+#: ../settings.ui.h:85
+msgid "Show the desktop through the gaps between keys."
+msgstr "De bureaubladachtergrond laten zien tussen de toetsen."
+
+#: ../settings.ui.h:86
+msgid "Transparency"
+msgstr "Doorzichtig"
+
+#: ../settings.ui.h:87
+msgid "Set _transparency to"
+msgstr "_Doorzichtigheid instellen op"
+
+#: ../settings.ui.h:88
+msgid "Enable inactive transparency. Requires compositing."
+msgstr "Inactieve doorzichtigheid inschakelen. Vereist compositing."
+
+#: ../settings.ui.h:89
+msgid ""
+"Transparency when the pointer leaves the keyboard. Requires compositing."
+msgstr ""
+"Doorzichtig wanneer de aanwijzer het toetsenbord verlaat. Dit vereist "
+"compositing."
+
+#: ../settings.ui.h:90
+msgid "after"
+msgstr "na"
+
+#: ../settings.ui.h:91
+msgid "Delay in seconds until the inactive transparency takes effect."
+msgstr ""
+"Vertraging in seconden totdat de inactieve doorzichtigheid effect heeft."
+
+#: ../settings.ui.h:92
+msgid "seconds"
+msgstr "seconden"
+
+#: ../settings.ui.h:93
+msgid "When Inactive"
+msgstr "Bij inactiviteit"
+
+#: ../settings.ui.h:94
+msgid "_Window handles of the keyboard window:"
+msgstr ""
+
+#: ../settings.ui.h:95
+msgid "_Window handles of the floating icon:"
+msgstr ""
+
+#: ../settings.ui.h:96
+msgid "Resize Protection"
+msgstr "Grootte aanpassen"
+
+#: ../settings.ui.h:97
+msgid "Name"
+msgstr "Naam"
+
+#: ../settings.ui.h:98
+msgid "Description"
+msgstr "Beschrijving"
+
+#: ../settings.ui.h:99
+msgctxt "Label of new layout button on preferences page Layout."
+msgid "_New"
+msgstr ""
+
+#: ../settings.ui.h:100
+#, fuzzy
+msgctxt "Label of delete layout button on preferences page Layout."
+msgid "_Delete"
+msgstr "Verwijder"
+
+#: ../settings.ui.h:101
+#, fuzzy
+msgctxt "Label of open folder button on preferences page Layout."
+msgid "_Open layouts folder"
+msgstr "Map met indelingen _openen"
+
+#: ../settings.ui.h:102
+msgctxt "Label of about layout button on preferences page Layout."
+msgid "_About"
+msgstr ""
+
+#: ../settings.ui.h:103
+msgctxt "Label of new theme button on preferences page Theme."
+msgid "_New"
+msgstr ""
+
+#: ../settings.ui.h:104
+#, fuzzy
+msgctxt "Label of delete theme  button on preferences page Theme."
+msgid "_Delete"
+msgstr "Verwijder"
+
+#: ../settings.ui.h:105
+#, fuzzy
+msgctxt "Label of customize theme button on preferences page Theme."
+msgid "C_ustomize theme"
+msgstr "Thema _aanpassen"
+
+#: ../settings.ui.h:106
+msgid "Follow _system theme"
+msgstr "_Systeemthema aanhouden"
+
+#: ../settings.ui.h:107
+msgid "Remember what Onboard theme was last used for every system theme."
+msgstr ""
+"Voor elk systeemthema onthouden welk Onboard-thema het laatst gebruikt werd."
+
+#: ../settings.ui.h:108
+msgid ""
+"Snippets are pieces of text which are entered when the corresponding button "
+"in Onboard is pressed."
+msgstr ""
+"Fragmenten zijn stukjes tekst die ingevoegd worden als de bijbehorende knop "
+"in Onboard wordt ingedrukt."
+
+#: ../settings.ui.h:109
+msgctxt "Label of add snippet button on preferences page Snippets."
+msgid "_Add"
+msgstr ""
+
+#: ../settings.ui.h:110
+msgctxt "Label of remove snippet button on preferences page Snippets."
+msgid "_Remove"
+msgstr ""
+
+#: ../settings.ui.h:111
+msgid "Play sound"
+msgstr "Geluid afspelen"
+
+#: ../settings.ui.h:112
+msgid "Play click sound on keypress."
+msgstr "Klikgeluid afpelen als op een toets wordt gedrukt"
+
+#: ../settings.ui.h:113
+#, fuzzy
+msgid "Place sound in space"
+msgstr "Klikgeluid afpelen als op een toets wordt gedrukt"
+
+#: ../settings.ui.h:114
+msgid ""
+"Place sound in space between speakers depending on the key's position on "
+"screen"
+msgstr ""
+
+#: ../settings.ui.h:115
+msgid "Show label popups"
+msgstr "Label popups weergeven"
+
+#: ../settings.ui.h:116
+msgid "Show label popups above pressed keys."
+msgstr "Label popups boven ingedrukte toetsen weergeven"
+
+#: ../settings.ui.h:117
+msgid "Popup size:"
+msgstr ""
+
+#: ../settings.ui.h:118
+msgid "Key-press Feedback"
+msgstr "Respons bij knopgebruik"
+
+#: ../settings.ui.h:119
+msgid "Show secondary labels"
+msgstr "Secundaire labels weergeven"
+
+#: ../settings.ui.h:120
+msgid "Show characters reachable with or without the shift key."
+msgstr "Met of zonder shift-toets bereikbare karakters weergeven"
+
+#: ../settings.ui.h:121
+msgid "Key Labels"
+msgstr "Toetslabels"
+
+#: ../settings.ui.h:122
+msgid "Upper case on right click"
+msgstr ""
+
+#: ../settings.ui.h:123
+msgid "Temporarily enable SHIFT when clicking with the secondary button."
+msgstr ""
+
+#: ../settings.ui.h:124
+#, fuzzy
+msgid "Key Behaviour"
+msgstr "Toetsgedrag"
+
+#: ../settings.ui.h:125
+msgid "_Long press action:"
+msgstr "Hande_ling bij lange toetsdruk:"
+
+#: ../settings.ui.h:126
+msgid ""
+"Choose between key-repeat or long-press menus. Mainly affects alpha-numeric "
+"keys."
+msgstr ""
+"Kies tussen toetsherhaling of lange toetsdruk menu's. Heeft hoofdzakelijk "
+"invloed op alfanumerieke toetsen."
+
+#: ../settings.ui.h:127
+msgid "Modifier _behavior:"
+msgstr "_Gedrag optietoets:"
+
+#: ../settings.ui.h:128
+msgid "Behavior of modifier and layer keys."
+msgstr "Gedrag van aanpassings- en laagtoetsen."
+
+#: ../settings.ui.h:129
+msgid "Modifier auto-release delay in seconds:"
+msgstr ""
+
+#: ../settings.ui.h:130
+msgid ""
+"Seconds of inactivity until active modifiers and layer keys are released. 0 "
+"to disable."
+msgstr ""
+"Seconden van inactiviteit totdat de geactiveerde aanpassingstoetsen en "
+"laagtoetsen worden vrijgegeven. Kies 0 om uit te schakelen."
+
+#: ../settings.ui.h:131
+msgid "Modifier auto-release after hide in seconds:"
+msgstr ""
+
+#: ../settings.ui.h:132
+msgid ""
+"Time after hiding the keyboard in seconds until latched and locked modifiers "
+"and layer keys are released automatically. Leave at 0.0 to not automatically "
+"release them."
+msgstr ""
+
+#: ../settings.ui.h:133
+msgid "0,00"
+msgstr "0,00"
+
+#: ../settings.ui.h:134
+msgid "Key Behavior"
+msgstr "Toetsgedrag"
+
+#: ../settings.ui.h:135
+msgid "_Touch input:"
+msgstr ""
+
+#: ../settings.ui.h:136
+msgid "_Input event source:"
+msgstr "_Invoergebeurtenis bron:"
+
+#: ../settings.ui.h:137
+msgid ""
+"Choose &apos;XInput&apos; for more reliable typing into text entries with "
+"pop-up selections. The &apos;GTK&apos; option offers better compatibility, "
+"but typing may fail in the presence of pointer grabs, e.g. with open pop-up "
+"windows."
+msgstr ""
+"Kies &apos;XInput&apos; voor betrouwbaarder typen in tekstinvoer met pop-up "
+"selecties. De &apos;GTK&apos; optie biedt betere compatibiliteit, maar typen "
+"kan onbetrouwbaar zijn in de buurt van pointer grijpers, bijv. bij open pop-"
+"up vensters."
+
+#: ../settings.ui.h:138
+msgid ""
+"Choose 'XInput' for more reliable typing into text entries with pop-up "
+"selections. The 'GTK' option offers better compatibility, but typing may "
+"fail in the presence of pointer grabs, e.g. with open pop-up windows."
+msgstr ""
+"Kies 'XInput' voor betrouwbaarder typen in tekstinvoer met pop-up selecties. "
+"De 'GTK' optie biedt betere compatibiliteit, maar typen kan onbetrouwbaar "
+"zijn in de buurt van pointer grijpers, bijv. bij open pop-up vensters."
+
+#: ../settings.ui.h:139
+msgid "Input Options"
+msgstr "Invoeropties"
+
+#: ../settings.ui.h:140
+msgid "Delay between keystrokes in milliseconds:"
+msgstr "Vertraging tussen toetsaanslagen in milliseconden"
+
+#: ../settings.ui.h:141
+msgid ""
+"Increase this if key-strokes get lost when inserting word suggestions or "
+"snippets into Firefox or other Gtk-2 applications. Has no effect on Gtk-3 "
+"applications."
+msgstr ""
+
+#: ../settings.ui.h:142
+#, fuzzy
+msgid "Key-stroke generator"
+msgstr "_Generatie van toetsaanslagen:"
+
+#: ../settings.ui.h:143
+msgid ""
+"<b>Auto</b>: let Onboard decide, recommended.\n"
+"\n"
+"<b>XTest</b> is the default for all X based desktop environments.\n"
+"\n"
+"<b>uinput</b> should be available on all linux-based systems, including X, "
+"Wayland and MIR-based desktops, but requires write permission for /dev/"
+"uinput.\n"
+"\n"
+"<b>AT-SPI</b> has limited support for key-stroke generation, and is only "
+"recommended for testing."
+msgstr ""
+
+#: ../settings.ui.h:150
+#, fuzzy
+msgid "Key-stroke Generation"
+msgstr "_Generatie van toetsaanslagen:"
+
+#: ../settings.ui.h:151
+msgid "Popup time [s]:"
+msgstr ""
+
+#: ../settings.ui.h:152
+msgid "Affects how long a key popup stays open."
+msgstr ""
+
+#: ../settings.ui.h:153
+msgid "0.15"
+msgstr ""
+
+#: ../settings.ui.h:154
+#, fuzzy
+msgid "Animation"
+msgstr "Actie"
+
+#: ../settings.ui.h:155
+msgid "Advanced"
+msgstr "Geavanceerd"
+
+#: ../settings.ui.h:156
+#, fuzzy
+msgid ""
+"Show Onboard when there is a recognized text entry in focus. Requires Gnome "
+"Accessibility."
+msgstr ""
+"Onboard tonen wanneer de focus op een tekst-venster rust. Vereist Gnome "
+"Accessibility."
+
+#: ../settings.ui.h:157
+msgid "Keyboard movement strategy:"
+msgstr ""
+
+#: ../settings.ui.h:158
+msgid "Chose how the keyboard window moves when a text entry is activated."
+msgstr ""
+
+#: ../settings.ui.h:159
+msgid "_Hide when typing on a physical keyboard"
+msgstr ""
+
+#: ../settings.ui.h:160
+msgid ""
+"Hide Onboard when any key is pressed on a physical keyboard. Requires input "
+"event source \"XInput\"."
+msgstr ""
+
+#: ../settings.ui.h:161
+#, fuzzy
+msgid "Stay hidden:"
+msgstr "Onboard op de achtergrond starten."
+
+#: ../settings.ui.h:162
+msgid ""
+"Once hidden by a physical key-press, auto-show is paused. Select the pause "
+"duration here."
+msgstr ""
+
+#: ../settings.ui.h:163
+#, fuzzy
+msgid "Auto-show only in tablet mode"
+msgstr "_Automatisch tonen bij het bewerken van tekst"
+
+#: ../settings.ui.h:164
+msgid ""
+"Requires driver support for SW_TABLET_MODE and a running instance of acpid."
+msgstr ""
+
+#: ../settings.ui.h:165
+msgid ""
+"Alternatively, some devices generate key events on entering and leaving "
+"tablet mode. Run 'xinput test-xi2 3 ' to find these key presses and enter "
+"their 'detail' values below."
+msgstr ""
+
+#: ../settings.ui.h:166
+msgid "Hotkey received when entering tablet mode:"
+msgstr ""
+
+#: ../settings.ui.h:167
+msgid "Hotkey received when leaving tablet mode:"
+msgstr ""
+
+#: ../settings.ui.h:168
+msgid "File that contains the current device state:"
+msgstr ""
+
+#: ../settings.ui.h:169
+msgid "Regular expression to match for tablet-mode:"
+msgstr ""
+
+#: ../settings.ui.h:170
+msgid "Convertible Devices"
+msgstr ""
+
+#: ../settings.ui.h:171
+msgid "Don't auto-show while external keyboards are connected"
+msgstr ""
+
+#: ../settings.ui.h:172
+msgid "Detected keyboard devices:"
+msgstr ""
+
+#: ../settings.ui.h:173
+msgid ""
+"Check 'Ignore' for devices that are always connected and should not block "
+"auto-show."
+msgstr ""
+
+#: ../settings.ui.h:174
+#, fuzzy
+msgid "External Keyboards"
+msgstr "Toetsenbord verlaten"
+
+#: ../settings.ui.h:175
+msgid "Show _suggestions"
+msgstr "_Suggesties weergeven"
+
+#: ../settings.ui.h:176
+msgid "Enable word completion and prediction."
+msgstr "Woordaanvulling en -voorspelling inschakelen."
+
+#: ../settings.ui.h:177
+msgid "Show spelling suggestions"
+msgstr "Spellingsuggesties weergeven"
+
+#: ../settings.ui.h:178
+msgid "Check spelling of the word at or before the cursor."
+msgstr "Spelling voor of onder de cursor controleren."
+
+#: ../settings.ui.h:179
+msgid "_Learn from typed text"
+msgstr "_Leren van getypte tekst"
+
+#: ../settings.ui.h:180
+msgid ""
+"Remember new words, their recency and frequency to improve the suggestions "
+"over time."
+msgstr ""
+"Nieuwe woorden, hun recentheid en frequentie onthouden om mettertijd de "
+"suggesties te verbeteren."
+
+#: ../settings.ui.h:181
+msgid "Insert word _separators"
+msgstr "_Scheidingstekens invoegen"
+
+#: ../settings.ui.h:182
+msgid ""
+"Add and remove spaces when inserting word suggestions followed by "
+"punctuation characters."
+msgstr ""
+"Spaties toevoegen en verwijderen bij het invoegen van woordsuggesties die "
+"door interpunctietekens worden gevolgd."
+
+#: ../settings.ui.h:183
+msgid "Options"
+msgstr "Opties"
+
+#: ../settings.ui.h:184
+#, fuzzy
+msgid "Show more suggestions arrow"
+msgstr "_Suggesties weergeven"
+
+#: ../settings.ui.h:185
+msgid "Step forward and backward through the available suggestions."
+msgstr ""
+
+#: ../settings.ui.h:186
+msgid "Show button to pause learning"
+msgstr "Toon knop om leren te onderbreken"
+
+#: ../settings.ui.h:187
+msgid "Words typed while this button is pressed won't be remembered."
+msgstr ""
+"Woorden die worden ingetikt terwijl deze knop is ingedrukt, zullen niet "
+"worden onthouden."
+
+#: ../settings.ui.h:188
+msgid "Show lan_guage switcher"
+msgstr "Talen_wisselaar tonen"
+
+#: ../settings.ui.h:189
+msgid "Show a button for language selection."
+msgstr "Toon een knop voor taalkeuze."
+
+#: ../settings.ui.h:190
+msgid "Buttons"
+msgstr "Knoppen"
+
+#: ../settings.ui.h:191
+msgid "Word Suggestions"
+msgstr "Woordsuggesties"
+
+#: ../settings.ui.h:192
+msgid "Auto-capitalize while typing"
+msgstr "Automatische hoofdletters tijdens typen"
+
+#: ../settings.ui.h:193
+msgid "Automatically capitalize sentence begins and name words."
+msgstr "Automatisch hoofdletters aan het begin van een zin en bij namen."
+
+#: ../settings.ui.h:194
+msgid "Auto-correct spelling"
+msgstr "Spelling automatisch corrigeren."
+
+#: ../settings.ui.h:195
+msgid "Automatically correct the last word."
+msgstr "Laatste woord automatisch corrigeren."
+
+#: ../settings.ui.h:196
+msgid "The spell check engine to use."
+msgstr "De te gebruiken spellingscontrole."
+
+#: ../settings.ui.h:197
+msgid "Spell-check backend:"
+msgstr "Spellingscontrole backend:"
+
+#: ../settings.ui.h:198
+msgid "Auto-correction"
+msgstr "Autocorrectie"
+
+#: ../settings.ui.h:199
+msgid "While  learning is paused:"
+msgstr ""
+
+#: ../settings.ui.h:200
+#, fuzzy
+msgid "Learning"
+msgstr "Leren onderbreken"
+
+#: ../settings.ui.h:201
+msgid "Enable  keyboard _scanning"
+msgstr "Toetsenbord-_scanning inschakelen"
+
+#: ../settings.ui.h:202
+#, fuzzy
+msgctxt ""
+"Label of keyboard scanning settings button on preferences page Universal "
+"Access."
+msgid "Sc_anner Settings"
+msgstr "Sc_anner-instellingen"
+
+#: ../settings.ui.h:203
+msgid "Keyboard Scanning"
+msgstr "Toetsenbord-scanning"
+
+#: ../settings.ui.h:204
+msgid "_Delay:"
+msgstr "_Vertraging:"
+
+#: ../settings.ui.h:205
+msgid "_Motion threshold:"
+msgstr "Be_wegingsdrempel:"
+
+#: ../settings.ui.h:206
+msgid "Time in seconds before a click is triggered."
+msgstr "Tijd in seconden voordat een klik geactiveerd wordt"
+
+#: ../settings.ui.h:207
+msgid "Distance in pixels before movement will be recognized."
+msgstr "Afstand in pixels voordat beweging herkend wordt."
+
+#: ../settings.ui.h:208
+msgid "Hide hover click window"
+msgstr "Venster voor zwevende klik verbergen"
+
+#: ../settings.ui.h:209
+msgid "Hide the system-provided hover click window while Onboard is running."
+msgstr ""
+"Het door het systeem geleverde zweefklik-venster altijd verbergen als "
+"Onboard actief is."
+
+#: ../settings.ui.h:210
+msgid "Enable click type window on exit"
+msgstr "Kliktype-venster inschakelen bij afsluiten"
+
+#: ../settings.ui.h:211
+msgid ""
+"Always enable the system-provided hover click window when exiting Onboard."
+msgstr ""
+"Het door het systeem geleverde zweefklik-venster altijd inschakelen wanneer "
+"Onboard afgesloten wordt."
+
+#: ../settings.ui.h:212
+msgid "Hover Click"
+msgstr "Zweefklik"
+
+#: ../settings_docking_dialog.ui.h:1
+msgid "Top"
+msgstr "Begin"
+
+#: ../settings_docking_dialog.ui.h:2
+msgid "Bottom"
+msgstr "Einde"
+
+#: ../settings_docking_dialog.ui.h:3
+msgid "Active Monitor"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:4
+msgid "Primary Monitor"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:5
+msgid "Monitor 0"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:6
+msgid "Monitor 1"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:7
+msgid "Monitor 2"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:8
+msgid "Monitor 3"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:9
+msgid "Monitor 4"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:10
+msgid "Monitor 5"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:11
+msgid "Monitor 6"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:12
+msgid "Monitor 7"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:13
+msgid "Monitor 8"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:14
+msgid "Docking settings"
+msgstr "Vastpin-instellingen"
+
+#: ../settings_docking_dialog.ui.h:15
+msgctxt "Label of the close button of the docking settings dialog."
+msgid "_Close"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:16
+msgid "Shrink workarea"
+msgstr "Werkgebied verkleinen"
+
+#: ../settings_docking_dialog.ui.h:17
+msgid "Shrink the available space for maximized windows."
+msgstr "De beschikbare ruimte voor gemaximaliseerde vensters verkleinen."
+
+#: ../settings_docking_dialog.ui.h:18
+msgid "Expand on landscape screens"
+msgstr "Vergroten op schermen met landschapsoriëntatie"
+
+#: ../settings_docking_dialog.ui.h:19
+msgid "Expand keyboard to the width of the workarea."
+msgstr "Vergroot toetsenbord tot de breedte van het werkgebied."
+
+#: ../settings_docking_dialog.ui.h:20
+msgid "Expand on portrait screens"
+msgstr "Vergroten op schermen met portretoriëntatie"
+
+#: ../settings_docking_dialog.ui.h:21
+msgid "Dock to screen edge:"
+msgstr "Aan schermrand vastpinnen:"
+
+#: ../settings_docking_dialog.ui.h:22
+msgid "Dock to monitor:"
+msgstr ""
+
+#: ../settings_scanner_dialog.ui.h:1
+msgid "Automatic scan for 1 switch"
+msgstr "Automatisch scannen voor 1 schakelaar"
+
+#: ../settings_scanner_dialog.ui.h:2
+msgid "Critical overscan for 1 switch"
+msgstr "Kritieke overscan voor 1 schakelaar"
+
+#: ../settings_scanner_dialog.ui.h:3
+msgid "Step scan for 2 switches"
+msgstr "Stap-scan voor 2 schakelaars"
+
+#: ../settings_scanner_dialog.ui.h:4
+msgid "Directed scan for 3 or 5 switches"
+msgstr "Gerichte scan voor 3 of 5 schakelaars"
+
+#: ../settings_scanner_dialog.ui.h:5
+msgid "Scanner Settings"
+msgstr "Scanner-instellingen"
+
+#: ../settings_scanner_dialog.ui.h:6
+msgctxt "Label of the close button of the scanner settings dialog."
+msgid "_Close"
+msgstr ""
+
+#: ../settings_scanner_dialog.ui.h:7
+msgid "Select a scanning _profile:"
+msgstr "Selecteer een scanning_profiel:"
+
+#: ../settings_scanner_dialog.ui.h:8
+msgid "_Step interval:"
+msgstr "_Stap interval:"
+
+#: ../settings_scanner_dialog.ui.h:9
+msgid "Sc_an cycles:"
+msgstr "Sc_ancycli"
+
+#: ../settings_scanner_dialog.ui.h:10
+msgid ""
+"The time the scanner rests on a key or group before moving to the next. (in "
+"seconds)"
+msgstr ""
+"De tijd dat de scanner op een toets of groep rust alvorens naar de volgende "
+"te gaan. (in seconden)"
+
+#: ../settings_scanner_dialog.ui.h:11
+msgid ""
+"The number of times the scanner cycles through the entire keyboard before it "
+"stops."
+msgstr "Het aantal keren dat de scanner over het hele toetsenbord gaat."
+
+#: ../settings_scanner_dialog.ui.h:12
+msgid "Step _only during switch down"
+msgstr "_Alleen stappen als schakelaar ingedrukt is"
+
+#: ../settings_scanner_dialog.ui.h:13
+msgid "Progress the highlight only while the switch is held down."
+msgstr "De markering alleen verplaatsen als de schakelaar ingedrukt is."
+
+#: ../settings_scanner_dialog.ui.h:14
+msgid "_Forward interval:"
+msgstr "Interval voor _vooruit:"
+
+#: ../settings_scanner_dialog.ui.h:15
+msgid "_Backtrack interval:"
+msgstr "Interval voor _achteruit"
+
+#: ../settings_scanner_dialog.ui.h:16
+msgid ""
+"The time the scanner rests on a key  while progressing forward. (in seconds)"
+msgstr ""
+"De tijd dat de scanner op een toets rust bij het vooruit-scannen. (in "
+"seconden)"
+
+#: ../settings_scanner_dialog.ui.h:17
+msgid ""
+"The time the scanner rests on a key  while moving backwards. (in seconds)"
+msgstr ""
+"De tijd dat de scanner op een toets rust bij het achteruit-scannen. (in "
+"seconden)"
+
+#: ../settings_scanner_dialog.ui.h:18
+msgid "Backtrack _steps:"
+msgstr "Achteruit _stappen:"
+
+#: ../settings_scanner_dialog.ui.h:19
+msgid "The number of keys the scanner steps back before moving forward again."
+msgstr ""
+"Het aantal toetsen dat de scanner achteruit gaat, alvorens weer vooruit te "
+"gaan."
+
+#: ../settings_scanner_dialog.ui.h:20
+msgid "_Alternate switch actions"
+msgstr "_Schakelaar-acties omwisselen"
+
+#: ../settings_scanner_dialog.ui.h:21
+msgid ""
+"Swap the scan actions after every key activation. The Step action will "
+"become the Activate action and vice versa."
+msgstr ""
+"De scanactie wisselen na elke toetsactivering. De stapactie wordt de "
+"activeeractie en omgekeerd."
+
+#: ../settings_scanner_dialog.ui.h:22
+msgid "Profiles"
+msgstr "Profielen"
+
+#: ../settings_scanner_dialog.ui.h:23
+msgid "_Select an input device:"
+msgstr "_Selecteer een invoerapparaat:"
+
+#: ../settings_scanner_dialog.ui.h:24
+msgid "_Use this device only for scanning"
+msgstr "Dit apparaat _alleen voor scannen gebruiken"
+
+#: ../settings_scanner_dialog.ui.h:25
+msgid ""
+"The selected device should not control the system mouse cursor or the "
+"keyboard caret."
+msgstr "Het geselecteerde apparaat mag de muis of cursor niet bedienen."
+
+#: ../settings_scanner_dialog.ui.h:26
+msgid "Input Device"
+msgstr "Invoerapparaat"
+
+#: ../settings_theme_dialog.ui.h:1
+msgid "Customize Theme"
+msgstr "Thema aanpassen"
+
+#: ../settings_theme_dialog.ui.h:2
+#, fuzzy
+msgctxt "Label of the revert button of the theme settings dialog."
+msgid "_Revert"
+msgstr "nooit"
+
+#: ../settings_theme_dialog.ui.h:3
+msgctxt "Label of the close button of the theme settings dialog."
+msgid "_Close"
+msgstr ""
+
+#: ../settings_theme_dialog.ui.h:4
+msgid "Color Sche_me"
+msgstr "Kleurensche_ma"
+
+#: ../settings_theme_dialog.ui.h:7
+msgid "_Angle:"
+msgstr "_Hoek:"
+
+#: ../settings_theme_dialog.ui.h:8
+msgid "Light Direction"
+msgstr "lichtrichting"
+
+#: ../settings_theme_dialog.ui.h:10
+msgid "_Style:"
+msgstr "_Stijl:"
+
+#: ../settings_theme_dialog.ui.h:11
+msgid "R_oundness:"
+msgstr "R_onde hoeken:"
+
+#: ../settings_theme_dialog.ui.h:12
+msgid "S_ize:"
+msgstr "_Grootte:"
+
+#: ../settings_theme_dialog.ui.h:13
+msgid "B_order width:"
+msgstr "R_andbreedte"
+
+#: ../settings_theme_dialog.ui.h:14
+msgid "Key Style"
+msgstr "Toetsenstijl"
+
+#: ../settings_theme_dialog.ui.h:15
+msgid "_Key:"
+msgstr "_Toets:"
+
+#: ../settings_theme_dialog.ui.h:16
+msgid "_Border:"
+msgstr "_Rand:"
+
+#: ../settings_theme_dialog.ui.h:17
+msgid "Gradients"
+msgstr "Kleurverloop"
+
+#: ../settings_theme_dialog.ui.h:18
+msgid "_Strength:"
+msgstr "_Sterkte:"
+
+#: ../settings_theme_dialog.ui.h:19
+msgid "Shadow"
+msgstr "Schaduw"
+
+#: ../settings_theme_dialog.ui.h:20
+msgid "Keys"
+msgstr "Toetsen"
+
+#: ../settings_theme_dialog.ui.h:21
+msgid "_Font:"
+msgstr "_Lettertype"
+
+#: ../settings_theme_dialog.ui.h:22
+msgid "_Attributes:"
+msgstr "_Attributen:"
+
+#: ../settings_theme_dialog.ui.h:23
+msgid "Font"
+msgstr "Lettertype"
+
+#: ../settings_theme_dialog.ui.h:24
+msgid "I_ndependent size"
+msgstr "O_nafhankelijke grootte"
+
+#: ../settings_theme_dialog.ui.h:25
+msgid "_Super key:"
+msgstr "_Super-toets:"
+
+#: ../settings_theme_dialog.ui.h:26
+msgid "Label Override"
+msgstr "Label overschrijven"
+
+#: ../settings_theme_dialog.ui.h:27
+msgid "Labels"
+msgstr "Labels"
 
 #~ msgid ""
 #~ "Switch\n"
@@ -2087,9 +2686,6 @@ msgstr ""
 
 #~ msgid "Please enter a name for the new theme"
 #~ msgstr "Geef een naam voor het nieuwe thema op"
-
-#~ msgid "Delete"
-#~ msgstr "Verwijder"
 
 #~ msgid "-"
 #~ msgstr "-"
@@ -2407,9 +3003,6 @@ msgstr ""
 #~ msgid "Multi-touch"
 #~ msgstr "Multi-touch"
 
-#~ msgid "Double-click to lock"
-#~ msgstr "Dubbelklikken om te vergrendelen"
-
 #~ msgid "1"
 #~ msgstr "1"
 
@@ -2422,17 +3015,11 @@ msgstr ""
 #~ msgid "Single-touch"
 #~ msgstr "Single-touch"
 
-#~ msgid "Lock"
-#~ msgstr "Vergrendelen"
-
 #~ msgid "_Docking settings"
 #~ msgstr "_Dockinginstellingen"
 
 #~ msgid "Enable docking"
 #~ msgstr "Docking inschakelen"
-
-#~ msgid "Latch"
-#~ msgstr "Slot"
 
 #~ msgid "Window management"
 #~ msgstr "Schermbeheer"
@@ -2443,9 +3030,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Kiezen tussen toetsherhaling of lang-drukken-menu's. Heeft alleen invloed "
 #~ "op alfanumerieke toetsen."
-
-#~ msgid "Key-stroke _generation:"
-#~ msgstr "_Generatie van toetsaanslagen:"
 
 #~ msgid "Error loading "
 #~ msgstr "Fout bij het laden "
@@ -2482,18 +3066,6 @@ msgstr ""
 
 #~ msgid "column"
 #~ msgstr "kolom"
-
-#~ msgid "_Settings"
-#~ msgstr "In_stellingen"
-
-#~ msgid "_Open layouts folder"
-#~ msgstr "Map met indelingen _openen"
-
-#~ msgid "C_ustomize theme"
-#~ msgstr "Thema _aanpassen"
-
-#~ msgid "Sc_anner Settings"
-#~ msgstr "Sc_anner-instellingen"
 
 #~ msgid "Flexible onscreen keyboard for GNOME"
 #~ msgstr "Flexibel schermtoetsenbord voor GNOME"

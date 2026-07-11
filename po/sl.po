@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: onboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-06 14:30+0200\n"
+"POT-Creation-Date: 2026-07-11 18:54+0200\n"
 "PO-Revision-Date: 2013-10-01 18:43+0000\n"
 "Last-Translator: Sasa Batistic <Unknown>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
@@ -620,7 +620,7 @@ msgid "Flat"
 msgstr "Plosko"
 
 #. Key style with simple gradients
-#: ../Onboard/settings.py:1631
+#: ../Onboard/settings.py:1631 ../settings_theme_dialog.ui.h:6
 msgid "Gradient"
 msgstr "Preliv"
 
@@ -865,7 +865,7 @@ msgid "Scroll"
 msgstr "Scroll Lock"
 
 #. translators: this is a 'tooltip' of the key_template 'layer2' in keyboard layout 'key_defs.xml'
-#: ../data/layoutstrings.py:88 ../data/layoutstrings.py:340
+#: ../data/layoutstrings.py:88 ../data/layoutstrings.py:340 ../settings.ui.h:27
 msgid "Snippets"
 msgstr "Delčki"
 
@@ -1310,831 +1310,1254 @@ msgstr ""
 msgid "onscreen;keyboard;accessibility;utility;"
 msgstr ""
 
-#~ msgid "Key-repeat"
-#~ msgstr "Ponavljanje tipke"
-
-#~ msgid "International character selection"
-#~ msgstr "Izbira mednarodnih znakov"
-
-#~ msgid "never"
-#~ msgstr "nikoli"
-
-#~ msgid "1 minute"
-#~ msgstr "1 minuta"
-
-#~ msgid "5 minutes"
-#~ msgstr "5 minut"
-
-#~ msgid "10 minutes"
-#~ msgstr "10 minut"
-
-#~ msgid "30 minutes"
-#~ msgstr "30 minut"
-
-#~ msgid "1 hour"
-#~ msgstr "1 ura"
-
-#~ msgid "3 hours"
-#~ msgstr "3 ure"
-
-#~ msgid "forever"
-#~ msgstr "trajno"
-
-#~ msgid "GTK"
-#~ msgstr "GTK"
-
-#~ msgid "XInput"
-#~ msgstr "XInput"
-
-#~ msgid "Auto"
-#~ msgstr "Samodejno"
-
-#~ msgid "XTest"
-#~ msgstr "XTest"
-
-#~ msgid "AT-SPI"
-#~ msgstr "AT-SPI"
-
-#~ msgid "Remember nothing"
-#~ msgstr "Ne zapomni si ničesar"
-
-#~ msgid "Don't remember new words"
-#~ msgstr "Ne zapomni si novih besed"
-
-#~ msgid "None"
-#~ msgstr "Brez"
-
-#~ msgid "Movement only"
-#~ msgstr "Samo premik"
-
-#~ msgid "Corners"
-#~ msgstr "Oglišča"
-
-#~ msgid "All corners and edges"
-#~ msgstr "Vsi koti in robovi"
-
-#~ msgid "General"
-#~ msgstr "Splošno"
-
-#~ msgid "Window"
-#~ msgstr "Okno"
-
-#~ msgid "Layout"
-#~ msgstr "Razporeditev"
-
-#~ msgid "Theme"
-#~ msgstr "Tema"
-
-#~ msgid "Keyboard"
-#~ msgstr "Tipkovnica"
-
-#~ msgid "Typing Assistance"
-#~ msgstr "Pomoč pri tipkanju"
-
-#~ msgid "Universal Access"
-#~ msgstr "Splošni dostop"
-
-#~ msgid "Latch, then lock"
-#~ msgstr "Zapahni, potem zakleni"
-
-#~ msgid "Latch, double-click to lock"
-#~ msgstr "Zapahni, dvoklik za zaklepanje"
-
-#~ msgid "Latch only"
-#~ msgstr "Samo zapahni"
-
-#~ msgid "Lock only"
-#~ msgstr "Samo zakleni"
-
-#~ msgid "Push button"
-#~ msgstr "Pritisni na gumb"
-
-#~ msgid "none"
-#~ msgstr "brez"
-
-#~ msgid "single-touch"
-#~ msgstr "enodotičnost"
-
-#~ msgid "multi-touch"
-#~ msgstr "večdotičnost"
-
-#~ msgctxt "Label of the main close button of the preferences dialog."
-#~ msgid "_Close"
-#~ msgstr "_Zapri"
-
-#~ msgid "_Auto-show when editing text"
-#~ msgstr "S_amodejno prikaži med urejanjem besedila"
-
-#~ msgid ""
-#~ "Show Onboard when there is a recognized text window in focus. Requires "
-#~ "Gnome Accessibility."
-#~ msgstr ""
-#~ "Pokaži Onboard, ko je prepoznano osredotočeno besedilno okno. Zahtevana "
-#~ "je dostopnost Gnome."
-
-#~ msgid "Start Onboard _hidden"
-#~ msgstr "Zaženi Onboard _skrit"
-
-#~ msgid "Start Onboard hidden."
-#~ msgstr "Zaženi Onboard _skrit."
-
-#~ msgid "Show/Hide options"
-#~ msgstr "Pokaži/skrij možnosti"
-
-#~ msgid "Show floating _icon when Onboard is hidden"
-#~ msgstr "Prikaži lebdečo _ikono, ko je Onboard skrit"
-
-#~ msgid ""
-#~ "Show a floating icon on the desktop when Onboard is hidden. A click on "
-#~ "the icon makes Onboard reappear."
-#~ msgstr ""
-#~ "Pokaže lebdečo ikono na namizju, ki je program Onboard skrit. Klik na "
-#~ "ikono povzroči, da se program Onboard ponovno pojavi."
-
-#~ msgid "Show when _unlocking the screen"
-#~ msgstr "Pokaži, ko bo_zaslon odklenjen"
-
-#~ msgid ""
-#~ "Show Onboard when the dialog to unlock the screen appears; this way "
-#~ "Onboard can be used for example to enter the password to dismiss the "
-#~ "screensaver when it is set to ask for it."
-#~ msgstr ""
-#~ "Pokaži Onboard, ko se pojavi pogovorno okno za zaklep zaslona. Na ta "
-#~ "način lahko Onboard uporabite na primer za vnos gesla za odklep "
-#~ "računalnika, ko je vklopljen ohranjevalnik zaslona."
-
-#~ msgid "Show _tooltips"
-#~ msgstr "Pokaži o_rodne namige"
-
-#~ msgid "Show tooltips for the keyboard&apos;s buttons."
-#~ msgstr "Pokaži orodne namige za gumbe tipkovnice."
-
-#~ msgid "Show tooltips for the keyboard's buttons."
-#~ msgstr "Pokaži orodne namige za gumbe tipkovnice."
-
-#~ msgid "_Show status icon"
-#~ msgstr "_Pokaži ikono stanja"
-
-#~ msgid "Show the status item. A click on that icon hides or shows Onboard."
-#~ msgstr "Pokaži predmet stanja. Klik na ikono pokaže ali skrije Onboard."
-
-#~ msgid "Desktop Integration"
-#~ msgstr "Vključitev v namizje"
-
-#~ msgid "Dock to screen edge"
-#~ msgstr "Usidraj na rob zaslona"
-
-#~ msgid "Dock the keyboard to the edge of the screen."
-#~ msgstr "Sidraj tipkovnico na rob zaslona."
-
-#~ msgctxt "Label of settings button on preferences page Window."
-#~ msgid "_Settings"
-#~ msgstr "_Nastavitve"
-
-#~ msgid "Docking"
-#~ msgstr "Sidranje"
-
-#~ msgid "Show window _decoration"
-#~ msgstr "Pokaži _okraske okna"
-
-#~ msgid "Show window caption and frame."
-#~ msgstr "Pokaži napis in okvir okna."
-
-#~ msgid "Show always on visible _workspace"
-#~ msgstr "Vedno pokaži na dejavni _delovni površini"
-
-#~ msgid "&quot;Sticky&quot; mode for keyboard and floating icon."
-#~ msgstr "&quot;Lepljivi&quot; način za tipkovnico in lebdečo ikono."
-
-#~ msgid "\"Sticky\" mode for keyboard and floating icon."
-#~ msgstr "\"Lepljivi\" način za tipkovnico in lebdečo ikono."
-
-#~ msgid "_Force window to top"
-#~ msgstr "_Prisili okno na vrh"
-
-#~ msgid "Try harder to keep Onboard above anything on-screen."
-#~ msgstr ""
-#~ "Bolj se potrudi pri poskusu obdržanja programa Onboard nad vsem na "
-#~ "zaslonu."
-
-#~ msgid "Keep _aspect ratio"
-#~ msgstr "Obdrži razmerje"
-
-#~ msgid "Constrain window size to the layout&apos;s aspect ratio."
-#~ msgstr "Omeji velikost okna glede na razmerje velikosti razporeditve"
-
-#~ msgid "Constrain window size to the layout's aspect ratio."
-#~ msgstr "Omeji velikost okna na razmerje razvrstitve."
-
-#~ msgid "Floating Window Options"
-#~ msgstr "Možnosti lebdečih oken"
-
-#~ msgid "Window options"
-#~ msgstr "Možnosti oken"
-
-#~ msgid "Wind_ow:"
-#~ msgstr "_Okno:"
-
-#~ msgid "Transparency of the whole keyboard window. Requires compositing."
-#~ msgstr "Prozornost celotnega okna tipkovnice. Zahteva sestavljanje."
-
-#~ msgid "_Background:"
-#~ msgstr "Oza_dje:"
-
-#~ msgid "Transparency of the keyboard background"
-#~ msgstr "Prozornost ozadja tipkovnice"
-
-#~ msgid "_No background"
-#~ msgstr "_Brez ozadja"
-
-#~ msgid "Show the desktop through the gaps between keys."
-#~ msgstr "Pokaži namizje s presledki med tipkami."
-
-#~ msgid "Transparency"
-#~ msgstr "Prozornost"
-
-#~ msgid "Set _transparency to"
-#~ msgstr "Nastavi _prozornost na"
-
-#~ msgid "Enable inactive transparency. Requires compositing."
-#~ msgstr "Omogoči vzajemno prozornost. Zahteva sestavljanje."
-
-#~ msgid ""
-#~ "Transparency when the pointer leaves the keyboard. Requires compositing."
-#~ msgstr "Prozornost, ko kazalec zapusti tipkovnico. Zahteva sestavljanje."
-
-#~ msgid "after"
-#~ msgstr "za"
-
-#~ msgid "Delay in seconds until the inactive transparency takes effect."
-#~ msgstr "Zamik v sekundah preden ima nedejavna prozornost učinek."
-
-#~ msgid "seconds"
-#~ msgstr "sekund"
-
-#~ msgid "When Inactive"
-#~ msgstr "Ko je računalnik nedejaven"
-
-#~ msgid "Resize Protection"
-#~ msgstr "Zaščita proti spreminjanju velikosti"
-
-#~ msgid "Name"
-#~ msgstr "Ime"
-
-#~ msgid "Description"
-#~ msgstr "Opis"
-
-#~ msgctxt "Label of new layout button on preferences page Layout."
-#~ msgid "_New"
-#~ msgstr "_Nov"
-
-#~ msgctxt "Label of delete layout button on preferences page Layout."
-#~ msgid "_Delete"
-#~ msgstr "_Izbriši"
-
-#~ msgctxt "Label of open folder button on preferences page Layout."
-#~ msgid "_Open layouts folder"
-#~ msgstr "_Odpri mapo razporeditev"
-
-#~ msgctxt "Label of about layout button on preferences page Layout."
-#~ msgid "_About"
-#~ msgstr "_O programu"
-
-#~ msgctxt "Label of new theme button on preferences page Theme."
-#~ msgid "_New"
-#~ msgstr "_Nova"
-
-#~ msgctxt "Label of delete theme  button on preferences page Theme."
-#~ msgid "_Delete"
-#~ msgstr "_Izbriši"
-
-#~ msgctxt "Label of customize theme button on preferences page Theme."
-#~ msgid "C_ustomize theme"
-#~ msgstr "P_rilagodi temo"
-
-#~ msgid "Follow _system theme"
-#~ msgstr "Sledi sistemski temi"
-
-#~ msgid "Remember what Onboard theme was last used for every system theme."
-#~ msgstr ""
-#~ "Zapomni si nazadnje uporabljeno temo Onboard za vsako sistemsko temo."
-
-#~ msgid ""
-#~ "Snippets are pieces of text which are entered when the corresponding "
-#~ "button in Onboard is pressed."
-#~ msgstr ""
-#~ "Delčki so deli besedila, ki so vneseni, ko pritisnete ustrezno tipko na "
-#~ "Onboardu."
-
-#~ msgctxt "Label of add snippet button on preferences page Snippets."
-#~ msgid "_Add"
-#~ msgstr "_Dodaj"
-
-#~ msgctxt "Label of remove snippet button on preferences page Snippets."
-#~ msgid "_Remove"
-#~ msgstr "_Odstrani"
-
-#~ msgid "Play sound"
-#~ msgstr "Predvajaj zvok"
-
-#~ msgid "Play click sound on keypress."
-#~ msgstr "Predvajaj zvok klika ob pritisku na tipko."
-
-#~ msgid "Show label popups"
-#~ msgstr "Pokaži pojavne oznake"
-
-#~ msgid "Show label popups above pressed keys."
-#~ msgstr "Pokaži pojavne oznake nad pritisnjenimi tipkami."
-
-#~ msgid "Key-press Feedback"
-#~ msgstr "Odziv pritiska na tipko"
-
-#~ msgid "Show secondary labels"
-#~ msgstr "Pokaži drugotne oznake"
-
-#~ msgid "Show characters reachable with or without the shift key."
-#~ msgstr "Pokaži znake, dosegljive z ali brez tipke shift."
-
-#~ msgid "Key Labels"
-#~ msgstr "Oznake tipk"
-
-#~ msgid "Temporarily enable SHIFT when clicking with the secondary button."
-#~ msgstr "Ko klikneš s sekundarnim gumbom začasno omogoči SHIFT."
-
-#~ msgid "_Long press action:"
-#~ msgstr "Dejanje _dolgega pritiska:"
-
-#~ msgid ""
-#~ "Choose between key-repeat or long-press menus. Mainly affects alpha-"
-#~ "numeric keys."
-#~ msgstr ""
-#~ "Izberite med meniji s ponovitvijo tipk ali z dolgim pritiskom. Večinoma "
-#~ "vpliva na alfanumerične tipke."
-
-#~ msgid "Modifier _behavior:"
-#~ msgstr "Obnašanje _spremenilnika"
-
-#~ msgid "Behavior of modifier and layer keys."
-#~ msgstr "Obnašanje spremenilnih tipk in tipk plasti."
-
-#~ msgid "Modifier auto-release delay in seconds:"
-#~ msgstr "Zakasnitev samodejne sprostitve spremenilne tipke v sekundah:"
-
-#~ msgid ""
-#~ "Seconds of inactivity until active modifiers and layer keys are released. "
-#~ "0 to disable."
-#~ msgstr ""
-#~ "Sekunde nedejavnosti dokler dejavne spremenilne tipke in tipke plasti "
-#~ "niso sproščene. Z ničlo (0) onemogočite nastavitev."
-
-#~ msgid "0,00"
-#~ msgstr "0,00"
-
-#~ msgid "Key Behavior"
-#~ msgstr "Obnašanje tipke"
-
-#~ msgid "_Touch input:"
-#~ msgstr "_Vnos z dotikom:"
-
-#~ msgid "_Input event source:"
-#~ msgstr "Vir dogodka _vnosa:"
-
-#~ msgid ""
-#~ "Choose &apos;XInput&apos; for more reliable typing into text entries with "
-#~ "pop-up selections. The &apos;GTK&apos; option offers better "
-#~ "compatibility, but typing may fail in the presence of pointer grabs, e.g. "
-#~ "with open pop-up windows."
-#~ msgstr ""
-#~ "Izberite &apos;XInput&apos; za zanesljivejše tipkanje v besedilne vnose s "
-#~ "pojavnimi izbirami. Možnost &apos;GTK&apos; ponuja boljšo združljivost, "
-#~ "toda tipkanje lahko ob prisotnosti grabitev kazalca spodleti, npr. s "
-#~ "pojavnimi okni."
-
-#~ msgid ""
-#~ "Choose 'XInput' for more reliable typing into text entries with pop-up "
-#~ "selections. The 'GTK' option offers better compatibility, but typing may "
-#~ "fail in the presence of pointer grabs, e.g. with open pop-up windows."
-#~ msgstr ""
-#~ "Izberite 'XInput' za zanesljivejše  tipkanje v besedilne vnose s "
-#~ "pojavnimi izbirami. Možnost 'GTK' ponuja boljšo združljivost, toda "
-#~ "tipkanje lahko ob prisotnosti grabitev kazalca spodleti, npr. s pojavnimi "
-#~ "okni."
-
-#~ msgid "Input Options"
-#~ msgstr "Vnosne možnosti"
-
-#~ msgid "Delay between keystrokes in milliseconds:"
-#~ msgstr "Zakasnitev med pritiski tipk v milisekundah:"
-
-#~ msgid ""
-#~ "Increase this if key-strokes get lost when inserting word suggestions or "
-#~ "snippets into Firefox or other Gtk-2 applications. Has no effect on Gtk-3 "
-#~ "applications."
-#~ msgstr ""
-#~ "Povečajte, če se pritiski tipk med vstavljanjem predlogov besed ali "
-#~ "izrezkov v Firefox ali druge programe Gtk-2 izgubijo. Nima učinka na "
-#~ "programe Gtk-3."
-
+#: ../settings.ui.h:1
+msgid "Key-repeat"
+msgstr "Ponavljanje tipke"
+
+#: ../settings.ui.h:2
+msgid "International character selection"
+msgstr "Izbira mednarodnih znakov"
+
+#: ../settings.ui.h:3
+msgid "never"
+msgstr "nikoli"
+
+#: ../settings.ui.h:4
+msgid "1 minute"
+msgstr "1 minuta"
+
+#: ../settings.ui.h:5
+msgid "5 minutes"
+msgstr "5 minut"
+
+#: ../settings.ui.h:6
+msgid "10 minutes"
+msgstr "10 minut"
+
+#: ../settings.ui.h:7
+msgid "30 minutes"
+msgstr "30 minut"
+
+#: ../settings.ui.h:8
+msgid "1 hour"
+msgstr "1 ura"
+
+#: ../settings.ui.h:9
+msgid "3 hours"
+msgstr "3 ure"
+
+#: ../settings.ui.h:10
+msgid "forever"
+msgstr "trajno"
+
+#: ../settings.ui.h:11
+msgid "GTK"
+msgstr "GTK"
+
+#: ../settings.ui.h:12
+msgid "XInput"
+msgstr "XInput"
+
+#: ../settings.ui.h:13
+msgid "Auto"
+msgstr "Samodejno"
+
+#: ../settings.ui.h:14
+msgid "XTest"
+msgstr "XTest"
+
+#: ../settings.ui.h:15
 #, fuzzy
-#~ msgid "Animation"
-#~ msgstr "Dejanje:"
-
-#~ msgid "Advanced"
-#~ msgstr "Napredno"
-
-#~ msgid "Chose how the keyboard window moves when a text entry is activated."
-#~ msgstr ""
-#~ "Izberite kako se premika okno tipkovnice, ko je aktivno polje za vnos "
-#~ "besedila."
-
-#~ msgid ""
-#~ "Hide Onboard when any key is pressed on a physical keyboard. Requires "
-#~ "input event source \"XInput\"."
-#~ msgstr ""
-#~ "Skrij Onboard, ko je pritisnjena katerakoli tipka na fizični tipkovnici. "
-#~ "Zahteva vir vhodnega dogodka \"XInput\"."
-
-#~ msgid "Stay hidden:"
-#~ msgstr "Pusti skrito:"
-
-#~ msgid ""
-#~ "Once hidden by a physical key-press, auto-show is paused. Select the "
-#~ "pause duration here."
-#~ msgstr ""
-#~ "Ko je skrita s pritiskom na fizično tipko, je samodejno prikazovanje v "
-#~ "premoru. Tu izberite trajanje premora."
-
-#~ msgid "Show _suggestions"
-#~ msgstr "Pokaži _predloge"
-
-#~ msgid "Enable word completion and prediction."
-#~ msgstr "Omogoči dopolnjevanje besed in predvidevanje."
-
-#~ msgid "Show spelling suggestions"
-#~ msgstr "Pokaži predloge črkovanja"
-
-#~ msgid "Check spelling of the word at or before the cursor."
-#~ msgstr "Preveri črkovanje besede ob ali pred kazalko."
-
-#~ msgid "_Learn from typed text"
-#~ msgstr "_Učenje iz natipkanega besedila"
-
-#~ msgid ""
-#~ "Remember new words, their recency and frequency to improve the "
-#~ "suggestions over time."
-#~ msgstr ""
-#~ "Beleži nove besede, njihovo nedavno in pogosto uporabo za izboljševanje "
-#~ "predlaganja čez čas."
-
-#~ msgid "Insert word _separators"
-#~ msgstr "Vnesi _ločilnike besed"
-
-#~ msgid ""
-#~ "Add and remove spaces when inserting word suggestions followed by "
-#~ "punctuation characters."
-#~ msgstr ""
-#~ "Dodaj in odstrani presledke, kadar se vnaša predloge besed, ki jim "
-#~ "sledijo ločila."
-
-#~ msgid "Options"
-#~ msgstr "Možnosti"
-
-#~ msgid "Show button to pause learning"
-#~ msgstr "Pokaži gumb za premor učenja"
-
-#~ msgid "Words typed while this button is pressed won't be remembered."
-#~ msgstr ""
-#~ "Besede, ki so natipkane, medtem ko je pritisnjen ta gumb, ne bodo "
-#~ "zapomnjene."
-
-#~ msgid "Show lan_guage switcher"
-#~ msgstr "Pokaži preklopnik _jezikov"
-
-#~ msgid "Show a button for language selection."
-#~ msgstr "Pokaže gumb za izbiro jezikov."
-
-#~ msgid "Buttons"
-#~ msgstr "Gumbi"
-
-#~ msgid "Word Suggestions"
-#~ msgstr "Predlaganje besed"
-
-#~ msgid "Auto-capitalize while typing"
-#~ msgstr "Samodejno spremeni v velike začetnice med tipkanjem"
-
-#~ msgid "Automatically capitalize sentence begins and name words."
-#~ msgstr "Samodejno spremeni velike začetnice povedim in imenom."
-
-#~ msgid "Auto-correct spelling"
-#~ msgstr "Samodejno popravi črkovanje"
-
-#~ msgid "Automatically correct the last word."
-#~ msgstr "Samodejno popravi zadnjo besedo."
-
-#~ msgid "The spell check engine to use."
-#~ msgstr "Uporaba pogona za preverjanje črkovanja."
-
-#~ msgid "Spell-check backend:"
-#~ msgstr "Zaledje preverjanja črkovanja:"
-
-#~ msgid "Auto-correction"
-#~ msgstr "Samodejno popravljanje"
-
-#~ msgid "While  learning is paused:"
-#~ msgstr "Ko je učenje v premoru:"
-
-#~ msgid "Learning"
-#~ msgstr "Učenje"
-
-#~ msgid "Enable  keyboard _scanning"
-#~ msgstr "Omogoči branje _tipkovnice"
-
-#~ msgctxt ""
-#~ "Label of keyboard scanning settings button on preferences page Universal "
-#~ "Access."
-#~ msgid "Sc_anner Settings"
-#~ msgstr "Nastavitve optične_ga bralnika"
-
-#~ msgid "Keyboard Scanning"
-#~ msgstr "Branje tipkovnice"
-
-#~ msgid "_Delay:"
-#~ msgstr "_Zakasnitev:"
-
-#~ msgid "_Motion threshold:"
-#~ msgstr "_Prag premikanja:"
-
-#~ msgid "Time in seconds before a click is triggered."
-#~ msgstr "Čas v sekundah pred sproženjem klika."
-
-#~ msgid "Distance in pixels before movement will be recognized."
-#~ msgstr "Razdalja v točkah preden je zaznano gibanje."
-
-#~ msgid "Hide hover click window"
-#~ msgstr "Skrij okno klika z lebdenjem"
-
-#~ msgid ""
-#~ "Hide the system-provided hover click window while Onboard is running."
-#~ msgstr ""
-#~ "Skrij sistemsko zagotovljeno okno lebdečega klika, medtem ko se Onboard "
-#~ "izvaja."
-
-#~ msgid "Enable click type window on exit"
-#~ msgstr "Omogoči okno vrste klika ob izhodu."
-
-#~ msgid ""
-#~ "Always enable the system-provided hover click window when exiting Onboard."
-#~ msgstr ""
-#~ "Vedno omogoči sistemsko zagotovljeno okno lebdečega klika ob končanju "
-#~ "Onboard."
-
-#~ msgid "Hover Click"
-#~ msgstr "Klik z lebdenjem"
-
-#~ msgid "Top"
-#~ msgstr "Zgoraj"
-
-#~ msgid "Bottom"
-#~ msgstr "Spodaj"
-
-#~ msgid "Active Monitor"
-#~ msgstr "Dejaven zaslon"
-
-#~ msgid "Primary Monitor"
-#~ msgstr "Primarni zaslon"
-
-#~ msgid "Monitor 0"
-#~ msgstr "Zaslon 0"
-
-#~ msgid "Monitor 1"
-#~ msgstr "Zaslon 1"
-
-#~ msgid "Monitor 2"
-#~ msgstr "Zaslon 2"
-
-#~ msgid "Monitor 3"
-#~ msgstr "Zaslon 3"
-
-#~ msgid "Monitor 4"
-#~ msgstr "Zaslon 4"
-
-#~ msgid "Monitor 5"
-#~ msgstr "Zaslon 5"
-
-#~ msgid "Monitor 6"
-#~ msgstr "Zaslon 6"
-
-#~ msgid "Monitor 7"
-#~ msgstr "Zaslon 7"
-
-#~ msgid "Monitor 8"
-#~ msgstr "Zaslon 8"
-
-#~ msgid "Docking settings"
-#~ msgstr "Nastavitve sidranja"
-
-#~ msgctxt "Label of the close button of the docking settings dialog."
-#~ msgid "_Close"
-#~ msgstr "_Zapri"
-
-#~ msgid "Shrink workarea"
-#~ msgstr "Skrči delovno področje"
-
-#~ msgid "Shrink the available space for maximized windows."
-#~ msgstr "Skrči razpoložljiv prostor za razpeta okna"
-
-#~ msgid "Expand on landscape screens"
-#~ msgstr "Razširi na ležečih zaslonih"
-
-#~ msgid "Expand keyboard to the width of the workarea."
-#~ msgstr "Razširi tipkovnico na širino delovnega področja"
-
-#~ msgid "Expand on portrait screens"
-#~ msgstr "Razširi na pokončnih zaslonih"
-
-#~ msgid "Dock to screen edge:"
-#~ msgstr "Sidraj na rob zaslona:"
-
-#~ msgid "Dock to monitor:"
-#~ msgstr "Usidraj v zaslon:"
-
-#~ msgid "Automatic scan for 1 switch"
-#~ msgstr "Samodejno branje za stikalo 1"
-
-#~ msgid "Critical overscan for 1 switch"
-#~ msgstr "Kritični pregled čez vso vsebino za stikalo 1"
-
-#~ msgid "Step scan for 2 switches"
-#~ msgstr "Branje korakov za dve stikali"
-
-#~ msgid "Directed scan for 3 or 5 switches"
-#~ msgstr "Neposredno branje za 3 do 5 stikal"
-
-#~ msgid "Scanner Settings"
-#~ msgstr "Nastavitve bralnika"
-
-#~ msgctxt "Label of the close button of the scanner settings dialog."
-#~ msgid "_Close"
-#~ msgstr "_Zapri"
-
-#~ msgid "Select a scanning _profile:"
-#~ msgstr "Izberite _profil bralnika:"
-
-#~ msgid "_Step interval:"
-#~ msgstr "_Razmik korakov:"
-
-#~ msgid "Sc_an cycles:"
-#~ msgstr "Cikli bra_nja:"
-
-#~ msgid ""
-#~ "The time the scanner rests on a key or group before moving to the next. "
-#~ "(in seconds)"
-#~ msgstr ""
-#~ "Čas čakanja preiskovanja na ključu ali skupini pred premikom na "
-#~ "naslednjega. (v sekundah)"
-
-#~ msgid ""
-#~ "The number of times the scanner cycles through the entire keyboard before "
-#~ "it stops."
-#~ msgstr ""
-#~ "Število ponovitev, kolikokrat bralnik preleti skozi vso tipkovnico, "
-#~ "preden se ustavi."
-
-#~ msgid "Step _only during switch down"
-#~ msgstr "K_orak le med pritiskom tipke"
-
-#~ msgid "Progress the highlight only while the switch is held down."
-#~ msgstr "Obravnavaj poudarek samo, ko je stikalo pritisnjeno."
-
-#~ msgid "_Forward interval:"
-#~ msgstr "Čakanje pred korakom _naprej:"
-
-#~ msgid "_Backtrack interval:"
-#~ msgstr "Čakanje pred korakom n_azaj:"
-
-#~ msgid ""
-#~ "The time the scanner rests on a key  while progressing forward. (in "
-#~ "seconds)"
-#~ msgstr ""
-#~ "Koliko časa bralnik ostane na tipki, preden napreduje naprej. (v sekundah)"
-
-#~ msgid ""
-#~ "The time the scanner rests on a key  while moving backwards. (in seconds)"
-#~ msgstr ""
-#~ "Koliko časa bralnik ostane na tipki, preden se prestavi nazaj. (v "
-#~ "sekundah)"
-
-#~ msgid "Backtrack _steps:"
-#~ msgstr "Sledi kora_kom nazaj:"
-
-#~ msgid ""
-#~ "The number of keys the scanner steps back before moving forward again."
-#~ msgstr ""
-#~ "Število tipk, pri katerih bralnik gre korak nazaj, predno se premakne "
-#~ "spet naprej."
-
-#~ msgid "_Alternate switch actions"
-#~ msgstr "N_adomesti dejavnosti stikala"
-
-#~ msgid ""
-#~ "Swap the scan actions after every key activation. The Step action will "
-#~ "become the Activate action and vice versa."
-#~ msgstr ""
-#~ "Zamenjaj dejanja preiskovanja po vsaki omogočitvi ključev. Dejanje koraka "
-#~ "bo postalo dejanje omogočitve in  obratno."
-
-#~ msgid "Profiles"
-#~ msgstr "Profili"
-
-#~ msgid "_Select an input device:"
-#~ msgstr "_Izberite vhodno napravo:"
-
-#~ msgid "_Use this device only for scanning"
-#~ msgstr "_Uporabi to napravo samo za branje"
-
-#~ msgid ""
-#~ "The selected device should not control the system mouse cursor or the "
-#~ "keyboard caret."
-#~ msgstr ""
-#~ "Izbrana naprava ne sme nadzorovati sistemskega kazalca miške ali kazalke "
-#~ "tipkovnice."
-
-#~ msgid "Input Device"
-#~ msgstr "Vhodna naprava"
-
-#~ msgid "Customize Theme"
-#~ msgstr "Prilagodi temo"
-
-#~ msgctxt "Label of the revert button of the theme settings dialog."
-#~ msgid "_Revert"
-#~ msgstr "_Povrni"
-
-#~ msgctxt "Label of the close button of the theme settings dialog."
-#~ msgid "_Close"
-#~ msgstr "_Zapri"
-
-#~ msgid "Color Sche_me"
-#~ msgstr "Barva she_ma"
-
-#~ msgid "_Angle:"
-#~ msgstr "_Kot:"
-
-#~ msgid "Light Direction"
-#~ msgstr "Smer svetlobe"
-
-#~ msgid "_Style:"
-#~ msgstr "_Slog:"
-
-#~ msgid "R_oundness:"
-#~ msgstr "_Okroglost:"
-
-#~ msgid "S_ize:"
-#~ msgstr "Vel_ikost:"
-
-#~ msgid "B_order width:"
-#~ msgstr "Širina _obrobe:"
-
-#~ msgid "Key Style"
-#~ msgstr "Slog ključa"
-
-#~ msgid "_Key:"
-#~ msgstr "_Ključ:"
-
-#~ msgid "_Border:"
-#~ msgstr "Ro_b:"
-
-#~ msgid "Gradients"
-#~ msgstr "Prelivi"
-
-#~ msgid "_Strength:"
-#~ msgstr "_Moč:"
-
-#~ msgid "Shadow"
-#~ msgstr "Senca"
-
-#~ msgid "Keys"
-#~ msgstr "Tipke"
-
-#~ msgid "_Font:"
-#~ msgstr "_Pisava:"
-
-#~ msgid "_Attributes:"
-#~ msgstr "_Atributi:"
-
-#~ msgid "Font"
-#~ msgstr "Pisava"
-
-#~ msgid "I_ndependent size"
-#~ msgstr "_Neodvisna velikost"
-
-#~ msgid "_Super key:"
-#~ msgstr "Tipka _super:"
-
-#~ msgid "Label Override"
-#~ msgstr "Prepis oznake"
-
-#~ msgid "Labels"
-#~ msgstr "Oznake"
+msgid "uinput"
+msgstr "XInput"
+
+#: ../settings.ui.h:16
+msgid "AT-SPI"
+msgstr "AT-SPI"
+
+#: ../settings.ui.h:17
+msgid "Remember nothing"
+msgstr "Ne zapomni si ničesar"
+
+#: ../settings.ui.h:18
+msgid "Don't remember new words"
+msgstr "Ne zapomni si novih besed"
+
+#: ../settings.ui.h:19
+msgid "None"
+msgstr "Brez"
+
+#: ../settings.ui.h:20
+msgid "Movement only"
+msgstr "Samo premik"
+
+#: ../settings.ui.h:21
+msgid "Corners"
+msgstr "Oglišča"
+
+#: ../settings.ui.h:22
+msgid "All corners and edges"
+msgstr "Vsi koti in robovi"
+
+#: ../settings.ui.h:23
+msgid "General"
+msgstr "Splošno"
+
+#: ../settings.ui.h:24
+msgid "Window"
+msgstr "Okno"
+
+#: ../settings.ui.h:25
+msgid "Layout"
+msgstr "Razporeditev"
+
+#: ../settings.ui.h:26
+msgid "Theme"
+msgstr "Tema"
+
+#: ../settings.ui.h:28 ../settings_theme_dialog.ui.h:9
+msgid "Keyboard"
+msgstr "Tipkovnica"
+
+#: ../settings.ui.h:29
+#, fuzzy
+msgid "Auto-show"
+msgstr "Samodejno"
+
+#: ../settings.ui.h:30
+msgid "Typing Assistance"
+msgstr "Pomoč pri tipkanju"
+
+#: ../settings.ui.h:31
+msgid "Universal Access"
+msgstr "Splošni dostop"
+
+#: ../settings.ui.h:32
+msgid "Only move when necessary"
+msgstr ""
+
+#: ../settings.ui.h:33
+msgid "Follow the active window"
+msgstr ""
+
+#: ../settings.ui.h:34
+msgid "Latch, then lock"
+msgstr "Zapahni, potem zakleni"
+
+#: ../settings.ui.h:35
+msgid "Latch, double-click to lock"
+msgstr "Zapahni, dvoklik za zaklepanje"
+
+#: ../settings.ui.h:36
+msgid "Latch only"
+msgstr "Samo zapahni"
+
+#: ../settings.ui.h:37
+msgid "Lock only"
+msgstr "Samo zakleni"
+
+#: ../settings.ui.h:38
+msgid "Push button"
+msgstr "Pritisni na gumb"
+
+#: ../settings.ui.h:39
+msgid "none"
+msgstr "brez"
+
+#: ../settings.ui.h:40
+msgid "single-touch"
+msgstr "enodotičnost"
+
+#: ../settings.ui.h:41
+msgid "multi-touch"
+msgstr "večdotičnost"
+
+#: ../settings.ui.h:42
+msgctxt "Label of the main close button of the preferences dialog."
+msgid "_Close"
+msgstr "_Zapri"
+
+#: ../settings.ui.h:43
+msgid "_Auto-show when editing text"
+msgstr "S_amodejno prikaži med urejanjem besedila"
+
+#: ../settings.ui.h:44
+msgid ""
+"Show Onboard when there is a recognized text window in focus. Requires Gnome "
+"Accessibility."
+msgstr ""
+"Pokaži Onboard, ko je prepoznano osredotočeno besedilno okno. Zahtevana je "
+"dostopnost Gnome."
+
+#: ../settings.ui.h:45
+msgid "Start Onboard _hidden"
+msgstr "Zaženi Onboard _skrit"
+
+#: ../settings.ui.h:46
+msgid "Start Onboard hidden."
+msgstr "Zaženi Onboard _skrit."
+
+#: ../settings.ui.h:47
+msgid "Show/Hide options"
+msgstr "Pokaži/skrij možnosti"
+
+#: ../settings.ui.h:48
+msgid "Show floating _icon when Onboard is hidden"
+msgstr "Prikaži lebdečo _ikono, ko je Onboard skrit"
+
+#: ../settings.ui.h:49
+msgid ""
+"Show a floating icon on the desktop when Onboard is hidden. A click on the "
+"icon makes Onboard reappear."
+msgstr ""
+"Pokaže lebdečo ikono na namizju, ki je program Onboard skrit. Klik na ikono "
+"povzroči, da se program Onboard ponovno pojavi."
+
+#: ../settings.ui.h:50
+msgid "Show when _unlocking the screen"
+msgstr "Pokaži, ko bo_zaslon odklenjen"
+
+#: ../settings.ui.h:51
+msgid ""
+"Show Onboard when the dialog to unlock the screen appears; this way Onboard "
+"can be used for example to enter the password to dismiss the screensaver "
+"when it is set to ask for it."
+msgstr ""
+"Pokaži Onboard, ko se pojavi pogovorno okno za zaklep zaslona. Na ta način "
+"lahko Onboard uporabite na primer za vnos gesla za odklep računalnika, ko je "
+"vklopljen ohranjevalnik zaslona."
+
+#: ../settings.ui.h:52
+msgid "Show _tooltips"
+msgstr "Pokaži o_rodne namige"
+
+#: ../settings.ui.h:53
+msgid "Show tooltips for the keyboard&apos;s buttons."
+msgstr "Pokaži orodne namige za gumbe tipkovnice."
+
+#: ../settings.ui.h:54
+msgid "Show tooltips for the keyboard's buttons."
+msgstr "Pokaži orodne namige za gumbe tipkovnice."
+
+#: ../settings.ui.h:55
+msgid "_Show status icon"
+msgstr "_Pokaži ikono stanja"
+
+#: ../settings.ui.h:56
+msgid "Show the status item. A click on that icon hides or shows Onboard."
+msgstr "Pokaži predmet stanja. Klik na ikono pokaže ali skrije Onboard."
+
+#: ../settings.ui.h:57
+msgid "Status icon _provider:"
+msgstr ""
+
+#: ../settings.ui.h:58
+msgid ""
+"<b>AppIndicator</b> (default) is recommended for broadest compatibility. A "
+"middle click on the icon shows the keyboard. In KDE Plasma a left click does "
+"the same.\n"
+"\n"
+"<b>GtkStatusIcon</b> isn't supported well anymore by various desktop "
+"environments, but generally allows to show the keyboard on left click.\n"
+"\n"
+"Requires restart."
+msgstr ""
+
+#: ../settings.ui.h:63
+msgid "Desktop Integration"
+msgstr "Vključitev v namizje"
+
+#: ../settings.ui.h:64
+msgid "Dock to screen edge"
+msgstr "Usidraj na rob zaslona"
+
+#: ../settings.ui.h:65
+msgid "Dock the keyboard to the edge of the screen."
+msgstr "Sidraj tipkovnico na rob zaslona."
+
+#: ../settings.ui.h:66
+msgctxt "Label of settings button on preferences page Window."
+msgid "_Settings"
+msgstr "_Nastavitve"
+
+#: ../settings.ui.h:67
+msgid "Docking"
+msgstr "Sidranje"
+
+#: ../settings.ui.h:68
+msgid "Show window _decoration"
+msgstr "Pokaži _okraske okna"
+
+#: ../settings.ui.h:69
+msgid "Show window caption and frame."
+msgstr "Pokaži napis in okvir okna."
+
+#: ../settings.ui.h:70
+msgid "Show always on visible _workspace"
+msgstr "Vedno pokaži na dejavni _delovni površini"
+
+#: ../settings.ui.h:71
+msgid "&quot;Sticky&quot; mode for keyboard and floating icon."
+msgstr "&quot;Lepljivi&quot; način za tipkovnico in lebdečo ikono."
+
+#: ../settings.ui.h:72
+msgid "\"Sticky\" mode for keyboard and floating icon."
+msgstr "\"Lepljivi\" način za tipkovnico in lebdečo ikono."
+
+#: ../settings.ui.h:73
+msgid "_Force window to top"
+msgstr "_Prisili okno na vrh"
+
+#: ../settings.ui.h:74
+msgid "Try harder to keep Onboard above anything on-screen."
+msgstr ""
+"Bolj se potrudi pri poskusu obdržanja programa Onboard nad vsem na zaslonu."
+
+#: ../settings.ui.h:75
+msgid "Keep _aspect ratio"
+msgstr "Obdrži razmerje"
+
+#: ../settings.ui.h:76
+msgid "Constrain window size to the layout&apos;s aspect ratio."
+msgstr "Omeji velikost okna glede na razmerje velikosti razporeditve"
+
+#: ../settings.ui.h:77
+msgid "Constrain window size to the layout's aspect ratio."
+msgstr "Omeji velikost okna na razmerje razvrstitve."
+
+#: ../settings.ui.h:78
+msgid "Floating Window Options"
+msgstr "Možnosti lebdečih oken"
+
+#: ../settings.ui.h:79
+msgid "Window options"
+msgstr "Možnosti oken"
+
+#: ../settings.ui.h:80
+msgid "Wind_ow:"
+msgstr "_Okno:"
+
+#: ../settings.ui.h:81
+msgid "Transparency of the whole keyboard window. Requires compositing."
+msgstr "Prozornost celotnega okna tipkovnice. Zahteva sestavljanje."
+
+#: ../settings.ui.h:82 ../settings_theme_dialog.ui.h:5
+msgid "_Background:"
+msgstr "Oza_dje:"
+
+#: ../settings.ui.h:83
+msgid "Transparency of the keyboard background"
+msgstr "Prozornost ozadja tipkovnice"
+
+#: ../settings.ui.h:84
+msgid "_No background"
+msgstr "_Brez ozadja"
+
+#: ../settings.ui.h:85
+msgid "Show the desktop through the gaps between keys."
+msgstr "Pokaži namizje s presledki med tipkami."
+
+#: ../settings.ui.h:86
+msgid "Transparency"
+msgstr "Prozornost"
+
+#: ../settings.ui.h:87
+msgid "Set _transparency to"
+msgstr "Nastavi _prozornost na"
+
+#: ../settings.ui.h:88
+msgid "Enable inactive transparency. Requires compositing."
+msgstr "Omogoči vzajemno prozornost. Zahteva sestavljanje."
+
+#: ../settings.ui.h:89
+msgid ""
+"Transparency when the pointer leaves the keyboard. Requires compositing."
+msgstr "Prozornost, ko kazalec zapusti tipkovnico. Zahteva sestavljanje."
+
+#: ../settings.ui.h:90
+msgid "after"
+msgstr "za"
+
+#: ../settings.ui.h:91
+msgid "Delay in seconds until the inactive transparency takes effect."
+msgstr "Zamik v sekundah preden ima nedejavna prozornost učinek."
+
+#: ../settings.ui.h:92
+msgid "seconds"
+msgstr "sekund"
+
+#: ../settings.ui.h:93
+msgid "When Inactive"
+msgstr "Ko je računalnik nedejaven"
+
+#: ../settings.ui.h:94
+msgid "_Window handles of the keyboard window:"
+msgstr ""
+
+#: ../settings.ui.h:95
+#, fuzzy
+msgid "_Window handles of the floating icon:"
+msgstr "_Ročniki oken:"
+
+#: ../settings.ui.h:96
+msgid "Resize Protection"
+msgstr "Zaščita proti spreminjanju velikosti"
+
+#: ../settings.ui.h:97
+msgid "Name"
+msgstr "Ime"
+
+#: ../settings.ui.h:98
+msgid "Description"
+msgstr "Opis"
+
+#: ../settings.ui.h:99
+msgctxt "Label of new layout button on preferences page Layout."
+msgid "_New"
+msgstr "_Nov"
+
+#: ../settings.ui.h:100
+msgctxt "Label of delete layout button on preferences page Layout."
+msgid "_Delete"
+msgstr "_Izbriši"
+
+#: ../settings.ui.h:101
+msgctxt "Label of open folder button on preferences page Layout."
+msgid "_Open layouts folder"
+msgstr "_Odpri mapo razporeditev"
+
+#: ../settings.ui.h:102
+msgctxt "Label of about layout button on preferences page Layout."
+msgid "_About"
+msgstr "_O programu"
+
+#: ../settings.ui.h:103
+msgctxt "Label of new theme button on preferences page Theme."
+msgid "_New"
+msgstr "_Nova"
+
+#: ../settings.ui.h:104
+msgctxt "Label of delete theme  button on preferences page Theme."
+msgid "_Delete"
+msgstr "_Izbriši"
+
+#: ../settings.ui.h:105
+msgctxt "Label of customize theme button on preferences page Theme."
+msgid "C_ustomize theme"
+msgstr "P_rilagodi temo"
+
+#: ../settings.ui.h:106
+msgid "Follow _system theme"
+msgstr "Sledi sistemski temi"
+
+#: ../settings.ui.h:107
+msgid "Remember what Onboard theme was last used for every system theme."
+msgstr "Zapomni si nazadnje uporabljeno temo Onboard za vsako sistemsko temo."
+
+#: ../settings.ui.h:108
+msgid ""
+"Snippets are pieces of text which are entered when the corresponding button "
+"in Onboard is pressed."
+msgstr ""
+"Delčki so deli besedila, ki so vneseni, ko pritisnete ustrezno tipko na "
+"Onboardu."
+
+#: ../settings.ui.h:109
+msgctxt "Label of add snippet button on preferences page Snippets."
+msgid "_Add"
+msgstr "_Dodaj"
+
+#: ../settings.ui.h:110
+msgctxt "Label of remove snippet button on preferences page Snippets."
+msgid "_Remove"
+msgstr "_Odstrani"
+
+#: ../settings.ui.h:111
+msgid "Play sound"
+msgstr "Predvajaj zvok"
+
+#: ../settings.ui.h:112
+msgid "Play click sound on keypress."
+msgstr "Predvajaj zvok klika ob pritisku na tipko."
+
+#: ../settings.ui.h:113
+#, fuzzy
+msgid "Place sound in space"
+msgstr "Predvajaj zvok klika ob pritisku na tipko."
+
+#: ../settings.ui.h:114
+msgid ""
+"Place sound in space between speakers depending on the key's position on "
+"screen"
+msgstr ""
+
+#: ../settings.ui.h:115
+msgid "Show label popups"
+msgstr "Pokaži pojavne oznake"
+
+#: ../settings.ui.h:116
+msgid "Show label popups above pressed keys."
+msgstr "Pokaži pojavne oznake nad pritisnjenimi tipkami."
+
+#: ../settings.ui.h:117
+msgid "Popup size:"
+msgstr ""
+
+#: ../settings.ui.h:118
+msgid "Key-press Feedback"
+msgstr "Odziv pritiska na tipko"
+
+#: ../settings.ui.h:119
+msgid "Show secondary labels"
+msgstr "Pokaži drugotne oznake"
+
+#: ../settings.ui.h:120
+msgid "Show characters reachable with or without the shift key."
+msgstr "Pokaži znake, dosegljive z ali brez tipke shift."
+
+#: ../settings.ui.h:121
+msgid "Key Labels"
+msgstr "Oznake tipk"
+
+#: ../settings.ui.h:122
+msgid "Upper case on right click"
+msgstr ""
+
+#: ../settings.ui.h:123
+msgid "Temporarily enable SHIFT when clicking with the secondary button."
+msgstr "Ko klikneš s sekundarnim gumbom začasno omogoči SHIFT."
+
+#: ../settings.ui.h:124
+#, fuzzy
+msgid "Key Behaviour"
+msgstr "Obnašanje tipke"
+
+#: ../settings.ui.h:125
+msgid "_Long press action:"
+msgstr "Dejanje _dolgega pritiska:"
+
+#: ../settings.ui.h:126
+msgid ""
+"Choose between key-repeat or long-press menus. Mainly affects alpha-numeric "
+"keys."
+msgstr ""
+"Izberite med meniji s ponovitvijo tipk ali z dolgim pritiskom. Večinoma "
+"vpliva na alfanumerične tipke."
+
+#: ../settings.ui.h:127
+msgid "Modifier _behavior:"
+msgstr "Obnašanje _spremenilnika"
+
+#: ../settings.ui.h:128
+msgid "Behavior of modifier and layer keys."
+msgstr "Obnašanje spremenilnih tipk in tipk plasti."
+
+#: ../settings.ui.h:129
+msgid "Modifier auto-release delay in seconds:"
+msgstr "Zakasnitev samodejne sprostitve spremenilne tipke v sekundah:"
+
+#: ../settings.ui.h:130
+msgid ""
+"Seconds of inactivity until active modifiers and layer keys are released. 0 "
+"to disable."
+msgstr ""
+"Sekunde nedejavnosti dokler dejavne spremenilne tipke in tipke plasti niso "
+"sproščene. Z ničlo (0) onemogočite nastavitev."
+
+#: ../settings.ui.h:131
+#, fuzzy
+msgid "Modifier auto-release after hide in seconds:"
+msgstr "Zakasnitev samodejne sprostitve spremenilne tipke v sekundah:"
+
+#: ../settings.ui.h:132
+msgid ""
+"Time after hiding the keyboard in seconds until latched and locked modifiers "
+"and layer keys are released automatically. Leave at 0.0 to not automatically "
+"release them."
+msgstr ""
+
+#: ../settings.ui.h:133
+msgid "0,00"
+msgstr "0,00"
+
+#: ../settings.ui.h:134
+msgid "Key Behavior"
+msgstr "Obnašanje tipke"
+
+#: ../settings.ui.h:135
+msgid "_Touch input:"
+msgstr "_Vnos z dotikom:"
+
+#: ../settings.ui.h:136
+msgid "_Input event source:"
+msgstr "Vir dogodka _vnosa:"
+
+#: ../settings.ui.h:137
+msgid ""
+"Choose &apos;XInput&apos; for more reliable typing into text entries with "
+"pop-up selections. The &apos;GTK&apos; option offers better compatibility, "
+"but typing may fail in the presence of pointer grabs, e.g. with open pop-up "
+"windows."
+msgstr ""
+"Izberite &apos;XInput&apos; za zanesljivejše tipkanje v besedilne vnose s "
+"pojavnimi izbirami. Možnost &apos;GTK&apos; ponuja boljšo združljivost, toda "
+"tipkanje lahko ob prisotnosti grabitev kazalca spodleti, npr. s pojavnimi "
+"okni."
+
+#: ../settings.ui.h:138
+msgid ""
+"Choose 'XInput' for more reliable typing into text entries with pop-up "
+"selections. The 'GTK' option offers better compatibility, but typing may "
+"fail in the presence of pointer grabs, e.g. with open pop-up windows."
+msgstr ""
+"Izberite 'XInput' za zanesljivejše  tipkanje v besedilne vnose s pojavnimi "
+"izbirami. Možnost 'GTK' ponuja boljšo združljivost, toda tipkanje lahko ob "
+"prisotnosti grabitev kazalca spodleti, npr. s pojavnimi okni."
+
+#: ../settings.ui.h:139
+msgid "Input Options"
+msgstr "Vnosne možnosti"
+
+#: ../settings.ui.h:140
+msgid "Delay between keystrokes in milliseconds:"
+msgstr "Zakasnitev med pritiski tipk v milisekundah:"
+
+#: ../settings.ui.h:141
+msgid ""
+"Increase this if key-strokes get lost when inserting word suggestions or "
+"snippets into Firefox or other Gtk-2 applications. Has no effect on Gtk-3 "
+"applications."
+msgstr ""
+"Povečajte, če se pritiski tipk med vstavljanjem predlogov besed ali izrezkov "
+"v Firefox ali druge programe Gtk-2 izgubijo. Nima učinka na programe Gtk-3."
+
+#: ../settings.ui.h:142
+#, fuzzy
+msgid "Key-stroke generator"
+msgstr "_Ustvarjanje pritiskov tipk:"
+
+#: ../settings.ui.h:143
+msgid ""
+"<b>Auto</b>: let Onboard decide, recommended.\n"
+"\n"
+"<b>XTest</b> is the default for all X based desktop environments.\n"
+"\n"
+"<b>uinput</b> should be available on all linux-based systems, including X, "
+"Wayland and MIR-based desktops, but requires write permission for /dev/"
+"uinput.\n"
+"\n"
+"<b>AT-SPI</b> has limited support for key-stroke generation, and is only "
+"recommended for testing."
+msgstr ""
+
+#: ../settings.ui.h:150
+#, fuzzy
+msgid "Key-stroke Generation"
+msgstr "_Ustvarjanje pritiskov tipk:"
+
+#: ../settings.ui.h:151
+msgid "Popup time [s]:"
+msgstr ""
+
+#: ../settings.ui.h:152
+msgid "Affects how long a key popup stays open."
+msgstr ""
+
+#: ../settings.ui.h:153
+msgid "0.15"
+msgstr ""
+
+#: ../settings.ui.h:154
+#, fuzzy
+msgid "Animation"
+msgstr "Dejanje:"
+
+#: ../settings.ui.h:155
+msgid "Advanced"
+msgstr "Napredno"
+
+#: ../settings.ui.h:156
+#, fuzzy
+msgid ""
+"Show Onboard when there is a recognized text entry in focus. Requires Gnome "
+"Accessibility."
+msgstr ""
+"Pokaži Onboard, ko je prepoznano osredotočeno besedilno okno. Zahtevana je "
+"dostopnost Gnome."
+
+#: ../settings.ui.h:157
+msgid "Keyboard movement strategy:"
+msgstr ""
+
+#: ../settings.ui.h:158
+msgid "Chose how the keyboard window moves when a text entry is activated."
+msgstr ""
+"Izberite kako se premika okno tipkovnice, ko je aktivno polje za vnos "
+"besedila."
+
+#: ../settings.ui.h:159
+msgid "_Hide when typing on a physical keyboard"
+msgstr ""
+
+#: ../settings.ui.h:160
+msgid ""
+"Hide Onboard when any key is pressed on a physical keyboard. Requires input "
+"event source \"XInput\"."
+msgstr ""
+"Skrij Onboard, ko je pritisnjena katerakoli tipka na fizični tipkovnici. "
+"Zahteva vir vhodnega dogodka \"XInput\"."
+
+#: ../settings.ui.h:161
+msgid "Stay hidden:"
+msgstr "Pusti skrito:"
+
+#: ../settings.ui.h:162
+msgid ""
+"Once hidden by a physical key-press, auto-show is paused. Select the pause "
+"duration here."
+msgstr ""
+"Ko je skrita s pritiskom na fizično tipko, je samodejno prikazovanje v "
+"premoru. Tu izberite trajanje premora."
+
+#: ../settings.ui.h:163
+#, fuzzy
+msgid "Auto-show only in tablet mode"
+msgstr "S_amodejno prikaži med urejanjem besedila"
+
+#: ../settings.ui.h:164
+msgid ""
+"Requires driver support for SW_TABLET_MODE and a running instance of acpid."
+msgstr ""
+
+#: ../settings.ui.h:165
+msgid ""
+"Alternatively, some devices generate key events on entering and leaving "
+"tablet mode. Run 'xinput test-xi2 3 ' to find these key presses and enter "
+"their 'detail' values below."
+msgstr ""
+
+#: ../settings.ui.h:166
+msgid "Hotkey received when entering tablet mode:"
+msgstr ""
+
+#: ../settings.ui.h:167
+msgid "Hotkey received when leaving tablet mode:"
+msgstr ""
+
+#: ../settings.ui.h:168
+msgid "File that contains the current device state:"
+msgstr ""
+
+#: ../settings.ui.h:169
+msgid "Regular expression to match for tablet-mode:"
+msgstr ""
+
+#: ../settings.ui.h:170
+msgid "Convertible Devices"
+msgstr ""
+
+#: ../settings.ui.h:171
+msgid "Don't auto-show while external keyboards are connected"
+msgstr ""
+
+#: ../settings.ui.h:172
+msgid "Detected keyboard devices:"
+msgstr ""
+
+#: ../settings.ui.h:173
+msgid ""
+"Check 'Ignore' for devices that are always connected and should not block "
+"auto-show."
+msgstr ""
+
+#: ../settings.ui.h:174
+#, fuzzy
+msgid "External Keyboards"
+msgstr "Končaj tipkovnico"
+
+#: ../settings.ui.h:175
+msgid "Show _suggestions"
+msgstr "Pokaži _predloge"
+
+#: ../settings.ui.h:176
+msgid "Enable word completion and prediction."
+msgstr "Omogoči dopolnjevanje besed in predvidevanje."
+
+#: ../settings.ui.h:177
+msgid "Show spelling suggestions"
+msgstr "Pokaži predloge črkovanja"
+
+#: ../settings.ui.h:178
+msgid "Check spelling of the word at or before the cursor."
+msgstr "Preveri črkovanje besede ob ali pred kazalko."
+
+#: ../settings.ui.h:179
+msgid "_Learn from typed text"
+msgstr "_Učenje iz natipkanega besedila"
+
+#: ../settings.ui.h:180
+msgid ""
+"Remember new words, their recency and frequency to improve the suggestions "
+"over time."
+msgstr ""
+"Beleži nove besede, njihovo nedavno in pogosto uporabo za izboljševanje "
+"predlaganja čez čas."
+
+#: ../settings.ui.h:181
+msgid "Insert word _separators"
+msgstr "Vnesi _ločilnike besed"
+
+#: ../settings.ui.h:182
+msgid ""
+"Add and remove spaces when inserting word suggestions followed by "
+"punctuation characters."
+msgstr ""
+"Dodaj in odstrani presledke, kadar se vnaša predloge besed, ki jim sledijo "
+"ločila."
+
+#: ../settings.ui.h:183
+msgid "Options"
+msgstr "Možnosti"
+
+#: ../settings.ui.h:184
+#, fuzzy
+msgid "Show more suggestions arrow"
+msgstr "Pokaži _predloge"
+
+#: ../settings.ui.h:185
+msgid "Step forward and backward through the available suggestions."
+msgstr ""
+
+#: ../settings.ui.h:186
+msgid "Show button to pause learning"
+msgstr "Pokaži gumb za premor učenja"
+
+#: ../settings.ui.h:187
+msgid "Words typed while this button is pressed won't be remembered."
+msgstr ""
+"Besede, ki so natipkane, medtem ko je pritisnjen ta gumb, ne bodo zapomnjene."
+
+#: ../settings.ui.h:188
+msgid "Show lan_guage switcher"
+msgstr "Pokaži preklopnik _jezikov"
+
+#: ../settings.ui.h:189
+msgid "Show a button for language selection."
+msgstr "Pokaže gumb za izbiro jezikov."
+
+#: ../settings.ui.h:190
+msgid "Buttons"
+msgstr "Gumbi"
+
+#: ../settings.ui.h:191
+msgid "Word Suggestions"
+msgstr "Predlaganje besed"
+
+#: ../settings.ui.h:192
+msgid "Auto-capitalize while typing"
+msgstr "Samodejno spremeni v velike začetnice med tipkanjem"
+
+#: ../settings.ui.h:193
+msgid "Automatically capitalize sentence begins and name words."
+msgstr "Samodejno spremeni velike začetnice povedim in imenom."
+
+#: ../settings.ui.h:194
+msgid "Auto-correct spelling"
+msgstr "Samodejno popravi črkovanje"
+
+#: ../settings.ui.h:195
+msgid "Automatically correct the last word."
+msgstr "Samodejno popravi zadnjo besedo."
+
+#: ../settings.ui.h:196
+msgid "The spell check engine to use."
+msgstr "Uporaba pogona za preverjanje črkovanja."
+
+#: ../settings.ui.h:197
+msgid "Spell-check backend:"
+msgstr "Zaledje preverjanja črkovanja:"
+
+#: ../settings.ui.h:198
+msgid "Auto-correction"
+msgstr "Samodejno popravljanje"
+
+#: ../settings.ui.h:199
+msgid "While  learning is paused:"
+msgstr "Ko je učenje v premoru:"
+
+#: ../settings.ui.h:200
+msgid "Learning"
+msgstr "Učenje"
+
+#: ../settings.ui.h:201
+msgid "Enable  keyboard _scanning"
+msgstr "Omogoči branje _tipkovnice"
+
+#: ../settings.ui.h:202
+msgctxt ""
+"Label of keyboard scanning settings button on preferences page Universal "
+"Access."
+msgid "Sc_anner Settings"
+msgstr "Nastavitve optične_ga bralnika"
+
+#: ../settings.ui.h:203
+msgid "Keyboard Scanning"
+msgstr "Branje tipkovnice"
+
+#: ../settings.ui.h:204
+msgid "_Delay:"
+msgstr "_Zakasnitev:"
+
+#: ../settings.ui.h:205
+msgid "_Motion threshold:"
+msgstr "_Prag premikanja:"
+
+#: ../settings.ui.h:206
+msgid "Time in seconds before a click is triggered."
+msgstr "Čas v sekundah pred sproženjem klika."
+
+#: ../settings.ui.h:207
+msgid "Distance in pixels before movement will be recognized."
+msgstr "Razdalja v točkah preden je zaznano gibanje."
+
+#: ../settings.ui.h:208
+msgid "Hide hover click window"
+msgstr "Skrij okno klika z lebdenjem"
+
+#: ../settings.ui.h:209
+msgid "Hide the system-provided hover click window while Onboard is running."
+msgstr ""
+"Skrij sistemsko zagotovljeno okno lebdečega klika, medtem ko se Onboard "
+"izvaja."
+
+#: ../settings.ui.h:210
+msgid "Enable click type window on exit"
+msgstr "Omogoči okno vrste klika ob izhodu."
+
+#: ../settings.ui.h:211
+msgid ""
+"Always enable the system-provided hover click window when exiting Onboard."
+msgstr ""
+"Vedno omogoči sistemsko zagotovljeno okno lebdečega klika ob končanju "
+"Onboard."
+
+#: ../settings.ui.h:212
+msgid "Hover Click"
+msgstr "Klik z lebdenjem"
+
+#: ../settings_docking_dialog.ui.h:1
+msgid "Top"
+msgstr "Zgoraj"
+
+#: ../settings_docking_dialog.ui.h:2
+msgid "Bottom"
+msgstr "Spodaj"
+
+#: ../settings_docking_dialog.ui.h:3
+msgid "Active Monitor"
+msgstr "Dejaven zaslon"
+
+#: ../settings_docking_dialog.ui.h:4
+msgid "Primary Monitor"
+msgstr "Primarni zaslon"
+
+#: ../settings_docking_dialog.ui.h:5
+msgid "Monitor 0"
+msgstr "Zaslon 0"
+
+#: ../settings_docking_dialog.ui.h:6
+msgid "Monitor 1"
+msgstr "Zaslon 1"
+
+#: ../settings_docking_dialog.ui.h:7
+msgid "Monitor 2"
+msgstr "Zaslon 2"
+
+#: ../settings_docking_dialog.ui.h:8
+msgid "Monitor 3"
+msgstr "Zaslon 3"
+
+#: ../settings_docking_dialog.ui.h:9
+msgid "Monitor 4"
+msgstr "Zaslon 4"
+
+#: ../settings_docking_dialog.ui.h:10
+msgid "Monitor 5"
+msgstr "Zaslon 5"
+
+#: ../settings_docking_dialog.ui.h:11
+msgid "Monitor 6"
+msgstr "Zaslon 6"
+
+#: ../settings_docking_dialog.ui.h:12
+msgid "Monitor 7"
+msgstr "Zaslon 7"
+
+#: ../settings_docking_dialog.ui.h:13
+msgid "Monitor 8"
+msgstr "Zaslon 8"
+
+#: ../settings_docking_dialog.ui.h:14
+msgid "Docking settings"
+msgstr "Nastavitve sidranja"
+
+#: ../settings_docking_dialog.ui.h:15
+msgctxt "Label of the close button of the docking settings dialog."
+msgid "_Close"
+msgstr "_Zapri"
+
+#: ../settings_docking_dialog.ui.h:16
+msgid "Shrink workarea"
+msgstr "Skrči delovno področje"
+
+#: ../settings_docking_dialog.ui.h:17
+msgid "Shrink the available space for maximized windows."
+msgstr "Skrči razpoložljiv prostor za razpeta okna"
+
+#: ../settings_docking_dialog.ui.h:18
+msgid "Expand on landscape screens"
+msgstr "Razširi na ležečih zaslonih"
+
+#: ../settings_docking_dialog.ui.h:19
+msgid "Expand keyboard to the width of the workarea."
+msgstr "Razširi tipkovnico na širino delovnega področja"
+
+#: ../settings_docking_dialog.ui.h:20
+msgid "Expand on portrait screens"
+msgstr "Razširi na pokončnih zaslonih"
+
+#: ../settings_docking_dialog.ui.h:21
+msgid "Dock to screen edge:"
+msgstr "Sidraj na rob zaslona:"
+
+#: ../settings_docking_dialog.ui.h:22
+msgid "Dock to monitor:"
+msgstr "Usidraj v zaslon:"
+
+#: ../settings_scanner_dialog.ui.h:1
+msgid "Automatic scan for 1 switch"
+msgstr "Samodejno branje za stikalo 1"
+
+#: ../settings_scanner_dialog.ui.h:2
+msgid "Critical overscan for 1 switch"
+msgstr "Kritični pregled čez vso vsebino za stikalo 1"
+
+#: ../settings_scanner_dialog.ui.h:3
+msgid "Step scan for 2 switches"
+msgstr "Branje korakov za dve stikali"
+
+#: ../settings_scanner_dialog.ui.h:4
+msgid "Directed scan for 3 or 5 switches"
+msgstr "Neposredno branje za 3 do 5 stikal"
+
+#: ../settings_scanner_dialog.ui.h:5
+msgid "Scanner Settings"
+msgstr "Nastavitve bralnika"
+
+#: ../settings_scanner_dialog.ui.h:6
+msgctxt "Label of the close button of the scanner settings dialog."
+msgid "_Close"
+msgstr "_Zapri"
+
+#: ../settings_scanner_dialog.ui.h:7
+msgid "Select a scanning _profile:"
+msgstr "Izberite _profil bralnika:"
+
+#: ../settings_scanner_dialog.ui.h:8
+msgid "_Step interval:"
+msgstr "_Razmik korakov:"
+
+#: ../settings_scanner_dialog.ui.h:9
+msgid "Sc_an cycles:"
+msgstr "Cikli bra_nja:"
+
+#: ../settings_scanner_dialog.ui.h:10
+msgid ""
+"The time the scanner rests on a key or group before moving to the next. (in "
+"seconds)"
+msgstr ""
+"Čas čakanja preiskovanja na ključu ali skupini pred premikom na naslednjega. "
+"(v sekundah)"
+
+#: ../settings_scanner_dialog.ui.h:11
+msgid ""
+"The number of times the scanner cycles through the entire keyboard before it "
+"stops."
+msgstr ""
+"Število ponovitev, kolikokrat bralnik preleti skozi vso tipkovnico, preden "
+"se ustavi."
+
+#: ../settings_scanner_dialog.ui.h:12
+msgid "Step _only during switch down"
+msgstr "K_orak le med pritiskom tipke"
+
+#: ../settings_scanner_dialog.ui.h:13
+msgid "Progress the highlight only while the switch is held down."
+msgstr "Obravnavaj poudarek samo, ko je stikalo pritisnjeno."
+
+#: ../settings_scanner_dialog.ui.h:14
+msgid "_Forward interval:"
+msgstr "Čakanje pred korakom _naprej:"
+
+#: ../settings_scanner_dialog.ui.h:15
+msgid "_Backtrack interval:"
+msgstr "Čakanje pred korakom n_azaj:"
+
+#: ../settings_scanner_dialog.ui.h:16
+msgid ""
+"The time the scanner rests on a key  while progressing forward. (in seconds)"
+msgstr ""
+"Koliko časa bralnik ostane na tipki, preden napreduje naprej. (v sekundah)"
+
+#: ../settings_scanner_dialog.ui.h:17
+msgid ""
+"The time the scanner rests on a key  while moving backwards. (in seconds)"
+msgstr ""
+"Koliko časa bralnik ostane na tipki, preden se prestavi nazaj. (v sekundah)"
+
+#: ../settings_scanner_dialog.ui.h:18
+msgid "Backtrack _steps:"
+msgstr "Sledi kora_kom nazaj:"
+
+#: ../settings_scanner_dialog.ui.h:19
+msgid "The number of keys the scanner steps back before moving forward again."
+msgstr ""
+"Število tipk, pri katerih bralnik gre korak nazaj, predno se premakne spet "
+"naprej."
+
+#: ../settings_scanner_dialog.ui.h:20
+msgid "_Alternate switch actions"
+msgstr "N_adomesti dejavnosti stikala"
+
+#: ../settings_scanner_dialog.ui.h:21
+msgid ""
+"Swap the scan actions after every key activation. The Step action will "
+"become the Activate action and vice versa."
+msgstr ""
+"Zamenjaj dejanja preiskovanja po vsaki omogočitvi ključev. Dejanje koraka bo "
+"postalo dejanje omogočitve in  obratno."
+
+#: ../settings_scanner_dialog.ui.h:22
+msgid "Profiles"
+msgstr "Profili"
+
+#: ../settings_scanner_dialog.ui.h:23
+msgid "_Select an input device:"
+msgstr "_Izberite vhodno napravo:"
+
+#: ../settings_scanner_dialog.ui.h:24
+msgid "_Use this device only for scanning"
+msgstr "_Uporabi to napravo samo za branje"
+
+#: ../settings_scanner_dialog.ui.h:25
+msgid ""
+"The selected device should not control the system mouse cursor or the "
+"keyboard caret."
+msgstr ""
+"Izbrana naprava ne sme nadzorovati sistemskega kazalca miške ali kazalke "
+"tipkovnice."
+
+#: ../settings_scanner_dialog.ui.h:26
+msgid "Input Device"
+msgstr "Vhodna naprava"
+
+#: ../settings_theme_dialog.ui.h:1
+msgid "Customize Theme"
+msgstr "Prilagodi temo"
+
+#: ../settings_theme_dialog.ui.h:2
+msgctxt "Label of the revert button of the theme settings dialog."
+msgid "_Revert"
+msgstr "_Povrni"
+
+#: ../settings_theme_dialog.ui.h:3
+msgctxt "Label of the close button of the theme settings dialog."
+msgid "_Close"
+msgstr "_Zapri"
+
+#: ../settings_theme_dialog.ui.h:4
+msgid "Color Sche_me"
+msgstr "Barva she_ma"
+
+#: ../settings_theme_dialog.ui.h:7
+msgid "_Angle:"
+msgstr "_Kot:"
+
+#: ../settings_theme_dialog.ui.h:8
+msgid "Light Direction"
+msgstr "Smer svetlobe"
+
+#: ../settings_theme_dialog.ui.h:10
+msgid "_Style:"
+msgstr "_Slog:"
+
+#: ../settings_theme_dialog.ui.h:11
+msgid "R_oundness:"
+msgstr "_Okroglost:"
+
+#: ../settings_theme_dialog.ui.h:12
+msgid "S_ize:"
+msgstr "Vel_ikost:"
+
+#: ../settings_theme_dialog.ui.h:13
+msgid "B_order width:"
+msgstr "Širina _obrobe:"
+
+#: ../settings_theme_dialog.ui.h:14
+msgid "Key Style"
+msgstr "Slog ključa"
+
+#: ../settings_theme_dialog.ui.h:15
+msgid "_Key:"
+msgstr "_Ključ:"
+
+#: ../settings_theme_dialog.ui.h:16
+msgid "_Border:"
+msgstr "Ro_b:"
+
+#: ../settings_theme_dialog.ui.h:17
+msgid "Gradients"
+msgstr "Prelivi"
+
+#: ../settings_theme_dialog.ui.h:18
+msgid "_Strength:"
+msgstr "_Moč:"
+
+#: ../settings_theme_dialog.ui.h:19
+msgid "Shadow"
+msgstr "Senca"
+
+#: ../settings_theme_dialog.ui.h:20
+msgid "Keys"
+msgstr "Tipke"
+
+#: ../settings_theme_dialog.ui.h:21
+msgid "_Font:"
+msgstr "_Pisava:"
+
+#: ../settings_theme_dialog.ui.h:22
+msgid "_Attributes:"
+msgstr "_Atributi:"
+
+#: ../settings_theme_dialog.ui.h:23
+msgid "Font"
+msgstr "Pisava"
+
+#: ../settings_theme_dialog.ui.h:24
+msgid "I_ndependent size"
+msgstr "_Neodvisna velikost"
+
+#: ../settings_theme_dialog.ui.h:25
+msgid "_Super key:"
+msgstr "Tipka _super:"
+
+#: ../settings_theme_dialog.ui.h:26
+msgid "Label Override"
+msgstr "Prepis oznake"
+
+#: ../settings_theme_dialog.ui.h:27
+msgid "Labels"
+msgstr "Oznake"
 
 #~ msgid "Quit onBoard"
 #~ msgstr "Zapri onBoard"
@@ -2639,9 +3062,6 @@ msgstr ""
 #~ "Izberite med meniji s ponavljanjem pritiska tipk ali dolgimi pritiski. "
 #~ "Vpliva le na alfanumerične tipke."
 
-#~ msgid "Key-stroke _generation:"
-#~ msgstr "_Ustvarjanje pritiskov tipk:"
-
 #~ msgid "Cycle"
 #~ msgstr "Krog"
 
@@ -2723,6 +3143,3 @@ msgstr ""
 
 #~ msgid "User layouts"
 #~ msgstr "Razporeditve uporabnika"
-
-#~ msgid "_Window handles:"
-#~ msgstr "_Ročniki oken:"

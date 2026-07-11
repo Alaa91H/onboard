@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: onboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-06 14:30+0200\n"
+"POT-Creation-Date: 2026-07-11 18:54+0200\n"
 "PO-Revision-Date: 2014-03-15 14:03+0000\n"
 "Last-Translator: Asier Iturralde Sarasola <Unknown>\n"
 "Language-Team: Basque <eu@li.org>\n"
@@ -564,7 +564,7 @@ msgid "Flat"
 msgstr "Laua"
 
 #. Key style with simple gradients
-#: ../Onboard/settings.py:1631
+#: ../Onboard/settings.py:1631 ../settings_theme_dialog.ui.h:6
 msgid "Gradient"
 msgstr "Gradientea"
 
@@ -809,7 +809,7 @@ msgid "Scroll"
 msgstr "Bloq Despl"
 
 #. translators: this is a 'tooltip' of the key_template 'layer2' in keyboard layout 'key_defs.xml'
-#: ../data/layoutstrings.py:88 ../data/layoutstrings.py:340
+#: ../data/layoutstrings.py:88 ../data/layoutstrings.py:340 ../settings.ui.h:27
 msgid "Snippets"
 msgstr "Adabakiak"
 
@@ -1249,325 +1249,1235 @@ msgstr ""
 msgid "onscreen;keyboard;accessibility;utility;"
 msgstr ""
 
-#~ msgid "never"
-#~ msgstr "inoiz ez"
+#: ../settings.ui.h:1
+msgid "Key-repeat"
+msgstr ""
 
-#~ msgid "1 minute"
-#~ msgstr "Minutu 1"
+#: ../settings.ui.h:2
+msgid "International character selection"
+msgstr ""
 
-#~ msgid "5 minutes"
-#~ msgstr "5 minutu"
+#: ../settings.ui.h:3
+msgid "never"
+msgstr "inoiz ez"
 
-#~ msgid "10 minutes"
-#~ msgstr "10 minutu"
+#: ../settings.ui.h:4
+msgid "1 minute"
+msgstr "Minutu 1"
 
-#~ msgid "30 minutes"
-#~ msgstr "30 minutu"
+#: ../settings.ui.h:5
+msgid "5 minutes"
+msgstr "5 minutu"
 
-#~ msgid "1 hour"
-#~ msgstr "Ordu 1"
+#: ../settings.ui.h:6
+msgid "10 minutes"
+msgstr "10 minutu"
 
-#~ msgid "3 hours"
-#~ msgstr "3 ordu"
+#: ../settings.ui.h:7
+msgid "30 minutes"
+msgstr "30 minutu"
 
-#~ msgid "forever"
-#~ msgstr "betiko"
+#: ../settings.ui.h:8
+msgid "1 hour"
+msgstr "Ordu 1"
 
-#~ msgid "GTK"
-#~ msgstr "GTK"
+#: ../settings.ui.h:9
+msgid "3 hours"
+msgstr "3 ordu"
 
-#~ msgid "XInput"
-#~ msgstr "XInput"
+#: ../settings.ui.h:10
+msgid "forever"
+msgstr "betiko"
 
-#~ msgid "XTest"
-#~ msgstr "XTest"
+#: ../settings.ui.h:11
+msgid "GTK"
+msgstr "GTK"
 
-#~ msgid "AT-SPI"
-#~ msgstr "AT-SPI"
+#: ../settings.ui.h:12
+msgid "XInput"
+msgstr "XInput"
 
-#~ msgid "Don't remember new words"
-#~ msgstr "Ez gogoratu hitz berriak"
+#: ../settings.ui.h:13
+msgid "Auto"
+msgstr ""
 
-#~ msgid "None"
-#~ msgstr "Bat ere ez"
+#: ../settings.ui.h:14
+msgid "XTest"
+msgstr "XTest"
 
-#~ msgid "Movement only"
-#~ msgstr "Mugimendua soilik"
-
-#~ msgid "Corners"
-#~ msgstr "Ertzak"
-
-#~ msgid "All corners and edges"
-#~ msgstr "Erpin eta ertz guztiak"
-
-#~ msgid "General"
-#~ msgstr "Orokorra"
-
-#~ msgid "Window"
-#~ msgstr "Leihoa"
-
-#~ msgid "Layout"
-#~ msgstr "Diseinua"
-
-#~ msgid "Theme"
-#~ msgstr "Gaia"
-
-#~ msgid "Keyboard"
-#~ msgstr "Teklatua"
-
-#~ msgid "Universal Access"
-#~ msgstr "Sarbide unibertsala"
-
-#~ msgid "none"
-#~ msgstr "bat ere ez"
-
-#~ msgid "_Auto-show when editing text"
-#~ msgstr "Erakutsi _automatikoki testua editatzean"
-
-#~ msgid "Start Onboard _hidden"
-#~ msgstr "Abiarazi Onboard _ezkutatuta"
-
-#~ msgid "Start Onboard hidden."
-#~ msgstr "Abiarazi Onboard ezkutatuta"
-
-#~ msgid "Show/Hide options"
-#~ msgstr "Erakutsi/Ezkutatu aukerak"
-
-#~ msgid "Show when _unlocking the screen"
-#~ msgstr "Erakutsi pantaila _desblokeatzean"
-
-#~ msgid "Show _tooltips"
-#~ msgstr "Erakutsi _argibideak"
-
-#~ msgid "Show tooltips for the keyboard&apos;s buttons."
-#~ msgstr "Erakutsi teklatuko botoien argibideak."
-
-#~ msgid "Show tooltips for the keyboard's buttons."
-#~ msgstr "Erakutsi teklatuko botoien argibideak."
-
-#~ msgid "_Show status icon"
-#~ msgstr "_Erakutsi egoera-ikonoa"
-
-#~ msgid "Show the status item. A click on that icon hides or shows Onboard."
-#~ msgstr ""
-#~ "Erakutsi egoera-elementua. Ikono hau klikatzean Onboard erakutsi edo "
-#~ "ezkutatzen da."
-
-#~ msgid "Desktop Integration"
-#~ msgstr "Mahaigainarekin integrazioa"
-
-#~ msgid "Keep _aspect ratio"
-#~ msgstr "Mantendu _aspektu-erlazioa"
-
-#~ msgid "Wind_ow:"
-#~ msgstr "_Leihoa:"
-
-#~ msgid "_Background:"
-#~ msgstr "_Atzeko planoa:"
-
-#~ msgid "Transparency of the keyboard background"
-#~ msgstr "Teklatuaren atzeko planoaren gardentasuna"
-
-#~ msgid "_No background"
-#~ msgstr "Atzeko planorik _ez"
-
-#~ msgid "Transparency"
-#~ msgstr "Gardentasuna"
-
-#~ msgid "seconds"
-#~ msgstr "segundo"
-
-#~ msgid "When Inactive"
-#~ msgstr "Inaktibo dagoenean"
-
-#~ msgid "Name"
-#~ msgstr "Izena"
-
-#~ msgid "Description"
-#~ msgstr "Deskribapena"
-
-#~ msgid "Follow _system theme"
-#~ msgstr "Jarraitu _sistemaren gaia"
-
-#~ msgid ""
-#~ "Snippets are pieces of text which are entered when the corresponding "
-#~ "button in Onboard is pressed."
-#~ msgstr ""
-#~ "Adabakiak Paneleko botoi egokia sakatzean idazten diren testu zatiak dira."
-
-#~ msgid "Play sound"
-#~ msgstr "Erreproduzitu soinua"
-
-#~ msgid "Play click sound on keypress."
-#~ msgstr "Erreproduzitu soinua teklak sakatzean"
-
-#~ msgid "Show secondary labels"
-#~ msgstr "Erakutsi bigarren mailako etiketak"
-
+#: ../settings.ui.h:15
 #, fuzzy
-#~ msgid "Animation"
-#~ msgstr "Ekintza:"
+msgid "uinput"
+msgstr "XInput"
 
-#~ msgid "Advanced"
-#~ msgstr "Aurreratua"
+#: ../settings.ui.h:16
+msgid "AT-SPI"
+msgstr "AT-SPI"
 
-#~ msgid ""
-#~ "Hide Onboard when any key is pressed on a physical keyboard. Requires "
-#~ "input event source \"XInput\"."
-#~ msgstr ""
-#~ "Ezkutatu Onboard teklatu fisiko batean edozein tekla sakatzean. "
-#~ "\"XInput\" sarrerako gertaeren iturburua behar du."
+#: ../settings.ui.h:17
+msgid "Remember nothing"
+msgstr ""
 
-#~ msgid "Stay hidden:"
-#~ msgstr "Jarraitu izkutuan:"
+#: ../settings.ui.h:18
+msgid "Don't remember new words"
+msgstr "Ez gogoratu hitz berriak"
 
-#~ msgid ""
-#~ "Once hidden by a physical key-press, auto-show is paused. Select the "
-#~ "pause duration here."
-#~ msgstr ""
-#~ "Tekla fisiko bat sakatzean ezkutatu ondoren automatikoki erakustea "
-#~ "pausatzen da. Hautatu etenaldiaren iraupena hemen."
+#: ../settings.ui.h:19
+msgid "None"
+msgstr "Bat ere ez"
 
-#~ msgid "Options"
-#~ msgstr "Aukerak"
+#: ../settings.ui.h:20
+msgid "Movement only"
+msgstr "Mugimendua soilik"
 
-#~ msgid "Show lan_guage switcher"
-#~ msgstr "Erakutsi _hizkuntza-aldatzailea"
+#: ../settings.ui.h:21
+msgid "Corners"
+msgstr "Ertzak"
 
-#~ msgid "Show a button for language selection."
-#~ msgstr "Erakutsi botoi bat hizkuntza hautatzeko."
+#: ../settings.ui.h:22
+msgid "All corners and edges"
+msgstr "Erpin eta ertz guztiak"
 
-#~ msgid "Buttons"
-#~ msgstr "Botoiak"
+#: ../settings.ui.h:23
+msgid "General"
+msgstr "Orokorra"
 
-#~ msgid "Enable  keyboard _scanning"
-#~ msgstr "Gaitu teklatua e_skaneatzea"
+#: ../settings.ui.h:24
+msgid "Window"
+msgstr "Leihoa"
 
-#~ msgid "Keyboard Scanning"
-#~ msgstr "Teklatua eskaneatzea"
+#: ../settings.ui.h:25
+msgid "Layout"
+msgstr "Diseinua"
 
-#~ msgid "_Delay:"
-#~ msgstr "_Atzerapena:"
+#: ../settings.ui.h:26
+msgid "Theme"
+msgstr "Gaia"
 
-#~ msgid "Top"
-#~ msgstr "Goian"
+#: ../settings.ui.h:28 ../settings_theme_dialog.ui.h:9
+msgid "Keyboard"
+msgstr "Teklatua"
 
-#~ msgid "Bottom"
-#~ msgstr "Behean"
+#: ../settings.ui.h:29
+msgid "Auto-show"
+msgstr ""
 
-#~ msgid "Active Monitor"
-#~ msgstr "Monitore aktiboa"
+#: ../settings.ui.h:30
+msgid "Typing Assistance"
+msgstr ""
 
-#~ msgid "Primary Monitor"
-#~ msgstr "Monitore nagusia"
+#: ../settings.ui.h:31
+msgid "Universal Access"
+msgstr "Sarbide unibertsala"
 
-#~ msgid "Monitor 0"
-#~ msgstr "0. monitorea"
+#: ../settings.ui.h:32
+msgid "Only move when necessary"
+msgstr ""
 
-#~ msgid "Monitor 1"
-#~ msgstr "1. monitorea"
+#: ../settings.ui.h:33
+msgid "Follow the active window"
+msgstr ""
 
-#~ msgid "Monitor 2"
-#~ msgstr "2. monitorea"
+#: ../settings.ui.h:34
+msgid "Latch, then lock"
+msgstr ""
 
-#~ msgid "Monitor 3"
-#~ msgstr "3. monitorea"
+#: ../settings.ui.h:35
+#, fuzzy
+msgid "Latch, double-click to lock"
+msgstr "Klik bikoitza blokeatzeko"
 
-#~ msgid "Monitor 4"
-#~ msgstr "4. monitorea"
+#: ../settings.ui.h:36
+msgid "Latch only"
+msgstr ""
 
-#~ msgid "Monitor 5"
-#~ msgstr "5. monitorea"
+#: ../settings.ui.h:37
+#, fuzzy
+msgid "Lock only"
+msgstr "Blokeatu"
 
-#~ msgid "Monitor 6"
-#~ msgstr "6. monitorea"
+#: ../settings.ui.h:38
+#, fuzzy
+msgid "Push button"
+msgstr "Sakatu botoi bat..."
 
-#~ msgid "Monitor 7"
-#~ msgstr "7. monitorea"
+#: ../settings.ui.h:39
+msgid "none"
+msgstr "bat ere ez"
 
-#~ msgid "Monitor 8"
-#~ msgstr "8. monitorea"
+#: ../settings.ui.h:40
+msgid "single-touch"
+msgstr ""
 
-#~ msgid "Scanner Settings"
-#~ msgstr "Eskanerraren ezarpenak"
+#: ../settings.ui.h:41
+msgid "multi-touch"
+msgstr ""
 
-#~ msgid "Select a scanning _profile:"
-#~ msgstr "Hautatu eskaneatzeko _profil bat:"
+#: ../settings.ui.h:42
+msgctxt "Label of the main close button of the preferences dialog."
+msgid "_Close"
+msgstr ""
 
-#~ msgid "_Step interval:"
-#~ msgstr "_Pausoaren tartea:"
+#: ../settings.ui.h:43
+msgid "_Auto-show when editing text"
+msgstr "Erakutsi _automatikoki testua editatzean"
 
-#~ msgid "Profiles"
-#~ msgstr "Profilak"
+#: ../settings.ui.h:44
+msgid ""
+"Show Onboard when there is a recognized text window in focus. Requires Gnome "
+"Accessibility."
+msgstr ""
 
-#~ msgid "_Select an input device:"
-#~ msgstr "_Hautatu sarrerako gailu bat"
+#: ../settings.ui.h:45
+msgid "Start Onboard _hidden"
+msgstr "Abiarazi Onboard _ezkutatuta"
 
-#~ msgid "_Use this device only for scanning"
-#~ msgstr "_Erabili gailu hau eskaneatzeko soilik"
+#: ../settings.ui.h:46
+msgid "Start Onboard hidden."
+msgstr "Abiarazi Onboard ezkutatuta"
 
-#~ msgid "Input Device"
-#~ msgstr "Sarrerako gailua"
+#: ../settings.ui.h:47
+msgid "Show/Hide options"
+msgstr "Erakutsi/Ezkutatu aukerak"
 
-#~ msgid "Customize Theme"
-#~ msgstr "Pertsonalizatu gaia"
+#: ../settings.ui.h:48
+msgid "Show floating _icon when Onboard is hidden"
+msgstr ""
 
-#~ msgid "Color Sche_me"
-#~ msgstr "Kolore-eske_ma"
+#: ../settings.ui.h:49
+msgid ""
+"Show a floating icon on the desktop when Onboard is hidden. A click on the "
+"icon makes Onboard reappear."
+msgstr ""
 
-#~ msgid "_Angle:"
-#~ msgstr "_Angelua:"
+#: ../settings.ui.h:50
+msgid "Show when _unlocking the screen"
+msgstr "Erakutsi pantaila _desblokeatzean"
 
-#~ msgid "_Style:"
-#~ msgstr "_Estiloa:"
+#: ../settings.ui.h:51
+#, fuzzy
+msgid ""
+"Show Onboard when the dialog to unlock the screen appears; this way Onboard "
+"can be used for example to enter the password to dismiss the screensaver "
+"when it is set to ask for it."
+msgstr ""
+"Erakutsi panela pantaila desblokeatzeko elkarrizketa agertzen denean; honela "
+"panela erabili daiteke adibidez pasahitza idazteko pantaila-babeslea "
+"baztertzeko zuri galdetu ordez aukera hori ezarrita badago."
 
-#~ msgid "R_oundness:"
-#~ msgstr "_Biribiltasuna:"
+#: ../settings.ui.h:52
+msgid "Show _tooltips"
+msgstr "Erakutsi _argibideak"
 
-#~ msgid "S_ize:"
-#~ msgstr "Tama_ina:"
+#: ../settings.ui.h:53
+msgid "Show tooltips for the keyboard&apos;s buttons."
+msgstr "Erakutsi teklatuko botoien argibideak."
 
-#~ msgid "B_order width:"
-#~ msgstr "Ertzaren _zabalera:"
+#: ../settings.ui.h:54
+msgid "Show tooltips for the keyboard's buttons."
+msgstr "Erakutsi teklatuko botoien argibideak."
 
-#~ msgid "Key Style"
-#~ msgstr "Tekla-estiloa"
+#: ../settings.ui.h:55
+msgid "_Show status icon"
+msgstr "_Erakutsi egoera-ikonoa"
 
-#~ msgid "_Key:"
-#~ msgstr "_Tekla:"
+#: ../settings.ui.h:56
+msgid "Show the status item. A click on that icon hides or shows Onboard."
+msgstr ""
+"Erakutsi egoera-elementua. Ikono hau klikatzean Onboard erakutsi edo "
+"ezkutatzen da."
 
-#~ msgid "_Border:"
-#~ msgstr "_Ertza:"
+#: ../settings.ui.h:57
+msgid "Status icon _provider:"
+msgstr ""
 
-#~ msgid "Gradients"
-#~ msgstr "Gradienteak"
+#: ../settings.ui.h:58
+msgid ""
+"<b>AppIndicator</b> (default) is recommended for broadest compatibility. A "
+"middle click on the icon shows the keyboard. In KDE Plasma a left click does "
+"the same.\n"
+"\n"
+"<b>GtkStatusIcon</b> isn't supported well anymore by various desktop "
+"environments, but generally allows to show the keyboard on left click.\n"
+"\n"
+"Requires restart."
+msgstr ""
 
-#~ msgid "_Strength:"
-#~ msgstr "_Indarra:"
+#: ../settings.ui.h:63
+msgid "Desktop Integration"
+msgstr "Mahaigainarekin integrazioa"
 
-#~ msgid "Shadow"
-#~ msgstr "Itzala"
+#: ../settings.ui.h:64
+msgid "Dock to screen edge"
+msgstr ""
 
-#~ msgid "Keys"
-#~ msgstr "Teklak"
+#: ../settings.ui.h:65
+msgid "Dock the keyboard to the edge of the screen."
+msgstr ""
 
-#~ msgid "_Font:"
-#~ msgstr "_Letra-tipoa:"
+#: ../settings.ui.h:66
+#, fuzzy
+msgctxt "Label of settings button on preferences page Window."
+msgid "_Settings"
+msgstr "_Ezarpenak"
 
-#~ msgid "_Attributes:"
-#~ msgstr "_Atributuak:"
+#: ../settings.ui.h:67
+msgid "Docking"
+msgstr ""
 
-#~ msgid "Font"
-#~ msgstr "Letra-tipoa"
+#: ../settings.ui.h:68
+#, fuzzy
+msgid "Show window _decoration"
+msgstr "Erakutsi/Ezkutatu aukerak"
 
-#~ msgid "I_ndependent size"
-#~ msgstr "Tamaina i_ndependentea"
+#: ../settings.ui.h:69
+msgid "Show window caption and frame."
+msgstr ""
 
-#~ msgid "_Super key:"
-#~ msgstr "_Super tekla:"
+#: ../settings.ui.h:70
+msgid "Show always on visible _workspace"
+msgstr ""
 
-#~ msgid "Labels"
-#~ msgstr "Etiketak"
+#: ../settings.ui.h:71
+msgid "&quot;Sticky&quot; mode for keyboard and floating icon."
+msgstr ""
+
+#: ../settings.ui.h:72
+msgid "\"Sticky\" mode for keyboard and floating icon."
+msgstr ""
+
+#: ../settings.ui.h:73
+msgid "_Force window to top"
+msgstr ""
+
+#: ../settings.ui.h:74
+msgid "Try harder to keep Onboard above anything on-screen."
+msgstr ""
+
+#: ../settings.ui.h:75
+msgid "Keep _aspect ratio"
+msgstr "Mantendu _aspektu-erlazioa"
+
+#: ../settings.ui.h:76
+msgid "Constrain window size to the layout&apos;s aspect ratio."
+msgstr ""
+
+#: ../settings.ui.h:77
+msgid "Constrain window size to the layout's aspect ratio."
+msgstr ""
+
+#: ../settings.ui.h:78
+#, fuzzy
+msgid "Floating Window Options"
+msgstr "Leihoaren aukerak"
+
+#: ../settings.ui.h:79
+#, fuzzy
+msgid "Window options"
+msgstr "Leihoaren aukerak"
+
+#: ../settings.ui.h:80
+msgid "Wind_ow:"
+msgstr "_Leihoa:"
+
+#: ../settings.ui.h:81
+#, fuzzy
+msgid "Transparency of the whole keyboard window. Requires compositing."
+msgstr "Teklatuaren atzeko planoaren gardentasuna"
+
+#: ../settings.ui.h:82 ../settings_theme_dialog.ui.h:5
+msgid "_Background:"
+msgstr "_Atzeko planoa:"
+
+#: ../settings.ui.h:83
+msgid "Transparency of the keyboard background"
+msgstr "Teklatuaren atzeko planoaren gardentasuna"
+
+#: ../settings.ui.h:84
+msgid "_No background"
+msgstr "Atzeko planorik _ez"
+
+#: ../settings.ui.h:85
+msgid "Show the desktop through the gaps between keys."
+msgstr ""
+
+#: ../settings.ui.h:86
+msgid "Transparency"
+msgstr "Gardentasuna"
+
+#: ../settings.ui.h:87
+#, fuzzy
+msgid "Set _transparency to"
+msgstr "Gardentasuna"
+
+#: ../settings.ui.h:88
+msgid "Enable inactive transparency. Requires compositing."
+msgstr ""
+
+#: ../settings.ui.h:89
+msgid ""
+"Transparency when the pointer leaves the keyboard. Requires compositing."
+msgstr ""
+
+#: ../settings.ui.h:90
+msgid "after"
+msgstr ""
+
+#: ../settings.ui.h:91
+msgid "Delay in seconds until the inactive transparency takes effect."
+msgstr ""
+
+#: ../settings.ui.h:92
+msgid "seconds"
+msgstr "segundo"
+
+#: ../settings.ui.h:93
+msgid "When Inactive"
+msgstr "Inaktibo dagoenean"
+
+#: ../settings.ui.h:94
+msgid "_Window handles of the keyboard window:"
+msgstr ""
+
+#: ../settings.ui.h:95
+msgid "_Window handles of the floating icon:"
+msgstr ""
+
+#: ../settings.ui.h:96
+msgid "Resize Protection"
+msgstr ""
+
+#: ../settings.ui.h:97
+msgid "Name"
+msgstr "Izena"
+
+#: ../settings.ui.h:98
+msgid "Description"
+msgstr "Deskribapena"
+
+#: ../settings.ui.h:99
+msgctxt "Label of new layout button on preferences page Layout."
+msgid "_New"
+msgstr ""
+
+#: ../settings.ui.h:100
+#, fuzzy
+msgctxt "Label of delete layout button on preferences page Layout."
+msgid "_Delete"
+msgstr "_Ezabatu"
+
+#: ../settings.ui.h:101
+#, fuzzy
+msgctxt "Label of open folder button on preferences page Layout."
+msgid "_Open layouts folder"
+msgstr "_Ireki diseinuen karpeta"
+
+#: ../settings.ui.h:102
+msgctxt "Label of about layout button on preferences page Layout."
+msgid "_About"
+msgstr ""
+
+#: ../settings.ui.h:103
+msgctxt "Label of new theme button on preferences page Theme."
+msgid "_New"
+msgstr ""
+
+#: ../settings.ui.h:104
+#, fuzzy
+msgctxt "Label of delete theme  button on preferences page Theme."
+msgid "_Delete"
+msgstr "_Ezabatu"
+
+#: ../settings.ui.h:105
+#, fuzzy
+msgctxt "Label of customize theme button on preferences page Theme."
+msgid "C_ustomize theme"
+msgstr "_Pertsonalizatu gaia"
+
+#: ../settings.ui.h:106
+msgid "Follow _system theme"
+msgstr "Jarraitu _sistemaren gaia"
+
+#: ../settings.ui.h:107
+msgid "Remember what Onboard theme was last used for every system theme."
+msgstr ""
+
+#: ../settings.ui.h:108
+msgid ""
+"Snippets are pieces of text which are entered when the corresponding button "
+"in Onboard is pressed."
+msgstr ""
+"Adabakiak Paneleko botoi egokia sakatzean idazten diren testu zatiak dira."
+
+#: ../settings.ui.h:109
+msgctxt "Label of add snippet button on preferences page Snippets."
+msgid "_Add"
+msgstr ""
+
+#: ../settings.ui.h:110
+msgctxt "Label of remove snippet button on preferences page Snippets."
+msgid "_Remove"
+msgstr ""
+
+#: ../settings.ui.h:111
+msgid "Play sound"
+msgstr "Erreproduzitu soinua"
+
+#: ../settings.ui.h:112
+msgid "Play click sound on keypress."
+msgstr "Erreproduzitu soinua teklak sakatzean"
+
+#: ../settings.ui.h:113
+#, fuzzy
+msgid "Place sound in space"
+msgstr "Erreproduzitu soinua teklak sakatzean"
+
+#: ../settings.ui.h:114
+msgid ""
+"Place sound in space between speakers depending on the key's position on "
+"screen"
+msgstr ""
+
+#: ../settings.ui.h:115
+msgid "Show label popups"
+msgstr ""
+
+#: ../settings.ui.h:116
+msgid "Show label popups above pressed keys."
+msgstr ""
+
+#: ../settings.ui.h:117
+msgid "Popup size:"
+msgstr ""
+
+#: ../settings.ui.h:118
+msgid "Key-press Feedback"
+msgstr ""
+
+#: ../settings.ui.h:119
+msgid "Show secondary labels"
+msgstr "Erakutsi bigarren mailako etiketak"
+
+#: ../settings.ui.h:120
+msgid "Show characters reachable with or without the shift key."
+msgstr ""
+
+#: ../settings.ui.h:121
+#, fuzzy
+msgid "Key Labels"
+msgstr "Etiketak"
+
+#: ../settings.ui.h:122
+msgid "Upper case on right click"
+msgstr ""
+
+#: ../settings.ui.h:123
+msgid "Temporarily enable SHIFT when clicking with the secondary button."
+msgstr ""
+
+#: ../settings.ui.h:124
+msgid "Key Behaviour"
+msgstr ""
+
+#: ../settings.ui.h:125
+msgid "_Long press action:"
+msgstr ""
+
+#: ../settings.ui.h:126
+msgid ""
+"Choose between key-repeat or long-press menus. Mainly affects alpha-numeric "
+"keys."
+msgstr ""
+
+#: ../settings.ui.h:127
+msgid "Modifier _behavior:"
+msgstr ""
+
+#: ../settings.ui.h:128
+msgid "Behavior of modifier and layer keys."
+msgstr ""
+
+#: ../settings.ui.h:129
+msgid "Modifier auto-release delay in seconds:"
+msgstr ""
+
+#: ../settings.ui.h:130
+msgid ""
+"Seconds of inactivity until active modifiers and layer keys are released. 0 "
+"to disable."
+msgstr ""
+
+#: ../settings.ui.h:131
+msgid "Modifier auto-release after hide in seconds:"
+msgstr ""
+
+#: ../settings.ui.h:132
+msgid ""
+"Time after hiding the keyboard in seconds until latched and locked modifiers "
+"and layer keys are released automatically. Leave at 0.0 to not automatically "
+"release them."
+msgstr ""
+
+#: ../settings.ui.h:133
+msgid "0,00"
+msgstr ""
+
+#: ../settings.ui.h:134
+msgid "Key Behavior"
+msgstr ""
+
+#: ../settings.ui.h:135
+msgid "_Touch input:"
+msgstr ""
+
+#: ../settings.ui.h:136
+#, fuzzy
+msgid "_Input event source:"
+msgstr "Sarrerako gailua"
+
+#: ../settings.ui.h:137
+msgid ""
+"Choose &apos;XInput&apos; for more reliable typing into text entries with "
+"pop-up selections. The &apos;GTK&apos; option offers better compatibility, "
+"but typing may fail in the presence of pointer grabs, e.g. with open pop-up "
+"windows."
+msgstr ""
+
+#: ../settings.ui.h:138
+msgid ""
+"Choose 'XInput' for more reliable typing into text entries with pop-up "
+"selections. The 'GTK' option offers better compatibility, but typing may "
+"fail in the presence of pointer grabs, e.g. with open pop-up windows."
+msgstr ""
+
+#: ../settings.ui.h:139
+#, fuzzy
+msgid "Input Options"
+msgstr "Aukerak"
+
+#: ../settings.ui.h:140
+msgid "Delay between keystrokes in milliseconds:"
+msgstr ""
+
+#: ../settings.ui.h:141
+msgid ""
+"Increase this if key-strokes get lost when inserting word suggestions or "
+"snippets into Firefox or other Gtk-2 applications. Has no effect on Gtk-3 "
+"applications."
+msgstr ""
+
+#: ../settings.ui.h:142
+msgid "Key-stroke generator"
+msgstr ""
+
+#: ../settings.ui.h:143
+msgid ""
+"<b>Auto</b>: let Onboard decide, recommended.\n"
+"\n"
+"<b>XTest</b> is the default for all X based desktop environments.\n"
+"\n"
+"<b>uinput</b> should be available on all linux-based systems, including X, "
+"Wayland and MIR-based desktops, but requires write permission for /dev/"
+"uinput.\n"
+"\n"
+"<b>AT-SPI</b> has limited support for key-stroke generation, and is only "
+"recommended for testing."
+msgstr ""
+
+#: ../settings.ui.h:150
+#, fuzzy
+msgid "Key-stroke Generation"
+msgstr "Mahaigainarekin integrazioa"
+
+#: ../settings.ui.h:151
+msgid "Popup time [s]:"
+msgstr ""
+
+#: ../settings.ui.h:152
+msgid "Affects how long a key popup stays open."
+msgstr ""
+
+#: ../settings.ui.h:153
+msgid "0.15"
+msgstr ""
+
+#: ../settings.ui.h:154
+#, fuzzy
+msgid "Animation"
+msgstr "Ekintza:"
+
+#: ../settings.ui.h:155
+msgid "Advanced"
+msgstr "Aurreratua"
+
+#: ../settings.ui.h:156
+msgid ""
+"Show Onboard when there is a recognized text entry in focus. Requires Gnome "
+"Accessibility."
+msgstr ""
+
+#: ../settings.ui.h:157
+msgid "Keyboard movement strategy:"
+msgstr ""
+
+#: ../settings.ui.h:158
+msgid "Chose how the keyboard window moves when a text entry is activated."
+msgstr ""
+
+#: ../settings.ui.h:159
+msgid "_Hide when typing on a physical keyboard"
+msgstr ""
+
+#: ../settings.ui.h:160
+msgid ""
+"Hide Onboard when any key is pressed on a physical keyboard. Requires input "
+"event source \"XInput\"."
+msgstr ""
+"Ezkutatu Onboard teklatu fisiko batean edozein tekla sakatzean. \"XInput\" "
+"sarrerako gertaeren iturburua behar du."
+
+#: ../settings.ui.h:161
+msgid "Stay hidden:"
+msgstr "Jarraitu izkutuan:"
+
+#: ../settings.ui.h:162
+msgid ""
+"Once hidden by a physical key-press, auto-show is paused. Select the pause "
+"duration here."
+msgstr ""
+"Tekla fisiko bat sakatzean ezkutatu ondoren automatikoki erakustea pausatzen "
+"da. Hautatu etenaldiaren iraupena hemen."
+
+#: ../settings.ui.h:163
+#, fuzzy
+msgid "Auto-show only in tablet mode"
+msgstr "Erakutsi _automatikoki testua editatzean"
+
+#: ../settings.ui.h:164
+msgid ""
+"Requires driver support for SW_TABLET_MODE and a running instance of acpid."
+msgstr ""
+
+#: ../settings.ui.h:165
+msgid ""
+"Alternatively, some devices generate key events on entering and leaving "
+"tablet mode. Run 'xinput test-xi2 3 ' to find these key presses and enter "
+"their 'detail' values below."
+msgstr ""
+
+#: ../settings.ui.h:166
+msgid "Hotkey received when entering tablet mode:"
+msgstr ""
+
+#: ../settings.ui.h:167
+msgid "Hotkey received when leaving tablet mode:"
+msgstr ""
+
+#: ../settings.ui.h:168
+msgid "File that contains the current device state:"
+msgstr ""
+
+#: ../settings.ui.h:169
+msgid "Regular expression to match for tablet-mode:"
+msgstr ""
+
+#: ../settings.ui.h:170
+msgid "Convertible Devices"
+msgstr ""
+
+#: ../settings.ui.h:171
+msgid "Don't auto-show while external keyboards are connected"
+msgstr ""
+
+#: ../settings.ui.h:172
+msgid "Detected keyboard devices:"
+msgstr ""
+
+#: ../settings.ui.h:173
+msgid ""
+"Check 'Ignore' for devices that are always connected and should not block "
+"auto-show."
+msgstr ""
+
+#: ../settings.ui.h:174
+#, fuzzy
+msgid "External Keyboards"
+msgstr "Irten teklatutik"
+
+#: ../settings.ui.h:175
+#, fuzzy
+msgid "Show _suggestions"
+msgstr "Iradokizun gehiago"
+
+#: ../settings.ui.h:176
+msgid "Enable word completion and prediction."
+msgstr ""
+
+#: ../settings.ui.h:177
+#, fuzzy
+msgid "Show spelling suggestions"
+msgstr "Iradokizun gehiago"
+
+#: ../settings.ui.h:178
+msgid "Check spelling of the word at or before the cursor."
+msgstr ""
+
+#: ../settings.ui.h:179
+msgid "_Learn from typed text"
+msgstr ""
+
+#: ../settings.ui.h:180
+msgid ""
+"Remember new words, their recency and frequency to improve the suggestions "
+"over time."
+msgstr ""
+
+#: ../settings.ui.h:181
+msgid "Insert word _separators"
+msgstr ""
+
+#: ../settings.ui.h:182
+msgid ""
+"Add and remove spaces when inserting word suggestions followed by "
+"punctuation characters."
+msgstr ""
+
+#: ../settings.ui.h:183
+msgid "Options"
+msgstr "Aukerak"
+
+#: ../settings.ui.h:184
+#, fuzzy
+msgid "Show more suggestions arrow"
+msgstr "Iradokizun gehiago"
+
+#: ../settings.ui.h:185
+msgid "Step forward and backward through the available suggestions."
+msgstr ""
+
+#: ../settings.ui.h:186
+#, fuzzy
+msgid "Show button to pause learning"
+msgstr "Erakutsi botoi bat hizkuntza hautatzeko."
+
+#: ../settings.ui.h:187
+msgid "Words typed while this button is pressed won't be remembered."
+msgstr ""
+
+#: ../settings.ui.h:188
+msgid "Show lan_guage switcher"
+msgstr "Erakutsi _hizkuntza-aldatzailea"
+
+#: ../settings.ui.h:189
+msgid "Show a button for language selection."
+msgstr "Erakutsi botoi bat hizkuntza hautatzeko."
+
+#: ../settings.ui.h:190
+msgid "Buttons"
+msgstr "Botoiak"
+
+#: ../settings.ui.h:191
+#, fuzzy
+msgid "Word Suggestions"
+msgstr "Iradokizun gehiago"
+
+#: ../settings.ui.h:192
+msgid "Auto-capitalize while typing"
+msgstr ""
+
+#: ../settings.ui.h:193
+msgid "Automatically capitalize sentence begins and name words."
+msgstr ""
+
+#: ../settings.ui.h:194
+msgid "Auto-correct spelling"
+msgstr ""
+
+#: ../settings.ui.h:195
+msgid "Automatically correct the last word."
+msgstr ""
+
+#: ../settings.ui.h:196
+msgid "The spell check engine to use."
+msgstr ""
+
+#: ../settings.ui.h:197
+msgid "Spell-check backend:"
+msgstr ""
+
+#: ../settings.ui.h:198
+msgid "Auto-correction"
+msgstr ""
+
+#: ../settings.ui.h:199
+msgid "While  learning is paused:"
+msgstr ""
+
+#: ../settings.ui.h:200
+#, fuzzy
+msgid "Learning"
+msgstr "Eskaneatzen"
+
+#: ../settings.ui.h:201
+msgid "Enable  keyboard _scanning"
+msgstr "Gaitu teklatua e_skaneatzea"
+
+#: ../settings.ui.h:202
+#, fuzzy
+msgctxt ""
+"Label of keyboard scanning settings button on preferences page Universal "
+"Access."
+msgid "Sc_anner Settings"
+msgstr "Eskanerraren ezarpenak"
+
+#: ../settings.ui.h:203
+msgid "Keyboard Scanning"
+msgstr "Teklatua eskaneatzea"
+
+#: ../settings.ui.h:204
+msgid "_Delay:"
+msgstr "_Atzerapena:"
+
+#: ../settings.ui.h:205
+msgid "_Motion threshold:"
+msgstr ""
+
+#: ../settings.ui.h:206
+msgid "Time in seconds before a click is triggered."
+msgstr ""
+
+#: ../settings.ui.h:207
+msgid "Distance in pixels before movement will be recognized."
+msgstr ""
+
+#: ../settings.ui.h:208
+msgid "Hide hover click window"
+msgstr ""
+
+#: ../settings.ui.h:209
+msgid "Hide the system-provided hover click window while Onboard is running."
+msgstr ""
+
+#: ../settings.ui.h:210
+msgid "Enable click type window on exit"
+msgstr ""
+
+#: ../settings.ui.h:211
+msgid ""
+"Always enable the system-provided hover click window when exiting Onboard."
+msgstr ""
+
+#: ../settings.ui.h:212
+#, fuzzy
+msgid "Hover Click"
+msgstr "Klik bikoitza"
+
+#: ../settings_docking_dialog.ui.h:1
+msgid "Top"
+msgstr "Goian"
+
+#: ../settings_docking_dialog.ui.h:2
+msgid "Bottom"
+msgstr "Behean"
+
+#: ../settings_docking_dialog.ui.h:3
+msgid "Active Monitor"
+msgstr "Monitore aktiboa"
+
+#: ../settings_docking_dialog.ui.h:4
+msgid "Primary Monitor"
+msgstr "Monitore nagusia"
+
+#: ../settings_docking_dialog.ui.h:5
+msgid "Monitor 0"
+msgstr "0. monitorea"
+
+#: ../settings_docking_dialog.ui.h:6
+msgid "Monitor 1"
+msgstr "1. monitorea"
+
+#: ../settings_docking_dialog.ui.h:7
+msgid "Monitor 2"
+msgstr "2. monitorea"
+
+#: ../settings_docking_dialog.ui.h:8
+msgid "Monitor 3"
+msgstr "3. monitorea"
+
+#: ../settings_docking_dialog.ui.h:9
+msgid "Monitor 4"
+msgstr "4. monitorea"
+
+#: ../settings_docking_dialog.ui.h:10
+msgid "Monitor 5"
+msgstr "5. monitorea"
+
+#: ../settings_docking_dialog.ui.h:11
+msgid "Monitor 6"
+msgstr "6. monitorea"
+
+#: ../settings_docking_dialog.ui.h:12
+msgid "Monitor 7"
+msgstr "7. monitorea"
+
+#: ../settings_docking_dialog.ui.h:13
+msgid "Monitor 8"
+msgstr "8. monitorea"
+
+#: ../settings_docking_dialog.ui.h:14
+#, fuzzy
+msgid "Docking settings"
+msgstr "Erakutsi ezarpenak"
+
+#: ../settings_docking_dialog.ui.h:15
+msgctxt "Label of the close button of the docking settings dialog."
+msgid "_Close"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:16
+msgid "Shrink workarea"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:17
+msgid "Shrink the available space for maximized windows."
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:18
+msgid "Expand on landscape screens"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:19
+msgid "Expand keyboard to the width of the workarea."
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:20
+msgid "Expand on portrait screens"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:21
+msgid "Dock to screen edge:"
+msgstr ""
+
+#: ../settings_docking_dialog.ui.h:22
+#, fuzzy
+msgid "Dock to monitor:"
+msgstr "Monitore aktiboa"
+
+#: ../settings_scanner_dialog.ui.h:1
+msgid "Automatic scan for 1 switch"
+msgstr ""
+
+#: ../settings_scanner_dialog.ui.h:2
+msgid "Critical overscan for 1 switch"
+msgstr ""
+
+#: ../settings_scanner_dialog.ui.h:3
+msgid "Step scan for 2 switches"
+msgstr ""
+
+#: ../settings_scanner_dialog.ui.h:4
+msgid "Directed scan for 3 or 5 switches"
+msgstr ""
+
+#: ../settings_scanner_dialog.ui.h:5
+msgid "Scanner Settings"
+msgstr "Eskanerraren ezarpenak"
+
+#: ../settings_scanner_dialog.ui.h:6
+msgctxt "Label of the close button of the scanner settings dialog."
+msgid "_Close"
+msgstr ""
+
+#: ../settings_scanner_dialog.ui.h:7
+msgid "Select a scanning _profile:"
+msgstr "Hautatu eskaneatzeko _profil bat:"
+
+#: ../settings_scanner_dialog.ui.h:8
+msgid "_Step interval:"
+msgstr "_Pausoaren tartea:"
+
+#: ../settings_scanner_dialog.ui.h:9
+msgid "Sc_an cycles:"
+msgstr ""
+
+#: ../settings_scanner_dialog.ui.h:10
+msgid ""
+"The time the scanner rests on a key or group before moving to the next. (in "
+"seconds)"
+msgstr ""
+
+#: ../settings_scanner_dialog.ui.h:11
+msgid ""
+"The number of times the scanner cycles through the entire keyboard before it "
+"stops."
+msgstr ""
+
+#: ../settings_scanner_dialog.ui.h:12
+msgid "Step _only during switch down"
+msgstr ""
+
+#: ../settings_scanner_dialog.ui.h:13
+msgid "Progress the highlight only while the switch is held down."
+msgstr ""
+
+#: ../settings_scanner_dialog.ui.h:14
+#, fuzzy
+msgid "_Forward interval:"
+msgstr "_Pausoaren tartea:"
+
+#: ../settings_scanner_dialog.ui.h:15
+#, fuzzy
+msgid "_Backtrack interval:"
+msgstr "_Pausoaren tartea:"
+
+#: ../settings_scanner_dialog.ui.h:16
+msgid ""
+"The time the scanner rests on a key  while progressing forward. (in seconds)"
+msgstr ""
+
+#: ../settings_scanner_dialog.ui.h:17
+msgid ""
+"The time the scanner rests on a key  while moving backwards. (in seconds)"
+msgstr ""
+
+#: ../settings_scanner_dialog.ui.h:18
+msgid "Backtrack _steps:"
+msgstr ""
+
+#: ../settings_scanner_dialog.ui.h:19
+msgid "The number of keys the scanner steps back before moving forward again."
+msgstr ""
+
+#: ../settings_scanner_dialog.ui.h:20
+msgid "_Alternate switch actions"
+msgstr ""
+
+#: ../settings_scanner_dialog.ui.h:21
+msgid ""
+"Swap the scan actions after every key activation. The Step action will "
+"become the Activate action and vice versa."
+msgstr ""
+
+#: ../settings_scanner_dialog.ui.h:22
+msgid "Profiles"
+msgstr "Profilak"
+
+#: ../settings_scanner_dialog.ui.h:23
+msgid "_Select an input device:"
+msgstr "_Hautatu sarrerako gailu bat"
+
+#: ../settings_scanner_dialog.ui.h:24
+msgid "_Use this device only for scanning"
+msgstr "_Erabili gailu hau eskaneatzeko soilik"
+
+#: ../settings_scanner_dialog.ui.h:25
+msgid ""
+"The selected device should not control the system mouse cursor or the "
+"keyboard caret."
+msgstr ""
+
+#: ../settings_scanner_dialog.ui.h:26
+msgid "Input Device"
+msgstr "Sarrerako gailua"
+
+#: ../settings_theme_dialog.ui.h:1
+msgid "Customize Theme"
+msgstr "Pertsonalizatu gaia"
+
+#: ../settings_theme_dialog.ui.h:2
+#, fuzzy
+msgctxt "Label of the revert button of the theme settings dialog."
+msgid "_Revert"
+msgstr "inoiz ez"
+
+#: ../settings_theme_dialog.ui.h:3
+msgctxt "Label of the close button of the theme settings dialog."
+msgid "_Close"
+msgstr ""
+
+#: ../settings_theme_dialog.ui.h:4
+msgid "Color Sche_me"
+msgstr "Kolore-eske_ma"
+
+#: ../settings_theme_dialog.ui.h:7
+msgid "_Angle:"
+msgstr "_Angelua:"
+
+#: ../settings_theme_dialog.ui.h:8
+msgid "Light Direction"
+msgstr ""
+
+#: ../settings_theme_dialog.ui.h:10
+msgid "_Style:"
+msgstr "_Estiloa:"
+
+#: ../settings_theme_dialog.ui.h:11
+msgid "R_oundness:"
+msgstr "_Biribiltasuna:"
+
+#: ../settings_theme_dialog.ui.h:12
+msgid "S_ize:"
+msgstr "Tama_ina:"
+
+#: ../settings_theme_dialog.ui.h:13
+msgid "B_order width:"
+msgstr "Ertzaren _zabalera:"
+
+#: ../settings_theme_dialog.ui.h:14
+msgid "Key Style"
+msgstr "Tekla-estiloa"
+
+#: ../settings_theme_dialog.ui.h:15
+msgid "_Key:"
+msgstr "_Tekla:"
+
+#: ../settings_theme_dialog.ui.h:16
+msgid "_Border:"
+msgstr "_Ertza:"
+
+#: ../settings_theme_dialog.ui.h:17
+msgid "Gradients"
+msgstr "Gradienteak"
+
+#: ../settings_theme_dialog.ui.h:18
+msgid "_Strength:"
+msgstr "_Indarra:"
+
+#: ../settings_theme_dialog.ui.h:19
+msgid "Shadow"
+msgstr "Itzala"
+
+#: ../settings_theme_dialog.ui.h:20
+msgid "Keys"
+msgstr "Teklak"
+
+#: ../settings_theme_dialog.ui.h:21
+msgid "_Font:"
+msgstr "_Letra-tipoa:"
+
+#: ../settings_theme_dialog.ui.h:22
+msgid "_Attributes:"
+msgstr "_Atributuak:"
+
+#: ../settings_theme_dialog.ui.h:23
+msgid "Font"
+msgstr "Letra-tipoa"
+
+#: ../settings_theme_dialog.ui.h:24
+msgid "I_ndependent size"
+msgstr "Tamaina i_ndependentea"
+
+#: ../settings_theme_dialog.ui.h:25
+msgid "_Super key:"
+msgstr "_Super tekla:"
+
+#: ../settings_theme_dialog.ui.h:26
+msgid "Label Override"
+msgstr ""
+
+#: ../settings_theme_dialog.ui.h:27
+msgid "Labels"
+msgstr "Etiketak"
 
 #~ msgid "Quit onBoard"
 #~ msgstr "Irten onBoard-etik"
@@ -1578,9 +2488,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Aldatu\n"
 #~ "Botoiak"
-
-#~ msgid "Show settings"
-#~ msgstr "Erakutsi ezarpenak"
 
 #~ msgid "Enter text for snippet"
 #~ msgstr "Ebakinarentzako testua sartu"
@@ -1613,9 +2520,6 @@ msgstr ""
 
 #~ msgid "Layouts"
 #~ msgstr "Diseinuak"
-
-#~ msgid "Scanning"
-#~ msgstr "Eskaneatzen"
 
 #~ msgid "Snippet"
 #~ msgstr "Ebakina"
@@ -1652,15 +2556,6 @@ msgstr ""
 #~ "Erakutsi estatus-tresna. Klik bat ikono horren gainean panela ezkutatu "
 #~ "edo erakusten du."
 
-#~ msgid ""
-#~ "Show onboard when the dialog to unlock the screen appears; this way "
-#~ "onboard can be used for example to enter the password to dismiss the "
-#~ "screensaver when it is set to ask for it."
-#~ msgstr ""
-#~ "Erakutsi panela pantaila desblokeatzeko elkarrizketa agertzen denean; "
-#~ "honela panela erabili daiteke adibidez pasahitza idazteko pantaila-"
-#~ "babeslea baztertzeko zuri galdetu ordez aukera hori ezarrita badago."
-
 #~ msgid "_Password dialogs as normal windows"
 #~ msgstr "_Pasahitz-elkarrizketak leiho arruntak bezala"
 
@@ -1669,9 +2564,6 @@ msgstr ""
 
 #~ msgid "Show/Hide Options"
 #~ msgstr "Erakutsi/Ezkutatu aukerak"
-
-#~ msgid "Window Options"
-#~ msgstr "Leihoaren aukerak"
 
 #~ msgid "No file manager to open layout folder"
 #~ msgstr "Fitxategi-kudeatzailerik ez diseinuen karpeta irekitzeko"
@@ -1702,12 +2594,6 @@ msgstr ""
 
 #~ msgid "1"
 #~ msgstr "1"
-
-#~ msgid "Lock"
-#~ msgstr "Blokeatu"
-
-#~ msgid "Double-click to lock"
-#~ msgstr "Klik bikoitza blokeatzeko"
 
 #~ msgid "Window management"
 #~ msgstr "Leihoen kudeaketa"
@@ -1741,18 +2627,6 @@ msgstr ""
 
 #~ msgid "column"
 #~ msgstr "zutabea"
-
-#~ msgid "_Settings"
-#~ msgstr "_Ezarpenak"
-
-#~ msgid "_Open layouts folder"
-#~ msgstr "_Ireki diseinuen karpeta"
-
-#~ msgid "C_ustomize theme"
-#~ msgstr "_Pertsonalizatu gaia"
-
-#~ msgid "Sc_anner Settings"
-#~ msgstr "Eskanerraren ezarpenak"
 
 #~ msgid "Flexible onscreen keyboard for GNOME"
 #~ msgstr "Pantailako teklatu moldagarria GNOMErako"
