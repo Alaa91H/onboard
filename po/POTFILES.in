@@ -70,3 +70,7 @@ setup.py
 tools/fix_glade_ids.py
 tools/gen_gschema.py
 tools/xembed_socket.py
+settings.ui
+settings_docking_dialog.ui
+settings_scanner_dialog.ui
+settings_theme_dialog.ui
