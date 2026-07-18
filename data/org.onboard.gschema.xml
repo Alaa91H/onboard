@@ -25,6 +25,11 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
         <value nick="AppIndicator" value="2"/>
     </enum>
 
+    <enum id="org.onboard.keyboard.StatusIconLeftClickAction">
+        <value nick="menu" value="0"/>
+        <value nick="toggle" value="1"/>
+    </enum>
+
     <schema id="org.onboard" path="/org/onboard/">
         <key name="schema-version" type="s">
             <default>""</default>
@@ -66,6 +71,12 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
             <summary>Status icon provider</summary>
             <description>Choose between status icon implementations. AppIndicator shows Onboard on middle-click activation, GtkStatusIcon on left-click.
 If unavailable, 'AppIndicator' falls back to GtkStatusIcon.
+            </description>
+        </key>
+        <key name="status-icon-left-click-action" enum="org.onboard.keyboard.StatusIconLeftClickAction">
+            <default>"menu"</default>
+            <summary>Status icon left-click action</summary>
+            <description>Choose what left-clicking the status icon does. 'menu' opens the context menu (same as right-click). 'toggle' shows/hides the keyboard directly, as in versions prior to 1.4.4-4.
             </description>
         </key>
         <key name="start-minimized" type="b">

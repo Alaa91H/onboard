@@ -105,6 +105,13 @@ class StatusIconProviderEnum:
     ) = range(3)
 
 
+class StatusIconLeftClickActionEnum:
+    (
+        menu,
+        toggle,
+    ) = range(2)
+
+
 class KeySynthEnum(Enum):
     (
         AUTO,

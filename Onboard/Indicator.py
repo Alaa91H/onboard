@@ -27,7 +27,8 @@ from Onboard.Version import require_gi_versions
 require_gi_versions()
 from gi.repository import GObject, Gtk
 
-from Onboard.definitions import StatusIconProviderEnum
+from Onboard.definitions import StatusIconProviderEnum, \
+                                 StatusIconLeftClickActionEnum
 from Onboard.utils import unicode_str, run_script
 from Onboard import WaylandUtils
 
@@ -266,11 +267,21 @@ class BackendGtkStatusIcon(BackendBase):
 
         self._status_icon = Gtk.StatusIcon(icon_name=self.icon_name)
         self._status_icon.connect("activate",
-                                  lambda icon:
-                                  self._menu.popup(1, Gtk.get_current_event_time(),
-                                                   icon, self._menu_position_func))
+                                  self._on_status_icon_activate)
         self._status_icon.connect("popup-menu",
                                   self._on_status_icon_popup_menu)
+
+    def _on_status_icon_activate(self, icon):
+        """
+        Callback called when status icon left clicked.
+        Action depends on the "status-icon-left-click-action" setting.
+        """
+        if config.status_icon_left_click_action == \
+           StatusIconLeftClickActionEnum.toggle:
+            self._menu.on_show_keyboard_toggle()
+        else:
+            self._menu.popup(1, Gtk.get_current_event_time(),
+                             icon, self._menu_position_func)
 
     def set_visible(self, visible):
         self._status_icon.set_visible(visible)
@@ -335,11 +346,24 @@ class BackendAppIndicator(BackendBase):
         # Only present with AyatanaIndicators/libayatana-appindicator#4.
         if GObject.signal_lookup("activate", type(self._indicator)):
             self._indicator.connect("activate",
-                                    lambda *args:
-                                    menu.on_show_keyboard_toggle())
+                                    self._on_indicator_activate)
         else:
             _logger.warning("AppIndicator lacks 'activate' signal, "
                             "left-click toggle unavailable")
+
+    def _on_indicator_activate(self, *args):
+        """
+        Callback for the AppIndicator "activate" signal (fires e.g. on KDE/
+        Wayland where the menu doesn't auto-open on primary click).
+        Action depends on the "status-icon-left-click-action" setting.
+        """
+        if config.status_icon_left_click_action == \
+           StatusIconLeftClickActionEnum.toggle:
+            self._menu.on_show_keyboard_toggle()
+        else:
+            # No status icon widget to position against here, the menu
+            # positions itself at the pointer instead.
+            self._menu.popup(1, Gtk.get_current_event_time())
 
     def cleanup(self):
         pass

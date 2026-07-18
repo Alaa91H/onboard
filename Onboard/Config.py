@@ -45,6 +45,7 @@ from Onboard.utils          import Version, \
                                    Process, hexcolor_to_rgba, TermColors
 from Onboard.definitions    import DesktopEnvironmentEnum, \
                                    StatusIconProviderEnum, \
+                                   StatusIconLeftClickActionEnum, \
                                    InputEventSourceEnum, \
                                    TouchInputEnum, \
                                    LearningBehavior, \
@@ -646,6 +647,11 @@ class Config(ConfigObject):
                                                    "GtkStatusIcon" : 1,
                                                    "AppIndicator" : 2,
                                                   })
+        self.add_key("status-icon-left-click-action",
+                     StatusIconLeftClickActionEnum.menu,
+                     enum={"menu" : 0,
+                           "toggle" : 1,
+                          })
         self.add_key("start-minimized", False)
         self.add_key("show-tooltips", True)
         self.add_key("key-label-font", "")      # default font for all themes

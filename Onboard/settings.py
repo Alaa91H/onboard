@@ -342,6 +342,8 @@ class Settings(DialogBuilder):
 
         self.bind_combobox_id("status_icon_provider_combobox",
                               config, "status_icon_provider")
+        self.bind_combobox_id("status_icon_left_click_action_combobox",
+                              config, "status_icon_left_click_action")
         # window tab
         self.window_decoration_toggle = \
             builder.get_object("window_decoration_toggle")
@@ -690,6 +692,9 @@ class Settings(DialogBuilder):
 
         # general
         w = self.wid("status_icon_provider_box")
+        w.set_sensitive(config.show_status_icon)
+
+        w = self.wid("status_icon_left_click_action_box")
         w.set_sensitive(config.show_status_icon)
 
         self.icon_palette_toggle.set_sensitive(
