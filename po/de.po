@@ -28,7 +28,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../Onboard/Appearance.py:130
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Color scheme for theme '{filename}' not found"
 msgstr "Farbschema für das Thema »{filename}« nicht gefunden"
 
@@ -178,14 +178,14 @@ msgstr "gsettings-Schema für »{}« ist nicht installiert"
 #: ../Onboard/ConfigUtils.py:439
 #, python-brace-format
 msgid "{description} '{filename}' not found yet, retrying in default paths"
-msgstr ""
+msgstr "{description} »{filename}« noch nicht gefunden, erneuter Versuch in Standardpfaden"
 "{description} »{filename}« nicht gefunden, erneuter Versuch in "
 "voreingestellten Pfaden"
 
 #: ../Onboard/ConfigUtils.py:448
 #, python-brace-format
 msgid "unable to locate '{filename}', loading default {description} instead"
-msgstr ""
+msgstr "»{filename}« konnte nicht gefunden werden, lade stattdessen Standard-{description}"
 "»{filename}« wurde nicht gefunden, stattdessen wird die Voreinstellung "
 "{description} geladen"
 
@@ -203,7 +203,7 @@ msgstr "{description} »{filepath}« gefunden."
 #: ../Onboard/ConfigUtils.py:496
 #, python-brace-format
 msgid "{description} '{filename}' not found yet, searching in paths {paths}"
-msgstr ""
+msgstr "{description} »{filename}« noch nicht gefunden, Suche in Pfaden {paths}"
 "{description} »{filename}« wurde bei der Suche im Pfad {paths} nicht gefunden"
 
 #: ../Onboard/ConfigUtils.py:591
@@ -234,7 +234,7 @@ msgstr "Systemvorgabe: Unbekannter Schlüssel »{}« in Abschnitt »{}«"
 
 #: ../Onboard/ConfigUtils.py:656
 msgid "System defaults: Invalid enum value for key '{}' in section '{}': {}"
-msgstr ""
+msgstr "Systemvorgaben: Ungültiger Enum-Wert für Schlüssel »{}« in Abschnitt »{}«: {}"
 "Systemstandard: Ungültiger Aufzählungswert für Schlüssel »{}« in Abschnitt "
 "»{}«: {}"
 
@@ -287,7 +287,7 @@ msgstr "Onboard"
 
 #: ../Onboard/KbdWindow.py:288
 msgid "no window transparency available; screen doesn't support alpha channels"
-msgstr ""
+msgstr "Fenstertransparenz nicht verfügbar; Bildschirm unterstützt keine Alphakanäle"
 "Fensterdurchsichtigkeit nicht einstellbar, der Bildschirm unterstützt keine "
 "Alpha-Kanäle"
 
@@ -347,27 +347,22 @@ msgid "This will only affect learned suggestions."
 msgstr "Das wird nur Auswirkungen auf die gelernten Vorschläge haben."
 
 #: ../Onboard/KeyboardWidget.py:2209
-#, fuzzy
 msgid "Remove '{}' only where it occurs at text begin."
 msgstr "»{}« nur entfernen, wenn es am Textanfang steht."
 
 #: ../Onboard/KeyboardWidget.py:2212
-#, fuzzy
 msgid "Remove '{}' only where it occurs at sentence begin."
 msgstr "»{}« nur entfernen, wenn es am Satzanfang steht."
 
 #: ../Onboard/KeyboardWidget.py:2215
-#, fuzzy
 msgid "Remove '{}' only where it occurs after numbers."
-msgstr "»{}« nur entfernen, wenn es  nach einer Zahl steht."
+msgstr "»{}« nur entfernen, wenn es nach einer Zahl steht."
 
 #: ../Onboard/KeyboardWidget.py:2218
-#, fuzzy
 msgid "Remove '{}' only where it occurs after '{}'."
-msgstr "»{}« nur entfernen, wenn es  nach »{}« steht."
+msgstr "»{}« nur entfernen, wenn es nach »{}« steht."
 
 #: ../Onboard/KeyboardWidget.py:2258
-#, fuzzy
 msgid "_Close"
 msgstr "S_chließen"
 
@@ -417,7 +412,7 @@ msgstr "Die Tastaturbelegung wird von »{}« nach »{}« kopiert"
 
 #: ../Onboard/LayoutLoaderSVG.py:1042
 msgid "copy_layouts failed, unsupported layout format '{}'."
-msgstr ""
+msgstr "copy_layouts fehlgeschlagen, nicht unterstütztes Layout-Format »{}«."
 "Kopieren der Tastaturbelegungen fehlgeschlagen, nicht unterstütztes Format "
 "»{}«."
 
@@ -1319,11 +1314,11 @@ msgstr "Onboard-Einstellungen ändern"
 
 #: ../data/onboard-settings.desktop.in.h:4
 msgid "onscreen;keyboard;accessibility;utility;settings;configuration;"
-msgstr ""
+msgstr "Bildschirm;Tastatur;Barrierefreiheit;Werkzeug;Einstellungen;Konfiguration;"
 
 #: ../data/onboard.desktop.in.h:4
 msgid "onscreen;keyboard;accessibility;utility;"
-msgstr ""
+msgstr "Bildschirm;Tastatur;Barrierefreiheit;Werkzeug;"
 
 #: ../settings.ui.h:1
 msgid "Key-repeat"
@@ -1566,7 +1561,7 @@ msgstr "_Statussymbol anzeigen"
 
 #: ../settings.ui.h:58
 msgid "Show the status item. A click on that icon hides or shows Onboard."
-msgstr ""
+msgstr "Statussymbol anzeigen. Ein Klick darauf blendet Onboard ein oder aus."
 "Statussymbol anzeigen. Ein Klick auf das Symbol blendet Onboard aus oder "
 "zeigt es wieder an."
 
@@ -1665,7 +1660,7 @@ msgstr "_Fenster im Vordergrund halten"
 
 #: ../settings.ui.h:79
 msgid "Try harder to keep Onboard above anything on-screen."
-msgstr ""
+msgstr "Verstärkt versuchen, Onboard über allen anderen Fenstern zu halten."
 "Stärker versuchen Onboard vor allen anderen Bildschirminhalten anzuzeigen."
 
 #: ../settings.ui.h:80
@@ -1674,12 +1669,12 @@ msgstr "_Seitenverhältnis beibehalten"
 
 #: ../settings.ui.h:81
 msgid "Constrain window size to the layout&apos;s aspect ratio."
-msgstr ""
+msgstr "Fenstergröße auf das Seitenverhältnis des Layouts beschränken."
 "Fenstergröße auf das Seitenverhältnis der Tastaturbelegung beschränken."
 
 #: ../settings.ui.h:82
 msgid "Constrain window size to the layout's aspect ratio."
-msgstr ""
+msgstr "Fenstergröße auf das Seitenverhältnis des Layouts beschränken."
 "Fenstergröße auf das Seitenverhältnis der Tastaturbelegung beschränken."
 
 #: ../settings.ui.h:83
@@ -1696,7 +1691,7 @@ msgstr "_Fenster:"
 
 #: ../settings.ui.h:86
 msgid "Transparency of the whole keyboard window. Requires compositing."
-msgstr ""
+msgstr "Transparenz des gesamten Tastaturfensters. Erfordert Compositing."
 "Durchsichtigkeit des gesamten Tastaturfensters. Komposit wird benötigt."
 
 #: ../settings.ui.h:87 ../settings_theme_dialog.ui.h:5
@@ -1740,7 +1735,7 @@ msgstr "nach"
 
 #: ../settings.ui.h:96
 msgid "Delay in seconds until the inactive transparency takes effect."
-msgstr ""
+msgstr "Verzögerung in Sekunden, bis die Transparenz bei Inaktivität wirksam wird."
 "Verzögerung in Sekunden bis die inaktive Durchsichtigkeit in Kraft tritt."
 
 #: ../settings.ui.h:97
@@ -1812,7 +1807,7 @@ msgstr "_Systemthema verwenden"
 
 #: ../settings.ui.h:112
 msgid "Remember what Onboard theme was last used for every system theme."
-msgstr ""
+msgstr "Merken, welches Onboard-Thema zuletzt für jedes Systemthema verwendet wurde."
 "Für jedes Systemthema merken, welches Onboard-Thema zuletzt verwendet wurde."
 
 #: ../settings.ui.h:113
@@ -1927,7 +1922,7 @@ msgstr ""
 
 #: ../settings.ui.h:136
 msgid "Modifier auto-release after hide in seconds:"
-msgstr ""
+msgstr "Automatisches Lösen der Zusatztasten nach dem Ausblenden in Sekunden:"
 "Veränderung des automatischen Auslösens nach dem Ausblenden – in Sekunden:"
 
 #: ../settings.ui.h:137
@@ -2039,12 +2034,11 @@ msgstr "Steuert die Zeitspanne der Tasten-Popup Animation"
 
 #: ../settings.ui.h:158
 msgid "0.15"
-msgstr ""
+msgstr "0.15"
 
 #: ../settings.ui.h:159
-#, fuzzy
 msgid "Animation"
-msgstr "Aktion:"
+msgstr "Animation"
 
 #: ../settings.ui.h:160
 msgid "Advanced"
@@ -2064,7 +2058,7 @@ msgstr "Strategie für die Tastatur-Positionierung:"
 
 #: ../settings.ui.h:163
 msgid "Chose how the keyboard window moves when a text entry is activated."
-msgstr ""
+msgstr "Wählen, wie sich das Tastaturfenster bewegt, wenn ein Textfeld aktiviert wird."
 "Auswählen wie sich das Tastaturfenster bewegt, wenn ein Texteintrag "
 "aktiviert wurde."
 
@@ -2203,7 +2197,7 @@ msgstr "Den Pfeil »Mehr Vorschläge« anzeigen"
 
 #: ../settings.ui.h:190
 msgid "Step forward and backward through the available suggestions."
-msgstr ""
+msgstr "Vor- und zurückblättern durch die verfügbaren Vorschläge."
 "Schrittweise vorwärts und rückwärts durch die verfügbaren Vorschläge "
 "navigieren."
 
@@ -2213,7 +2207,7 @@ msgstr "Knopf zum Pausieren des Lernvorgangs anzeigen"
 
 #: ../settings.ui.h:192
 msgid "Words typed while this button is pressed won't be remembered."
-msgstr ""
+msgstr "Wörter, die bei gedrückter Taste eingegeben werden, werden nicht gespeichert."
 "Wörter die eingegeben werden, wenn diese Schaltfläche gedrückt ist, werden "
 "beim Lernen nicht berücksichtigt."
 
@@ -2306,7 +2300,7 @@ msgstr "Überfahrenklickfenster verbergen"
 
 #: ../settings.ui.h:214
 msgid "Hide the system-provided hover click window while Onboard is running."
-msgstr ""
+msgstr "Das vom System bereitgestellte Hover-Click-Fenster ausblenden, solange Onboard läuft."
 "Das vom System bereitgestellte Überfahrenklickfenster ausblenden, wenn "
 "Onboard ausgeführt wird."
 
@@ -2472,7 +2466,7 @@ msgstr "Fortschreiten _nur während Taste gedrückt"
 
 #: ../settings_scanner_dialog.ui.h:13
 msgid "Progress the highlight only while the switch is held down."
-msgstr ""
+msgstr "Hervorhebung nur fortschreiten lassen, solange der Schalter gedrückt gehalten wird."
 "Mit der Markierung nur fortschreiten, während die Taste gedrückt gehalten "
 "wird."
 
@@ -2504,7 +2498,7 @@ msgstr "Rü_ckschritte:"
 
 #: ../settings_scanner_dialog.ui.h:19
 msgid "The number of keys the scanner steps back before moving forward again."
-msgstr ""
+msgstr "Anzahl der Tasten, um die der Scanner zurückspringt, bevor er wieder vorwärts geht."
 "Anzahl an Tasten, die sich der Scanner zurück bewegt, bevor er sich wieder "
 "vorwärts bewegt."
 
