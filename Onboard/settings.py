@@ -50,6 +50,7 @@ from Onboard.utils           import unicode_str, open_utf8, escape_markup, \
 from Onboard.WindowUtils     import show_ask_string_dialog, \
                                     show_confirmation_dialog
 from Onboard.UDevTracker     import UDevTracker
+from Onboard.definitions     import StatusIconProviderEnum
 
 
 app = "onboard"
@@ -342,6 +343,8 @@ class Settings(DialogBuilder):
 
         self.bind_combobox_id("status_icon_provider_combobox",
                               config, "status_icon_provider")
+        config.status_icon_provider_notify_add(
+            lambda x: self.update_window_widgets())
         self.bind_combobox_id("status_icon_left_click_action_combobox",
                               config, "status_icon_left_click_action")
         # window tab
@@ -696,6 +699,10 @@ class Settings(DialogBuilder):
 
         w = self.wid("status_icon_left_click_action_box")
         w.set_sensitive(config.show_status_icon)
+
+        w = self.wid("status_icon_left_click_action_warning")
+        w.set_visible(config.get_effective_statusicon_provider() ==
+                      StatusIconProviderEnum.AppIndicator)
 
         self.icon_palette_toggle.set_sensitive(
             not config.is_icon_palette_last_unhide_option())

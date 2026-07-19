@@ -1599,6 +1599,15 @@ class Config(ConfigObject):
 
         return result
 
+    def get_effective_statusicon_provider(self):
+        """
+        Resolve "auto" to the provider that will actually be used.
+        """
+        sip = self.status_icon_provider
+        if sip == StatusIconProviderEnum.auto:
+            sip = self.get_preferred_statusicon_provider()
+        return sip
+
 
 class ConfigKeyboard(ConfigObject):
     """Window configuration """

@@ -834,6 +834,20 @@ Requires restart.</property>
                                             <property name="position">1</property>
                                           </packing>
                                         </child>
+                                        <child>
+                                          <object class="GtkImage" id="status_icon_left_click_action_warning">
+                                            <property name="visible">False</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="no_show_all">True</property>
+                                            <property name="icon_name">dialog-warning-symbolic</property>
+                                            <property name="tooltip_markup" translatable="yes">With AppIndicator, most desktop environments open the context menu on left-click regardless of this setting. 'Show/hide the keyboard' only takes effect where the desktop reports a separate left-click activation (e.g. KDE Plasma).</property>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">True</property>
+                                            <property name="position">2</property>
+                                          </packing>
+                                        </child>
                                       </object>
                                     </child>
                                   </object>
