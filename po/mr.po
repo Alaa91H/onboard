@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: onboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-18 16:37+0200\n"
+"POT-Creation-Date: 2026-07-19 02:36+0200\n"
 "PO-Revision-Date: 2011-10-11 14:47+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Marathi <mr@li.org>\n"
@@ -147,7 +147,7 @@ msgid ""
 "Enable accessibility now?"
 msgstr ""
 
-#: ../Onboard/Config.py:1959
+#: ../Onboard/Config.py:1968
 #, python-brace-format
 msgid "color scheme '{filename}' does not exist"
 msgstr ""
@@ -343,15 +343,15 @@ msgid "_Close"
 msgstr "बंद करा(_C)"
 
 #. model.clear()
-#: ../Onboard/KeyboardWidget.py:2302 ../Onboard/settings.py:850
+#: ../Onboard/KeyboardWidget.py:2302 ../Onboard/settings.py:857
 msgid "Core layouts"
 msgstr ""
 
-#: ../Onboard/KeyboardWidget.py:2303 ../Onboard/settings.py:851
+#: ../Onboard/KeyboardWidget.py:2303 ../Onboard/settings.py:858
 msgid "Contributions"
 msgstr "योगदान"
 
-#: ../Onboard/KeyboardWidget.py:2304 ../Onboard/settings.py:852
+#: ../Onboard/KeyboardWidget.py:2304 ../Onboard/settings.py:859
 msgid "My layouts"
 msgstr ""
 
@@ -499,41 +499,41 @@ msgstr ""
 "सूचना रीसेट केला, पण चुकीची फाइल राहील: \n"
 "'{}'"
 
-#: ../Onboard/settings.py:316
+#: ../Onboard/settings.py:317
 msgid "Onboard Preferences"
 msgstr ""
 
 #. touch_feedback_size_label: 0=auto, i.e. let Onboard guess
 #. the size of the label popup.
-#: ../Onboard/settings.py:687
+#: ../Onboard/settings.py:690
 msgid "auto"
 msgstr ""
 
-#: ../Onboard/settings.py:766
+#: ../Onboard/settings.py:773
 msgid "Copy layout '{}' to this new name:"
 msgstr ""
 
-#: ../Onboard/settings.py:779
+#: ../Onboard/settings.py:786
 msgid "Delete layout '{}'?"
 msgstr ""
 
-#: ../Onboard/settings.py:827
+#: ../Onboard/settings.py:834
 msgid "System settings not found ({}): {}"
 msgstr ""
 
-#: ../Onboard/settings.py:887
+#: ../Onboard/settings.py:894
 msgid "Author: {}"
 msgstr ""
 
-#: ../Onboard/settings.py:891
+#: ../Onboard/settings.py:898
 msgid "About Layout"
 msgstr ""
 
-#: ../Onboard/settings.py:996
+#: ../Onboard/settings.py:1003
 msgid "Enter a name for the new theme:"
 msgstr ""
 
-#: ../Onboard/settings.py:1004
+#: ../Onboard/settings.py:1011
 #, python-brace-format
 msgid ""
 "This theme file already exists.\n"
@@ -542,117 +542,117 @@ msgid ""
 "Overwrite it?"
 msgstr ""
 
-#: ../Onboard/settings.py:1021
+#: ../Onboard/settings.py:1028
 msgid "Reset selected theme to Onboard defaults?"
 msgstr ""
 
-#: ../Onboard/settings.py:1023
+#: ../Onboard/settings.py:1030
 msgid "Delete selected theme?"
 msgstr ""
 
 #. Translators: reset button of Preferences->Theme.
-#: ../Onboard/settings.py:1152
+#: ../Onboard/settings.py:1159
 msgid "_Reset"
 msgstr "मूळस्थितीत आणा (_R)"
 
 #. Translators: delete button of Preferences->Theme. It used to be
 #. stock item STOCK_DELETE until Gtk 3.10 deprecated those.
-#: ../Onboard/settings.py:1156
+#: ../Onboard/settings.py:1163
 msgid "_Delete"
 msgstr "काढून टाका (_D)"
 
 #. Translators: header of a tree view column with toggles to ignore
 #. keyboard devices (Preferences->Auto-show->External Keyboards).
-#: ../Onboard/settings.py:1293
+#: ../Onboard/settings.py:1300
 msgid "Ignore"
 msgstr ""
 
 #. Translators: header of a tree view column with device names
 #. (Preferences->Auto-show->External Keyboards).
-#: ../Onboard/settings.py:1297
+#: ../Onboard/settings.py:1304
 msgid "Device"
 msgstr ""
 
 #. Key style with flat fill- and border colors
-#: ../Onboard/settings.py:1634
+#: ../Onboard/settings.py:1641
 msgid "Flat"
 msgstr "सपाट"
 
 #. Key style with simple gradients
-#: ../Onboard/settings.py:1636 ../settings_theme_dialog.ui.h:6
+#: ../Onboard/settings.py:1643 ../settings_theme_dialog.ui.h:6
 msgid "Gradient"
 msgstr "ग्रेडियंट"
 
 #. Key style for dish-like key caps
-#: ../Onboard/settings.py:1638
+#: ../Onboard/settings.py:1645
 msgid "Dish"
 msgstr "ताटली"
 
-#: ../Onboard/settings.py:1687 ../Onboard/settings.py:1744
+#: ../Onboard/settings.py:1694 ../Onboard/settings.py:1751
 msgid "Default"
 msgstr "पूर्वनिर्धारित"
 
-#: ../Onboard/settings.py:1728
+#: ../Onboard/settings.py:1735
 msgid "Bold"
 msgstr "ठळक"
 
-#: ../Onboard/settings.py:1730
+#: ../Onboard/settings.py:1737
 msgid "Italic"
 msgstr "तिरपे"
 
-#: ../Onboard/settings.py:1732
+#: ../Onboard/settings.py:1739
 msgid "Condensed"
 msgstr ""
 
-#: ../Onboard/settings.py:1745
+#: ../Onboard/settings.py:1752
 msgid ""
 msgstr ""
 
-#: ../Onboard/settings.py:1745
+#: ../Onboard/settings.py:1752
 msgid "Ubuntu Logo"
 msgstr "उबुंटु बोधचिन्ह"
 
-#: ../Onboard/settings.py:1879
+#: ../Onboard/settings.py:1886
 msgid "Step"
 msgstr "पुढे जा"
 
-#: ../Onboard/settings.py:1880
+#: ../Onboard/settings.py:1887
 msgid "Left"
 msgstr "डावा"
 
-#: ../Onboard/settings.py:1881
+#: ../Onboard/settings.py:1888
 msgid "Right"
 msgstr "उजवा"
 
-#: ../Onboard/settings.py:1882
+#: ../Onboard/settings.py:1889
 msgid "Up"
 msgstr "वर"
 
-#: ../Onboard/settings.py:1883
+#: ../Onboard/settings.py:1890
 msgid "Down"
 msgstr "खाली"
 
-#: ../Onboard/settings.py:1884
+#: ../Onboard/settings.py:1891
 msgid "Activate"
 msgstr "सक्रिय करा"
 
-#: ../Onboard/settings.py:2053
+#: ../Onboard/settings.py:2060
 msgid "Action:"
 msgstr "कृती:"
 
-#: ../Onboard/settings.py:2217
+#: ../Onboard/settings.py:2224
 msgid "Disabled"
 msgstr ""
 
-#: ../Onboard/settings.py:2223
+#: ../Onboard/settings.py:2230
 msgid "Button"
 msgstr ""
 
-#: ../Onboard/settings.py:2278 ../Onboard/settings.py:2323
+#: ../Onboard/settings.py:2285 ../Onboard/settings.py:2330
 msgid "Press a button..."
 msgstr ""
 
-#: ../Onboard/settings.py:2325
+#: ../Onboard/settings.py:2332
 msgid "Press a key..."
 msgstr ""
 
@@ -1533,329 +1533,336 @@ msgid ""
 msgstr ""
 
 #: ../settings.ui.h:67
+msgid ""
+"With AppIndicator, most desktop environments open the context menu on left-"
+"click regardless of this setting. 'Show/hide the keyboard' only takes effect "
+"where the desktop reports a separate left-click activation (e.g. KDE Plasma)."
+msgstr ""
+
+#: ../settings.ui.h:68
 msgid "Desktop Integration"
 msgstr "डेस्कटॉप एकीकरण."
 
-#: ../settings.ui.h:68
+#: ../settings.ui.h:69
 msgid "Dock to screen edge"
 msgstr "पडद्याच्या कडेला ठेवा"
 
-#: ../settings.ui.h:69
+#: ../settings.ui.h:70
 msgid "Dock the keyboard to the edge of the screen."
 msgstr "कळफलक पडद्याच्या कडेला ठेवा"
 
-#: ../settings.ui.h:70
+#: ../settings.ui.h:71
 msgctxt "Label of settings button on preferences page Window."
 msgid "_Settings"
 msgstr "संयोजना (_S)"
 
-#: ../settings.ui.h:71
+#: ../settings.ui.h:72
 msgid "Docking"
 msgstr "डॉक करणे"
 
-#: ../settings.ui.h:72
+#: ../settings.ui.h:73
 msgid "Show window _decoration"
 msgstr "पटल सजावट दाखवा(_d)"
 
-#: ../settings.ui.h:73
+#: ../settings.ui.h:74
 msgid "Show window caption and frame."
 msgstr "पटल मथळा आणि फ्रेम दाखवा."
 
-#: ../settings.ui.h:74
+#: ../settings.ui.h:75
 msgid "Show always on visible _workspace"
 msgstr "नेहमी दृश्य कार्यक्षेत्रावर दाखवा(_w)"
 
-#: ../settings.ui.h:75
+#: ../settings.ui.h:76
 msgid "&quot;Sticky&quot; mode for keyboard and floating icon."
 msgstr "कळफलक आणि तरंगत्या चिन्हासाठी &quot;चिकट&quot; मोड"
 
-#: ../settings.ui.h:76
+#: ../settings.ui.h:77
 msgid "\"Sticky\" mode for keyboard and floating icon."
 msgstr "कळफलक आणि तरंगत्या चिन्हासाठी \"चिकट\" मोड"
 
-#: ../settings.ui.h:77
+#: ../settings.ui.h:78
 msgid "_Force window to top"
 msgstr "पटलाला सर्वात वर रहायची सक्ती करा(_F)"
 
-#: ../settings.ui.h:78
+#: ../settings.ui.h:79
 msgid "Try harder to keep Onboard above anything on-screen."
 msgstr "ऑनबोर्डला पटलावरच्या सर्व गोष्टींवर ठेवण्याचा प्रयत्न करा"
 
-#: ../settings.ui.h:79
+#: ../settings.ui.h:80
 msgid "Keep _aspect ratio"
 msgstr "प्रसर गुणोत्तर ठेवा(_a)"
 
-#: ../settings.ui.h:80
+#: ../settings.ui.h:81
 msgid "Constrain window size to the layout&apos;s aspect ratio."
 msgstr "पटल आकार मांडणी पैलू गुणोत्तराला मर्यादित ठेवा."
 
-#: ../settings.ui.h:81
+#: ../settings.ui.h:82
 msgid "Constrain window size to the layout's aspect ratio."
 msgstr "पटल आकार मांडणी पैलू गुणोत्तराला मर्यादित ठेवा."
 
-#: ../settings.ui.h:82
+#: ../settings.ui.h:83
 msgid "Floating Window Options"
 msgstr "तरंगत्या पटलाचे पर्याय"
 
-#: ../settings.ui.h:83
+#: ../settings.ui.h:84
 msgid "Window options"
 msgstr "पटल पर्याय"
 
-#: ../settings.ui.h:84
+#: ../settings.ui.h:85
 msgid "Wind_ow:"
 msgstr "पटल(_o):"
 
-#: ../settings.ui.h:85
+#: ../settings.ui.h:86
 msgid "Transparency of the whole keyboard window. Requires compositing."
 msgstr ""
 
-#: ../settings.ui.h:86 ../settings_theme_dialog.ui.h:5
+#: ../settings.ui.h:87 ../settings_theme_dialog.ui.h:5
 msgid "_Background:"
 msgstr "पार्श्वभूमी (_B):"
 
-#: ../settings.ui.h:87
+#: ../settings.ui.h:88
 msgid "Transparency of the keyboard background"
 msgstr ""
 
-#: ../settings.ui.h:88
+#: ../settings.ui.h:89
 msgid "_No background"
 msgstr "रिकामा पार्श्वभाग(_N)"
 
-#: ../settings.ui.h:89
+#: ../settings.ui.h:90
 msgid "Show the desktop through the gaps between keys."
 msgstr ""
 
-#: ../settings.ui.h:90
+#: ../settings.ui.h:91
 msgid "Transparency"
 msgstr "पारदर्शकता"
 
-#: ../settings.ui.h:91
+#: ../settings.ui.h:92
 #, fuzzy
 msgid "Set _transparency to"
 msgstr "पारदर्शकता"
 
-#: ../settings.ui.h:92
+#: ../settings.ui.h:93
 msgid "Enable inactive transparency. Requires compositing."
 msgstr ""
 
-#: ../settings.ui.h:93
+#: ../settings.ui.h:94
 msgid ""
 "Transparency when the pointer leaves the keyboard. Requires compositing."
 msgstr ""
 
-#: ../settings.ui.h:94
+#: ../settings.ui.h:95
 msgid "after"
 msgstr "नंतर"
 
-#: ../settings.ui.h:95
+#: ../settings.ui.h:96
 msgid "Delay in seconds until the inactive transparency takes effect."
 msgstr ""
 
-#: ../settings.ui.h:96
+#: ../settings.ui.h:97
 msgid "seconds"
 msgstr "सेकंद"
 
-#: ../settings.ui.h:97
+#: ../settings.ui.h:98
 msgid "When Inactive"
 msgstr "अकार्यक्षम असताना"
 
-#: ../settings.ui.h:98
+#: ../settings.ui.h:99
 msgid "_Window handles of the keyboard window:"
 msgstr ""
 
-#: ../settings.ui.h:99
+#: ../settings.ui.h:100
 msgid "_Window handles of the floating icon:"
 msgstr ""
 
-#: ../settings.ui.h:100
+#: ../settings.ui.h:101
 msgid "Resize Protection"
 msgstr ""
 
-#: ../settings.ui.h:101
+#: ../settings.ui.h:102
 msgid "Name"
 msgstr "नाव"
 
-#: ../settings.ui.h:102
+#: ../settings.ui.h:103
 msgid "Description"
 msgstr "विवरण"
 
-#: ../settings.ui.h:103
+#: ../settings.ui.h:104
 msgctxt "Label of new layout button on preferences page Layout."
 msgid "_New"
 msgstr "नवीन(_N)"
 
-#: ../settings.ui.h:104
+#: ../settings.ui.h:105
 msgctxt "Label of delete layout button on preferences page Layout."
 msgid "_Delete"
 msgstr "काढून टाका (_D)"
 
-#: ../settings.ui.h:105
+#: ../settings.ui.h:106
 msgctxt "Label of open folder button on preferences page Layout."
 msgid "_Open layouts folder"
 msgstr ""
 
-#: ../settings.ui.h:106
+#: ../settings.ui.h:107
 msgctxt "Label of about layout button on preferences page Layout."
 msgid "_About"
 msgstr "विषयी (_A)"
 
-#: ../settings.ui.h:107
+#: ../settings.ui.h:108
 msgctxt "Label of new theme button on preferences page Theme."
 msgid "_New"
 msgstr "नवीन(_N)"
 
-#: ../settings.ui.h:108
+#: ../settings.ui.h:109
 msgctxt "Label of delete theme  button on preferences page Theme."
 msgid "_Delete"
 msgstr "काढून टाका (_D)"
 
-#: ../settings.ui.h:109
+#: ../settings.ui.h:110
 msgctxt "Label of customize theme button on preferences page Theme."
 msgid "C_ustomize theme"
 msgstr "रंगयोजना सानुकूलित करा(_u)"
 
-#: ../settings.ui.h:110
+#: ../settings.ui.h:111
 msgid "Follow _system theme"
 msgstr "प्रणाली रंगयोजना अनुसरा(_s)"
 
-#: ../settings.ui.h:111
+#: ../settings.ui.h:112
 msgid "Remember what Onboard theme was last used for every system theme."
 msgstr ""
 "गेल्या प्रत्येक प्रणाली रंगयोजनेसाठी काय OnBoard रंगयोजना वापरली होती ते लक्षात ठेवा."
 
-#: ../settings.ui.h:112
+#: ../settings.ui.h:113
 msgid ""
 "Snippets are pieces of text which are entered when the corresponding button "
 "in Onboard is pressed."
 msgstr ""
 
-#: ../settings.ui.h:113
+#: ../settings.ui.h:114
 msgctxt "Label of add snippet button on preferences page Snippets."
 msgid "_Add"
 msgstr "जोडा (_A)"
 
-#: ../settings.ui.h:114
+#: ../settings.ui.h:115
 msgctxt "Label of remove snippet button on preferences page Snippets."
 msgid "_Remove"
 msgstr "काढून टाका (_R)"
 
-#: ../settings.ui.h:115
+#: ../settings.ui.h:116
 msgid "Play sound"
 msgstr "ध्वनी वाजवा"
 
-#: ../settings.ui.h:116
+#: ../settings.ui.h:117
 msgid "Play click sound on keypress."
 msgstr "कळ दाबल्यावर ध्वनी द्या"
 
-#: ../settings.ui.h:117
+#: ../settings.ui.h:118
 msgid "Place sound in space"
 msgstr "ध्वनी कळफलकाच्या जागी द्या"
 
-#: ../settings.ui.h:118
+#: ../settings.ui.h:119
 msgid ""
 "Place sound in space between speakers depending on the key's position on "
 "screen"
 msgstr "ध्वनी पडद्यावरील कळीच्या जागेला अनुसरून द्या."
 
-#: ../settings.ui.h:119
+#: ../settings.ui.h:120
 msgid "Show label popups"
 msgstr "लेबल पॉपअप दाखवा"
 
-#: ../settings.ui.h:120
+#: ../settings.ui.h:121
 msgid "Show label popups above pressed keys."
 msgstr "दाबलेल्या कळीवर लेबल पॉपअप दाखवा."
 
-#: ../settings.ui.h:121
+#: ../settings.ui.h:122
 msgid "Popup size:"
 msgstr ""
 
-#: ../settings.ui.h:122
+#: ../settings.ui.h:123
 msgid "Key-press Feedback"
 msgstr ""
 
-#: ../settings.ui.h:123
+#: ../settings.ui.h:124
 msgid "Show secondary labels"
 msgstr "माध्यमिक लेबल दर्शवा"
 
-#: ../settings.ui.h:124
+#: ../settings.ui.h:125
 msgid "Show characters reachable with or without the shift key."
 msgstr "शिफ्ट कळीने पोहोचणारे किंवा पोहचू न शकणारे अक्षरे दर्शवा."
 
-#: ../settings.ui.h:125
+#: ../settings.ui.h:126
 msgid "Key Labels"
 msgstr "कळ लेबले"
 
-#: ../settings.ui.h:126
+#: ../settings.ui.h:127
 msgid "Upper case on right click"
 msgstr "उजव्या क्लिकवर मोठ्या लिपीमध्ये अक्षरे"
 
-#: ../settings.ui.h:127
+#: ../settings.ui.h:128
 msgid "Temporarily enable SHIFT when clicking with the secondary button."
 msgstr ""
 
-#: ../settings.ui.h:128
+#: ../settings.ui.h:129
 msgid "Key Behaviour"
 msgstr "कळ वर्तणूक"
 
-#: ../settings.ui.h:129
+#: ../settings.ui.h:130
 msgid "_Long press action:"
 msgstr ""
 
-#: ../settings.ui.h:130
+#: ../settings.ui.h:131
 msgid ""
 "Choose between key-repeat or long-press menus. Mainly affects alpha-numeric "
 "keys."
 msgstr ""
 
-#: ../settings.ui.h:131
+#: ../settings.ui.h:132
 msgid "Modifier _behavior:"
 msgstr "सुधारणा वर्तन(_b):"
 
-#: ../settings.ui.h:132
+#: ../settings.ui.h:133
 msgid "Behavior of modifier and layer keys."
 msgstr ""
 
-#: ../settings.ui.h:133
+#: ../settings.ui.h:134
 msgid "Modifier auto-release delay in seconds:"
 msgstr ""
 
-#: ../settings.ui.h:134
+#: ../settings.ui.h:135
 msgid ""
 "Seconds of inactivity until active modifiers and layer keys are released. 0 "
 "to disable."
 msgstr ""
 
-#: ../settings.ui.h:135
+#: ../settings.ui.h:136
 msgid "Modifier auto-release after hide in seconds:"
 msgstr ""
 
-#: ../settings.ui.h:136
+#: ../settings.ui.h:137
 msgid ""
 "Time after hiding the keyboard in seconds until latched and locked modifiers "
 "and layer keys are released automatically. Leave at 0.0 to not automatically "
 "release them."
 msgstr ""
 
-#: ../settings.ui.h:137
+#: ../settings.ui.h:138
 msgid "0,00"
 msgstr "0,00"
 
-#: ../settings.ui.h:138
+#: ../settings.ui.h:139
 #, fuzzy
 msgid "Key Behavior"
 msgstr "कळ वर्तणूक"
 
-#: ../settings.ui.h:139
+#: ../settings.ui.h:140
 #, fuzzy
 msgid "_Touch input:"
 msgstr "uinput"
 
-#: ../settings.ui.h:140
+#: ../settings.ui.h:141
 #, fuzzy
 msgid "_Input event source:"
 msgstr "इनपुट साधन"
 
-#: ../settings.ui.h:141
+#: ../settings.ui.h:142
 msgid ""
 "Choose &apos;XInput&apos; for more reliable typing into text entries with "
 "pop-up selections. The &apos;GTK&apos; option offers better compatibility, "
@@ -1863,34 +1870,34 @@ msgid ""
 "windows."
 msgstr ""
 
-#: ../settings.ui.h:142
+#: ../settings.ui.h:143
 msgid ""
 "Choose 'XInput' for more reliable typing into text entries with pop-up "
 "selections. The 'GTK' option offers better compatibility, but typing may "
 "fail in the presence of pointer grabs, e.g. with open pop-up windows."
 msgstr ""
 
-#: ../settings.ui.h:143
+#: ../settings.ui.h:144
 msgid "Input Options"
 msgstr "इनपुट पर्याय"
 
-#: ../settings.ui.h:144
+#: ../settings.ui.h:145
 msgid "Delay between keystrokes in milliseconds:"
 msgstr ""
 
-#: ../settings.ui.h:145
+#: ../settings.ui.h:146
 msgid ""
 "Increase this if key-strokes get lost when inserting word suggestions or "
 "snippets into Firefox or other Gtk-2 applications. Has no effect on Gtk-3 "
 "applications."
 msgstr ""
 
-#: ../settings.ui.h:146
+#: ../settings.ui.h:147
 #, fuzzy
 msgid "Key-stroke generator"
 msgstr "कळ-पुनरावृत्ती"
 
-#: ../settings.ui.h:147
+#: ../settings.ui.h:148
 msgid ""
 "<b>Auto</b>: let Onboard decide, recommended.\n"
 "\n"
@@ -1904,33 +1911,33 @@ msgid ""
 "recommended for testing."
 msgstr ""
 
-#: ../settings.ui.h:154
+#: ../settings.ui.h:155
 #, fuzzy
 msgid "Key-stroke Generation"
 msgstr "डेस्कटॉप एकीकरण."
 
-#: ../settings.ui.h:155
+#: ../settings.ui.h:156
 msgid "Popup time [s]:"
 msgstr ""
 
-#: ../settings.ui.h:156
+#: ../settings.ui.h:157
 msgid "Affects how long a key popup stays open."
 msgstr ""
 
-#: ../settings.ui.h:157
+#: ../settings.ui.h:158
 msgid "0.15"
 msgstr ""
 
-#: ../settings.ui.h:158
+#: ../settings.ui.h:159
 #, fuzzy
 msgid "Animation"
 msgstr "कृती:"
 
-#: ../settings.ui.h:159
+#: ../settings.ui.h:160
 msgid "Advanced"
 msgstr "आधुनिक"
 
-#: ../settings.ui.h:160
+#: ../settings.ui.h:161
 #, fuzzy
 msgid ""
 "Show Onboard when there is a recognized text entry in focus. Requires Gnome "
@@ -1939,207 +1946,207 @@ msgstr ""
 "लक्ष केंद्रित मध्ये मान्यताप्राप्त टेक्स्ट विंडो आहे तेव्हा यामध्ये दर्शवा. जीनोम प्रवेशयोग्यता "
 "आवश्यक आहे."
 
-#: ../settings.ui.h:161
+#: ../settings.ui.h:162
 msgid "Keyboard movement strategy:"
 msgstr ""
 
-#: ../settings.ui.h:162
+#: ../settings.ui.h:163
 msgid "Chose how the keyboard window moves when a text entry is activated."
 msgstr ""
 
-#: ../settings.ui.h:163
+#: ../settings.ui.h:164
 msgid "_Hide when typing on a physical keyboard"
 msgstr ""
 
-#: ../settings.ui.h:164
+#: ../settings.ui.h:165
 msgid ""
 "Hide Onboard when any key is pressed on a physical keyboard. Requires input "
 "event source \"XInput\"."
 msgstr ""
 
-#: ../settings.ui.h:165
+#: ../settings.ui.h:166
 msgid "Stay hidden:"
 msgstr "लपून राहा:"
 
-#: ../settings.ui.h:166
+#: ../settings.ui.h:167
 msgid ""
 "Once hidden by a physical key-press, auto-show is paused. Select the pause "
 "duration here."
 msgstr ""
 
-#: ../settings.ui.h:167
+#: ../settings.ui.h:168
 #, fuzzy
 msgid "Auto-show only in tablet mode"
 msgstr "मजकूर संपादन करताना आपोआप दाखवा(_A)"
 
-#: ../settings.ui.h:168
+#: ../settings.ui.h:169
 msgid ""
 "Requires driver support for SW_TABLET_MODE and a running instance of acpid."
 msgstr ""
 
-#: ../settings.ui.h:169
+#: ../settings.ui.h:170
 msgid ""
 "Alternatively, some devices generate key events on entering and leaving "
 "tablet mode. Run 'xinput test-xi2 3 ' to find these key presses and enter "
 "their 'detail' values below."
 msgstr ""
 
-#: ../settings.ui.h:170
+#: ../settings.ui.h:171
 msgid "Hotkey received when entering tablet mode:"
 msgstr ""
 
-#: ../settings.ui.h:171
+#: ../settings.ui.h:172
 msgid "Hotkey received when leaving tablet mode:"
 msgstr ""
 
-#: ../settings.ui.h:172
+#: ../settings.ui.h:173
 msgid "File that contains the current device state:"
 msgstr ""
 
-#: ../settings.ui.h:173
+#: ../settings.ui.h:174
 msgid "Regular expression to match for tablet-mode:"
 msgstr ""
 
-#: ../settings.ui.h:174
+#: ../settings.ui.h:175
 msgid "Convertible Devices"
 msgstr ""
 
-#: ../settings.ui.h:175
+#: ../settings.ui.h:176
 msgid "Don't auto-show while external keyboards are connected"
 msgstr ""
 
-#: ../settings.ui.h:176
+#: ../settings.ui.h:177
 msgid "Detected keyboard devices:"
 msgstr ""
 
-#: ../settings.ui.h:177
+#: ../settings.ui.h:178
 msgid ""
 "Check 'Ignore' for devices that are always connected and should not block "
 "auto-show."
 msgstr ""
 
-#: ../settings.ui.h:178
+#: ../settings.ui.h:179
 #, fuzzy
 msgid "External Keyboards"
 msgstr "कळफलक बंद करा"
 
-#: ../settings.ui.h:179
+#: ../settings.ui.h:180
 #, fuzzy
 msgid "Show _suggestions"
 msgstr "अतिरिक्त सूचना."
 
-#: ../settings.ui.h:180
+#: ../settings.ui.h:181
 msgid "Enable word completion and prediction."
 msgstr ""
 
-#: ../settings.ui.h:181
+#: ../settings.ui.h:182
 #, fuzzy
 msgid "Show spelling suggestions"
 msgstr "अतिरिक्त सूचना."
 
-#: ../settings.ui.h:182
+#: ../settings.ui.h:183
 msgid "Check spelling of the word at or before the cursor."
 msgstr ""
 
-#: ../settings.ui.h:183
+#: ../settings.ui.h:184
 msgid "_Learn from typed text"
 msgstr ""
 
-#: ../settings.ui.h:184
+#: ../settings.ui.h:185
 msgid ""
 "Remember new words, their recency and frequency to improve the suggestions "
 "over time."
 msgstr ""
 
-#: ../settings.ui.h:185
+#: ../settings.ui.h:186
 msgid "Insert word _separators"
 msgstr ""
 
-#: ../settings.ui.h:186
+#: ../settings.ui.h:187
 msgid ""
 "Add and remove spaces when inserting word suggestions followed by "
 "punctuation characters."
 msgstr ""
 
-#: ../settings.ui.h:187
+#: ../settings.ui.h:188
 msgid "Options"
 msgstr "पर्याय"
 
-#: ../settings.ui.h:188
+#: ../settings.ui.h:189
 #, fuzzy
 msgid "Show more suggestions arrow"
 msgstr "अतिरिक्त सूचना."
 
-#: ../settings.ui.h:189
+#: ../settings.ui.h:190
 msgid "Step forward and backward through the available suggestions."
 msgstr ""
 
-#: ../settings.ui.h:190
+#: ../settings.ui.h:191
 msgid "Show button to pause learning"
 msgstr ""
 
-#: ../settings.ui.h:191
+#: ../settings.ui.h:192
 msgid "Words typed while this button is pressed won't be remembered."
 msgstr ""
 
-#: ../settings.ui.h:192
+#: ../settings.ui.h:193
 msgid "Show lan_guage switcher"
 msgstr ""
 
-#: ../settings.ui.h:193
+#: ../settings.ui.h:194
 msgid "Show a button for language selection."
 msgstr ""
 
-#: ../settings.ui.h:194
+#: ../settings.ui.h:195
 msgid "Buttons"
 msgstr "बटन"
 
-#: ../settings.ui.h:195
+#: ../settings.ui.h:196
 #, fuzzy
 msgid "Word Suggestions"
 msgstr "अतिरिक्त सूचना."
 
-#: ../settings.ui.h:196
+#: ../settings.ui.h:197
 msgid "Auto-capitalize while typing"
 msgstr ""
 
-#: ../settings.ui.h:197
+#: ../settings.ui.h:198
 msgid "Automatically capitalize sentence begins and name words."
 msgstr ""
 
-#: ../settings.ui.h:198
+#: ../settings.ui.h:199
 msgid "Auto-correct spelling"
 msgstr ""
 
-#: ../settings.ui.h:199
+#: ../settings.ui.h:200
 msgid "Automatically correct the last word."
 msgstr ""
 
-#: ../settings.ui.h:200
+#: ../settings.ui.h:201
 msgid "The spell check engine to use."
 msgstr ""
 
-#: ../settings.ui.h:201
+#: ../settings.ui.h:202
 msgid "Spell-check backend:"
 msgstr ""
 
-#: ../settings.ui.h:202
+#: ../settings.ui.h:203
 msgid "Auto-correction"
 msgstr ""
 
-#: ../settings.ui.h:203
+#: ../settings.ui.h:204
 msgid "While  learning is paused:"
 msgstr ""
 
-#: ../settings.ui.h:204
+#: ../settings.ui.h:205
 msgid "Learning"
 msgstr "शिक्षण"
 
-#: ../settings.ui.h:205
+#: ../settings.ui.h:206
 msgid "Enable  keyboard _scanning"
 msgstr ""
 
-#: ../settings.ui.h:206
+#: ../settings.ui.h:207
 #, fuzzy
 msgctxt ""
 "Label of keyboard scanning settings button on preferences page Universal "
@@ -2147,45 +2154,45 @@ msgctxt ""
 msgid "Sc_anner Settings"
 msgstr "संयोजना (_S)"
 
-#: ../settings.ui.h:207
+#: ../settings.ui.h:208
 #, fuzzy
 msgid "Keyboard Scanning"
 msgstr "कळफलक"
 
-#: ../settings.ui.h:208
+#: ../settings.ui.h:209
 msgid "_Delay:"
 msgstr "विलंब (_D):"
 
-#: ../settings.ui.h:209
+#: ../settings.ui.h:210
 msgid "_Motion threshold:"
 msgstr "स्थानांतरन मर्यादा (_M):"
 
-#: ../settings.ui.h:210
+#: ../settings.ui.h:211
 msgid "Time in seconds before a click is triggered."
 msgstr ""
 
-#: ../settings.ui.h:211
+#: ../settings.ui.h:212
 msgid "Distance in pixels before movement will be recognized."
 msgstr ""
 
-#: ../settings.ui.h:212
+#: ../settings.ui.h:213
 msgid "Hide hover click window"
 msgstr ""
 
-#: ../settings.ui.h:213
+#: ../settings.ui.h:214
 msgid "Hide the system-provided hover click window while Onboard is running."
 msgstr ""
 
-#: ../settings.ui.h:214
+#: ../settings.ui.h:215
 msgid "Enable click type window on exit"
 msgstr ""
 
-#: ../settings.ui.h:215
+#: ../settings.ui.h:216
 msgid ""
 "Always enable the system-provided hover click window when exiting Onboard."
 msgstr ""
 
-#: ../settings.ui.h:216
+#: ../settings.ui.h:217
 msgid "Hover Click"
 msgstr "होवर क्लिक"
 

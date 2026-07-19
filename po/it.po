@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: onboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-18 16:37+0200\n"
+"POT-Creation-Date: 2026-07-19 02:36+0200\n"
 "PO-Revision-Date: 2015-03-05 12:05+0000\n"
 "Last-Translator: Claudio Arseni <claudio.arseni@gmail.com>\n"
 "Language-Team: Italian <it@li.org>\n"
@@ -165,7 +165,7 @@ msgstr ""
 "\n"
 "Abilitare ora l'accessibilità?"
 
-#: ../Onboard/Config.py:1959
+#: ../Onboard/Config.py:1968
 #, python-brace-format
 msgid "color scheme '{filename}' does not exist"
 msgstr "schema di colori «{filename}» inesistente"
@@ -374,15 +374,15 @@ msgid "_Close"
 msgstr "C_hiudi"
 
 #. model.clear()
-#: ../Onboard/KeyboardWidget.py:2302 ../Onboard/settings.py:850
+#: ../Onboard/KeyboardWidget.py:2302 ../Onboard/settings.py:857
 msgid "Core layouts"
 msgstr "Disposizioni di base"
 
-#: ../Onboard/KeyboardWidget.py:2303 ../Onboard/settings.py:851
+#: ../Onboard/KeyboardWidget.py:2303 ../Onboard/settings.py:858
 msgid "Contributions"
 msgstr "Contributi"
 
-#: ../Onboard/KeyboardWidget.py:2304 ../Onboard/settings.py:852
+#: ../Onboard/KeyboardWidget.py:2304 ../Onboard/settings.py:859
 msgid "My layouts"
 msgstr ""
 
@@ -553,41 +553,41 @@ msgstr ""
 "I suggerimenti devono essere ripristinati, ma il file errato rimarrà in \n"
 "\"{}\""
 
-#: ../Onboard/settings.py:316
+#: ../Onboard/settings.py:317
 msgid "Onboard Preferences"
 msgstr "Preferenze di Onboard"
 
 #. touch_feedback_size_label: 0=auto, i.e. let Onboard guess
 #. the size of the label popup.
-#: ../Onboard/settings.py:687
+#: ../Onboard/settings.py:690
 msgid "auto"
 msgstr ""
 
-#: ../Onboard/settings.py:766
+#: ../Onboard/settings.py:773
 msgid "Copy layout '{}' to this new name:"
 msgstr "Copia la disposizione \"{}\" con questo nuovo nome:"
 
-#: ../Onboard/settings.py:779
+#: ../Onboard/settings.py:786
 msgid "Delete layout '{}'?"
 msgstr "Eliminare la disposizione  \"{}\"?"
 
-#: ../Onboard/settings.py:827
+#: ../Onboard/settings.py:834
 msgid "System settings not found ({}): {}"
 msgstr "Impostazioni di sistema non trovate ({}): {}"
 
-#: ../Onboard/settings.py:887
+#: ../Onboard/settings.py:894
 msgid "Author: {}"
 msgstr "Autore: {}"
 
-#: ../Onboard/settings.py:891
+#: ../Onboard/settings.py:898
 msgid "About Layout"
 msgstr "Informazioni sulla disposizione"
 
-#: ../Onboard/settings.py:996
+#: ../Onboard/settings.py:1003
 msgid "Enter a name for the new theme:"
 msgstr "Aggiungere un nome per il nuovo tema"
 
-#: ../Onboard/settings.py:1004
+#: ../Onboard/settings.py:1011
 #, python-brace-format
 msgid ""
 "This theme file already exists.\n"
@@ -600,117 +600,117 @@ msgstr ""
 "\n"
 "Sovrascriverlo?"
 
-#: ../Onboard/settings.py:1021
+#: ../Onboard/settings.py:1028
 msgid "Reset selected theme to Onboard defaults?"
 msgstr "Azzerare il tema selezioni ai valori predefiniti di Onboard?"
 
-#: ../Onboard/settings.py:1023
+#: ../Onboard/settings.py:1030
 msgid "Delete selected theme?"
 msgstr "Eliminare il tema selezionato?"
 
 #. Translators: reset button of Preferences->Theme.
-#: ../Onboard/settings.py:1152
+#: ../Onboard/settings.py:1159
 msgid "_Reset"
 msgstr "Azze_ra"
 
 #. Translators: delete button of Preferences->Theme. It used to be
 #. stock item STOCK_DELETE until Gtk 3.10 deprecated those.
-#: ../Onboard/settings.py:1156
+#: ../Onboard/settings.py:1163
 msgid "_Delete"
 msgstr "_Elimina"
 
 #. Translators: header of a tree view column with toggles to ignore
 #. keyboard devices (Preferences->Auto-show->External Keyboards).
-#: ../Onboard/settings.py:1293
+#: ../Onboard/settings.py:1300
 msgid "Ignore"
 msgstr ""
 
 #. Translators: header of a tree view column with device names
 #. (Preferences->Auto-show->External Keyboards).
-#: ../Onboard/settings.py:1297
+#: ../Onboard/settings.py:1304
 msgid "Device"
 msgstr ""
 
 #. Key style with flat fill- and border colors
-#: ../Onboard/settings.py:1634
+#: ../Onboard/settings.py:1641
 msgid "Flat"
 msgstr "Flat"
 
 #. Key style with simple gradients
-#: ../Onboard/settings.py:1636 ../settings_theme_dialog.ui.h:6
+#: ../Onboard/settings.py:1643 ../settings_theme_dialog.ui.h:6
 msgid "Gradient"
 msgstr "Sfumatura"
 
 #. Key style for dish-like key caps
-#: ../Onboard/settings.py:1638
+#: ../Onboard/settings.py:1645
 msgid "Dish"
 msgstr "Piatto"
 
-#: ../Onboard/settings.py:1687 ../Onboard/settings.py:1744
+#: ../Onboard/settings.py:1694 ../Onboard/settings.py:1751
 msgid "Default"
 msgstr "Predefinito"
 
-#: ../Onboard/settings.py:1728
+#: ../Onboard/settings.py:1735
 msgid "Bold"
 msgstr "Grassetto"
 
-#: ../Onboard/settings.py:1730
+#: ../Onboard/settings.py:1737
 msgid "Italic"
 msgstr "Corsivo"
 
-#: ../Onboard/settings.py:1732
+#: ../Onboard/settings.py:1739
 msgid "Condensed"
 msgstr "Condensato"
 
-#: ../Onboard/settings.py:1745
+#: ../Onboard/settings.py:1752
 msgid ""
 msgstr ""
 
-#: ../Onboard/settings.py:1745
+#: ../Onboard/settings.py:1752
 msgid "Ubuntu Logo"
 msgstr "Logo di Ubuntu"
 
-#: ../Onboard/settings.py:1879
+#: ../Onboard/settings.py:1886
 msgid "Step"
 msgstr "Spostamento"
 
-#: ../Onboard/settings.py:1880
+#: ../Onboard/settings.py:1887
 msgid "Left"
 msgstr "Sinistra"
 
-#: ../Onboard/settings.py:1881
+#: ../Onboard/settings.py:1888
 msgid "Right"
 msgstr "Destra"
 
-#: ../Onboard/settings.py:1882
+#: ../Onboard/settings.py:1889
 msgid "Up"
 msgstr "Su"
 
-#: ../Onboard/settings.py:1883
+#: ../Onboard/settings.py:1890
 msgid "Down"
 msgstr "Giù"
 
-#: ../Onboard/settings.py:1884
+#: ../Onboard/settings.py:1891
 msgid "Activate"
 msgstr "Attiva"
 
-#: ../Onboard/settings.py:2053
+#: ../Onboard/settings.py:2060
 msgid "Action:"
 msgstr "Azione:"
 
-#: ../Onboard/settings.py:2217
+#: ../Onboard/settings.py:2224
 msgid "Disabled"
 msgstr "Disabilitato"
 
-#: ../Onboard/settings.py:2223
+#: ../Onboard/settings.py:2230
 msgid "Button"
 msgstr "Pulsante"
 
-#: ../Onboard/settings.py:2278 ../Onboard/settings.py:2323
+#: ../Onboard/settings.py:2285 ../Onboard/settings.py:2330
 msgid "Press a button..."
 msgstr "Premere un pulsante..."
 
-#: ../Onboard/settings.py:2325
+#: ../Onboard/settings.py:2332
 msgid "Press a key..."
 msgstr "Premere un tasto..."
 
@@ -1601,204 +1601,211 @@ msgid ""
 msgstr ""
 
 #: ../settings.ui.h:67
+msgid ""
+"With AppIndicator, most desktop environments open the context menu on left-"
+"click regardless of this setting. 'Show/hide the keyboard' only takes effect "
+"where the desktop reports a separate left-click activation (e.g. KDE Plasma)."
+msgstr ""
+
+#: ../settings.ui.h:68
 msgid "Desktop Integration"
 msgstr "Integrazione con l'ambiente"
 
-#: ../settings.ui.h:68
+#: ../settings.ui.h:69
 msgid "Dock to screen edge"
 msgstr "Agganciare al bordo dello schermo"
 
-#: ../settings.ui.h:69
+#: ../settings.ui.h:70
 msgid "Dock the keyboard to the edge of the screen."
 msgstr "Aggancia la tastiera al bordo dello schermo."
 
-#: ../settings.ui.h:70
+#: ../settings.ui.h:71
 msgctxt "Label of settings button on preferences page Window."
 msgid "_Settings"
 msgstr "_Impostazioni"
 
-#: ../settings.ui.h:71
+#: ../settings.ui.h:72
 msgid "Docking"
 msgstr "Aggancio"
 
-#: ../settings.ui.h:72
+#: ../settings.ui.h:73
 msgid "Show window _decoration"
 msgstr "Mostrare _decorazione della finestra"
 
-#: ../settings.ui.h:73
+#: ../settings.ui.h:74
 msgid "Show window caption and frame."
 msgstr "Mostra didascalia e cornice della finestra."
 
-#: ../settings.ui.h:74
+#: ../settings.ui.h:75
 msgid "Show always on visible _workspace"
 msgstr "Mostrare sempre nello spa_zio di lavoro visibile"
 
-#: ../settings.ui.h:75
+#: ../settings.ui.h:76
 msgid "&quot;Sticky&quot; mode for keyboard and floating icon."
 msgstr "Modalità &quot;adesiva&quot; per la tastiera e l'icona fluttuante."
 
-#: ../settings.ui.h:76
+#: ../settings.ui.h:77
 msgid "\"Sticky\" mode for keyboard and floating icon."
 msgstr "Modalità \"adesiva\" per la tastiera e l'icona fluttuante."
 
-#: ../settings.ui.h:77
+#: ../settings.ui.h:78
 msgid "_Force window to top"
 msgstr "_Forzare finestra in primo piano"
 
-#: ../settings.ui.h:78
+#: ../settings.ui.h:79
 msgid "Try harder to keep Onboard above anything on-screen."
 msgstr "Prova a mantenere Onborad al di sopra di qualunque cosa sullo schermo."
 
-#: ../settings.ui.h:79
+#: ../settings.ui.h:80
 msgid "Keep _aspect ratio"
 msgstr "M_antenere le proporzioni"
 
-#: ../settings.ui.h:80
+#: ../settings.ui.h:81
 msgid "Constrain window size to the layout&apos;s aspect ratio."
 msgstr ""
 "Vincola la dimensione della finestra alle proporzioni della disposizione."
 
-#: ../settings.ui.h:81
+#: ../settings.ui.h:82
 msgid "Constrain window size to the layout's aspect ratio."
 msgstr ""
 "Vincola la dimensione della finestra alle proporzioni della disposizione."
 
-#: ../settings.ui.h:82
+#: ../settings.ui.h:83
 msgid "Floating Window Options"
 msgstr "Opzioni finestra fluttuante"
 
-#: ../settings.ui.h:83
+#: ../settings.ui.h:84
 msgid "Window options"
 msgstr "Opzioni finestra"
 
-#: ../settings.ui.h:84
+#: ../settings.ui.h:85
 msgid "Wind_ow:"
 msgstr "Fines_tra:"
 
-#: ../settings.ui.h:85
+#: ../settings.ui.h:86
 msgid "Transparency of the whole keyboard window. Requires compositing."
 msgstr ""
 "Trasparenza dell'intera finestra della tastiera. È richiesto il compositing."
 
-#: ../settings.ui.h:86 ../settings_theme_dialog.ui.h:5
+#: ../settings.ui.h:87 ../settings_theme_dialog.ui.h:5
 msgid "_Background:"
 msgstr "Sf_ondo:"
 
-#: ../settings.ui.h:87
+#: ../settings.ui.h:88
 msgid "Transparency of the keyboard background"
 msgstr "Trasparenza dello sfondo della tastiera"
 
-#: ../settings.ui.h:88
+#: ../settings.ui.h:89
 msgid "_No background"
 msgstr "_Nessuno sfondo"
 
-#: ../settings.ui.h:89
+#: ../settings.ui.h:90
 msgid "Show the desktop through the gaps between keys."
 msgstr "Mostra lo sfondo del desktop negli spazi tra i tasti."
 
-#: ../settings.ui.h:90
+#: ../settings.ui.h:91
 msgid "Transparency"
 msgstr "Trasparenza"
 
-#: ../settings.ui.h:91
+#: ../settings.ui.h:92
 msgid "Set _transparency to"
 msgstr "Impostare la _trasparenza a"
 
-#: ../settings.ui.h:92
+#: ../settings.ui.h:93
 msgid "Enable inactive transparency. Requires compositing."
 msgstr "Abilita la trasparenza quando inattivo. È richiesto il compositing."
 
-#: ../settings.ui.h:93
+#: ../settings.ui.h:94
 msgid ""
 "Transparency when the pointer leaves the keyboard. Requires compositing."
 msgstr ""
 "Trasparenza quando il puntatore lascia la tastiera. È richiesto il "
 "compositing."
 
-#: ../settings.ui.h:94
+#: ../settings.ui.h:95
 msgid "after"
 msgstr "dopo"
 
-#: ../settings.ui.h:95
+#: ../settings.ui.h:96
 msgid "Delay in seconds until the inactive transparency takes effect."
 msgstr ""
 "Ritardo, in secondi, prima che la trasparenza di inattività abbia effetto."
 
-#: ../settings.ui.h:96
+#: ../settings.ui.h:97
 msgid "seconds"
 msgstr "secondi"
 
-#: ../settings.ui.h:97
+#: ../settings.ui.h:98
 msgid "When Inactive"
 msgstr "Quando inattiva"
 
-#: ../settings.ui.h:98
+#: ../settings.ui.h:99
 msgid "_Window handles of the keyboard window:"
 msgstr ""
 
-#: ../settings.ui.h:99
+#: ../settings.ui.h:100
 #, fuzzy
 msgid "_Window handles of the floating icon:"
 msgstr "Maniglie della _finestra:"
 
-#: ../settings.ui.h:100
+#: ../settings.ui.h:101
 msgid "Resize Protection"
 msgstr "Protezione ridimensionamento"
 
-#: ../settings.ui.h:101
+#: ../settings.ui.h:102
 msgid "Name"
 msgstr "Nome"
 
-#: ../settings.ui.h:102
+#: ../settings.ui.h:103
 msgid "Description"
 msgstr "Descrizione"
 
-#: ../settings.ui.h:103
+#: ../settings.ui.h:104
 msgctxt "Label of new layout button on preferences page Layout."
 msgid "_New"
 msgstr "_Nuovo"
 
-#: ../settings.ui.h:104
+#: ../settings.ui.h:105
 msgctxt "Label of delete layout button on preferences page Layout."
 msgid "_Delete"
 msgstr "_Elimina"
 
-#: ../settings.ui.h:105
+#: ../settings.ui.h:106
 msgctxt "Label of open folder button on preferences page Layout."
 msgid "_Open layouts folder"
 msgstr "_Apri cartella delle diposizioni"
 
-#: ../settings.ui.h:106
+#: ../settings.ui.h:107
 msgctxt "Label of about layout button on preferences page Layout."
 msgid "_About"
 msgstr "I_nformazioni"
 
-#: ../settings.ui.h:107
+#: ../settings.ui.h:108
 msgctxt "Label of new theme button on preferences page Theme."
 msgid "_New"
 msgstr "_Nuovo"
 
-#: ../settings.ui.h:108
+#: ../settings.ui.h:109
 msgctxt "Label of delete theme  button on preferences page Theme."
 msgid "_Delete"
 msgstr "_Elimina"
 
-#: ../settings.ui.h:109
+#: ../settings.ui.h:110
 msgctxt "Label of customize theme button on preferences page Theme."
 msgid "C_ustomize theme"
 msgstr "Personali_zza tema"
 
-#: ../settings.ui.h:110
+#: ../settings.ui.h:111
 msgid "Follow _system theme"
 msgstr "_Seguire il tema di sistema"
 
-#: ../settings.ui.h:111
+#: ../settings.ui.h:112
 msgid "Remember what Onboard theme was last used for every system theme."
 msgstr ""
 "Ricorda quale tema di Onboard è stato utilizzato l'ultima volta con ogni "
 "tema di sistema."
 
-#: ../settings.ui.h:112
+#: ../settings.ui.h:113
 msgid ""
 "Snippets are pieces of text which are entered when the corresponding button "
 "in Onboard is pressed."
@@ -1806,83 +1813,83 @@ msgstr ""
 "Le snippet sono parti di testo che vengono inserite quando viene premuto il "
 "pulsante corrispondente."
 
-#: ../settings.ui.h:113
+#: ../settings.ui.h:114
 msgctxt "Label of add snippet button on preferences page Snippets."
 msgid "_Add"
 msgstr "A_ggiungi"
 
-#: ../settings.ui.h:114
+#: ../settings.ui.h:115
 msgctxt "Label of remove snippet button on preferences page Snippets."
 msgid "_Remove"
 msgstr "_Rimuovi"
 
-#: ../settings.ui.h:115
+#: ../settings.ui.h:116
 msgid "Play sound"
 msgstr "Riprodurre un suono"
 
-#: ../settings.ui.h:116
+#: ../settings.ui.h:117
 msgid "Play click sound on keypress."
 msgstr "Riproduce un clic sonoro alla pressione del tasto."
 
-#: ../settings.ui.h:117
+#: ../settings.ui.h:118
 #, fuzzy
 msgid "Place sound in space"
 msgstr "Riproduce un clic sonoro alla pressione del tasto."
 
-#: ../settings.ui.h:118
+#: ../settings.ui.h:119
 msgid ""
 "Place sound in space between speakers depending on the key's position on "
 "screen"
 msgstr ""
 
-#: ../settings.ui.h:119
+#: ../settings.ui.h:120
 msgid "Show label popups"
 msgstr "Mostrare popup con etichette"
 
-#: ../settings.ui.h:120
+#: ../settings.ui.h:121
 msgid "Show label popups above pressed keys."
 msgstr "Mostra un popup con l'etichetta sopra il tasto premuto."
 
-#: ../settings.ui.h:121
+#: ../settings.ui.h:122
 msgid "Popup size:"
 msgstr ""
 
-#: ../settings.ui.h:122
+#: ../settings.ui.h:123
 msgid "Key-press Feedback"
 msgstr "Comportamento alla pressione dei tasti"
 
-#: ../settings.ui.h:123
+#: ../settings.ui.h:124
 msgid "Show secondary labels"
 msgstr "Mostrare etichette secondarie"
 
-#: ../settings.ui.h:124
+#: ../settings.ui.h:125
 msgid "Show characters reachable with or without the shift key."
 msgstr "Mostra i caratteri utilizzabili con o senza il tasto «Maiusc»."
 
-#: ../settings.ui.h:125
+#: ../settings.ui.h:126
 msgid "Key Labels"
 msgstr "Etichette tasti"
 
-#: ../settings.ui.h:126
+#: ../settings.ui.h:127
 msgid "Upper case on right click"
 msgstr ""
 
-#: ../settings.ui.h:127
+#: ../settings.ui.h:128
 msgid "Temporarily enable SHIFT when clicking with the secondary button."
 msgstr ""
 "Abilita temporaneamente il tasto MAIUSC quando si fa clic con il pulsante "
 "secondario."
 
-#: ../settings.ui.h:128
+#: ../settings.ui.h:129
 #, fuzzy
 msgid "Key Behaviour"
 msgstr "Comportamento tasti"
 
-#: ../settings.ui.h:129
+#: ../settings.ui.h:130
 msgid "_Long press action:"
 msgstr "Azione a_lla pressione prolungata:"
 
-#: ../settings.ui.h:130
+#: ../settings.ui.h:131
 msgid ""
 "Choose between key-repeat or long-press menus. Mainly affects alpha-numeric "
 "keys."
@@ -1890,19 +1897,19 @@ msgstr ""
 "Seleziona tra la ripetizione del tasto e il menù a comparsa con la pressione "
 "prolungata. Principalmente riguarda i tasti alfanumerici."
 
-#: ../settings.ui.h:131
+#: ../settings.ui.h:132
 msgid "Modifier _behavior:"
 msgstr "C_omportamento modificatore:"
 
-#: ../settings.ui.h:132
+#: ../settings.ui.h:133
 msgid "Behavior of modifier and layer keys."
 msgstr "Comportamento di modificatori e e tasti layer"
 
-#: ../settings.ui.h:133
+#: ../settings.ui.h:134
 msgid "Modifier auto-release delay in seconds:"
 msgstr "Rilascio automatico del modificatore in secondi:"
 
-#: ../settings.ui.h:134
+#: ../settings.ui.h:135
 msgid ""
 "Seconds of inactivity until active modifiers and layer keys are released. 0 "
 "to disable."
@@ -1910,35 +1917,35 @@ msgstr ""
 "Secondi di inattività prima che modificatori attivi e tasti layer attivi "
 "vengano rilasciati. 0 per disabilitare."
 
-#: ../settings.ui.h:135
+#: ../settings.ui.h:136
 #, fuzzy
 msgid "Modifier auto-release after hide in seconds:"
 msgstr "Rilascio automatico del modificatore in secondi:"
 
-#: ../settings.ui.h:136
+#: ../settings.ui.h:137
 msgid ""
 "Time after hiding the keyboard in seconds until latched and locked modifiers "
 "and layer keys are released automatically. Leave at 0.0 to not automatically "
 "release them."
 msgstr ""
 
-#: ../settings.ui.h:137
+#: ../settings.ui.h:138
 msgid "0,00"
 msgstr "0,00"
 
-#: ../settings.ui.h:138
+#: ../settings.ui.h:139
 msgid "Key Behavior"
 msgstr "Comportamento tasti"
 
-#: ../settings.ui.h:139
+#: ../settings.ui.h:140
 msgid "_Touch input:"
 msgstr "Input al _tocco:"
 
-#: ../settings.ui.h:140
+#: ../settings.ui.h:141
 msgid "_Input event source:"
 msgstr "Sorgente di _input:"
 
-#: ../settings.ui.h:141
+#: ../settings.ui.h:142
 msgid ""
 "Choose &apos;XInput&apos; for more reliable typing into text entries with "
 "pop-up selections. The &apos;GTK&apos; option offers better compatibility, "
@@ -1950,7 +1957,7 @@ msgstr ""
 "durante la digitazione potrebbe non funzionare in presenza di eventi di "
 "\"cattura del puntatore\" (per esempio con l'apertura di un popup)."
 
-#: ../settings.ui.h:142
+#: ../settings.ui.h:143
 msgid ""
 "Choose 'XInput' for more reliable typing into text entries with pop-up "
 "selections. The 'GTK' option offers better compatibility, but typing may "
@@ -1961,15 +1968,15 @@ msgstr ""
 "durante la digitazione potrebbe non funzionare in presenza di eventi di "
 "\"cattura del puntatore\" (per esempio con l'apertura di un popup)."
 
-#: ../settings.ui.h:143
+#: ../settings.ui.h:144
 msgid "Input Options"
 msgstr "Opzioni di input"
 
-#: ../settings.ui.h:144
+#: ../settings.ui.h:145
 msgid "Delay between keystrokes in milliseconds:"
 msgstr "Ritardo tra le digitazioni in millisecondi:"
 
-#: ../settings.ui.h:145
+#: ../settings.ui.h:146
 msgid ""
 "Increase this if key-strokes get lost when inserting word suggestions or "
 "snippets into Firefox or other Gtk-2 applications. Has no effect on Gtk-3 "
@@ -1979,11 +1986,11 @@ msgstr ""
 "dei suggerimenti o delle snippet in Firefox o in altre applicazioni Gtk.-2. "
 "Non ha effetto sulle applicazoni Gtk-3."
 
-#: ../settings.ui.h:146
+#: ../settings.ui.h:147
 msgid "Key-stroke generator"
 msgstr "Generatore di digitazioni"
 
-#: ../settings.ui.h:147
+#: ../settings.ui.h:148
 msgid ""
 "<b>Auto</b>: let Onboard decide, recommended.\n"
 "\n"
@@ -2008,32 +2015,32 @@ msgstr ""
 "<b>AT-SPI</b> ha un supporto limitato per la generazione delle digitazioni, "
 "è raccomandato solo a scopo di test."
 
-#: ../settings.ui.h:154
+#: ../settings.ui.h:155
 msgid "Key-stroke Generation"
 msgstr "Generazione di digitazioni"
 
-#: ../settings.ui.h:155
+#: ../settings.ui.h:156
 msgid "Popup time [s]:"
 msgstr ""
 
-#: ../settings.ui.h:156
+#: ../settings.ui.h:157
 msgid "Affects how long a key popup stays open."
 msgstr ""
 
-#: ../settings.ui.h:157
+#: ../settings.ui.h:158
 msgid "0.15"
 msgstr ""
 
-#: ../settings.ui.h:158
+#: ../settings.ui.h:159
 #, fuzzy
 msgid "Animation"
 msgstr "Azione:"
 
-#: ../settings.ui.h:159
+#: ../settings.ui.h:160
 msgid "Advanced"
 msgstr "Avanzate"
 
-#: ../settings.ui.h:160
+#: ../settings.ui.h:161
 #, fuzzy
 msgid ""
 "Show Onboard when there is a recognized text entry in focus. Requires Gnome "
@@ -2042,19 +2049,19 @@ msgstr ""
 "Mostra Onboard quando una finestra per la modifica del testo è in primo "
 "piano. Richiede Accessibilità di GNOME"
 
-#: ../settings.ui.h:161
+#: ../settings.ui.h:162
 msgid "Keyboard movement strategy:"
 msgstr ""
 
-#: ../settings.ui.h:162
+#: ../settings.ui.h:163
 msgid "Chose how the keyboard window moves when a text entry is activated."
 msgstr ""
 
-#: ../settings.ui.h:163
+#: ../settings.ui.h:164
 msgid "_Hide when typing on a physical keyboard"
 msgstr ""
 
-#: ../settings.ui.h:164
+#: ../settings.ui.h:165
 msgid ""
 "Hide Onboard when any key is pressed on a physical keyboard. Requires input "
 "event source \"XInput\"."
@@ -2062,11 +2069,11 @@ msgstr ""
 "Nasconde Onboard quando viene premuto un tasto su una tastiera fisica. "
 "Richiede la sorgente per gli eventi di input \"XInput\"."
 
-#: ../settings.ui.h:165
+#: ../settings.ui.h:166
 msgid "Stay hidden:"
 msgstr "Lasciare nascosta:"
 
-#: ../settings.ui.h:166
+#: ../settings.ui.h:167
 msgid ""
 "Once hidden by a physical key-press, auto-show is paused. Select the pause "
 "duration here."
@@ -2074,83 +2081,83 @@ msgstr ""
 "Una volta nascosta dalla pressione di un tasto fisico, la visualizzazione "
 "automatica viene sospesa. Inserire qui la durata della sospensione."
 
-#: ../settings.ui.h:167
+#: ../settings.ui.h:168
 #, fuzzy
 msgid "Auto-show only in tablet mode"
 msgstr "Mostrare _automaticamente  durante la modifica del testo"
 
-#: ../settings.ui.h:168
+#: ../settings.ui.h:169
 msgid ""
 "Requires driver support for SW_TABLET_MODE and a running instance of acpid."
 msgstr ""
 
-#: ../settings.ui.h:169
+#: ../settings.ui.h:170
 msgid ""
 "Alternatively, some devices generate key events on entering and leaving "
 "tablet mode. Run 'xinput test-xi2 3 ' to find these key presses and enter "
 "their 'detail' values below."
 msgstr ""
 
-#: ../settings.ui.h:170
+#: ../settings.ui.h:171
 msgid "Hotkey received when entering tablet mode:"
 msgstr ""
 
-#: ../settings.ui.h:171
+#: ../settings.ui.h:172
 msgid "Hotkey received when leaving tablet mode:"
 msgstr ""
 
-#: ../settings.ui.h:172
+#: ../settings.ui.h:173
 msgid "File that contains the current device state:"
 msgstr ""
 
-#: ../settings.ui.h:173
+#: ../settings.ui.h:174
 msgid "Regular expression to match for tablet-mode:"
 msgstr ""
 
-#: ../settings.ui.h:174
+#: ../settings.ui.h:175
 msgid "Convertible Devices"
 msgstr ""
 
-#: ../settings.ui.h:175
+#: ../settings.ui.h:176
 msgid "Don't auto-show while external keyboards are connected"
 msgstr ""
 
-#: ../settings.ui.h:176
+#: ../settings.ui.h:177
 msgid "Detected keyboard devices:"
 msgstr ""
 
-#: ../settings.ui.h:177
+#: ../settings.ui.h:178
 msgid ""
 "Check 'Ignore' for devices that are always connected and should not block "
 "auto-show."
 msgstr ""
 
-#: ../settings.ui.h:178
+#: ../settings.ui.h:179
 #, fuzzy
 msgid "External Keyboards"
 msgstr "Chiudi dalla tastiera"
 
-#: ../settings.ui.h:179
+#: ../settings.ui.h:180
 msgid "Show _suggestions"
 msgstr "Mostrare _suggerimenti"
 
-#: ../settings.ui.h:180
+#: ../settings.ui.h:181
 msgid "Enable word completion and prediction."
 msgstr "Abilita il completamento delle parole e la predizione."
 
-#: ../settings.ui.h:181
+#: ../settings.ui.h:182
 msgid "Show spelling suggestions"
 msgstr "Mostrare suggerimenti ortografici"
 
-#: ../settings.ui.h:182
+#: ../settings.ui.h:183
 msgid "Check spelling of the word at or before the cursor."
 msgstr "Controlla l'ortografia della parola che precede il cursore."
 
-#: ../settings.ui.h:183
+#: ../settings.ui.h:184
 msgid "_Learn from typed text"
 msgstr "Apprendere da_l testo digitato"
 
-#: ../settings.ui.h:184
+#: ../settings.ui.h:185
 msgid ""
 "Remember new words, their recency and frequency to improve the suggestions "
 "over time."
@@ -2158,11 +2165,11 @@ msgstr ""
 "Memorizza nuove parole, la recency e la frequenza per migliorare i "
 "suggerimenti con il passare del tempo."
 
-#: ../settings.ui.h:185
+#: ../settings.ui.h:186
 msgid "Insert word _separators"
 msgstr "Inserire i _separatori delle parole"
 
-#: ../settings.ui.h:186
+#: ../settings.ui.h:187
 msgid ""
 "Add and remove spaces when inserting word suggestions followed by "
 "punctuation characters."
@@ -2170,133 +2177,133 @@ msgstr ""
 "Aggiunge e rimuove gli spazi durante l'inserimento dei suggerimenti seguiti "
 "dalla punteggiatura."
 
-#: ../settings.ui.h:187
+#: ../settings.ui.h:188
 msgid "Options"
 msgstr "Opzioni"
 
-#: ../settings.ui.h:188
+#: ../settings.ui.h:189
 #, fuzzy
 msgid "Show more suggestions arrow"
 msgstr "Mostrare _suggerimenti"
 
-#: ../settings.ui.h:189
+#: ../settings.ui.h:190
 msgid "Step forward and backward through the available suggestions."
 msgstr ""
 
-#: ../settings.ui.h:190
+#: ../settings.ui.h:191
 msgid "Show button to pause learning"
 msgstr "Mostrare un pulsante per sospendere l'apprendimento"
 
-#: ../settings.ui.h:191
+#: ../settings.ui.h:192
 msgid "Words typed while this button is pressed won't be remembered."
 msgstr ""
 "Le parole digitate mentre questo pulsante è premuto non verranno memorizzate."
 
-#: ../settings.ui.h:192
+#: ../settings.ui.h:193
 msgid "Show lan_guage switcher"
 msgstr "Mostrare il selettore della lin_gua"
 
-#: ../settings.ui.h:193
+#: ../settings.ui.h:194
 msgid "Show a button for language selection."
 msgstr "Mosta un tasto per la scelta della lingua."
 
-#: ../settings.ui.h:194
+#: ../settings.ui.h:195
 msgid "Buttons"
 msgstr "Pulsanti"
 
-#: ../settings.ui.h:195
+#: ../settings.ui.h:196
 msgid "Word Suggestions"
 msgstr "Suggerimenti parole"
 
-#: ../settings.ui.h:196
+#: ../settings.ui.h:197
 msgid "Auto-capitalize while typing"
 msgstr "Scrivere automaticamente in maiuscolo durante la digitazione"
 
-#: ../settings.ui.h:197
+#: ../settings.ui.h:198
 msgid "Automatically capitalize sentence begins and name words."
 msgstr "Usa automaticamente le maiuscole all'inizio delle frasi e per i nomi."
 
-#: ../settings.ui.h:198
+#: ../settings.ui.h:199
 msgid "Auto-correct spelling"
 msgstr "Correggere automaticamente l'ortografia"
 
-#: ../settings.ui.h:199
+#: ../settings.ui.h:200
 msgid "Automatically correct the last word."
 msgstr "Corregge automaticamente l'ultima parola inserita."
 
-#: ../settings.ui.h:200
+#: ../settings.ui.h:201
 msgid "The spell check engine to use."
 msgstr "Il correttore ortografico da usare."
 
-#: ../settings.ui.h:201
+#: ../settings.ui.h:202
 msgid "Spell-check backend:"
 msgstr "Back end correttore ortografico:"
 
-#: ../settings.ui.h:202
+#: ../settings.ui.h:203
 msgid "Auto-correction"
 msgstr "Correzione automatica"
 
-#: ../settings.ui.h:203
+#: ../settings.ui.h:204
 msgid "While  learning is paused:"
 msgstr "Mentre l'apprendimento è sospeso:"
 
-#: ../settings.ui.h:204
+#: ../settings.ui.h:205
 msgid "Learning"
 msgstr "Apprendimento"
 
-#: ../settings.ui.h:205
+#: ../settings.ui.h:206
 msgid "Enable  keyboard _scanning"
 msgstr "Abilitare la _scansione della tastiera"
 
-#: ../settings.ui.h:206
+#: ../settings.ui.h:207
 msgctxt ""
 "Label of keyboard scanning settings button on preferences page Universal "
 "Access."
 msgid "Sc_anner Settings"
 msgstr "Impostazioni sc_ansione"
 
-#: ../settings.ui.h:207
+#: ../settings.ui.h:208
 msgid "Keyboard Scanning"
 msgstr "Scansione tastiera"
 
-#: ../settings.ui.h:208
+#: ../settings.ui.h:209
 msgid "_Delay:"
 msgstr "Ritar_do:"
 
-#: ../settings.ui.h:209
+#: ../settings.ui.h:210
 msgid "_Motion threshold:"
 msgstr "Soglia di _movimento:"
 
-#: ../settings.ui.h:210
+#: ../settings.ui.h:211
 msgid "Time in seconds before a click is triggered."
 msgstr "Tempo in secondi prima che un clic venga attivato."
 
-#: ../settings.ui.h:211
+#: ../settings.ui.h:212
 msgid "Distance in pixels before movement will be recognized."
 msgstr "Distanza in pixel prima che il movimento venga riconosciuto."
 
-#: ../settings.ui.h:212
+#: ../settings.ui.h:213
 msgid "Hide hover click window"
 msgstr "Nascondere la finestra del clic automatico"
 
-#: ../settings.ui.h:213
+#: ../settings.ui.h:214
 msgid "Hide the system-provided hover click window while Onboard is running."
 msgstr ""
 "Nasconde la finestra del clic automatico fornita dal sistema quando Onboard "
 "è in esecuzione."
 
-#: ../settings.ui.h:214
+#: ../settings.ui.h:215
 msgid "Enable click type window on exit"
 msgstr "Abilitare la finestra del clic all'uscita"
 
-#: ../settings.ui.h:215
+#: ../settings.ui.h:216
 msgid ""
 "Always enable the system-provided hover click window when exiting Onboard."
 msgstr ""
 "Abilita sempre la finestra del clic automatico fornita dal sistema "
 "all'uscita da Onboard."
 
-#: ../settings.ui.h:216
+#: ../settings.ui.h:217
 msgid "Hover Click"
 msgstr "Clic automatico"
 
