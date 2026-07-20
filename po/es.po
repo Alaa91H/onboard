@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: onboard\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-07-19 02:36+0200\n"
-"PO-Revision-Date: 2015-05-02 18:53+0000\n"
+"PO-Revision-Date: 2026-07-19 14:53-0400\n"
 "Last-Translator: Adolfo Jayme <fitoschido@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2017-02-14 14:04+0000\n"
-"X-Generator: Launchpad (build 18326)\n"
+"X-Generator: Poedit 3.9\n"
 
 #: ../Onboard/Appearance.py:130
 #, python-brace-format
@@ -59,7 +59,7 @@ msgid ""
 "Duplicate key_id '{}' found in color scheme file. Key_ids must occur only "
 "once."
 msgstr ""
-"key_id «{}» repetida encontrada en el esquema de colores del archivo. Los "
+"key_id '{}' repetida encontrada en el esquema de colores del archivo. Los "
 "key_id no se deben repetir."
 
 #: ../Onboard/Config.py:245
@@ -137,7 +137,7 @@ msgstr "el diseño «{filename}» no existe"
 #: ../Onboard/Config.py:935
 #, python-brace-format
 msgid "theme '{filename}' does not exist"
-msgstr "El tema «{filename}» no existe"
+msgstr "El tema '{filename}' no existe"
 
 #: ../Onboard/Config.py:960
 msgid "Loading theme from '{}'"
@@ -267,7 +267,7 @@ msgstr "_Preferencias"
 
 #: ../Onboard/Indicator.py:102
 msgid "_Help"
-msgstr ""
+msgstr "_Ayuda"
 
 #. Translators: label of a menu item. It used to be stock item
 #. STOCK_QUIT until Gtk 3.10 deprecated those.
@@ -348,27 +348,22 @@ msgid "This will only affect learned suggestions."
 msgstr "Esto solo afectará a sugerencias ya aprendidas."
 
 #: ../Onboard/KeyboardWidget.py:2209
-#, fuzzy
 msgid "Remove '{}' only where it occurs at text begin."
-msgstr "Quitar «{}» solo cuando ocurra al principio del texto."
+msgstr "Elimina '{}' solo cuando aparezca al principio del texto."
 
 #: ../Onboard/KeyboardWidget.py:2212
-#, fuzzy
 msgid "Remove '{}' only where it occurs at sentence begin."
-msgstr "Quitar «{}» solo cuando ocurra al principio de la frase."
+msgstr "Elimina '{}' solo cuando aparezca al principio de una frase."
 
 #: ../Onboard/KeyboardWidget.py:2215
-#, fuzzy
 msgid "Remove '{}' only where it occurs after numbers."
-msgstr "Quitar «{}» solo cuando ocurra después de números"
+msgstr "Elimina '{}' solo cuando aparezca después de números."
 
 #: ../Onboard/KeyboardWidget.py:2218
-#, fuzzy
 msgid "Remove '{}' only where it occurs after '{}'."
-msgstr "Quitar «{}» solo cuando ocurra después de «{}»."
+msgstr "Elimina '{}' solo cuando aparezca después de '{}'."
 
 #: ../Onboard/KeyboardWidget.py:2258
-#, fuzzy
 msgid "_Close"
 msgstr "_Cerrar"
 
@@ -383,7 +378,7 @@ msgstr "Contribuciones"
 
 #: ../Onboard/KeyboardWidget.py:2304 ../Onboard/settings.py:859
 msgid "My layouts"
-msgstr ""
+msgstr "Mis diseños"
 
 #: ../Onboard/LanguageSupport.py:174 ../Onboard/SpellChecker.py:634
 #: ../Onboard/SpellChecker.py:670 ../Onboard/SpellChecker.py:709
@@ -561,7 +556,7 @@ msgstr "Preferencias de Onboard"
 #. the size of the label popup.
 #: ../Onboard/settings.py:690
 msgid "auto"
-msgstr ""
+msgstr "automático"
 
 #: ../Onboard/settings.py:773
 msgid "Copy layout '{}' to this new name:"
@@ -623,13 +618,13 @@ msgstr "_Eliminar"
 #. keyboard devices (Preferences->Auto-show->External Keyboards).
 #: ../Onboard/settings.py:1300
 msgid "Ignore"
-msgstr ""
+msgstr "Ignorar"
 
 #. Translators: header of a tree view column with device names
 #. (Preferences->Auto-show->External Keyboards).
 #: ../Onboard/settings.py:1304
 msgid "Device"
-msgstr ""
+msgstr "Dispositivo"
 
 #. Key style with flat fill- and border colors
 #: ../Onboard/settings.py:1641
@@ -1321,11 +1316,11 @@ msgstr "Cambiar configuración de Onboard"
 
 #: ../data/onboard-settings.desktop.in.h:4
 msgid "onscreen;keyboard;accessibility;utility;settings;configuration;"
-msgstr ""
+msgstr "en pantalla;teclado;accesibilidad;utilidades;ajustes;configuración;"
 
 #: ../data/onboard.desktop.in.h:4
 msgid "onscreen;keyboard;accessibility;utility;"
-msgstr ""
+msgstr "en pantalla;teclado;accesibilidad;utilidades;"
 
 #: ../settings.ui.h:1
 msgid "Key-repeat"
@@ -1436,9 +1431,8 @@ msgid "Keyboard"
 msgstr "Teclado"
 
 #: ../settings.ui.h:29
-#, fuzzy
 msgid "Auto-show"
-msgstr "Auto"
+msgstr "Mostrar automáticamente"
 
 #: ../settings.ui.h:30
 msgid "Typing Assistance"
@@ -1458,12 +1452,11 @@ msgstr "Seguir la ventana activa"
 
 #: ../settings.ui.h:34
 msgid "Show context menu"
-msgstr ""
+msgstr "Añadir acciones al menú contextual"
 
 #: ../settings.ui.h:35
-#, fuzzy
 msgid "Show/hide the keyboard"
-msgstr "Ocultar el teclado"
+msgstr "Mostrar u ocultar el teclado"
 
 #: ../settings.ui.h:36
 msgid "Latch, then lock"
@@ -1596,13 +1589,16 @@ msgstr ""
 
 #: ../settings.ui.h:65
 msgid "_Left-click action:"
-msgstr ""
+msgstr "_Acción del botón izquierdo del ratón:"
 
 #: ../settings.ui.h:66
 msgid ""
 "Choose what left-clicking the status icon does. Right-click always shows the "
 "context menu."
 msgstr ""
+"Elige qué acción se realiza al hacer clic con el botón izquierdo en el icono "
+"de estado. Al hacer clic con el botón derecho siempre se muestra el menú "
+"contextual."
 
 #: ../settings.ui.h:67
 msgid ""
@@ -1610,6 +1606,11 @@ msgid ""
 "click regardless of this setting. 'Show/hide the keyboard' only takes effect "
 "where the desktop reports a separate left-click activation (e.g. KDE Plasma)."
 msgstr ""
+"Con AppIndicator, la mayoría de los entornos de escritorio abren el menú "
+"contextual al hacer clic con el botón izquierdo, independientemente de esta "
+"configuración. La opción 'Mostrar/ocultar el teclado' solo surte efecto "
+"cuando el escritorio informa de una activación independiente del clic con el "
+"botón izquierdo (por ejemplo, KDE Plasma)."
 
 #: ../settings.ui.h:68
 msgid "Desktop Integration"
@@ -1746,12 +1747,11 @@ msgstr "Cuando esté inactivo"
 
 #: ../settings.ui.h:99
 msgid "_Window handles of the keyboard window:"
-msgstr ""
+msgstr "_Identificadores de la ventana del teclado:"
 
 #: ../settings.ui.h:100
-#, fuzzy
 msgid "_Window handles of the floating icon:"
-msgstr "Manipulación de _ventanas"
+msgstr "_Identificadores de ventana del icono flotante:"
 
 #: ../settings.ui.h:101
 msgid "Resize Protection"
@@ -1858,7 +1858,7 @@ msgstr "Mostrar etiquetas emergentes sobre las teclas pulsadas."
 
 #: ../settings.ui.h:122
 msgid "Popup size:"
-msgstr ""
+msgstr "Tamaño de la ventana emergente:"
 
 #: ../settings.ui.h:123
 msgid "Key-press Feedback"
@@ -2026,37 +2026,36 @@ msgstr "Generación de pulsaciones de teclas"
 
 #: ../settings.ui.h:156
 msgid "Popup time [s]:"
-msgstr ""
+msgstr "Tiempo de aparición [s]:"
 
 #: ../settings.ui.h:157
 msgid "Affects how long a key popup stays open."
 msgstr ""
+"Determina el tiempo que permanece abierta la ventana emergente de una tecla."
 
 #: ../settings.ui.h:158
 msgid "0.15"
-msgstr ""
+msgstr "0.15"
 
 #: ../settings.ui.h:159
-#, fuzzy
 msgid "Animation"
-msgstr "Acción:"
+msgstr "Animación"
 
 #: ../settings.ui.h:160
 msgid "Advanced"
 msgstr "Avanzadas"
 
 #: ../settings.ui.h:161
-#, fuzzy
 msgid ""
 "Show Onboard when there is a recognized text entry in focus. Requires Gnome "
 "Accessibility."
 msgstr ""
-"Mostrar OnBoard cuando hay una ventana de texto reconocido en el foco. "
-"Requiere accesibilidad de GNOME."
+"Mostrar 'Onboard' cuando haya un campo de texto reconocido activo. Requiere "
+"Gnome Accessibility."
 
 #: ../settings.ui.h:162
 msgid "Keyboard movement strategy:"
-msgstr ""
+msgstr "Estrategia de movimiento con el teclado:"
 
 #: ../settings.ui.h:163
 msgid "Chose how the keyboard window moves when a text entry is activated."
@@ -2066,7 +2065,7 @@ msgstr ""
 
 #: ../settings.ui.h:164
 msgid "_Hide when typing on a physical keyboard"
-msgstr ""
+msgstr "_Ocultar al escribir en un teclado físico"
 
 #: ../settings.ui.h:165
 msgid ""
@@ -2089,14 +2088,15 @@ msgstr ""
 "Seleccione la duración de la pausa aquí."
 
 #: ../settings.ui.h:168
-#, fuzzy
 msgid "Auto-show only in tablet mode"
-msgstr "Mostrar _automáticamente al editar texto"
+msgstr "Mostrar automáticamente solo en modo tableta"
 
 #: ../settings.ui.h:169
 msgid ""
 "Requires driver support for SW_TABLET_MODE and a running instance of acpid."
 msgstr ""
+"Requiere que el controlador sea compatible con SW_TABLET_MODE y que haya una "
+"instancia de acpid en ejecución."
 
 #: ../settings.ui.h:170
 msgid ""
@@ -2104,45 +2104,49 @@ msgid ""
 "tablet mode. Run 'xinput test-xi2 3 ' to find these key presses and enter "
 "their 'detail' values below."
 msgstr ""
+"Como alternativa, algunos dispositivos generan eventos de teclas al entrar y "
+"salir del modo tableta. Ejecuta 'xinput test-xi2 3' para identificar estas "
+"pulsaciones de teclas e introduce sus valores 'detail' a continuación."
 
 #: ../settings.ui.h:171
 msgid "Hotkey received when entering tablet mode:"
-msgstr ""
+msgstr "Tecla de acceso rápido que aparece al activar el modo tableta:"
 
 #: ../settings.ui.h:172
 msgid "Hotkey received when leaving tablet mode:"
-msgstr ""
+msgstr "Tecla de acceso rápido que se activa al salir del modo tableta:"
 
 #: ../settings.ui.h:173
 msgid "File that contains the current device state:"
-msgstr ""
+msgstr "Archivo que contiene el estado actual del dispositivo:"
 
 #: ../settings.ui.h:174
 msgid "Regular expression to match for tablet-mode:"
-msgstr ""
+msgstr "Expresión regular para detectar el modo tableta:"
 
 #: ../settings.ui.h:175
 msgid "Convertible Devices"
-msgstr ""
+msgstr "Dispositivos convertibles"
 
 #: ../settings.ui.h:176
 msgid "Don't auto-show while external keyboards are connected"
-msgstr ""
+msgstr "No mostrar automáticamente mientras haya teclados externos conectados"
 
 #: ../settings.ui.h:177
 msgid "Detected keyboard devices:"
-msgstr ""
+msgstr "Dispositivos de teclado detectados:"
 
 #: ../settings.ui.h:178
 msgid ""
 "Check 'Ignore' for devices that are always connected and should not block "
 "auto-show."
 msgstr ""
+"Marca la casilla 'Ignorar' para los dispositivos que estén siempre "
+"conectados y que no deban bloquear la visualización automática."
 
 #: ../settings.ui.h:179
-#, fuzzy
 msgid "External Keyboards"
-msgstr "Salir del teclado"
+msgstr "Teclados externos"
 
 #: ../settings.ui.h:180
 msgid "Show _suggestions"
