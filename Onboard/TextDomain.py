@@ -71,6 +71,15 @@ class TextDomain:
     def matches(self, **kwargs):
         # Weed out unity text entries that report being editable but don't
         # actually provide methods of the Atspi.Text interface.
+        #
+        # Note: WebKitGTK contenteditable areas (e.g. Evolution's HTML mail
+        # composer) can claim the "Text" interface here yet still not return
+        # usable data from it (caret offset, character count, surrounding
+        # text), so word suggestions silently do nothing in those fields
+        # while a plain GtkEntry on the same page works fine. This is a
+        # WebKitGTK/AT-SPI accessibility-bridge gap, not something we can
+        # fix on our side. Tracked upstream as
+        # https://bugs.webkit.org/show_bug.cgi?id=319904
         return "Text" in kwargs.get("interfaces", [])
 
     def init_domain(self):
