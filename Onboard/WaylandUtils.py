@@ -181,6 +181,14 @@ def install_kwin_rule(app_id="onboard",
     # = match against the resource class only (single token).
     # 'aboverule=2' / 'acceptfocusrule=2' = "force this value" (vs. "do once",
     # "remember", etc.).
+    #
+    # 'above'/'aboverule' only affects normal window stacking and is
+    # ignored once another window goes fullscreen (see onboard-osk/onboard
+    # issue #75). 'layer=overlay'/'layerrule=2' forces the compositor's
+    # dedicated overlay layer instead, which does stay above fullscreen
+    # windows too. It's a newer KWin rule (post-6.x), so we keep the
+    # above/aboverule pair as well for older KWin versions that don't
+    # know the 'layer' key and would just ignore it.
     values = {
         "Description": description,
         "Enabled": "true",
@@ -195,6 +203,8 @@ def install_kwin_rule(app_id="onboard",
         "typesrule": "2",
         "above": "true",
         "aboverule": "2",
+        "layer": "overlay",
+        "layerrule": "2",
         "acceptfocus": "false",
         "acceptfocusrule": "2",
         "skiptaskbar": "true",
@@ -256,7 +266,8 @@ def install_kwin_rule(app_id="onboard",
             continue
 
     _logger.info("KWin window rule '%s' updated at %s "
-                 "(app_id=%s, acceptfocus=false, above=true)",
+                 "(app_id=%s, acceptfocus=false, above=true, "
+                 "layer=overlay)",
                  rule_name, cfg_file, app_id)
     return True
 
