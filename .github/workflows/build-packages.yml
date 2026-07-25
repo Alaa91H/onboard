@@ -63,7 +63,7 @@ jobs:
       run: |
         mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
         cp packaging/fedora/onboard.spec ~/rpmbuild/SPECS/
-        python3 setup.py sdist -d ~/rpmbuild/SOURCES/ --formats=gztar
+        tar czf ~/rpmbuild/SOURCES/onboard-1.4.4.tar.gz --transform="s,^\.,onboard-1.4.4," .
         rpmbuild -ba ~/rpmbuild/SPECS/onboard.spec
     
     - name: Upload RPM packages
@@ -76,25 +76,24 @@ jobs:
   build-flatpak:
     name: Build Flatpak Package
     runs-on: ubuntu-latest
-    container: ubuntu:24.04
     
     steps:
     - name: Install dependencies
       run: |
-        apt-get update
-        apt-get install -y flatpak flatpak-builder
+        sudo apt-get update
+        sudo apt-get install -y flatpak flatpak-builder
     
     - name: Add Flathub remote
       run: |
-        flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-        flatpak install -y flathub org.freedesktop.Platform//24.08 org.freedesktop.Sdk//24.08 || true
+        flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+        flatpak install -y --user flathub org.freedesktop.Platform//24.08 org.freedesktop.Sdk//24.08 || true
     
     - name: Checkout
       uses: actions/checkout@v4
     
     - name: Build Flatpak
       run: |
-        flatpak-builder --force-clean --repo=repo builddir packaging/flatpak/org.onboard.Onboard.yml
+        flatpak-builder --force-clean --disable-rofiles-fuse --repo=repo builddir packaging/flatpak/org.onboard.Onboard.yml
     
     - name: Create Flatpak bundle
       run: |
@@ -121,14 +120,15 @@ jobs:
     
     - name: Build Snap
       run: |
-        cd packaging/snap
+        mkdir -p snap
+        cp packaging/snap/snapcraft.yaml snap/
         snapcraft --destructive-mode
     
     - name: Upload Snap package
       uses: actions/upload-artifact@v4
       with:
         name: snap-package
-        path: packaging/snap/*.snap
+        path: *.snap
         retention-days: 30
 
   create-release:

@@ -121,8 +121,4 @@ parts:
       sed -i 's|/usr/bin/onboard|onboard|g' $CRAFT_PRIME/usr/share/applications/onboard.desktop || true
       sed -i 's|/usr/bin/onboard-settings|onboard-settings|g' $CRAFT_PRIME/usr/share/applications/onboard-settings.desktop || true
 
-  autostart:
-    plugin: dump
-    source: packaging/snap
-    organize:
-      onboard-autostart.desktop: usr/share/applications/onboard-autostart.desktop
+
