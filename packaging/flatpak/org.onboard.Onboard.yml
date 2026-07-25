@@ -39,9 +39,9 @@ modules:
       - -DBUILD_SHARED_LIBS=ON
       - -DCMAKE_INSTALL_PREFIX=/app
     sources:
-      - type: git
-        url: https://github.com/hunspell/hunspell.git
-        tag: v1.7.2
+      - type: archive
+        url: https://github.com/hunspell/hunspell/archive/refs/tags/v1.7.2.tar.gz
+        sha256: 69fa312d3586c988789266eaf7ffc9861d9f6396c31fc930a014d551b59bbd6e
 
   - name: libcanberra
     buildsystem: autotools

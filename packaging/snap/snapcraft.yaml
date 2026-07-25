@@ -56,11 +56,8 @@ apps:
 
 parts:
   onboard:
-    plugin: python
+    plugin: nil
     source: .
-    python-packages:
-      - packaging
-      - distutils-extra
     build-packages:
       - gcc
       - g++
@@ -78,6 +75,9 @@ parts:
       - python3-cairo
       - python3-gi
       - python3-distutils-extra
+      - python3-pip
+      - python3-setuptools
+      - python3-packaging
       - intltool
       - libglib2.0-dev
     stage-packages:

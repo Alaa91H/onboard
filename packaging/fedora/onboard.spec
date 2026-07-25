@@ -76,6 +76,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/onboard-settings.desk
 %{_datadir}/glib-2.0/schemas/org.onboard.gschema.xml
 %{_datadir}/applications/onboard.desktop
 %{_datadir}/applications/onboard-settings.desktop
+/etc/xdg/autostart/onboard-autostart.desktop
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/icons/HighContrast/symbolic/apps/*
 %{_datadir}/icons/ubuntu-mono-dark/status/22/*
