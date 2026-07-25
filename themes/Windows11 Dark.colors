@@ -1,0 +1,152 @@
+<?xml version="1.0" ?>
+
+<!--
+Windows 11 Touch Keyboard Dark Color Scheme for Onboard
+Based on the Windows 11 Fluent Design System dark theme.
+-->
+
+<color_scheme name="Windows11 Dark" format="2.0">
+    <!-- Dark background layers -->
+    <layer> <color element="background" rgb="#1C1C1C" opacity="1.0"/> </layer>
+    <layer> <color element="background" rgb="#202020" opacity="1.0"/> </layer>
+    <layer> <color element="background" rgb="#2D2D2D" opacity="1.0"/> </layer>
+
+    <!-- Default key group -->
+    <key_group>
+        <!-- Normal state -->
+        <color element="fill"   rgb="#3D3D3D"/>
+        <color element="fill"   rgb="#4A4A4A" hover="true"/>
+        <color element="fill"   rgb="#505050" pressed="true"/>
+        <!-- Stroke - very subtle -->
+        <color element="stroke" rgb="#505050"/>
+        <color element="stroke" rgb="#606060" hover="true"/>
+        <color element="stroke" rgb="#707070" pressed="true"/>
+        <!-- Label -->
+        <color element="label"  rgb="#FFFFFF"/>
+        <color element="label"  rgb="#FFFFFF" hover="true"/>
+        <color element="label"  rgb="#FFFFFF" pressed="true"/>
+        <!-- Dwell progress -->
+        <color element="dwell-progress" rgb="#0078D4"/>
+
+        <!-- Layer/system keys -->
+        layer, icon0, icon1, icon2, icon3,
+
+        <!-- Function keys F1-F12 -->
+        F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12,
+        Prnt, Pause, Scroll,
+
+        <!-- Editing keys -->
+        INS, DELE, HOME, END, PGUP, PGDN,
+
+        <!-- Numpad operators -->
+        KPSU, KPDV, KPAD, KPMU,
+
+        <!-- Click helpers -->
+        middleclick, secondaryclick, singleclick, doubleclick,
+        dragclick, hoverclick,
+
+        <!-- Word list -->
+        hide.wordlist
+
+        <!-- Spelling suggestions -->
+        <key_group>
+            <color element="fill"  rgb="#3D3D3D"/>
+            <color element="fill"  rgb="#0078D4" hover="true"/>
+            <color element="fill"  rgb="#005A9E" pressed="true"/>
+            <color element="label" rgb="#FFFFFF"/>
+            <color element="label" rgb="#FFFFFF" hover="true"/>
+            <color element="label" rgb="#FFFFFF" pressed="true"/>
+            correctionsbg,
+            correction
+        </key_group>
+
+        <!-- Icon keys - slightly darker -->
+        <key_group>
+            <color element="fill"   rgb="#333333"/>
+            <color element="fill"   rgb="#404040" hover="true"/>
+            <color element="fill"   rgb="#484848" pressed="true"/>
+            <color element="stroke" rgb="#404040"/>
+            <color element="stroke" rgb="#505050" hover="true"/>
+            icon1, icon2
+        </key_group>
+
+        <!-- Alphanumeric keys - standard -->
+        <key_group>
+            <color element="fill" rgb="#3D3D3D"/>
+            <color element="fill" rgb="#4A4A4A" hover="true"/>
+            <color element="fill" rgb="#505050" pressed="true"/>
+            ESC,
+            AE01, AE02, AE03, AE04, AE05, AE06, AE07, AE08, AE09, AE10, AE11, AE12,
+            KP1, KP2, KP3, KP4, KP5, KP6, KP7, KP8, KP9,
+        </key_group>
+
+        <!-- Bottom row keys - slightly different shade -->
+        <key_group>
+            <color element="fill" rgb="#333333"/>
+            <color element="fill" rgb="#404040" hover="true"/>
+            <color element="fill" rgb="#484848" pressed="true"/>
+            <color element="stroke" rgb="#404040"/>
+            <color element="stroke" rgb="#505050" hover="true"/>
+            RCTL, LCTL, RALT, LALT, LWIN, RWIN, MENU,
+            LEFT, RGHT, UP, DOWN,
+            KP0, KPDL,
+            hoverclick.bottom-row,
+            quit
+
+            <!-- Active state for toggle keys -->
+            <key_group>
+                <color element="fill" active="true" locked="false" rgb="#0078D4"/>
+                <color element="fill" rgb="#005A9E" hover="true" active="true"/>
+                <color element="fill" rgb="#004578" pressed="true"/>
+                <color element="label" rgb="#FFFFFF"/>
+                <color element="label" rgb="#FFFFFF" hover="true"/>
+                hide, showclick, move, layer
+            </key_group>
+        </key_group>
+
+        <!-- Spacebar and Shift keys - accent color -->
+        <key_group>
+            <color element="fill" rgb="#0078D4"/>
+            <color element="fill" rgb="#006CBE" hover="true"/>
+            <color element="fill" rgb="#005A9E" pressed="true"/>
+            <color element="stroke" rgb="#005A9E"/>
+            <color element="stroke" rgb="#004578" hover="true"/>
+            <color element="label" rgb="#FFFFFF"/>
+            <color element="label" rgb="#FFFFFF" hover="true"/>
+            <color element="label" rgb="#E0E0E0" pressed="true"/>
+            SPCE, LFSH, RTSH,
+            settings
+            <key_group>
+                <color element="stroke" rgb="#005A9E"/>
+                <color element="stroke" rgb="#004578" hover="true"/>
+                icon0
+            </key_group>
+        </key_group>
+
+        <!-- Action keys (Enter, Backspace, Tab, etc.) -->
+        <key_group>
+            <color element="fill" rgb="#3D3D3D"/>
+            <color element="fill" rgb="#4A4A4A" hover="true"/>
+            <color element="fill" rgb="#505050" pressed="true"/>
+            <color element="stroke" rgb="#505050"/>
+            <color element="stroke" rgb="#606060" hover="true"/>
+            BKSP, DELE.next-to-backspace, TAB, CAPS, RTRN, KPEN, NMLK,
+            layer.like_rtrn, LFSH.like_rtrn
+            <key_group>
+                <color element="stroke" rgb="#404040"/>
+                <color element="stroke" rgb="#505050" hover="true"/>
+                icon3
+            </key_group>
+        </key_group>
+
+        <!-- Snippets -->
+        <key_group>
+            <color element="fill"   rgb="#2D2D2D"/>
+            <color element="fill"   rgb="#3D3D3D" hover="true"/>
+            <color element="fill"   rgb="#484848" pressed="true"/>
+            <color element="stroke" rgb="#404040"/>
+            <color element="stroke" rgb="#505050" hover="true"/>
+            m0, m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13, m14, m15
+        </key_group>
+    </key_group>
+</color_scheme>

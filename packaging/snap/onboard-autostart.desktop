@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Onboard
+Comment=On-screen keyboard
+Exec=onboard
+Terminal=false
+NoDisplay=true
+X-GNOME-Autostart-enabled=false

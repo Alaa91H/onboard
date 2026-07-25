@@ -1,6 +1,8 @@
 include AUTHORS CHANGELOG COPYING* HACKING DBUS.md README.md
 include *.ui
 include onboard-defaults.conf.example
+include install_windows11_theme.sh
+include WINDOWS11_THEME_README.md
 recursive-include data *
 recursive-include gnome *
 recursive-include help *

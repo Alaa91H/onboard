@@ -1,0 +1,129 @@
+<?xml version="1.0" ?>
+
+<!--
+Windows 11 Touch Keyboard - Full Layout for Onboard
+Designed to mimic the Windows 11 on-screen keyboard appearance.
+Full-size keyboard with all standard keys.
+-->
+
+<keyboard
+    id="Win11 Full"
+    format="3.2"
+    section="contributions"
+    summary="Windows 11 style full touch keyboard">
+
+    <include file='key_defs.xml'/>
+
+    <box border="1" spacing="2" orientation="vertical">
+
+        <!-- Word suggestion bar -->
+        <panel filename='Win11-Full-Alpha.svg' scan_priority='1'>
+            <include file='word_suggestions.xml'/>
+        </panel>
+
+        <!-- Main keyboard area -->
+        <panel layer="alpha" filename="Win11-Full-Alpha.svg">
+            <!-- Row 1: Number row -->
+            <key group="alphanumeric" id="TLDE"/>
+            <key group="alphanumeric" id="AE01"/>
+            <key group="alphanumeric" id="AE02"/>
+            <key group="alphanumeric" id="AE03"/>
+            <key group="alphanumeric" id="AE04"/>
+            <key group="alphanumeric" id="AE05"/>
+            <key group="alphanumeric" id="AE06"/>
+            <key group="alphanumeric" id="AE07"/>
+            <key group="alphanumeric" id="AE08"/>
+            <key group="alphanumeric" id="AE09"/>
+            <key group="alphanumeric" id="AE10"/>
+            <key group="alphanumeric" id="AE11"/>
+            <key group="alphanumeric" id="AE12"/>
+            <key group="bottomrow" id="BKSP"/>
+
+            <!-- Row 2: QWERTY -->
+            <key group="bottomrow" id="TAB"/>
+            <key group="alphanumeric" id="AD01"/>
+            <key group="alphanumeric" id="AD02"/>
+            <key group="alphanumeric" id="AD03"/>
+            <key group="alphanumeric" id="AD04"/>
+            <key group="alphanumeric" id="AD05"/>
+            <key group="alphanumeric" id="AD06"/>
+            <key group="alphanumeric" id="AD07"/>
+            <key group="alphanumeric" id="AD08"/>
+            <key group="alphanumeric" id="AD09"/>
+            <key group="alphanumeric" id="AD10"/>
+            <key group="alphanumeric" id="AD11"/>
+            <key group="alphanumeric" id="AD12"/>
+            <key group="misc" id="RTRN"/>
+
+            <!-- Row 3: ASDF -->
+            <key group="misc" id="CAPS"/>
+            <key group="alphanumeric" id="AC01"/>
+            <key group="alphanumeric" id="AC02"/>
+            <key group="alphanumeric" id="AC03"/>
+            <key group="alphanumeric" id="AC04"/>
+            <key group="alphanumeric" id="AC05"/>
+            <key group="alphanumeric" id="AC06"/>
+            <key group="alphanumeric" id="AC07"/>
+            <key group="alphanumeric" id="AC08"/>
+            <key group="alphanumeric" id="AC09"/>
+            <key group="alphanumeric" id="AC10"/>
+            <key group="alphanumeric" id="AC11"/>
+            <key group="alphanumeric" id="AC12"/>
+
+            <!-- Row 4: ZXCV -->
+            <key group="shifts" id="LFSH"/>
+            <key group="alphanumeric" id="AB01"/>
+            <key group="alphanumeric" id="AB02"/>
+            <key group="alphanumeric" id="AB03"/>
+            <key group="alphanumeric" id="AB04"/>
+            <key group="alphanumeric" id="AB05"/>
+            <key group="alphanumeric" id="AB06"/>
+            <key group="alphanumeric" id="AB07"/>
+            <key group="alphanumeric" id="AB08"/>
+            <key group="alphanumeric" id="AB09"/>
+            <key group="alphanumeric" id="AB10"/>
+            <key group="shifts" id="RTSH"/>
+
+            <!-- Row 5: Bottom row -->
+            <key group="bottomrow" id="LCTL"/>
+            <key group="bottomrow" id="LWIN"/>
+            <key group="bottomrow" id="LALT"/>
+            <key group="bottomrow" id="SPCE"/>
+            <key group="bottomrow" id="RALT"/>
+            <key group="bottomrow" id="RWIN"/>
+            <key group="bottomrow" id="MENU"/>
+
+            <!-- Arrow keys -->
+            <key group="directions_alpha" id="LEFT"/>
+            <key group="directions_alpha" id="RGHT"/>
+            <key group="directions_alpha" id="UP"/>
+            <key group="directions_alpha" id="DOWN"/>
+        </panel>
+
+        <!-- Side bar for window controls -->
+        <panel id="paneswitch" filename="Win11-Full-Alpha.svg">
+            <box compact="true" orientation='vertical'>
+                <panel group='nowordlist'>
+                    <key group='bottomrow' id='hide'/>
+                    <box orientation='vertical'>
+                        <key group="bottomrow" id="showclick"/>
+                        <key group="bottomrow" id="move"/>
+                        <key group="bottomrow" id="layer0" show_active="false" scan_priority="3"/>
+                        <key group="bottomrow" id="layer1" scan_priority="3"/>
+                        <key group="bottomrow" id="layer2" scan_priority="3"/>
+                    </box>
+                </panel>
+                <panel group='wordlist'>
+                    <box orientation='vertical'>
+                        <key group='sidebar' id='move' svg_id='move.wordlist' expand='false' label_margin='2.5'/>
+                        <key group='sidebar' id='showclick' svg_id='showclick.wordlist' scan_priority="3"/>
+                        <key group='bottomrow' id='layer0' svg_id='layer0.wordlist' show_active="false" scan_priority='3'/>
+                        <key group='bottomrow' id='layer1' svg_id='layer1.wordlist' scan_priority='3'/>
+                        <key group="bottomrow" id="layer2" svg_id='layer2.wordlist' scan_priority='3'/>
+                    </box>
+                </panel>
+            </box>
+        </panel>
+
+    </box>
+</keyboard>

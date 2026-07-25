@@ -1,0 +1,134 @@
+<?xml version="1.0" ?>
+
+<!--
+Windows 11 Floating Keyboard - Arabic Layout for Onboard
+Arabic keyboard layout with RTL support for the floating keyboard.
+-->
+
+<keyboard
+    id="Win11 Arabic"
+    format="3.2"
+    section="contributions"
+    summary="Windows 11 floating Arabic touch keyboard">
+
+    <include file='key_defs.xml'/>
+
+    <box border="1" spacing="2" orientation="vertical">
+
+        <!-- Word suggestion bar -->
+        <panel filename='Win11-Floating-Arabic-Alpha.svg' scan_priority='1'>
+            <include file='word_suggestions.xml'/>
+        </panel>
+
+        <!-- Arabic alpha layer -->
+        <panel layer="alpha" filename="Win11-Floating-Arabic-Alpha.svg">
+
+            <!-- Title bar keys -->
+            <key group="bottomrow" id="win11-move" button="true" label="⋯"/>
+            <key group="bottomrow" id="win11-close" button="true" label="✕"/>
+            <key group="bottomrow" id="win11-lang-switch" button="true" label="EN"/>
+
+            <!-- Number row (Western digits 0-9) -->
+            <key group="alphanumeric" id="AE01" label="1" char="1"/>
+            <key group="alphanumeric" id="AE02" label="2" char="2"/>
+            <key group="alphanumeric" id="AE03" label="3" char="3"/>
+            <key group="alphanumeric" id="AE04" label="4" char="4"/>
+            <key group="alphanumeric" id="AE05" label="5" char="5"/>
+            <key group="alphanumeric" id="AE06" label="6" char="6"/>
+            <key group="alphanumeric" id="AE07" label="7" char="7"/>
+            <key group="alphanumeric" id="AE08" label="8" char="8"/>
+            <key group="alphanumeric" id="AE09" label="9" char="9"/>
+            <key group="alphanumeric" id="AE10" label="0" char="0"/>
+            <key group="bottomrow" id="BKSP-num" image="erase-left.svg"/>
+
+            <!-- Row 1: Arabic top row (right-to-left) -->
+            <!-- ض ص ث ق ف غ ع ه خ ح ج د -->
+            <key group="alphanumeric" id="ar-row1-01" keysym="0x0636" label="ض"/>
+            <key group="alphanumeric" id="ar-row1-02" keysym="0x0635" label="ص"/>
+            <key group="alphanumeric" id="ar-row1-03" keysym="0x062B" label="ث"/>
+            <key group="alphanumeric" id="ar-row1-04" keysym="0x0642" label="ق"/>
+            <key group="alphanumeric" id="ar-row1-05" keysym="0x0641" label="ف"/>
+            <key group="alphanumeric" id="ar-row1-06" keysym="0x063A" label="غ"/>
+            <key group="alphanumeric" id="ar-row1-07" keysym="0x0639" label="ع"/>
+            <key group="alphanumeric" id="ar-row1-08" keysym="0x0647" label="هـ"/>
+            <key group="alphanumeric" id="ar-row1-09" keysym="0x062E" label="خ"/>
+            <key group="alphanumeric" id="ar-row1-10" keysym="0x062D" label="ح"/>
+            <key group="alphanumeric" id="ar-row1-11" keysym="0x062C" label="ج"/>
+
+            <!-- Row 2: Arabic middle row -->
+            <!-- ش ي ب ل ا ت ن م ك ء -->
+            <key group="alphanumeric" id="ar-row2-01" keysym="0x0634" label="ش"/>
+            <key group="alphanumeric" id="ar-row2-02" keysym="0x064A" label="ي"/>
+            <key group="alphanumeric" id="ar-row2-03" keysym="0x0628" label="ب"/>
+            <key group="alphanumeric" id="ar-row2-04" keysym="0x0644" label="ل"/>
+            <key group="alphanumeric" id="ar-row2-05" keysym="0x0627" label="ا"/>
+            <key group="alphanumeric" id="ar-row2-06" keysym="0x062A" label="ت"/>
+            <key group="alphanumeric" id="ar-row2-07" keysym="0x0646" label="ن"/>
+            <key group="alphanumeric" id="ar-row2-08" keysym="0x0645" label="م"/>
+            <key group="alphanumeric" id="ar-row2-09" keysym="0x0643" label="ك"/>
+
+            <!-- Row 3: Arabic bottom row -->
+            <!-- ئ ء ؤ ر لا ى ة و ز ظ -->
+            <key group="alphanumeric" id="ar-row3-01" keysym="0x0626" label="ئ"/>
+            <key group="alphanumeric" id="ar-row3-02" keysym="0x0621" label="ء"/>
+            <key group="alphanumeric" id="ar-row3-03" keysym="0x0624" label="ؤ"/>
+            <key group="alphanumeric" id="ar-row3-04" keysym="0x0631" label="ر"/>
+            <key group="alphanumeric" id="ar-row3-05" keysym="0x0644\u0627" label="لا"/>
+            <key group="alphanumeric" id="ar-row3-06" keysym="0x0649" label="ى"/>
+            <key group="alphanumeric" id="ar-row3-07" keysym="0x0629" label="ة"/>
+            <key group="alphanumeric" id="ar-row3-08" keysym="0x0648" label="و"/>
+            <key group="alphanumeric" id="ar-row3-09" keysym="0x0632" label="ز"/>
+
+            <!-- Bottom row -->
+            <key group="bottomrow" id="win11-layer1" label="?123" button='true'/>
+            <key group="bottomrow" id="AB09" label="،" char="،"/>
+            <key group="bottomrow" id="win11-emoji" label="😊" button='true'/>
+            <key group="bottomrow" id="win11-clipboard" label="📋" button='true'/>
+            <key group="bottomrow" id="SPCE"/>
+            <key group="bottomrow" id="AC11" label="." char="."/>
+            <key group="bottomrow" id="RTRN"/>
+        </panel>
+
+        <!-- Arabic Shift Layer (with diacritics/tashkeel) -->
+        <panel layer="shift" filename="Win11-Floating-Arabic-Alpha.svg">
+            <!-- Row 1: Arabic shifted - diacritics -->
+            <key group="alphanumeric" id="ar-row1-01" label="ً" char="ً"/>
+            <key group="alphanumeric" id="ar-row1-02" label="ٌ" char="ٌ"/>
+            <key group="alphanumeric" id="ar-row1-03" label="ٍ" char="ٍ"/>
+            <key group="alphanumeric" id="ar-row1-04" label="َ" char="َ"/>
+            <key group="alphanumeric" id="ar-row1-05" label="ُ" char="ُ"/>
+            <key group="alphanumeric" id="ar-row1-06" label="ِ" char="ِ"/>
+            <key group="alphanumeric" id="ar-row1-07" label="ّ" char="ّ"/>
+            <key group="alphanumeric" id="ar-row1-08" label="ْ" char="ْ"/>
+            <key group="alphanumeric" id="ar-row1-09" label="ٓ" char="ٓ"/>
+            <key group="alphanumeric" id="ar-row1-10" label="ٔ" char="ٔ"/>
+            <key group="alphanumeric" id="ar-row1-11" label="ٕ" char="ٕ"/>
+        </panel>
+
+        <!-- Side bar for window controls -->
+        <panel id="paneswitch" filename="Win11-Floating-Arabic-Alpha.svg">
+            <box compact="true" orientation='vertical'>
+                <panel group='nowordlist'>
+                    <key group='bottomrow' id='hide'/>
+                    <box orientation='vertical'>
+                        <key group="bottomrow" id="showclick"/>
+                        <key group="bottomrow" id="move"/>
+                        <key group="bottomrow" id="layer0" show_active="false" scan_priority="3"/>
+                        <key group="bottomrow" id="layer1" scan_priority="3"/>
+                        <key group="bottomrow" id="layer2" scan_priority="3"/>
+                    </box>
+                </panel>
+                <panel group='wordlist'>
+                    <box orientation='vertical'>
+                        <key group='sidebar' id='move' svg_id='move.wordlist' expand='false' label_margin='2.5'/>
+                        <key group='sidebar' id='showclick' svg_id='showclick.wordlist' scan_priority="3"/>
+                        <key group='bottomrow' id='layer0' svg_id='layer0.wordlist' show_active="false" scan_priority='3'/>
+                        <key group='bottomrow' id='layer1' svg_id='layer1.wordlist' scan_priority='3'/>
+                        <key group="bottomrow" id="layer2" svg_id='layer2.wordlist' scan_priority='3'/>
+                    </box>
+                </panel>
+            </box>
+        </panel>
+
+    </box>
+</keyboard>

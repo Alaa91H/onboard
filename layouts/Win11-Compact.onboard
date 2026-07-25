@@ -1,0 +1,97 @@
+<?xml version="1.0" ?>
+
+<!--
+Windows 11 Touch Keyboard - Compact Layout for Onboard
+Designed to mimic the Windows 11 on-screen keyboard appearance.
+Suitable for floating mode with compact sizing.
+-->
+
+<keyboard
+    id="Win11 Compact"
+    format="3.2"
+    section="contributions"
+    summary="Windows 11 style compact touch keyboard">
+
+    <include file='key_defs.xml'/>
+
+    <box border="1" spacing="2" orientation="vertical">
+
+        <!-- Word suggestion bar -->
+        <panel filename='Win11-Compact-Alpha.svg' scan_priority='1'>
+            <include file='word_suggestions.xml'/>
+        </panel>
+
+        <!-- Main keyboard area -->
+        <panel layer="alpha" filename="Win11-Compact-Alpha.svg">
+            <!-- Row 1: Q W E R T Y U I O P -->
+            <key group="alphanumeric" id="AD01"/>
+            <key group="alphanumeric" id="AD02"/>
+            <key group="alphanumeric" id="AD03"/>
+            <key group="alphanumeric" id="AD04"/>
+            <key group="alphanumeric" id="AD05"/>
+            <key group="alphanumeric" id="AD06"/>
+            <key group="alphanumeric" id="AD07"/>
+            <key group="alphanumeric" id="AD08"/>
+            <key group="alphanumeric" id="AD09"/>
+            <key group="alphanumeric" id="AD10"/>
+
+            <!-- Row 2: A S D F G H J K L -->
+            <key group="alphanumeric" id="AC01"/>
+            <key group="alphanumeric" id="AC02"/>
+            <key group="alphanumeric" id="AC03"/>
+            <key group="alphanumeric" id="AC04"/>
+            <key group="alphanumeric" id="AC05"/>
+            <key group="alphanumeric" id="AC06"/>
+            <key group="alphanumeric" id="AC07"/>
+            <key group="alphanumeric" id="AC08"/>
+            <key group="alphanumeric" id="AC09"/>
+
+            <!-- Row 3: Shift Z X C V B N M Backspace -->
+            <key group="shifts" id="LFSH"/>
+            <key group="alphanumeric" id="AB01"/>
+            <key group="alphanumeric" id="AB02"/>
+            <key group="alphanumeric" id="AB03"/>
+            <key group="alphanumeric" id="AB04"/>
+            <key group="alphanumeric" id="AB05"/>
+            <key group="alphanumeric" id="AB06"/>
+            <key group="alphanumeric" id="AB07"/>
+            <key group="alphanumeric" id="AB08"/>
+            <key group="bottomrow" id="BKSP"/>
+
+            <!-- Row 4: ?123 , (emoji) Space . Enter -->
+            <key group="bottomrow" id="LWIN" label="?123" button='true'/>
+            <key group="bottomrow" id="AB09" label="," char=","/>
+            <key group="bottomrow" id="AC11" label="." char="."/>
+            <key group="bottomrow" id="LALT" label="😊" button='true'/>
+            <key group="bottomrow" id="SPCE"/>
+            <key group="bottomrow" id="AB10" label="?" char="?"/>
+            <key group="bottomrow" id="RTRN"/>
+        </panel>
+
+        <!-- Side bar for window controls -->
+        <panel id="paneswitch" filename="Win11-Compact-Alpha.svg">
+            <box compact="true" orientation='vertical'>
+                <panel group='nowordlist'>
+                    <key group='bottomrow' id='hide'/>
+                    <box orientation='vertical'>
+                        <key group="bottomrow" id="showclick"/>
+                        <key group="bottomrow" id="move"/>
+                        <key group="bottomrow" id="layer0" show_active="false" scan_priority="3"/>
+                        <key group="bottomrow" id="layer1" scan_priority="3"/>
+                        <key group="bottomrow" id="layer2" scan_priority="3"/>
+                    </box>
+                </panel>
+                <panel group='wordlist'>
+                    <box orientation='vertical'>
+                        <key group='sidebar' id='move' svg_id='move.wordlist' expand='false' label_margin='2.5'/>
+                        <key group='sidebar' id='showclick' svg_id='showclick.wordlist' scan_priority="3"/>
+                        <key group='bottomrow' id='layer0' svg_id='layer0.wordlist' show_active="false" scan_priority='3'/>
+                        <key group='bottomrow' id='layer1' svg_id='layer1.wordlist' scan_priority='3'/>
+                        <key group="bottomrow" id="layer2" svg_id='layer2.wordlist' scan_priority='3'/>
+                    </box>
+                </panel>
+            </box>
+        </panel>
+
+    </box>
+</keyboard>

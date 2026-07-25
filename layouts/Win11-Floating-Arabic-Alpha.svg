@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Arabic Keyboard Layout for Windows 11 Floating Keyboard -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="Win11-Floating-Arabic-Alpha"
+   height="300"
+   width="750"
+   version="1.0">
+
+  <defs id="defs4" />
+
+  <!-- Title bar: drag handle + close button -->
+  <rect id="win11-titlebar" x="0" y="0" width="750" height="20" rx="0" ry="0" />
+  <rect id="win11-move" x="340" y="4" width="70" height="12" rx="6" ry="6" />
+  <rect id="win11-close" x="720" y="2" width="24" height="16" rx="4" ry="4" />
+
+  <!-- Language switcher (left of close) -->
+  <rect id="win11-lang-switch" x="670" y="2" width="44" height="16" rx="4" ry="4" />
+
+  <!-- Row 0: Number row (Western digits) -->
+  <rect id="AE01" x="8" y="28" width="65" height="36" rx="6" ry="6" />
+  <rect id="AE02" x="79" y="28" width="65" height="36" rx="6" ry="6" />
+  <rect id="AE03" x="150" y="28" width="65" height="36" rx="6" ry="6" />
+  <rect id="AE04" x="221" y="28" width="65" height="36" rx="6" ry="6" />
+  <rect id="AE05" x="292" y="28" width="65" height="36" rx="6" ry="6" />
+  <rect id="AE06" x="363" y="28" width="65" height="36" rx="6" ry="6" />
+  <rect id="AE07" x="434" y="28" width="65" height="36" rx="6" ry="6" />
+  <rect id="AE08" x="505" y="28" width="65" height="36" rx="6" ry="6" />
+  <rect id="AE09" x="576" y="28" width="65" height="36" rx="6" ry="6" />
+  <rect id="AE10" x="647" y="28" width="65" height="36" rx="6" ry="6" />
+  <rect id="BKSP-num" x="718" y="28" width="24" height="36" rx="6" ry="6" />
+
+  <!-- Row 1: Arabic top row  ض ص ث ق ف غ ع ه خ ح ج د -->
+  <rect id="ar-row1-01" x="20" y="72" width="62" height="38" rx="6" ry="6" />
+  <rect id="ar-row1-02" x="88" y="72" width="62" height="38" rx="6" ry="6" />
+  <rect id="ar-row1-03" x="156" y="72" width="62" height="38" rx="6" ry="6" />
+  <rect id="ar-row1-04" x="224" y="72" width="62" height="38" rx="6" ry="6" />
+  <rect id="ar-row1-05" x="292" y="72" width="62" height="38" rx="6" ry="6" />
+  <rect id="ar-row1-06" x="360" y="72" width="62" height="38" rx="6" ry="6" />
+  <rect id="ar-row1-07" x="428" y="72" width="62" height="38" rx="6" ry="6" />
+  <rect id="ar-row1-08" x="496" y="72" width="62" height="38" rx="6" ry="6" />
+  <rect id="ar-row1-09" x="564" y="72" width="62" height="38" rx="6" ry="6" />
+  <rect id="ar-row1-10" x="632" y="72" width="62" height="38" rx="6" ry="6" />
+  <rect id="ar-row1-11" x="700" y="72" width="30" height="38" rx="6" ry="6" />
+
+  <!-- Row 2: Arabic middle row  ش ي ب ل ا ت ن م ك ء -->
+  <rect id="ar-row2-01" x="42" y="118" width="62" height="38" rx="6" ry="6" />
+  <rect id="ar-row2-02" x="110" y="118" width="62" height="38" rx="6" ry="6" />
+  <rect id="ar-row2-03" x="178" y="118" width="62" height="38" rx="6" ry="6" />
+  <rect id="ar-row2-04" x="246" y="118" width="62" height="38" rx="6" ry="6" />
+  <rect id="ar-row2-05" x="314" y="118" width="62" height="38" rx="6" ry="6" />
+  <rect id="ar-row2-06" x="382" y="118" width="62" height="38" rx="6" ry="6" />
+  <rect id="ar-row2-07" x="450" y="118" width="62" height="38" rx="6" ry="6" />
+  <rect id="ar-row2-08" x="518" y="118" width="62" height="38" rx="6" ry="6" />
+  <rect id="ar-row2-09" x="586" y="118" width="62" height="38" rx="6" ry="6" />
+
+  <!-- Row 3: Arabic bottom row  ئ ء ؤ ر لا ى ة و ز ظ -->
+  <rect id="ar-row3-01" x="20" y="164" width="62" height="38" rx="6" ry="6" />
+  <rect id="ar-row3-02" x="88" y="164" width="62" height="38" rx="6" ry="6" />
+  <rect id="ar-row3-03" x="156" y="164" width="62" height="38" rx="6" ry="6" />
+  <rect id="ar-row3-04" x="224" y="164" width="62" height="38" rx="6" ry="6" />
+  <rect id="ar-row3-05" x="292" y="164" width="62" height="38" rx="6" ry="6" />
+  <rect id="ar-row3-06" x="360" y="164" width="62" height="38" rx="6" ry="6" />
+  <rect id="ar-row3-07" x="428" y="164" width="62" height="38" rx="6" ry="6" />
+  <rect id="ar-row3-08" x="496" y="164" width="62" height="38" rx="6" ry="6" />
+  <rect id="ar-row3-09" x="564" y="164" width="62" height="38" rx="6" ry="6" />
+
+  <!-- Row 4: Bottom row -->
+  <rect id="win11-layer1" x="8" y="210" width="80" height="38" rx="6" ry="6" />
+  <rect id="AB09" x="94" y="210" width="62" height="38" rx="6" ry="6" />
+  <rect id="win11-emoji" x="162" y="210" width="62" height="38" rx="6" ry="6" />
+  <rect id="win11-clipboard" x="230" y="210" width="62" height="38" rx="6" ry="6" />
+  <rect id="SPCE" x="298" y="210" width="210" height="38" rx="6" ry="6" />
+  <rect id="AC11" x="514" y="210" width="62" height="38" rx="6" ry="6" />
+  <rect id="RTRN" x="582" y="210" width="136" height="38" rx="6" ry="6" />
+
+  <!-- Word suggestion bar background -->
+  <rect id="win11-suggestion-bar" x="0" y="256" width="750" height="36" rx="0" ry="0" />
+
+</svg>

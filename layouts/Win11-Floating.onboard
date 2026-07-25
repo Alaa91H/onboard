@@ -1,0 +1,232 @@
+<?xml version="1.0" ?>
+
+<!--
+Windows 11 Floating Keyboard - Full English Layout for Onboard
+Features: Number row, close button, language switcher, emoji, clipboard,
+          long-press alternatives, word suggestions.
+-->
+
+<keyboard
+    id="Win11 Floating"
+    format="3.2"
+    section="contributions"
+    summary="Windows 11 style floating touch keyboard with all features">
+
+    <include file='key_defs.xml'/>
+
+    <box border="1" spacing="2" orientation="vertical">
+
+        <!-- Word suggestion bar -->
+        <panel filename='Win11-Floating-Alpha.svg' scan_priority='1'>
+            <include file='word_suggestions.xml'/>
+        </panel>
+
+        <!-- English alpha layer -->
+        <panel layer="alpha" filename="Win11-Floating-Alpha.svg">
+
+            <!-- Title bar keys -->
+            <key group="bottomrow" id="win11-move" button="true" label="⋯" tooltip="Move keyboard"/>
+            <key group="bottomrow" id="win11-close" button="true" label="✕" tooltip="Close keyboard"/>
+            <key group="bottomrow" id="win11-lang-switch" button="true" label="EN" tooltip="Switch language"/>
+
+            <!-- Number row (Western digits 1-0) -->
+            <key group="alphanumeric" id="AE01" label="1" char="1"/>
+            <key group="alphanumeric" id="AE02" label="2" char="2"/>
+            <key group="alphanumeric" id="AE03" label="3" char="3"/>
+            <key group="alphanumeric" id="AE04" label="4" char="4"/>
+            <key group="alphanumeric" id="AE05" label="5" char="5"/>
+            <key group="alphanumeric" id="AE06" label="6" char="6"/>
+            <key group="alphanumeric" id="AE07" label="7" char="7"/>
+            <key group="alphanumeric" id="AE08" label="8" char="8"/>
+            <key group="alphanumeric" id="AE09" label="9" char="9"/>
+            <key group="alphanumeric" id="AE10" label="0" char="0"/>
+            <key group="bottomrow" id="BKSP-num" image="erase-left.svg"/>
+
+            <!-- Row 1: Q W E R T Y U I O P -->
+            <key group="alphanumeric" id="AD01"/>
+            <key group="alphanumeric" id="AD02"/>
+            <key group="alphanumeric" id="AD03"/>
+            <key group="alphanumeric" id="AD04"/>
+            <key group="alphanumeric" id="AD05"/>
+            <key group="alphanumeric" id="AD06"/>
+            <key group="alphanumeric" id="AD07"/>
+            <key group="alphanumeric" id="AD08"/>
+            <key group="alphanumeric" id="AD09"/>
+            <key group="alphanumeric" id="AD10"/>
+
+            <!-- Row 2: A S D F G H J K L -->
+            <key group="alphanumeric" id="AC01"/>
+            <key group="alphanumeric" id="AC02"/>
+            <key group="alphanumeric" id="AC03"/>
+            <key group="alphanumeric" id="AC04"/>
+            <key group="alphanumeric" id="AC05"/>
+            <key group="alphanumeric" id="AC06"/>
+            <key group="alphanumeric" id="AC07"/>
+            <key group="alphanumeric" id="AC08"/>
+            <key group="alphanumeric" id="AC09"/>
+
+            <!-- Row 3: Shift Z X C V B N M Backspace -->
+            <key group="shifts" id="LFSH"/>
+            <key group="alphanumeric" id="AB01"/>
+            <key group="alphanumeric" id="AB02"/>
+            <key group="alphanumeric" id="AB03"/>
+            <key group="alphanumeric" id="AB04"/>
+            <key group="alphanumeric" id="AB05"/>
+            <key group="alphanumeric" id="AB06"/>
+            <key group="alphanumeric" id="AB07"/>
+            <key group="alphanumeric" id="AB08"/>
+            <key group="bottomrow" id="BKSP"/>
+
+            <!-- Row 4: ?123 , (emoji) (clipboard) Space . Enter -->
+            <key group="bottomrow" id="win11-layer1" label="?123" button='true'/>
+            <key group="bottomrow" id="AB09" label="," char=","/>
+            <key group="bottomrow" id="win11-emoji" label="😊" button='true' tooltip="Emoji picker"/>
+            <key group="bottomrow" id="win11-clipboard" label="📋" button='true' tooltip="Clipboard"/>
+            <key group="bottomrow" id="SPCE"/>
+            <key group="bottomrow" id="AC11" label="." char="."/>
+            <key group="bottomrow" id="RTRN"/>
+        </panel>
+
+        <!-- Shift layer (uppercase) -->
+        <panel layer="shift" filename="Win11-Floating-Alpha.svg">
+            <key group="bottomrow" id="win11-move" button="true" label="⋯"/>
+            <key group="bottomrow" id="win11-close" button="true" label="✕"/>
+            <key group="bottomrow" id="win11-lang-switch" button="true" label="EN"/>
+
+            <!-- Number row unchanged -->
+            <key group="alphanumeric" id="AE01" label="!" char="!"/>
+            <key group="alphanumeric" id="AE02" label="@" char="@"/>
+            <key group="alphanumeric" id="AE03" label="#" char="#"/>
+            <key group="alphanumeric" id="AE04" label="$" char="$"/>
+            <key group="alphanumeric" id="AE05" label="%" char="%"/>
+            <key group="alphanumeric" id="AE06" label="^" char="^"/>
+            <key group="alphanumeric" id="AE07" label="&amp;" char="&amp;"/>
+            <key group="alphanumeric" id="AE08" label="*" char="*"/>
+            <key group="alphanumeric" id="AE09" label="(" char="("/>
+            <key group="alphanumeric" id="AE10" label=")" char=")"/>
+            <key group="bottomrow" id="BKSP-num" image="erase-left.svg"/>
+
+            <!-- Row 1: Uppercase QWERTYUIOP -->
+            <key group="alphanumeric" id="AD01"/>
+            <key group="alphanumeric" id="AD02"/>
+            <key group="alphanumeric" id="AD03"/>
+            <key group="alphanumeric" id="AD04"/>
+            <key group="alphanumeric" id="AD05"/>
+            <key group="alphanumeric" id="AD06"/>
+            <key group="alphanumeric" id="AD07"/>
+            <key group="alphanumeric" id="AD08"/>
+            <key group="alphanumeric" id="AD09"/>
+            <key group="alphanumeric" id="AD10"/>
+
+            <!-- Row 2: Uppercase ASDFGHJKL -->
+            <key group="alphanumeric" id="AC01"/>
+            <key group="alphanumeric" id="AC02"/>
+            <key group="alphanumeric" id="AC03"/>
+            <key group="alphanumeric" id="AC04"/>
+            <key group="alphanumeric" id="AC05"/>
+            <key group="alphanumeric" id="AC06"/>
+            <key group="alphanumeric" id="AC07"/>
+            <key group="alphanumeric" id="AC08"/>
+            <key group="alphanumeric" id="AC09"/>
+
+            <!-- Row 3: Shift ZXCVBNM Backspace -->
+            <key group="shifts" id="LFSH"/>
+            <key group="alphanumeric" id="AB01"/>
+            <key group="alphanumeric" id="AB02"/>
+            <key group="alphanumeric" id="AB03"/>
+            <key group="alphanumeric" id="AB04"/>
+            <key group="alphanumeric" id="AB05"/>
+            <key group="alphanumeric" id="AB06"/>
+            <key group="alphanumeric" id="AB07"/>
+            <key group="alphanumeric" id="AB08"/>
+            <key group="bottomrow" id="BKSP"/>
+
+            <!-- Row 4 -->
+            <key group="bottomrow" id="win11-layer1" label="?123" button='true'/>
+            <key group="bottomrow" id="AB09" label="," char=","/>
+            <key group="bottomrow" id="win11-emoji" label="😊" button='true'/>
+            <key group="bottomrow" id="win11-clipboard" label="📋" button='true'/>
+            <key group="bottomrow" id="SPCE"/>
+            <key group="bottomrow" id="AC11" label="." char="."/>
+            <key group="bottomrow" id="RTRN"/>
+        </panel>
+
+        <!-- Number/symbol layer -->
+        <panel layer="1" filename="Win11-Floating-Alpha.svg">
+            <key group="bottomrow" id="win11-move" button="true" label="⋯"/>
+            <key group="bottomrow" id="win11-close" button="true" label="✕"/>
+            <key group="bottomrow" id="win11-lang-switch" button="true" label="EN"/>
+
+            <!-- Row 1: Numbers -->
+            <key group="alphanumeric" id="AE01" label="1" char="1"/>
+            <key group="alphanumeric" id="AE02" label="2" char="2"/>
+            <key group="alphanumeric" id="AE03" label="3" char="3"/>
+            <key group="alphanumeric" id="AE04" label="4" char="4"/>
+            <key group="alphanumeric" id="AE05" label="5" char="5"/>
+            <key group="alphanumeric" id="AE06" label="6" char="6"/>
+            <key group="alphanumeric" id="AE07" label="7" char="7"/>
+            <key group="alphanumeric" id="AE08" label="8" char="8"/>
+            <key group="alphanumeric" id="AE09" label="9" char="9"/>
+            <key group="alphanumeric" id="AE10" label="0" char="0"/>
+            <key group="bottomrow" id="BKSP-num" image="erase-left.svg"/>
+
+            <!-- Row 2: Symbols -->
+            <key group="alphanumeric" id="AC01" label="-" char="-"/>
+            <key group="alphanumeric" id="AC02" label="/" char="/"/>
+            <key group="alphanumeric" id="AC03" label=":" char=":"/>
+            <key group="alphanumeric" id="AC04" label=";" char=";"/>
+            <key group="alphanumeric" id="AC05" label="(" char="("/>
+            <key group="alphanumeric" id="AC06" label=")" char=")"/>
+            <key group="alphanumeric" id="AC07" label="$" char="$"/>
+            <key group="alphanumeric" id="AC08" label="&amp;" char="&amp;"/>
+            <key group="alphanumeric" id="AC09" label="@" char="@"/>
+
+            <!-- Row 3: More symbols -->
+            <key group="bottomrow" id="LFSH" label="⇧"/>
+            <key group="alphanumeric" id="AB01" label="=" char="="/>
+            <key group="alphanumeric" id="AB02" label="+" char="+"/>
+            <key group="alphanumeric" id="AB03" label="*" char="*"/>
+            <key group="alphanumeric" id="AB04" label="&quot;" char="&quot;"/>
+            <key group="alphanumeric" id="AB05" label="'" char="'"/>
+            <key group="alphanumeric" id="AB06" label="!" char="!"/>
+            <key group="alphanumeric" id="AB07" label="?" char="?"/>
+            <key group="alphanumeric" id="AB08" label="," char=","/>
+            <key group="bottomrow" id="BKSP"/>
+
+            <!-- Row 4: back to abc -->
+            <key group="bottomrow" id="win11-layer0" label="Abc" button='true'/>
+            <key group="bottomrow" id="AB09" label="#" char="#"/>
+            <key group="bottomrow" id="win11-emoji" label="😊" button='true'/>
+            <key group="bottomrow" id="win11-clipboard" label="📋" button='true'/>
+            <key group="bottomrow" id="SPCE"/>
+            <key group="bottomrow" id="AC11" label="?" char="?"/>
+            <key group="bottomrow" id="RTRN"/>
+        </panel>
+
+        <!-- Side bar for window controls -->
+        <panel id="paneswitch" filename="Win11-Floating-Alpha.svg">
+            <box compact="true" orientation='vertical'>
+                <panel group='nowordlist'>
+                    <key group='bottomrow' id='hide'/>
+                    <box orientation='vertical'>
+                        <key group="bottomrow" id="showclick"/>
+                        <key group="bottomrow" id="move"/>
+                        <key group="bottomrow" id="layer0" show_active="false" scan_priority="3"/>
+                        <key group="bottomrow" id="layer1" scan_priority="3"/>
+                        <key group="bottomrow" id="layer2" scan_priority="3"/>
+                    </box>
+                </panel>
+                <panel group='wordlist'>
+                    <box orientation='vertical'>
+                        <key group='sidebar' id='move' svg_id='move.wordlist' expand='false' label_margin='2.5'/>
+                        <key group='sidebar' id='showclick' svg_id='showclick.wordlist' scan_priority="3"/>
+                        <key group='bottomrow' id='layer0' svg_id='layer0.wordlist' show_active="false" scan_priority='3'/>
+                        <key group='bottomrow' id='layer1' svg_id='layer1.wordlist' scan_priority='3'/>
+                        <key group="bottomrow" id="layer2" svg_id='layer2.wordlist' scan_priority='3'/>
+                    </box>
+                </panel>
+            </box>
+        </panel>
+
+    </box>
+</keyboard>

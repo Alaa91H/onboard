@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Windows 11 Touch Keyboard - Compact Alpha Layout -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="Win11-Compact-Alpha"
+   height="180"
+   width="600"
+   version="1.0">
+
+  <defs id="defs4" />
+
+  <!-- Row 1: Q W E R T Y U I O P -->
+  <rect id="AD01" x="10" y="8" width="50" height="38" rx="8" ry="8" />
+  <rect id="AD02" x="65" y="8" width="50" height="38" rx="8" ry="8" />
+  <rect id="AD03" x="120" y="8" width="50" height="38" rx="8" ry="8" />
+  <rect id="AD04" x="175" y="8" width="50" height="38" rx="8" ry="8" />
+  <rect id="AD05" x="230" y="8" width="50" height="38" rx="8" ry="8" />
+  <rect id="AD06" x="285" y="8" width="50" height="38" rx="8" ry="8" />
+  <rect id="AD07" x="340" y="8" width="50" height="38" rx="8" ry="8" />
+  <rect id="AD08" x="395" y="8" width="50" height="38" rx="8" ry="8" />
+  <rect id="AD09" x="450" y="8" width="50" height="38" rx="8" ry="8" />
+  <rect id="AD10" x="505" y="8" width="50" height="38" rx="8" ry="8" />
+
+  <!-- Row 2: A S D F G H J K L -->
+  <rect id="AC01" x="35" y="52" width="50" height="38" rx="8" ry="8" />
+  <rect id="AC02" x="90" y="52" width="50" height="38" rx="8" ry="8" />
+  <rect id="AC03" x="145" y="52" width="50" height="38" rx="8" ry="8" />
+  <rect id="AC04" x="200" y="52" width="50" height="38" rx="8" ry="8" />
+  <rect id="AC05" x="255" y="52" width="50" height="38" rx="8" ry="8" />
+  <rect id="AC06" x="310" y="52" width="50" height="38" rx="8" ry="8" />
+  <rect id="AC07" x="365" y="52" width="50" height="38" rx="8" ry="8" />
+  <rect id="AC08" x="420" y="52" width="50" height="38" rx="8" ry="8" />
+  <rect id="AC09" x="475" y="52" width="50" height="38" rx="8" ry="8" />
+
+  <!-- Row 3: Shift Z X C V B N M Backspace -->
+  <rect id="LFSH" x="10" y="96" width="70" height="38" rx="8" ry="8" />
+  <rect id="AB01" x="85" y="96" width="50" height="38" rx="8" ry="8" />
+  <rect id="AB02" x="140" y="96" width="50" height="38" rx="8" ry="8" />
+  <rect id="AB03" x="195" y="96" width="50" height="38" rx="8" ry="8" />
+  <rect id="AB04" x="250" y="96" width="50" height="38" rx="8" ry="8" />
+  <rect id="AB05" x="305" y="96" width="50" height="38" rx="8" ry="8" />
+  <rect id="AB06" x="360" y="96" width="50" height="38" rx="8" ry="8" />
+  <rect id="AB07" x="415" y="96" width="50" height="38" rx="8" ry="8" />
+  <rect id="AB08" x="470" y="96" width="50" height="38" rx="8" ry="8" />
+  <rect id="BKSP" x="525" y="96" width="65" height="38" rx="8" ry="8" />
+
+  <!-- Row 4: ?123 , (emoji) Space . Enter -->
+  <rect id="LWIN" x="10" y="140" width="80" height="34" rx="8" ry="8" />
+  <rect id="AB09" x="95" y="140" width="50" height="34" rx="8" ry="8" />
+  <rect id="AC11" x="150" y="140" width="50" height="34" rx="8" ry="8" />
+  <rect id="LALT" x="205" y="140" width="50" height="34" rx="8" ry="8" />
+  <rect id="SPCE" x="260" y="140" width="180" height="34" rx="8" ry="8" />
+  <rect id="AB10" x="445" y="140" width="50" height="34" rx="8" ry="8" />
+  <rect id="RTRN" x="500" y="140" width="90" height="34" rx="8" ry="8" />
+
+</svg>
