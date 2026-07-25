@@ -33,27 +33,27 @@ cleanup:
 
 modules:
   - name: hunspell
-    buildsystem: cmake-ninja
-    config-opts:
-      - -DCMAKE_BUILD_TYPE=Release
-      - -DBUILD_SHARED_LIBS=ON
-      - -DCMAKE_INSTALL_PREFIX=/app
+    buildsystem: simple
+    build-commands:
+      - autoreconf -fi
+      - ./configure --prefix=/app --disable-static --disable-dependency-tracking
+      - make -j$FLATPAK_BUILDER_N_JOBS
+      - make install
     sources:
-      - type: archive
-        url: https://github.com/hunspell/hunspell/archive/refs/tags/v1.7.2.tar.gz
-        sha256: 69fa312d3586c988789266eaf7ffc9861d9f6396c31fc930a014d551b59bbd6e
+      - type: git
+        url: https://github.com/hunspell/hunspell.git
+        tag: v1.7.2
 
   - name: libcanberra
-    buildsystem: autotools
-    config-opts:
-      - --disable-oss
-      - --disable-alsa
-      - --disable-pulse
-      - --enable-gtk
+    buildsystem: simple
+    build-commands:
+      - ./autogen.sh --prefix=/app --disable-oss --disable-alsa --disable-pulse --enable-gtk
+      - make -j$FLATPAK_BUILDER_N_JOBS
+      - make install
     sources:
-      - type: archive
-        url: https://sources.voidlinux.org/libcanberra-0.30/libcanberra-0.30.tar.xz
-        sha256: c2b671e67e0c288a69fc33dc1b6f1b534d07882c2aceed37004bf48c601afa72
+      - type: git
+        url: https://github.com/deepin-community/libcanberra.git
+        tag: v0.30
 
   - name: onboard
     buildsystem: simple

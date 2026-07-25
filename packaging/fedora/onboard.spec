@@ -62,6 +62,9 @@ python3 setup.py install --root=%{buildroot}
 rm -f %{buildroot}%{_datadir}/onboard/COPYING*
 rm -f %{buildroot}%{_datadir}/onboard/HACKING
 
+# Remove pycache
+find %{buildroot} -name __pycache__ -type d -exec rm -rf {} + 2>/dev/null || true
+
 # Validate desktop files
 desktop-file-validate %{buildroot}%{_datadir}/applications/onboard.desktop
 desktop-file-validate %{buildroot}%{_datadir}/applications/onboard-settings.desktop
