@@ -112,7 +112,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/onboard-settings.desk
 - Fix suppress Gdk-CRITICAL on exit, cancel pending idle handler
 - Fix use malloc/free instead of PyMem in PoolAllocator to prevent SIGSEGV on exit
 
-* Mon May 26 2026 Alaa91H <alaa91h@example.com> - 1.4.4-2
+* Tue May 26 2026 Alaa91H <alaa91h@example.com> - 1.4.4-2
 - Fix prevent window from being dragged off-screen
 - Fix replace invalid UTF-8 chars in ACPI events
 - Add native Wayland key injection and documentation

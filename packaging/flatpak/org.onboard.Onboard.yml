@@ -41,7 +41,7 @@ modules:
     sources:
       - type: archive
         url: https://github.com/hunspell/hunspell/archive/refs/tags/v1.7.2.tar.gz
-        sha256: b09bc7d6af4a02b397e37c484ef29c2e2d2bfe65d8c098571c13e69e8f65f617
+        sha256: 69fa312d3586c988789266eaf7ffc9861d9f6396c31fc930a014d551b59bbd6e
 
   - name: libcanberra
     buildsystem: autotools
