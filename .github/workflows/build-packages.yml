@@ -33,11 +33,16 @@ jobs:
       run: |
         dpkg-buildpackage -us -uc -b
     
+    - name: Prepare Debian artifacts
+      run: |
+        mkdir -p debs
+        cp ../*.deb debs/ || true
+    
     - name: Upload Debian packages
       uses: actions/upload-artifact@v4
       with:
         name: debian-packages
-        path: "../onboard*.deb"
+        path: debs/*.deb
         retention-days: 30
 
   build-fedora:

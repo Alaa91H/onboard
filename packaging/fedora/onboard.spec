@@ -74,7 +74,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/onboard-settings.desk
 %{_bindir}/onboard-settings
 %{_libdir}/python3*/site-packages/Onboard/
 %{_datadir}/glib-2.0/schemas/org.onboard.gschema.xml
-%{_datadir}/glib-2.0/schemas/99_onboard-default-settings.gschema.override
 %{_datadir}/applications/onboard.desktop
 %{_datadir}/applications/onboard-settings.desktop
 %{_datadir}/icons/hicolor/*/apps/*

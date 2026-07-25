@@ -93,7 +93,6 @@ parts:
       - gir1.2-pango-1.0
       - gir1.2-ayatanaappindicator3-0.1
       - gir1.2-atspi-2.0
-      - libgtklayershell-0-1
       - xdg-utils
     override-build: |
       python3 setup.py clean
