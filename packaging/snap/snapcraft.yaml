@@ -17,7 +17,7 @@ platforms:
 apps:
   onboard:
     command: onboard
-    desktop: usr/share/applications/onboard.desktop
+    desktop: usr/local/share/applications/onboard.desktop
     extensions: [gnome]
     plugs:
       - x11
@@ -40,7 +40,7 @@ apps:
 
   onboard-settings:
     command: onboard-settings
-    desktop: usr/share/applications/onboard-settings.desktop
+    desktop: usr/local/share/applications/onboard-settings.desktop
     extensions: [gnome]
     plugs:
       - x11
@@ -114,7 +114,7 @@ parts:
     after: [onboard]
     override-prime: |
       # Fix desktop file paths
-      sed -i 's|/usr/bin/onboard|onboard|g' $CRAFT_PRIME/usr/share/applications/onboard.desktop || true
-      sed -i 's|/usr/bin/onboard-settings|onboard-settings|g' $CRAFT_PRIME/usr/share/applications/onboard-settings.desktop || true
+      sed -i 's|/usr/bin/onboard|onboard|g' $CRAFT_PRIME/usr/local/share/applications/onboard.desktop || true
+      sed -i 's|/usr/bin/onboard-settings|onboard-settings|g' $CRAFT_PRIME/usr/local/share/applications/onboard-settings.desktop || true
 
 

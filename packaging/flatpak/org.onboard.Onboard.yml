@@ -50,7 +50,7 @@ modules:
       - --disable-oss
       - --disable-alsa
       - --disable-pulse
-      - --enable-gtk
+      - --enable-gtk3
       - --disable-gtk-doc
       - --disable-gtk-doc-html
       - --disable-gtk-doc-pdf
