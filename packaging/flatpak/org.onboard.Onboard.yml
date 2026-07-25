@@ -53,7 +53,7 @@ modules:
     sources:
       - type: archive
         url: https://sources.voidlinux.org/libcanberra-0.30/libcanberra-0.30.tar.xz
-        sha256: c2b671e6096ac174b0eeab6c4e10a3e6a407868045037b5a18f7a9f6c892c587
+        sha256: c2b671e67e0c288a69fc33dc1b6f1b534d07882c2aceed37004bf48c601afa72
 
   - name: onboard
     buildsystem: simple
