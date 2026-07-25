@@ -99,10 +99,6 @@ parts:
       python3 setup.py clean
       python3 setup.py build
       python3 setup.py install --root=$CRAFT_PART_INSTALL --prefix=/usr
-    organize:
-      usr/bin: bin
-      usr/lib: lib
-      usr/share: share
 
   layouts:
     plugin: nil
