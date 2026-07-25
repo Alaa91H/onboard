@@ -1,4 +1,5 @@
 %global srcname onboard
+%global _py3_bytecompile 0
 
 Name:           onboard
 Version:        1.4.4
@@ -61,9 +62,6 @@ python3 setup.py install --root=%{buildroot}
 # Remove unnecessary files
 rm -f %{buildroot}%{_datadir}/onboard/COPYING*
 rm -f %{buildroot}%{_datadir}/onboard/HACKING
-
-# Remove pycache
-find %{buildroot} -name __pycache__ -type d -exec rm -rf {} + 2>/dev/null || true
 
 # Validate desktop files
 desktop-file-validate %{buildroot}%{_datadir}/applications/onboard.desktop

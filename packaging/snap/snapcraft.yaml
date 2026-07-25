@@ -95,7 +95,7 @@ parts:
       - gir1.2-atspi-2.0
       - xdg-utils
     override-build: |
-      pip3 install distutils-extra || true
+      export PYTHONPATH=/usr/lib/python3/dist-packages:$PYTHONPATH
       python3 setup.py clean
       python3 setup.py build
       python3 setup.py install --root=$CRAFT_PART_INSTALL --prefix=/usr

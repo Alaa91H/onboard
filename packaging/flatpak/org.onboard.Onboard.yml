@@ -52,7 +52,7 @@ modules:
       - make install
     sources:
       - type: git
-        url: https://github.com/deepin-community/libcanberra.git
+        url: https://github.com/Distrotech/libcanberra.git
         tag: v0.30
 
   - name: onboard
