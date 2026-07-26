@@ -61,6 +61,12 @@ class Onboard {
         <method name="ToggleVisible"/>
         <method name="Show"/>
         <method name="Hide"/>
+        <method name="SetLanguage">
+            <arg type="s" name="lang" direction="in"/>
+        </method>
+        <method name="GetLanguage" direction="out">
+            <arg type="s" name="lang" direction="out"/>
+        </method>
     </interface>
 </node>
 `);
@@ -291,6 +297,7 @@ class Onboard {
 
 /**
  * Panel indicator (icon + popup menu) for Onboard.
+ * Shows keyboard icon + current language label in the top bar.
  * Short left-click: toggle Onboard
  * Long left-click: open menu
  * Right-click: open menu
@@ -307,28 +314,66 @@ class OnboardIndicator extends PanelMenu.Button {
         this._touchPressTime = 0;
         this._lastToggleTime = 0;
 
+        this._currentLang = 'EN';
 
-
-        // Timer-IDs für langes Drücken
+        // Timer-IDs for long press
         this._mouseLongPressTimeoutId = null;
         this._touchLongPressTimeoutId = null;
-        // Flag, ob das lange Drücken bereits "ausgelöst" wurde
         this._mouseLongPressActivated = false;
         this._touchLongPressActivated = false;
-        
-        // Create the icon in the panel
+
+        // Create the icon + language label in the panel
         let box = new St.BoxLayout({ style_class: 'panel-status-menu-box' });
         let icon = new St.Icon({
             icon_name: 'onboard-symbolic',
             style_class: 'system-status-icon',
         });
         box.add_child(icon);
+
+        // Language indicator label (e.g. "EN", "AR", "FR")
+        this._langLabel = new St.Label({
+            text: this._currentLang,
+            style_class: 'onboard-lang-label',
+            y_align: Clutter.ActorAlign.CENTER,
+        });
+        box.add_child(this._langLabel);
         this.add_child(box);
 
-        // Build the popup menu: Preferences, Help, Exit, etc.
+        // Build the popup menu: Preferences, Language, Help, Exit
         this.menu.addAction(_('Preferences'), () => {
             GLib.spawn_command_line_async('onboard-settings');
         });
+        this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
+
+        // Language submenu
+        this._langSubmenu = new PopupMenu.PopupSubMenuMenuItem(_('Language'));
+        this._langItems = {};
+        const languages = [
+            ['en', 'English'], ['ar', 'العربية'], ['fr', 'Français'],
+            ['de', 'Deutsch'], ['es', 'Español'], ['pt', 'Português'],
+            ['it', 'Italiano'], ['nl', 'Nederlands'], ['ru', 'Русский'],
+            ['uk', 'Українська'], ['zh', '中文'], ['ja', '日本語'],
+            ['ko', '한국어'], ['he', 'עברית'], ['fa', 'فارسی'],
+            ['ur', 'اردو'], ['hi', 'हिन्दी'], ['tr', 'Türkçe'],
+            ['pl', 'Polski'], ['sv', 'Svenska'], ['da', 'Dansk'],
+            ['no', 'Norsk'], ['fi', 'Suomi'], ['cs', 'Čeština'],
+            ['ro', 'Română'], ['hu', 'Magyar'], ['el', 'Ελληνικά'],
+            ['th', 'ไทย'], ['vi', 'Tiếng Việt'], ['id', 'Bahasa Indonesia'],
+            ['ms', 'Bahasa Melayu'], ['bn', 'বাংলা'], ['sw', 'Kiswahili'],
+            ['kn', 'ಕನ್ನಡ'], ['ta', 'தமிழ்'], ['te', 'తెలుగు'],
+            ['ml', 'മലയാളം'], ['mr', 'मराठी'], ['gu', 'ગુજરાતી'],
+            ['pa', 'ਪੰਜਾਬੀ'],
+        ];
+        for (const [code, name] of languages) {
+            const item = new PopupMenu.PopupMenuItem(`${this._langDisplayLabel(code)}  —  ${name}`);
+            item.connect('activate', () => {
+                this.updateLanguage(code);
+                this._setLanguage(code);
+            });
+            this._langSubmenu.menu.addMenuItem(item);
+            this._langItems[code] = item;
+        }
+        this.menu.addMenuItem(this._langSubmenu);
         this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
 
         this.menu.addAction(_('Help'), () => {
@@ -366,6 +411,28 @@ class OnboardIndicator extends PanelMenu.Button {
             this.exitAction.label.text = _('Exit Onboard');
         } else {
             this.exitAction.label.text  = _('Start Onboard');
+        }
+    }
+
+    // Language code to display label mapping
+    _langDisplayLabel(code) {
+        const labels = {
+            'en': 'EN', 'ar': 'AR', 'fr': 'FR', 'de': 'DE', 'es': 'ES',
+            'pt': 'PT', 'it': 'IT', 'nl': 'NL', 'ru': 'RU', 'uk': 'UK',
+            'zh': 'ZH', 'ja': 'JA', 'ko': 'KO', 'he': 'HE', 'fa': 'FA',
+            'ur': 'UR', 'hi': 'HI', 'tr': 'TR', 'pl': 'PL', 'sv': 'SV',
+            'da': 'DA', 'no': 'NO', 'fi': 'FI', 'cs': 'CS', 'ro': 'RO',
+            'hu': 'HU', 'el': 'EL', 'th': 'TH', 'vi': 'VI', 'id': 'ID',
+            'ms': 'MS', 'bn': 'BN', 'sw': 'SW', 'kn': 'KN', 'ta': 'TA',
+            'te': 'TE', 'ml': 'ML', 'mr': 'MR', 'gu': 'GU', 'pa': 'PA',
+        };
+        return labels[code] || code.toUpperCase();
+    }
+
+    updateLanguage(langCode) {
+        if (langCode && this._langLabel) {
+            this._currentLang = this._langDisplayLabel(langCode);
+            this._langLabel.set_text(this._currentLang);
         }
     }
     /**
@@ -503,6 +570,20 @@ class OnboardIndicator extends PanelMenu.Button {
             } else {
                 // Toggle visibility
                 _onboard.toggleVisible();
+            }
+        }
+    }
+
+    /**
+     * Set the active keyboard language via D-Bus.
+     */
+    _setLanguage(langCode) {
+        if (_onboard && _onboard.proxy && _onboard.proxy.g_name_owner) {
+            try {
+                _onboard.proxy.SetLanguageRemote(langCode);
+            } catch (e) {
+                // Fallback: spawn onboard-settings with language arg
+                log(`SetLanguage D-Bus call failed: ${e}`);
             }
         }
     }

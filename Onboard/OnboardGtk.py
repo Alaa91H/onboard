@@ -948,6 +948,27 @@ if has_dbus:
         def ToggleVisible(self):  # noqa: flake8
             self._keyboard.request_visibility_toggle()
 
+        @dbus.service.method(dbus_interface=IFACE, in_signature='s')
+        def SetLanguage(self, lang_code):  # noqa: flake8
+            """Set the active keyboard language by code (e.g. 'en', 'ar')."""
+            try:
+                from Onboard.LanguageSwitcher import LanguageSwitcher
+                switcher = LanguageSwitcher()
+                switcher.set_current_language(lang_code)
+                _logger.info("D-Bus SetLanguage: {}".format(lang_code))
+            except Exception as e:
+                _logger.warning("SetLanguage failed: {}".format(e))
+
+        @dbus.service.method(dbus_interface=IFACE, out_signature='s')
+        def GetLanguage(self):  # noqa: flake8
+            """Get the current keyboard language code."""
+            try:
+                from Onboard.LanguageSwitcher import LanguageSwitcher
+                switcher = LanguageSwitcher()
+                return switcher.get_current_lang_id()
+            except Exception:
+                return "en"
+
         # private method, for unit-testing only
         if config.is_running_from_source:
             @dbus.service.method(dbus_interface=IFACE,

@@ -39,6 +39,19 @@ from Onboard.Config import Config
 config = Config()
 
 
+# Language code to display label mapping for indicator tooltip
+_LANG_LABELS = {
+    "en": "EN", "ar": "AR", "fr": "FR", "de": "DE", "es": "ES",
+    "pt": "PT", "it": "IT", "nl": "NL", "ru": "RU", "uk": "UK",
+    "zh": "ZH", "ja": "JA", "ko": "KO", "he": "HE", "fa": "FA",
+    "ur": "UR", "hi": "HI", "tr": "TR", "pl": "PL", "sv": "SV",
+    "da": "DA", "no": "NO", "fi": "FI", "cs": "CS", "ro": "RO",
+    "hu": "HU", "el": "EL", "th": "TH", "vi": "VI", "id": "ID",
+    "ms": "MS", "bn": "BN", "sw": "SW", "kn": "KN", "ta": "TA",
+    "te": "TE", "ml": "ML", "mr": "MR", "gu": "GU", "pa": "PA",
+}
+
+
 class ContextMenu(GObject.GObject):
     __gsignals__ = {
         str('quit-onboard') : (GObject.SignalFlags.RUN_LAST,
@@ -229,6 +242,17 @@ class Indicator():
 
     def update_menu_items(self):
         self._menu.update_items()
+
+    def set_language(self, lang_code):
+        """Update the indicator tooltip to show the current language."""
+        if self._backend is not None:
+            label = _LANG_LABELS.get(lang_code, lang_code.upper())
+            tooltip = "Onboard {} [{}] ({})".format(
+                config.version, label,
+                WaylandUtils.get_display_backend_label())
+            self._backend.set_tooltip(tooltip)
+            if hasattr(self._backend, 'set_language'):
+                self._backend.set_language(lang_code)
 
     def set_visible(self, visible):
         if self._backend is not None:
