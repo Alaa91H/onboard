@@ -54,6 +54,22 @@ modules:
         url: https://github.com/hunspell/hunspell.git
         tag: v1.7.2
 
+  - name: libcanberra
+    buildsystem: autotools
+    config-opts:
+      - --disable-oss
+      - --disable-alsa
+      - --disable-pulse
+      - --disable-gstreamer
+      - --disable-jack
+      - --disable-avahi
+      - --disable-udev
+      - --disable-ltdl
+    sources:
+      - type: archive
+        url: https://0pointer.de/lennart/projects/libcanberra/libcanberra-0.30.tar.xz
+        sha256: c2b671e6cd15b1d89a95d9de3da0eb8af2c88ac2166a37e0dd0dbacb22b46836
+
   - name: onboard
     buildsystem: simple
     build-options:
