@@ -417,6 +417,8 @@ class build_i18n_custom(DistUtilsExtra.auto.build_i18n_auto):
 
             # Get the autostart directory
             autostart_destination = os.path.join(config_path, "autostart") 
+        elif os.environ.get("FLATPAK_DEST"):
+            autostart_destination = os.environ["FLATPAK_DEST"] + '/share/autostart'
         else:
             autostart_destination = '/etc/xdg/autostart'
   
