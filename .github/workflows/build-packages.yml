@@ -144,35 +144,45 @@ jobs:
     
     - name: Validate Debian packages
       run: |
-        echo "=== Package listing ==="
+        echo "=== All built packages ==="
         ls -la debs/*.deb 2>/dev/null || true
-        echo "=== Package info ==="
         for pkg in debs/*.deb; do
           if [ -f "$pkg" ]; then
+            echo "--- $(basename $pkg) ---"
             dpkg-deb --info "$pkg" || true
-            echo "---"
           fi
         done
         echo "=== Lintian checks ==="
         for pkg in debs/*.deb; do
           if [ -f "$pkg" ]; then
-            lintian "$pkg" --no-tag-display-limit 2>&1 | head -50 || true
+            lintian "$pkg" --no-tag-display-limit 2>&1 | tail -20 || true
           fi
         done
     
-    - name: Select release debs
+    - name: Filter and rename release packages
       run: |
-        mkdir -p release-debs
-        cp debs/onboard_*.deb release-debs/ 2>/dev/null || true
-        cp debs/onboard-data_*.deb release-debs/ 2>/dev/null || true
-        echo "Release debs:"
-        ls -la release-debs/ || true
+        VERSION=${GITHUB_REF_NAME#v}
+        mkdir -p release
+        for f in debs/onboard-common_*.deb; do
+          [ -f "$f" ] && cp "$f" "release/onboard-common-${VERSION}-debian-all.deb"
+        done
+        for f in debs/onboard-data_*.deb; do
+          [ -f "$f" ] && cp "$f" "release/onboard-data-${VERSION}-debian-all.deb"
+        done
+        for f in debs/gnome-shell-extension-onboard_*.deb; do
+          [ -f "$f" ] && cp "$f" "release/gnome-shell-extension-onboard-${VERSION}-debian-all.deb"
+        done
+        echo "=== Release Debian packages ==="
+        ls -la release/
+        for pkg in release/*.deb; do
+          [ -f "$pkg" ] && dpkg-deb --info "$pkg" 2>/dev/null | grep -E "Package:|Version:|Architecture:|Installed-Size:" || true
+        done
     
     - name: Upload Debian packages
       uses: actions/upload-artifact@v6
       with:
         name: debian-packages
-        path: release-debs/*.deb
+        path: release/*.deb
         retention-days: 30
 
   build-fedora:
@@ -204,21 +214,37 @@ jobs:
     
     - name: Validate RPM packages
       run: |
-        echo "=== RPM package listing ==="
+        echo "=== All built RPMs ==="
         find ~/rpmbuild/RPMS -name "*.rpm" -exec ls -la {} \;
         echo "=== RPM info ==="
         find ~/rpmbuild/RPMS -name "*.rpm" -exec rpm -qpi {} \;
     
-    - name: Flatten RPM files
+    - name: Filter and rename release packages
       run: |
-        mkdir -p /tmp/rpms
-        find ~/rpmbuild/RPMS -name "*.rpm" -exec cp {} /tmp/rpms/ \;
+        VERSION=${GITHUB_REF_NAME#v}
+        mkdir -p release /tmp/rpms
+        find ~/rpmbuild/RPMS -name "*.rpm" \
+          ! -name "gnome-shell-extension-onboard-*" \
+          ! -name "onboard-debuginfo-*" \
+          ! -name "onboard-debugsource-*" \
+          -exec cp {} /tmp/rpms/ \;
+        for f in /tmp/rpms/onboard-[0-9]*.rpm; do
+          [ -f "$f" ] && cp "$f" "release/onboard-${VERSION}-fedora-x86_64.rpm"
+        done
+        for f in /tmp/rpms/onboard-data-*.rpm; do
+          [ -f "$f" ] && cp "$f" "release/onboard-data-${VERSION}-fedora-noarch.rpm"
+        done
+        echo "=== Release Fedora packages ==="
+        ls -la release/
+        for pkg in release/*.rpm; do
+          [ -f "$pkg" ] && rpm -qpi "$pkg" 2>/dev/null | grep -E "Name:|Version:|Architecture:|Size:" || true
+        done
     
     - name: Upload RPM packages
       uses: actions/upload-artifact@v6
       with:
         name: fedora-packages
-        path: /tmp/rpms/*.rpm
+        path: release/*.rpm
         retention-days: 30
 
   build-flatpak:
@@ -244,20 +270,19 @@ jobs:
       run: |
         flatpak-builder --force-clean --disable-rofiles-fuse --repo=repo builddir packaging/flatpak/org.onboard.Onboard.yml
     
-    - name: Create Flatpak bundle
+    - name: Create and rename Flatpak bundle
       run: |
+        VERSION=${GITHUB_REF_NAME#v}
         flatpak build-bundle repo onboard.flatpak org.onboard.Onboard
-    
-    - name: Validate Flatpak bundle
-      run: |
-        echo "=== Bundle info ==="
-        ls -la onboard.flatpak
+        mv onboard.flatpak "onboard-${VERSION}-flatpak-x86_64.flatpak"
+        echo "=== Release Flatpak package ==="
+        ls -la onboard-*.flatpak
     
     - name: Upload Flatpak bundle
       uses: actions/upload-artifact@v6
       with:
         name: flatpak-package
-        path: onboard.flatpak
+        path: "onboard-*-flatpak-*.flatpak"
         retention-days: 30
 
   build-snap:
@@ -286,16 +311,22 @@ jobs:
         sudo cp packaging/snap/snapcraft.yaml snap/
         sudo snapcraft --destructive-mode
     
-    - name: Validate Snap package
+    - name: Rename Snap package
       run: |
-        echo "=== Snap info ==="
-        ls -la *.snap 2>/dev/null || true
+        VERSION=${GITHUB_REF_NAME#v}
+        for f in *.snap; do
+          if [ -f "$f" ]; then
+            sudo mv "$f" "onboard-${VERSION}-snap-amd64.snap"
+          fi
+        done
+        echo "=== Release Snap package ==="
+        ls -la onboard-*.snap
     
     - name: Upload Snap package
       uses: actions/upload-artifact@v6
       with:
         name: snap-package
-        path: "*.snap"
+        path: "onboard-*-snap-*.snap"
         retention-days: 30
 
   create-release:
@@ -311,6 +342,11 @@ jobs:
       uses: actions/download-artifact@v7
       with:
         path: artifacts
+    
+    - name: List release assets
+      run: |
+        echo "=== All release assets ==="
+        find artifacts/ -type f \( -name "*.deb" -o -name "*.rpm" -o -name "*.flatpak" -o -name "*.snap" \) -exec ls -lh {} \;
     
     - name: Create Release
       uses: softprops/action-gh-release@v3
