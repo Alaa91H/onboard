@@ -628,9 +628,9 @@ class UninstallCommand(Command):
 DistUtilsExtra.auto.setup(
     name = 'onboard',
     version = '1.4.4.post5', # here the package version is set
-    author = 'U. Niethammer',
-    author_email = '68241100+dr-ni@users.noreply.github.com',
-    url = 'https://github.com/dr-ni/onboard',
+    author = 'Alaa91H',
+    author_email = 'alaa91h@users.noreply.github.com',
+    url = 'https://github.com/Alaa91H/onboard',
     license = 'GPL-3+',
     description = 'Simple On-screen Keyboard',
 

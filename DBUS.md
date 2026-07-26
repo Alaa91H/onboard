@@ -36,6 +36,25 @@ Example:
 
     dbus-send --type=method_call --print-reply --dest=org.onboard.Onboard /org/onboard/Onboard/Keyboard org.onboard.Onboard.Keyboard.ToggleVisible
 
+### SetLanguage(lang_code), method
+- Set the active keyboard language by code (e.g. 'en', 'ar').
+- Return value: None
+
+The language code must match one of the supported languages defined in
+`LanguageSwitcher.py`. Examples: `en`, `ar`, `fr`, `de`, `es`, `ru`, `zh`, `ja`.
+
+Example:
+
+    dbus-send --type=method_call --print-reply --dest=org.onboard.Onboard /org/onboard/Onboard/Keyboard org.onboard.Onboard.Keyboard.SetLanguage string:"ar"
+
+### GetLanguage(), method
+- Get the current keyboard language code.
+- Return value: string (e.g. 'en', 'ar')
+
+Example:
+
+    dbus-send --type=method_call --print-reply --dest=org.onboard.Onboard /org/onboard/Onboard/Keyboard org.onboard.Onboard.Keyboard.GetLanguage
+
 ### Visible, Boolean property, read-only
 - True if the window is currently visible, False otherwise.
 - Signal: org.freedesktop.DBus.Properties.PropertiesChanged

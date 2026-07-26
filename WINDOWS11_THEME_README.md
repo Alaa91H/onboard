@@ -22,10 +22,11 @@ with a full floating keyboard mode matching the Windows 11 Touch Keyboard.
 
 ### Clipboard Manager
 - **Copy/Cut/Paste**: Full clipboard action support
-- **Clipboard History**: Keeps last 10 copied items
-- **Pin Items**: Pin frequently used text snippets
+- **Clipboard History**: Configurable capacity (default 100, adjustable 10-1000)
+- **Pin Items**: Pin frequently used text snippets (unlimited)
 - **Quick Paste**: Click any item to paste it instantly
-- **Persistent Storage**: History saved across sessions
+- **Persistent Storage**: History saved as JSON across sessions
+- **Search**: Find entries by text content
 
 ### Emoji Picker
 - **8 Categories**: Smileys, Animals, Food, Activities, Travel, Objects, Symbols, Flags
@@ -94,7 +95,12 @@ chmod +x install_windows11_theme.sh
    from Onboard.Win11KeyboardWidgetPatch import apply_win11_css
    from Onboard.FloatingWindowPatch import patch_kbd_window
    apply_win11_css()
+   patch_kbd_window()  # Enables always-on-top floating mode
    ```
+
+> **Note:** Both `apply_win11_css()` and `patch_kbd_window()` must be called.
+> The first applies Windows 11 styling; the second enables the always-on-top
+> floating window behavior. Calling only one will result in partial functionality.
 
 ## Usage
 
@@ -137,10 +143,11 @@ chmod +x install_windows11_theme.sh
 
 ### Using Clipboard
 1. Click the 📋 button on the keyboard
-2. View clipboard history (up to 10 items)
+2. View clipboard history (configurable capacity, default 100 items)
 3. Click "Paste" on any item to paste it
-4. Click "Pin" to keep important items
-5. Click "Clear All" to clear history
+4. Click "Pin" to keep important items (unlimited pinned)
+5. Click "Clear All" to clear unpinned history
+6. Adjust capacity with the spinner (10-1000)
 
 ### Language Switching
 - **Quick Switch**: Click the language button (EN/AR) to toggle
@@ -200,7 +207,16 @@ Edit `CompactMode.py` to change:
 
 ### Customizing Clipboard History
 Edit `ClipboardManager.py`:
-- `MAX_CLIPBOARD_HISTORY` - Max items to keep (default: 10)
+- `DEFAULT_MAX_HISTORY` - Default max items (default: 100)
+- `MIN_HISTORY_LIMIT` - Minimum allowed (default: 10)
+- `MAX_HISTORY_LIMIT` - Maximum allowed (default: 1000)
+- Users can also adjust capacity from the clipboard panel settings
+
+### Privacy Note
+Clipboard history is stored as plain JSON in `~/.local/share/onboard/clipboard_history.json`.
+No sensitive content filtering or encryption is applied. Users who handle passwords,
+tokens, or other sensitive text should clear the clipboard history manually
+or disable persistent storage by removing the history file periodically.
 
 ### Adding New Languages
 Edit `LanguageSwitcher.py`:

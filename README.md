@@ -32,7 +32,7 @@ Onboard is a professional on-screen keyboard for Linux desktops. It acts as a na
 
 Onboard provides a fully functional on-screen keyboard that:
 
-- **Lives in the top panel bar** -- A permanent tray icon (keyboard symbol + language indicator) sits in the system tray. Click it to toggle the keyboard.
+- **Lives in the top panel bar** -- A permanent tray icon (keyboard symbol + language indicator) sits in the system tray. Left-click toggles keyboard. Right-click opens context menu (Show/Hide, Preferences, Help, Quit).
 - **Follows system language** -- When you switch the system input language (e.g., via `setxkbmap`, GNOME keyboard settings, or KDE input method), Onboard automatically switches its layout to match. This makes it behave as a native part of the desktop.
 - **Stays on top** -- The floating keyboard window stays above all other windows at all times. It is draggable and only closes via the X button.
 - **Works everywhere** -- X11 (full), Wayland with GNOME Mutter and KDE Plasma (experimental), Flatpak, Snap, Debian/Ubuntu .deb, and Fedora RPM.
@@ -47,7 +47,7 @@ Onboard provides a fully functional on-screen keyboard that:
 | **Language Auto-Sync** | Keyboard layout follows the system's active input language via D-Bus and AT-SPI. No manual configuration needed. |
 | **40 World Languages** | English, Arabic, French, German, Spanish, Portuguese, Italian, Dutch, Russian, Ukrainian, Chinese, Japanese, Korean, Hebrew, Persian, Urdu, Hindi, Turkish, Polish, Swedish, Danish, Norwegian, Finnish, Czech, Romanian, Hungarian, Greek, Thai, Vietnamese, Indonesian, Malay, Bengali, Swahili, Kannada, Tamil, Telugu, Malayalam, Marathi, Gujarati, Punjabi. |
 | **Floating Mode** | Keyboard always stays on top. Draggable. Resizable. Closes only via X button. |
-| **Clipboard Manager** | Persistent clipboard with up to 1000 items (configurable). Stores text history as JSON. |
+| **Clipboard Manager** | Persistent clipboard with configurable capacity (default 100, adjustable 10-1000). Pin unlimited items. Search by text. History stored as JSON. |
 | **Emoji Picker** | Full emoji keyboard with categories, search, and recent emojis. |
 | **Long-Press Keys** | Hold a key to access diacritics, accents, and alternative characters. |
 | **Number Row** | Optional top row showing 0-9 for quick number entry. |
@@ -691,7 +691,7 @@ Schema ID: `org.onboard`
 | GSettings | `~/.config/dconf/user` | Main configuration (binary) |
 | Layouts | `~/.local/share/onboard/layouts/` | Custom keyboard layouts |
 | Themes | `~/.local/share/onboard/themes/` | Custom themes and colors |
-| Clipboard | `~/.local/share/onboard/clipboard.json` | Clipboard history |
+| Clipboard | `~/.local/share/onboard/clipboard_history.json` | Clipboard history (pinned + unpinned, configurable capacity) |
 | Language models | `~/.local/share/onboard/lm/` | N-gram prediction data |
 | Autostart | `~/.config/autostart/onboard.desktop` | Auto-start on login |
 

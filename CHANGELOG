@@ -1,3 +1,78 @@
+Version 1.4.4
+-------------
+
+  * Windows 11 Touch Keyboard theme:
+    - Add Windows 11 dark and light themes with Fluent Design styling
+    - Add Win11-Floating layout with always-on-top, close button, drag handle
+    - Add Win11-Full and Win11-Compact layouts
+    - Add Win11-Arabic layout with full RTL support and tashkeel diacritics
+  * Gboard (Material Design 3) theme:
+    - Add Gboard theme with Material You color palette
+    - Add Gboard dark and light color schemes
+    - Add Gboard-Floating and Gboard-Floating-Arabic layouts
+    - Install via install_gboard_theme.sh
+  * Clipboard manager (ClipboardManager.py):
+    - Persistent clipboard history (default 100, configurable 10-1000)
+    - Pin/unpin entries to protect from rotation
+    - Search clipboard entries by text
+    - Settings panel for capacity management
+    - History stored as JSON in user directory
+  * Emoji picker (EmojiPicker.py):
+    - Full emoji keyboard with 8 categories
+    - Search emojis by name or category
+    - Track recently used emojis
+  * Language switcher (LanguageSwitcher.py):
+    - Support for 40 world languages with automatic layout loading
+    - Quick toggle between last two languages
+    - Full language menu with all enabled languages
+    - RTL layout detection and switching
+  * D-Bus interface extensions:
+    - Add SetLanguage(lang_code) method to set keyboard language
+    - Add GetLanguage() method to read current language code
+    - Update GNOME Shell extension to proxy SetLanguage/GetLanguage
+  * GNOME Shell extension rewrite:
+    - Rewrite for GNOME 45+ (ES modules, import from resource://)
+    - Add panel indicator with keyboard icon and language label
+    - Add language submenu in panel popup (40 languages)
+    - D-Bus proxy with SetLanguage/GetLanguage support
+    - Legacy extension preserved for GNOME 3.x
+  * Floating keyboard mode:
+    - Always-on-top window behavior via FloatingWindowPatch
+    - Close only via X button (no auto-hide in floating mode)
+    - Draggable title bar for repositioning
+    - Number row with western digits (0-9) at top
+  * Long-press alternatives:
+    - Vowel accent characters (à, á, â, ä, ã)
+    - Arabic tashkeel diacritics (َ, ُ, ِ, ّ, ْ)
+    - Punctuation alternatives on period/comma
+    - 3-second auto-close timeout
+  * CI/CD pipeline:
+    - GitHub Actions with Node.js 24 (checkout@v5, setup-python@v6, etc.)
+    - Matrix builds: Debian (amd64, arm64), Fedora (x64, arm64),
+      Flatpak (x64, arm64), Snap (x64, arm64)
+    - Code quality lint job (flake8, py_compile, YAML/XML validation)
+    - Automatic release publishing on tag push
+    - Professional asset naming: onboard-{version}-{format}-{arch}.{ext}
+  * Project modernization:
+    - Dependabot configuration for automated dependency updates
+    - GNOME 50 runtime support (Flatpak)
+    - Dead code removal (settings_ui.py, code-samples/, tools/)
+    - Fedora RPM __pycache__ fix
+    - Flatpak python-distutils-extra build fix
+  * Icons and themes:
+    - Add Windows 11 panel icons (ubuntu-mono-dark, ubuntu-mono-light)
+    - Add Gboard panel icons
+    - Add symbolic SVG icons for GNOME Shell
+  * Wayland improvements:
+    - gtk-layer-shell integration for wlr-based compositors
+    - GNOME Mutter support via XWayland fallback
+    - KDE Plasma support with KWin window rules
+  * System tray indicator:
+    - Permanent keyboard icon in top panel bar
+    - Language code label (EN, AR, FR, etc.) next to icon
+    - Tooltip showing version, language, and display backend
+    - Context menu: Show/Hide, Preferences, Help, Quit
+
 Version 1.4.0
 -------------
 
