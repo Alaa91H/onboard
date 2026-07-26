@@ -108,6 +108,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/onboard-settings.desk
 %{_datadir}/onboard/gnome-extension/onboard@onboard.local/
 %{_datadir}/sounds/freedesktop/stereo/
 %{_datadir}/help/C/onboard/
+%{_datadir}/locale/*/LC_MESSAGES/onboard.mo
 
 %files -n gnome-shell-extension-onboard
 %{_datadir}/gnome-shell/extensions/Onboard_Indicator@onboard.org/
