@@ -16,7 +16,7 @@ platforms:
 
 apps:
   onboard:
-    command: usr/bin/onboard
+    command: usr/local/bin/onboard
     desktop: usr/local/share/applications/onboard.desktop
     extensions: [gnome]
     plugs:
@@ -39,7 +39,7 @@ apps:
       LD_LIBRARY_PATH: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET:$SNAP/usr/lib
 
   onboard-settings:
-    command: usr/bin/onboard-settings
+    command: usr/local/bin/onboard-settings
     desktop: usr/local/share/applications/onboard-settings.desktop
     extensions: [gnome]
     plugs:

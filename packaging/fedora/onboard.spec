@@ -63,6 +63,12 @@ rm -f %{buildroot}%{_datadir}/onboard/COPYING*
 rm -f %{buildroot}%{_datadir}/onboard/HACKING
 rm -rf %{buildroot}%{_datadir}/doc/onboard/
 
+# Remove compiled schemas (will be reinstalled by rpm triggers)
+rm -f %{buildroot}%{_datadir}/glib-2.0/schemas/gschemas.compiled
+
+# Remove extension schema not part of our main package
+rm -f %{buildroot}%{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.onboard-indicator.gschema.xml
+
 # Remove pycache directories and files
 find %{buildroot} -name '__pycache__' -type d -exec rm -rf {} + 2>/dev/null || true
 find %{buildroot} -name '*.pyc' -delete 2>/dev/null || true
