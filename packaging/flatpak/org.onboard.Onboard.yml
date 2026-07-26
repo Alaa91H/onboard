@@ -62,13 +62,18 @@ modules:
         url: https://github.com/Distrotech/libcanberra.git
         tag: v0.30
 
+  - name: python-distutils-extra
+    buildsystem: simple
+    build-commands:
+      - python3 setup.py install --root=/app --prefix=/app
+    sources:
+      - type: git
+        url: https://salsa.debian.org/python-team/modules/python-distutils-extra.git
+        branch: master
+
   - name: onboard
     buildsystem: simple
-    build-options:
-      build-args:
-        - --share=network
     build-commands:
-      - pip3 install python-distutils-extra
       - python3 setup.py clean
       - python3 setup.py build
       - python3 setup.py install --root=/app --prefix=/app
