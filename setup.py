@@ -133,6 +133,11 @@ def pkgconfig(*packages, **kw):
 
     if status != 0:
         print('setup.py: pkg-config returned exit code %d' % status, file=sys.stderr)
+        print('setup.py: tried packages:', resolved, file=sys.stderr)
+        for name in resolved:
+            test_cmd = "pkg-config --modversion " + name
+            test_status, test_output = getstatusoutput(test_cmd)
+            print('setup.py: pkg-config --modversion %s => %d: %s' % (name, test_status, test_output), file=sys.stderr)
         print('setup.py: sdist needs libgtk-3-dev, libxtst-dev, libxkbfile-dev, libdconf-dev, libcanberra-dev, libhunspell-dev and libudev-dev')
         sys.exit(1)
 
