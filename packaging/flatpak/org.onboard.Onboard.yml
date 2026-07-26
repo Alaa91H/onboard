@@ -65,7 +65,7 @@ modules:
   - name: python-distutils-extra
     buildsystem: simple
     build-commands:
-      - python3 setup.py install --root=/app --prefix=/app
+      - python3 setup.py install --prefix=/app
     sources:
       - type: git
         url: https://salsa.debian.org/python-team/modules/python-distutils-extra.git
@@ -75,7 +75,7 @@ modules:
     buildsystem: simple
     build-options:
       env:
-        PYTHONPATH: /app/lib/python3/dist-packages:/app/lib/python3.12/site-packages
+        PYTHONPATH: /app/lib/python3.12/site-packages:/app/lib/python3/dist-packages
     build-commands:
       - python3 setup.py clean
       - python3 setup.py build
