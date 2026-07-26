@@ -64,7 +64,11 @@ modules:
 
   - name: onboard
     buildsystem: simple
+    build-options:
+      build-args:
+        - --share=network
     build-commands:
+      - pip3 install python-distutils-extra
       - python3 setup.py clean
       - python3 setup.py build
       - python3 setup.py install --root=/app --prefix=/app
