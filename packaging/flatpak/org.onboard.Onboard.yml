@@ -92,7 +92,7 @@ modules:
       - cd tmp/distutils-extra && pip3 install --no-build-isolation --prefix=/app .
       - python3 setup.py clean
       - python3 setup.py build
-      - python3 setup.py install --root=/app --prefix=/app
+      - python3 setup.py install --prefix=/app
     sources:
       - type: git
         url: https://github.com/Alaa91H/onboard.git
@@ -102,7 +102,7 @@ modules:
         branch: master
         dest: tmp/distutils-extra
     post-install:
-      - glib-compile-schemas /app/share/glib-2.0/schemas/
+      - glib-compile-schemas /app/share/glib-2.0/schemas/ || true
       - gtk-update-icon-cache -q /app/share/icons/hicolor || true
       - update-desktop-database /app/share/applications || true
 
