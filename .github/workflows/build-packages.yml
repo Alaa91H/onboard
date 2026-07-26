@@ -163,14 +163,8 @@ jobs:
       run: |
         VERSION=${GITHUB_REF_NAME#v}
         mkdir -p release
-        for f in debs/onboard-common_*.deb; do
-          [ -f "$f" ] && cp "$f" "release/onboard-common-${VERSION}-debian-all.deb"
-        done
         for f in debs/onboard-data_*.deb; do
-          [ -f "$f" ] && cp "$f" "release/onboard-data-${VERSION}-debian-all.deb"
-        done
-        for f in debs/gnome-shell-extension-onboard_*.deb; do
-          [ -f "$f" ] && cp "$f" "release/gnome-shell-extension-onboard-${VERSION}-debian-all.deb"
+          [ -f "$f" ] && cp "$f" "release/onboard-${VERSION}-debian-amd64.deb"
         done
         echo "=== Release Debian packages ==="
         ls -la release/
