@@ -1,7 +1,7 @@
 app-id: org.onboard.Onboard
-runtime: org.freedesktop.Platform
-runtime-version: '24.08'
-sdk: org.freedesktop.Sdk
+runtime: org.gnome.Platform
+runtime-version: '46'
+sdk: org.gnome.Sdk
 command: onboard
 
 finish-args:
@@ -43,24 +43,6 @@ modules:
       - type: git
         url: https://github.com/hunspell/hunspell.git
         tag: v1.7.2
-
-  - name: libcanberra
-    buildsystem: simple
-    build-commands:
-      - rm -rf doc gtkdoc
-      - mkdir -p doc gtkdoc
-      - touch doc/Makefile.am gtkdoc/Makefile.am
-      - echo "" > doc/README.html.in
-      - sed -i '/^SUBDIRS/d; /^DIST_SUBDIRS/d' Makefile.am
-      - echo "SUBDIRS = src" >> Makefile.am
-      - autoreconf -fi
-      - ./configure --prefix=/app --disable-oss --disable-alsa --disable-pulse --enable-gtk3
-      - make -C src -j$FLATPAK_BUILDER_N_JOBS
-      - make -C src install
-    sources:
-      - type: git
-        url: https://github.com/Distrotech/libcanberra.git
-        tag: v0.30
 
   - name: python-distutils-extra
     buildsystem: simple
