@@ -164,7 +164,7 @@ jobs:
         VERSION=${GITHUB_REF_NAME#v}
         mkdir -p release
         for f in debs/onboard-data_*.deb; do
-          [ -f "$f" ] && cp "$f" "release/onboard-${VERSION}-debian-amd64.deb"
+          [ -f "$f" ] && cp "$f" "release/onboard-${VERSION}-debian-x64.deb"
         done
         echo "=== Release Debian packages ==="
         ls -la release/
@@ -302,8 +302,13 @@ jobs:
           ! -name "onboard-debuginfo-*" \
           ! -name "onboard-debugsource-*" \
           -exec cp {} /tmp/rpms/ \;
+        if [ "${{ matrix.arch }}" = "x86_64" ]; then
+          OUT_ARCH="x64"
+        else
+          OUT_ARCH="arm64"
+        fi
         for f in /tmp/rpms/onboard-[0-9]*.rpm; do
-          [ -f "$f" ] && cp "$f" "release/onboard-${VERSION}-fedora-${{ matrix.arch }}.rpm"
+          [ -f "$f" ] && cp "$f" "release/onboard-${VERSION}-fedora-${OUT_ARCH}.rpm"
         done
         for f in /tmp/rpms/onboard-data-*.rpm; do
           [ -f "$f" ] && cp "$f" "release/onboard-data-${VERSION}-fedora-noarch.rpm"
@@ -361,7 +366,12 @@ jobs:
         VERSION=${GITHUB_REF_NAME#v}
         flatpak build-bundle repo onboard.flatpak org.onboard.Onboard --arch=${{ matrix.arch }} || \
         flatpak build-bundle repo onboard.flatpak org.onboard.Onboard
-        mv onboard.flatpak "onboard-${VERSION}-flatpak-${{ matrix.arch }}.flatpak"
+        if [ "${{ matrix.arch }}" = "x86_64" ]; then
+          OUT_ARCH="x64"
+        else
+          OUT_ARCH="arm64"
+        fi
+        mv onboard.flatpak "onboard-${VERSION}-flatpak-${OUT_ARCH}.flatpak"
         echo "=== Release Flatpak package ==="
         ls -la onboard-*.flatpak
     
@@ -415,9 +425,14 @@ jobs:
     - name: Rename Snap package
       run: |
         VERSION=${GITHUB_REF_NAME#v}
+        if [ "${{ matrix.arch }}" = "amd64" ]; then
+          OUT_ARCH="x64"
+        else
+          OUT_ARCH="arm64"
+        fi
         for f in *.snap; do
           if [ -f "$f" ]; then
-            sudo mv "$f" "onboard-${VERSION}-snap-${{ matrix.arch }}.snap"
+            sudo mv "$f" "onboard-${VERSION}-snap-${OUT_ARCH}.snap"
           fi
         done
         echo "=== Release Snap package ==="
