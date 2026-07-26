@@ -160,11 +160,19 @@ jobs:
           fi
         done
     
+    - name: Select release debs
+      run: |
+        mkdir -p release-debs
+        cp debs/onboard_*.deb release-debs/ 2>/dev/null || true
+        cp debs/onboard-data_*.deb release-debs/ 2>/dev/null || true
+        echo "Release debs:"
+        ls -la release-debs/ || true
+    
     - name: Upload Debian packages
       uses: actions/upload-artifact@v6
       with:
         name: debian-packages
-        path: debs/*.deb
+        path: release-debs/*.deb
         retention-days: 30
 
   build-fedora:
@@ -201,11 +209,16 @@ jobs:
         echo "=== RPM info ==="
         find ~/rpmbuild/RPMS -name "*.rpm" -exec rpm -qpi {} \;
     
+    - name: Flatten RPM files
+      run: |
+        mkdir -p /tmp/rpms
+        find ~/rpmbuild/RPMS -name "*.rpm" -exec cp {} /tmp/rpms/ \;
+    
     - name: Upload RPM packages
       uses: actions/upload-artifact@v6
       with:
         name: fedora-packages
-        path: ~/rpmbuild/RPMS/*/*.rpm
+        path: /tmp/rpms/*.rpm
         retention-days: 30
 
   build-flatpak:
