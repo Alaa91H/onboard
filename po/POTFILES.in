@@ -60,7 +60,6 @@ Onboard/test/test_gui.py
 Onboard/test/test_migration.py
 Onboard/test/test_translations.py
 Onboard/utils.py
-code-samples/embedding.py
 data/layoutstrings.py
 data/onboard-autostart.desktop.in
 data/onboard-settings.desktop.in
@@ -69,8 +68,5 @@ data/onboard.desktop.in
 [type: gettext/glade]settings_docking_dialog.ui
 [type: gettext/glade]settings_scanner_dialog.ui
 [type: gettext/glade]settings_theme_dialog.ui
-settings_ui.py
 setup.py
-tools/fix_glade_ids.py
 tools/gen_gschema.py
-tools/xembed_socket.py

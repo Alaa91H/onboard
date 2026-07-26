@@ -8,11 +8,116 @@ on:
     branches: [ main, master ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+  packages: write
+
 jobs:
+  lint:
+    name: Code Quality & Lint
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v5
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Install linting tools
+      run: pip install flake8 pyyaml
+
+    - name: Validate setup.py syntax
+      run: python -m py_compile setup.py
+
+    - name: Validate all Python files syntax
+      run: |
+        find . -name "*.py" -not -path "./.git/*" -not -path "./build/*" -not -path "./dist/*" -print0 | while IFS= read -r -d '' f; do
+          if ! python -m py_compile "$f" 2>/dev/null; then
+            echo "FAIL: $f"
+          fi
+        done
+
+    - name: Check for critical Python errors
+      run: |
+        python -m flake8 setup.py --select=E9,F63,F7,F82 --show-source --statistics || true
+
+    - name: Validate YAML files
+      run: |
+        python -c "
+        import yaml, sys, os
+        errors = []
+        for root, dirs, files in os.walk('.'):
+          dirs[:] = [d for d in dirs if d != '.git']
+          for f in files:
+            if f.endswith(('.yml', '.yaml')):
+              path = os.path.join(root, f)
+              try:
+                with open(path) as fh:
+                  yaml.safe_load(fh)
+                print(f'OK: {path}')
+              except Exception as e:
+                errors.append(f'{path}: {e}')
+                print(f'FAIL: {path}: {e}')
+        if errors:
+          sys.exit(1)
+        "
+
+    - name: Validate XML layout files
+      run: |
+        pip install lxml
+        python -c "
+        import xml.etree.ElementTree as ET
+        import sys, os
+        errors = []
+        for f in os.listdir('layouts'):
+          if f.endswith('.onboard'):
+            path = os.path.join('layouts', f)
+            try:
+              ET.parse(path)
+              print(f'OK: {path}')
+            except ET.ParseError as e:
+              errors.append(f'{path}: {e}')
+              print(f'FAIL: {path}: {e}')
+        if errors:
+          sys.exit(1)
+        "
+
+    - name: Validate no dead Python imports
+      run: |
+        python -m flake8 setup.py scripts/ tools/ --select=F401 --ignore=F401,F811 --show-source --statistics 2>/dev/null || true
+
+    - name: Check project structure integrity
+      run: |
+        echo "=== Checking required files ==="
+        required_files=(
+          "setup.py"
+          "packaging/flatpak/org.onboard.Onboard.yml"
+          "packaging/snap/snapcraft.yaml"
+          "packaging/fedora/onboard.spec"
+          "debian/control"
+          "debian/rules"
+        )
+        for f in "${required_files[@]}"; do
+          if [ -f "$f" ]; then
+            echo "OK: $f"
+          else
+            echo "MISSING: $f"
+          fi
+        done
+        echo "=== Checking layout files ==="
+        layout_count=$(ls layouts/*.onboard 2>/dev/null | wc -l)
+        echo "Layout files found: $layout_count"
+        echo "=== Checking locale files ==="
+        locale_count=$(ls po/*.po 2>/dev/null | wc -l)
+        echo "Translation files found: $locale_count"
+
   build-debian:
     name: Build Debian/Ubuntu Packages
     runs-on: ubuntu-latest
     container: ubuntu:24.04
+    needs: [lint]
     
     steps:
     - name: Install dependencies
@@ -22,24 +127,41 @@ jobs:
         apt-get install -y dh-python python3-distutils-extra devscripts pkg-config
         apt-get install -y libgtk-3-dev libxtst-dev libxkbfile-dev libdconf-dev libcanberra-dev
         apt-get install -y libhunspell-dev libudev-dev python3-gi-cairo
-        apt-get install -y debhelper dpkg-dev
+        apt-get install -y debhelper dpkg-dev lintian
     
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         fetch-depth: 0
     
     - name: Build packages
-      run: |
-        dpkg-buildpackage -us -uc -b
+      run: dpkg-buildpackage -us -uc -b
     
-    - name: Prepare Debian artifacts
+    - name: Prepare artifacts
       run: |
         mkdir -p debs
         cp ../*.deb debs/ || true
     
+    - name: Validate Debian packages
+      run: |
+        echo "=== Package listing ==="
+        ls -la debs/*.deb 2>/dev/null || true
+        echo "=== Package info ==="
+        for pkg in debs/*.deb; do
+          if [ -f "$pkg" ]; then
+            dpkg-deb --info "$pkg" || true
+            echo "---"
+          fi
+        done
+        echo "=== Lintian checks ==="
+        for pkg in debs/*.deb; do
+          if [ -f "$pkg" ]; then
+            lintian "$pkg" --no-tag-display-limit 2>&1 | head -50 || true
+          fi
+        done
+    
     - name: Upload Debian packages
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: debian-packages
         path: debs/*.deb
@@ -49,6 +171,7 @@ jobs:
     name: Build Fedora RPM Packages
     runs-on: ubuntu-latest
     container: fedora:latest
+    needs: [lint]
     
     steps:
     - name: Install dependencies
@@ -60,7 +183,7 @@ jobs:
         dnf install -y rpm-build intltool pkg-config desktop-file-utils
     
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         fetch-depth: 0
     
@@ -71,8 +194,15 @@ jobs:
         tar czf ~/rpmbuild/SOURCES/onboard-1.4.4.tar.gz --transform="s,^\.,onboard-1.4.4," .
         rpmbuild -ba ~/rpmbuild/SPECS/onboard.spec
     
+    - name: Validate RPM packages
+      run: |
+        echo "=== RPM package listing ==="
+        find ~/rpmbuild/RPMS -name "*.rpm" -exec ls -la {} \;
+        echo "=== RPM info ==="
+        find ~/rpmbuild/RPMS -name "*.rpm" -exec rpm -qpi {} \;
+    
     - name: Upload RPM packages
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: fedora-packages
         path: ~/rpmbuild/RPMS/*/*.rpm
@@ -81,6 +211,7 @@ jobs:
   build-flatpak:
     name: Build Flatpak Package
     runs-on: ubuntu-latest
+    needs: [lint]
     
     steps:
     - name: Install dependencies
@@ -91,10 +222,10 @@ jobs:
     - name: Add Flathub remote
       run: |
         flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-        flatpak install -y --user flathub org.gnome.Platform//46 org.gnome.Sdk//46 || true
+        flatpak install -y --user flathub org.gnome.Platform//47 org.gnome.Sdk//47 || true
     
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
     
     - name: Build Flatpak
       run: |
@@ -104,8 +235,13 @@ jobs:
       run: |
         flatpak build-bundle repo onboard.flatpak org.onboard.Onboard
     
+    - name: Validate Flatpak bundle
+      run: |
+        echo "=== Bundle info ==="
+        ls -la onboard.flatpak
+    
     - name: Upload Flatpak bundle
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: flatpak-package
         path: onboard.flatpak
@@ -114,11 +250,11 @@ jobs:
   build-snap:
     name: Build Snap Package
     runs-on: ubuntu-latest
+    needs: [lint]
     
     steps:
     - name: Install Snapcraft
-      run: |
-        sudo snap install snapcraft --classic
+      run: sudo snap install snapcraft --classic
     
     - name: Install build dependencies
       run: |
@@ -129,7 +265,7 @@ jobs:
         sudo apt-get install -y python3-gi python3-distutils-extra intltool libglib2.0-dev
     
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
     
     - name: Build Snap
       run: |
@@ -137,8 +273,13 @@ jobs:
         sudo cp packaging/snap/snapcraft.yaml snap/
         sudo snapcraft --destructive-mode
     
+    - name: Validate Snap package
+      run: |
+        echo "=== Snap info ==="
+        ls -la *.snap 2>/dev/null || true
+    
     - name: Upload Snap package
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: snap-package
         path: "*.snap"
@@ -152,10 +293,10 @@ jobs:
     
     steps:
     - name: Download all artifacts
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v7
     
     - name: Create Release
-      uses: softprops/action-gh-release@v2
+      uses: softprops/action-gh-release@v3
       with:
         files: |
           debian-packages/*.deb

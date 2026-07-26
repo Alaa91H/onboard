@@ -1,6 +1,6 @@
 app-id: org.onboard.Onboard
 runtime: org.gnome.Platform
-runtime-version: '46'
+runtime-version: '47'
 sdk: org.gnome.Sdk
 command: onboard
 
@@ -87,7 +87,7 @@ modules:
     buildsystem: simple
     build-options:
       env:
-        PYTHONPATH: /app/lib/python3.11/site-packages:/app/lib/python3/dist-packages
+        PYTHONPATH: /app/lib/python3.12/site-packages:/app/lib/python3/dist-packages
         FLATPAK_DEST: /app
     build-commands:
       - cd tmp/distutils-extra && pip3 install --no-build-isolation --prefix=/app .

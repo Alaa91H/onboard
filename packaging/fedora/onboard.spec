@@ -84,7 +84,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/onboard-settings.desk
 %{_bindir}/onboard
 %{_bindir}/onboard-settings
 %{_libdir}/python3*/site-packages/Onboard/
-%{_libdir}/python3*/site-packages/settings_ui.py
 %{_libdir}/python3*/site-packages/onboard-*.egg-info/
 %{_libdir}/python3*/site-packages/__pycache__/
 %{_datadir}/glib-2.0/schemas/org.onboard.gschema.xml
