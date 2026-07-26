@@ -114,36 +114,15 @@ jobs:
         echo "Translation files found: $locale_count"
 
   build-debian:
-    name: Build Debian/Ubuntu Packages (${{ matrix.arch }})
+    name: Build Debian/Ubuntu Packages
     runs-on: ubuntu-latest
     container: ubuntu:24.04
     needs: [lint]
-    strategy:
-      matrix:
-        arch: [amd64, arm64]
     
     steps:
-    - name: Set up QEMU for arm64
-      if: matrix.arch == 'arm64'
-      run: |
-        apt-get update
-        apt-get install -y qemu-user-static binfmt-support
-        update-binfmts --enable qemu-aarch64 || true
-    
     - name: Install dependencies
       run: |
-        if [ "${{ matrix.arch }}" = "arm64" ]; then
-          dpkg --add-architecture arm64
-          sed -i 's/^deb /deb [arch=amd64] /' /etc/apt/sources.list.d/*.list 2>/dev/null || true
-          echo "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ noble main restricted universe multiverse" > /etc/apt/sources.list.d/arm64.list
-          echo "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ noble-updates main restricted universe multiverse" >> /etc/apt/sources.list.d/arm64.list
-          apt-get update || true
-          apt-get install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
-          apt-get install -y libgtk-3-dev:arm64 libxtst-dev:arm64 libxkbfile-dev:arm64
-          apt-get install -y libdconf-dev:arm64 libcanberra-dev:arm64 libhunspell-dev:arm64
-          apt-get install -y libudev-dev:arm64 python3-dev:arm64
-        fi
-        apt-get update || true
+        apt-get update
         apt-get install -y git build-essential python3-packaging python3-dev
         apt-get install -y dh-python python3-distutils-extra devscripts pkg-config
         apt-get install -y libgtk-3-dev libxtst-dev libxkbfile-dev libdconf-dev libcanberra-dev
@@ -156,15 +135,7 @@ jobs:
         fetch-depth: 0
     
     - name: Build packages
-      run: |
-        if [ "${{ matrix.arch }}" = "arm64" ]; then
-          export CC=aarch64-linux-gnu-gcc
-          export CXX=aarch64-linux-gnu-g++
-          export PKG_CONFIG_PATH=/usr/lib/aarch64-linux-gnu/pkgconfig
-          dpkg-buildpackage -us -uc -b -aarm64 || dpkg-buildpackage -us -uc -b
-        else
-          dpkg-buildpackage -us -uc -b
-        fi
+      run: dpkg-buildpackage -us -uc -b
     
     - name: Prepare artifacts
       run: |
@@ -193,7 +164,7 @@ jobs:
         VERSION=${GITHUB_REF_NAME#v}
         mkdir -p release
         for f in debs/onboard-data_*.deb; do
-          [ -f "$f" ] && cp "$f" "release/onboard-${VERSION}-debian-${{ matrix.arch }}.deb"
+          [ -f "$f" ] && cp "$f" "release/onboard-${VERSION}-debian-amd64.deb"
         done
         echo "=== Release Debian packages ==="
         ls -la release/
@@ -204,7 +175,7 @@ jobs:
     - name: Upload Debian packages
       uses: actions/upload-artifact@v6
       with:
-        name: debian-packages-${{ matrix.arch }}
+        name: debian-packages
         path: release/*.deb
         retention-days: 30
 
@@ -419,7 +390,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         files: |
-          artifacts/debian-packages-*/*.deb
+          artifacts/debian-packages/*.deb
           artifacts/fedora-packages-*/*.rpm
           artifacts/flatpak-package-*/*.flatpak
           artifacts/snap-package-*/*.snap
