@@ -109,7 +109,19 @@ def glob_files(pathname):
             if os.path.isfile(fn)]
 
 def pkgconfig(*packages, **kw):
-    command = "pkg-config --libs --cflags %s" % ' '.join(packages)
+    resolved = []
+    for pkg in packages:
+        found = False
+        for name in (pkg, pkg + "-2"):
+            test_cmd = "pkg-config --exists " + name
+            test_status, _ = getstatusoutput(test_cmd)
+            if test_status == 0:
+                resolved.append(name)
+                found = True
+                break
+        if not found:
+            resolved.append(pkg)
+    command = "pkg-config --libs --cflags %s" % ' '.join(resolved)
     status, output = getstatusoutput(command)
 
     # print command and ouput to console to aid in debugging
@@ -138,19 +150,19 @@ def pkgconfig(*packages, **kw):
 
 def get_pkg_version(package):
     """ get major, minor version of package """
-    command = "pkg-config --modversion " + package
-    status, output = getstatusoutput(command)
-    if status != 0:
-        print("setup.py: get_pkg_version({}): "
-              "pkg-config returned exit code {}" \
-              .format(repr(package), status), file=sys.stderr)
-        sys.exit(2)
-
-    version = re.search(r'(?:(?:\d+)\.)+\d+', output).group()
-    components = version.split(".")
-    major, minor = int(components[0]), int(components[1])
-    revision = int(components[2]) if len(components) >= 3 else 0
-    return major, minor, revision
+    for name in (package, package + "-2"):
+        command = "pkg-config --modversion " + name
+        status, output = getstatusoutput(command)
+        if status == 0:
+            version = re.search(r'(?:(?:\d+)\.)+\d+', output).group()
+            components = version.split(".")
+            major, minor = int(components[0]), int(components[1])
+            revision = int(components[2]) if len(components) >= 3 else 0
+            return major, minor, revision
+    print("setup.py: get_pkg_version({}): "
+          "pkg-config returned exit code for both {} and {}" \
+          .format(repr(package), package, package + "-2"), file=sys.stderr)
+    sys.exit(2)
 
 def clean_before_build(command):
     """
