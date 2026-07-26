@@ -1,0 +1,153 @@
+<?xml version="1.0" ?>
+
+<!--
+Gboard Light Color Scheme for Onboard
+Based on Google Material Design 3 / Material You light theme.
+Colors derived from Google Gboard Android light mode.
+-->
+
+<color_scheme name="Gboard Light" format="2.0">
+    <!-- Light background layers (Material You light surface) -->
+    <layer> <color element="background" rgb="#E8EAED" opacity="1.0"/> </layer>
+    <layer> <color element="background" rgb="#F1F3F4" opacity="1.0"/> </layer>
+    <layer> <color element="background" rgb="#E8EAED" opacity="1.0"/> </layer>
+
+    <!-- Default key group -->
+    <key_group>
+        <!-- Normal state: clean white surface -->
+        <color element="fill"   rgb="#FFFFFF"/>
+        <color element="fill"   rgb="#E8EAED" hover="true"/>
+        <color element="fill"   rgb="#DADCE0" pressed="true"/>
+        <!-- Stroke: very subtle border -->
+        <color element="stroke" rgb="#E0E0E0"/>
+        <color element="stroke" rgb="#D0D0D0" hover="true"/>
+        <color element="stroke" rgb="#C0C0C0" pressed="true"/>
+        <!-- Label: dark text -->
+        <color element="label"  rgb="#202124"/>
+        <color element="label"  rgb="#202124" hover="true"/>
+        <color element="label"  rgb="#202124" pressed="true"/>
+        <!-- Dwell progress: Google Blue -->
+        <color element="dwell-progress" rgb="#1A73E8"/>
+
+        <!-- System/layer keys -->
+        layer, icon0, icon1, icon2, icon3,
+
+        <!-- Function keys F1-F12 -->
+        F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12,
+        Prnt, Pause, Scroll,
+
+        <!-- Editing keys -->
+        INS, DELE, HOME, END, PGUP, PGDN,
+
+        <!-- Numpad operators -->
+        KPSU, KPDV, KPAD, KPMU,
+
+        <!-- Click helpers -->
+        middleclick, secondaryclick, singleclick, doubleclick,
+        dragclick, hoverclick,
+
+        <!-- Word list -->
+        hide.wordlist
+
+        <!-- Spelling suggestions: light blue highlight -->
+        <key_group>
+            <color element="fill"  rgb="#FFFFFF"/>
+            <color element="fill"  rgb="#D2E3FC" hover="true"/>
+            <color element="fill"  rgb="#C2DAFC" pressed="true"/>
+            <color element="label" rgb="#202124"/>
+            <color element="label" rgb="#1A73E8" hover="true"/>
+            <color element="label" rgb="#1A73E8" pressed="true"/>
+            correctionsbg,
+            correction
+        </key_group>
+
+        <!-- Icon keys: slightly tinted surface -->
+        <key_group>
+            <color element="fill"   rgb="#F1F3F4"/>
+            <color element="fill"   rgb="#E8EAED" hover="true"/>
+            <color element="fill"   rgb="#DADCE0" pressed="true"/>
+            <color element="stroke" rgb="#F1F3F4"/>
+            <color element="stroke" rgb="#E8EAED" hover="true"/>
+            icon1, icon2
+        </key_group>
+
+        <!-- Alphanumeric keys: standard surface -->
+        <key_group>
+            <color element="fill" rgb="#FFFFFF"/>
+            <color element="fill" rgb="#E8EAED" hover="true"/>
+            <color element="fill" rgb="#DADCE0" pressed="true"/>
+            ESC,
+            AE01, AE02, AE03, AE04, AE05, AE06, AE07, AE08, AE09, AE10, AE11, AE12,
+            KP1, KP2, KP3, KP4, KP5, KP6, KP7, KP8, KP9,
+        </key_group>
+
+        <!-- Bottom row keys: slightly tinted -->
+        <key_group>
+            <color element="fill" rgb="#F1F3F4"/>
+            <color element="fill" rgb="#E8EAED" hover="true"/>
+            <color element="fill" rgb="#DADCE0" pressed="true"/>
+            <color element="stroke" rgb="#F1F3F4"/>
+            <color element="stroke" rgb="#E8EAED" hover="true"/>
+            RCTL, LCTL, RALT, LALT, LWIN, RWIN, MENU,
+            LEFT, RGHT, UP, DOWN,
+            KP0, KPDL,
+            hoverclick.bottom-row,
+            quit
+
+            <!-- Active state for toggle keys: Google Blue -->
+            <key_group>
+                <color element="fill" active="true" locked="false" rgb="#1A73E8"/>
+                <color element="fill" rgb="#1765CC" hover="true" active="true"/>
+                <color element="fill" rgb="#155DB8" pressed="true"/>
+                <color element="label" rgb="#FFFFFF"/>
+                <color element="label" rgb="#FFFFFF" hover="true"/>
+                hide, showclick, move, layer
+            </key_group>
+        </key_group>
+
+        <!-- Spacebar and Shift: Google Blue accent -->
+        <key_group>
+            <color element="fill" rgb="#1A73E8"/>
+            <color element="fill" rgb="#1765CC" hover="true"/>
+            <color element="fill" rgb="#155DB8" pressed="true"/>
+            <color element="stroke" rgb="#155DB8"/>
+            <color element="stroke" rgb="#1254A5" hover="true"/>
+            <color element="label" rgb="#FFFFFF"/>
+            <color element="label" rgb="#FFFFFF" hover="true"/>
+            <color element="label" rgb="#D2E3FC" pressed="true"/>
+            SPCE, LFSH, RTSH,
+            settings
+            <key_group>
+                <color element="stroke" rgb="#155DB8"/>
+                <color element="stroke" rgb="#1254A5" hover="true"/>
+                icon0
+            </key_group>
+        </key_group>
+
+        <!-- Action keys (Enter, Backspace, Tab, etc.): elevated surface -->
+        <key_group>
+            <color element="fill" rgb="#F1F3F4"/>
+            <color element="fill" rgb="#E8EAED" hover="true"/>
+            <color element="fill" rgb="#DADCE0" pressed="true"/>
+            <color element="stroke" rgb="#F1F3F4"/>
+            <color element="stroke" rgb="#E8EAED" hover="true"/>
+            BKSP, DELE.next-to-backspace, TAB, CAPS, RTRN, KPEN, NMLK,
+            layer.like_rtrn, LFSH.like_rtrn
+            <key_group>
+                <color element="stroke" rgb="#F1F3F4"/>
+                <color element="stroke" rgb="#E8EAED" hover="true"/>
+                icon3
+            </key_group>
+        </key_group>
+
+        <!-- Snippets: muted surface -->
+        <key_group>
+            <color element="fill"   rgb="#F8F9FA"/>
+            <color element="fill"   rgb="#F1F3F4" hover="true"/>
+            <color element="fill"   rgb="#E8EAED" pressed="true"/>
+            <color element="stroke" rgb="#F8F9FA"/>
+            <color element="stroke" rgb="#F1F3F4" hover="true"/>
+            m0, m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13, m14, m15
+        </key_group>
+    </key_group>
+</color_scheme>

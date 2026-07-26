@@ -1,0 +1,231 @@
+<?xml version="1.0" ?>
+
+<!--
+Gboard Floating Keyboard - Arabic Layout for Onboard
+Features: Material Design 3 styling, Arabic RTL, tashkeel on shift,
+          number row, close button, language switcher, emoji, clipboard.
+Design: Google Gboard / Material You inspired.
+-->
+
+<keyboard
+    id="Gboard Floating Arabic"
+    format="3.2"
+    section="contributions"
+    summary="Google Gboard Arabic floating keyboard with Material Design 3">
+
+    <include file='key_defs.xml'/>
+
+    <box border="1" spacing="2" orientation="vertical">
+
+        <!-- Word suggestion bar -->
+        <panel filename='Gboard-Floating-Arabic.svg' scan_priority='1'>
+            <include file='word_suggestions.xml'/>
+        </panel>
+
+        <!-- Arabic alpha layer (RTL) -->
+        <panel layer="alpha" filename="Gboard-Floating-Arabic.svg" direction="rtl">
+
+            <!-- Title bar keys -->
+            <key group="bottomrow" id="gboard-move" button="true" label="⋯" tooltip="Move keyboard"/>
+            <key group="bottomrow" id="gboard-close" button="true" label="✕" tooltip="Close keyboard"/>
+            <key group="bottomrow" id="gboard-lang-switch" button="true" label="AR" tooltip="Switch language"/>
+
+            <!-- Number row (Western digits 1-0) -->
+            <key group="alphanumeric" id="AE01" label="1" char="1"/>
+            <key group="alphanumeric" id="AE02" label="2" char="2"/>
+            <key group="alphanumeric" id="AE03" label="3" char="3"/>
+            <key group="alphanumeric" id="AE04" label="4" char="4"/>
+            <key group="alphanumeric" id="AE05" label="5" char="5"/>
+            <key group="alphanumeric" id="AE06" label="6" char="6"/>
+            <key group="alphanumeric" id="AE07" label="7" char="7"/>
+            <key group="alphanumeric" id="AE08" label="8" char="8"/>
+            <key group="alphanumeric" id="AE09" label="9" char="9"/>
+            <key group="alphanumeric" id="AE10" label="0" char="0"/>
+            <key group="bottomrow" id="BKSP-num" image="erase-left.svg"/>
+
+            <!-- Row 1: ء ؤ ر ز ش ض ة ى لا ث (Arabic) -->
+            <key group="alphanumeric" id="AD01" label="ء" char="ء"/>
+            <key group="alphanumeric" id="AD02" label="ؤ" char="ؤ"/>
+            <key group="alphanumeric" id="AD03" label="ر" char="ر"/>
+            <key group="alphanumeric" id="AD04" label="ز" char="ز"/>
+            <key group="alphanumeric" id="AD05" label="ش" char="ش"/>
+            <key group="alphanumeric" id="AD06" label="ض" char="ض"/>
+            <key group="alphanumeric" id="AD07" label="ة" char="ة"/>
+            <key group="alphanumeric" id="AD08" label="ى" char="ى"/>
+            <key group="alphanumeric" id="AD09" label="لا" char="لا"/>
+            <key group="alphanumeric" id="AD10" label="ث" char="ث"/>
+
+            <!-- Row 2: ع س ي ب ل ا هـ ن م ك -->
+            <key group="alphanumeric" id="AC01" label="ع" char="ع"/>
+            <key group="alphanumeric" id="AC02" label="س" char="س"/>
+            <key group="alphanumeric" id="AC03" label="ي" char="ي"/>
+            <key group="alphanumeric" id="AC04" label="ب" char="ب"/>
+            <key group="alphanumeric" id="AC05" label="ل" char="ل"/>
+            <key group="alphanumeric" id="AC06" label="ا" char="ا"/>
+            <key group="alphanumeric" id="AC07" label="هـ" char="هـ"/>
+            <key group="alphanumeric" id="AC08" label="ن" char="ن"/>
+            <key group="alphanumeric" id="AC09" label="م" char="م"/>
+
+            <!-- Row 3: Shift ك ف ح ج د ط ظ Backspace -->
+            <key group="shifts" id="LFSH"/>
+            <key group="alphanumeric" id="AB01" label="ك" char="ك"/>
+            <key group="alphanumeric" id="AB02" label="ف" char="ف"/>
+            <key group="alphanumeric" id="AB03" label="ح" char="ح"/>
+            <key group="alphanumeric" id="AB04" label="ج" char="ج"/>
+            <key group="alphanumeric" id="AB05" label="د" char="د"/>
+            <key group="alphanumeric" id="AB06" label="ط" char="ط"/>
+            <key group="alphanumeric" id="AB07" label="ظ" char="ظ"/>
+            <key group="bottomrow" id="BKSP"/>
+
+            <!-- Row 4: ?123 , (emoji) (clipboard) Space . Enter -->
+            <key group="bottomrow" id="gboard-layer1" label="?123" button='true'/>
+            <key group="bottomrow" id="AB08" label="،" char="،"/>
+            <key group="bottomrow" id="gboard-emoji" label="😊" button='true' tooltip="Emoji picker"/>
+            <key group="bottomrow" id="gboard-clipboard" label="📋" button='true' tooltip="Clipboard"/>
+            <key group="bottomrow" id="SPCE"/>
+            <key group="bottomrow" id="AC10" label="." char="."/>
+            <key group="bottomrow" id="RTRN"/>
+        </panel>
+
+        <!-- Shift layer (Arabic with tashkeel) -->
+        <panel layer="shift" filename="Gboard-Floating-Arabic.svg" direction="rtl">
+            <key group="bottomrow" id="gboard-move" button="true" label="⋯"/>
+            <key group="bottomrow" id="gboard-close" button="true" label="✕"/>
+            <key group="bottomrow" id="gboard-lang-switch" button="true" label="AR"/>
+
+            <!-- Number row unchanged -->
+            <key group="alphanumeric" id="AE01" label="!" char="!"/>
+            <key group="alphanumeric" id="AE02" label="@" char="@"/>
+            <key group="alphanumeric" id="AE03" label="#" char="#"/>
+            <key group="alphanumeric" id="AE04" label="$" char="$"/>
+            <key group="alphanumeric" id="AE05" label="%" char="%"/>
+            <key group="alphanumeric" id="AE06" label="^" char="^"/>
+            <key group="alphanumeric" id="AE07" label="&amp;" char="&amp;"/>
+            <key group="alphanumeric" id="AE08" label="*" char="*"/>
+            <key group="alphanumeric" id="AE09" label="(" char="("/>
+            <key group="alphanumeric" id="AE10" label=")" char=")"/>
+            <key group="bottomrow" id="BKSP-num" image="erase-left.svg"/>
+
+            <!-- Row 1: Tashkeel on shift -->
+            <key group="alphanumeric" id="AD01" label="ً" char="ً"/>
+            <key group="alphanumeric" id="AD02" label="ٌ" char="ٌ"/>
+            <key group="alphanumeric" id="AD03" label="ُ" char="ُ"/>
+            <key group="alphanumeric" id="AD04" label="ِ" char="ِ"/>
+            <key group="alphanumeric" id="AD05" label="َ" char="َ"/>
+            <key group="alphanumeric" id="AD06" label="ّ" char="ّ"/>
+            <key group="alphanumeric" id="AD07" label="ْ" char="ْ"/>
+            <key group="alphanumeric" id="AD08" label="ى" char="ى"/>
+            <key group="alphanumeric" id="AD09" label="لا" char="لا"/>
+            <key group="alphanumeric" id="AD10" label="آ" char="آ"/>
+
+            <!-- Row 2: More tashkeel -->
+            <key group="alphanumeric" id="AC01" label="أ" char="أ"/>
+            <key group="alphanumeric" id="AC02" label="إ" char="إ"/>
+            <key group="alphanumeric" id="AC03" label="آ" char="آ"/>
+            <key group="alphanumeric" id="AC04" label="ؤ" char="ؤ"/>
+            <key group="alphanumeric" id="AC05" label="ئ" char="ئ"/>
+            <key group="alphanumeric" id="AC06" label="ء" char="ء"/>
+            <key group="alphanumeric" id="AC07" label="ة" char="ة"/>
+            <key group="alphanumeric" id="AC08" label="و" char="و"/>
+            <key group="alphanumeric" id="AC09" label="ز" char="ز"/>
+
+            <!-- Row 3: Shift -->
+            <key group="shifts" id="LFSH"/>
+            <key group="alphanumeric" id="AB01" label="ش" char="ش"/>
+            <key group="alphanumeric" id="AB02" label="ض" char="ض"/>
+            <key group="alphanumeric" id="AB03" label="ص" char="ص"/>
+            <key group="alphanumeric" id="AB04" label="ث" char="ث"/>
+            <key group="alphanumeric" id="AB05" label="ق" char="ق"/>
+            <key group="alphanumeric" id="AB06" label="ف" char="ف"/>
+            <key group="alphanumeric" id="AB07" label="غ" char="غ"/>
+            <key group="bottomrow" id="BKSP"/>
+
+            <!-- Row 4 -->
+            <key group="bottomrow" id="gboard-layer1" label="?123" button='true'/>
+            <key group="bottomrow" id="AB08" label="،" char="،"/>
+            <key group="bottomrow" id="gboard-emoji" label="😊" button='true'/>
+            <key group="bottomrow" id="gboard-clipboard" label="📋" button='true'/>
+            <key group="bottomrow" id="SPCE"/>
+            <key group="bottomrow" id="AC10" label="." char="."/>
+            <key group="bottomrow" id="RTRN"/>
+        </panel>
+
+        <!-- Number/symbol layer -->
+        <panel layer="1" filename="Gboard-Floating-Arabic.svg">
+            <key group="bottomrow" id="gboard-move" button="true" label="⋯"/>
+            <key group="bottomrow" id="gboard-close" button="true" label="✕"/>
+            <key group="bottomrow" id="gboard-lang-switch" button="true" label="AR"/>
+
+            <!-- Row 1: Numbers -->
+            <key group="alphanumeric" id="AE01" label="1" char="1"/>
+            <key group="alphanumeric" id="AE02" label="2" char="2"/>
+            <key group="alphanumeric" id="AE03" label="3" char="3"/>
+            <key group="alphanumeric" id="AE04" label="4" char="4"/>
+            <key group="alphanumeric" id="AE05" label="5" char="5"/>
+            <key group="alphanumeric" id="AE06" label="6" char="6"/>
+            <key group="alphanumeric" id="AE07" label="7" char="7"/>
+            <key group="alphanumeric" id="AE08" label="8" char="8"/>
+            <key group="alphanumeric" id="AE09" label="9" char="9"/>
+            <key group="alphanumeric" id="AE10" label="0" char="0"/>
+            <key group="bottomrow" id="BKSP-num" image="erase-left.svg"/>
+
+            <!-- Row 2: Symbols -->
+            <key group="alphanumeric" id="AC01" label="-" char="-"/>
+            <key group="alphanumeric" id="AC02" label="/" char="/"/>
+            <key group="alphanumeric" id="AC03" label=":" char=":"/>
+            <key group="alphanumeric" id="AC04" label=";" char=";"/>
+            <key group="alphanumeric" id="AC05" label="(" char="("/>
+            <key group="alphanumeric" id="AC06" label=")" char=")"/>
+            <key group="alphanumeric" id="AC07" label="$" char="$"/>
+            <key group="alphanumeric" id="AC08" label="&amp;" char="&amp;"/>
+            <key group="alphanumeric" id="AC09" label="@" char="@"/>
+
+            <!-- Row 3: More symbols -->
+            <key group="bottomrow" id="LFSH" label="⇧"/>
+            <key group="alphanumeric" id="AB01" label="=" char="="/>
+            <key group="alphanumeric" id="AB02" label="+" char="+"/>
+            <key group="alphanumeric" id="AB03" label="*" char="*"/>
+            <key group="alphanumeric" id="AB04" label="&quot;" char="&quot;"/>
+            <key group="alphanumeric" id="AB05" label="'" char="'"/>
+            <key group="alphanumeric" id="AB06" label="!" char="!"/>
+            <key group="alphanumeric" id="AB07" label="?" char="?"/>
+            <key group="alphanumeric" id="AB08" label="،" char="،"/>
+            <key group="bottomrow" id="BKSP"/>
+
+            <!-- Row 4: back to abc -->
+            <key group="bottomrow" id="gboard-layer0" label="Abc" button='true'/>
+            <key group="bottomrow" id="AB09" label="#" char="#"/>
+            <key group="bottomrow" id="gboard-emoji" label="😊" button='true'/>
+            <key group="bottomrow" id="gboard-clipboard" label="📋" button='true'/>
+            <key group="bottomrow" id="SPCE"/>
+            <key group="bottomrow" id="AC11" label="?" char="?"/>
+            <key group="bottomrow" id="RTRN"/>
+        </panel>
+
+        <!-- Side bar for window controls -->
+        <panel id="paneswitch" filename="Gboard-Floating-Arabic.svg">
+            <box compact="true" orientation='vertical'>
+                <panel group='nowordlist'>
+                    <key group='bottomrow' id='hide'/>
+                    <box orientation='vertical'>
+                        <key group="bottomrow" id="showclick"/>
+                        <key group="bottomrow" id="move"/>
+                        <key group="bottomrow" id="layer0" show_active="false" scan_priority="3"/>
+                        <key group="bottomrow" id="layer1" scan_priority="3"/>
+                        <key group="bottomrow" id="layer2" scan_priority="3"/>
+                    </box>
+                </panel>
+                <panel group='wordlist'>
+                    <box orientation='vertical'>
+                        <key group='sidebar' id='move' svg_id='move.wordlist' expand='false' label_margin='2.5'/>
+                        <key group='sidebar' id='showclick' svg_id='showclick.wordlist' scan_priority="3"/>
+                        <key group='bottomrow' id='layer0' svg_id='layer0.wordlist' show_active="false" scan_priority='3'/>
+                        <key group='bottomrow' id='layer1' svg_id='layer1.wordlist' scan_priority='3'/>
+                        <key group="bottomrow" id="layer2" svg_id='layer2.wordlist' scan_priority='3'/>
+                    </box>
+                </panel>
+            </box>
+        </panel>
+
+    </box>
+</keyboard>

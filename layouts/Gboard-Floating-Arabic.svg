@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+Gboard Material Design 3 Keyboard SVG Background - Arabic RTL
+Colors: Material You dark/light theme with Google Blue (#4285F4) accent
+Features: Flat keys, 45% roundness, subtle 8% shadow, RTL layout
+-->
+
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+  <defs>
+    <!-- Google Blue accent -->
+    <linearGradient id="accentGradient" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#4285F4"/>
+      <stop offset="100%" style="stop-color:#1A73E8"/>
+    </linearGradient>
+
+    <!-- Material You surface colors -->
+    <linearGradient id="surfaceGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2B2F35"/>
+      <stop offset="100%" style="stop-color:#1B1B1F"/>
+    </linearGradient>
+
+    <!-- Key shadow filter -->
+    <filter id="keyShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#1B1B1F"/>
+
+  <!-- Key rows background -->
+  <rect x="4" y="4" width="calc(100% - 8px)" height="calc(100% - 8px)" rx="12" fill="#2B2F35"/>
+
+  <!-- Number row keys (RTL - reversed) -->
+  <g filter="url(#keyShadow)">
+    <rect x="8" y="8" width="60" height="36" rx="16" fill="#353840"/>
+    <rect x="76" y="8" width="60" height="36" rx="16" fill="#353840"/>
+    <rect x="144" y="8" width="60" height="36" rx="16" fill="#353840"/>
+    <rect x="212" y="8" width="60" height="36" rx="16" fill="#353840"/>
+    <rect x="280" y="8" width="60" height="36" rx="16" fill="#353840"/>
+    <rect x="348" y="8" width="60" height="36" rx="16" fill="#353840"/>
+    <rect x="416" y="8" width="60" height="36" rx="16" fill="#353840"/>
+    <rect x="484" y="8" width="60" height="36" rx="16" fill="#353840"/>
+    <rect x="552" y="8" width="60" height="36" rx="16" fill="#353840"/>
+    <rect x="620" y="8" width="60" height="36" rx="16" fill="#353840"/>
+  </g>
+
+  <!-- Row 1 keys (Arabic RTL - reversed order) -->
+  <g filter="url(#keyShadow)">
+    <rect x="8" y="52" width="60" height="48" rx="16" fill="#353840"/>
+    <rect x="76" y="52" width="60" height="48" rx="16" fill="#353840"/>
+    <rect x="144" y="52" width="60" height="48" rx="16" fill="#353840"/>
+    <rect x="212" y="52" width="60" height="48" rx="16" fill="#353840"/>
+    <rect x="280" y="52" width="60" height="48" rx="16" fill="#353840"/>
+    <rect x="348" y="52" width="60" height="48" rx="16" fill="#353840"/>
+    <rect x="416" y="52" width="60" height="48" rx="16" fill="#353840"/>
+    <rect x="484" y="52" width="60" height="48" rx="16" fill="#353840"/>
+    <rect x="552" y="52" width="60" height="48" rx="16" fill="#353840"/>
+    <rect x="620" y="52" width="60" height="48" rx="16" fill="#353840"/>
+  </g>
+
+  <!-- Row 2 keys (Arabic RTL - reversed order) -->
+  <g filter="url(#keyShadow)">
+    <rect x="40" y="108" width="60" height="48" rx="16" fill="#353840"/>
+    <rect x="108" y="108" width="60" height="48" rx="16" fill="#353840"/>
+    <rect x="176" y="108" width="60" height="48" rx="16" fill="#353840"/>
+    <rect x="244" y="108" width="60" height="48" rx="16" fill="#353840"/>
+    <rect x="312" y="108" width="60" height="48" rx="16" fill="#353840"/>
+    <rect x="380" y="108" width="60" height="48" rx="16" fill="#353840"/>
+    <rect x="448" y="108" width="60" height="48" rx="16" fill="#353840"/>
+    <rect x="516" y="108" width="60" height="48" rx="16" fill="#353840"/>
+    <rect x="584" y="108" width="60" height="48" rx="16" fill="#353840"/>
+  </g>
+
+  <!-- Row 3 keys (Shift + Arabic RTL + Backspace) -->
+  <g filter="url(#keyShadow)">
+    <rect x="8" y="164" width="80" height="48" rx="16" fill="#4285F4"/>
+    <rect x="96" y="164" width="60" height="48" rx="16" fill="#353840"/>
+    <rect x="164" y="164" width="60" height="48" rx="16" fill="#353840"/>
+    <rect x="232" y="164" width="60" height="48" rx="16" fill="#353840"/>
+    <rect x="300" y="164" width="60" height="48" rx="16" fill="#353840"/>
+    <rect x="368" y="164" width="60" height="48" rx="16" fill="#353840"/>
+    <rect x="436" y="164" width="60" height="48" rx="16" fill="#353840"/>
+    <rect x="504" y="164" width="60" height="48" rx="16" fill="#353840"/>
+    <rect x="572" y="164" width="108" height="48" rx="16" fill="#353840"/>
+  </g>
+
+  <!-- Row 4 keys (Special keys + Space) -->
+  <g filter="url(#keyShadow)">
+    <rect x="8" y="220" width="80" height="48" rx="16" fill="#4285F4"/>
+    <rect x="96" y="220" width="48" height="48" rx="16" fill="#353840"/>
+    <rect x="152" y="220" width="48" height="48" rx="16" fill="#353840"/>
+    <rect x="208" y="220" width="48" height="48" rx="16" fill="#353840"/>
+    <rect x="264" y="220" width="304" height="48" rx="16" fill="#353840"/>
+    <rect x="576" y="220" width="48" height="48" rx="16" fill="#353840"/>
+    <rect x="632" y="220" width="80" height="48" rx="16" fill="#4285F4"/>
+  </g>
+</svg>
