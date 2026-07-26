@@ -37,7 +37,7 @@ modules:
     sources:
       - type: git
         url: https://gitlab.gnome.org/World/intltool.git
-        tag: intltool-0_51_0
+        branch: master
 
   - name: dconf
     buildsystem: meson
