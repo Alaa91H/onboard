@@ -59,16 +59,22 @@ modules:
     config-opts:
       - --disable-oss
       - --disable-alsa
+      - --enable-null
+      - --enable-gtk3
+      - --disable-gtk
       - --disable-pulse
       - --disable-gstreamer
       - --disable-jack
       - --disable-avahi
       - --disable-udev
       - --disable-ltdl
+      - --disable-gtk-doc
+      - --disable-gtk-doc-html
+      - --without-systemdsystemunitdir
     sources:
-      - type: archive
-        url: https://0pointer.de/lennart/projects/libcanberra/libcanberra-0.30.tar.xz
-        sha256: c2b671e6cd15b1d89a95d9de3da0eb8af2c88ac2166a37e0dd0dbacb22b46836
+      - type: git
+        url: https://github.com/Distrotech/libcanberra.git
+        branch: master
 
   - name: onboard
     buildsystem: simple
