@@ -45,15 +45,13 @@ modules:
         tag: v1.7.2
 
   - name: libcanberra
-    buildsystem: autotools
-    config-opts:
-      - --disable-oss
-      - --disable-alsa
-      - --disable-pulse
-      - --enable-gtk3
-      - --disable-gtk-doc
-      - --disable-gtk-doc-html
-      - --disable-gtk-doc-pdf
+    buildsystem: simple
+    build-commands:
+      - autoreconf -fi
+      - ./configure --prefix=/app --disable-oss --disable-alsa --disable-pulse --enable-gtk3 --disable-gtk-doc
+      - rm -rf doc
+      - make -j$FLATPAK_BUILDER_N_JOBS
+      - make install
     sources:
       - type: git
         url: https://github.com/Distrotech/libcanberra.git

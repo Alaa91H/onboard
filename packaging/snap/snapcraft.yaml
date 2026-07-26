@@ -16,7 +16,7 @@ platforms:
 
 apps:
   onboard:
-    command: onboard
+    command: usr/bin/onboard
     desktop: usr/local/share/applications/onboard.desktop
     extensions: [gnome]
     plugs:
@@ -34,12 +34,12 @@ apps:
       - process-control
       - screen-inhibit-control
     environment:
-      PYTHONPATH: $SNAP/lib/python3/dist-packages:$SNAP/usr/lib/python3/dist-packages
+      PYTHONPATH: $SNAP/usr/lib/python3/dist-packages:$SNAP/usr/local/lib/python3/dist-packages
       GI_TYPELIB_PATH: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/girepository-1.0
       LD_LIBRARY_PATH: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET:$SNAP/usr/lib
 
   onboard-settings:
-    command: onboard-settings
+    command: usr/bin/onboard-settings
     desktop: usr/local/share/applications/onboard-settings.desktop
     extensions: [gnome]
     plugs:
@@ -50,7 +50,7 @@ apps:
       - desktop-legacy
       - gsettings
     environment:
-      PYTHONPATH: $SNAP/lib/python3/dist-packages:$SNAP/usr/lib/python3/dist-packages
+      PYTHONPATH: $SNAP/usr/lib/python3/dist-packages:$SNAP/usr/local/lib/python3/dist-packages
       GI_TYPELIB_PATH: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/girepository-1.0
       LD_LIBRARY_PATH: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET:$SNAP/usr/lib
 
