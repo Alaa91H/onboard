@@ -48,9 +48,11 @@ modules:
     buildsystem: simple
     build-commands:
       - rm -rf doc gtkdoc
+      - mkdir -p doc gtkdoc
+      - touch doc/Makefile.am gtkdoc/Makefile.am
+      - echo "" > doc/README.html.in
       - sed -i '/^SUBDIRS/d; /^DIST_SUBDIRS/d' Makefile.am
       - echo "SUBDIRS = src" >> Makefile.am
-      - sed -i '/gtkdoc\/Makefile\.in/d; /doc\/Makefile\.in/d; /doc\/README\.html\.in/d' configure.ac
       - autoreconf -fi
       - ./configure --prefix=/app --disable-oss --disable-alsa --disable-pulse --enable-gtk3
       - make -C src -j$FLATPAK_BUILDER_N_JOBS
