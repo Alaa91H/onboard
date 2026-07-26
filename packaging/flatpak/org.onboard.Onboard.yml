@@ -35,9 +35,9 @@ modules:
   - name: dconf
     buildsystem: meson
     config-opts:
-      - -Ddeveloper_mode=false
       - -Dgtk_doc=false
       - -Dman=false
+      - -Dtests=false
     sources:
       - type: git
         url: https://gitlab.gnome.org/GNOME/dconf.git
