@@ -47,9 +47,11 @@ modules:
   - name: libcanberra
     buildsystem: simple
     build-commands:
-      - mkdir -p gtkdoc && touch gtkdoc/gtk-doc.make
+      - rm -rf doc gtkdoc
+      - sed -i '/^SUBDIRS/d; /^DIST_SUBDIRS/d' Makefile.am
+      - echo "SUBDIRS = src" >> Makefile.am
       - autoreconf -fi
-      - ./configure --prefix=/app --disable-oss --disable-alsa --disable-pulse --enable-gtk3 --disable-gtk-doc
+      - ./configure --prefix=/app --disable-oss --disable-alsa --disable-pulse --enable-gtk3
       - make -C src -j$FLATPAK_BUILDER_N_JOBS
       - make -C src install
     sources:
