@@ -32,6 +32,17 @@ cleanup:
   - '*.pyc'
 
 modules:
+  - name: dconf
+    buildsystem: meson
+    config-opts:
+      - -Ddeveloper_mode=false
+      - -Dgtk_doc=false
+      - -Dman=false
+    sources:
+      - type: git
+        url: https://gitlab.gnome.org/GNOME/dconf.git
+        tag: "0.40.0"
+
   - name: hunspell
     buildsystem: simple
     build-commands:
