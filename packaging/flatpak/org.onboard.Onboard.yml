@@ -34,6 +34,9 @@ cleanup:
 modules:
   - name: dconf
     buildsystem: meson
+    config-opts:
+      - -Dbash_completion=false
+      - -Dman=false
     sources:
       - type: git
         url: https://gitlab.gnome.org/GNOME/dconf.git
