@@ -50,7 +50,7 @@ modules:
       env:
         PYTHONPATH: /app/lib/python3.11/site-packages:/app/lib/python3/dist-packages
     build-commands:
-      - cd tmp/distutils-extra && python3 setup.py install --prefix=/app
+      - cd tmp/distutils-extra && pip3 install --no-build-isolation --prefix=/app .
       - cd $CRAFT_PART_SRC
       - python3 setup.py clean
       - python3 setup.py build
