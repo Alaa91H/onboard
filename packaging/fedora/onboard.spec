@@ -101,6 +101,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/onboard-settings.desk
 %{_datadir}/onboard/*.ui
 %{_datadir}/onboard/layouts/
 %{_datadir}/onboard/emojione/
+%{_datadir}/onboard/models/
 %{_datadir}/onboard/scripts/
 %{_datadir}/onboard/themes/
 %{_datadir}/onboard/tools/

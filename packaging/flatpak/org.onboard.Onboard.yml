@@ -50,6 +50,7 @@ modules:
       - rm -rf doc gtkdoc
       - sed -i '/^SUBDIRS/d; /^DIST_SUBDIRS/d' Makefile.am
       - echo "SUBDIRS = src" >> Makefile.am
+      - sed -i '/gtkdoc\/Makefile\.in/d; /doc\/Makefile\.in/d; /doc\/README\.html\.in/d' configure.ac
       - autoreconf -fi
       - ./configure --prefix=/app --disable-oss --disable-alsa --disable-pulse --enable-gtk3
       - make -C src -j$FLATPAK_BUILDER_N_JOBS
