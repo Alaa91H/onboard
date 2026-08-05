@@ -121,6 +121,18 @@ release_current() {
     local NEW_VERSION="$LAST_VERSION"
     local NEW_BASE="$UPSTREAM"
     echo "→ Releasing current version: $NEW_VERSION"
+
+    if [ -n "${FEATURES}${FIXES}${INTERNAL}${OTHER}" ]; then
+        echo ""
+        echo "⚠️  WARNUNG: Es gibt klassifizierte, aber NICHT ins Changelog"
+        echo "   geschriebene Commits (siehe Vorschau oben). release_current()"
+        echo "   schreibt KEINEN changelog-Eintrag, sondern released nur die"
+        echo "   Version, die aktuell oben in debian/changelog steht."
+        echo "   Falls diese Commits dokumentiert werden sollen: abbrechen (n)"
+        echo "   und stattdessen [w]/[b]/[m]/[p]/[r] wählen."
+        echo ""
+    fi
+
     read -p "OK? [Y/n] " c
     [[ "$c" =~ ^[Nn]$ ]] && exit 1
 
