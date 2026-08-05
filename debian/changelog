@@ -1,20 +1,39 @@
-onboard (1.4.4-5) UNRELEASED; urgency=medium
-
-  * [Features]
-  * feat: add-tibetan-translation
+onboard (1.4.4-5) unstable; urgency=medium
 
   * [Fixes]
-  * fix: bo.po escape literal newlines in msgid strings
-  * fix: bo.po remove duplicate msgstr lines with literal newlines
-  * fix: remove non-existent files from POTFILES.in
-  * fix: xsync-badwindow-on-unrealize
+  * Add a layer=overlay KWin window rule so Onboard stays above fullscreen windows (fixes #75)
+  * AT-SPI: fix inserting multi-byte unicode characters (#73)
 
   * [Internal]
-  * refactor: improve-robustness
+  * AT-SPI: note WebKitGTK contenteditable Text-interface gap (webkit.org/319904)
 
-  * [Other]
-  * No user-visible changes.
+  * [Translations]
+  * Update Spanish translation (#72)
+  * Update German translation
 
+ -- Uwe Niethammer <68241100+dr-ni@users.noreply.github.com>  Mon, 06 Jul 2026 16:50:08 +0200
+onboard (1.4.4-4) unstable; urgency=medium
+
+  * [Features]
+  * Add Tibetan translation (#56)
+
+  * [Fixes]
+  * Fix XSync BadWindow crash on unrealize (#55)
+  * Fix wayland-strdup-null-group-name / wayland-xkb-update-mask-group-arg (#59, #60)
+  * Release resources in keyboard_handle_keymap error paths (#61)
+  * Harden get_label_from_keycode strncpy calls (#63)
+  * Close uinput fd in uinput_open error paths (#64)
+  * Fix assignment typo in canvas_to_root_window_point (#65)
+  * Fix SCBackend_cmd.stop() calling wrong superclass method (#66)
+  * Add NULL check for malloc in virtkey_x_new (#67)
+  * Remove non-existent files from POTFILES.in
+  * bo.po: escape literal newlines in msgid strings, remove duplicate msgstr lines
+  * WaylandUtils: detect GNOME Shell via D-Bus fallback
+  * Switch to maintained Ayatana AppIndicator, fix left-click showing menu and toggling at once
+  * Indicator: show display backend + version at top of tray menu, tooltip, and consistent left-click menu on GtkStatusIcon
+
+  * [Internal]
+  * refactor: improve robustness
 
  -- Uwe Niethammer <68241100+dr-ni@users.noreply.github.com>  Mon, 06 Jul 2026 16:50:08 +0200
 
