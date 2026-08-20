@@ -1,19 +1,61 @@
 name: Linux release candidate
 
 on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/release-candidate.yml'
+      - 'ci/scripts/**'
+      - 'native/**'
+      - 'Onboard/**'
+      - 'i18n/**'
+      - 'po/**'
+      - 'setup.py'
+      - 'setup.cfg'
+      - 'MANIFEST.in'
+      - 'requirements*.txt'
+      - 'tools/prepare-build-env.sh'
+  push:
+    branches: [main]
   workflow_dispatch:
     inputs:
       version:
-        description: Version label for the candidate, for example 1.0.0-rc.1
-        required: true
+        description: Optional version guard; must equal the version declared by setup.py.
+        required: false
         type: string
 
 permissions:
   contents: read
 
+concurrency:
+  group: linux-release-candidate-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
+  resolve-version:
+    name: Resolve release version
+    runs-on: ubuntu-24.04
+    outputs:
+      version: ${{ steps.version.outputs.value }}
+    steps:
+      - uses: actions/checkout@v5
+      - id: version
+        name: Read declared package version
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="$(python3 setup.py --version 2>/dev/null | tail -n 1)"
+          test -n "$version"
+          requested="${{ inputs.version }}"
+          if [[ -n "$requested" && "$requested" != "$version" ]]; then
+            echo "Requested version '$requested' does not match package version '$version'." >&2
+            exit 2
+          fi
+          echo "value=$version" >> "$GITHUB_OUTPUT"
+
   linux-release-candidate:
     name: Linux release candidate (${{ matrix.arch }})
+    needs: resolve-version
     runs-on: ${{ matrix.runner }}
     strategy:
       fail-fast: false
@@ -28,16 +70,27 @@ jobs:
       - name: Build and verify release candidate
         run: >-
           bash ci/scripts/build_linux_release_candidate.sh
-          ${{ matrix.arch }} ${{ inputs.version }}
+          ${{ matrix.arch }} ${{ needs.resolve-version.outputs.version }}
+      - name: Verify manifest and checksums
+        shell: bash
+        run: |
+          set -euo pipefail
+          candidate="release-out/linux-${{ matrix.arch }}"
+          sha256sum -c "$candidate/SHA256SUMS"
+          python3 ci/scripts/verify_release_candidate.py \
+            --directory "$candidate" \
+            --version "${{ needs.resolve-version.outputs.version }}" \
+            --target-os linux \
+            --target-arch "${{ matrix.arch }}"
       - name: Upload verified candidate
         uses: actions/upload-artifact@v6
         with:
-          name: onboard-${{ inputs.version }}-linux-${{ matrix.arch }}
+          name: onboard-${{ needs.resolve-version.outputs.version }}-linux-${{ matrix.arch }}
           path: release-out/linux-${{ matrix.arch }}/
           if-no-files-found: error
           retention-days: 30
 
-# This workflow intentionally creates downloadable, verified candidate artifacts
-# only. Stable publishing and signing are introduced by the protected release
-# workflow after Windows/macOS adapters, signing credentials, and target-native
-# smoke tests are all available.
+# This workflow creates verified, downloadable Linux candidate artifacts only.
+# A future stable-release workflow must require the protected stable-release
+# environment, target-native smoke tests, Windows Authenticode signing, and
+# macOS codesigning plus notarization before it creates a public release.
