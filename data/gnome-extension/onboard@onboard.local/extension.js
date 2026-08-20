@@ -30,13 +30,20 @@
 //
 // This lets Onboard run on native GNOME Wayland instead of falling back to XWayland.
 
+import Clutter from 'gi://Clutter';
 import Gio from 'gi://Gio';
 import Meta from 'gi://Meta';
 import GLib from 'gi://GLib';
+import St from 'gi://St';
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
 import { getInputSourceManager } from 'resource:///org/gnome/shell/ui/status/keyboard.js';
 
 const ONBOARD_KEYBOARD_ID = 'onboard';
 const ONBOARD_CHILD_PREFIX = 'onboard-';
+const ONBOARD_DBUS_NAME = 'org.onboard.Onboard';
+const ONBOARD_DBUS_PATH = '/org/onboard/Onboard/Keyboard';
+const ONBOARD_DBUS_INTERFACE = 'org.onboard.Onboard.Keyboard';
 const INPUT_SOURCES_OBJECT_PATH = '/org/onboard/InputSources';
 const INPUT_SOURCES_INTERFACE = `<node>
     <interface name="org.onboard.InputSources1">
@@ -166,6 +173,12 @@ export default class OnboardExtension {
     enable() {
         writeBuildIdMarker();
         this._lastFocus = null;
+        this._quickAccessIndicator = this._createQuickAccessIndicator();
+        // The Shell owns the exact order of built-in indicators such as the
+        // language source. Add Onboard to the same right-hand status area so
+        // it remains visible even on GNOME installations without tray icons.
+        Main.panel.addToStatusArea('onboard-quick-access',
+                                   this._quickAccessIndicator, 0, 'right');
         this._focusBouncePending = false;
         // Currently-mapped Onboard child windows. Tracked so we know
         // when to un-/re-apply make_above on the keyboard window.
@@ -211,6 +224,8 @@ export default class OnboardExtension {
     }
 
     disable() {
+        this._quickAccessIndicator?.destroy();
+        this._quickAccessIndicator = null;
         if (this._inputSourceDbus) {
             try { this._inputSourceDbus.unexport(); } catch (_e) {}
             this._inputSourceDbus = null;
@@ -230,6 +245,47 @@ export default class OnboardExtension {
         this._lastFocus = null;
         this._focusBouncePending = false;
         this._mappedChildren = null;
+    }
+
+    _createQuickAccessIndicator() {
+        const button = new PanelMenu.Button(0.0, 'Onboard quick access', false);
+        button.accessible_name = 'Onboard on-screen keyboard';
+        button.add_child(new St.Icon({
+            icon_name: 'input-keyboard-symbolic',
+            style_class: 'system-status-icon',
+        }));
+        button.connect('button-press-event', () => {
+            this._toggleOnboard();
+            return Clutter.EVENT_STOP;
+        });
+        return button;
+    }
+
+    _toggleOnboard() {
+        // Do not start a second keyboard. Toggle a running instance through
+        // its session D-Bus service and launch only if the service is absent.
+        Gio.DBus.session.call(
+            ONBOARD_DBUS_NAME,
+            ONBOARD_DBUS_PATH,
+            ONBOARD_DBUS_INTERFACE,
+            'ToggleVisible',
+            new GLib.Variant('()', []),
+            null,
+            Gio.DBusCallFlags.NONE,
+            1500,
+            null,
+            (connection, result) => {
+                try {
+                    connection.call_finish(result);
+                } catch (_error) {
+                    try {
+                        Gio.Subprocess.new(['onboard'],
+                                           Gio.SubprocessFlags.NONE);
+                    } catch (_launchError) {
+                        // The indicator must never destabilize GNOME Shell.
+                    }
+                }
+            });
     }
 
     _emitCurrentSourceChanged() {

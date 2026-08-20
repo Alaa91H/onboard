@@ -62,13 +62,13 @@ policy decision.
 
 ## Desktop and window-manager capability matrix
 
-| Session / compositor family | Floating & saved position | System language switch | Recommended backend | Status |
-|---|---|---|---|---|
-| X11 under GNOME, KDE, Xfce, MATE, Cinnamon, i3, Openbox, etc. | Yes | XKB | `auto` / X11 | Core support |
-| KDE Plasma Wayland | Yes, through a KWin rule | KDE D-Bus | `auto` | Enhanced support |
-| GNOME Wayland | Yes, with the bundled GNOME Shell extension enabled | Extension D-Bus bridge | `auto` | Enhanced support |
-| sway, Hyprland, Wayfire, river, labwc, niri, COSMIC and similar Wayland compositors | Layer-shell placement where offered; compositor-controlled dragging is not portable | No portable system API | `auto` or `x11` | Capability-limited |
-| Other Wayland compositors | Depends on the compositor | No assumed API | `x11` where XWayland exists | Safe fallback |
+| Session / compositor family | Floating & saved position | System language switch | Quick access | Recommended backend | Status |
+|---|---|---|---|---|---|
+| X11 under GNOME, KDE, Xfce, MATE, Cinnamon, i3, Openbox, etc. | Yes | XKB | StatusNotifier/AppIndicator or legacy tray; desktop action fallback | `auto` / X11 | Core support |
+| KDE Plasma Wayland | Yes, through a KWin rule | KDE D-Bus | StatusNotifier/AppIndicator; desktop action fallback | `auto` | Enhanced support |
+| GNOME Wayland | Yes, with the bundled GNOME Shell extension enabled | Extension D-Bus bridge | Permanent Onboard button in the right-hand Shell status area | `auto` | Enhanced support |
+| sway, Hyprland, Wayfire, river, labwc, niri, COSMIC and similar Wayland compositors | Layer-shell placement where offered; compositor-controlled dragging is not portable | No portable system API | Panel indicator when the panel implements StatusNotifier; desktop action otherwise | `auto` or `x11` | Capability-limited |
+| Other Wayland compositors | Depends on the compositor | No assumed API | Desktop action and `onboard-toggle` | `x11` where XWayland exists | Safe fallback |
 
 The launcher reports the selected window and input-source strategies at startup.
 It also accepts an explicit override when a compositor has partial or unusual
@@ -84,6 +84,28 @@ A forced native Wayland path is appropriate only when the compositor is known to
 provide the needed protocols. A forced X11 path needs XWayland. The project does
 not label a language change as successful until the desktop backend confirms the
 active source.
+
+## Persistent quick access
+
+Onboard enables its status icon by default and a primary click now toggles the
+keyboard immediately. KDE and panels with StatusNotifier/AppIndicator support
+show that icon alongside their other system indicators. GNOME's default shell
+has no legacy tray, so the bundled extension adds a permanent keyboard button to
+the same right-hand status area used by system indicators. GNOME Shell controls
+the exact ordering of built-in items such as the language source; the extension
+therefore does not replace or monkey-patch the language item.
+
+Every installation also provides a desktop-entry action named **Show or hide
+Onboard** and an `onboard-toggle` command. Bind that command to the desktop's
+custom shortcut facility when the panel does not expose a status-indicator
+protocol:
+
+```bash
+onboard-toggle
+```
+
+The command toggles the running instance over session D-Bus and starts Onboard
+only when no instance is available, so it does not create duplicate keyboards.
 
 ## Validation and release gate
 

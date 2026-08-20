@@ -19,9 +19,11 @@ jobs:
       - name: Verify focused regressions
         run: >-
           python3 -m unittest
+          Onboard.test.test_WaylandCapabilities
           Onboard.test.test_ClipboardHistory
           Onboard.test.test_InputSources
           Onboard.test.test_LayoutLoaderSVG
+          Onboard.test.test_QuickAccess
 
   fedora:
     runs-on: ubuntu-latest
@@ -37,9 +39,11 @@ jobs:
       - name: Verify focused regressions
         run: >-
           python3 -m unittest
+          Onboard.test.test_WaylandCapabilities
           Onboard.test.test_ClipboardHistory
           Onboard.test.test_InputSources
           Onboard.test.test_LayoutLoaderSVG
+          Onboard.test.test_QuickAccess
 
   arch-template:
     runs-on: ubuntu-24.04

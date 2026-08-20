@@ -711,7 +711,7 @@ setup(
                       glob.glob('data/gnome-extension/onboard@onboard.local/*')),
                  ],
 
-    scripts = ['onboard', 'onboard-settings'],
+    scripts = ['onboard', 'onboard-settings', 'onboard-toggle'],
 
     options={
         'build_scripts': {
