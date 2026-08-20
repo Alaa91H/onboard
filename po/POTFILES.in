@@ -11,6 +11,7 @@ Onboard/Exceptions.py
 Onboard/GlobalKeyListener.py
 Onboard/HardwareSensorTracker.py
 Onboard/IconPalette.py
+Onboard/InputSources.py
 Onboard/Indicator.py
 Onboard/KbdWindow.py
 Onboard/KeyCommon.py

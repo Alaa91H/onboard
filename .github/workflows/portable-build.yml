@@ -9,7 +9,7 @@ jobs:
   ubuntu:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Install build dependencies
         run: ./tools/prepare-build-env.sh --with-tests
       - name: Build source extensions
@@ -22,6 +22,7 @@ jobs:
           Onboard.test.test_InputSources
           Onboard.test.test_LayoutLoaderSVG
           Onboard.test.test_QuickAccess
+          Onboard.test.test_ArabicLocalization
       - name: Build PEP 517 distributions
         run: python3 -m build --no-isolation
 
@@ -29,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     container: fedora:latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Install build dependencies
         run: ./tools/prepare-build-env.sh --with-tests
       - name: Build source extensions
@@ -42,13 +43,14 @@ jobs:
           Onboard.test.test_InputSources
           Onboard.test.test_LayoutLoaderSVG
           Onboard.test.test_QuickAccess
+          Onboard.test.test_ArabicLocalization
       - name: Build PEP 517 distributions
         run: python3 -m build --no-isolation
 
   arch-template:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Validate Arch package recipe syntax
         run: bash -n packaging/arch/PKGBUILD
       - name: Validate Flatpak manifest essentials

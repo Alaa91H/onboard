@@ -2100,7 +2100,7 @@ class ClipboardMenu(KeyMenu):
         history = self._keyboard.clipboard_history
         entries = history.entries() if history else []
         if not entries:
-            item = Gtk.MenuItem.new_with_label("Clipboard is empty")
+            item = Gtk.MenuItem.new_with_label(_("Clipboard is empty"))
             item.set_sensitive(False)
             menu.append(item)
             return menu
@@ -2116,7 +2116,7 @@ class ClipboardMenu(KeyMenu):
     def _get_preview(self, text):
         preview = " ".join(text.split())
         if not preview:
-            preview = "(empty line)"
+            preview = _("(empty line)")
         if len(preview) > self.PREVIEW_LIMIT:
             preview = preview[:self.PREVIEW_LIMIT - 1] + "…"
         return preview
@@ -2136,7 +2136,7 @@ class InputSourceMenu(KeyMenu):
 
         if controller is None:
             return self._append_unavailable(menu,
-                                            "Input-source controller is unavailable")
+                                            _("Input-source controller is unavailable"))
 
         availability = controller.availability()
         if not availability.can_activate:
@@ -2145,7 +2145,7 @@ class InputSourceMenu(KeyMenu):
         active = controller.get_active()
         sources = controller.list_sources()
         if not sources:
-            return self._append_unavailable(menu, "No input sources are configured")
+            return self._append_unavailable(menu, _("No input sources are configured"))
 
         for source in sources:
             item = Gtk.CheckMenuItem.new_with_label(source.name)
@@ -2158,7 +2158,7 @@ class InputSourceMenu(KeyMenu):
     @staticmethod
     def _append_unavailable(menu, message):
         item = Gtk.MenuItem.new_with_label(message or
-                                           "Input-source switching is unavailable")
+                                           _("Input-source switching is unavailable"))
         item.set_sensitive(False)
         menu.append(item)
         return menu

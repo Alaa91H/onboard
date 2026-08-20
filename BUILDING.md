@@ -107,6 +107,29 @@ onboard-toggle
 The command toggles the running instance over session D-Bus and starts Onboard
 only when no instance is available, so it does not create duplicate keyboards.
 
+## Arabic localization
+
+The standalone application ships a complete Arabic gettext catalog for the
+keyboard menus, preferences, desktop entries, clipboard states, input-source
+messages, emoji descriptions, and diagnostic dialogs. The catalog is compiled
+into `share/locale/ar/LC_MESSAGES/onboard.mo` by every supported package path.
+A desktop session configured for Arabic selects it automatically; maintainers
+can verify it from a shell without changing the whole session:
+
+```bash
+LANGUAGE=ar onboard
+```
+
+When adding a new user-visible Python string, wrap it in `_()` and include its
+source file in `po/POTFILES.in`. Then refresh the catalog and validate it before
+release:
+
+```bash
+python3 setup.py build_i18n
+msgmerge --update --backup=none po/ar.po po/onboard.pot
+msgfmt --check --statistics po/ar.po
+```
+
 ## Validation and release gate
 
 The `Portable build` workflow validates the generic source build on Ubuntu and

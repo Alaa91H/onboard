@@ -88,13 +88,13 @@ class InputSourceBackend(object):
         return None
 
     def activate(self, source_id):
-        raise InputSourceError("Input-source activation is unavailable")
+        raise InputSourceError(_("Input-source activation is unavailable"))
 
     def switch_next(self):
         sources = self.list_sources()
         active = self.get_active()
         if not sources or active is None:
-            raise InputSourceError("No input sources are available")
+            raise InputSourceError(_("No input sources are available"))
         try:
             index = sources.index(active)
         except ValueError:
@@ -140,7 +140,7 @@ class X11InputSourceBackend(InputSourceBackend):
         if self._virtkey is None:
             return InputSourceAvailability(
                 InputSourceAvailability.UNAVAILABLE,
-                "X11 keyboard information is not available")
+                _("X11 keyboard information is not available"))
         return InputSourceAvailability(InputSourceAvailability.SUPPORTED)
 
     def _layout_names(self):
@@ -149,7 +149,7 @@ class X11InputSourceBackend(InputSourceBackend):
         try:
             value = self._virtkey.get_layout_as_string() or ""
         except Exception as ex:
-            self._notify_error("Could not read X11 keyboard layouts: {}"
+            self._notify_error(_("Could not read X11 keyboard layouts: {}")
                                .format(ex))
             return []
         return [name for name in value.split("+") if name]
@@ -167,7 +167,7 @@ class X11InputSourceBackend(InputSourceBackend):
         try:
             group = int(self._virtkey.get_current_group())
         except Exception as ex:
-            self._notify_error("Could not read the active X11 layout: {}"
+            self._notify_error(_("Could not read the active X11 layout: {}")
                                .format(ex))
             return None
         sources = self.list_sources()
@@ -182,14 +182,14 @@ class X11InputSourceBackend(InputSourceBackend):
         try:
             group = int(source_id)
         except (TypeError, ValueError):
-            raise InputSourceError("Invalid X11 input-source identifier")
+            raise InputSourceError(_("Invalid X11 input-source identifier"))
         sources = self.list_sources()
         if group < 0 or group >= len(sources):
-            raise InputSourceError("Requested X11 input source is unavailable")
+            raise InputSourceError(_("Requested X11 input source is unavailable"))
         try:
             self._virtkey.lock_group(group)
         except Exception as ex:
-            raise InputSourceError("Could not activate X11 input source: {}"
+            raise InputSourceError(_("Could not activate X11 input source: {}")
                                    .format(ex))
         self._notify_changed()
 
@@ -219,7 +219,7 @@ class KdeInputSourceBackend(InputSourceBackend):
             self._signal_handler_id = self._proxy.connect(
                 "g-signal", self._on_g_signal)
         except Exception as ex:
-            self._notify_error("Could not watch KDE layout changes: {}"
+            self._notify_error(_("Could not watch KDE layout changes: {}")
                                .format(ex))
 
     def stop(self):
@@ -250,14 +250,14 @@ class KdeInputSourceBackend(InputSourceBackend):
             if proxy.get_name_owner() is not None:
                 self._proxy = proxy
         except Exception as ex:
-            self._notify_error("Could not connect to KDE keyboard layouts: {}"
+            self._notify_error(_("Could not connect to KDE keyboard layouts: {}")
                                .format(ex))
 
     def availability(self):
         if self._proxy is None:
             return InputSourceAvailability(
                 InputSourceAvailability.UNAVAILABLE,
-                "KDE keyboard-layout service is not available")
+                _("KDE keyboard-layout service is not available"))
         return InputSourceAvailability(InputSourceAvailability.SUPPORTED)
 
     def _call(self, method_name, parameters=None):
@@ -272,7 +272,7 @@ class KdeInputSourceBackend(InputSourceBackend):
                 750,
                 None)
         except Exception as ex:
-            raise InputSourceError("KDE input-source request failed: {}"
+            raise InputSourceError(_("KDE input-source request failed: {}")
                                    .format(ex))
         if hasattr(result, "unpack"):
             return result.unpack()
@@ -289,14 +289,14 @@ class KdeInputSourceBackend(InputSourceBackend):
         try:
             return int(value)
         except (TypeError, ValueError):
-            raise InputSourceError("KDE returned an invalid active layout")
+            raise InputSourceError(_("KDE returned an invalid active layout"))
 
     def _get_layouts(self):
         value = self._unwrap_single(self._call("getLayoutsList"))
         if value is None:
             return []
         if not isinstance(value, (list, tuple)):
-            raise InputSourceError("KDE returned an invalid layout list")
+            raise InputSourceError(_("KDE returned an invalid layout list"))
         return list(value)
 
     @staticmethod
@@ -307,7 +307,7 @@ class KdeInputSourceBackend(InputSourceBackend):
                     return item
         if isinstance(value, str) and value:
             return value
-        return "Layout {}".format(index + 1)
+        return _("Layout {}").format(index + 1)
 
     def list_sources(self):
         try:
@@ -342,9 +342,9 @@ class KdeInputSourceBackend(InputSourceBackend):
         try:
             index = int(source_id)
         except (TypeError, ValueError):
-            raise InputSourceError("Invalid KDE input-source identifier")
+            raise InputSourceError(_("Invalid KDE input-source identifier"))
         if index < 0 or index >= len(self.list_sources()):
-            raise InputSourceError("Requested KDE input source is unavailable")
+            raise InputSourceError(_("Requested KDE input source is unavailable"))
         self._call("setLayout", self._int_parameters(index))
 
     def switch_next(self):
@@ -378,7 +378,7 @@ class GnomeInputSourceBackend(InputSourceBackend):
             self._signal_handler_id = self._proxy.connect(
                 "g-signal", self._on_g_signal)
         except Exception as ex:
-            self._notify_error("Could not watch GNOME input sources: {}"
+            self._notify_error(_("Could not watch GNOME input sources: {}")
                                .format(ex))
 
     def stop(self):
@@ -409,14 +409,14 @@ class GnomeInputSourceBackend(InputSourceBackend):
             if proxy.get_name_owner() is not None:
                 self._proxy = proxy
         except Exception as ex:
-            self._notify_error("Could not connect to the Onboard GNOME "
-                               "input-source bridge: {}".format(ex))
+            self._notify_error(_("Could not connect to the Onboard GNOME "
+                               "input-source bridge: {}").format(ex))
 
     def availability(self):
         if self._proxy is None:
             return InputSourceAvailability(
                 InputSourceAvailability.UNAVAILABLE,
-                "Onboard's GNOME input-source extension is not available")
+                _("Onboard's GNOME input-source extension is not available"))
         return InputSourceAvailability(InputSourceAvailability.SUPPORTED)
 
     def _call(self, method_name, parameters=None):
@@ -431,7 +431,7 @@ class GnomeInputSourceBackend(InputSourceBackend):
                 750,
                 None)
         except Exception as ex:
-            raise InputSourceError("GNOME input-source request failed: {}"
+            raise InputSourceError(_("GNOME input-source request failed: {}")
                                    .format(ex))
         if hasattr(result, "unpack"):
             return result.unpack()
@@ -455,7 +455,7 @@ class GnomeInputSourceBackend(InputSourceBackend):
             self._notify_error(str(ex))
             return []
         if not isinstance(values, (list, tuple)):
-            self._notify_error("GNOME returned an invalid input-source list")
+            self._notify_error(_("GNOME returned an invalid input-source list"))
             return []
         sources = []
         for index, value in enumerate(values):
@@ -480,12 +480,12 @@ class GnomeInputSourceBackend(InputSourceBackend):
         result = self._unwrap_single(
             self._call("ActivateSource", self._string_parameters(source_id)))
         if not bool(result):
-            raise InputSourceError("GNOME rejected the requested input source")
+            raise InputSourceError(_("GNOME rejected the requested input source"))
 
     def switch_next(self):
         result = self._unwrap_single(self._call("SwitchToNext"))
         if not bool(result):
-            raise InputSourceError("GNOME could not switch to the next input source")
+            raise InputSourceError(_("GNOME could not switch to the next input source"))
 
     def _on_g_signal(self, _proxy, _sender, signal_name, _parameters):
         if signal_name in ("SourceChanged", "SourcesChanged"):
@@ -577,4 +577,4 @@ def create_backend(virtkey, is_wayland, is_kde_plasma, is_gnome_shell=False):
     if is_gnome_shell:
         return GnomeInputSourceBackend()
     return ReadOnlyInputSourceBackend(
-        "This Wayland compositor has no supported input-source API")
+        _("This Wayland compositor has no supported input-source API"))

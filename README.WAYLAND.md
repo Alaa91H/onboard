@@ -142,6 +142,30 @@ onboard --debug=info 2>&1 | grep -i 'input source'
 
 A successful confirmation is logged as `Input source confirmed: …`.
 
+## Application architecture: standalone core and optional integrations
+
+**Onboard is an independent GTK desktop application.** Installing the normal
+`onboard` package provides the keyboard window, preferences, layouts, Arabic
+localization, clipboard history, emoji support, and the `onboard-toggle` helper.
+It can be launched directly from the application menu or with `onboard`; none
+of those capabilities require a GNOME extension.
+
+The bundled GNOME Shell extension is an **optional session integration**, not a
+replacement application. It is used only on native GNOME Wayland to provide the
+narrow input-source bridge and the permanent button in the Shell status area.
+If it is disabled or unavailable, Onboard remains a usable independent program
+and chooses its safe XWayland fallback. KDE Plasma uses its normal session
+D-Bus interface and needs no extension. Other desktops can use the normal
+status indicator when their panel supports it, the desktop action, or an
+`onboard-toggle` shortcut.
+
+| Component | Required | Purpose |
+|---|---:|---|
+| `onboard` GTK application | Yes | On-screen keyboard, preferences, layouts, Arabic UI, clipboard, emoji, and saved window settings. |
+| `onboard-toggle` command and desktop action | No | Fast show/hide action; starts the application only if it is not already running. |
+| GNOME Shell extension | GNOME Wayland only | Input-source confirmation bridge and permanent Shell status-area button. |
+| KDE D-Bus integration | KDE Plasma Wayland only | Native input-source switching; it is built into the application and uses no extension. |
+
 ## Implementation details
 
 ### KDE Plasma
