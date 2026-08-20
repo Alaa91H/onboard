@@ -42,7 +42,7 @@ jobs:
           Onboard.test.test_RTL
           Onboard.test.test_PlatformBridge
       - name: Verify Rust native crate
-        run: cargo test --manifest-path native/onboard-native/Cargo.toml --locked
+        run: (cd native/onboard-native && cargo test --locked)
       - name: Verify Arabic catalog
         run: python3 i18n/scripts/check_catalog.py po/ar.po --language ar --require-complete
       - name: Build PEP 517 distributions
@@ -97,7 +97,7 @@ jobs:
           Onboard.test.test_RTL
           Onboard.test.test_PlatformBridge
       - name: Verify Rust native crate
-        run: cargo test --manifest-path native/onboard-native/Cargo.toml --locked
+        run: (cd native/onboard-native && cargo test --locked)
       - name: Verify Arabic catalog
         run: python3 i18n/scripts/check_catalog.py po/ar.po --language ar --require-complete
       - name: Build PEP 517 distributions

@@ -23,7 +23,7 @@ rm -rf build dist "$OUT"
 mkdir -p "$OUT"
 
 ./tools/prepare-build-env.sh --with-tests
-cargo test --manifest-path native/onboard-native/Cargo.toml --locked
+(cd native/onboard-native && cargo test --locked)
 python3 setup.py build
 xvfb-run -a python3 -m unittest \
   Onboard.test.test_WaylandCapabilities \

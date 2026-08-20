@@ -38,10 +38,12 @@ jobs:
           $env:PROCESSOR_ARCHITECTURE
       - name: Verify vendored Rust bridge
         shell: pwsh
-        run: cargo test --manifest-path native/onboard-native/Cargo.toml --locked
+        working-directory: native/onboard-native
+        run: cargo test --locked
       - name: Build Rust bridge release library
         shell: pwsh
-        run: cargo build --manifest-path native/onboard-native/Cargo.toml --release --locked
+        working-directory: native/onboard-native
+        run: cargo build --release --locked
       - name: Upload bridge diagnostic
         uses: actions/upload-artifact@v6
         with:
@@ -69,9 +71,11 @@ jobs:
           cargo --version
           uname -m
       - name: Compile Rust bridge tests
-        run: cargo check --manifest-path native/onboard-native/Cargo.toml --tests --locked
+        working-directory: native/onboard-native
+        run: cargo check --tests --locked
       - name: Build Rust bridge release library
-        run: cargo build --manifest-path native/onboard-native/Cargo.toml --release --locked
+        working-directory: native/onboard-native
+        run: cargo build --release --locked
       - name: Upload bridge diagnostic
         uses: actions/upload-artifact@v6
         with:

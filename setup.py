@@ -488,14 +488,24 @@ class build_rust_native(Command):
 
         build_ext_cmd = self.get_finalized_command('build_ext')
         destination = Path(build_ext_cmd.get_ext_fullpath(MODULE_NAME_RUST))
-        cargo_target = Path(build_ext_cmd.build_temp) / 'onboard-native-rust'
+        cargo_target = (Path(build_ext_cmd.build_temp) /
+                        'onboard-native-rust').resolve()
         env = os.environ.copy()
         env['CARGO_TARGET_DIR'] = str(cargo_target)
         env['PYO3_PYTHON'] = sys.executable
-        subprocess.check_call([cargo, 'build', '--release', '--manifest-path',
-                               str(RUST_CRATE_DIR / 'Cargo.toml')], env=env)
+        # Run from the crate directory so Cargo discovers its checked-in
+        # .cargo/config.toml. This is required for offline vendoring and for
+        # macOS extension-module linker flags.
+        subprocess.check_call([cargo, 'build', '--release', '--locked'], env=env,
+                              cwd=str(RUST_CRATE_DIR))
 
-        source = cargo_target / 'release' / 'libonboard_native.so'
+        if sys.platform == 'darwin':
+            rust_library = 'libonboard_native.dylib'
+        elif os.name == 'nt':
+            rust_library = 'onboard_native.dll'
+        else:
+            rust_library = 'libonboard_native.so'
+        source = cargo_target / 'release' / rust_library
         if not source.is_file():
             raise RuntimeError('Rust build produced no extension: {}'.format(source))
         destination.parent.mkdir(parents=True, exist_ok=True)
