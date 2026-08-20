@@ -44,7 +44,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          version="$(python3 setup.py --version 2>/dev/null | tail -n 1)"
+          version="$(awk -F '"' '/^[[:space:]]*version[[:space:]]*=/ {print $2; exit}' pyproject.toml)"
           test -n "$version"
           requested="${{ inputs.version }}"
           if [[ -n "$requested" && "$requested" != "$version" ]]; then
