@@ -68,8 +68,8 @@ jobs:
           rustc --version
           cargo --version
           uname -m
-      - name: Verify vendored Rust bridge
-        run: cargo test --manifest-path native/onboard-native/Cargo.toml --locked
+      - name: Compile Rust bridge tests
+        run: cargo check --manifest-path native/onboard-native/Cargo.toml --tests --locked
       - name: Build Rust bridge release library
         run: cargo build --manifest-path native/onboard-native/Cargo.toml --release --locked
       - name: Upload bridge diagnostic

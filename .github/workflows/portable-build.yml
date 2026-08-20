@@ -73,13 +73,15 @@ jobs:
             runner: ubuntu-24.04-arm
     steps:
       - uses: actions/checkout@v5
-      - name: Record native target
-        run: |
-          uname -a
-          python3 --version
-          rustc --version || true
+      - name: Record host target
+        run: uname -a
       - name: Install build dependencies
         run: ./tools/prepare-build-env.sh --with-tests
+      - name: Record native toolchain
+        run: |
+          python3 --version
+          rustc --version
+          cargo --version
       - name: Build source extensions
         run: python3 setup.py build
       - name: Verify focused regressions
