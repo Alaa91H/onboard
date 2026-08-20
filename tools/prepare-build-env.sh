@@ -19,7 +19,7 @@ fi
 
 install_debian() {
     local packages=(
-        build-essential pkg-config gettext intltool rustc cargo
+        build-essential pkg-config gettext intltool rustc cargo unzip
         python3-dev python3-setuptools python3-wheel python3-build python3-cairo
         python3-gi python3-gi-cairo python3-dbus
         libgtk-3-dev libxtst-dev libxkbfile-dev libdconf-dev
@@ -35,7 +35,7 @@ install_debian() {
 
 install_fedora() {
     local packages=(
-        gcc gcc-c++ make pkgconf-pkg-config gettext intltool rust cargo
+        gcc gcc-c++ make pkgconf-pkg-config gettext intltool rust cargo unzip
         python3-devel python3-setuptools python3-wheel python3-build python3-gobject
         python3-cairo python3-dbus
         gtk3-devel libXtst-devel libxkbfile-devel dconf-devel
@@ -50,7 +50,7 @@ install_fedora() {
 
 install_arch() {
     local packages=(
-        base-devel pkgconf gettext intltool rust
+        base-devel pkgconf gettext intltool rust unzip
         python python-setuptools python-wheel python-build python-gobject python-cairo
         python-dbus gtk3 libxtst libxkbfile dconf libcanberra hunspell
         systemd libxkbcommon wayland
@@ -63,7 +63,7 @@ install_arch() {
 
 install_opensuse() {
     local packages=(
-        gcc gcc-c++ make pkg-config gettext-tools intltool rust cargo
+        gcc gcc-c++ make pkg-config gettext-tools intltool rust cargo unzip
         python3-devel python3-setuptools python3-wheel python3-build python3-gobject
         python3-cairo python3-dbus
         gtk3-devel libXtst-devel libxkbfile-devel dconf-devel

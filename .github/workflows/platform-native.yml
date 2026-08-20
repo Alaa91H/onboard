@@ -4,11 +4,13 @@ on:
   pull_request:
     paths:
       - 'native/**'
+      - '.gitattributes'
       - '.github/workflows/platform-native.yml'
   push:
     branches: [main, master, feat/input-source-switching]
     paths:
       - 'native/**'
+      - '.gitattributes'
       - '.github/workflows/platform-native.yml'
   workflow_dispatch:
 
