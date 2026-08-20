@@ -14,6 +14,7 @@ case "$TARGET_ARCH" in
 esac
 
 cd "$ROOT"
+./tools/prepare-build-env.sh --with-tests
 PACKAGE_VERSION=$(python3 setup.py --version 2>/dev/null | tail -n 1)
 if [[ "$VERSION" != "$PACKAGE_VERSION" ]]; then
   echo "candidate version '$VERSION' does not match package version '$PACKAGE_VERSION'" >&2
@@ -22,7 +23,6 @@ fi
 rm -rf build dist "$OUT"
 mkdir -p "$OUT"
 
-./tools/prepare-build-env.sh --with-tests
 (cd native/onboard-native && cargo test --locked)
 python3 setup.py build
 xvfb-run -a python3 -m unittest \
