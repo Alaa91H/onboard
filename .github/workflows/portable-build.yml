@@ -1,0 +1,54 @@
+name: Portable build
+
+on:
+  push:
+    branches: [main, master, feat/input-source-switching]
+  pull_request:
+
+jobs:
+  ubuntu:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install build dependencies
+        run: ./tools/prepare-build-env.sh --with-tests
+      - name: Build source extensions and wheel
+        run: |
+          python3 setup.py build
+          python3 -m build --no-isolation
+      - name: Verify focused regressions
+        run: >-
+          python3 -m unittest
+          Onboard.test.test_ClipboardHistory
+          Onboard.test.test_InputSources
+          Onboard.test.test_LayoutLoaderSVG
+
+  fedora:
+    runs-on: ubuntu-latest
+    container: fedora:latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install build dependencies
+        run: ./tools/prepare-build-env.sh --with-tests
+      - name: Build source extensions and wheel
+        run: |
+          python3 setup.py build
+          python3 -m build --no-isolation
+      - name: Verify focused regressions
+        run: >-
+          python3 -m unittest
+          Onboard.test.test_ClipboardHistory
+          Onboard.test.test_InputSources
+          Onboard.test.test_LayoutLoaderSVG
+
+  arch-template:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate Arch package recipe syntax
+        run: bash -n packaging/arch/PKGBUILD
+      - name: Validate Flatpak manifest essentials
+        run: |
+          grep -q '^id: org.onboard.Onboard$' packaging/flatpak/org.onboard.Onboard.yml
+          grep -q '^runtime: org.gnome.Platform$' packaging/flatpak/org.onboard.Onboard.yml
+          grep -q '^command: onboard$' packaging/flatpak/org.onboard.Onboard.yml

@@ -1,4 +1,6 @@
-include AUTHORS CHANGELOG COPYING* HACKING DBUS.md README.md
+include AUTHORS CHANGELOG COPYING* HACKING DBUS.md BUILDING.md README.md README.FreeBSD.md README.WAYLAND.md
+include pyproject.toml
+recursive-include packaging *
 include *.ui
 include onboard-defaults.conf.example
 recursive-include data *

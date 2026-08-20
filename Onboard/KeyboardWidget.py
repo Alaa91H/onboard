@@ -26,6 +26,7 @@ from __future__ import division, print_function, unicode_literals
 import sys
 import time
 from math import sin, pi
+import cairo
 from gi.repository          import GLib, Gdk, Gtk
 
 from Onboard.Version import require_gi_versions
@@ -342,6 +343,7 @@ class KeyboardWidget(Gtk.DrawingArea, WindowManipulatorAspectRatio,
 
         self._language_menu = LanguageMenu(self)
         self._input_source_menu = InputSourceMenu(self)
+        self._clipboard_menu = ClipboardMenu(self)
         self._suggestion_menu = SuggestionMenu(self)
         self._symbol_search_popup = None
 
@@ -1886,6 +1888,12 @@ class KeyboardWidget(Gtk.DrawingArea, WindowManipulatorAspectRatio,
     def is_input_source_menu_showing(self):
         return self._input_source_menu.is_showing()
 
+    def show_clipboard_menu(self, key, button, closure=None):
+        self._clipboard_menu.popup(key, button, closure)
+
+    def is_clipboard_menu_showing(self):
+        return self._clipboard_menu.is_showing()
+
     def show_prediction_menu(self, key, button, closure=None):
         self._suggestion_menu.popup(key, button, closure)
 
@@ -2080,6 +2088,43 @@ class LanguageMenu(KeyMenu):
         recent_languages.insert(0, lang_id)
         recent_languages = recent_languages[:max_recent_languages]
         config.typing_assistance.recent_languages = recent_languages
+
+
+class ClipboardMenu(KeyMenu):
+    """Popup menu for a bounded text clipboard history."""
+
+    PREVIEW_LIMIT = 64
+
+    def create_menu(self, key, button):
+        menu = Gtk.Menu()
+        history = self._keyboard.clipboard_history
+        entries = history.entries() if history else []
+        if not entries:
+            item = Gtk.MenuItem.new_with_label("Clipboard is empty")
+            item.set_sensitive(False)
+            menu.append(item)
+            return menu
+
+        for text in entries:
+            preview = self._get_preview(text)
+            item = Gtk.MenuItem.new_with_label(preview)
+            item.set_tooltip_text(text)
+            item.connect("activate", self._on_entry_activated, text)
+            menu.append(item)
+        return menu
+
+    def _get_preview(self, text):
+        preview = " ".join(text.split())
+        if not preview:
+            preview = "(empty line)"
+        if len(preview) > self.PREVIEW_LIMIT:
+            preview = preview[:self.PREVIEW_LIMIT - 1] + "…"
+        return preview
+
+    def _on_entry_activated(self, _item, text):
+        history = self._keyboard.clipboard_history
+        if history and history.select(text):
+            self._keyboard.paste_clipboard()
 
 
 class InputSourceMenu(KeyMenu):

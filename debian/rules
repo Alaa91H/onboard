@@ -15,6 +15,26 @@ override_dh_auto_clean:
 	rm -rf Onboard/osk*.so
 	rm -rf Onboard/pypredict/lm*.so
 
+override_dh_auto_test:
+	set -eu; \
+	osk="$$(find .pybuild -path '*/Onboard/osk*.so' -print -quit)"; \
+	lm="$$(find .pybuild -path '*/Onboard/pypredict/lm*.so' -print -quit)"; \
+	test -n "$$osk"; test -n "$$lm"; \
+	osk="$$(readlink -f "$$osk")"; lm="$$(readlink -f "$$lm")"; \
+	ln -sf "$$osk" Onboard/; \
+	ln -sf "$$lm" Onboard/pypredict/; \
+	trap 'rm -f Onboard/osk*.so Onboard/pypredict/lm*.so' EXIT; \
+	python3 -m unittest \
+		Onboard.test.test_WaylandCapabilities \
+		Onboard.test.test_ClipboardHistory \
+		Onboard.test.test_InputSources \
+		Onboard.test.test_LayoutLoaderSVG
+
+override_dh_auto_install:
+	dh_auto_install -O--buildsystem=pybuild
+	install -Dm644 build/desktop/onboard-autostart.desktop \
+		debian/tmp/etc/xdg/autostart/onboard-autostart.desktop
+
 override_dh_install:
 	rm -f debian/tmp/usr/share/onboard/COPYING
 	rm -f debian/tmp/usr/share/onboard/COPYING.GPL3

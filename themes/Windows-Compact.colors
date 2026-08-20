@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<color_scheme name="Windows-Compact" format="2.1">
+  <window>
+    <color element="background" rgb="#1d1d1d" opacity="0.98"/>
+  </window>
+  <layer>
+    <color element="background" rgb="#1d1d1d" opacity="0.98"/>
+  </layer>
+  <layer>
+    <color element="background" rgb="#232323" opacity="0.98"/>
+  </layer>
+  <layer>
+    <color element="background" rgb="#232323" opacity="0.98"/>
+  </layer>
+  <key_group>
+    <color element="fill" rgb="#303030"/>
+    <color element="fill" rgb="#444444" hover="true"/>
+    <color element="fill" rgb="#5a5a5a" pressed="true"/>
+    <color element="stroke" rgb="#4b4b4b"/>
+    <color element="stroke" rgb="#707070" hover="true"/>
+    <color element="stroke" rgb="#909090" pressed="true"/>
+    <color element="label" rgb="#f2f2f2"/>
+    <color element="label" rgb="#ffffff" hover="true"/>
+    <color element="label" rgb="#ffffff" pressed="true"/>
+    <color element="secondary-label" rgb="#bdbdbd"/>
+
+    <key_group>
+      <color element="fill" rgb="#292929"/>
+      <color element="fill" rgb="#404040" hover="true"/>
+      <color element="fill" rgb="#5c5c5c" pressed="true"/>
+      hide, clipboard, move, settings, BKSP, DELE, LFSH, RTRN, layer, sublayer0
+    </key_group>
+
+    <key_group>
+      <color element="fill" rgb="#373737"/>
+      <color element="fill" rgb="#505050" hover="true"/>
+      <color element="fill" rgb="#686868" pressed="true"/>
+      input-source, SPCE
+    </key_group>
+  </key_group>
+</color_scheme>

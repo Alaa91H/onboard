@@ -57,6 +57,7 @@ from Onboard.AutoHide              import AutoHide
 from Onboard.WordSuggestions       import WordSuggestions
 from Onboard.canonical_equivalents import canonical_equivalents
 from Onboard.CharacterPalette      import CharacterPalettePanel
+from Onboard.ClipboardHistory      import ClipboardHistory
 from Onboard                       import WaylandUtils
 
 import Onboard.osk as osk
@@ -714,6 +715,8 @@ class Keyboard(WordSuggestions):
         self._visibility_requested = None
 
         self._character_palettes = []
+        self.clipboard_history = ClipboardHistory()
+        self.clipboard_history.start()
         self._popup_key = None
         self._popup_hide_timer_id = None
 
@@ -787,6 +790,10 @@ class Keyboard(WordSuggestions):
             self._click_sim.cleanup()
             self._click_sim = None
 
+        if self.clipboard_history:
+            self.clipboard_history.cleanup()
+            self.clipboard_history = None
+
     def get_application(self):
         return self._application()
 
@@ -795,6 +802,18 @@ class Keyboard(WordSuggestions):
         if application:
             return application.get_input_source_controller()
         return None
+
+    def paste_clipboard(self):
+        """Paste the selected clipboard entry into the focused application."""
+        changer = self.text_changer_key_stroke
+        if changer is None:
+            return
+        with KeySynth.no_delay():
+            changer.lock_mod(Modifiers.CTRL)
+            try:
+                changer.press_keysyms("v")
+            finally:
+                changer.unlock_mod(Modifiers.CTRL)
 
     def register_view(self, layout_view):
         self._layout_views.append(layout_view)
@@ -1020,7 +1039,7 @@ class Keyboard(WordSuggestions):
                   BCHide, BCShowClick, BCMove, BCPreferences, BCQuit,
                   BCExpandCorrections, BCPreviousPredictions,
                   BCNextPredictions, BCPauseLearning, BCLanguage,
-                  BCInputSource, BCStealthMode, BCAutoLearn,
+                  BCInputSource, BCClipboard, BCStealthMode, BCAutoLearn,
                   BCAutoPunctuation, BCInputline,
                   ]}
         for key in keys:
@@ -3104,6 +3123,26 @@ class BCPauseLearning(ButtonController):
         co = config.word_suggestions
         self.set_active(co.get_pause_learning() >= 1)
         self.set_locked(co.get_pause_learning() == 2)
+
+
+class BCClipboard(ButtonController):
+    """Open the system clipboard history and paste a selected entry."""
+
+    id = "clipboard"
+
+    def release(self, view, button, event_type):
+        history = self.keyboard.clipboard_history
+        if history:
+            history.refresh()
+        self.set_active(True)
+        self.keyboard.hide_touch_feedback()
+        view.show_clipboard_menu(self.key, button, self._on_menu_closed)
+
+    def _on_menu_closed(self):
+        self.set_active(False)
+
+    def update(self):
+        self.set_sensitive(bool(self.keyboard.clipboard_history))
 
 
 class BCInputSource(ButtonController):

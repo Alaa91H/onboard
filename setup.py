@@ -36,8 +36,8 @@ import shutil
 from pathlib import Path
 import site
 from os.path import dirname, abspath, join, split
-from setuptools import Extension, Command
-from packaging import version
+from setuptools import Extension, Command, setup
+from setuptools.command.build import build as build_command
 import sysconfig
 from setuptools.command.build_ext import build_ext
 from setuptools.command.install import install
@@ -54,13 +54,6 @@ if sys.version_info.major == 3 and \
    sys.version_info.minor <= 2:
     import locale
     locale.getpreferredencoding = lambda *x: 'UTF-8'
-
-try:
-    import DistUtilsExtra.auto
-except ImportError:
-    print('To build Onboard you need https://launchpad.net/python-distutils-extra', file=sys.stderr)
-    sys.exit(1)
-
 
 def get_gnome_shell_version():
     """Returns 'legacy' or 'current' based on GNOME Shell version"""
@@ -83,13 +76,8 @@ def get_gnome_shell_version():
     
 gnome_shell_version = get_gnome_shell_version()
 
-current_ver = version.Version(DistUtilsExtra.auto.__version__)
-required_ver = version.Version('2.12')
-assert current_ver >= required_ver , 'needs DistUtilsExtra.auto >= 2.12'
-
 project_root = dirname(abspath(__file__))
-build_root = join(project_root, 'build', 'lib*{}.*' \
-                  .format(sys.version_info.major))
+build_root = join(project_root, 'build')
 libs_to_symlink = [['Onboard', 'osk*.so'],
                    ['Onboard/pypredict', 'lm*.so']]
 setup_command = sys.argv[1] if len(sys.argv) >= 2 else ""
@@ -185,9 +173,13 @@ def symlink_extension_libraries(setup_command):
     Remove this at any time if there is a better way.
     """
     if setup_command in ["build", "build_ext"]:
+        roots = [build_root] + glob.glob(join(project_root, ".pybuild", "*",
+                                              "build"))
         for path, pattern in libs_to_symlink:
-            files = glob.glob(join(build_root, path, pattern))
-            for file in files:
+            files = []
+            for root in roots:
+                files.extend(glob.glob(join(root, 'lib*', path, pattern)))
+            for file in sorted(set(files)):
                 dstfile = join(path, split(file)[1])
                 print("symlinking {} to {}".format(file, dstfile))
 
@@ -385,31 +377,84 @@ class TestCommand(Command):
         return True
 
 
-# Custom build_i18n command that overrides the hard-coded
-# auto-start path "share/autostart" in auto.build_i18n_auto
-# for "onboard-autostart.desktop.in"
-class build_i18n_custom(DistUtilsExtra.auto.build_i18n_auto):
+class build_i18n_portable(Command):
+    """Build gettext catalogs and desktop entries without DistUtilsExtra.
+
+    Distribution packages can still choose their own installation prefixes,
+    while the build output itself is produced only with standard GNU tools
+    (`msgfmt` and `intltool-merge`) available on Debian, RPM systems and Arch.
+    """
+
+    user_options = []
+
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+    @staticmethod
+    def _require_tool(name):
+        if shutil.which(name) is None:
+            raise RuntimeError(
+                "Required build tool '{}' is missing. Install gettext and intltool."
+                .format(name))
+
+    def _add_data_file(self, target, filename):
+        files = self.distribution.data_files
+        for existing_target, existing_files in files:
+            if existing_target == target:
+                if filename not in existing_files:
+                    existing_files.append(filename)
+                return
+        files.append((target, [filename]))
+
     def run(self):
-        super(build_i18n_custom, self).run()
+        self._require_tool("msgfmt")
+        self._require_tool("intltool-merge")
+
+        build_base = self.get_finalized_command("build").build_base
+        locale_base = os.path.join(build_base, "locale")
+        desktop_base = os.path.join(build_base, "desktop")
+        os.makedirs(locale_base, exist_ok=True)
+        os.makedirs(desktop_base, exist_ok=True)
+
+        for po_file in sorted(glob.glob("po/*.po")):
+            locale = os.path.splitext(os.path.basename(po_file))[0]
+            destination = os.path.join(locale_base, locale,
+                                       "LC_MESSAGES", "onboard.mo")
+            os.makedirs(os.path.dirname(destination), exist_ok=True)
+            subprocess.check_call(["msgfmt", po_file, "-o", destination])
+            self._add_data_file(os.path.join("share", "locale", locale,
+                                             "LC_MESSAGES"), destination)
+
+        desktop_entries = (
+            ("data/onboard.desktop.in", "share/applications"),
+            ("data/onboard-settings.desktop.in", "share/applications"),
+        )
+        for source, target in desktop_entries:
+            destination = os.path.join(desktop_base,
+                                       os.path.basename(source)[:-3])
+            subprocess.check_call(["intltool-merge", "-d", "po", source,
+                                   destination])
+            self._add_data_file(target, destination)
+
+        # This file is generated here but is intentionally not part of the
+        # generic wheel: package managers must install autostart entries at
+        # their system XDG location (normally /etc/xdg/autostart), not below
+        # Python's prefix such as /usr/local.
+        self.autostart_file = os.path.join(desktop_base,
+                                           "onboard-autostart.desktop")
+        subprocess.check_call(["intltool-merge", "-d", "po",
+                               "data/onboard-autostart.desktop.in",
+                               self.autostart_file])
 
 
-        # Determine the autostart destination
-        if "--user" in sys.argv:
-            # Get the user's config directory
-            config_path = os.path.expanduser("~/.config")
+class build_portable(build_command):
+    """Standard setuptools build with explicit i18n/desktop generation."""
 
-            # Get the autostart directory
-            autostart_destination = os.path.join(config_path, "autostart") 
-        else:
-            autostart_destination = '/etc/xdg/autostart'
-  
-
-        for i, file_set in enumerate(self.distribution.data_files):
-            target, files = file_set
-            if target == 'share/autostart':
-                file_set = (autostart_destination, files)
-                self.distribution.data_files[i] = file_set
-
+    sub_commands = [("build_i18n_portable", lambda self: True)] + \
+                   build_command.sub_commands
 
 
 # Custom build_ext command that removes the invalid "-Wstrict-prototypes"
@@ -611,7 +656,7 @@ class UninstallCommand(Command):
             
 ##### setup #####
 
-DistUtilsExtra.auto.setup(
+setup(
     name = 'onboard',
     version = '1.4.4-5', # here the package version is set
     author = 'U. Niethammer',
@@ -621,6 +666,8 @@ DistUtilsExtra.auto.setup(
     description = 'Simple On-screen Keyboard',
 
     packages = ['Onboard', 'Onboard.pypredict'],
+    include_package_data = False,
+    zip_safe = False,
     data_files = [('share/glib-2.0/schemas', glob.glob('data/*.gschema.xml')),
                   ('share/dbus-1/services', glob.glob('data/org.onboard.Onboard.service')),
                   ('share/doc/onboard', glob.glob('AUTHORS')),
@@ -628,7 +675,10 @@ DistUtilsExtra.auto.setup(
                   ('share/doc/onboard', glob.glob('COPYING*')),
                   ('share/doc/onboard', glob.glob('HACKING')),
                   ('share/doc/onboard', glob.glob('DBUS.md')),
+                  ('share/doc/onboard', glob.glob('BUILDING.md')),
                   ('share/doc/onboard', glob.glob('README.md')),
+                  ('share/doc/onboard', glob.glob('README.FreeBSD.md')),
+                  ('share/doc/onboard', glob.glob('README.WAYLAND.md')),
                   ('share/doc/onboard', glob.glob('onboard-defaults.conf.example')),
                   ('share/doc/onboard', glob.glob('onboard-default-settings.gschema.override.example')),
                   ('share/icons/hicolor/16x16/apps', glob.glob('icons/hicolor/16/*')),
@@ -643,6 +693,8 @@ DistUtilsExtra.auto.setup(
                   ('share/icons/ubuntu-mono-light/status/22', glob.glob('icons/ubuntu-mono-light/22/*')),
                   ('share/man/man1', glob.glob('man/*')),
                   ('share/sounds/freedesktop/stereo', glob.glob('sounds/*')),
+                  ('share/onboard', glob.glob('data/layoutstrings.py')),
+                  ('share/onboard', glob.glob('data/72-onboard-uinput.rules')),
                   ('share/onboard/layouts', glob.glob('layouts/*.*')),
                   ('share/onboard/layouts/images', glob.glob('layouts/images/*')),
                   ('share/onboard/themes', glob.glob('themes/*')),
@@ -673,9 +725,10 @@ DistUtilsExtra.auto.setup(
     ext_modules = [extension_osk, extension_lm],
 
     cmdclass = {
+                'build': build_portable,
+                'build_i18n_portable': build_i18n_portable,
                 'install': CustomInstallCommand,
                 'test': TestCommand,
-                'build_i18n': build_i18n_custom,
                 'build_ext': build_ext_custom,
                 'uninstall': UninstallCommand,
                 }

@@ -113,6 +113,21 @@ class TestLayoutLoaderSVG(unittest.TestCase):
             self.assertEqual(1, len(keys), name)
             self.assertEqual("RWIN", keys[0].svg_id, name)
 
+    def test_windows_compact_layout_has_mouse_first_controls(self):
+        root_dir = os.path.dirname(os.path.dirname(
+                                os.path.dirname(os.path.abspath(__file__))))
+        layout_fn = os.path.join(root_dir, "layouts", "Windows-Compact.onboard")
+        config_mock = self.Config_mockup()
+        config_mock.find_layout_filename = lambda filename, _description: \
+            os.path.join(root_dir, "layouts", filename)
+        Onboard.LayoutLoaderSVG.config = config_mock
+        layout = LayoutLoaderSVG().load(osk.Virtkey(), layout_fn, None)
+
+        for key_id in ("hide", "move", "clipboard", "settings",
+                       "input-source", "sublayer0", "SPCE", "RTRN"):
+            keys = list(layout.find_ids([key_id]))
+            self.assertTrue(keys, key_id)
+
     def _load_test_layout(self, key_definitions,
                           system_keyboard_layout="us",
                           system_keyboard_variant = ""):

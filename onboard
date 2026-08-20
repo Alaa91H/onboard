@@ -57,7 +57,22 @@ def is_wayland_environment():
 # Mutter (GNOME) implements neither, so we either use a shell extension
 # or set GDK_BACKEND=x11 and route through XWayland.
 def _auto_select_backend():
-    if os.environ.get("GDK_BACKEND"):           # explicit user override wins
+    # A user override always wins. This provides a supported escape hatch for
+    # compositors with partial Wayland protocol support without hard-coding
+    # distribution names. Accepted values: auto (default), wayland, x11.
+    requested = os.environ.get("ONBOARD_BACKEND", "auto").strip().lower()
+    if requested in ("x11", "xwayland"):
+        os.environ["GDK_BACKEND"] = "x11"
+        os.environ.setdefault("ONBOARD_FORCED_XWAYLAND", "1")
+        return
+    if requested in ("wayland", "native"):
+        os.environ["GDK_BACKEND"] = "wayland"
+        return
+    if requested not in ("", "auto"):
+        print("onboard: ignoring unsupported ONBOARD_BACKEND={!r}; "
+              "use auto, wayland, or x11".format(requested),
+              file=sys.stderr)
+    if os.environ.get("GDK_BACKEND"):           # explicit GTK override wins
         return
     if not is_wayland_environment():
         return

@@ -1,0 +1,125 @@
+<?xml version="1.0" ?>
+<!--
+  Compact desktop layout inspired by the Windows on-screen keyboard.
+  It is intentionally mouse-first: the title-strip move button lets users
+  relocate the keyboard and Onboard persists its free-floating position.
+-->
+<keyboard id="Windows-Compact" format="3.2" section="system"
+          summary="Small mouse-first desktop keyboard">
+  <include file="key_defs.xml"/>
+
+  <box border="1.5" spacing="2" orientation="vertical">
+    <panel filename="Windows-Compact.svg" scan_priority="1">
+      <key group="bottomrow" id="hide" image="close.svg"/>
+      <key group="bottomrow" id="clipboard" label="📋" button="true"/>
+      <key group="bottomrow" id="move" image="move.svg"/>
+      <key group="bottomrow" id="settings" image="preferences.svg"/>
+    </panel>
+
+    <panel filename="Windows-Compact.svg" layer="alpha">
+      <key group="alphanumeric" id="AD01"/>
+      <key group="alphanumeric" id="AD02"/>
+      <key group="alphanumeric" id="AD03"/>
+      <key group="alphanumeric" id="AD04"/>
+      <key group="alphanumeric" id="AD05"/>
+      <key group="alphanumeric" id="AD06"/>
+      <key group="alphanumeric" id="AD07"/>
+      <key group="alphanumeric" id="AD08"/>
+      <key group="alphanumeric" id="AD09"/>
+      <key group="alphanumeric" id="AD10"/>
+      <key group="bottomrow" id="BKSP"/>
+
+      <key group="alphanumeric" id="AC01"/>
+      <key group="alphanumeric" id="AC02"/>
+      <key group="alphanumeric" id="AC03"/>
+      <key group="alphanumeric" id="AC04"/>
+      <key group="alphanumeric" id="AC05"/>
+      <key group="alphanumeric" id="AC06"/>
+      <key group="alphanumeric" id="AC07"/>
+      <key group="alphanumeric" id="AC08"/>
+      <key group="alphanumeric" id="AC09"/>
+      <key group="alphanumeric" id="AC10"/>
+      <key group="bottomrow" id="DELE"/>
+
+      <key group="shifts" id="LFSH"/>
+      <key group="alphanumeric" id="AB01"/>
+      <key group="alphanumeric" id="AB02"/>
+      <key group="alphanumeric" id="AB03"/>
+      <key group="alphanumeric" id="AB04"/>
+      <key group="alphanumeric" id="AB05"/>
+      <key group="alphanumeric" id="AB06"/>
+      <key group="alphanumeric" id="AB07"/>
+      <key group="alphanumeric" id="AB08"/>
+      <key group="alphanumeric" id="AB09"/>
+      <key group="alphanumeric" id="AB10"/>
+
+      <key group="bottomrow" id="layer1" label="123" target_layer="numbers" button="true"/>
+      <key group="bottomrow" id="sublayer0" target_layer="emoji" image="emoji.svg" button="true"/>
+      <key group="bottomrow" id="input-source"/>
+      <key group="bottomrow" id="SPCE"/>
+      <key group="alphanumeric" id="AB10.bottom" svg_id="AB10.bottom" keycode="52"/>
+      <key group="misc" id="RTRN"/>
+    </panel>
+
+    <panel filename="Windows-Compact.svg" layer="numbers">
+      <key group="alphanumeric" id="BD01" keysym="0x31" label="1"/>
+      <key group="alphanumeric" id="BD02" keysym="0x32" label="2"/>
+      <key group="alphanumeric" id="BD03" keysym="0x33" label="3"/>
+      <key group="alphanumeric" id="BD04" keysym="0x34" label="4"/>
+      <key group="alphanumeric" id="BD05" keysym="0x35" label="5"/>
+      <key group="alphanumeric" id="BD06" keysym="0x36" label="6"/>
+      <key group="alphanumeric" id="BD07" keysym="0x37" label="7"/>
+      <key group="alphanumeric" id="BD08" keysym="0x38" label="8"/>
+      <key group="alphanumeric" id="BD09" keysym="0x39" label="9"/>
+      <key group="alphanumeric" id="BD10" keysym="0x30" label="0"/>
+      <key group="bottomrow" id="BKSP"/>
+
+      <key char="@" group="alphanumeric" id="CD01" label="@"/>
+      <key char="#" group="alphanumeric" id="CD02" label="#"/>
+      <key char="%" group="alphanumeric" id="CD03" label="%"/>
+      <key char="&amp;" group="alphanumeric" id="CD04" label="&amp;"/>
+      <key char="-" group="alphanumeric" id="CD05" label="-"/>
+      <key char="_" group="alphanumeric" id="CD06" label="_"/>
+      <key char="/" group="alphanumeric" id="CD07" label="/"/>
+      <key char="(" group="alphanumeric" id="CD08" label="("/>
+      <key char=")" group="alphanumeric" id="CD09" label=")"/>
+      <key char="?" group="alphanumeric" id="CD10" label="?"/>
+      <key group="bottomrow" id="DELE"/>
+
+      <key group="bottomrow" id="layer0" target_layer="alpha" label="ABC" button="true"/>
+      <key char="!" group="alphanumeric" id="CB01" label="!"/>
+      <key char=":" group="alphanumeric" id="CB02" label=":"/>
+      <key char=";" group="alphanumeric" id="CB03" label=";"/>
+      <key char="&quot;" group="alphanumeric" id="CB04" label="&quot;"/>
+      <key char="'" group="alphanumeric" id="CB05" label="'"/>
+      <key char="+" group="alphanumeric" id="CB06" label="+"/>
+      <key char="=" group="alphanumeric" id="CB07" label="="/>
+      <key char="*" group="alphanumeric" id="CB08" label="*"/>
+      <key char="," group="alphanumeric" id="CB09" label=","/>
+      <key char="." group="alphanumeric" id="CB10" label="."/>
+
+      <key group="bottomrow" id="layer0.bottom" svg_id="layer0.bottom" target_layer="alpha" label="ABC" button="true"/>
+      <key group="bottomrow" id="sublayer0" target_layer="emoji" image="emoji.svg" button="true"/>
+      <key group="bottomrow" id="input-source"/>
+      <key group="bottomrow" id="SPCE"/>
+      <key char="." group="alphanumeric" id="AB10.bottom" svg_id="AB10.bottom" label="."/>
+      <key group="misc" id="RTRN"/>
+    </panel>
+
+    <panel layer="emoji">
+      <panel id="emoji-palette-panel" class="EmojiPalettePanel">
+        <key id="character-palette" group="character-palette" label="" visible="false" sensitive="false" scannable="false"/>
+        <key id="palette-header-template" group="character-palette" label="" visible="false" scannable="false"/>
+        <key id="palette-key-template" group="character-palette" label="" visible="false" scannable="false"/>
+      </panel>
+      <panel filename="Windows-Compact.svg">
+        <key group="bottomrow" id="layer0.bottom" target_layer="alpha" label="ABC" button="true"/>
+        <key group="bottomrow" id="sublayer0" target_layer="emoji" image="emoji.svg" button="true"/>
+        <key group="bottomrow" id="input-source"/>
+        <key group="bottomrow" id="SPCE"/>
+        <key char="." group="alphanumeric" id="AB10.bottom" label="."/>
+        <key group="misc" id="RTRN"/>
+      </panel>
+    </panel>
+  </box>
+</keyboard>

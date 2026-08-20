@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Compact Windows-inspired mouse keyboard geometry for Onboard. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="330" viewBox="0 0 440 330">
+  <!-- title strip: hide, clipboard, move handle, settings -->
+  <rect id="hide" x="16" y="12" width="32" height="30" rx="5"/>
+  <rect id="clipboard" x="58" y="12" width="32" height="30" rx="5"/>
+  <rect id="move" x="118" y="18" width="204" height="18" rx="6"/>
+  <rect id="settings" x="390" y="12" width="32" height="30" rx="5"/>
+
+  <!-- first letter row -->
+  <rect id="AD01" x="18"  y="60" width="34" height="50" rx="4"/>
+  <rect id="AD02" x="55"  y="60" width="34" height="50" rx="4"/>
+  <rect id="AD03" x="92"  y="60" width="34" height="50" rx="4"/>
+  <rect id="AD04" x="129" y="60" width="34" height="50" rx="4"/>
+  <rect id="AD05" x="166" y="60" width="34" height="50" rx="4"/>
+  <rect id="AD06" x="203" y="60" width="34" height="50" rx="4"/>
+  <rect id="AD07" x="240" y="60" width="34" height="50" rx="4"/>
+  <rect id="AD08" x="277" y="60" width="34" height="50" rx="4"/>
+  <rect id="AD09" x="314" y="60" width="34" height="50" rx="4"/>
+  <rect id="AD10" x="351" y="60" width="34" height="50" rx="4"/>
+  <rect id="BKSP" x="388" y="60" width="34" height="50" rx="4"/>
+
+  <!-- second letter row -->
+  <rect id="AC01" x="18"  y="113" width="34" height="50" rx="4"/>
+  <rect id="AC02" x="55"  y="113" width="34" height="50" rx="4"/>
+  <rect id="AC03" x="92"  y="113" width="34" height="50" rx="4"/>
+  <rect id="AC04" x="129" y="113" width="34" height="50" rx="4"/>
+  <rect id="AC05" x="166" y="113" width="34" height="50" rx="4"/>
+  <rect id="AC06" x="203" y="113" width="34" height="50" rx="4"/>
+  <rect id="AC07" x="240" y="113" width="34" height="50" rx="4"/>
+  <rect id="AC08" x="277" y="113" width="34" height="50" rx="4"/>
+  <rect id="AC09" x="314" y="113" width="34" height="50" rx="4"/>
+  <rect id="AC10" x="351" y="113" width="34" height="50" rx="4"/>
+  <rect id="DELE" x="388" y="113" width="34" height="50" rx="4"/>
+
+  <!-- third letter row -->
+  <rect id="LFSH" x="18"  y="166" width="44" height="50" rx="4"/>
+  <rect id="AB01" x="65"  y="166" width="34" height="50" rx="4"/>
+  <rect id="AB02" x="102" y="166" width="34" height="50" rx="4"/>
+  <rect id="AB03" x="139" y="166" width="34" height="50" rx="4"/>
+  <rect id="AB04" x="176" y="166" width="34" height="50" rx="4"/>
+  <rect id="AB05" x="213" y="166" width="34" height="50" rx="4"/>
+  <rect id="AB06" x="250" y="166" width="34" height="50" rx="4"/>
+  <rect id="AB07" x="287" y="166" width="34" height="50" rx="4"/>
+  <rect id="AB08" x="324" y="166" width="34" height="50" rx="4"/>
+  <rect id="AB09" x="361" y="166" width="34" height="50" rx="4"/>
+  <rect id="AB10" x="398" y="166" width="24" height="50" rx="4"/>
+
+  <!-- shared bottom row -->
+  <rect id="layer1"        x="18"  y="231" width="50" height="48" rx="4"/>
+  <rect id="layer0"        x="18"  y="231" width="50" height="48" rx="4"/>
+  <rect id="layer0.bottom" x="18"  y="281" width="50" height="38" rx="4"/>
+  <rect id="sublayer0"     x="72"  y="231" width="46" height="48" rx="4"/>
+  <rect id="input-source"  x="122" y="231" width="58" height="48" rx="4"/>
+  <rect id="SPCE"          x="184" y="231" width="156" height="48" rx="4"/>
+  <rect id="AB10.bottom"   x="344" y="231" width="34" height="48" rx="4"/>
+  <rect id="RTRN"          x="382" y="231" width="40" height="48" rx="4"/>
+
+  <!-- number/symbol rows share the compact three-row geometry -->
+  <rect id="BD01" x="18"  y="60" width="34" height="50" rx="4"/>
+  <rect id="BD02" x="55"  y="60" width="34" height="50" rx="4"/>
+  <rect id="BD03" x="92"  y="60" width="34" height="50" rx="4"/>
+  <rect id="BD04" x="129" y="60" width="34" height="50" rx="4"/>
+  <rect id="BD05" x="166" y="60" width="34" height="50" rx="4"/>
+  <rect id="BD06" x="203" y="60" width="34" height="50" rx="4"/>
+  <rect id="BD07" x="240" y="60" width="34" height="50" rx="4"/>
+  <rect id="BD08" x="277" y="60" width="34" height="50" rx="4"/>
+  <rect id="BD09" x="314" y="60" width="34" height="50" rx="4"/>
+  <rect id="BD10" x="351" y="60" width="34" height="50" rx="4"/>
+
+  <rect id="CD01" x="18"  y="113" width="34" height="50" rx="4"/>
+  <rect id="CD02" x="55"  y="113" width="34" height="50" rx="4"/>
+  <rect id="CD03" x="92"  y="113" width="34" height="50" rx="4"/>
+  <rect id="CD04" x="129" y="113" width="34" height="50" rx="4"/>
+  <rect id="CD05" x="166" y="113" width="34" height="50" rx="4"/>
+  <rect id="CD06" x="203" y="113" width="34" height="50" rx="4"/>
+  <rect id="CD07" x="240" y="113" width="34" height="50" rx="4"/>
+  <rect id="CD08" x="277" y="113" width="34" height="50" rx="4"/>
+  <rect id="CD09" x="314" y="113" width="34" height="50" rx="4"/>
+  <rect id="CD10" x="351" y="113" width="34" height="50" rx="4"/>
+
+  <rect id="CB01" x="65"  y="166" width="34" height="50" rx="4"/>
+  <rect id="CB02" x="102" y="166" width="34" height="50" rx="4"/>
+  <rect id="CB03" x="139" y="166" width="34" height="50" rx="4"/>
+  <rect id="CB04" x="176" y="166" width="34" height="50" rx="4"/>
+  <rect id="CB05" x="213" y="166" width="34" height="50" rx="4"/>
+  <rect id="CB06" x="250" y="166" width="34" height="50" rx="4"/>
+  <rect id="CB07" x="287" y="166" width="34" height="50" rx="4"/>
+  <rect id="CB08" x="324" y="166" width="34" height="50" rx="4"/>
+  <rect id="CB09" x="361" y="166" width="34" height="50" rx="4"/>
+  <rect id="CB10" x="398" y="166" width="24" height="50" rx="4"/>
+</svg>

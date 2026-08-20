@@ -114,9 +114,18 @@ class OnboardGtk(object):
         # Wayland code path.
         _logger.info("Display server: {}".format(
             WaylandUtils.get_session_type_label()))
+        runtime_caps = WaylandUtils.get_runtime_capabilities()
+        _logger.info("Desktop capability: desktop=%s window=%s "
+                     "input-source=%s movable=%s",
+                     runtime_caps.desktop, runtime_caps.window_strategy,
+                     runtime_caps.input_source_strategy, runtime_caps.movable)
+        if runtime_caps.warning:
+            _logger.warning("Desktop capability: %s", runtime_caps.warning)
         if WaylandUtils.is_wayland():
             _logger.info("gtk-layer-shell available: {}".format(
                 WaylandUtils.is_layer_shell_available()))
+        if os.environ.get("ONBOARD_FORCED_XWAYLAND") == "1":
+            _logger.info("XWayland was explicitly selected with ONBOARD_BACKEND=x11")
         if os.environ.get("ONBOARD_AUTO_XWAYLAND") == "1":
             # The ./onboard launcher detected a Wayland compositor that
             # supports neither the KWin-rule mechanism nor wlr-layer-shell
