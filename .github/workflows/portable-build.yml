@@ -41,6 +41,7 @@ jobs:
           Onboard.test.test_NativeInput
           Onboard.test.test_RTL
           Onboard.test.test_PlatformBridge
+          Onboard.test.test_Diagnostics
       - name: Verify Rust native crate
         run: (cd native/onboard-native && cargo test --locked)
       - name: Verify Arabic catalog
@@ -96,6 +97,7 @@ jobs:
           Onboard.test.test_NativeInput
           Onboard.test.test_RTL
           Onboard.test.test_PlatformBridge
+          Onboard.test.test_Diagnostics
       - name: Verify Rust native crate
         run: (cd native/onboard-native && cargo test --locked)
       - name: Verify Arabic catalog

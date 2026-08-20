@@ -75,6 +75,16 @@ class ClipboardHistory(object):
     def entries(self):
         return self._entries[:]
 
+    def clear(self):
+        """Forget process-local history without modifying the system clipboard.
+
+        Returning the number of removed entries lets callers refresh their UI
+        deterministically while preserving the focused application's clipboard.
+        """
+        removed = len(self._entries)
+        del self._entries[:]
+        return removed
+
     def select(self, text):
         """Make a remembered item the current system clipboard content."""
         if not self.remember(text) or self._clipboard is None:

@@ -51,6 +51,18 @@ class TestClipboardHistory(unittest.TestCase):
         history.refresh()
         self.assertEqual(["مرحبا"], history.entries())
 
+    def test_clear_forgets_history_without_overwriting_system_clipboard(self):
+        clipboard = FakeClipboard("system value")
+        history = ClipboardHistory(clipboard)
+        history.remember("first")
+        history.remember("second")
+
+        self.assertEqual(2, history.clear())
+        self.assertEqual([], history.entries())
+        self.assertEqual("system value", clipboard.text)
+        self.assertFalse(clipboard.stored)
+        self.assertEqual(0, history.clear())
+
     def test_select_promotes_entry_and_updates_system_clipboard(self):
         clipboard = FakeClipboard()
         history = ClipboardHistory(clipboard)

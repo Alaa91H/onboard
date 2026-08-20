@@ -117,6 +117,11 @@ def _auto_select_backend():
         os.environ.setdefault("ONBOARD_AUTO_XWAYLAND", "1")
 
 
+if "--diagnose" in sys.argv:
+    from Onboard.Diagnostics import render
+    sys.stdout.write(render())
+    sys.exit(0)
+
 _auto_select_backend()
 
 

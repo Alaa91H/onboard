@@ -34,7 +34,8 @@ xvfb-run -a python3 -m unittest \
   Onboard.test.test_ArabicLocalization \
   Onboard.test.test_NativeInput \
   Onboard.test.test_RTL \
-  Onboard.test.test_PlatformBridge
+  Onboard.test.test_PlatformBridge \
+  Onboard.test.test_Diagnostics
 python3 i18n/scripts/check_catalog.py po/ar.po --language ar --require-complete
 python3 -m build --no-isolation
 
@@ -51,6 +52,8 @@ grep -q 'share/locale/ar/LC_MESSAGES/onboard.mo' "$wheel_listing"
 grep -q 'native/onboard-native/Cargo.lock' "$sdist_listing"
 
 cp "$wheel" "$sdist" "$OUT/"
+python3 ci/scripts/write_sbom.py \
+  --output "$OUT/sbom.cdx.json" --version "$VERSION"
 python3 ci/scripts/write_release_manifest.py \
   --input "$OUT" \
   --output "$OUT/release-manifest.json" \

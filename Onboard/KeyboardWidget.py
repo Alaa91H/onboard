@@ -2111,6 +2111,11 @@ class ClipboardMenu(KeyMenu):
             item.set_tooltip_text(text)
             item.connect("activate", self._on_entry_activated, text)
             menu.append(item)
+
+        menu.append(Gtk.SeparatorMenuItem())
+        clear_item = Gtk.MenuItem.new_with_mnemonic(_("_Clear history"))
+        clear_item.connect("activate", self._on_clear_activated)
+        menu.append(clear_item)
         return menu
 
     def _get_preview(self, text):
@@ -2125,6 +2130,11 @@ class ClipboardMenu(KeyMenu):
         history = self._keyboard.clipboard_history
         if history and history.select(text):
             self._keyboard.paste_clipboard()
+
+    def _on_clear_activated(self, _item):
+        history = self._keyboard.clipboard_history
+        if history:
+            history.clear()
 
 
 class InputSourceMenu(KeyMenu):

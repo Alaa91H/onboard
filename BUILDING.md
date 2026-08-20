@@ -165,3 +165,18 @@ extensions, or visual RTL clipping.
 [2]: https://wiki.archlinux.org/title/PKGBUILD "ArchWiki: PKGBUILD"
 [3]: https://docs.flatpak.org/en/latest/manifests.html "Flatpak documentation: Manifests"
 [4]: https://wayland.app/protocols/virtual-keyboard-unstable-v1 "Wayland virtual-keyboard protocol"
+
+## Session and capability diagnostics
+
+The independent application can emit a safe report without opening a window or
+sending input events:
+
+```bash
+onboard --diagnose
+```
+
+The command writes JSON describing the platform, architecture, session type,
+desktop metadata, selected native-input validator, and the actual bridge state.
+Values such as `not-built` and `unsupported` are deliberate capability states,
+not successful placeholders. This is the preferred non-sensitive attachment for
+bug reports and for deciding whether to use the X11 or Wayland backend.

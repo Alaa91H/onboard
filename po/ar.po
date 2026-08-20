@@ -14,15 +14,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: onboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-20 18:24+0000\n"
+"POT-Creation-Date: 2026-08-20 19:56+0000\n"
 "PO-Revision-Date: 2026-08-20 18:18+0000\n"
 "Last-Translator: Onboard Arabic localization contributors\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "Language: ar\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 "X-Generator: Onboard gettext tooling\n"
 
 #: ../Onboard/Appearance.py:130
@@ -42,8 +43,8 @@ msgstr "خطأ في الحفظ "
 #: ../Onboard/Appearance.py:853
 #, python-brace-format
 msgid ""
-"Loading legacy color scheme format '{old_format}', please consider upgrading"
-" to current format '{new_format}': '{filename}'"
+"Loading legacy color scheme format '{old_format}', please consider upgrading "
+"to current format '{new_format}': '{filename}'"
 msgstr ""
 "جارٍ تحميل تنسيق مخطط الألوان القديم '{old_format}'، يُرجى النظر في الترقية "
 "إلى التنسيق الحالي '{new_format}': '{filename}'"
@@ -94,8 +95,8 @@ msgid ""
 "Silently fail to start in the given desktop environments. DESKTOPS is a "
 "comma-separated list of XDG desktop names, e.g. GNOME for GNOME Shell."
 msgstr ""
-"الفشل في البدء بصمت في بيئات سطح المكتب المحددة. DESKTOPS هي قائمة أسماء سطح"
-" مكتب XDG مفصولة بفواصل، على سبيل المثال GNOME لـ GNOME Shell."
+"الفشل في البدء بصمت في بيئات سطح المكتب المحددة. DESKTOPS هي قائمة أسماء سطح "
+"مكتب XDG مفصولة بفواصل، على سبيل المثال GNOME لـ GNOME Shell."
 
 #: ../Onboard/Config.py:269
 msgid ""
@@ -117,49 +118,55 @@ msgstr ""
 "تجاوز الكشف التلقائي واختر الاستثناءات يدويًا\n"
 "QUIRKS={metacity|compiz|mutter}"
 
-#: ../Onboard/Config.py:402
+#: ../Onboard/Config.py:298
+msgid "Print a JSON capability report and exit without opening the keyboard"
+msgstr "اطبع تقرير قدرات بتنسيق JSON ثم اخرج دون فتح لوحة المفاتيح"
+
+#: ../Onboard/Config.py:406
 msgid "Migrating user directory '{}' to '{}'."
 msgstr "جارٍ ترحيل دليل المستخدم '{}' إلى '{}'."
 
 #. honor XDG spec
 #. python >2.5
-#: ../Onboard/Config.py:410
+#: ../Onboard/Config.py:414
 msgid "failed to migrate user directory. "
 msgstr "فشل في ترحيل دليل المستخدم. "
 
-#: ../Onboard/Config.py:894
+#: ../Onboard/Config.py:898
 #, python-brace-format
 msgid "layout '{filename}' does not exist"
 msgstr "التخطيط '{filename}' غير موجود"
 
-#: ../Onboard/Config.py:935
+#: ../Onboard/Config.py:939
 #, python-brace-format
 msgid "theme '{filename}' does not exist"
 msgstr "السمة '{filename}' غير موجودة"
 
-#: ../Onboard/Config.py:960
+#: ../Onboard/Config.py:964
 msgid "Loading theme from '{}'"
 msgstr "تحميل السمة من '{}'"
 
-#: ../Onboard/Config.py:964
+#: ../Onboard/Config.py:968
 msgid "Unable to read theme '{}'"
 msgstr "تعذّر قراءة السمة '{}'"
 
-#: ../Onboard/Config.py:1205
+#: ../Onboard/Config.py:1209
 msgid ""
 "Enabling auto-show requires Gnome Accessibility.\n"
 "\n"
-"Onboard can turn on accessiblity now, however it is recommended that you log out and back in for it to reach its full potential.\n"
+"Onboard can turn on accessiblity now, however it is recommended that you log "
+"out and back in for it to reach its full potential.\n"
 "\n"
 "Enable accessibility now?"
 msgstr ""
 "تفعيل العرض التلقائي يتطلب إمكانية الوصول في جنوم.\n"
 "\n"
-"يمكن لـ Onboard تشغيل إمكانية الوصول الآن، ومع ذلك يُنصح بتسجيل الخروج ثم تسجيل الدخول مرة أخرى حتى تعمل بشكل كامل.\n"
+"يمكن لـ Onboard تشغيل إمكانية الوصول الآن، ومع ذلك يُنصح بتسجيل الخروج ثم "
+"تسجيل الدخول مرة أخرى حتى تعمل بشكل كامل.\n"
 "\n"
 "هل تريد تفعيل إمكانية الوصول الآن؟"
 
-#: ../Onboard/Config.py:1968
+#: ../Onboard/Config.py:1972
 #, python-brace-format
 msgid "color scheme '{filename}' does not exist"
 msgstr "مخطط اللون '{filename}' غير موجود"
@@ -173,15 +180,15 @@ msgstr "مخطط gsettings الخاص بـ '{}' غير مثبت"
 #, python-brace-format
 msgid "{description} '{filename}' not found yet, retrying in default paths"
 msgstr ""
-"{description} '{filename}' لم يُعثر عليه بعد، جارٍ إعادة المحاولة في "
-"المسارات الافتراضية"
+"{description} '{filename}' لم يُعثر عليه بعد، جارٍ إعادة المحاولة في المسارات "
+"الافتراضية"
 
 #: ../Onboard/ConfigUtils.py:448
 #, python-brace-format
 msgid "unable to locate '{filename}', loading default {description} instead"
 msgstr ""
-"غير قادر على تحديد موقع '{filename}'، جارٍ تحميل {description} الافتراضي "
-"بدلًا من ذلك"
+"غير قادر على تحديد موقع '{filename}'، جارٍ تحميل {description} الافتراضي بدلًا "
+"من ذلك"
 
 #: ../Onboard/ConfigUtils.py:457 ../Onboard/ConfigUtils.py:513
 #, python-brace-format
@@ -373,15 +380,14 @@ msgid "Onboard on-screen keyboard"
 msgstr "لوحة مفاتيح الشاشة"
 
 #. Default dialog title: name of the application
-#: ../Onboard/KbdWindow.py:194 ../Onboard/KeyboardWidget.py:2233
+#: ../Onboard/KbdWindow.py:194 ../Onboard/KeyboardWidget.py:2243
 #: ../Onboard/WindowUtils.py:1127 ../data/onboard-autostart.desktop.in.h:1
 #: ../data/onboard.desktop.in.h:1
 msgid "Onboard"
 msgstr "لوحة مفاتيح الشاشة"
 
 #: ../Onboard/KbdWindow.py:288
-msgid ""
-"no window transparency available; screen doesn't support alpha channels"
+msgid "no window transparency available; screen doesn't support alpha channels"
 msgstr "لا تتوفر شفافية النوافذ؛ الشاشة لا تدعم قنوات الألفا"
 
 #. Title of the snippets dialog for existing snippets
@@ -427,68 +433,72 @@ msgstr "_لغات أخرى"
 msgid "Clipboard is empty"
 msgstr "الحافظة فارغة"
 
-#: ../Onboard/KeyboardWidget.py:2119
+#: ../Onboard/KeyboardWidget.py:2116
+msgid "_Clear history"
+msgstr "_مسح المحفوظات"
+
+#: ../Onboard/KeyboardWidget.py:2124
 msgid "(empty line)"
 msgstr "(سطر فارغ)"
 
-#: ../Onboard/KeyboardWidget.py:2139
+#: ../Onboard/KeyboardWidget.py:2149
 msgid "Input-source controller is unavailable"
 msgstr "متحكّم مصادر الإدخال غير متاح"
 
-#: ../Onboard/KeyboardWidget.py:2148
+#: ../Onboard/KeyboardWidget.py:2158
 msgid "No input sources are configured"
 msgstr "لم يتم تكوين أي مصادر إدخال"
 
-#: ../Onboard/KeyboardWidget.py:2161
+#: ../Onboard/KeyboardWidget.py:2171
 msgid "Input-source switching is unavailable"
 msgstr "التبديل بين مصادر الإدخال غير متاح"
 
-#: ../Onboard/KeyboardWidget.py:2186
+#: ../Onboard/KeyboardWidget.py:2196
 msgid "_Remove suggestion…"
 msgstr "_إزالة الاقتراح…"
 
-#: ../Onboard/KeyboardWidget.py:2242
+#: ../Onboard/KeyboardWidget.py:2252
 msgid "Remove word suggestion"
 msgstr "إزالة اقتراح الكلمة"
 
-#: ../Onboard/KeyboardWidget.py:2253
+#: ../Onboard/KeyboardWidget.py:2263
 msgid "Remove '{}' everywhere."
 msgstr "إزالة '{}' في كل مكان."
 
-#: ../Onboard/KeyboardWidget.py:2263
+#: ../Onboard/KeyboardWidget.py:2273
 msgid "This will only affect learned suggestions."
 msgstr "سيؤثر هذا على الاقتراحات التي تم تعلمها فقط."
 
-#: ../Onboard/KeyboardWidget.py:2303
+#: ../Onboard/KeyboardWidget.py:2313
 msgid "Remove '{}' only where it occurs at text begin."
 msgstr "إزالة '{}' فقط عندما يظهر في بداية النص."
 
-#: ../Onboard/KeyboardWidget.py:2306
+#: ../Onboard/KeyboardWidget.py:2316
 msgid "Remove '{}' only where it occurs at sentence begin."
 msgstr "إزالة '{}' فقط عندما يظهر في بداية الجملة."
 
-#: ../Onboard/KeyboardWidget.py:2309
+#: ../Onboard/KeyboardWidget.py:2319
 msgid "Remove '{}' only where it occurs after numbers."
 msgstr "إزالة '{}' فقط عندما يظهر بعد الأرقام."
 
-#: ../Onboard/KeyboardWidget.py:2312
+#: ../Onboard/KeyboardWidget.py:2322
 msgid "Remove '{}' only where it occurs after '{}'."
 msgstr "إزالة '{}' فقط عندما يظهر بعد '{}'."
 
-#: ../Onboard/KeyboardWidget.py:2352
+#: ../Onboard/KeyboardWidget.py:2362
 msgid "_Close"
 msgstr "_إغلاق"
 
 #. model.clear()
-#: ../Onboard/KeyboardWidget.py:2396 ../Onboard/settings.py:857
+#: ../Onboard/KeyboardWidget.py:2406 ../Onboard/settings.py:862
 msgid "Core layouts"
 msgstr "التخطيطات الأساسية"
 
-#: ../Onboard/KeyboardWidget.py:2397 ../Onboard/settings.py:858
+#: ../Onboard/KeyboardWidget.py:2407 ../Onboard/settings.py:863
 msgid "Contributions"
 msgstr "المساهمات"
 
-#: ../Onboard/KeyboardWidget.py:2398 ../Onboard/settings.py:859
+#: ../Onboard/KeyboardWidget.py:2408 ../Onboard/settings.py:864
 msgid "My layouts"
 msgstr "تخطيطاتي"
 
@@ -503,8 +513,8 @@ msgid ""
 "Loading legacy layout, format '{}'. Please consider upgrading to current "
 "format '{}'"
 msgstr ""
-"جارٍ تحميل تخطيط قديم، التنسيق '{}'. يُرجى النظر في الترقية إلى التنسيق "
-"الحالي '{}'."
+"جارٍ تحميل تخطيط قديم، التنسيق '{}'. يُرجى النظر في الترقية إلى التنسيق الحالي "
+"'{}'."
 
 #: ../Onboard/LayoutLoaderSVG.py:449
 msgid "Ignoring key '{}'. No svg filename defined."
@@ -531,29 +541,37 @@ msgstr "فشل copy_layouts، صيغة تخطيط غير مدعومة '{}'."
 msgid "copying svg file '{}' to '{}'"
 msgstr "ينسخ ملف svg '{}' إلى '{}'"
 
-#: ../Onboard/OnboardGtk.py:469
+#: ../Onboard/OnboardGtk.py:476
 msgid ""
-"Onboard is configured to appear with the dialog to unlock the screen; for example to dismiss the password-protected screensaver.\n"
+"Onboard is configured to appear with the dialog to unlock the screen; for "
+"example to dismiss the password-protected screensaver.\n"
 "\n"
-"However the system is not configured anymore to use Onboard to unlock the screen. A possible reason can be that another application configured the system to use something else.\n"
+"However the system is not configured anymore to use Onboard to unlock the "
+"screen. A possible reason can be that another application configured the "
+"system to use something else.\n"
 "\n"
-"Would you like to reconfigure the system to show Onboard when unlocking the screen?"
+"Would you like to reconfigure the system to show Onboard when unlocking the "
+"screen?"
 msgstr ""
-"تم تكوين Onboard للظهور مع مربع الحوار لفتح الشاشة؛ على سبيل المثال لإلغاء شاشة التوقف المحمية بكلمة مرور.\n"
+"تم تكوين Onboard للظهور مع مربع الحوار لفتح الشاشة؛ على سبيل المثال لإلغاء "
+"شاشة التوقف المحمية بكلمة مرور.\n"
 "\n"
-"ومع ذلك، لم يعد النظام مكوّنًا لاستخدام Onboard لفتح الشاشة. قد يكون سبب ذلك أن تطبيقًا آخر قام بتكوين النظام لاستخدام شيء آخر.\n"
+"ومع ذلك، لم يعد النظام مكوّنًا لاستخدام Onboard لفتح الشاشة. قد يكون سبب ذلك "
+"أن تطبيقًا آخر قام بتكوين النظام لاستخدام شيء آخر.\n"
 "\n"
 "هل ترغب في إعادة تكوين النظام لعرض Onboard عند فتح الشاشة؟"
 
-#: ../Onboard/OnboardGtk.py:488
+#: ../Onboard/OnboardGtk.py:495
 msgid ""
-"Onboard is configured to appear with the dialog to unlock the screen; for example to dismiss the password-protected screensaver.\n"
+"Onboard is configured to appear with the dialog to unlock the screen; for "
+"example to dismiss the password-protected screensaver.\n"
 "\n"
 "However this function is disabled in the system.\n"
 "\n"
 "Would you like to activate it?"
 msgstr ""
-"تم تكوين Onboard للظهور مع مربع الحوار لفتح الشاشة؛ على سبيل المثال لإلغاء شاشة التوقف المحمية بكلمة مرور.\n"
+"تم تكوين Onboard للظهور مع مربع الحوار لفتح الشاشة؛ على سبيل المثال لإلغاء "
+"شاشة التوقف المحمية بكلمة مرور.\n"
 "\n"
 "ومع ذلك فهذه الوظيفة معطلة في النظام.\n"
 "\n"
@@ -643,41 +661,41 @@ msgstr ""
 "يجب إعادة تعيين الاقتراحات، لكن الملف الخاطئ سيبقى في \n"
 "'{}'"
 
-#: ../Onboard/settings.py:317
+#: ../Onboard/settings.py:322
 msgid "Onboard Preferences"
 msgstr "تفضيلات لوحة مفاتيح الشاشة"
 
 #. touch_feedback_size_label: 0=auto, i.e. let Onboard guess
 #. the size of the label popup.
-#: ../Onboard/settings.py:690
+#: ../Onboard/settings.py:695
 msgid "auto"
 msgstr "تلقائي"
 
-#: ../Onboard/settings.py:773
+#: ../Onboard/settings.py:778
 msgid "Copy layout '{}' to this new name:"
 msgstr "انسخ التخطيط '{}' إلى هذا الاسم الجديد:"
 
-#: ../Onboard/settings.py:786
+#: ../Onboard/settings.py:791
 msgid "Delete layout '{}'?"
 msgstr "حذف التخطيط '{}'؟"
 
-#: ../Onboard/settings.py:834
+#: ../Onboard/settings.py:839
 msgid "System settings not found ({}): {}"
 msgstr "لم يتم العثور على إعدادات النظام ({}): {}"
 
-#: ../Onboard/settings.py:894
+#: ../Onboard/settings.py:899
 msgid "Author: {}"
 msgstr "المؤلف: {}"
 
-#: ../Onboard/settings.py:898
+#: ../Onboard/settings.py:903
 msgid "About Layout"
 msgstr "عن التخطيط"
 
-#: ../Onboard/settings.py:1003
+#: ../Onboard/settings.py:1008
 msgid "Enter a name for the new theme:"
 msgstr "أدخل اسم للسمة الجديدة:"
 
-#: ../Onboard/settings.py:1011
+#: ../Onboard/settings.py:1016
 #, python-brace-format
 msgid ""
 "This theme file already exists.\n"
@@ -690,117 +708,117 @@ msgstr ""
 "\n"
 "أتريد استبداله؟"
 
-#: ../Onboard/settings.py:1028
+#: ../Onboard/settings.py:1033
 msgid "Reset selected theme to Onboard defaults?"
 msgstr "إعادة السمة المُختارة إلى الافتراضيات؟"
 
-#: ../Onboard/settings.py:1030
+#: ../Onboard/settings.py:1035
 msgid "Delete selected theme?"
 msgstr "أأحذف السمة المُختارة؟"
 
 #. Translators: reset button of Preferences->Theme.
-#: ../Onboard/settings.py:1159
+#: ../Onboard/settings.py:1164
 msgid "_Reset"
 msgstr "_إعادة تعيين"
 
 #. Translators: delete button of Preferences->Theme. It used to be
 #. stock item STOCK_DELETE until Gtk 3.10 deprecated those.
-#: ../Onboard/settings.py:1163
+#: ../Onboard/settings.py:1168
 msgid "_Delete"
 msgstr "_حذف"
 
 #. Translators: header of a tree view column with toggles to ignore
 #. keyboard devices (Preferences->Auto-show->External Keyboards).
-#: ../Onboard/settings.py:1300
+#: ../Onboard/settings.py:1305
 msgid "Ignore"
 msgstr "تجاهل"
 
 #. Translators: header of a tree view column with device names
 #. (Preferences->Auto-show->External Keyboards).
-#: ../Onboard/settings.py:1304
+#: ../Onboard/settings.py:1309
 msgid "Device"
 msgstr "الجهاز"
 
 #. Key style with flat fill- and border colors
-#: ../Onboard/settings.py:1641
+#: ../Onboard/settings.py:1646
 msgid "Flat"
 msgstr "مسطّح"
 
 #. Key style with simple gradients
-#: ../Onboard/settings.py:1643 ../settings_theme_dialog.ui.h:6
+#: ../Onboard/settings.py:1648 ../settings_theme_dialog.ui.h:6
 msgid "Gradient"
 msgstr "متدّرج"
 
 #. Key style for dish-like key caps
-#: ../Onboard/settings.py:1645
+#: ../Onboard/settings.py:1650
 msgid "Dish"
 msgstr "بارز"
 
-#: ../Onboard/settings.py:1694 ../Onboard/settings.py:1751
+#: ../Onboard/settings.py:1699 ../Onboard/settings.py:1756
 msgid "Default"
 msgstr "الأساسي"
 
-#: ../Onboard/settings.py:1735
+#: ../Onboard/settings.py:1740
 msgid "Bold"
 msgstr "عريض"
 
-#: ../Onboard/settings.py:1737
+#: ../Onboard/settings.py:1742
 msgid "Italic"
 msgstr "مائل"
 
-#: ../Onboard/settings.py:1739
+#: ../Onboard/settings.py:1744
 msgid "Condensed"
 msgstr "مُركّز"
 
-#: ../Onboard/settings.py:1752
+#: ../Onboard/settings.py:1757
 msgid ""
 msgstr ""
 
-#: ../Onboard/settings.py:1752
+#: ../Onboard/settings.py:1757
 msgid "Ubuntu Logo"
 msgstr "شعار أوبونتو"
 
-#: ../Onboard/settings.py:1886
+#: ../Onboard/settings.py:1891
 msgid "Step"
 msgstr "خطوة"
 
-#: ../Onboard/settings.py:1887
+#: ../Onboard/settings.py:1892
 msgid "Left"
 msgstr "يسار"
 
-#: ../Onboard/settings.py:1888
+#: ../Onboard/settings.py:1893
 msgid "Right"
 msgstr "يمين"
 
-#: ../Onboard/settings.py:1889
+#: ../Onboard/settings.py:1894
 msgid "Up"
 msgstr "أعلى"
 
-#: ../Onboard/settings.py:1890
+#: ../Onboard/settings.py:1895
 msgid "Down"
 msgstr "أسفل"
 
-#: ../Onboard/settings.py:1891
+#: ../Onboard/settings.py:1896
 msgid "Activate"
 msgstr "تنشيط"
 
-#: ../Onboard/settings.py:2060
+#: ../Onboard/settings.py:2065
 msgid "Action:"
 msgstr "الإجراء:"
 
-#: ../Onboard/settings.py:2224
+#: ../Onboard/settings.py:2229
 msgid "Disabled"
 msgstr "مُعطّل"
 
-#: ../Onboard/settings.py:2230
+#: ../Onboard/settings.py:2235
 msgid "Button"
 msgstr "الزر"
 
-#: ../Onboard/settings.py:2285 ../Onboard/settings.py:2330
+#: ../Onboard/settings.py:2290 ../Onboard/settings.py:2335
 msgid "Press a button..."
 msgstr "اضغط زر..."
 
-#: ../Onboard/settings.py:2332
+#: ../Onboard/settings.py:2337
 msgid "Press a key..."
 msgstr "اضغط مفتاح..."
 
@@ -808,8 +826,7 @@ msgstr "اضغط مفتاح..."
 msgid "failed to create directory '{}': {}"
 msgstr "فشل إنشاء الدليل '{}': {}"
 
-#. translators: this is a 'tooltip' of the key_template 'hoverclick' in
-#. keyboard layout 'key_defs.xml'
+#. translators: this is a 'tooltip' of the key_template 'hoverclick' in keyboard layout 'key_defs.xml'
 #: ../data/layoutstrings.py:35 ../data/layoutstrings.py:193
 msgid "Activate Hover Click"
 msgstr "تفعيل النقر بالحومان"
@@ -843,14 +860,12 @@ msgstr "Ctrl"
 msgid "Del"
 msgstr "Del"
 
-#. translators: this is a 'tooltip' of the key_template 'doubleclick' in
-#. keyboard layout 'key_defs.xml'
+#. translators: this is a 'tooltip' of the key_template 'doubleclick' in keyboard layout 'key_defs.xml'
 #: ../data/layoutstrings.py:47 ../data/layoutstrings.py:220
 msgid "Double click"
 msgstr "نقر مزدوج"
 
-#. translators: this is a 'tooltip' of the key_template 'dragclick' in
-#. keyboard layout 'key_defs.xml'
+#. translators: this is a 'tooltip' of the key_template 'dragclick' in keyboard layout 'key_defs.xml'
 #: ../data/layoutstrings.py:48 ../data/layoutstrings.py:223
 msgid "Drag click"
 msgstr "نقر وسحب"
@@ -878,14 +893,12 @@ msgstr "مفاتيح الوظائف"
 msgid "Number block and function keys"
 msgstr "لوحة الأرقام ومفاتيح الوظائف"
 
-#. translators: this is a 'tooltip' of the key_template 'hide' in keyboard
-#. layout 'key_defs.xml'
+#. translators: this is a 'tooltip' of the key_template 'hide' in keyboard layout 'key_defs.xml'
 #: ../data/layoutstrings.py:57 ../data/layoutstrings.py:247
 msgid "Hide Onboard"
 msgstr "أخفِ لوحة المفاتيح"
 
-#. translators: this is a 'tooltip' of the key 'pause-learning.wordlist' in
-#. keyboard layout 'word_suggestions.xml'
+#. translators: this is a 'tooltip' of the key 'pause-learning.wordlist' in keyboard layout 'word_suggestions.xml'
 #: ../data/layoutstrings.py:58 ../data/layoutstrings.py:292
 msgid "Pause learning"
 msgstr "إيقاف التعلم مؤقتًا"
@@ -900,8 +913,7 @@ msgstr "Hm"
 msgid "Ins"
 msgstr "Ins"
 
-#. translators: this is a 'tooltip' of the key_template 'layer0' in keyboard
-#. layout 'key_defs.xml'
+#. translators: this is a 'tooltip' of the key_template 'layer0' in keyboard layout 'key_defs.xml'
 #: ../data/layoutstrings.py:63 ../data/layoutstrings.py:265
 msgid "Main keyboard"
 msgstr "لوحة المفاتيح الأساسية"
@@ -911,14 +923,12 @@ msgstr "لوحة المفاتيح الأساسية"
 msgid "Menu"
 msgstr "القائمة"
 
-#. translators: this is a 'tooltip' of the key_template 'middleclick' in
-#. keyboard layout 'key_defs.xml'
+#. translators: this is a 'tooltip' of the key_template 'middleclick' in keyboard layout 'key_defs.xml'
 #: ../data/layoutstrings.py:66 ../data/layoutstrings.py:274
 msgid "Middle click"
 msgstr "نقرة وسطى"
 
-#. translators: this is a 'tooltip' of the key_template 'move' in keyboard
-#. layout 'key_defs.xml'
+#. translators: this is a 'tooltip' of the key_template 'move' in keyboard layout 'key_defs.xml'
 #: ../data/layoutstrings.py:67 ../data/layoutstrings.py:283
 msgid "Move Onboard"
 msgstr "حرّك لوحة المفاتيح"
@@ -928,8 +938,7 @@ msgstr "حرّك لوحة المفاتيح"
 msgid "Nm&#10;Lk"
 msgstr "Nm&#10;Lk"
 
-#. translators: this is a 'tooltip' of the key_template 'layer1' in keyboard
-#. layout 'key_defs.xml'
+#. translators: this is a 'tooltip' of the key_template 'layer1' in keyboard layout 'key_defs.xml'
 #: ../data/layoutstrings.py:70 ../data/layoutstrings.py:289
 msgid "Number block and snippets"
 msgstr "لوحة الأرقام والقصاصات"
@@ -950,8 +959,7 @@ msgid "Pg&#10;Up"
 msgstr "Pg&#10;Up"
 
 #. translators: very short label of the Preferences button
-#. translators: this is a 'tooltip' of the key_template 'settings' in keyboard
-#. layout 'key_defs.xml'
+#. translators: this is a 'tooltip' of the key_template 'settings' in keyboard layout 'key_defs.xml'
 #: ../data/layoutstrings.py:78 ../data/layoutstrings.py:298
 msgid "Preferences"
 msgstr "التفضيلات"
@@ -971,8 +979,7 @@ msgstr "اخرُج"
 msgid "Return"
 msgstr "إدخال"
 
-#. translators: this is a 'tooltip' of the key_template 'secondaryclick' in
-#. keyboard layout 'key_defs.xml'
+#. translators: this is a 'tooltip' of the key_template 'secondaryclick' in keyboard layout 'key_defs.xml'
 #: ../data/layoutstrings.py:85 ../data/layoutstrings.py:313
 msgid "Right click"
 msgstr "نقرة يمنى"
@@ -982,10 +989,8 @@ msgstr "نقرة يمنى"
 msgid "Scroll"
 msgstr "Scroll"
 
-#. translators: this is a 'tooltip' of the key_template 'layer2' in keyboard
-#. layout 'key_defs.xml'
-#: ../data/layoutstrings.py:88 ../data/layoutstrings.py:340
-#: ../settings.ui.h:27
+#. translators: this is a 'tooltip' of the key_template 'layer2' in keyboard layout 'key_defs.xml'
+#: ../data/layoutstrings.py:88 ../data/layoutstrings.py:340 ../settings.ui.h:27
 msgid "Snippets"
 msgstr "القصاصات"
 
@@ -993,8 +998,7 @@ msgstr "القصاصات"
 msgid "Space"
 msgstr "مسافة"
 
-#. translators: this is a 'tooltip' of the key_template 'showclick' in
-#. keyboard layout 'key_defs.xml'
+#. translators: this is a 'tooltip' of the key_template 'showclick' in keyboard layout 'key_defs.xml'
 #: ../data/layoutstrings.py:90 ../data/layoutstrings.py:364
 msgid "Toggle click helpers"
 msgstr "مساعدات النقر"
@@ -1010,22 +1014,19 @@ msgid "Win"
 msgstr "Win"
 
 #. translators: description of unicode character U+2602
-#. translators: this is a 'tooltip' of the key 'DB05' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DB05' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:96 ../data/layoutstrings.py:367
 msgid "Umbrella"
 msgstr "مظلة"
 
 #. translators: description of unicode character U+2606
-#. translators: this is a 'tooltip' of the key 'DB07' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DB07' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:98 ../data/layoutstrings.py:373
 msgid "White star"
 msgstr "نجمة بيضاء"
 
 #. translators: description of unicode character U+260F
-#. translators: this is a 'tooltip' of the key 'DB03' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DB03' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:100 ../data/layoutstrings.py:379
 msgid "White telephone"
 msgstr "هاتف أبيض"
@@ -1041,71 +1042,61 @@ msgid "Skull and crossbones"
 msgstr "جمجمة وعظمتين"
 
 #. translators: description of unicode character U+2622
-#. translators: this is a 'tooltip' of the key 'DB09' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DB09' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:106 ../data/layoutstrings.py:310
 msgid "Radioactive sign"
 msgstr "علامة نشاط إشعاعي"
 
 #. translators: description of unicode character U+262E
-#. translators: this is a 'tooltip' of the key 'DB06' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DB06' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:108 ../data/layoutstrings.py:295
 msgid "Peace symbol"
 msgstr "رمز السلام"
 
 #. translators: description of unicode character U+262F
-#. translators: this is a 'tooltip' of the key 'DB08' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DB08' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:110 ../data/layoutstrings.py:385
 msgid "Yin yang"
 msgstr "يين يانغ"
 
 #. translators: description of unicode character U+2639
-#. translators: this is a 'tooltip' of the key 'DC01' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DC01' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:112 ../data/layoutstrings.py:238
 msgid "Frowning face"
 msgstr "وجه عبوس"
 
 #. translators: description of unicode character U+263A
-#. translators: this is a 'tooltip' of the key 'DD01' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DD01' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:114 ../data/layoutstrings.py:322
 msgid "Smiling face"
 msgstr "وجه ضاحك"
 
 #. translators: description of unicode character U+263C
-#. translators: this is a 'tooltip' of the key 'DD10' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DD10' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:116 ../data/layoutstrings.py:376
 msgid "White sun with rays"
 msgstr "شمس بيضاء مع أشعة"
 
 #. translators: description of unicode character U+263E
-#. translators: this is a 'tooltip' of the key 'DC10' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DC10' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:118 ../data/layoutstrings.py:262
 msgid "Last quarter moon"
 msgstr "هلال"
 
 #. translators: description of unicode character U+2640
-#. translators: this is a 'tooltip' of the key 'DD09' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DD09' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:120 ../data/layoutstrings.py:235
 msgid "Female sign"
 msgstr "رمز الإناث"
 
 #. translators: description of unicode character U+2642
-#. translators: this is a 'tooltip' of the key 'DC09' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DC09' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:122 ../data/layoutstrings.py:268
 msgid "Male sign"
 msgstr "رمز الذكور"
 
 #. translators: description of unicode character U+2661
-#. translators: this is a 'tooltip' of the key 'DB01' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DB01' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:124 ../data/layoutstrings.py:370
 msgid "White heart suit"
 msgstr "قلب أبيض"
@@ -1126,15 +1117,13 @@ msgid "White club suit"
 msgstr "رمز البستوني الأبيض"
 
 #. translators: description of unicode character U+266B
-#. translators: this is a 'tooltip' of the key 'DB02' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DB02' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:132 ../data/layoutstrings.py:205
 msgid "Beamed eighth note"
 msgstr "نغمة ثُمنية متصلة"
 
 #. translators: description of unicode character U+2709
-#. translators: this is a 'tooltip' of the key 'DB04' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DB04' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:134 ../data/layoutstrings.py:226
 msgid "Envelope"
 msgstr "ظرف"
@@ -1150,43 +1139,37 @@ msgid "Writing hand"
 msgstr "يد تكتب"
 
 #. translators: description of unicode character U+1F604
-#. translators: this is a 'tooltip' of the key 'DD03' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DD03' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:140 ../data/layoutstrings.py:331
 msgid "Smiling face with open mouth and smiling eyes"
 msgstr "وجه مبتسم بفم مفتوح وعيون مبتسمة"
 
 #. translators: description of unicode character U+1F607
-#. translators: this is a 'tooltip' of the key 'DD08' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DD08' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:142 ../data/layoutstrings.py:325
 msgid "Smiling face with halo"
 msgstr "وجه مبتسم بهالة"
 
 #. translators: description of unicode character U+1F608
-#. translators: this is a 'tooltip' of the key 'DC08' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DC08' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:144 ../data/layoutstrings.py:328
 msgid "Smiling face with horns"
 msgstr "وجه مبتسم بقرون"
 
 #. translators: description of unicode character U+1F609
-#. translators: this is a 'tooltip' of the key 'DD04' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DD04' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:146 ../data/layoutstrings.py:382
 msgid "Winking face"
 msgstr "وجه يغمز"
 
 #. translators: description of unicode character U+1F60A
-#. translators: this is a 'tooltip' of the key 'DD02' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DD02' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:148 ../data/layoutstrings.py:334
 msgid "Smiling face with smiling eyes"
 msgstr "وجه مبتسم بعيون مبتسمة"
 
 #. translators: description of unicode character U+1F60B
-#. translators: this is a 'tooltip' of the key 'DC07' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DC07' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:150 ../data/layoutstrings.py:229
 msgid "Face savouring delicious food"
 msgstr "وجه يستمتع بطعام لذيذ"
@@ -1197,8 +1180,7 @@ msgid "Smiling face with heart-shaped eyes"
 msgstr "وجه مبتسم بعيون على شكل قلب"
 
 #. translators: description of unicode character U+1F60E
-#. translators: this is a 'tooltip' of the key 'DD07' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DD07' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:154 ../data/layoutstrings.py:337
 msgid "Smiling face with sunglasses"
 msgstr "وجه مبتسم بنظارة شمسية"
@@ -1219,8 +1201,7 @@ msgid "Unamused face"
 msgstr "وجه غير مبالٍ"
 
 #. translators: description of unicode character U+1F616
-#. translators: this is a 'tooltip' of the key 'DC05' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DC05' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:162 ../data/layoutstrings.py:208
 msgid "Confounded face"
 msgstr "وجه مرتبك"
@@ -1231,15 +1212,13 @@ msgid "Face throwing a kiss"
 msgstr "وجه يرسل قبلة"
 
 #. translators: description of unicode character U+1F61A
-#. translators: this is a 'tooltip' of the key 'DD06' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DD06' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:166 ../data/layoutstrings.py:259
 msgid "Kissing face with closed eyes"
 msgstr "وجه يرسل قبلة وعيون مغلقة"
 
 #. translators: description of unicode character U+1F61C
-#. translators: this is a 'tooltip' of the key 'DD05' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DD05' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:168 ../data/layoutstrings.py:232
 msgid "Face with stuck-out tongue and winking eye"
 msgstr "وجه يخرج لسانه ويغمز بعينه"
@@ -1255,8 +1234,7 @@ msgid "Disappointed face"
 msgstr "وجه محبط"
 
 #. translators: description of unicode character U+1F620
-#. translators: this is a 'tooltip' of the key 'DC02' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DC02' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:174 ../data/layoutstrings.py:196
 msgid "Angry face"
 msgstr "وجه غاضب"
@@ -1267,8 +1245,7 @@ msgid "Pouting face"
 msgstr "وجه عابس"
 
 #. translators: description of unicode character U+1F622
-#. translators: this is a 'tooltip' of the key 'DC03' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DC03' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:178 ../data/layoutstrings.py:211
 msgid "Crying face"
 msgstr "وجه باكٍ"
@@ -1284,15 +1261,13 @@ msgid "Weary face"
 msgstr "وجه منهك"
 
 #. translators: description of unicode character U+1F62B
-#. translators: this is a 'tooltip' of the key 'DC06' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DC06' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:184 ../data/layoutstrings.py:361
 msgid "Tired face"
 msgstr "وجه متعب"
 
 #. translators: description of unicode character U+1F632
-#. translators: this is a 'tooltip' of the key 'DC04' in keyboard layout
-#. 'Small.onboard'
+#. translators: this is a 'tooltip' of the key 'DC04' in keyboard layout 'Small.onboard'
 #: ../data/layoutstrings.py:186 ../data/layoutstrings.py:202
 msgid "Astonished face"
 msgstr "وجه مدهوش"
@@ -1307,26 +1282,22 @@ msgstr "وجه محمر"
 msgid "Dizzy face"
 msgstr "وجه دوار"
 
-#. translators: this is a 'tooltip' of the key_template 'layer4' in keyboard
-#. layout 'Whiteboard.onboard'
+#. translators: this is a 'tooltip' of the key_template 'layer4' in keyboard layout 'Whiteboard.onboard'
 #: ../data/layoutstrings.py:199
 msgid "Arrows"
 msgstr "أسهم"
 
-#. translators: this is a 'tooltip' of the key_template 'layer5' in keyboard
-#. layout 'Whiteboard.onboard'
+#. translators: this is a 'tooltip' of the key_template 'layer5' in keyboard layout 'Whiteboard.onboard'
 #: ../data/layoutstrings.py:214
 msgid "Custom"
 msgstr "مخصص"
 
-#. translators: this is a 'summary' of the keyboard layout 'Full
-#. Keyboard.onboard'
+#. translators: this is a 'summary' of the keyboard layout 'Full Keyboard.onboard'
 #: ../data/layoutstrings.py:217
 msgid "Desktop keyboard with edit and function keys"
 msgstr "لوحة مفاتيح جهاز سطح المكتب مع إمكانية التعديل ومفاتيح الوظائف"
 
-#. translators: this is a 'tooltip' of the key_template 'layer0' in keyboard
-#. layout 'Whiteboard.onboard'
+#. translators: this is a 'tooltip' of the key_template 'layer0' in keyboard layout 'Whiteboard.onboard'
 #: ../data/layoutstrings.py:241
 msgid "Greek"
 msgstr "يونانية"
@@ -1336,14 +1307,12 @@ msgstr "يونانية"
 msgid "Grid of keys, suitable for keyboard scanning"
 msgstr "شبكة مفاتيح مناسبة للمسح الضوئي للوحة المفاتيح"
 
-#. translators: this is a 'tooltip' of the key 'hide' in keyboard layout
-#. 'Whiteboard_wide.onboard'
+#. translators: this is a 'tooltip' of the key 'hide' in keyboard layout 'Whiteboard_wide.onboard'
 #: ../data/layoutstrings.py:250
 msgid "Hide keyboard"
 msgstr "إخفاء لوحة المفاتيح"
 
-#. translators: this is a 'description' of the keyboard layout
-#. 'Whiteboard.onboard'
+#. translators: this is a 'description' of the keyboard layout 'Whiteboard.onboard'
 #: ../data/layoutstrings.py:253
 msgid ""
 "Keyboard layout with Greek literals, arrows and more, for math and physics "
@@ -1352,14 +1321,15 @@ msgstr ""
 "تخطيط لوحة مفاتيح يحتوي الأحرف اليونانية، والأسهم وغير ذلك، مخصص للمواد "
 "التعليمية كالرياضيات والفيزياء."
 
-#. translators: this is a 'description' of the keyboard layout
-#. 'Whiteboard_wide.onboard'
+#. translators: this is a 'description' of the keyboard layout 'Whiteboard_wide.onboard'
 #: ../data/layoutstrings.py:256
 msgid ""
-"Keyboard layout with Greek literals, arrows and more, for math and physics education on an interactive Whiteboard.\n"
+"Keyboard layout with Greek literals, arrows and more, for math and physics "
+"education on an interactive Whiteboard.\n"
 "This layout places all keys on a single, very wide layer."
 msgstr ""
-"تخطيط لوحة مفاتيح يحتوي الأحرف اليونانية، والأسهم وغير ذلك، مخصص للمواد التعليمية كالرياضيات والفيزياء.\n"
+"تخطيط لوحة مفاتيح يحتوي الأحرف اليونانية، والأسهم وغير ذلك، مخصص للمواد "
+"التعليمية كالرياضيات والفيزياء.\n"
 "هذا التخطيط يضع جميع المفاتيح على طبقة واسعة للغاية ووحيدة."
 
 #. translators: this is a 'summary' of the keyboard layout 'Compact.onboard'
@@ -1372,44 +1342,37 @@ msgstr "لوحة مفاتيح جهاز سطح المكتب متوسطة الحج
 msgid "Mobile keyboard for small screens"
 msgstr "لوحة مفاتيح الهاتف للشاشات الصغيرة"
 
-#. translators: this is a 'tooltip' of the key 'expand-corrections' in
-#. keyboard layout 'word_suggestions.xml'
+#. translators: this is a 'tooltip' of the key 'expand-corrections' in keyboard layout 'word_suggestions.xml'
 #: ../data/layoutstrings.py:280
 msgid "More suggestions"
 msgstr "مزيد من الاقتراحات"
 
-#. translators: this is a 'tooltip' of the key 'move' in keyboard layout
-#. 'Whiteboard_wide.onboard'
+#. translators: this is a 'tooltip' of the key 'move' in keyboard layout 'Whiteboard_wide.onboard'
 #: ../data/layoutstrings.py:286
 msgid "Move keyboard"
 msgstr "تحريك لوحة المفاتيح"
 
-#. translators: this is a 'tooltip' of the key 'previous-predictions.wordlist'
-#. in keyboard layout 'word_suggestions.xml'
+#. translators: this is a 'tooltip' of the key 'previous-predictions.wordlist' in keyboard layout 'word_suggestions.xml'
 #: ../data/layoutstrings.py:301
 msgid "Previous suggestions"
 msgstr "الاقتراحات السابقة"
 
-#. translators: this is a 'tooltip' of the key 'quit' in keyboard layout
-#. 'Whiteboard.onboard'
+#. translators: this is a 'tooltip' of the key 'quit' in keyboard layout 'Whiteboard.onboard'
 #: ../data/layoutstrings.py:304
 msgid "Quit Keyboard"
 msgstr "إنهاء لوحة المفاتيح"
 
-#. translators: this is a 'tooltip' of the key_template 'quit' in keyboard
-#. layout 'key_defs.xml'
+#. translators: this is a 'tooltip' of the key_template 'quit' in keyboard layout 'key_defs.xml'
 #: ../data/layoutstrings.py:307
 msgid "Quit Onboard"
 msgstr "إنهاء لوحة مفاتيح الشاشة"
 
-#. translators: this is a 'tooltip' of the key_template 'layer2' in keyboard
-#. layout 'Whiteboard.onboard'
+#. translators: this is a 'tooltip' of the key_template 'layer2' in keyboard layout 'Whiteboard.onboard'
 #: ../data/layoutstrings.py:316
 msgid "Set and Settings"
 msgstr "الضبط والإعدادات"
 
-#. translators: this is a 'tooltip' of the key 'settings' in keyboard layout
-#. 'Whiteboard_wide.onboard'
+#. translators: this is a 'tooltip' of the key 'settings' in keyboard layout 'Whiteboard_wide.onboard'
 #: ../data/layoutstrings.py:319
 msgid "Settings"
 msgstr "الإعدادات"
@@ -1419,32 +1382,27 @@ msgstr "الإعدادات"
 msgid "Space efficient desktop keyboard"
 msgstr "لوحة مفاتيح سطح مكتب ذات مساحات كبيرة وفعالة"
 
-#. translators: this is a 'tooltip' of the key_template 'layer3' in keyboard
-#. layout 'Whiteboard.onboard'
+#. translators: this is a 'tooltip' of the key_template 'layer3' in keyboard layout 'Whiteboard.onboard'
 #: ../data/layoutstrings.py:346
 msgid "Special Characters"
 msgstr "أحرف خاصة"
 
-#. translators: this is a 'summary' of the keyboard layout
-#. 'Whiteboard_wide.onboard'
+#. translators: this is a 'summary' of the keyboard layout 'Whiteboard_wide.onboard'
 #: ../data/layoutstrings.py:349
 msgid "Special characters for interactive whiteboards, wide"
 msgstr "رموز خاصة للألواح التفاعلية (عريضة)"
 
-#. translators: this is a 'summary' of the keyboard layout
-#. 'Whiteboard.onboard'
+#. translators: this is a 'summary' of the keyboard layout 'Whiteboard.onboard'
 #: ../data/layoutstrings.py:352
 msgid "Special characters for interactive whiteboards"
 msgstr "رموز خاصة للألواح التفاعلية"
 
-#. translators: this is a 'tooltip' of the key 'correction' in keyboard layout
-#. 'word_suggestions.xml'
+#. translators: this is a 'tooltip' of the key 'correction' in keyboard layout 'word_suggestions.xml'
 #: ../data/layoutstrings.py:355
 msgid "Spelling suggestion"
 msgstr "اقتراح الكلمات"
 
-#. translators: this is a 'tooltip' of the key_template 'layer1' in keyboard
-#. layout 'Whiteboard.onboard'
+#. translators: this is a 'tooltip' of the key_template 'layer1' in keyboard layout 'Whiteboard.onboard'
 #: ../data/layoutstrings.py:358
 msgid "Sub-, Superscripts; Fractions"
 msgstr "نص علوي وسفلي؛ كسور"
@@ -1660,8 +1618,8 @@ msgstr "إظهار _تلقائي عند تحرير نص"
 
 #: ../settings.ui.h:46
 msgid ""
-"Show Onboard when there is a recognized text window in focus. Requires Gnome"
-" Accessibility."
+"Show Onboard when there is a recognized text window in focus. Requires Gnome "
+"Accessibility."
 msgstr ""
 "إظهار Onboard عندما تكون نافذة نصية معروفة في التركيز. يتطلب Gnome "
 "Accessibility."
@@ -1687,8 +1645,8 @@ msgid ""
 "Show a floating icon on the desktop when Onboard is hidden. A click on the "
 "icon makes Onboard reappear."
 msgstr ""
-"إظهار أيقونة عائمة على الشاشة عندما تكون لوحة المفاتيح مختفية.  تستطيع إظهار"
-" لوحة المفاتيح مجددا بنقرة واحدة على هذه الأيقونة العائمة."
+"إظهار أيقونة عائمة على الشاشة عندما تكون لوحة المفاتيح مختفية.  تستطيع إظهار "
+"لوحة المفاتيح مجددا بنقرة واحدة على هذه الأيقونة العائمة."
 
 #: ../settings.ui.h:52
 msgid "Show when _unlocking the screen"
@@ -1722,8 +1680,8 @@ msgstr "أ_ظهر ايقونة الحالة"
 #: ../settings.ui.h:58
 msgid "Show the status item. A click on that icon hides or shows Onboard."
 msgstr ""
-"إظهار أيقونة الحالة. تستطيع إظهار أو إخفاء لوحة المفاتيح بنقرة واحدة على هذه"
-" الأيقونة."
+"إظهار أيقونة الحالة. تستطيع إظهار أو إخفاء لوحة المفاتيح بنقرة واحدة على هذه "
+"الأيقونة."
 
 #: ../settings.ui.h:59
 msgid "Status icon _provider:"
@@ -1731,15 +1689,20 @@ msgstr "_مزود أيقونة الحالة:"
 
 #: ../settings.ui.h:60
 msgid ""
-"<b>AppIndicator</b> (default) is recommended for broadest compatibility. A middle click on the icon shows the keyboard. In KDE Plasma a left click does the same.\n"
+"<b>AppIndicator</b> (default) is recommended for broadest compatibility. A "
+"middle click on the icon shows the keyboard. In KDE Plasma a left click does "
+"the same.\n"
 "\n"
-"<b>GtkStatusIcon</b> isn't supported well anymore by various desktop environments, but generally allows to show the keyboard on left click.\n"
+"<b>GtkStatusIcon</b> isn't supported well anymore by various desktop "
+"environments, but generally allows to show the keyboard on left click.\n"
 "\n"
 "Requires restart."
 msgstr ""
-"<b>AppIndicator</b> (الافتراضي) يُنصح به لأوسع توافق. النقر الأوسط على الأيقونة يُظهر لوحة المفاتيح. في KDE Plasma يقوم النقر الأيسر بنفس الشيء.\n"
+"<b>AppIndicator</b> (الافتراضي) يُنصح به لأوسع توافق. النقر الأوسط على "
+"الأيقونة يُظهر لوحة المفاتيح. في KDE Plasma يقوم النقر الأيسر بنفس الشيء.\n"
 "\n"
-"<b>GtkStatusIcon</b> لم يعد مدعومًا جيدًا من قبل بيئات سطح المكتب المختلفة، لكنه عمومًا يتيح إظهار لوحة المفاتيح بالنقر الأيسر.\n"
+"<b>GtkStatusIcon</b> لم يعد مدعومًا جيدًا من قبل بيئات سطح المكتب المختلفة، "
+"لكنه عمومًا يتيح إظهار لوحة المفاتيح بالنقر الأيسر.\n"
 "\n"
 "يتطلب إعادة تشغيل."
 
@@ -1749,18 +1712,17 @@ msgstr "_إجراء النقر الأيسر:"
 
 #: ../settings.ui.h:66
 msgid ""
-"Choose what left-clicking the status icon does. Right-click always shows the"
-" context menu."
+"Choose what left-clicking the status icon does. Right-click always shows the "
+"context menu."
 msgstr ""
-"اختر ما يفعله النقر الأيسر على أيقونة الحالة. النقر الأيمن يعرض دائمًا قائمة"
-" السياق."
+"اختر ما يفعله النقر الأيسر على أيقونة الحالة. النقر الأيمن يعرض دائمًا قائمة "
+"السياق."
 
 #: ../settings.ui.h:67
 msgid ""
 "With AppIndicator, most desktop environments open the context menu on left-"
-"click regardless of this setting. 'Show/hide the keyboard' only takes effect"
-" where the desktop reports a separate left-click activation (e.g. KDE "
-"Plasma)."
+"click regardless of this setting. 'Show/hide the keyboard' only takes effect "
+"where the desktop reports a separate left-click activation (e.g. KDE Plasma)."
 msgstr ""
 "مع AppIndicator، معظم بيئات سطح المكتب تفتح قائمة السياق عند النقر الأيسر "
 "بغض النظر عن هذا الإعداد. خيار 'إظهار/إخفاء لوحة المفاتيح' يأخذ مفعوله فقط "
@@ -2045,8 +2007,8 @@ msgid ""
 "Choose between key-repeat or long-press menus. Mainly affects alpha-numeric "
 "keys."
 msgstr ""
-"اختر بين إعادة كتابة الحرف أو قائمة النقر المطول. يؤثر بشكل أساسي على مفاتيح"
-" الأرقام الأبجدية."
+"اختر بين إعادة كتابة الحرف أو قائمة النقر المطول. يؤثر بشكل أساسي على مفاتيح "
+"الأرقام الأبجدية."
 
 #: ../settings.ui.h:132
 msgid "Modifier _behavior:"
@@ -2074,9 +2036,9 @@ msgstr "مهلة الإفراج التلقائي للمفاتيح بعد الإ�
 
 #: ../settings.ui.h:137
 msgid ""
-"Time after hiding the keyboard in seconds until latched and locked modifiers"
-" and layer keys are released automatically. Leave at 0.0 to not "
-"automatically release them."
+"Time after hiding the keyboard in seconds until latched and locked modifiers "
+"and layer keys are released automatically. Leave at 0.0 to not automatically "
+"release them."
 msgstr ""
 "الوقت بعد إخفاء لوحة المفاتيح بالثواني حتى يتم تحرير مفاتيح التعديل المثبتة "
 "والمقفلة ومفاتيح الطبقات تلقائيًا. اترك القيمة 0.0 لعدم تحريرها تلقائيًا."
@@ -2105,8 +2067,8 @@ msgid ""
 "windows."
 msgstr ""
 "اختر &apos;XInput&apos; لكتابة أكثر موثوقية في حقول النص ذات القوائم "
-"المنبثقة. خيار &apos;GTK&apos; يوفر توافقًا أفضل، لكن قد يفشل الإدخال في حال"
-" وجود احتجاز للمؤشر، مثل النوافذ المنبثقة المفتوحة."
+"المنبثقة. خيار &apos;GTK&apos; يوفر توافقًا أفضل، لكن قد يفشل الإدخال في حال "
+"وجود احتجاز للمؤشر، مثل النوافذ المنبثقة المفتوحة."
 
 #: ../settings.ui.h:143
 msgid ""
@@ -2145,15 +2107,20 @@ msgid ""
 "\n"
 "<b>XTest</b> is the default for all X based desktop environments.\n"
 "\n"
-"<b>uinput</b> should be available on all linux-based systems, including X, Wayland and MIR-based desktops, but requires write permission for /dev/uinput.\n"
+"<b>uinput</b> should be available on all linux-based systems, including X, "
+"Wayland and MIR-based desktops, but requires write permission for /dev/"
+"uinput.\n"
 "\n"
-"<b>AT-SPI</b> has limited support for key-stroke generation, and is only recommended for testing."
+"<b>AT-SPI</b> has limited support for key-stroke generation, and is only "
+"recommended for testing."
 msgstr ""
 "<b>تلقائي</b>: دع Onboard يقرر، موصى به.\n"
 "\n"
 "<b>XTest</b> هو الخيار الافتراضي لجميع بيئات سطح المكتب المبنية على X.\n"
 "\n"
-"<b>uinput</b> يجب أن يكون متاحًا على جميع الأنظمة المبنية على لينكس، بما في ذلك سطح المكتب القائم على X وWayland وMIR، لكنه يتطلب إذن كتابة إلى /dev/uinput.\n"
+"<b>uinput</b> يجب أن يكون متاحًا على جميع الأنظمة المبنية على لينكس، بما في "
+"ذلك سطح المكتب القائم على X وWayland وMIR، لكنه يتطلب إذن كتابة إلى /dev/"
+"uinput.\n"
 "\n"
 "<b>AT-SPI</b> له دعم محدود لتوليد الضغطات، ويُنصح به فقط للاختبار."
 
@@ -2236,8 +2203,8 @@ msgid ""
 "tablet mode. Run 'xinput test-xi2 3 ' to find these key presses and enter "
 "their 'detail' values below."
 msgstr ""
-"بدلاً من ذلك، تولد بعض الأجهزة أحداث مفاتيح عند الدخول والخروج من وضع الجهاز"
-" اللوحي. شغّل 'xinput test-xi2 3 ' للعثور على هذه الضغوط وأدخل قيم 'detail' "
+"بدلاً من ذلك، تولد بعض الأجهزة أحداث مفاتيح عند الدخول والخروج من وضع الجهاز "
+"اللوحي. شغّل 'xinput test-xi2 3 ' للعثور على هذه الضغوط وأدخل قيم 'detail' "
 "الخاصة بها أدناه."
 
 #: ../settings.ui.h:171
@@ -2576,8 +2543,8 @@ msgstr ""
 
 #: ../settings_scanner_dialog.ui.h:11
 msgid ""
-"The number of times the scanner cycles through the entire keyboard before it"
-" stops."
+"The number of times the scanner cycles through the entire keyboard before it "
+"stops."
 msgstr "عدد مرات مرور الماسح الضوئي عبر لوحة المفاتيح بالكامل قبل التوقف."
 
 #: ../settings_scanner_dialog.ui.h:12
@@ -2600,8 +2567,7 @@ msgstr "_فاصل التراجع:"
 msgid ""
 "The time the scanner rests on a key  while progressing forward. (in seconds)"
 msgstr ""
-"المدة التي يستقر فيها الماسح الضوئي على مفتاح أثناء التقدم للأمام. "
-"(بالثواني)"
+"المدة التي يستقر فيها الماسح الضوئي على مفتاح أثناء التقدم للأمام. (بالثواني)"
 
 #: ../settings_scanner_dialog.ui.h:17
 msgid ""
@@ -2615,8 +2581,7 @@ msgstr "_خطوات التراجع:"
 
 #: ../settings_scanner_dialog.ui.h:19
 msgid "The number of keys the scanner steps back before moving forward again."
-msgstr ""
-"عدد المفاتيح التي يعود إليها الماسح الضوئي قبل التحرك للأمام مرة أخرى."
+msgstr "عدد المفاتيح التي يعود إليها الماسح الضوئي قبل التحرك للأمام مرة أخرى."
 
 #: ../settings_scanner_dialog.ui.h:20
 msgid "_Alternate switch actions"
@@ -2778,7 +2743,8 @@ msgstr "التسميات"
 #~ msgid ""
 #~ "Show on icon in the system tray. A click on that icon hides or shows "
 #~ "onboard."
-#~ msgstr "إظهار أيقونة في صينية النظام. ضغطة على الأيقونة تخفي أو تظهر onborad."
+#~ msgstr ""
+#~ "إظهار أيقونة في صينية النظام. ضغطة على الأيقونة تخفي أو تظهر onborad."
 
 #~ msgid "Show floating _icon when onboard is hidden"
 #~ msgstr "إ_ظهار أيقونة طافية عندما يكون onborad مخفياً"
@@ -2790,8 +2756,8 @@ msgstr "التسميات"
 #~ "<b><i>Scanning mode only works with layouts which are designed for the "
 #~ "purpose.</i></b>"
 #~ msgstr ""
-#~ "<b><i>نمط الفحص يعمل فقط في التخطيطات التي تكون مصممة مسبقاً لهذا "
-#~ "الغرض.</i></b>"
+#~ "<b><i>نمط الفحص يعمل فقط في التخطيطات التي تكون مصممة مسبقاً لهذا الغرض.</"
+#~ "i></b>"
 
 #~ msgid "Scanning mode"
 #~ msgstr "وضع المسح"
@@ -2812,8 +2778,8 @@ msgstr "التسميات"
 #~ msgstr "التصاميم"
 
 #~ msgid ""
-#~ "Show a floating icon on the desktop when onboard is hidden. A click on the "
-#~ "icon makes onboard reappear."
+#~ "Show a floating icon on the desktop when onboard is hidden. A click on "
+#~ "the icon makes onboard reappear."
 #~ msgstr ""
 #~ "آظهار أيقونة طافية على سطح المكتب عندما يكون onborad مخفياً. ضغطة على "
 #~ "الأيقونة تظهر onboard."
@@ -2863,15 +2829,14 @@ msgstr "التسميات"
 #~ "يمينيا"
 
 #~ msgid ""
-#~ "Some password dialogs disable the area around them, making it impossible to "
-#~ "click on onboard. By activating this option, these dialogs behave as normal "
-#~ "windows and the area around the dialog remains active. This option is also "
-#~ "available in the Assistive Technologies control panel."
+#~ "Some password dialogs disable the area around them, making it impossible "
+#~ "to click on onboard. By activating this option, these dialogs behave as "
+#~ "normal windows and the area around the dialog remains active. This option "
+#~ "is also available in the Assistive Technologies control panel."
 #~ msgstr ""
-#~ "بعض خانات كلمة العبور تعطل المساحة التي حولها مما يحعل من الضغط "
-#~ "مستحيلا.بتفعيل هذا الاختيار هذه الخانات ستظهر كنوافذ طبيعية و ستفعل المساحة "
-#~ "التي تحيطها.هذا الاختيار متوفر في لوحة التحكم الخاصة ب Assistive "
-#~ "Technologies."
+#~ "بعض خانات كلمة العبور تعطل المساحة التي حولها مما يحعل من الضغط مستحيلا."
+#~ "بتفعيل هذا الاختيار هذه الخانات ستظهر كنوافذ طبيعية و ستفعل المساحة التي "
+#~ "تحيطها.هذا الاختيار متوفر في لوحة التحكم الخاصة ب Assistive Technologies."
 
 #~ msgid "Option When Hidden"
 #~ msgstr "خيار عند الإخفاء"
