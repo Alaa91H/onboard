@@ -101,7 +101,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                     <key id='AB02' group='alphanumeric'/>
                     <key id='AD08' group='alphanumeric'/>
                     <key id='AB07' group='alphanumeric'/>
-                    <key group='bottomrow' id='RWIN'/>
+                    <key group='bottomrow' id='input-source' svg_id='RWIN'/>
                     <key id='SPCE' group='bottomrow'/>
                     <key group='bottomrow' id='LWIN'/>
 

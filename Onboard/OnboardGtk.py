@@ -56,6 +56,7 @@ from Onboard.utils           import unicode_str
 from Onboard.Timer           import CallOnce, Timer
 from Onboard.WindowUtils     import show_confirmation_dialog
 from Onboard                import WaylandUtils
+from Onboard.InputSources    import InputSourceController, create_backend
 import Onboard.osk as osk
 
 ### Config Singleton ###
@@ -195,7 +196,8 @@ class OnboardGtk(object):
         self.status_icon = None
         self.service_keyboard = None
         self._reload_layout_timer = Timer()
-        self._layout_watcher = None    # KDE Wayland layout-change D-Bus subscription
+        self._layout_watcher = None    # compatibility with older KDE watcher
+        self._input_source_controller = None
 
         # finish config initialization
         config.init()
@@ -306,17 +308,11 @@ class OnboardGtk(object):
         # group changes
         Gdk.event_handler_set(cb_any_event, self)
 
-        # Wayland: XkbStateNotify (cb_any_event) and GdkKeymap
-        # "state-changed" are both silent for windows that refuse
-        # keyboard focus -- the wl_keyboard.modifiers event the latter
-        # is fed from is delivered per focused surface, and Onboard
-        # explicitly opts out of focus (acceptfocus=false via KWin rule
-        # on KDE, KeyboardMode.NONE on layer-shell). Subscribe to KDE's
-        # focus-independent layout signal so the labels refresh when
-        # the user switches input source via the taskbar.
-        if WaylandUtils.is_wayland() and WaylandUtils.is_kde_plasma():
-            self._layout_watcher = WaylandUtils.KdeLayoutWatcher(
-                self._on_kde_layout_changed)
+        # Input-source state belongs to the desktop session, not to the
+        # prediction-language menu. The controller uses XKB on X11 and the
+        # compositor's supported API on Wayland. It only notifies us after
+        # the desktop has confirmed the active source.
+        self._setup_input_source_controller()
 
         # connect config notifications here to keep config from holding
         # references to keyboard objects.
@@ -581,34 +577,70 @@ class OnboardGtk(object):
         self.keyboard.toggle_visible()
 
     def cb_group_changed(self):
-        """ keyboard group change """
+        """Keyboard group changed outside of Onboard (usually X11/XKB)."""
+        self._refresh_input_source_state()
         self.reload_layout_delayed()
 
-    def _on_kde_layout_changed(self, new_index):
-        """
-        Called by KdeLayoutWatcher with the authoritative new layout
-        index reported by KDE. We push it down to the C-side cached
-        ``xkb_state`` via ``vk.lock_group(new_index)`` so that the
-        upcoming ``reload_layout`` sees the right active group.
+    def _refresh_input_source_state(self):
+        controller = self._input_source_controller
+        if controller is not None:
+            controller.refresh()
 
-        Note we deliberately do NOT route through ``cb_group_changed``
-        → ``reload_layout_delayed`` here: that path debounces by 500 ms
-        to wait out the X11 Caps-Lock-as-input-source-switcher race
-        (LP #1313176), which doesn't apply on Wayland -- KDE's D-Bus
-        signal is authoritative and carries no modifier-state ambiguity.
-        A 50 ms timer is enough to coalesce a back-to-back
-        ``layoutChanged`` + ``layoutListChanged`` pair into one reload.
-        """
-        if new_index >= 0:
+    def _setup_input_source_controller(self):
+        """Create the explicit system input-source integration."""
+        if self._input_source_controller is not None:
+            self._input_source_controller.stop()
+
+        backend = create_backend(self.get_vk(),
+                                 WaylandUtils.is_wayland(),
+                                 WaylandUtils.is_kde_plasma(),
+                                 WaylandUtils.is_gnome_shell())
+        self._input_source_controller = InputSourceController(
+            backend,
+            self._on_input_source_changed,
+            self._on_input_source_error)
+        self._input_source_controller.start()
+
+    def get_input_source_controller(self):
+        return self._input_source_controller
+
+    def _on_input_source_changed(self, source):
+        """Refresh only after the desktop reports a confirmed source."""
+        if source is None:
+            return
+
+        _logger.info("Input source confirmed: %s (%s)",
+                     source.name, source.id)
+
+        # On native KDE Wayland the focused application owns the real XKB
+        # state. Virtkey holds a focus-less cached copy only for labels, so
+        # synchronize it *after* the KDE D-Bus change has been confirmed.
+        if WaylandUtils.is_wayland() and WaylandUtils.is_kde_plasma() and \
+           source.index is not None:
             vk = self.get_vk()
             if vk is not None:
                 try:
-                    vk.lock_group(new_index)
+                    vk.lock_group(source.index)
                 except Exception:
-                    _logger.exception(
-                        "Failed to sync vk group to KDE-reported "
-                        "layout index %d", new_index)
-        self._reload_layout_timer.start(.05, self.reload_layout)
+                    _logger.exception("Failed to sync confirmed KDE layout")
+
+        # Keep this short only to coalesce paired layoutChanged and
+        # layoutListChanged signals. Unlike the X11 CapsLock workaround,
+        # this is not an optimistic delay before confirmation.
+        self._reload_layout_timer.start(
+            .05, lambda: self.reload_layout(force_update=True))
+
+    def _on_input_source_error(self, message):
+        _logger.warning("Input-source backend: %s", message)
+
+    def _on_kde_layout_changed(self, new_index):
+        """Backward-compatible adapter for external KdeLayoutWatcher users."""
+        source = None
+        controller = self.get_input_source_controller()
+        if controller is not None:
+            source = controller.get_active()
+        if source is not None:
+            self._on_input_source_changed(source)
 
     def cb_keys_changed(self, keymap):
         """ keyboard map change """
@@ -621,7 +653,8 @@ class OnboardGtk(object):
                       .format(mod_mask))
         if self._last_mod_mask == mod_mask:
             # Must be something other than changed modifiers,
-            # group change on wayland, for example.
+            # group change on Wayland, for example.
+            self._refresh_input_source_state()
             self.reload_layout_delayed()
         else:
             self.keyboard.set_modifiers(mod_mask)
@@ -634,6 +667,7 @@ class OnboardGtk(object):
         Timer callback for polling until virtkey becomes valid.
         """
         if self.get_vk():
+            self._setup_input_source_controller()
             self.reload_layout(force_update=True)
             GLib.source_remove(self.vk_timer)
             self.vk_timer = None
@@ -841,6 +875,10 @@ class OnboardGtk(object):
         self._reload_layout_timer.stop()
 
         config.cleanup()
+
+        if self._input_source_controller is not None:
+            self._input_source_controller.stop()
+            self._input_source_controller = None
 
         # Drop the KDE Wayland layout-change subscription, if any.
         if self._layout_watcher is not None:

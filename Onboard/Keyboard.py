@@ -790,6 +790,12 @@ class Keyboard(WordSuggestions):
     def get_application(self):
         return self._application()
 
+    def get_input_source_controller(self):
+        application = self.get_application()
+        if application:
+            return application.get_input_source_controller()
+        return None
+
     def register_view(self, layout_view):
         self._layout_views.append(layout_view)
 
@@ -1014,7 +1020,8 @@ class Keyboard(WordSuggestions):
                   BCHide, BCShowClick, BCMove, BCPreferences, BCQuit,
                   BCExpandCorrections, BCPreviousPredictions,
                   BCNextPredictions, BCPauseLearning, BCLanguage,
-                  BCStealthMode, BCAutoLearn, BCAutoPunctuation, BCInputline,
+                  BCInputSource, BCStealthMode, BCAutoLearn,
+                  BCAutoPunctuation, BCInputline,
                   ]}
         for key in keys:
             if key.is_layer_button():
@@ -3097,6 +3104,60 @@ class BCPauseLearning(ButtonController):
         co = config.word_suggestions
         self.set_active(co.get_pause_learning() >= 1)
         self.set_locked(co.get_pause_learning() == 2)
+
+
+class BCInputSource(ButtonController):
+    """Switch the confirmed system input source, not prediction language."""
+
+    id = "input-source"
+
+    def __init__(self, keyboard, key):
+        ButtonController.__init__(self, keyboard, key)
+        self._menu_close_time = 0
+        self._menu_opened = False
+
+    def release(self, view, button, event_type):
+        if self._menu_opened:
+            self._menu_opened = False
+            return
+        if time.time() - self._menu_close_time > 0.5:
+            controller = self.keyboard.get_input_source_controller()
+            if controller:
+                controller.switch_next()
+        self._menu_close_time = 0
+
+    def long_press(self, view, button):
+        controller = self.keyboard.get_input_source_controller()
+        if controller and controller.availability().can_activate:
+            self._menu_opened = True
+            self.set_active(True)
+            self.keyboard.hide_touch_feedback()
+            view.show_input_source_menu(self.key, button,
+                                        self._on_menu_closed)
+
+    def _on_menu_closed(self):
+        self.set_active(False)
+        self._menu_close_time = time.time()
+
+    def update(self):
+        controller = self.keyboard.get_input_source_controller()
+        if controller is None:
+            self.set_sensitive(False)
+            self.key.tooltip = "Input-source controller is unavailable"
+            return
+
+        availability = controller.availability()
+        source = controller.get_active()
+        self.set_sensitive(availability.can_activate)
+
+        if source:
+            label = source.short_name
+            if label != self.key.get_label() or self.key.tooltip != source.name:
+                self.key.set_labels({0: label})
+                self.key.tooltip = source.name
+                self.keyboard.invalidate_ui()
+        else:
+            self.key.tooltip = availability.message
 
 
 class BCLanguage(ButtonController):

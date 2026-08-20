@@ -16,11 +16,9 @@ phase of Wayland support adds an unstable experience on Wayland.
 - Text snippets may get inserted incorrectly if using multiple layouts.
   If the snippet characters do not exist the current layout, they may get inserted incorrectly.
   To avoid that, trying to insert via AT-SPI when possible, so it should work correctly in the apps that support it, such as the KDE apps using the modern Qt. 
-- Delayed layout refresh on non-KDE.
-  When switching the keyboard layout (language), the Onboard keys may get refreshed after some delay,
-  or after clicking on a key, or fail to refresh completely (displaying the default layout while actually typing in the current layout).
-  On KDE we subscribe to `org.kde.KeyboardLayouts.layoutChanged` so the keys should refresh immediately.
-  Similar mechanisms for other compositors are not implemented yet.
+- On Wayland compositors other than KDE Plasma and GNOME Shell, there is no stable, common
+  desktop API for an external application to control the active input source. Onboard disables
+  its source-switch button there instead of pretending that a language has changed.
 - Try implementing the `virtual-keyboard-v1` Wayland backend — would remove the `/dev/uinput` permission
   requirement on the compositors that support it.
 - Negotiate client-side decoration via the `xdg-decoration` protocol so the
@@ -110,6 +108,40 @@ INFO: Using key-synth 'KeySynthEnum.UINPUT'
 If the key-synth line says `ATSPI` instead of `UINPUT`, uinput failed —
 the udev rule isn't installed (or hasn't been reloaded). See step 2.
 
+### 4. Switch the real input source
+
+The **input-source** key in the standard `Compact` and `Full Keyboard`
+layouts is the right Super-key position. A tap requests the next configured system source; a
+long press opens a list of the configured sources. This key is deliberately
+separate from the word-prediction **language** key. The input-source key
+changes the layout that applications actually receive, while the language
+key only changes Onboard's prediction model.
+
+Onboard updates its label only after the desktop session confirms the active
+source. It does not optimistically display Arabic or English before a switch
+has succeeded.
+
+| Session | Switching backend | Confirmation |
+|---|---|---|
+| X11/Xorg | Existing XKB/Virtkey group control | Active XKB group read after lock |
+| KDE Plasma Wayland | `org.kde.KeyboardLayouts` session D-Bus | `layoutChanged` or `layoutListChanged` |
+| GNOME Wayland | Constrained interface from the bundled Onboard Shell extension | `current-source-changed` from GNOME Shell |
+| Other Wayland compositors | No unsafe fallback | The source key is disabled with an explanatory tooltip |
+
+For a native GNOME Wayland session, update or reinstall the bundled extension
+and restart the Shell session (log out and in on Wayland). The extension
+exports only list, get, activate, and next-source operations under
+`/org/onboard/InputSources`; it never exposes a general JavaScript execution
+interface.
+
+To diagnose source switching:
+
+```sh
+onboard --debug=info 2>&1 | grep -i 'input source'
+```
+
+A successful confirmation is logged as `Input source confirmed: …`.
+
 ## Implementation details
 
 ### KDE Plasma
@@ -132,11 +164,14 @@ Troubleshooting).
 
 ### GNOME Mutter (native Wayland via bundled Shell extension)
 
-Onboard ships a tiny GNOME Shell extension (`onboard@onboard.local`).
+Onboard ships a GNOME Shell extension (`onboard@onboard.local`).
 It watches for windows with `wm_class="Onboard"`,
 calls `Meta.Window.make_above()` on them, and reverts keyboard
 focus to the previously focused window when Onboard accidentally
-receives it.
+receives it. It also exposes a deliberately narrow D-Bus bridge for
+Onboard's input-source key. The bridge gets its state from GNOME Shell's
+`InputSourceManager`, activates only configured sources, and emits a
+confirmation signal after Shell changes the current source.
 
 The extension is auto-installed on first launch into
 `~/.local/share/gnome-shell/extensions/onboard@onboard.local/` and

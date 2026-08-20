@@ -341,6 +341,7 @@ class KeyboardWidget(Gtk.DrawingArea, WindowManipulatorAspectRatio,
         self._configure_timer = Timer()
 
         self._language_menu = LanguageMenu(self)
+        self._input_source_menu = InputSourceMenu(self)
         self._suggestion_menu = SuggestionMenu(self)
         self._symbol_search_popup = None
 
@@ -1879,6 +1880,12 @@ class KeyboardWidget(Gtk.DrawingArea, WindowManipulatorAspectRatio,
     def is_language_menu_showing(self):
         return self._language_menu.is_showing()
 
+    def show_input_source_menu(self, key, button, closure=None):
+        self._input_source_menu.popup(key, button, closure)
+
+    def is_input_source_menu_showing(self):
+        return self._input_source_menu.is_showing()
+
     def show_prediction_menu(self, key, button, closure=None):
         self._suggestion_menu.popup(key, button, closure)
 
@@ -2073,6 +2080,48 @@ class LanguageMenu(KeyMenu):
         recent_languages.insert(0, lang_id)
         recent_languages = recent_languages[:max_recent_languages]
         config.typing_assistance.recent_languages = recent_languages
+
+
+class InputSourceMenu(KeyMenu):
+    """Popup menu for the confirmed system input sources."""
+
+    def create_menu(self, key, button):
+        controller = self._keyboard.get_input_source_controller()
+        menu = Gtk.Menu()
+
+        if controller is None:
+            return self._append_unavailable(menu,
+                                            "Input-source controller is unavailable")
+
+        availability = controller.availability()
+        if not availability.can_activate:
+            return self._append_unavailable(menu, availability.message)
+
+        active = controller.get_active()
+        sources = controller.list_sources()
+        if not sources:
+            return self._append_unavailable(menu, "No input sources are configured")
+
+        for source in sources:
+            item = Gtk.CheckMenuItem.new_with_label(source.name)
+            item.set_draw_as_radio(True)
+            item.set_active(active is not None and source.id == active.id)
+            item.connect("activate", self._on_source_activated, source.id)
+            menu.append(item)
+        return menu
+
+    @staticmethod
+    def _append_unavailable(menu, message):
+        item = Gtk.MenuItem.new_with_label(message or
+                                           "Input-source switching is unavailable")
+        item.set_sensitive(False)
+        menu.append(item)
+        return menu
+
+    def _on_source_activated(self, menu, source_id):
+        controller = self._keyboard.get_input_source_controller()
+        if controller:
+            controller.activate(source_id)
 
 
 class SuggestionMenu(KeyMenu):

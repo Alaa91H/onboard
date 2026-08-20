@@ -32,6 +32,7 @@ class TestLayoutLoaderSVG(unittest.TestCase):
         class ThemeSettings:
             key_label_overrides = {}
         theme_settings = ThemeSettings()
+        snippets = {}
 
     def setUp(self):
         self._tmp_dir = tempfile.TemporaryDirectory(prefix="test_onboard_")
@@ -95,6 +96,22 @@ class TestLayoutLoaderSVG(unittest.TestCase):
                  """)
         items = list(layout.find_ids(["layer0"]))
         self.assertEqual(2, len(items))
+
+    def test_desktop_layouts_have_input_source_button(self):
+        """The distributed desktop layouts must expose the source switcher."""
+        root_dir = os.path.dirname(os.path.dirname(
+                                os.path.dirname(os.path.abspath(__file__))))
+        config_mock = self.Config_mockup()
+        config_mock.find_layout_filename = lambda filename, _description: \
+            os.path.join(root_dir, "layouts", filename)
+        Onboard.LayoutLoaderSVG.config = config_mock
+
+        for name in ("Compact", "Full-Keyboard"):
+            layout_fn = os.path.join(root_dir, "layouts", name + ".onboard")
+            layout = LayoutLoaderSVG().load(osk.Virtkey(), layout_fn, None)
+            keys = list(layout.find_ids(["input-source"]))
+            self.assertEqual(1, len(keys), name)
+            self.assertEqual("RWIN", keys[0].svg_id, name)
 
     def _load_test_layout(self, key_definitions,
                           system_keyboard_layout="us",

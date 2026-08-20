@@ -189,6 +189,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
     <key_template id='hide'           button='true' image='close.svg' tooltip='Hide Onboard' scannable='false'/>
     <key_template id='move'           button='true' image='move.svg' tooltip='Move Onboard' scannable='false'/>
     <key_template id='showclick'      button='true' image='show-click.svg' tooltip='Toggle click helpers' scannable='false'/>
+    <key_template id='input-source'   button='true' label='EN' tooltip='Switch input source' scannable='false'/>
     <key_template id='layer0'         button='true' label='Abc' tooltip='Main keyboard'/>
     <key_template id='layer1'         button='true' label='123' tooltip='Number block and snippets'/>
     <key_template id='layer2'         button='true' image='snippets.svg' tooltip='Snippets'/>
