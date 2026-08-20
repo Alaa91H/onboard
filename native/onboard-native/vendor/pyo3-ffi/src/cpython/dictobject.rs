@@ -1,13 +1,17 @@
 use crate::object::*;
+#[cfg(not(PyPy))]
 use crate::pyport::Py_ssize_t;
-use std::os::raw::c_int;
+#[cfg(not(PyPy))]
+use std::ffi::c_int;
 
-opaque_struct!(PyDictKeysObject);
+#[cfg(not(PyPy))]
+opaque_struct!(pub PyDictKeysObject);
 
 #[cfg(Py_3_11)]
-opaque_struct!(PyDictValues);
+#[cfg(not(PyPy))]
+opaque_struct!(pub PyDictValues);
 
-#[cfg(not(GraalPy))]
+#[cfg(not(any(GraalPy, PyPy)))]
 #[repr(C)]
 #[derive(Debug)]
 pub struct PyDictObject {
@@ -17,7 +21,10 @@ pub struct PyDictObject {
         Py_3_12,
         deprecated(note = "Deprecated in Python 3.12 and will be removed in the future.")
     )]
+    #[cfg(not(Py_3_14))]
     pub ma_version_tag: u64,
+    #[cfg(Py_3_14)]
+    _ma_watcher_tag: u64,
     pub ma_keys: *mut PyDictKeysObject,
     #[cfg(not(Py_3_11))]
     pub ma_values: *mut *mut PyObject,
@@ -25,11 +32,20 @@ pub struct PyDictObject {
     pub ma_values: *mut PyDictValues,
 }
 
+#[cfg(PyPy)]
+#[repr(C)]
+#[derive(Debug)]
+pub struct PyDictObject {
+    pub ob_base: PyObject,
+    _tmpkeys: *mut PyObject,
+}
+
 extern "C" {
     // skipped _PyDict_GetItem_KnownHash
     // skipped _PyDict_GetItemIdWithError
     // skipped _PyDict_GetItemStringWithError
     // skipped PyDict_SetDefault
+    #[cfg(not(PyPy))]
     pub fn _PyDict_SetItem_KnownHash(
         mp: *mut PyObject,
         key: *mut PyObject,
@@ -39,6 +55,7 @@ extern "C" {
     // skipped _PyDict_DelItem_KnownHash
     // skipped _PyDict_DelItemIf
     // skipped _PyDict_NewKeysForClass
+    #[cfg(not(PyPy))]
     pub fn _PyDict_Next(
         mp: *mut PyObject,
         pos: *mut Py_ssize_t,
@@ -48,6 +65,7 @@ extern "C" {
     ) -> c_int;
     // skipped PyDict_GET_SIZE
     // skipped _PyDict_ContainsId
+    #[cfg(not(PyPy))]
     pub fn _PyDict_NewPresized(minused: Py_ssize_t) -> *mut PyObject;
     // skipped _PyDict_MaybeUntrack
     // skipped _PyDict_HasOnlyStringKeys
@@ -69,6 +87,7 @@ extern "C" {
     // skipped _PyDictView_Intersect
 
     #[cfg(Py_3_10)]
+    #[cfg(not(PyPy))]
     pub fn _PyDict_Contains_KnownHash(
         op: *mut PyObject,
         key: *mut PyObject,
@@ -76,5 +95,6 @@ extern "C" {
     ) -> c_int;
 
     #[cfg(not(Py_3_10))]
+    #[cfg(not(PyPy))]
     pub fn _PyDict_Contains(mp: *mut PyObject, key: *mut PyObject, hash: Py_ssize_t) -> c_int;
 }

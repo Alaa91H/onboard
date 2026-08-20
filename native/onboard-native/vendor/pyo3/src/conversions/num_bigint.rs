@@ -21,7 +21,7 @@
 //! Using [`BigInt`] to correctly increment an arbitrary precision integer.
 //! This is not possible with Rust's native integers if the Python integer is too large,
 //! in which case it will fail its conversion and raise `OverflowError`.
-//! ```rust
+//! ```rust,no_run
 //! use num_bigint::BigInt;
 //! use pyo3::prelude::*;
 //!
@@ -50,14 +50,9 @@
 #[cfg(Py_LIMITED_API)]
 use crate::types::{bytes::PyBytesMethods, PyBytes};
 use crate::{
-    conversion::IntoPyObject,
-    ffi,
-    instance::Bound,
-    types::{any::PyAnyMethods, PyInt},
-    FromPyObject, Py, PyAny, PyErr, PyObject, PyResult, Python,
+    conversion::IntoPyObject, ffi, types::PyInt, Borrowed, Bound, FromPyObject, Py, PyAny, PyErr,
+    PyResult, Python,
 };
-#[allow(deprecated)]
-use crate::{IntoPy, ToPyObject};
 
 use num_bigint::{BigInt, BigUint};
 
@@ -66,25 +61,7 @@ use num_bigint::Sign;
 
 // for identical functionality between BigInt and BigUint
 macro_rules! bigint_conversion {
-    ($rust_ty: ty, $is_signed: literal, $to_bytes: path) => {
-        #[cfg_attr(docsrs, doc(cfg(feature = "num-bigint")))]
-        #[allow(deprecated)]
-        impl ToPyObject for $rust_ty {
-            #[inline]
-            fn to_object(&self, py: Python<'_>) -> PyObject {
-                self.into_pyobject(py).unwrap().into_any().unbind()
-            }
-        }
-
-        #[cfg_attr(docsrs, doc(cfg(feature = "num-bigint")))]
-        #[allow(deprecated)]
-        impl IntoPy<PyObject> for $rust_ty {
-            #[inline]
-            fn into_py(self, py: Python<'_>) -> PyObject {
-                self.into_pyobject(py).unwrap().into_any().unbind()
-            }
-        }
-
+    ($rust_ty: ty, $is_signed: literal) => {
         #[cfg_attr(docsrs, doc(cfg(feature = "num-bigint")))]
         impl<'py> IntoPyObject<'py> for $rust_ty {
             type Target = PyInt;
@@ -103,63 +80,68 @@ macro_rules! bigint_conversion {
             type Output = Bound<'py, Self::Target>;
             type Error = PyErr;
 
-            #[cfg(not(Py_LIMITED_API))]
             fn into_pyobject(self, py: Python<'py>) -> Result<Self::Output, Self::Error> {
-                use crate::ffi_ptr_ext::FfiPtrExt;
-                let bytes = $to_bytes(&self);
-                unsafe {
-                    Ok(ffi::_PyLong_FromByteArray(
-                        bytes.as_ptr().cast(),
-                        bytes.len(),
-                        1,
-                        $is_signed.into(),
-                    )
-                    .assume_owned(py)
-                    .downcast_into_unchecked())
-                }
-            }
+                use num_traits::ToBytes;
 
-            #[cfg(Py_LIMITED_API)]
-            fn into_pyobject(self, py: Python<'py>) -> Result<Self::Output, Self::Error> {
-                use $crate::py_result_ext::PyResultExt;
-                let bytes = $to_bytes(&self);
-                let bytes_obj = PyBytes::new(py, &bytes);
-                let kwargs = if $is_signed {
-                    let kwargs = crate::types::PyDict::new(py);
-                    kwargs.set_item(crate::intern!(py, "signed"), true)?;
-                    Some(kwargs)
-                } else {
-                    None
-                };
-                unsafe {
-                    py.get_type::<PyInt>()
-                        .call_method("from_bytes", (bytes_obj, "little"), kwargs.as_ref())
-                        .downcast_into_unchecked()
+                #[cfg(all(not(Py_LIMITED_API), Py_3_13))]
+                {
+                    use crate::conversions::std::num::int_from_ne_bytes;
+                    let bytes = self.to_ne_bytes();
+                    Ok(int_from_ne_bytes::<{ $is_signed }>(py, &bytes))
+                }
+
+                #[cfg(all(not(Py_LIMITED_API), not(Py_3_13)))]
+                {
+                    use crate::conversions::std::num::int_from_le_bytes;
+                    let bytes = self.to_le_bytes();
+                    Ok(int_from_le_bytes::<{ $is_signed }>(py, &bytes))
+                }
+
+                #[cfg(Py_LIMITED_API)]
+                {
+                    use $crate::py_result_ext::PyResultExt;
+                    use $crate::types::any::PyAnyMethods;
+                    let bytes = self.to_le_bytes();
+                    let bytes_obj = PyBytes::new(py, &bytes);
+                    let kwargs = if $is_signed {
+                        let kwargs = crate::types::PyDict::new(py);
+                        kwargs.set_item(crate::intern!(py, "signed"), true)?;
+                        Some(kwargs)
+                    } else {
+                        None
+                    };
+                    unsafe {
+                        py.get_type::<PyInt>()
+                            .call_method("from_bytes", (bytes_obj, "little"), kwargs.as_ref())
+                            .cast_into_unchecked()
+                    }
                 }
             }
         }
     };
 }
 
-bigint_conversion!(BigUint, false, BigUint::to_bytes_le);
-bigint_conversion!(BigInt, true, BigInt::to_signed_bytes_le);
+bigint_conversion!(BigUint, false);
+bigint_conversion!(BigInt, true);
 
 #[cfg_attr(docsrs, doc(cfg(feature = "num-bigint")))]
-impl<'py> FromPyObject<'py> for BigInt {
-    fn extract_bound(ob: &Bound<'py, PyAny>) -> PyResult<BigInt> {
+impl<'py> FromPyObject<'_, 'py> for BigInt {
+    type Error = PyErr;
+
+    fn extract(ob: Borrowed<'_, 'py, PyAny>) -> Result<BigInt, Self::Error> {
         let py = ob.py();
         // fast path - checking for subclass of `int` just checks a bit in the type object
         let num_owned: Py<PyInt>;
-        let num = if let Ok(long) = ob.downcast::<PyInt>() {
+        let num = if let Ok(long) = ob.cast::<PyInt>() {
             long
         } else {
             num_owned = unsafe { Py::from_owned_ptr_or_err(py, ffi::PyNumber_Index(ob.as_ptr()))? };
-            num_owned.bind(py)
+            num_owned.bind_borrowed(py)
         };
         #[cfg(not(Py_LIMITED_API))]
         {
-            let mut buffer = int_to_u32_vec::<true>(num)?;
-            let sign = if buffer.last().copied().map_or(false, |last| last >> 31 != 0) {
+            let mut buffer = int_to_u32_vec::<true>(&num)?;
+            let sign = if buffer.last().copied().is_some_and(|last| last >> 31 != 0) {
                 // BigInt::new takes an unsigned array, so need to convert from two's complement
                 // flip all bits, 'subtract' 1 (by adding one to the unsigned array)
                 let mut elements = buffer.iter_mut();
@@ -182,40 +164,42 @@ impl<'py> FromPyObject<'py> for BigInt {
         }
         #[cfg(Py_LIMITED_API)]
         {
-            let n_bits = int_n_bits(num)?;
+            let n_bits = int_n_bits(&num)?;
             if n_bits == 0 {
                 return Ok(BigInt::from(0isize));
             }
-            let bytes = int_to_py_bytes(num, (n_bits + 8) / 8, true)?;
+            let bytes = int_to_py_bytes(&num, (n_bits + 8) / 8, true)?;
             Ok(BigInt::from_signed_bytes_le(bytes.as_bytes()))
         }
     }
 }
 
 #[cfg_attr(docsrs, doc(cfg(feature = "num-bigint")))]
-impl<'py> FromPyObject<'py> for BigUint {
-    fn extract_bound(ob: &Bound<'py, PyAny>) -> PyResult<BigUint> {
+impl<'py> FromPyObject<'_, 'py> for BigUint {
+    type Error = PyErr;
+
+    fn extract(ob: Borrowed<'_, 'py, PyAny>) -> Result<BigUint, Self::Error> {
         let py = ob.py();
         // fast path - checking for subclass of `int` just checks a bit in the type object
         let num_owned: Py<PyInt>;
-        let num = if let Ok(long) = ob.downcast::<PyInt>() {
+        let num = if let Ok(long) = ob.cast::<PyInt>() {
             long
         } else {
             num_owned = unsafe { Py::from_owned_ptr_or_err(py, ffi::PyNumber_Index(ob.as_ptr()))? };
-            num_owned.bind(py)
+            num_owned.bind_borrowed(py)
         };
         #[cfg(not(Py_LIMITED_API))]
         {
-            let buffer = int_to_u32_vec::<false>(num)?;
+            let buffer = int_to_u32_vec::<false>(&num)?;
             Ok(BigUint::new(buffer))
         }
         #[cfg(Py_LIMITED_API)]
         {
-            let n_bits = int_n_bits(num)?;
+            let n_bits = int_n_bits(&num)?;
             if n_bits == 0 {
                 return Ok(BigUint::from(0usize));
             }
-            let bytes = int_to_py_bytes(num, (n_bits + 7) / 8, false)?;
+            let bytes = int_to_py_bytes(&num, n_bits.div_ceil(8), false)?;
             Ok(BigUint::from_bytes_le(bytes.as_bytes()))
         }
     }
@@ -232,7 +216,7 @@ fn int_to_u32_vec<const SIGNED: bool>(long: &Bound<'_, PyInt>) -> PyResult<Vec<u
     let n_digits = if SIGNED {
         (n_bits + 32) / 32
     } else {
-        (n_bits + 31) / 32
+        n_bits.div_ceil(32)
     };
     buffer.reserve_exact(n_digits);
     unsafe {
@@ -271,11 +255,7 @@ fn int_to_u32_vec<const SIGNED: bool>(long: &Bound<'_, PyInt>) -> PyResult<Vec<u
     if n_bytes == 0 {
         return Ok(buffer);
     }
-    // TODO: use div_ceil when MSRV >= 1.73
-    let n_digits = {
-        let adjust = if n_bytes % 4 == 0 { 0 } else { 1 };
-        (n_bytes_unsigned / 4) + adjust
-    };
+    let n_digits = n_bytes_unsigned.div_ceil(4);
     buffer.reserve_exact(n_digits);
     unsafe {
         ffi::PyLong_AsNativeBytes(
@@ -300,6 +280,7 @@ fn int_to_py_bytes<'py>(
     is_signed: bool,
 ) -> PyResult<Bound<'py, PyBytes>> {
     use crate::intern;
+    use crate::types::any::PyAnyMethods;
     let py = long.py();
     let kwargs = if is_signed {
         let kwargs = crate::types::PyDict::new(py);
@@ -313,7 +294,7 @@ fn int_to_py_bytes<'py>(
         (n_bytes, intern!(py, "little")),
         kwargs.as_ref(),
     )?;
-    Ok(bytes.downcast_into()?)
+    Ok(bytes.cast_into()?)
 }
 
 #[inline]
@@ -333,6 +314,7 @@ fn int_n_bits(long: &Bound<'_, PyInt>) -> PyResult<usize> {
     #[cfg(Py_LIMITED_API)]
     {
         // slow path
+        use crate::types::PyAnyMethods;
         long.call_method0(crate::intern!(py, "bit_length"))
             .and_then(|any| any.extract())
     }
@@ -341,8 +323,8 @@ fn int_n_bits(long: &Bound<'_, PyInt>) -> PyResult<usize> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::tests::common::generate_unique_module_name;
-    use crate::types::{PyDict, PyModule};
+    use crate::test_utils::generate_unique_module_name;
+    use crate::types::{PyAnyMethods as _, PyDict, PyModule};
     use indoc::indoc;
     use pyo3_ffi::c_str;
 
@@ -370,7 +352,7 @@ mod tests {
 
     #[test]
     fn convert_biguint() {
-        Python::with_gil(|py| {
+        Python::attach(|py| {
             // check the first 2000 numbers in the fibonacci sequence
             for (py_result, rs_result) in python_fib(py).zip(rust_fib::<BigUint>()).take(2000) {
                 // Python -> Rust
@@ -383,7 +365,7 @@ mod tests {
 
     #[test]
     fn convert_bigint() {
-        Python::with_gil(|py| {
+        Python::attach(|py| {
             // check the first 2000 numbers in the fibonacci sequence
             for (py_result, rs_result) in python_fib(py).zip(rust_fib::<BigInt>()).take(2000) {
                 // Python -> Rust
@@ -425,7 +407,7 @@ mod tests {
 
     #[test]
     fn convert_index_class() {
-        Python::with_gil(|py| {
+        Python::attach(|py| {
             let index = python_index_class(py);
             let locals = PyDict::new(py);
             locals.set_item("index", index).unwrap();
@@ -438,7 +420,7 @@ mod tests {
 
     #[test]
     fn handle_zero() {
-        Python::with_gil(|py| {
+        Python::attach(|py| {
             let zero: BigInt = 0i32.into_pyobject(py).unwrap().extract().unwrap();
             assert_eq!(zero, BigInt::from(0));
         })
@@ -447,7 +429,7 @@ mod tests {
     /// `OverflowError` on converting Python int to BigInt, see issue #629
     #[test]
     fn check_overflow() {
-        Python::with_gil(|py| {
+        Python::attach(|py| {
             macro_rules! test {
                 ($T:ty, $value:expr, $py:expr) => {
                     let value = $value;

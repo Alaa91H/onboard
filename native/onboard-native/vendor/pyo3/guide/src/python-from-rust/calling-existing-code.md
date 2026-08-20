@@ -2,7 +2,7 @@
 
 If you already have some existing Python code that you need to execute from Rust, the following FAQs can help you select the right PyO3 functionality for your situation:
 
-## Want to access Python APIs? Then use `PyModule::import`.
+## Want to access Python APIs? Then use `PyModule::import`
 
 [`PyModule::import`] can be used to get handle to a Python module from Rust. You can use this to import and use any Python
 module available in your environment.
@@ -11,7 +11,7 @@ module available in your environment.
 use pyo3::prelude::*;
 
 fn main() -> PyResult<()> {
-    Python::with_gil(|py| {
+    Python::attach(|py| {
         let builtins = PyModule::import(py, "builtins")?;
         let total: i32 = builtins
             .getattr("sum")?
@@ -25,7 +25,7 @@ fn main() -> PyResult<()> {
 
 [`PyModule::import`]: {{#PYO3_DOCS_URL}}/pyo3/types/struct.PyModule.html#method.import
 
-## Want to run just an expression? Then use `eval`.
+## Want to run just an expression? Then use `eval`
 
 [`Python::eval`]({{#PYO3_DOCS_URL}}/pyo3/marker/struct.Python.html#method.eval) is
 a method to execute a [Python expression](https://docs.python.org/3/reference/expressions.html)
@@ -36,7 +36,7 @@ use pyo3::prelude::*;
 use pyo3::ffi::c_str;
 
 # fn main() -> Result<(), ()> {
-Python::with_gil(|py| {
+Python::attach(|py| {
     let result = py
         .eval(c_str!("[i * 10 for i in range(5)]"), None, None)
         .map_err(|e| {
@@ -49,7 +49,7 @@ Python::with_gil(|py| {
 # }
 ```
 
-## Want to run statements? Then use `run`.
+## Want to run statements? Then use `run`
 
 [`Python::run`] is a method to execute one or more
 [Python statements](https://docs.python.org/3/reference/simple_stmts.html).
@@ -59,8 +59,6 @@ access to manipulated objects via the `locals` dict.
 You can also use the [`py_run!`] macro, which is a shorthand for [`Python::run`].
 Since [`py_run!`] panics on exceptions, we recommend you use this macro only for
 quickly testing your Python extensions.
-
-[`Python::run`]: {{#PYO3_DOCS_URL}}/pyo3/marker/struct.Python.html#method.run
 
 ```rust
 use pyo3::prelude::*;
@@ -84,7 +82,7 @@ impl UserData {
     }
 }
 
-Python::with_gil(|py| {
+Python::attach(|py| {
     let userdata = UserData {
         id: 34,
         name: "Yu".to_string(),
@@ -99,7 +97,7 @@ assert userdata.as_tuple() == userdata_as_tuple
 # }
 ```
 
-## You have a Python file or code snippet? Then use `PyModule::from_code`.
+## You have a Python file or code snippet? Then use `PyModule::from_code`
 
 [`PyModule::from_code`]({{#PYO3_DOCS_URL}}/pyo3/types/struct.PyModule.html#method.from_code)
 can be used to generate a Python module which can then be used just as if it was imported with
@@ -113,7 +111,7 @@ use pyo3::{prelude::*, types::IntoPyDict};
 use pyo3_ffi::c_str;
 
 # fn main() -> PyResult<()> {
-Python::with_gil(|py| {
+Python::attach(|py| {
     let activators = PyModule::from_code(
         py,
         c_str!(r#"
@@ -159,20 +157,19 @@ As an example, the below adds the module `foo` to the embedded interpreter:
 use pyo3::prelude::*;
 use pyo3::ffi::c_str;
 
-#[pyfunction]
-fn add_one(x: i64) -> i64 {
-    x + 1
-}
-
 #[pymodule]
-fn foo(foo_module: &Bound<'_, PyModule>) -> PyResult<()> {
-    foo_module.add_function(wrap_pyfunction!(add_one, foo_module)?)?;
-    Ok(())
+mod foo {
+    use pyo3::prelude::*;
+
+    #[pyfunction]
+    fn add_one(x: i64) -> i64 {
+        x + 1
+    }
 }
 
 fn main() -> PyResult<()> {
     pyo3::append_to_inittab!(foo);
-    Python::with_gil(|py| Python::run(py, c_str!("import foo; foo.add_one(6)"), None, None))
+    Python::attach(|py| Python::run(py, c_str!("import foo; foo.add_one(6)"), None, None))
 }
 ```
 
@@ -191,14 +188,14 @@ pub fn add_one(x: i64) -> i64 {
 }
 
 fn main() -> PyResult<()> {
-    Python::with_gil(|py| {
+    Python::attach(|py| {
         // Create new module
         let foo_module = PyModule::new(py, "foo")?;
         foo_module.add_function(wrap_pyfunction!(add_one, &foo_module)?)?;
 
         // Import and get sys.modules
         let sys = PyModule::import(py, "sys")?;
-        let py_modules: Bound<'_, PyDict> = sys.getattr("modules")?.downcast_into()?;
+        let py_modules: Bound<'_, PyDict> = sys.getattr("modules")?.cast_into()?;
 
         // Insert foo into sys.modules
         py_modules.set_item("foo", foo_module)?;
@@ -221,6 +218,7 @@ Many Python files can be included and loaded as modules. If one file depends on
 another you must preserve correct order while declaring `PyModule`.
 
 Example directory structure:
+
 ```text
 .
 ├── Cargo.lock
@@ -234,6 +232,7 @@ Example directory structure:
 ```
 
 `python_app/app.py`:
+
 ```python
 from utils.foo import bar
 
@@ -243,17 +242,20 @@ def run():
 ```
 
 `python_app/utils/foo.py`:
+
 ```python
 def bar():
     return "baz"
 ```
 
 The example below shows:
-* how to include content of `app.py` and `utils/foo.py` into your rust binary
-* how to call function `run()` (declared in `app.py`) that needs function
+
+- how to include content of `app.py` and `utils/foo.py` into your rust binary
+- how to call function `run()` (declared in `app.py`) that needs function
   imported from `utils/foo.py`
 
 `src/main.rs`:
+
 ```rust,ignore
 use pyo3::prelude::*;
 use pyo3_ffi::c_str;
@@ -264,9 +266,9 @@ fn main() -> PyResult<()> {
         "/python_app/utils/foo.py"
     )));
     let py_app = c_str!(include_str!(concat!(env!("CARGO_MANIFEST_DIR"), "/python_app/app.py")));
-    let from_python = Python::with_gil(|py| -> PyResult<Py<PyAny>> {
-        PyModule::from_code(py, py_foo, c_str!("utils.foo"), c_str!("utils.foo"))?;
-        let app: Py<PyAny> = PyModule::from_code(py, py_app, c_str!(""), c_str!(""))?
+    let from_python = Python::attach(|py| -> PyResult<Py<PyAny>> {
+        PyModule::from_code(py, py_foo, c_str!("foo.py"), c_str!("utils.foo"))?;
+        let app: Py<PyAny> = PyModule::from_code(py, py_app, c_str!("app.py"), c_str!(""))?
             .getattr("run")?
             .into();
         app.call0(py)
@@ -278,9 +280,10 @@ fn main() -> PyResult<()> {
 ```
 
 The example below shows:
-* how to load content of `app.py` at runtime so that it sees its dependencies
+
+- how to load content of `app.py` at runtime so that it sees its dependencies
   automatically
-* how to call function `run()` (declared in `app.py`) that needs function
+- how to call function `run()` (declared in `app.py`) that needs function
   imported from `utils/foo.py`
 
 It is recommended to use absolute paths because then your binary can be run
@@ -288,6 +291,7 @@ from anywhere as long as your `app.py` is in the expected directory (in this exa
 that directory is `/usr/share/python_app`).
 
 `src/main.rs`:
+
 ```rust,no_run
 use pyo3::prelude::*;
 use pyo3::types::PyList;
@@ -299,13 +303,13 @@ use std::ffi::CString;
 fn main() -> PyResult<()> {
     let path = Path::new("/usr/share/python_app");
     let py_app = CString::new(fs::read_to_string(path.join("app.py"))?)?;
-    let from_python = Python::with_gil(|py| -> PyResult<Py<PyAny>> {
+    let from_python = Python::attach(|py| -> PyResult<Py<PyAny>> {
         let syspath = py
             .import("sys")?
             .getattr("path")?
-            .downcast_into::<PyList>()?;
+            .cast_into::<PyList>()?;
         syspath.insert(0, path)?;
-        let app: Py<PyAny> = PyModule::from_code(py, py_app.as_c_str(), c_str!(""), c_str!(""))?
+        let app: Py<PyAny> = PyModule::from_code(py, py_app.as_c_str(), c_str!("app.py"), c_str!(""))?
             .getattr("run")?
             .into();
         app.call0(py)
@@ -316,10 +320,6 @@ fn main() -> PyResult<()> {
 }
 ```
 
-
-[`Python::run`]: {{#PYO3_DOCS_URL}}/pyo3/marker/struct.Python.html#method.run
-[`py_run!`]: {{#PYO3_DOCS_URL}}/pyo3/macro.py_run.html
-
 ## Need to use a context manager from Rust?
 
 Use context managers by directly invoking `__enter__` and `__exit__`.
@@ -329,7 +329,7 @@ use pyo3::prelude::*;
 use pyo3::ffi::c_str;
 
 fn main() {
-    Python::with_gil(|py| {
+    Python::attach(|py| {
         let custom_manager = PyModule::from_code(
             py,
             c_str!(r#"
@@ -393,7 +393,7 @@ Alternatively, set Python's `signal` module to take the default action for a sig
 use pyo3::prelude::*;
 
 # fn main() -> PyResult<()> {
-Python::with_gil(|py| -> PyResult<()> {
+Python::attach(|py| -> PyResult<()> {
     let signal = py.import("signal")?;
     // Set SIGINT to have the default action
     signal
@@ -404,5 +404,6 @@ Python::with_gil(|py| -> PyResult<()> {
 # }
 ```
 
-
+[`py_run!`]: {{#PYO3_DOCS_URL}}/pyo3/macro.py_run.html
+[`Python::run`]: {{#PYO3_DOCS_URL}}/pyo3/marker/struct.Python.html#method.run
 [`PyModule::new`]: {{#PYO3_DOCS_URL}}/pyo3/types/struct.PyModule.html#method.new

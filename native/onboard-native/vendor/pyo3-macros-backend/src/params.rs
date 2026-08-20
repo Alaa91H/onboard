@@ -1,5 +1,6 @@
 use crate::utils::Ctx;
 use crate::{
+    attributes::FromPyWithAttribute,
     method::{FnArg, FnSpec, RegularArg},
     pyfunction::FunctionSignature,
     quotes::some_wrap,
@@ -208,7 +209,7 @@ fn impl_arg_param(
             let holder = holders.push_holder(arg.name.span());
             let name_str = arg.name.to_string();
             quote_spanned! { arg.name.span() =>
-                #pyo3_path::impl_::extract_argument::extract_optional_argument(
+                #pyo3_path::impl_::extract_argument::extract_argument_with_default(
                     _kwargs.as_deref(),
                     &mut #holder,
                     #name_str,
@@ -235,8 +236,12 @@ pub(crate) fn impl_regular_arg_param(
 
     // Use this macro inside this function, to ensure that all code generated here is associated
     // with the function argument
+    let use_probe = quote! {
+        #[allow(unused_imports)]
+        use #pyo3_path::impl_::pyclass::Probe as _;
+    };
     macro_rules! quote_arg_span {
-        ($($tokens:tt)*) => { quote_spanned!(arg.ty.span() => $($tokens)*) }
+        ($($tokens:tt)*) => { quote_spanned!(arg.ty.span() => { #use_probe $($tokens)* }) }
     }
 
     let name_str = arg.name.to_string();
@@ -245,19 +250,19 @@ pub(crate) fn impl_regular_arg_param(
     // Option<T> arguments have special treatment: the default should be specified _without_ the
     // Some() wrapper. Maybe this should be changed in future?!
     if arg.option_wrapped_type.is_some() {
-        default = Some(default.map_or_else(
-            || quote!(::std::option::Option::None),
-            |tokens| some_wrap(tokens, ctx),
-        ));
+        default = default.map(|tokens| some_wrap(tokens, ctx));
     }
 
-    if arg.from_py_with.is_some() {
+    if let Some(FromPyWithAttribute { kw, .. }) = arg.from_py_with {
+        let extractor = quote_spanned! { kw.span =>
+            { let from_py_with: fn(_) -> _ = #from_py_with; from_py_with }
+        };
         if let Some(default) = default {
             quote_arg_span! {
                 #pyo3_path::impl_::extract_argument::from_py_with_with_default(
                     #arg_value,
                     #name_str,
-                    #from_py_with as fn(_) -> _,
+                    #extractor,
                     #[allow(clippy::redundant_closure)]
                     {
                         || #default
@@ -270,22 +275,9 @@ pub(crate) fn impl_regular_arg_param(
                 #pyo3_path::impl_::extract_argument::from_py_with(
                     #unwrap,
                     #name_str,
-                    #from_py_with as fn(_) -> _,
+                    #extractor,
                 )?
             }
-        }
-    } else if arg.option_wrapped_type.is_some() {
-        let holder = holders.push_holder(arg.name.span());
-        quote_arg_span! {
-            #pyo3_path::impl_::extract_argument::extract_optional_argument(
-                #arg_value,
-                &mut #holder,
-                #name_str,
-                #[allow(clippy::redundant_closure)]
-                {
-                    || #default
-                }
-            )?
         }
     } else if let Some(default) = default {
         let holder = holders.push_holder(arg.name.span());

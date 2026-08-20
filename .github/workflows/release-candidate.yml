@@ -1,0 +1,43 @@
+name: Linux release candidate
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version label for the candidate, for example 1.0.0-rc.1
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  linux-release-candidate:
+    name: Linux release candidate (${{ matrix.arch }})
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x64
+            runner: ubuntu-24.04
+          - arch: arm64
+            runner: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v5
+      - name: Build and verify release candidate
+        run: >-
+          bash ci/scripts/build_linux_release_candidate.sh
+          ${{ matrix.arch }} ${{ inputs.version }}
+      - name: Upload verified candidate
+        uses: actions/upload-artifact@v6
+        with:
+          name: onboard-${{ inputs.version }}-linux-${{ matrix.arch }}
+          path: release-out/linux-${{ matrix.arch }}/
+          if-no-files-found: error
+          retention-days: 30
+
+# This workflow intentionally creates downloadable, verified candidate artifacts
+# only. Stable publishing and signing are introduced by the protected release
+# workflow after Windows/macOS adapters, signing credentials, and target-native
+# smoke tests are all available.

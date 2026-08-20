@@ -1,6 +1,7 @@
 # `#[pyclass]` thread safety
 
 Python objects are freely shared between threads by the Python interpreter. This means that:
+
 - there is no control which thread might eventually drop the `#[pyclass]` object, meaning `Send` is required.
 - multiple threads can potentially be reading the `#[pyclass]` data simultaneously, meaning `Sync` is required.
 
@@ -16,7 +17,7 @@ By default, `#[pyclass]` employs an ["interior mutability" pattern](../class.md#
 
 For example, the below simple class is thread-safe:
 
-```rust
+```rust,no_run
 # use pyo3::prelude::*;
 
 #[pyclass]
@@ -47,7 +48,7 @@ To remove the possibility of having overlapping `&self` and `&mut self` referenc
 
 For example, a thread-safe version of the above `MyClass` using atomic integers would be as follows:
 
-```rust
+```rust,no_run
 # use pyo3::prelude::*;
 use std::sync::atomic::{AtomicI32, Ordering};
 
@@ -75,7 +76,7 @@ An alternative to atomic data structures is to use [locks](https://doc.rust-lang
 
 For example, a thread-safe version of the above `MyClass` using locks would be as follows:
 
-```rust
+```rust,no_run
 # use pyo3::prelude::*;
 use std::sync::Mutex;
 
@@ -100,6 +101,8 @@ impl MyClass {
     }
 }
 ```
+
+If you need to lock around state stored in the Python interpreter or otherwise call into the Python C API while a lock is held, you might find the `MutexExt` trait useful. It provides a `lock_py_attached` method for `std::sync::Mutex` that avoids deadlocks with the GIL or other global synchronization events in the interpreter. Additionally, support for the `parking_lot` and `lock_api` synchronization libraries is gated behind the `parking_lot` and `lock_api` features. You can also enable the `arc_lock` feature if you need the `arc_lock` features of either library.
 
 ### Wrapping unsynchronized data
 

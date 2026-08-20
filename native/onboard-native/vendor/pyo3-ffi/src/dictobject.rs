@@ -1,6 +1,6 @@
 use crate::object::*;
 use crate::pyport::Py_ssize_t;
-use std::os::raw::{c_char, c_int};
+use std::ffi::{c_char, c_int};
 use std::ptr::addr_of_mut;
 
 #[cfg_attr(windows, link(name = "pythonXY"))]
@@ -116,6 +116,6 @@ extern "C" {
     pub static mut PyDictRevIterItem_Type: PyTypeObject;
 }
 
-#[cfg(any(PyPy, GraalPy, Py_LIMITED_API))]
+#[cfg(any(GraalPy, Py_LIMITED_API))]
 // TODO: remove (see https://github.com/PyO3/pyo3/pull/1341#issuecomment-751515985)
-opaque_struct!(PyDictObject);
+opaque_struct!(pub PyDictObject);

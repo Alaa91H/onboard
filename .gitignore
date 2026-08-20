@@ -1,4 +1,6 @@
 .pybuild/
+dist/
+release-out/
 __pycache__/
 build/
 debian/.debhelper/
@@ -23,7 +25,9 @@ po/onboard.pot
 debian/debhelper-build-stamp
 onboard.egg-info/
 Onboard/osk.cpython-*-x86_64-linux-gnu.so
+Onboard/onboard_native*.so
 Onboard/pypredict/lm.cpython-*-x86_64-linux-gnu.so
+native/onboard-native/target/
 Onboard/__pycache__/
 Onboard/pypredict/__pycache__/
 .env.debian.maintainer

@@ -30,11 +30,13 @@
 - [Debugging](debugging.md)
 - [Features reference](features.md)
 - [Performance](performance.md)
+- [Type stub generation and introspection](type-stub.md)
 - [Advanced topics](advanced.md)
 - [Building and distribution](building-and-distribution.md)
   - [Supporting multiple Python versions](building-and-distribution/multiple-python-versions.md)
 - [Useful crates](ecosystem.md)
   - [Logging](ecosystem/logging.md)
+  - [Tracing](ecosystem/tracing.md)
   - [Using `async` and `await`](ecosystem/async-await.md)
 - [FAQ and troubleshooting](faq.md)
 

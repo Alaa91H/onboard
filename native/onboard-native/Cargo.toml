@@ -11,7 +11,7 @@ name = "onboard_native"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-pyo3 = { version = "0.23", features = ["extension-module"] }
+pyo3 = { version = "=0.27.2", features = ["extension-module"] }
 
 [profile.release]
 codegen-units = 1
