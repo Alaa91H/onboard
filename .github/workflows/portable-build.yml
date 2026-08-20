@@ -16,7 +16,7 @@ jobs:
         run: python3 setup.py build
       - name: Verify focused regressions
         run: >-
-          python3 -m unittest
+          xvfb-run -a python3 -m unittest
           Onboard.test.test_WaylandCapabilities
           Onboard.test.test_ClipboardHistory
           Onboard.test.test_InputSources
@@ -36,7 +36,7 @@ jobs:
         run: python3 setup.py build
       - name: Verify focused regressions
         run: >-
-          python3 -m unittest
+          xvfb-run -a python3 -m unittest
           Onboard.test.test_WaylandCapabilities
           Onboard.test.test_ClipboardHistory
           Onboard.test.test_InputSources
