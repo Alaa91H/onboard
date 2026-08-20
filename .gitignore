@@ -31,3 +31,6 @@ native/onboard-native/target/
 Onboard/__pycache__/
 Onboard/pypredict/__pycache__/
 .env.debian.maintainer
+
+# Local Rust build output for onboard-next
+/next/target/
