@@ -1,0 +1,16 @@
+[package]
+name = "onboard-next"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish = false
+
+[dependencies]
+onboard-core = { path = "../onboard-core" }
+onboard-bridge-api = { path = "../onboard-bridge-api" }
+onboard-bridge-windows = { path = "../onboard-bridge-windows" }
+onboard-bridge-macos = { path = "../onboard-bridge-macos" }
+
+[lints]
+workspace = true

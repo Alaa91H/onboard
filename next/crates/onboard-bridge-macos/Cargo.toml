@@ -1,0 +1,13 @@
+[package]
+name = "onboard-bridge-macos"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish = false
+
+[dependencies]
+onboard-bridge-api = { path = "../onboard-bridge-api" }
+
+[lints]
+workspace = true

@@ -1,0 +1,112 @@
+name: Onboard-next native preview
+
+on:
+  pull_request:
+    paths:
+      - 'next/**'
+      - 'packaging/windows/**'
+      - 'packaging/macos/**'
+      - '.github/workflows/onboard-next-preview.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'next/**'
+      - 'packaging/windows/**'
+      - 'packaging/macos/**'
+      - '.github/workflows/onboard-next-preview.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: onboard-next-preview-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  windows-preview:
+    name: Windows preview (${{ matrix.arch }})
+    runs-on: ${{ matrix.runner }}
+    continue-on-error: ${{ matrix.preview_runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x64
+            runner: windows-2025
+            preview_runner: false
+          - arch: arm64
+            runner: windows-11-arm
+            preview_runner: true
+    steps:
+      - uses: actions/checkout@v5
+      - name: Record target toolchain
+        shell: pwsh
+        run: |
+          rustc --version
+          cargo --version
+          $env:PROCESSOR_ARCHITECTURE
+      - name: Build and validate portable preview
+        shell: pwsh
+        run: ./packaging/windows/build-preview.ps1 -Architecture '${{ matrix.arch }}'
+      - name: Validate preview provenance
+        shell: pwsh
+        run: |
+          $path = 'release-out/windows/${{ matrix.arch }}/onboard-next-preview-0.1.0/provenance.json'
+          $metadata = Get-Content -Raw $path | ConvertFrom-Json
+          if ($metadata.platform -ne 'windows' -or $metadata.signed -ne $false) {
+            throw "Unexpected Windows preview provenance."
+          }
+      - name: Upload unsigned preview artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: onboard-next-windows-${{ matrix.arch }}-preview
+          path: release-out/windows/${{ matrix.arch }}/onboard-next-preview-0.1.0/
+          if-no-files-found: error
+          retention-days: 14
+
+  macos-preview:
+    name: macOS preview (${{ matrix.arch }})
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x64
+            runner: macos-15-intel
+          - arch: arm64
+            runner: macos-15
+    steps:
+      - uses: actions/checkout@v5
+      - name: Record target toolchain
+        run: |
+          rustc --version
+          cargo --version
+          uname -m
+      - name: Build and validate app preview
+        run: |
+          chmod +x packaging/macos/build-preview.sh
+          ./packaging/macos/build-preview.sh '${{ matrix.arch }}'
+      - name: Validate preview provenance
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path("release-out/macos/${{ matrix.arch }}/Onboard-next.app/Contents/Resources/provenance.json")
+          metadata = json.loads(path.read_text(encoding="utf-8"))
+          assert metadata["platform"] == "macos"
+          assert metadata["signed"] is False
+          assert metadata["notarized"] is False
+          PY
+      - name: Upload unsigned preview artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: onboard-next-macos-${{ matrix.arch }}-preview
+          path: release-out/macos/${{ matrix.arch }}/
+          if-no-files-found: error
+          retention-days: 14
+
+# Preview only. This workflow must not sign, notarize, or publish a release.
+# Stable workflows are added only after the GTK4 UI and target-native smoke
+# tests pass, and after the protected stable-release environment is configured.

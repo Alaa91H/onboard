@@ -1,0 +1,26 @@
+[workspace]
+resolver = "2"
+members = [
+  "crates/onboard-core",
+  "crates/onboard-bridge-api",
+  "crates/onboard-bridge-windows",
+  "crates/onboard-bridge-macos",
+  "crates/onboard-next",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.74"
+license = "GPL-3.0-or-later"
+authors = ["Onboard contributors"]
+repository = "https://github.com/Alaa91H/onboard"
+
+[workspace.lints.rust]
+unsafe_op_in_unsafe_fn = "deny"
+unused_must_use = "deny"
+
+[profile.release]
+codegen-units = 1
+lto = "thin"
+strip = "symbols"
