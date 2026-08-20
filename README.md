@@ -11,8 +11,13 @@ a physical keyboard, including tablet users and people with mobility impairments
 It works out of the box without requiring manual configuration,
 automatically reading the keyboard layout from the X server.
 
-Onboard mainly supports X11, but there is an experimental Wayland support.
-See [README.WAYLAND.md](README.WAYLAND.md) for setup instructions and known limitations.
+Onboard supports X11 broadly and uses capability detection for KDE Plasma and GNOME Wayland integration. Other Wayland compositors use the safest available fallback; see [README.WAYLAND.md](README.WAYLAND.md) for details.
+
+For the maintained cross-distribution build, packaging targets, and desktop capability matrix, read [BUILDING.md](BUILDING.md).
+
+## Legacy distribution notes
+
+> **Current build path:** Use [BUILDING.md](BUILDING.md) and `./tools/prepare-build-env.sh`. The historical notes below are retained only as distribution-specific reference material.
 
 ## Building from Source
 Find below short instructions on how to build Onboard straight from this

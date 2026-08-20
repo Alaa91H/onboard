@@ -293,6 +293,10 @@ class Config(ConfigObject):
         group.add_option("-g", "--log-learning",
                   action="store_true", dest="log_learn", default=False,
                   help="log all learned text; off by default")
+        group.add_option("", "--diagnose", action="store_true",
+                  dest="diagnose", default=False,
+                  help=_("Print a JSON capability report and exit without "
+                         "opening the keyboard"))
 
         parser.add_option_group(group)
 

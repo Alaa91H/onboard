@@ -1,0 +1,10 @@
+# Cargo validates vendored source files against their recorded SHA-256 hashes.
+# Keep their generated LF byte stream unchanged on Windows checkouts.
+native/onboard-native/vendor/** -text
+
+# Keep Cargo metadata and CI scripts portable and deterministic.
+native/onboard-native/Cargo.lock text eol=lf
+native/onboard-native/.cargo/config.toml text eol=lf
+*.sh text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf

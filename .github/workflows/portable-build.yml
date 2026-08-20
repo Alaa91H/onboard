@@ -1,0 +1,132 @@
+name: Portable build
+
+on:
+  push:
+    branches: [main, master, feat/input-source-switching]
+  pull_request:
+
+jobs:
+  linux-ubuntu:
+    name: Ubuntu (${{ matrix.arch }})
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x64
+            runner: ubuntu-24.04
+          - arch: arm64
+            runner: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v5
+      - name: Record native target
+        run: |
+          echo "runner=${{ runner.os }}"
+          uname -a
+          python3 --version
+          rustc --version || true
+      - name: Install build dependencies
+        run: ./tools/prepare-build-env.sh --with-tests
+      - name: Build source extensions
+        run: python3 setup.py build
+      - name: Verify focused regressions
+        run: >-
+          xvfb-run -a python3 -m unittest
+          Onboard.test.test_WaylandCapabilities
+          Onboard.test.test_ClipboardHistory
+          Onboard.test.test_InputSources
+          Onboard.test.test_LayoutLoaderSVG
+          Onboard.test.test_QuickAccess
+          Onboard.test.test_ArabicLocalization
+          Onboard.test.test_NativeInput
+          Onboard.test.test_RTL
+          Onboard.test.test_PlatformBridge
+          Onboard.test.test_Diagnostics
+      - name: Verify Rust native crate
+        run: (cd native/onboard-native && cargo test --locked)
+      - name: Verify Arabic catalog
+        run: python3 i18n/scripts/check_catalog.py po/ar.po --language ar --require-complete
+      - name: Build PEP 517 distributions
+        run: python3 -m build --no-isolation
+      - name: Inspect native package contents
+        run: |
+          unzip -l dist/*.whl | grep -E 'Onboard/onboard_native.*\.(so|pyd)'
+          unzip -l dist/*.whl | grep -q 'share/locale/ar/LC_MESSAGES/onboard.mo'
+          tar -tzf dist/*.tar.gz | grep -q 'native/onboard-native/Cargo.lock'
+      - name: Upload Linux distribution artifacts
+        uses: actions/upload-artifact@v6
+        with:
+          name: onboard-linux-${{ matrix.arch }}
+          path: dist/
+          if-no-files-found: error
+
+  linux-fedora:
+    name: Fedora (${{ matrix.arch }})
+    runs-on: ${{ matrix.runner }}
+    container: fedora:latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x64
+            runner: ubuntu-24.04
+          - arch: arm64
+            runner: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v5
+      - name: Record host target
+        run: uname -a
+      - name: Install build dependencies
+        run: ./tools/prepare-build-env.sh --with-tests
+      - name: Record native toolchain
+        run: |
+          python3 --version
+          rustc --version
+          cargo --version
+      - name: Build source extensions
+        run: python3 setup.py build
+      - name: Verify focused regressions
+        run: >-
+          xvfb-run -a python3 -m unittest
+          Onboard.test.test_WaylandCapabilities
+          Onboard.test.test_ClipboardHistory
+          Onboard.test.test_InputSources
+          Onboard.test.test_LayoutLoaderSVG
+          Onboard.test.test_QuickAccess
+          Onboard.test.test_ArabicLocalization
+          Onboard.test.test_NativeInput
+          Onboard.test.test_RTL
+          Onboard.test.test_PlatformBridge
+          Onboard.test.test_Diagnostics
+      - name: Verify Rust native crate
+        run: (cd native/onboard-native && cargo test --locked)
+      - name: Verify Arabic catalog
+        run: python3 i18n/scripts/check_catalog.py po/ar.po --language ar --require-complete
+      - name: Build PEP 517 distributions
+        run: python3 -m build --no-isolation
+      - name: Inspect native package contents
+        run: |
+          unzip -l dist/*.whl | grep -E 'Onboard/onboard_native.*\.(so|pyd)'
+          unzip -l dist/*.whl | grep -q 'share/locale/ar/LC_MESSAGES/onboard.mo'
+          tar -tzf dist/*.tar.gz | grep -q 'native/onboard-native/Cargo.lock'
+      - name: Upload Linux distribution artifacts
+        uses: actions/upload-artifact@v6
+        with:
+          name: onboard-fedora-${{ matrix.arch }}
+          path: dist/
+          if-no-files-found: error
+
+  arch-template:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - name: Validate Arch package recipe syntax
+        run: bash -n packaging/arch/PKGBUILD
+      - name: Validate Flatpak manifest essentials
+        run: |
+          grep -q '^id: org.onboard.Onboard$' packaging/flatpak/org.onboard.Onboard.yml
+          grep -q '^runtime: org.gnome.Platform$' packaging/flatpak/org.onboard.Onboard.yml
+          grep -q '^command: onboard$' packaging/flatpak/org.onboard.Onboard.yml
+          grep -q 'org.freedesktop.Sdk.Extension.rust-stable' packaging/flatpak/org.onboard.Onboard.yml
+          test -f native/onboard-native/Cargo.lock
+          test -f native/onboard-native/.cargo/config.toml

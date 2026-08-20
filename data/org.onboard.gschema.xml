@@ -74,9 +74,9 @@ If unavailable, 'AppIndicator' falls back to GtkStatusIcon.
             </description>
         </key>
         <key name="status-icon-left-click-action" enum="org.onboard.keyboard.StatusIconLeftClickAction">
-            <default>"menu"</default>
+            <default>"toggle"</default>
             <summary>Status icon left-click action</summary>
-            <description>Choose what left-clicking the status icon does. 'menu' opens the context menu (same as right-click). 'toggle' shows/hides the keyboard directly, as in versions prior to 1.4.4-4.
+            <description>Choose what left-clicking the status icon does. 'toggle' shows or hides the keyboard directly (the default for quick access). 'menu' opens the context menu; the same menu remains available on secondary click.
             </description>
         </key>
         <key name="start-minimized" type="b">

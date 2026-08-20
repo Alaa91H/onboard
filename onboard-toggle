@@ -1,0 +1,13 @@
+#!/bin/sh
+# Toggle an existing Onboard instance without creating a duplicate. If the
+# session service is not running yet, launch Onboard normally.
+
+if command -v gdbus >/dev/null 2>&1 && \
+   gdbus call --session \
+       --dest org.onboard.Onboard \
+       --object-path /org/onboard/Onboard/Keyboard \
+       --method org.onboard.Onboard.Keyboard.ToggleVisible >/dev/null 2>&1; then
+    exit 0
+fi
+
+exec onboard "$@"

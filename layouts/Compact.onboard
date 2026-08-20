@@ -94,6 +94,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                         <key group='shifts'    id='RTSH'/>
                         <key group='bottomrow' id='LCTL'/>
                         <key group="bottomrow" id="LWIN"/>
+                        <key group="bottomrow" id="input-source" svg_id="RWIN"/>
                         <key group='bottomrow' id='LALT'/>
                         <key group='bottomrow' id='RALT'/>
 

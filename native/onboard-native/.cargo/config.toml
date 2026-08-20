@@ -1,0 +1,11 @@
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"
+
+# A Python extension is loaded by the interpreter, which provides Python C API
+# symbols. macOS must therefore retain unresolved Python symbols in the cdylib
+# rather than attempting to link a standalone executable against libpython.
+[target.'cfg(target_os = "macos")']
+rustflags = ["-C", "link-arg=-undefined", "-C", "link-arg=dynamic_lookup"]

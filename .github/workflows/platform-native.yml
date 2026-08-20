@@ -1,0 +1,91 @@
+name: Native bridge readiness
+
+on:
+  pull_request:
+    paths:
+      - 'native/**'
+      - '.gitattributes'
+      - '.github/workflows/platform-native.yml'
+  push:
+    branches: [main, master, feat/input-source-switching]
+    paths:
+      - 'native/**'
+      - '.gitattributes'
+      - '.github/workflows/platform-native.yml'
+  workflow_dispatch:
+
+jobs:
+  windows-bridge:
+    name: Windows bridge (${{ matrix.arch }})
+    runs-on: ${{ matrix.runner }}
+    continue-on-error: ${{ matrix.preview }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x64
+            runner: windows-2025
+            preview: false
+          - arch: arm64
+            runner: windows-11-arm
+            preview: true
+    steps:
+      - uses: actions/checkout@v5
+      - name: Record native toolchain
+        shell: pwsh
+        run: |
+          python --version
+          rustc --version
+          cargo --version
+          $env:PROCESSOR_ARCHITECTURE
+      - name: Verify vendored Rust bridge
+        shell: pwsh
+        working-directory: native/onboard-native
+        run: cargo test --locked
+      - name: Build Rust bridge release library
+        shell: pwsh
+        working-directory: native/onboard-native
+        run: cargo build --release --locked
+      - name: Upload bridge diagnostic
+        uses: actions/upload-artifact@v6
+        with:
+          name: onboard-native-windows-${{ matrix.arch }}
+          path: native/onboard-native/target/release/
+          if-no-files-found: error
+
+  macos-bridge:
+    name: macOS bridge (${{ matrix.arch }})
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x64
+            runner: macos-15-intel
+          - arch: arm64
+            runner: macos-15
+    steps:
+      - uses: actions/checkout@v5
+      - name: Record native toolchain
+        run: |
+          python3 --version
+          rustc --version
+          cargo --version
+          uname -m
+      - name: Compile Rust bridge tests
+        working-directory: native/onboard-native
+        run: cargo check --tests --locked
+      - name: Build Rust bridge release library
+        working-directory: native/onboard-native
+        run: cargo build --release --locked
+      - name: Upload bridge diagnostic
+        uses: actions/upload-artifact@v6
+        with:
+          name: onboard-native-macos-${{ matrix.arch }}
+          path: native/onboard-native/target/release/
+          if-no-files-found: error
+
+# This workflow verifies that the platform-neutral Rust bridge compiles natively.
+# It does not publish an Onboard Windows or macOS application: those installers
+# become eligible only after the GTK4 `onboard-next` UI and platform adapters
+# have passed their target-specific smoke and accessibility gates.

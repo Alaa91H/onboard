@@ -28,6 +28,7 @@ from __future__ import division, print_function, unicode_literals
 
 import os
 import logging
+from collections import namedtuple
 
 import gi
 from Onboard.Version import require_gi_versions
@@ -39,6 +40,36 @@ _logger = logging.getLogger(__name__)
 
 _layer_shell = None
 _layer_shell_checked = False
+
+RuntimeCapabilities = namedtuple(
+    "RuntimeCapabilities",
+    "session desktop window_strategy input_source_strategy movable warning")
+
+
+def get_desktop_environment():
+    """Return a normalized desktop/compositor family from XDG metadata.
+
+    The result intentionally identifies *integration families*, not a specific
+    distribution. A desktop can advertise multiple colon-separated names, so
+    all standard variables are considered before falling back to ``unknown``.
+    """
+    raw = ":".join(filter(None, (
+        os.environ.get("XDG_CURRENT_DESKTOP", ""),
+        os.environ.get("XDG_SESSION_DESKTOP", ""),
+        os.environ.get("DESKTOP_SESSION", ""),
+    ))).upper()
+    if "KDE" in raw or "PLASMA" in raw:
+        return "kde"
+    if "GNOME" in raw:
+        return "gnome"
+    if "MATE" in raw:
+        return "mate"
+    if "XFCE" in raw or "X-CINNAMON" in raw or "CINNAMON" in raw:
+        return "x11-desktop"
+    if any(name in raw for name in ("SWAY", "HYPRLAND", "WAYFIRE",
+                                    "RIVER", "LABWC", "NIRI", "COSMIC")):
+        return "wlr-compatible"
+    return "unknown"
 
 
 def is_wayland():
@@ -64,6 +95,37 @@ def is_wayland():
     if os.environ.get("XDG_SESSION_TYPE", "").lower() == "wayland":
         return True
     return False
+
+
+def get_runtime_capabilities():
+    """Describe the supported integration strategy for the active session.
+
+    This is a user-facing diagnostic contract. It never assumes that a Wayland
+    compositor exposes an optional protocol merely because its distribution
+    ships the corresponding client library.
+    """
+    if not is_wayland():
+        return RuntimeCapabilities("X11", get_desktop_environment(), "x11",
+                                   "x11", True, "")
+
+    desktop = get_desktop_environment()
+    if desktop == "kde":
+        return RuntimeCapabilities("Wayland", desktop, "kwin-rule", "kde-dbus",
+                                   True, "")
+    if desktop == "gnome":
+        return RuntimeCapabilities(
+            "Wayland", desktop, "gnome-extension", "gnome-extension", True,
+            "Native integration requires the bundled GNOME Shell extension.")
+    if is_layer_shell_available():
+        return RuntimeCapabilities(
+            "Wayland", desktop, "layer-shell", "unavailable", False,
+            "This compositor supports layer-shell placement, but not a "
+            "portable input-source API or compositor-controlled dragging. "
+            "Set ONBOARD_BACKEND=x11 to prefer the XWayland fallback.")
+    return RuntimeCapabilities(
+        "Wayland", desktop, "xwayland-fallback", "unavailable", True,
+        "No supported native Onboard protocol was detected. Set "
+        "ONBOARD_BACKEND=x11 to run through XWayland when it is available.")
 
 
 def get_session_type_label():
@@ -112,12 +174,9 @@ def is_kde_plasma():
     keyboard window. Other Wayland compositors don't expose an equivalent
     rule mechanism, so they still have to use layer-shell.
     """
-    desktop = os.environ.get("XDG_CURRENT_DESKTOP", "")
-    if "KDE" in desktop or "Plasma" in desktop:
+    if get_desktop_environment() == "kde":
         return True
-    if os.environ.get("KDE_FULL_SESSION") == "true":
-        return True
-    return False
+    return os.environ.get("KDE_FULL_SESSION") == "true"
 
 
 def install_kwin_rule(app_id="onboard",
@@ -323,8 +382,7 @@ def is_gnome_shell():
     True if we are running inside a GNOME Shell session (Mutter,
     either Wayland or Xorg).
     """
-    desktop = os.environ.get("XDG_CURRENT_DESKTOP", "")
-    if "GNOME" in desktop:
+    if get_desktop_environment() == "gnome":
         return True
     if os.environ.get("GNOME_DESKTOP_SESSION_ID"):
         return True

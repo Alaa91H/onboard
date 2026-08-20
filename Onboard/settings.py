@@ -51,6 +51,7 @@ from Onboard.WindowUtils     import show_ask_string_dialog, \
                                     show_confirmation_dialog
 from Onboard.UDevTracker     import UDevTracker
 from Onboard.definitions     import StatusIconProviderEnum
+from Onboard.I18n            import apply_gtk_text_direction
 
 
 app = "onboard"
@@ -307,6 +308,10 @@ class Settings(DialogBuilder):
 
         # finish config initialization
         config.init()
+
+        # Apply the session direction before GtkBuilder creates any
+        # preference controls or menus.
+        self._text_direction = apply_gtk_text_direction(Gtk)
 
         # init dialog builder
         builder = LoadUI("settings")

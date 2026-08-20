@@ -30,11 +30,114 @@
 //
 // This lets Onboard run on native GNOME Wayland instead of falling back to XWayland.
 
+import Clutter from 'gi://Clutter';
+import Gio from 'gi://Gio';
 import Meta from 'gi://Meta';
 import GLib from 'gi://GLib';
+import St from 'gi://St';
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
+import { getInputSourceManager } from 'resource:///org/gnome/shell/ui/status/keyboard.js';
 
 const ONBOARD_KEYBOARD_ID = 'onboard';
 const ONBOARD_CHILD_PREFIX = 'onboard-';
+const ONBOARD_DBUS_NAME = 'org.onboard.Onboard';
+const ONBOARD_DBUS_PATH = '/org/onboard/Onboard/Keyboard';
+const ONBOARD_DBUS_INTERFACE = 'org.onboard.Onboard.Keyboard';
+const INPUT_SOURCES_OBJECT_PATH = '/org/onboard/InputSources';
+const INPUT_SOURCES_INTERFACE = `<node>
+    <interface name="org.onboard.InputSources1">
+        <method name="ListSources">
+            <arg type="a(sss)" direction="out" name="sources" />
+        </method>
+        <method name="GetActiveSource">
+            <arg type="s" direction="out" name="id" />
+        </method>
+        <method name="ActivateSource">
+            <arg type="s" direction="in" name="id" />
+            <arg type="b" direction="out" name="accepted" />
+        </method>
+        <method name="SwitchToNext">
+            <arg type="b" direction="out" name="accepted" />
+        </method>
+        <signal name="SourceChanged">
+            <arg type="s" name="id" />
+        </signal>
+        <signal name="SourcesChanged" />
+    </interface>
+</node>`;
+
+class InputSourceBridge {
+    constructor(onCurrentSourceChanged, onSourcesChanged) {
+        this._manager = getInputSourceManager();
+        this._onCurrentSourceChanged = onCurrentSourceChanged;
+        this._onSourcesChanged = onSourcesChanged;
+        this._currentSourceId = this._manager.connect(
+            'current-source-changed', () => this._onCurrentSourceChanged());
+        this._sourcesId = this._manager.connect(
+            'sources-changed', () => this._onSourcesChanged());
+    }
+
+    destroy() {
+        if (this._manager && this._currentSourceId) {
+            try { this._manager.disconnect(this._currentSourceId); } catch (_e) {}
+        }
+        if (this._manager && this._sourcesId) {
+            try { this._manager.disconnect(this._sourcesId); } catch (_e) {}
+        }
+        this._currentSourceId = 0;
+        this._sourcesId = 0;
+        this._manager = null;
+    }
+
+    _sources() {
+        if (!this._manager)
+            return [];
+        return Object.values(this._manager.inputSources)
+            .sort((a, b) => a.index - b.index);
+    }
+
+    ListSources() {
+        const sources = this._sources().map(source => [
+            String(source.id),
+            String(source.displayName || source.id),
+            String(source.shortName || source.id).toUpperCase(),
+        ]);
+        return [sources];
+    }
+
+    GetActiveSource() {
+        const source = this._manager?.currentSource;
+        return [source ? String(source.id) : ''];
+    }
+
+    ActivateSource(id) {
+        const source = this._sources().find(item => String(item.id) === id);
+        if (!source)
+            return [false];
+        try {
+            source.activate(true);
+            return [true];
+        } catch (_e) {
+            return [false];
+        }
+    }
+
+    SwitchToNext() {
+        const sources = this._sources();
+        if (sources.length < 2)
+            return [false];
+        const activeId = this.GetActiveSource()[0];
+        const index = sources.findIndex(source => String(source.id) === activeId);
+        const next = sources[(index + 1) % sources.length];
+        try {
+            next.activate(true);
+            return [true];
+        } catch (_e) {
+            return [false];
+        }
+    }
+}
 
 // On every enable() we hash our own extension.js bytes and write the
 // digest to ~/.cache/onboard/extension-build-id. Onboard's launcher
@@ -70,10 +173,26 @@ export default class OnboardExtension {
     enable() {
         writeBuildIdMarker();
         this._lastFocus = null;
+        this._quickAccessIndicator = this._createQuickAccessIndicator();
+        // The Shell owns the exact order of built-in indicators such as the
+        // language source. Add Onboard to the same right-hand status area so
+        // it remains visible even on GNOME installations without tray icons.
+        Main.panel.addToStatusArea('onboard-quick-access',
+                                   this._quickAccessIndicator, 0, 'right');
         this._focusBouncePending = false;
         // Currently-mapped Onboard child windows. Tracked so we know
         // when to un-/re-apply make_above on the keyboard window.
         this._mappedChildren = new Set();
+        this._inputSourceBridge = new InputSourceBridge(
+            () => this._emitCurrentSourceChanged(),
+            () => this._emitSourcesChanged());
+        this._inputSourceDbus = Gio.DBusExportedObject.wrapJSObject(
+            INPUT_SOURCES_INTERFACE, this._inputSourceBridge);
+        // The extension runs inside GNOME Shell, so this object is exported
+        // under org.gnome.Shell. It intentionally exposes only input-source
+        // actions; it is never a general JavaScript evaluation endpoint.
+        this._inputSourceDbus.export(Gio.DBus.session,
+                                     INPUT_SOURCES_OBJECT_PATH);
 
         // Remember the most recently focused non-Onboard-keyboard window
         // so we can hand focus back when the keyboard accidentally gets
@@ -105,6 +224,16 @@ export default class OnboardExtension {
     }
 
     disable() {
+        this._quickAccessIndicator?.destroy();
+        this._quickAccessIndicator = null;
+        if (this._inputSourceDbus) {
+            try { this._inputSourceDbus.unexport(); } catch (_e) {}
+            this._inputSourceDbus = null;
+        }
+        if (this._inputSourceBridge) {
+            this._inputSourceBridge.destroy();
+            this._inputSourceBridge = null;
+        }
         if (this._focusId) {
             global.display.disconnect(this._focusId);
             this._focusId = 0;
@@ -116,6 +245,61 @@ export default class OnboardExtension {
         this._lastFocus = null;
         this._focusBouncePending = false;
         this._mappedChildren = null;
+    }
+
+    _createQuickAccessIndicator() {
+        const button = new PanelMenu.Button(0.0, 'Onboard quick access', false);
+        button.accessible_name = 'Onboard on-screen keyboard';
+        button.add_child(new St.Icon({
+            icon_name: 'input-keyboard-symbolic',
+            style_class: 'system-status-icon',
+        }));
+        button.connect('button-press-event', () => {
+            this._toggleOnboard();
+            return Clutter.EVENT_STOP;
+        });
+        return button;
+    }
+
+    _toggleOnboard() {
+        // Do not start a second keyboard. Toggle a running instance through
+        // its session D-Bus service and launch only if the service is absent.
+        Gio.DBus.session.call(
+            ONBOARD_DBUS_NAME,
+            ONBOARD_DBUS_PATH,
+            ONBOARD_DBUS_INTERFACE,
+            'ToggleVisible',
+            new GLib.Variant('()', []),
+            null,
+            Gio.DBusCallFlags.NONE,
+            1500,
+            null,
+            (connection, result) => {
+                try {
+                    connection.call_finish(result);
+                } catch (_error) {
+                    try {
+                        Gio.Subprocess.new(['onboard'],
+                                           Gio.SubprocessFlags.NONE);
+                    } catch (_launchError) {
+                        // The indicator must never destabilize GNOME Shell.
+                    }
+                }
+            });
+    }
+
+    _emitCurrentSourceChanged() {
+        if (!this._inputSourceDbus || !this._inputSourceBridge)
+            return;
+        const id = this._inputSourceBridge.GetActiveSource()[0];
+        this._inputSourceDbus.emit_signal('SourceChanged',
+            new GLib.Variant('(s)', [id]));
+    }
+
+    _emitSourcesChanged() {
+        if (this._inputSourceDbus)
+            this._inputSourceDbus.emit_signal('SourcesChanged',
+                new GLib.Variant('()', []));
     }
 
     _wmClass(win) {
