@@ -14,6 +14,8 @@ BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
 BuildRequires:  intltool
+BuildRequires:  cargo
+BuildRequires:  rust
 BuildRequires:  pkgconfig(dconf)
 BuildRequires:  pkgconfig(gdk-3.0)
 BuildRequires:  pkgconfig(hunspell)
@@ -72,7 +74,10 @@ install -Dpm 0644 data/72-onboard-uinput.rules \
 %{python3} -m unittest \
   Onboard.test.test_ClipboardHistory \
   Onboard.test.test_InputSources \
-  Onboard.test.test_LayoutLoaderSVG
+  Onboard.test.test_LayoutLoaderSVG \
+  Onboard.test.test_NativeInput \
+  Onboard.test.test_ArabicLocalization \
+  Onboard.test.test_RTL
 
 %files
 %license COPYING COPYING.GPL3 COPYING.BSD3

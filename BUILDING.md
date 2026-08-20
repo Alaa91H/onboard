@@ -45,6 +45,22 @@ The `setup.py build` command also creates development-only links to the native
 extensions so the test suite can import them from the source tree. These links
 must not be committed.
 
+The build also compiles the optional `Onboard.onboard_native` Rust extension.
+In this release it performs bounded keymap and event validation only; the
+established virtkey/uinput and AT-SPI input paths remain the production
+transport. Rust and Cargo are therefore build dependencies, never an additional
+runtime service. A diagnostic source build can intentionally skip it while
+retaining the safe Python reference implementation:
+
+```bash
+ONBOARD_DISABLE_RUST=1 python3 setup.py build
+ONBOARD_NATIVE_INPUT=fallback onboard
+```
+
+See [the Rust and i18n architecture record](docs/ARCHITECTURE_RUST_I18N.md) for
+the package layout, API boundary, and the controlled path to a future native
+transport.
+
 ## Building a distribution package
 
 | Target | Command outline | Result |
@@ -117,7 +133,8 @@ A desktop session configured for Arabic selects it automatically; maintainers
 can verify it from a shell without changing the whole session:
 
 ```bash
-LANGUAGE=ar onboard
+LANG=ar_SA.UTF-8 LANGUAGE=ar GTK_TEXT_DIR=rtl onboard
+LANG=ar_SA.UTF-8 LANGUAGE=ar GTK_TEXT_DIR=rtl onboard-settings
 ```
 
 When adding a new user-visible Python string, wrap it in `_()` and include its
@@ -127,6 +144,7 @@ release:
 ```bash
 python3 setup.py build_i18n
 msgmerge --update --backup=none po/ar.po po/onboard.pot
+python3 i18n/scripts/check_catalog.py po/ar.po --language ar --require-complete
 msgfmt --check --statistics po/ar.po
 ```
 
@@ -134,10 +152,12 @@ msgfmt --check --statistics po/ar.po
 
 The `Portable build` workflow validates the generic source build on Ubuntu and
 Fedora, runs the focused input-source, clipboard, layout, and capability tests,
-and checks the Arch and Flatpak templates. Before a stable release, additionally
-perform manual smoke tests in a real KDE Wayland and GNOME Wayland session; a
-headless X11 test cannot validate compositor-owned D-Bus policies or desktop
-extensions.
+and checks the Arch and Flatpak templates. It also runs the Rust crate tests,
+the Rust/Python fallback contract, the RTL selector test, and the complete
+Arabic gettext catalog gate. Before a stable release, additionally perform
+manual smoke tests in a real Arabic KDE Wayland and GNOME Wayland session; a
+headless X11 test cannot validate compositor-owned D-Bus policies, desktop
+extensions, or visual RTL clipping.
 
 ## References
 

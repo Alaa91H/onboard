@@ -19,7 +19,7 @@ fi
 
 install_debian() {
     local packages=(
-        build-essential pkg-config gettext intltool
+        build-essential pkg-config gettext intltool rustc cargo
         python3-dev python3-setuptools python3-wheel python3-build python3-cairo
         python3-gi python3-gi-cairo python3-dbus
         libgtk-3-dev libxtst-dev libxkbfile-dev libdconf-dev
@@ -35,7 +35,7 @@ install_debian() {
 
 install_fedora() {
     local packages=(
-        gcc gcc-c++ make pkgconf-pkg-config gettext intltool
+        gcc gcc-c++ make pkgconf-pkg-config gettext intltool rust cargo
         python3-devel python3-setuptools python3-wheel python3-build python3-gobject
         python3-cairo python3-dbus
         gtk3-devel libXtst-devel libxkbfile-devel dconf-devel
@@ -50,7 +50,7 @@ install_fedora() {
 
 install_arch() {
     local packages=(
-        base-devel pkgconf gettext intltool
+        base-devel pkgconf gettext intltool rust
         python python-setuptools python-wheel python-build python-gobject python-cairo
         python-dbus gtk3 libxtst libxkbfile dconf libcanberra hunspell
         systemd libxkbcommon wayland
@@ -63,7 +63,7 @@ install_arch() {
 
 install_opensuse() {
     local packages=(
-        gcc gcc-c++ make pkg-config gettext-tools intltool
+        gcc gcc-c++ make pkg-config gettext-tools intltool rust cargo
         python3-devel python3-setuptools python3-wheel python3-build python3-gobject
         python3-cairo python3-dbus
         gtk3-devel libXtst-devel libxkbfile-devel dconf-devel
@@ -87,8 +87,8 @@ elif command -v zypper >/dev/null 2>&1; then
 else
     cat >&2 <<'EOF'
 Unsupported package manager. Install a C/C++ compiler, pkg-config, gettext,
-intltool, Python 3 development headers, GTK 3 / GObject introspection bindings,
-and the pkg-config development files listed in setup.py.
+intltool, Rust (cargo/rustc), Python 3 development headers, GTK 3 / GObject
+introspection bindings, and the pkg-config development files listed in setup.py.
 EOF
     exit 1
 fi

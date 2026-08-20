@@ -27,6 +27,7 @@ depends=(
 makedepends=(
   'gettext'
   'intltool'
+  'rust'
   'pkgconf'
   'python-build'
   'python-installer'
@@ -50,7 +51,10 @@ check() {
   python -m unittest \
     Onboard.test.test_ClipboardHistory \
     Onboard.test.test_InputSources \
-    Onboard.test.test_LayoutLoaderSVG
+    Onboard.test.test_LayoutLoaderSVG \
+    Onboard.test.test_NativeInput \
+    Onboard.test.test_ArabicLocalization \
+    Onboard.test.test_RTL
 }
 
 package() {

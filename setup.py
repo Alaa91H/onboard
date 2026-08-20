@@ -79,8 +79,11 @@ gnome_shell_version = get_gnome_shell_version()
 project_root = dirname(abspath(__file__))
 build_root = join(project_root, 'build')
 libs_to_symlink = [['Onboard', 'osk*.so'],
-                   ['Onboard/pypredict', 'lm*.so']]
+                   ['Onboard/pypredict', 'lm*.so'],
+                   ['Onboard', 'onboard_native*.so']]
 setup_command = sys.argv[1] if len(sys.argv) >= 2 else ""
+RUST_CRATE_DIR = Path(project_root) / 'native' / 'onboard-native'
+MODULE_NAME_RUST = 'Onboard.onboard_native'
 
 
 @contextmanager
@@ -450,10 +453,61 @@ class build_i18n_portable(Command):
                                self.autostart_file])
 
 
+class build_rust_native(Command):
+    """Build the optional PyO3 validation extension into ``build_lib``.
+
+    Rust owns only bounded keymap/event validation in this milestone.  The
+    existing C/C++ and Python key injection paths remain unchanged.  Set
+    ``ONBOARD_DISABLE_RUST=1`` for an explicitly fallback-only source build.
+    """
+
+    description = "build the optional Onboard Rust native extension"
+    user_options = []
+
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        if os.environ.get('ONBOARD_DISABLE_RUST', '').lower() in \
+           ('1', 'true', 'yes', 'on'):
+            self.announce('Skipping Rust extension (ONBOARD_DISABLE_RUST set)',
+                          level=2)
+            return
+
+        cargo = shutil.which('cargo')
+        if cargo is None:
+            raise RuntimeError(
+                'Rust is required for the native extension. Install cargo/rustc '
+                'or build with ONBOARD_DISABLE_RUST=1 for the safe Python '
+                'fallback-only mode.')
+        if not RUST_CRATE_DIR.is_dir():
+            raise RuntimeError('Rust crate not found: {}'.format(RUST_CRATE_DIR))
+
+        build_ext_cmd = self.get_finalized_command('build_ext')
+        destination = Path(build_ext_cmd.get_ext_fullpath(MODULE_NAME_RUST))
+        cargo_target = Path(build_ext_cmd.build_temp) / 'onboard-native-rust'
+        env = os.environ.copy()
+        env['CARGO_TARGET_DIR'] = str(cargo_target)
+        env['PYO3_PYTHON'] = sys.executable
+        subprocess.check_call([cargo, 'build', '--release', '--manifest-path',
+                               str(RUST_CRATE_DIR / 'Cargo.toml')], env=env)
+
+        source = cargo_target / 'release' / 'libonboard_native.so'
+        if not source.is_file():
+            raise RuntimeError('Rust build produced no extension: {}'.format(source))
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(str(source), str(destination))
+        self.announce('Built Rust extension: {}'.format(destination), level=2)
+
+
 class build_portable(build_command):
     """Standard setuptools build with explicit i18n/desktop generation."""
 
-    sub_commands = [("build_i18n_portable", lambda self: True)] + \
+    sub_commands = [("build_i18n_portable", lambda self: True),
+                    ("build_rust_native", lambda self: True)] + \
                    build_command.sub_commands
 
 
@@ -727,6 +781,7 @@ setup(
     cmdclass = {
                 'build': build_portable,
                 'build_i18n_portable': build_i18n_portable,
+                'build_rust_native': build_rust_native,
                 'install': CustomInstallCommand,
                 'test': TestCommand,
                 'build_ext': build_ext_custom,

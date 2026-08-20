@@ -1,0 +1,14 @@
+/home/ubuntu/onboard-fork/native/onboard-native/target/release/deps/libpyo3_build_config-e045797b1dfb56d1.rmeta: /home/ubuntu/.cargo/registry/src/index.crates.io-6f17d22bba15001f/pyo3-build-config-0.23.5/src/lib.rs /home/ubuntu/.cargo/registry/src/index.crates.io-6f17d22bba15001f/pyo3-build-config-0.23.5/src/errors.rs /home/ubuntu/.cargo/registry/src/index.crates.io-6f17d22bba15001f/pyo3-build-config-0.23.5/src/impl_.rs /home/ubuntu/onboard-fork/native/onboard-native/target/release/build/pyo3-build-config-719b6036f4aab070/out/pyo3-build-config-file.txt /home/ubuntu/onboard-fork/native/onboard-native/target/release/build/pyo3-build-config-719b6036f4aab070/out/pyo3-build-config.txt
+
+/home/ubuntu/onboard-fork/native/onboard-native/target/release/deps/libpyo3_build_config-e045797b1dfb56d1.rlib: /home/ubuntu/.cargo/registry/src/index.crates.io-6f17d22bba15001f/pyo3-build-config-0.23.5/src/lib.rs /home/ubuntu/.cargo/registry/src/index.crates.io-6f17d22bba15001f/pyo3-build-config-0.23.5/src/errors.rs /home/ubuntu/.cargo/registry/src/index.crates.io-6f17d22bba15001f/pyo3-build-config-0.23.5/src/impl_.rs /home/ubuntu/onboard-fork/native/onboard-native/target/release/build/pyo3-build-config-719b6036f4aab070/out/pyo3-build-config-file.txt /home/ubuntu/onboard-fork/native/onboard-native/target/release/build/pyo3-build-config-719b6036f4aab070/out/pyo3-build-config.txt
+
+/home/ubuntu/onboard-fork/native/onboard-native/target/release/deps/pyo3_build_config-e045797b1dfb56d1.d: /home/ubuntu/.cargo/registry/src/index.crates.io-6f17d22bba15001f/pyo3-build-config-0.23.5/src/lib.rs /home/ubuntu/.cargo/registry/src/index.crates.io-6f17d22bba15001f/pyo3-build-config-0.23.5/src/errors.rs /home/ubuntu/.cargo/registry/src/index.crates.io-6f17d22bba15001f/pyo3-build-config-0.23.5/src/impl_.rs /home/ubuntu/onboard-fork/native/onboard-native/target/release/build/pyo3-build-config-719b6036f4aab070/out/pyo3-build-config-file.txt /home/ubuntu/onboard-fork/native/onboard-native/target/release/build/pyo3-build-config-719b6036f4aab070/out/pyo3-build-config.txt
+
+/home/ubuntu/.cargo/registry/src/index.crates.io-6f17d22bba15001f/pyo3-build-config-0.23.5/src/lib.rs:
+/home/ubuntu/.cargo/registry/src/index.crates.io-6f17d22bba15001f/pyo3-build-config-0.23.5/src/errors.rs:
+/home/ubuntu/.cargo/registry/src/index.crates.io-6f17d22bba15001f/pyo3-build-config-0.23.5/src/impl_.rs:
+/home/ubuntu/onboard-fork/native/onboard-native/target/release/build/pyo3-build-config-719b6036f4aab070/out/pyo3-build-config-file.txt:
+/home/ubuntu/onboard-fork/native/onboard-native/target/release/build/pyo3-build-config-719b6036f4aab070/out/pyo3-build-config.txt:
+
+# env-dep:CARGO_PKG_VERSION=0.23.5
+# env-dep:OUT_DIR=/home/ubuntu/onboard-fork/native/onboard-native/target/release/build/pyo3-build-config-719b6036f4aab070/out

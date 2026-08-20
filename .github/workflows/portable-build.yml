@@ -23,6 +23,12 @@ jobs:
           Onboard.test.test_LayoutLoaderSVG
           Onboard.test.test_QuickAccess
           Onboard.test.test_ArabicLocalization
+          Onboard.test.test_NativeInput
+          Onboard.test.test_RTL
+      - name: Verify Rust native crate
+        run: cargo test --manifest-path native/onboard-native/Cargo.toml --locked
+      - name: Verify Arabic catalog
+        run: python3 i18n/scripts/check_catalog.py po/ar.po --language ar --require-complete
       - name: Build PEP 517 distributions
         run: python3 -m build --no-isolation
 
@@ -44,6 +50,12 @@ jobs:
           Onboard.test.test_LayoutLoaderSVG
           Onboard.test.test_QuickAccess
           Onboard.test.test_ArabicLocalization
+          Onboard.test.test_NativeInput
+          Onboard.test.test_RTL
+      - name: Verify Rust native crate
+        run: cargo test --manifest-path native/onboard-native/Cargo.toml --locked
+      - name: Verify Arabic catalog
+        run: python3 i18n/scripts/check_catalog.py po/ar.po --language ar --require-complete
       - name: Build PEP 517 distributions
         run: python3 -m build --no-isolation
 
@@ -58,3 +70,6 @@ jobs:
           grep -q '^id: org.onboard.Onboard$' packaging/flatpak/org.onboard.Onboard.yml
           grep -q '^runtime: org.gnome.Platform$' packaging/flatpak/org.onboard.Onboard.yml
           grep -q '^command: onboard$' packaging/flatpak/org.onboard.Onboard.yml
+          grep -q 'org.freedesktop.Sdk.Extension.rust-stable' packaging/flatpak/org.onboard.Onboard.yml
+          test -f native/onboard-native/Cargo.lock
+          test -f native/onboard-native/.cargo/config.toml

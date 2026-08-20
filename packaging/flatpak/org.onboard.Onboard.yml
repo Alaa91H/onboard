@@ -2,6 +2,10 @@ id: org.onboard.Onboard
 runtime: org.gnome.Platform
 runtime-version: '48'
 sdk: org.gnome.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.rust-stable
+build-options:
+  append-path: /usr/lib/sdk/rust-stable/bin
 command: onboard
 rename-desktop-file: onboard.desktop
 rename-icon: onboard
@@ -17,6 +21,8 @@ modules:
   - name: onboard
     buildsystem: simple
     build-commands:
+      - rustc --version
+      - cargo --version
       - python3 setup.py build
       - python3 setup.py install --prefix=/app --skip-build
     sources:

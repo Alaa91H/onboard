@@ -57,6 +57,7 @@ from Onboard.Timer           import CallOnce, Timer
 from Onboard.WindowUtils     import show_confirmation_dialog
 from Onboard                import WaylandUtils
 from Onboard.InputSources    import InputSourceController, create_backend
+from Onboard.I18n            import apply_gtk_text_direction
 import Onboard.osk as osk
 
 ### Config Singleton ###
@@ -78,6 +79,12 @@ class OnboardGtk(object):
     keyboard = None
 
     def __init__(self):
+
+        # Set the GTK direction before creating the keyboard, indicator, or
+        # any popup menu. Arabic and other RTL locales therefore mirror the
+        # complete application UI rather than only translated labels.
+        self._text_direction = apply_gtk_text_direction(Gtk)
+        _logger.info("Interface text direction: %s", self._text_direction)
 
         # Make sure windows get "onboard", "Onboard" as name and class
         # For some reason they aren't correctly set when onboard is started

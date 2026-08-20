@@ -1,0 +1,19 @@
+[package]
+name = "onboard-native"
+version = "0.1.0"
+edition = "2021"
+description = "Optional safe native primitives for the Onboard on-screen keyboard"
+license = "GPL-3.0-or-later"
+publish = false
+
+[lib]
+name = "onboard_native"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+pyo3 = { version = "0.23", features = ["extension-module"] }
+
+[profile.release]
+codegen-units = 1
+lto = "thin"
+strip = "symbols"
