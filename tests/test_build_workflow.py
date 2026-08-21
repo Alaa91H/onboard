@@ -59,6 +59,7 @@ WINDOWS_ARABIC_FONT = (
 ALL_CATALOG_CHECKER = REPOSITORY_ROOT / "i18n" / "scripts" / "check_all_catalogs.py"
 I18N_MODULE = REPOSITORY_ROOT / "Onboard" / "I18n.py"
 QUALITY_GATE_COMMANDS = (
+    "sudo apt-get update && sudo apt-get install --yes gettext",
     "python -m py_compile tools/build.py tests/test_build_workflow.py",
     "ruff check tools/build.py tests/test_build_workflow.py",
     "ruff format --check tools/build.py tests/test_build_workflow.py",

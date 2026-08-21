@@ -25,6 +25,8 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v5
+      - name: Install gettext localization tools
+        run: sudo apt-get update && sudo apt-get install --yes gettext
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
