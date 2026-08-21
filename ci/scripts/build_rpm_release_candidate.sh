@@ -51,7 +51,10 @@ for artifact in "${artifacts[@]}"; do
     exit 1
   fi
   if [[ "$package_name" == "onboard" && "$package_arch" == "$expected_rpm_arch" ]]; then
-    rpm -qlp "$artifact" | grep -q '^/usr/bin/onboard$'
+    rpm_file_list="$(mktemp)"
+    rpm -qlp "$artifact" > "$rpm_file_list"
+    grep -Fxq '/usr/bin/onboard' "$rpm_file_list"
+    rm -f "$rpm_file_list"
     primary_seen=true
   fi
   install -m 0644 "$artifact" "$output_directory/"
