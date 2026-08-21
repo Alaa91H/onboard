@@ -53,7 +53,12 @@ for artifact in "${artifacts[@]}"; do
   if [[ "$package_name" == "onboard" && "$package_arch" == "$expected_rpm_arch" ]]; then
     rpm_file_list="$(mktemp)"
     rpm -qlp "$artifact" > "$rpm_file_list"
-    grep -Fxq '/usr/bin/onboard' "$rpm_file_list"
+    if ! awk '$0 == "/usr/bin/onboard" || $0 == "usr/bin/onboard" { found = 1 } END { exit !found }' "$rpm_file_list"; then
+      printf 'The primary RPM is missing the onboard launcher:\n' >&2
+      cat "$rpm_file_list" >&2
+      rm -f "$rpm_file_list"
+      exit 1
+    fi
     rm -f "$rpm_file_list"
     primary_seen=true
   fi

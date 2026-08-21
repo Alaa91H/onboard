@@ -39,7 +39,7 @@ fi
 output_directory="release-out/arch-${arch}"
 mkdir -p "$output_directory"
 shopt -s nullglob
-packages=("$work_directory"/*.pkg.tar.zst)
+packages=("$work_directory"/*.pkg.tar.zst "$work_directory"/*.pkg.tar.xz "$work_directory"/*.pkg.tar.gz)
 if (( ${#packages[@]} == 0 )); then
   printf 'No Arch package was produced.\n' >&2
   exit 1
@@ -50,7 +50,10 @@ for package in "${packages[@]}"; do
   package_name="$(pacman -Qip "$package" | awk -F ': *' '/^Name[[:space:]]*:/ {print $2; exit}')"
   package_arch="$(pacman -Qip "$package" | awk -F ': *' '/^Architecture[[:space:]]*:/ {print $2; exit}')"
   if [[ "$package_name" == "onboard" && "$package_arch" == "$expected_arch" ]]; then
-    bsdtar -tf "$package" | grep -q '^usr/bin/onboard$'
+    package_file_list="$(mktemp)"
+    bsdtar -tf "$package" > "$package_file_list"
+    grep -Fxq 'usr/bin/onboard' "$package_file_list"
+    rm -f "$package_file_list"
     primary_seen=true
   fi
   install -m 0644 "$package" "$output_directory/"
