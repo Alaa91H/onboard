@@ -41,6 +41,9 @@ WINDOWS_APP_ENTRYPOINT = (
 WINDOWS_TRAY_SOURCE = (
     REPOSITORY_ROOT / "next" / "crates" / "onboard-next" / "src" / "windows_tray.rs"
 )
+WINDOWS_UPDATER_SOURCE = (
+    REPOSITORY_ROOT / "next" / "crates" / "onboard-next" / "src" / "windows_update.rs"
+)
 QUALITY_GATE_COMMANDS = (
     "python -m py_compile tools/build.py tests/test_build_workflow.py",
     "ruff check tools/build.py tests/test_build_workflow.py",
@@ -148,6 +151,10 @@ class TestUnifiedBuildWorkflow(unittest.TestCase):
         self.assertIn("ArchitecturesAllowed=", recipe)
         self.assertIn("PrivilegesRequired=lowest", recipe)
         self.assertIn("postinstall", recipe)
+        self.assertIn('Name: "startup"', recipe)
+        self.assertIn("--start-minimized", recipe)
+        self.assertIn("CurrentVersion\\Run", recipe)
+        self.assertIn("uninsdeletevalue", recipe)
         self.assertIn("choco install innosetup --version=6.7.1", workflow)
         self.assertIn("-setup.exe", workflow)
         self.assertIn("installer checksum mismatch", workflow)
@@ -166,6 +173,20 @@ class TestUnifiedBuildWorkflow(unittest.TestCase):
         self.assertIn("إظهار اللوحة", tray_source)
         self.assertIn("إخفاء إلى منطقة الإعلام", tray_source)
         self.assertIn("إنهاء Onboard Next", tray_source)
+
+    def test_windows_startup_and_update_contract_is_safe_and_user_visible(self) -> None:
+        manifest = WINDOWS_APP_MANIFEST.read_text(encoding="utf-8")
+        entrypoint = WINDOWS_APP_ENTRYPOINT.read_text(encoding="utf-8")
+        updater = WINDOWS_UPDATER_SOURCE.read_text(encoding="utf-8")
+        self.assertIn('ureq = { version = "=2.12.1"', manifest)
+        self.assertIn("START_MINIMIZED_ARGUMENT", entrypoint)
+        self.assertIn("with_visible(!start_minimized)", entrypoint)
+        self.assertIn("show_update_status", entrypoint)
+        self.assertIn("releases/latest", updater)
+        self.assertIn("CHECK_INTERVAL", updater)
+        self.assertIn("start_background_check", updater)
+        self.assertNotIn("std::process::Command", updater)
+        self.assertNotIn("std::fs::write", updater)
 
     def test_ci_is_the_only_workflow_and_directly_owns_all_build_jobs(self) -> None:
         content = CENTRAL_CI_WORKFLOW.read_text(encoding="utf-8")

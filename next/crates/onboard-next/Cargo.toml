@@ -17,7 +17,10 @@ eframe = { version = "=0.27.2", default-features = false, features = ["default_f
 
 [target.'cfg(windows)'.dependencies]
 raw-window-handle = "=0.6.2"
+serde = { version = "=1.0.210", features = ["derive"] }
+serde_json = "=1.0.128"
 tray-icon = "=0.21.3"
+ureq = { version = "=2.12.1", default-features = false, features = ["tls"] }
 
 [lints]
 workspace = true

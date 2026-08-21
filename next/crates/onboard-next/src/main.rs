@@ -15,11 +15,17 @@ use onboard_core::{KeyboardState, TextDirection};
 
 #[cfg(windows)]
 mod windows_tray;
+#[cfg(windows)]
+mod windows_update;
 
 #[cfg(any(windows, target_os = "macos"))]
 const APP_ID: &str = "org.onboard.OnboardNext";
 #[cfg(any(windows, target_os = "macos"))]
 const LAYOUT_STORAGE_KEY: &str = "onboard-next.layout";
+#[cfg(windows)]
+const UPDATE_LAST_CHECKED_STORAGE_KEY: &str = "onboard-next.update-last-checked";
+#[cfg(windows)]
+const START_MINIMIZED_ARGUMENT: &str = "--start-minimized";
 #[cfg(any(windows, target_os = "macos"))]
 const ENGLISH_ROWS: &[&[&str]] = &[
     &["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
@@ -103,6 +109,12 @@ struct OnboardApp {
     window_visible: bool,
     #[cfg(windows)]
     allow_exit: bool,
+    #[cfg(windows)]
+    update_status: windows_update::UpdateStatus,
+    #[cfg(windows)]
+    update_check: Option<windows_update::UpdateCheck>,
+    #[cfg(windows)]
+    last_update_check: Option<u64>,
 }
 
 #[cfg(any(windows, target_os = "macos"))]
@@ -120,6 +132,25 @@ impl OnboardApp {
             Ok(tray) => (Some(tray), "جاهز للكتابة في التطبيق النشط".to_owned()),
             Err(error) => (None, format!("تعذر إنشاء أيقونة منطقة الإعلام: {error}")),
         };
+        #[cfg(windows)]
+        let last_update_check = creation_context.storage.and_then(|storage| {
+            storage
+                .get_string(UPDATE_LAST_CHECKED_STORAGE_KEY)
+                .and_then(|value| value.parse::<u64>().ok())
+        });
+        #[cfg(windows)]
+        let (update_status, update_check) =
+            if windows_update::should_check(last_update_check, std::time::SystemTime::now()) {
+                (
+                    windows_update::UpdateStatus::Checking,
+                    Some(windows_update::start_background_check(
+                        env!("CARGO_PKG_VERSION").to_owned(),
+                        windows_architecture(),
+                    )),
+                )
+            } else {
+                (windows_update::UpdateStatus::Idle, None)
+            };
         #[cfg(not(windows))]
         let status = "جاهز للكتابة في التطبيق النشط".to_owned();
 
@@ -135,9 +166,15 @@ impl OnboardApp {
             #[cfg(windows)]
             system_tray,
             #[cfg(windows)]
-            window_visible: true,
+            window_visible: !started_minimized(),
             #[cfg(windows)]
             allow_exit: false,
+            #[cfg(windows)]
+            update_status,
+            #[cfg(windows)]
+            update_check,
+            #[cfg(windows)]
+            last_update_check,
         }
     }
 
@@ -187,6 +224,83 @@ impl OnboardApp {
         self.window_visible = false;
         context.send_viewport_cmd(egui::ViewportCommand::Visible(false));
         self.status = "التطبيق يعمل في منطقة الإعلام".to_owned();
+    }
+
+    #[cfg(windows)]
+    fn begin_update_check(&mut self) {
+        if self.update_check.is_some() {
+            return;
+        }
+        self.update_status = windows_update::UpdateStatus::Checking;
+        self.update_check = Some(windows_update::start_background_check(
+            env!("CARGO_PKG_VERSION").to_owned(),
+            windows_architecture(),
+        ));
+    }
+
+    #[cfg(windows)]
+    fn poll_update_check(&mut self) {
+        let status = self
+            .update_check
+            .as_ref()
+            .and_then(windows_update::UpdateCheck::try_receive);
+        if let Some(status) = status {
+            self.update_check = None;
+            self.last_update_check =
+                Some(windows_update::unix_seconds(std::time::SystemTime::now()));
+            self.update_status = status;
+        }
+    }
+
+    #[cfg(windows)]
+    fn show_update_status(&mut self, ui: &mut egui::Ui) {
+        use egui::{Color32, Hyperlink, RichText};
+        use windows_update::UpdateStatus;
+
+        match self.update_status.clone() {
+            UpdateStatus::Idle => {
+                if ui.small_button("فحص التحديثات").clicked() {
+                    self.begin_update_check();
+                }
+            }
+            UpdateStatus::Checking => {
+                ui.spinner();
+                ui.weak("يجري فحص إصدار موثوق…");
+            }
+            UpdateStatus::UpToDate => {
+                ui.colored_label(
+                    Color32::from_rgb(22, 163, 74),
+                    "أنت تستخدم أحدث إصدار منشور",
+                );
+                if ui.small_button("فحص مجدداً").clicked() {
+                    self.begin_update_check();
+                }
+            }
+            UpdateStatus::Available(offer) => {
+                ui.colored_label(
+                    Color32::from_rgb(37, 99, 235),
+                    RichText::new(format!("إصدار {} متاح", offer.version)).strong(),
+                );
+                ui.add(Hyperlink::from_label_and_url(
+                    "عرض الإصدار",
+                    offer.release_url,
+                ));
+                if offer.installer_url.is_some() && offer.installer_sha256.is_some() {
+                    ui.weak("سيصبح التثبيت من التطبيق متاحاً بعد توقيع الإصدار المستقر.");
+                } else {
+                    ui.weak("لا يوفّر الإصدار ملف تثبيت موثقاً لهذه المعمارية.");
+                }
+            }
+            UpdateStatus::NoPublishedRelease => {
+                ui.weak("لا يوجد إصدار مستقر منشور بعد.");
+            }
+            UpdateStatus::Unavailable(error) => {
+                ui.colored_label(Color32::from_rgb(180, 83, 9), error);
+                if ui.small_button("إعادة المحاولة").clicked() {
+                    self.begin_update_check();
+                }
+            }
+        }
     }
 
     #[cfg(windows)]
@@ -280,6 +394,7 @@ impl eframe::App for OnboardApp {
         #[cfg(windows)]
         {
             self.process_system_tray(context);
+            self.poll_update_check();
             if context.input(|input| input.viewport().close_requested()) && !self.allow_exit {
                 context.send_viewport_cmd(egui::ViewportCommand::CancelClose);
                 self.hide_window_to_tray(context);
@@ -301,31 +416,48 @@ impl eframe::App for OnboardApp {
 
         egui::CentralPanel::default().show(context, |ui| {
             ui.with_layout(direction, |ui| {
-                ui.horizontal(|ui| {
-                    ui.heading("Onboard Next");
-                    ui.separator();
-                    if ui.button(self.layout.language_button_label()).clicked() {
-                        let next = match self.layout {
-                            KeyboardLayout::English => KeyboardLayout::Arabic,
-                            KeyboardLayout::Arabic => KeyboardLayout::English,
-                        };
-                        self.select_layout(next);
-                    }
-                    if ui
-                        .selectable_label(self.show_clipboard, "الحافظة")
-                        .clicked()
-                    {
-                        self.show_clipboard = !self.show_clipboard;
-                    }
-                    if ui.selectable_label(self.show_emoji, "الإيموجي").clicked() {
-                        self.show_emoji = !self.show_emoji;
-                    }
-                    #[cfg(windows)]
-                    if ui.button("إخفاء إلى الأيقونة").clicked() {
-                        self.hide_window_to_tray(context);
-                    }
-                });
+                egui::Frame::none()
+                    .fill(egui::Color32::from_rgb(239, 246, 255))
+                    .rounding(egui::Rounding::same(12.0))
+                    .inner_margin(egui::Margin::symmetric(14.0, 10.0))
+                    .show(ui, |ui| {
+                        ui.horizontal(|ui| {
+                            ui.vertical(|ui| {
+                                ui.label(
+                                    egui::RichText::new("ONBOARD NEXT")
+                                        .size(11.0)
+                                        .color(egui::Color32::from_rgb(37, 99, 235))
+                                        .strong(),
+                                );
+                                ui.heading("لوحة مفاتيح سريعة");
+                            });
+                            ui.separator();
+                            if ui.button(self.layout.language_button_label()).clicked() {
+                                let next = match self.layout {
+                                    KeyboardLayout::English => KeyboardLayout::Arabic,
+                                    KeyboardLayout::Arabic => KeyboardLayout::English,
+                                };
+                                self.select_layout(next);
+                            }
+                            if ui
+                                .selectable_label(self.show_clipboard, "الحافظة")
+                                .clicked()
+                            {
+                                self.show_clipboard = !self.show_clipboard;
+                            }
+                            if ui.selectable_label(self.show_emoji, "الإيموجي").clicked() {
+                                self.show_emoji = !self.show_emoji;
+                            }
+                            #[cfg(windows)]
+                            if ui.button("إخفاء إلى الأيقونة").clicked() {
+                                self.hide_window_to_tray(context);
+                            }
+                        });
+                        #[cfg(windows)]
+                        self.show_update_status(ui);
+                    });
 
+                ui.add_space(6.0);
                 self.show_clipboard_panel(ui);
                 self.show_emoji_panel(ui);
                 self.show_key_rows(ui);
@@ -353,6 +485,13 @@ impl eframe::App for OnboardApp {
 
     fn save(&mut self, storage: &mut dyn eframe::Storage) {
         storage.set_string(LAYOUT_STORAGE_KEY, self.layout.storage_value().to_owned());
+        #[cfg(windows)]
+        if let Some(last_update_check) = self.last_update_check {
+            storage.set_string(
+                UPDATE_LAST_CHECKED_STORAGE_KEY,
+                last_update_check.to_string(),
+            );
+        }
         storage.flush();
     }
 }
@@ -462,8 +601,22 @@ fn configure_non_activating_window(frame: &eframe::Frame) -> bool {
     true
 }
 
+#[cfg(windows)]
+fn started_minimized() -> bool {
+    std::env::args().any(|argument| argument == START_MINIMIZED_ARGUMENT)
+}
+
+#[cfg(windows)]
+fn windows_architecture() -> &'static str {
+    if cfg!(target_arch = "aarch64") {
+        "arm64"
+    } else {
+        "x64"
+    }
+}
+
 #[cfg(any(windows, target_os = "macos"))]
-fn run_app() -> eframe::Result<()> {
+fn run_app(start_minimized: bool) -> eframe::Result<()> {
     let native_options = eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default()
             .with_title("Onboard Next")
@@ -471,7 +624,8 @@ fn run_app() -> eframe::Result<()> {
             .with_inner_size([860.0, 310.0])
             .with_min_inner_size([520.0, 180.0])
             .with_active(false)
-            .with_always_on_top(),
+            .with_always_on_top()
+            .with_visible(!start_minimized),
         persist_window: true,
         ..Default::default()
     };
@@ -531,7 +685,16 @@ fn main() {
         }
         _ => {
             #[cfg(any(windows, target_os = "macos"))]
-            if let Err(error) = run_app() {
+            if let Err(error) = run_app({
+                #[cfg(windows)]
+                {
+                    started_minimized()
+                }
+                #[cfg(target_os = "macos")]
+                {
+                    false
+                }
+            }) {
                 eprintln!("Onboard Next could not start: {error}");
                 std::process::exit(1);
             }
