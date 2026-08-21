@@ -67,6 +67,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          export PATH="/usr/bin:$PATH"
           version="$(awk -F '"' '/^[[:space:]]*version[[:space:]]*=/ {print $2; exit}' pyproject.toml)"
           bash ci/scripts/build_debian_release_candidate.sh '${{ matrix.arch }}' "$version"
           candidate="release-out/debian-${{ matrix.arch }}"
@@ -124,7 +125,7 @@ jobs:
   arch:
     name: Arch package (${{ matrix.arch }})
     runs-on: ${{ matrix.runner }}
-    container: archlinux:base-devel
+    container: archlinux:base
     strategy:
       fail-fast: false
       matrix:
@@ -141,6 +142,7 @@ jobs:
           set -euo pipefail
           pacman-key --init
           pacman-key --populate archlinux
+          pacman -Syu --needed --noconfirm base-devel
           ./tools/prepare-build-env.sh --with-tests
       - name: Build and verify Arch candidate
         shell: bash

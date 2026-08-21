@@ -34,3 +34,7 @@
 
 [1]: https://docs.flatpak.org/en/latest/single-file-bundles.html "Flatpak single-file bundles"
 [2]: https://docs.github.com/en/actions/reference/runners/github-hosted-runners "GitHub-hosted runners reference"
+
+لتوفير ملف `dconf.pc` الذي يحتاجه امتداد Onboard داخل GNOME SDK، يضيف Flatpak module مبنياً من أرشيف dconf 0.49.0 المقفل بالتجزئة `16a47e49a58156dbb96578e1708325299e4c19eea9be128d5bd12fd0963d6c36`. اختير المصدر من manifest Flathub الخاص بـDconf Editor الذي يعمل على GNOME Platform 50.[3]
+
+[3]: https://github.com/flathub/ca.desrt.dconf-editor/blob/master/ca.desrt.dconf-editor.json "Flathub Dconf Editor manifest"

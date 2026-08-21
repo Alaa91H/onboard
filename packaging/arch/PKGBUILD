@@ -20,9 +20,9 @@ depends=(
   'python-cairo'
   'python-dbus'
   'python-gobject'
-  'xorg-libx11'
-  'xorg-libxi'
-  'xorg-libxtst'
+  'libx11'
+  'libxi'
+  'libxtst'
 )
 makedepends=(
   'gettext'

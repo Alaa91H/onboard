@@ -26,7 +26,7 @@ BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xkbfile)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  python3-devel
-BuildRequires:  python3-pyGObject
+BuildRequires:  python3-gobject
 BuildRequires:  python3-setuptools
 BuildRequires:  pyproject-rpm-macros
 
