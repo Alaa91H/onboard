@@ -53,7 +53,17 @@ modules:
     build-commands:
       - rustc --version
       - cargo --version
-      - export PKG_CONFIG_PATH="$(find /app -type d -name pkgconfig -print | paste -sd: -)${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"; pkg-config --modversion dconf; pkg-config --modversion libcanberra; python3 setup.py install --prefix=/app; install -Dm644 build/desktop/onboard.desktop /app/share/applications/org.onboard.Onboard.desktop; sed -i 's/^Icon=onboard$/Icon=org.onboard.Onboard/' /app/share/applications/org.onboard.Onboard.desktop; for size in 16 22 24 28 32; do install -Dm644 "icons/hicolor/$size/onboard.png" "/app/share/icons/hicolor/${size}x${size}/apps/org.onboard.Onboard.png"; done; install -Dm644 icons/hicolor/scalable/onboard.svg /app/share/icons/hicolor/scalable/apps/org.onboard.Onboard.svg
+      - |
+        export PKG_CONFIG_PATH="$(find /app -type d -name pkgconfig -print | paste -sd: -)${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
+        pkg-config --modversion dconf
+        pkg-config --modversion libcanberra
+        python3 setup.py install --prefix=/app
+        install -Dm644 build/desktop/onboard.desktop /app/share/applications/org.onboard.Onboard.desktop
+        sed -i 's/^Icon=onboard$/Icon=org.onboard.Onboard/' /app/share/applications/org.onboard.Onboard.desktop
+        for size in 16 22 24 28 32; do
+          install -Dm644 "icons/hicolor/$size/onboard.png" "/app/share/icons/hicolor/${size}x${size}/apps/org.onboard.Onboard.png"
+        done
+        install -Dm644 icons/hicolor/scalable/onboard.svg /app/share/icons/hicolor/scalable/apps/org.onboard.Onboard.svg
     sources:
       - type: dir
         path: ../..

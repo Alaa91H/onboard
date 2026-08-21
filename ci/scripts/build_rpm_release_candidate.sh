@@ -50,7 +50,7 @@ for artifact in "${artifacts[@]}"; do
     printf 'Unexpected RPM version for %s: %s\n' "$package_name" "$package_version" >&2
     exit 1
   fi
-  if [[ "$package_name" == "onboard" && "$package_arch" == "$expected_rpm_arch" ]]; then
+  if [[ "$artifact" != *.src.rpm && "$package_name" == "onboard" && "$package_arch" == "$expected_rpm_arch" ]]; then
     rpm_file_list="$(mktemp)"
     rpm -qlp "$artifact" > "$rpm_file_list"
     if ! awk '$0 == "/usr/bin/onboard" || $0 == "usr/bin/onboard" { found = 1 } END { exit !found }' "$rpm_file_list"; then
