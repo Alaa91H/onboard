@@ -355,7 +355,7 @@ fn print_diagnostics(locale: &str) {
 
 #[cfg(windows)]
 fn configure_non_activating_window(frame: &eframe::Frame) -> bool {
-    use raw_window_handle::{borrowed::HasWindowHandle, RawWindowHandle};
+    use raw_window_handle::{HasWindowHandle, RawWindowHandle};
     use std::ffi::c_void;
 
     #[link(name = "User32")]
