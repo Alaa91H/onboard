@@ -56,7 +56,8 @@ jobs:
           if ($null -eq $compiler) {
             throw "Inno Setup compiler was not added to PATH."
           }
-          & $compiler.Source /?
+          Write-Host "Inno Setup compiler: $($compiler.Source)"
+          (Get-Item -LiteralPath $compiler.Source).VersionInfo.FileVersion
       - name: Build and validate portable preview
         shell: pwsh
         run: python tools/build.py preview windows --arch '${{ matrix.arch }}'
