@@ -135,15 +135,13 @@ jobs:
             container: archlinux:base
           - arch: arm64
             runner: ubuntu-24.04-arm
-            container: archlinuxarm/archlinuxarm
+            container: agners/archlinuxarm
     steps:
       - uses: actions/checkout@v5
       - name: Initialize Arch packaging prerequisites
         shell: bash
         run: |
           set -euo pipefail
-          pacman-key --init
-          pacman-key --populate archlinux
           pacman -Syu --needed --noconfirm base-devel
           ./tools/prepare-build-env.sh --with-tests
       - name: Build and verify Arch candidate

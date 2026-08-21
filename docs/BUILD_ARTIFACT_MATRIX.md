@@ -46,3 +46,15 @@
 يبني Flatpak أيضاً libcanberra 0.30 من أرشيف مقفل بالتجزئة `c2b671e67e0c288a69fc33dc1b6f1b534d07882c2aceed37004bf48c601afa72`، مع patch Wayland المورّد محلياً من shared-modules؛ وتُحفظ ملفات pkg-config حتى يكتمل تجميع امتداد Onboard.[5]
 
 [5]: https://raw.githubusercontent.com/flathub/shared-modules/master/libcanberra/libcanberra.json "Flathub libcanberra module"
+
+تستخدم وظيفة Arch ARM64 صورة `agners/archlinuxarm` متعددة المعماريات بدلاً من صورة Arch الرسمية غير المتاحة على runner ARM64. توثق الصورة دعماً صريحاً لـAArch64 ونشراً بوسم `latest`؛ لذلك تظل الوظيفة مرشحاً قابلاً للتحقق وتُراجع دورياً قبل أي ترقية للنشر.[6]
+
+[6]: https://github.com/agners/archlinuxarm-docker "Arch Linux ARM Docker images"
+
+يبني dconf الحديث بوحدة Meson ويستخدم تكامل pkg-config داخل شجرة المصدر؛ لذلك تضبط خطوة Onboard في Flatpak مسار pkg-config من أدلة `/app` التي ولّدها البناء، بدلاً من افتراض مسار SDK ثابت.[7]
+
+[7]: https://github.com/GNOME/dconf/blob/main/meson.build "GNOME dconf Meson build"
+
+يولّد عميل dconf ملف pkg-config من مكتبة `dconf` مباشرةً عبر `pkg.generate`، ولذلك يُتوقع أن ينجح `pkg-config dconf` بعد ضم دليل pkgconfig الناتج إلى بيئة module Onboard.[8]
+
+[8]: https://github.com/GNOME/dconf/blob/main/client/meson.build "GNOME dconf client build"

@@ -55,7 +55,7 @@ modules:
     build-commands:
       - rustc --version
       - cargo --version
-      - export PKG_CONFIG_PATH="/app/lib/pkgconfig:/app/lib/$(gcc -print-multiarch)/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"; python3 setup.py build
+      - export PKG_CONFIG_PATH="$(find /app -type d -name pkgconfig -print | paste -sd: -)${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"; pkg-config --modversion dconf; pkg-config --modversion libcanberra; python3 setup.py build
       - python3 setup.py install --prefix=/app --skip-build
     sources:
       - type: dir
