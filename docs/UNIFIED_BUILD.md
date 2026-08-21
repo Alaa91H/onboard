@@ -31,16 +31,16 @@
 | عائلة المخرج | النظام المضيف المطلوب | الوصفة الخلفية |
 | --- | --- | --- |
 | wheel وsdist واختبارات GTK | Linux | setuptools + Cargo + اختبارات مركزة |
-| Debian | Debian/Ubuntu | `ci/scripts/build_debian_release_candidate.sh` |
-| RPM | Fedora/RHEL | `ci/scripts/build_rpm_release_candidate.sh` |
-| Arch | Arch Linux | `ci/scripts/build_arch_release_candidate.sh` |
-| Flatpak | Linux مع Flatpak SDK | `ci/scripts/build_flatpak_release_candidate.sh` |
-| Preview Windows | Windows | `packaging/windows/build-preview.ps1` |
-| Preview macOS | macOS | `packaging/macos/build-preview.sh` |
+| Debian | Debian/Ubuntu | تنفيذ مدمج في `tools/build.py` باستخدام `debian/` كبيانات وصفة. |
+| RPM | Fedora/RHEL | تنفيذ مدمج في `tools/build.py` باستخدام `packaging/fedora/onboard.spec`. |
+| Arch | Arch Linux | تنفيذ مدمج في `tools/build.py` باستخدام `packaging/arch/PKGBUILD`. |
+| Flatpak | Linux مع Flatpak SDK | تنفيذ مدمج في `tools/build.py` باستخدام manifest Flatpak. |
+| Preview Windows | Windows | تنفيذ مدمج في `tools/build.py`؛ لا wrapper PowerShell. |
+| Preview macOS | macOS | تنفيذ مدمج في `tools/build.py`؛ لا wrapper shell. |
 
 ## عقد التكامل المستمر
 
-كل workflow يستدعي `tools/build.py` بدلاً من تكرار أوامر Python وCargo والتغليف. يبقى workflow مسؤولاً فقط عن توفير نظام التشغيل والاعتمادات الأصلية، والتحقق النهائي من checksums وmanifest، ورفع artifacts. وبهذا تصبح إضافة منصة أو صيغة جديدة عملاً من خطوتين: إضافة backend محدود ثم تسجيله في `CANDIDATE_BACKENDS`، من دون نسخ تسلسل بناء كامل إلى ملفات CI متعددة.
+كل workflow يستدعي `tools/build.py` بدلاً من تكرار أوامر Python وCargo والتغليف. لا توجد نصوص بناء وسيطة؛ تبقى فقط وصفات الحزم الأصلية التي تقرؤها الأداة مباشرةً. يظل workflow مسؤولاً عن توفير نظام التشغيل والاعتمادات الأصلية، والتحقق النهائي من checksums وmanifest، ورفع artifacts.
 
 لا تنشئ الأوامر إصداراً مستقراً أو توقيعاً أو نشرًا عاماً. تظل تلك العمليات محمية في workflow إصدار مستقر مستقل بعد تجهيز أسرار Apple وWindows وبيئة الموافقة المحمية.
 

@@ -7,6 +7,7 @@ import io
 import platform
 import py_compile
 import re
+import tempfile
 import unittest
 from contextlib import redirect_stderr
 from pathlib import Path
@@ -37,6 +38,15 @@ QUALITY_GATE_COMMANDS = (
     "git diff --check",
     "python tools/build.py validate-recipes",
 )
+LEGACY_BUILD_WRAPPERS = (
+    "ci/scripts/build_linux_release_candidate.sh",
+    "ci/scripts/build_debian_release_candidate.sh",
+    "ci/scripts/build_rpm_release_candidate.sh",
+    "ci/scripts/build_arch_release_candidate.sh",
+    "ci/scripts/build_flatpak_release_candidate.sh",
+    "packaging/windows/build-preview.ps1",
+    "packaging/macos/build-preview.sh",
+)
 FORBIDDEN_WORKFLOW_PATTERNS = (
     r"(?:bash\s+)?ci/scripts/build_[a-z_]+release_candidate\.sh",
     r"(?:python3?\s+)?setup\.py\s+build",
@@ -64,6 +74,15 @@ class TestUnifiedBuildWorkflow(unittest.TestCase):
     def test_build_script_compiles(self) -> None:
         py_compile.compile(str(BUILD_SCRIPT), doraise=True)
 
+    def test_checksums_use_repository_relative_paths(self) -> None:
+        with tempfile.TemporaryDirectory(dir=REPOSITORY_ROOT) as temporary_directory:
+            output = Path(temporary_directory)
+            artifact = output / "artifact.bin"
+            artifact.write_bytes(b"onboard")
+            self.build.write_checksums(output)
+            checksum = (output / "SHA256SUMS").read_text(encoding="ascii")
+        self.assertIn(f"{output.name}/artifact.bin", checksum)
+
     def test_declared_version_matches_project_metadata(self) -> None:
         project = (REPOSITORY_ROOT / "pyproject.toml").read_text(encoding="utf-8")
         expected = re.search(r'^\s*version\s*=\s*"([^"]+)"\s*$', project, re.MULTILINE)
@@ -71,13 +90,13 @@ class TestUnifiedBuildWorkflow(unittest.TestCase):
         assert expected is not None
         self.assertEqual(self.build.declared_version(), expected.group(1))
 
-    def test_all_candidate_backends_are_explicit_and_exist(self) -> None:
+    def test_all_candidate_backends_are_explicit_and_wrappers_are_removed(self) -> None:
         self.assertEqual(
             set(self.build.CANDIDATE_BACKENDS),
             {"linux", "debian", "rpm", "arch", "flatpak"},
         )
-        for backend in self.build.CANDIDATE_BACKENDS.values():
-            self.assertTrue((REPOSITORY_ROOT / backend).is_file(), backend)
+        for wrapper in LEGACY_BUILD_WRAPPERS:
+            self.assertFalse((REPOSITORY_ROOT / wrapper).exists(), wrapper)
 
     def test_parser_exposes_only_supported_architectures(self) -> None:
         parser = self.build.parser()

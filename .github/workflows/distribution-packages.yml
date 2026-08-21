@@ -5,7 +5,6 @@ on:
     paths:
       - 'debian/**'
       - 'packaging/**'
-      - 'ci/scripts/build_*release_candidate.sh'
       - 'tools/build.py'
       - 'ci/scripts/verify_release_candidate.py'
       - 'ci/scripts/write_*.py'
