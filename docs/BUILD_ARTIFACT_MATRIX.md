@@ -38,3 +38,11 @@
 لتوفير ملف `dconf.pc` الذي يحتاجه امتداد Onboard داخل GNOME SDK، يضيف Flatpak module مبنياً من أرشيف dconf 0.49.0 المقفل بالتجزئة `16a47e49a58156dbb96578e1708325299e4c19eea9be128d5bd12fd0963d6c36`. اختير المصدر من manifest Flathub الخاص بـDconf Editor الذي يعمل على GNOME Platform 50.[3]
 
 [3]: https://github.com/flathub/ca.desrt.dconf-editor/blob/master/ca.desrt.dconf-editor.json "Flathub Dconf Editor manifest"
+
+تؤكد مراجعة مستودع Flathub shared-modules وجود وصفة `libcanberra/libcanberra.json` وpatch مرافق مخصص لبناء Flatpak، مع تحديث للوصفة في يناير 2026. ستُورَّد الوصفة في الشجرة أو تُقفل بمصدرها قبل استخدامها؛ لا يعتمد مرشح البناء على `master` متحرك.[4]
+
+[4]: https://github.com/flathub/shared-modules/tree/master/libcanberra "Flathub shared module for libcanberra"
+
+يبني Flatpak أيضاً libcanberra 0.30 من أرشيف مقفل بالتجزئة `c2b671e67e0c288a69fc33dc1b6f1b534d07882c2aceed37004bf48c601afa72`، مع patch Wayland المورّد محلياً من shared-modules؛ وتُحفظ ملفات pkg-config حتى يكتمل تجميع امتداد Onboard.[5]
+
+[5]: https://raw.githubusercontent.com/flathub/shared-modules/master/libcanberra/libcanberra.json "Flathub libcanberra module"

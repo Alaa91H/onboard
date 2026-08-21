@@ -125,15 +125,17 @@ jobs:
   arch:
     name: Arch package (${{ matrix.arch }})
     runs-on: ${{ matrix.runner }}
-    container: archlinux:base
+    container: ${{ matrix.container }}
     strategy:
       fail-fast: false
       matrix:
         include:
           - arch: x64
             runner: ubuntu-24.04
+            container: archlinux:base
           - arch: arm64
             runner: ubuntu-24.04-arm
+            container: archlinuxarm/archlinuxarm
     steps:
       - uses: actions/checkout@v5
       - name: Initialize Arch packaging prerequisites

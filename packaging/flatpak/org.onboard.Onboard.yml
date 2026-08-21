@@ -30,12 +30,32 @@ modules:
       - type: archive
         url: https://download.gnome.org/sources/dconf/0.49/dconf-0.49.0.tar.xz
         sha256: 16a47e49a58156dbb96578e1708325299e4c19eea9be128d5bd12fd0963d6c36
+  - name: libcanberra
+    buildsystem: autotools
+    config-opts:
+      - --disable-static
+      - --disable-gtk-doc
+      - --disable-oss
+      - --enable-pulse
+      - --disable-udev
+      - --disable-gtk
+      - --enable-gtk3
+      - --disable-lynx
+    sources:
+      - type: archive
+        url: http://0pointer.de/lennart/projects/libcanberra/libcanberra-0.30.tar.xz
+        mirror-urls:
+          - https://ftp2.osuosl.org/pub/blfs/conglomeration/libcanberra/libcanberra-0.30.tar.xz
+          - https://src.opensuse.org/SLFO-pool/libcanberra/media/commit/5e8635a291cd1dc4afbb1e8eee60d903ecea90da90e7719f4a432a85b4615744/libcanberra-0.30.tar.xz
+        sha256: c2b671e67e0c288a69fc33dc1b6f1b534d07882c2aceed37004bf48c601afa72
+      - type: patch
+        path: 0001-libcanberra-wayland-display.patch
   - name: onboard
     buildsystem: simple
     build-commands:
       - rustc --version
       - cargo --version
-      - python3 setup.py build
+      - export PKG_CONFIG_PATH="/app/lib/pkgconfig:/app/lib/$(gcc -print-multiarch)/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"; python3 setup.py build
       - python3 setup.py install --prefix=/app --skip-build
     sources:
       - type: dir

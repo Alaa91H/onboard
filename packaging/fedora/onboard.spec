@@ -71,6 +71,9 @@ install -Dpm 0644 data/72-onboard-uinput.rules \
   %{buildroot}%{_datadir}/onboard/72-onboard-uinput.rules
 
 %check
+# The focused tests import source modules, so build the native extensions into
+# the source tree before running them in addition to validating the wheel.
+%{python3} setup.py build
 %{python3} -m unittest \
   Onboard.test.test_ClipboardHistory \
   Onboard.test.test_InputSources \

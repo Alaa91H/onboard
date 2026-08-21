@@ -51,7 +51,7 @@ install_fedora() {
 install_arch() {
     local packages=(
         base-devel pkgconf gettext intltool rust unzip
-        python python-setuptools python-wheel python-build python-gobject python-cairo
+        python python-setuptools python-wheel python-build python-installer python-gobject python-cairo
         python-dbus gtk3 libxtst libxkbfile dconf libcanberra hunspell
         systemd libxkbcommon wayland
     )
