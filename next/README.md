@@ -27,7 +27,7 @@ cargo test --manifest-path next/Cargo.toml --workspace --locked
 cargo run --manifest-path next/Cargo.toml --bin onboard-next -- diagnose ar_SA
 ```
 
-في Windows، ينشئ `packaging/windows/build-preview.ps1` مجلداً محمولاً. في macOS، ينشئ `packaging/macos/build-preview.sh` بنية `.app` ويؤكد صحة `Info.plist`.
+في Windows، ينشئ `python tools/build.py preview windows --arch x64` مجلداً محمولاً وZIP مع provenance. في macOS، ينشئ `python3 tools/build.py preview macos --arch arm64` بنية `.app` وZIP وDMG ويتحقق من `Info.plist`.
 
 ## الخطوة التالية
 

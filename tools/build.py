@@ -1,16 +1,20 @@
 #!/usr/bin/env python3
 """Unified, host-native build entry point for Onboard.
 
-This command is the public build surface for local development and CI.  It
-preserves package-manager-native recipes as backends while presenting one
-consistent command vocabulary for source builds, release candidates and native
-previews.
+This is the only executable build interface for source artifacts, package
+candidates, native bridge validation and Windows/macOS previews. Distribution
+recipes remain declarative inputs because Debian, RPM, Arch and Flatpak require
+those native formats, but no wrapper build scripts are used.
 """
 
 from __future__ import annotations
 
 import argparse
+import hashlib
+import json
+import os
 import platform
+import plistlib
 import re
 import shutil
 import subprocess
@@ -18,7 +22,7 @@ import sys
 import tarfile
 import zipfile
 from pathlib import Path
-from typing import Iterable, Sequence
+from typing import Callable, Iterable, Sequence
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -34,13 +38,8 @@ FOCUSED_TESTS = (
     "Onboard.test.test_PlatformBridge",
     "Onboard.test.test_Diagnostics",
 )
-CANDIDATE_BACKENDS = {
-    "linux": "ci/scripts/build_linux_release_candidate.sh",
-    "debian": "ci/scripts/build_debian_release_candidate.sh",
-    "rpm": "ci/scripts/build_rpm_release_candidate.sh",
-    "arch": "ci/scripts/build_arch_release_candidate.sh",
-    "flatpak": "ci/scripts/build_flatpak_release_candidate.sh",
-}
+CANDIDATE_BACKENDS = ("linux", "debian", "rpm", "arch", "flatpak")
+ARCHITECTURES = ("x64", "arm64")
 
 
 class BuildError(RuntimeError):
@@ -54,6 +53,18 @@ def log(message: str) -> None:
 def run(command: Sequence[str], *, cwd: Path = ROOT) -> None:
     log("$ " + " ".join(command))
     subprocess.run(command, cwd=str(cwd), check=True)
+
+
+def capture(command: Sequence[str], *, cwd: Path = ROOT) -> str:
+    log("$ " + " ".join(command))
+    completed = subprocess.run(
+        command,
+        cwd=str(cwd),
+        check=True,
+        text=True,
+        stdout=subprocess.PIPE,
+    )
+    return completed.stdout.strip()
 
 
 def require_host(system: str) -> None:
@@ -96,6 +107,14 @@ def detected_architecture() -> str:
     return aliases.get(machine, machine)
 
 
+def require_architecture(expected: str) -> None:
+    actual = detected_architecture()
+    if actual != expected:
+        raise BuildError(
+            f"This command requires native architecture {expected}, but the host is {actual}."
+        )
+
+
 def require_tool(name: str) -> str:
     executable = shutil.which(name)
     if not executable:
@@ -103,25 +122,90 @@ def require_tool(name: str) -> str:
     return executable
 
 
-def command_doctor(_: argparse.Namespace) -> None:
-    log(f"repository={ROOT}")
-    log(f"platform={platform.system().lower()}")
-    log(f"architecture={detected_architecture()}")
-    log(f"version={declared_version()}")
-    tools = (
-        "cargo",
-        "rustc",
-        "xvfb-run",
-        "dpkg-buildpackage",
-        "rpmbuild",
-        "makepkg",
-        "flatpak-builder",
+def require_file(path: Path) -> None:
+    if not path.is_file():
+        raise BuildError(f"Required file is missing: {path.relative_to(ROOT)}.")
+
+
+def clean_paths(*paths: Path) -> None:
+    for path in paths:
+        if path.is_dir():
+            shutil.rmtree(path)
+        elif path.exists():
+            path.unlink()
+
+
+def remove_matches(directory: Path, pattern: str) -> None:
+    for path in directory.glob(pattern):
+        if path.is_dir():
+            shutil.rmtree(path)
+        else:
+            path.unlink()
+
+
+def copy_file(source: Path, destination: Path) -> None:
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source, destination)
+
+
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as source:
+        for chunk in iter(lambda: source.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def write_checksums(directory: Path, *, recursive: bool = False) -> None:
+    paths = directory.rglob("*") if recursive else directory.glob("*")
+    files = sorted(
+        path for path in paths if path.is_file() and path.name != "SHA256SUMS"
     )
-    for tool in tools:
-        print(f"{tool}={'available' if shutil.which(tool) else 'missing'}")
+    if not files:
+        raise BuildError(
+            f"No artifacts were found for checksum generation in {directory}."
+        )
+    lines = [f"{sha256(path)}  {path.relative_to(ROOT)}" for path in files]
+    (directory / "SHA256SUMS").write_text("\n".join(lines) + "\n", encoding="ascii")
 
 
-def verify_portable_artifacts() -> None:
+def write_candidate_metadata(
+    output: Path,
+    *,
+    target_os: str,
+    arch: str,
+    version: str,
+) -> None:
+    run(
+        [
+            sys.executable,
+            "ci/scripts/write_sbom.py",
+            "--output",
+            str(output / "sbom.cdx.json"),
+            "--version",
+            version,
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "ci/scripts/write_release_manifest.py",
+            "--input",
+            str(output),
+            "--output",
+            str(output / "release-manifest.json"),
+            "--target-os",
+            target_os,
+            "--target-arch",
+            arch,
+            "--version",
+            version,
+        ]
+    )
+    write_checksums(output)
+
+
+def verify_portable_artifacts() -> tuple[Path, Path]:
     wheels = sorted((ROOT / "dist").glob("*.whl"))
     sdists = sorted((ROOT / "dist").glob("*.tar.gz"))
     if len(wheels) != 1 or len(sdists) != 1:
@@ -146,6 +230,30 @@ def verify_portable_artifacts() -> None:
         raise BuildError(
             "The source archive does not contain the locked native Cargo dependencies."
         )
+    return wheels[0], sdists[0]
+
+
+def build_source_distributions() -> tuple[Path, Path]:
+    run([sys.executable, "-m", "build", "--no-isolation"])
+    return verify_portable_artifacts()
+
+
+def command_doctor(_: argparse.Namespace) -> None:
+    log(f"repository={ROOT}")
+    log(f"platform={platform.system().lower()}")
+    log(f"architecture={detected_architecture()}")
+    log(f"version={declared_version()}")
+    tools = (
+        "cargo",
+        "rustc",
+        "xvfb-run",
+        "dpkg-buildpackage",
+        "rpmbuild",
+        "makepkg",
+        "flatpak-builder",
+    )
+    for tool in tools:
+        print(f"{tool}={'available' if shutil.which(tool) else 'missing'}")
 
 
 def command_portable(args: argparse.Namespace) -> None:
@@ -166,8 +274,7 @@ def command_portable(args: argparse.Namespace) -> None:
             "--require-complete",
         ]
     )
-    run([sys.executable, "-m", "build", "--no-isolation"])
-    verify_portable_artifacts()
+    build_source_distributions()
     log("Portable source build and verification completed successfully.")
 
 
@@ -182,44 +289,480 @@ def command_native(args: argparse.Namespace) -> None:
     log("Native Rust bridge verification completed successfully.")
 
 
+def build_linux_candidate(arch: str, version: str) -> Path:
+    require_host("linux")
+    require_architecture(arch)
+    run(["bash", "tools/prepare-build-env.sh", "--with-tests"])
+    package_version = capture([sys.executable, "setup.py", "--version"]).splitlines()[
+        -1
+    ]
+    if package_version != version:
+        raise BuildError(
+            f"Candidate version {version!r} does not match package version {package_version!r}."
+        )
+
+    output = ROOT / "release-out" / f"linux-{arch}"
+    clean_paths(ROOT / "build", ROOT / "dist", output)
+    output.mkdir(parents=True)
+    command_portable(argparse.Namespace(prepare=False))
+    wheel, sdist = verify_portable_artifacts()
+    copy_file(wheel, output / wheel.name)
+    copy_file(sdist, output / sdist.name)
+    write_candidate_metadata(output, target_os="linux", arch=arch, version=version)
+    return output
+
+
+def build_debian_candidate(arch: str, version: str) -> Path:
+    require_host("linux")
+    expected_arch = {"x64": "amd64", "arm64": "arm64"}[arch]
+    for tool in ("dpkg", "dpkg-buildpackage", "dpkg-deb", "dpkg-parsechangelog"):
+        require_tool(tool)
+    actual_arch = capture(["dpkg", "--print-architecture"])
+    if actual_arch != expected_arch:
+        raise BuildError(
+            f"Expected Debian architecture {expected_arch}, but the host is {actual_arch}."
+        )
+    debian_version = capture(["dpkg-parsechangelog", "-SVersion"])
+    if not debian_version.startswith(f"{version}-"):
+        raise BuildError(
+            f"Debian changelog version {debian_version!r} does not match {version!r}."
+        )
+
+    clean_paths(
+        ROOT / "build",
+        ROOT / "debian/.debhelper",
+        ROOT / "debian/onboard",
+        ROOT / "debian/onboard-common",
+        ROOT / "debian/onboard-data",
+        ROOT / "debian/gnome-shell-extension-onboard",
+        ROOT / ".pybuild",
+    )
+    remove_matches(ROOT / "Onboard", "osk*.so")
+    remove_matches(ROOT / "Onboard/pypredict", "lm*.so")
+    for pattern in (
+        f"onboard_{debian_version}_*.deb",
+        f"onboard_{debian_version}_*.buildinfo",
+        f"onboard_{debian_version}_*.changes",
+    ):
+        remove_matches(ROOT.parent, pattern)
+
+    run(["dpkg-buildpackage", "-b", "-uc", "-us"])
+    output = ROOT / "release-out" / f"debian-{arch}"
+    clean_paths(output)
+    output.mkdir(parents=True)
+    packages = sorted(ROOT.parent.glob(f"onboard_{debian_version}_*.deb"))
+    if not packages:
+        raise BuildError(f"No Debian package was produced for {debian_version}.")
+
+    primary_seen = False
+    for package in packages:
+        package_arch = capture(["dpkg-deb", "-f", str(package), "Architecture"])
+        package_name = capture(["dpkg-deb", "-f", str(package), "Package"])
+        package_version = capture(["dpkg-deb", "-f", str(package), "Version"])
+        if package_version != debian_version:
+            raise BuildError(
+                f"Unexpected Debian version for {package_name}: {package_version}."
+            )
+        if package_arch not in {"all", expected_arch}:
+            raise BuildError(
+                f"Unexpected Debian architecture for {package_name}: {package_arch}."
+            )
+        if package_name == "onboard" and package_arch == expected_arch:
+            listing = capture(["dpkg-deb", "-c", str(package)])
+            if "usr/bin/onboard" not in listing:
+                raise BuildError(
+                    "The primary Debian package is missing the onboard launcher."
+                )
+            primary_seen = True
+        copy_file(package, output / package.name)
+    if not primary_seen:
+        raise BuildError(
+            f"The primary onboard package was not produced for {expected_arch}."
+        )
+
+    for pattern in (
+        f"onboard_{debian_version}_*.buildinfo",
+        f"onboard_{debian_version}_*.changes",
+    ):
+        for metadata in sorted(ROOT.parent.glob(pattern)):
+            copy_file(metadata, output / metadata.name)
+    write_candidate_metadata(
+        output, target_os="linux-debian", arch=arch, version=version
+    )
+    return output
+
+
+def build_rpm_candidate(arch: str, version: str) -> Path:
+    require_host("linux")
+    expected_arch = {"x64": "x86_64", "arm64": "aarch64"}[arch]
+    for tool in ("rpm", "rpmbuild"):
+        require_tool(tool)
+    actual_arch = capture(["rpm", "--eval", "%{_arch}"])
+    if actual_arch != expected_arch:
+        raise BuildError(
+            f"Expected RPM architecture {expected_arch}, but the host is {actual_arch}."
+        )
+
+    output = ROOT / "release-out" / f"rpm-{arch}"
+    topdir = ROOT / "rpm-build"
+    clean_paths(ROOT / "build", ROOT / "dist", topdir, output)
+    run([sys.executable, "-m", "build", "--sdist", "--no-isolation"])
+    source_archive = ROOT / "dist" / f"onboard-{version}.tar.gz"
+    require_file(source_archive)
+    for directory in ("BUILD", "BUILDROOT", "RPMS", "SOURCES", "SPECS", "SRPMS"):
+        (topdir / directory).mkdir(parents=True, exist_ok=True)
+    copy_file(source_archive, topdir / "SOURCES" / source_archive.name)
+    copy_file(ROOT / "packaging/fedora/onboard.spec", topdir / "SPECS/onboard.spec")
+    run(
+        [
+            "rpmbuild",
+            "-ba",
+            "--define",
+            f"_topdir {topdir}",
+            str(topdir / "SPECS/onboard.spec"),
+        ]
+    )
+
+    output.mkdir(parents=True)
+    artifacts = sorted((topdir / "RPMS").glob("*/*.rpm")) + sorted(
+        (topdir / "SRPMS").glob("*.src.rpm")
+    )
+    if not artifacts:
+        raise BuildError("No RPM artifacts were produced.")
+    primary_seen = False
+    for artifact in artifacts:
+        package_name = capture(["rpm", "-qp", "--qf", "%{NAME}", str(artifact)])
+        package_version = capture(["rpm", "-qp", "--qf", "%{VERSION}", str(artifact)])
+        package_arch = capture(["rpm", "-qp", "--qf", "%{ARCH}", str(artifact)])
+        if package_version != version:
+            raise BuildError(
+                f"Unexpected RPM version for {package_name}: {package_version}."
+            )
+        if artifact.suffix != ".rpm":
+            raise BuildError(f"Unexpected RPM artifact suffix: {artifact.name}.")
+        if (
+            not artifact.name.endswith(".src.rpm")
+            and package_name == "onboard"
+            and package_arch == expected_arch
+        ):
+            listing = capture(["rpm", "-qlp", str(artifact)])
+            if "/usr/bin/onboard" not in listing and "usr/bin/onboard" not in listing:
+                raise BuildError("The primary RPM is missing the onboard launcher.")
+            primary_seen = True
+        copy_file(artifact, output / artifact.name)
+    if not primary_seen:
+        raise BuildError(
+            f"The primary onboard RPM was not produced for {expected_arch}."
+        )
+    write_candidate_metadata(output, target_os="linux-rpm", arch=arch, version=version)
+    return output
+
+
+def build_arch_candidate(arch: str, version: str) -> Path:
+    require_host("linux")
+    expected_arch = {"x64": "x86_64", "arm64": "aarch64"}[arch]
+    if platform.machine().lower() != expected_arch:
+        raise BuildError(
+            f"Expected Arch architecture {expected_arch}, but the host is {platform.machine()}."
+        )
+    for tool in ("makepkg", "pacman", "bsdtar"):
+        require_tool(tool)
+
+    work = ROOT / "arch-build"
+    output = ROOT / "release-out" / f"arch-{arch}"
+    clean_paths(ROOT / "build", ROOT / "dist", work, output)
+    run([sys.executable, "-m", "build", "--sdist", "--no-isolation"])
+    source_archive = ROOT / "dist" / f"onboard-{version}.tar.gz"
+    require_file(source_archive)
+    work.mkdir(parents=True)
+    copy_file(ROOT / "packaging/arch/PKGBUILD", work / "PKGBUILD")
+    copy_file(source_archive, work / source_archive.name)
+
+    if hasattr(os, "geteuid") and os.geteuid() == 0:
+        subprocess.run(
+            ["useradd", "--create-home", "--shell", "/bin/bash", "builder"],
+            check=False,
+        )
+        run(["chown", "-R", "builder:builder", str(work)])
+        run(
+            [
+                "runuser",
+                "-u",
+                "builder",
+                "--",
+                "makepkg",
+                "--noconfirm",
+                "--cleanbuild",
+            ],
+            cwd=work,
+        )
+    else:
+        run(["makepkg", "--noconfirm", "--cleanbuild"], cwd=work)
+
+    output.mkdir(parents=True)
+    packages: list[Path] = []
+    for suffix in ("*.pkg.tar.zst", "*.pkg.tar.xz", "*.pkg.tar.gz"):
+        packages.extend(sorted(work.glob(suffix)))
+    if not packages:
+        raise BuildError("No Arch package was produced.")
+    primary_seen = False
+    for package in packages:
+        info = capture(["pacman", "-Qip", str(package)])
+        package_name = re.search(r"^Name\s*:\s*(.+)$", info, re.MULTILINE)
+        package_arch = re.search(r"^Architecture\s*:\s*(.+)$", info, re.MULTILINE)
+        if package_name and package_arch and package_name.group(1) == "onboard":
+            if package_arch.group(1) != expected_arch:
+                raise BuildError(
+                    f"Unexpected Arch package architecture: {package_arch.group(1)}."
+                )
+            listing = capture(["bsdtar", "-tf", str(package)])
+            if "usr/bin/onboard" not in listing.splitlines():
+                raise BuildError(
+                    "The primary Arch package is missing the onboard launcher."
+                )
+            primary_seen = True
+        copy_file(package, output / package.name)
+    if not primary_seen:
+        raise BuildError(
+            f"The primary onboard package was not produced for {expected_arch}."
+        )
+    write_candidate_metadata(output, target_os="linux-arch", arch=arch, version=version)
+    return output
+
+
+def build_flatpak_candidate(arch: str, version: str) -> Path:
+    require_host("linux")
+    require_architecture(arch)
+    for tool in ("flatpak", "flatpak-builder"):
+        require_tool(tool)
+    build = ROOT / f"flatpak-build-{arch}"
+    repository = ROOT / f"flatpak-repo-{arch}"
+    output = ROOT / "release-out" / f"flatpak-{arch}"
+    clean_paths(build, repository, output)
+    output.mkdir(parents=True)
+    run(
+        [
+            "flatpak",
+            "remote-add",
+            "--if-not-exists",
+            "--user",
+            "flathub",
+            "https://dl.flathub.org/repo/flathub.flatpakrepo",
+        ]
+    )
+    run(
+        [
+            "flatpak",
+            "install",
+            "--user",
+            "--noninteractive",
+            "-y",
+            "flathub",
+            "org.gnome.Platform//50",
+            "org.gnome.Sdk//50",
+            "org.freedesktop.Sdk.Extension.rust-stable//25.08",
+        ]
+    )
+    run(
+        [
+            "flatpak-builder",
+            "--force-clean",
+            f"--repo={repository}",
+            str(build),
+            "packaging/flatpak/org.onboard.Onboard.yml",
+        ]
+    )
+    diagnostics = capture(["flatpak", "build", str(build), "onboard", "--diagnose"])
+    if '"schema"' not in diagnostics:
+        raise BuildError(
+            "Flatpak diagnostic output did not contain the expected schema."
+        )
+    bundle = output / f"onboard-{version}-{arch}.flatpak"
+    run(
+        ["flatpak", "build-bundle", str(repository), str(bundle), "org.onboard.Onboard"]
+    )
+    if not bundle.is_file() or bundle.stat().st_size == 0:
+        raise BuildError("Flatpak bundle was not produced.")
+    write_candidate_metadata(
+        output, target_os="linux-flatpak", arch=arch, version=version
+    )
+    return output
+
+
 def command_candidate(args: argparse.Namespace) -> None:
-    backend = CANDIDATE_BACKENDS[args.target]
     version = resolved_version(args.version)
-    require_tool("bash")
-    run(["bash", backend, args.arch, version])
-    output = ROOT / "release-out" / f"{args.target}-{args.arch}"
-    if args.target == "linux":
-        output = ROOT / "release-out" / f"linux-{args.arch}"
+    builders: dict[str, Callable[[str, str], Path]] = {
+        "linux": build_linux_candidate,
+        "debian": build_debian_candidate,
+        "rpm": build_rpm_candidate,
+        "arch": build_arch_candidate,
+        "flatpak": build_flatpak_candidate,
+    }
+    output = builders[args.target](args.arch, version)
     if not output.is_dir():
-        raise BuildError(f"Candidate backend completed without creating {output}.")
+        raise BuildError(f"Candidate build did not create {output.relative_to(ROOT)}.")
     log(f"Verified {args.target} candidate written to {output.relative_to(ROOT)}.")
+
+
+def cargo_commit() -> str:
+    return capture(["git", "rev-parse", "HEAD"])
+
+
+def write_json(path: Path, payload: dict[str, object]) -> None:
+    path.write_text(
+        json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+
+
+def build_windows_preview(arch: str, version: str) -> None:
+    require_host("windows")
+    require_architecture(arch)
+    require_tool("cargo")
+    manifest = ROOT / "next/Cargo.toml"
+    binary = ROOT / "next/target/release/onboard-next.exe"
+    output_root = ROOT / "release-out/windows" / arch
+    output = output_root / f"onboard-next-preview-{version}"
+    clean_paths(output)
+    run(["cargo", "test", "--manifest-path", str(manifest), "--workspace", "--locked"])
+    run(
+        [
+            "cargo",
+            "build",
+            "--manifest-path",
+            str(manifest),
+            "--bin",
+            "onboard-next",
+            "--release",
+            "--locked",
+        ]
+    )
+    require_file(binary)
+    output.mkdir(parents=True)
+    copy_file(binary, output / "onboard-next.exe")
+    diagnostics = capture([str(output / "onboard-next.exe"), "diagnose", "ar_SA"])
+    if '"direction":"rtl"' not in diagnostics:
+        raise BuildError("Arabic RTL diagnostic failed for the Windows preview binary.")
+    write_json(
+        output / "provenance.json",
+        {
+            "product": "onboard-next",
+            "channel": "preview",
+            "platform": "windows",
+            "architecture": arch,
+            "version": version,
+            "commit": cargo_commit(),
+            "signed": False,
+            "input_source": "read-only-tsf-pending",
+            "notes": "Preview bridge build. Do not treat as a signed stable installer.",
+        },
+    )
+    write_checksums(output)
+    archive = output_root / f"onboard-next-preview-{version}-windows-{arch}.zip"
+    archive.unlink(missing_ok=True)
+    with zipfile.ZipFile(archive, "w", compression=zipfile.ZIP_DEFLATED) as bundle:
+        for item in sorted(path for path in output.rglob("*") if path.is_file()):
+            bundle.write(item, item.relative_to(output_root))
+    archive.with_suffix(archive.suffix + ".sha256").write_text(
+        sha256(archive) + "\n", encoding="ascii"
+    )
+
+
+def build_macos_preview(arch: str, version: str) -> None:
+    require_host("darwin")
+    require_architecture(arch)
+    require_tool("cargo")
+    manifest = ROOT / "next/Cargo.toml"
+    binary = ROOT / "next/target/release/onboard-next"
+    output = ROOT / "release-out/macos" / arch
+    app = output / "Onboard-next.app"
+    contents = app / "Contents"
+    executable_directory = contents / "MacOS"
+    resources = contents / "Resources"
+    clean_paths(app)
+    run(["cargo", "test", "--manifest-path", str(manifest), "--workspace", "--locked"])
+    run(
+        [
+            "cargo",
+            "build",
+            "--manifest-path",
+            str(manifest),
+            "--bin",
+            "onboard-next",
+            "--release",
+            "--locked",
+        ]
+    )
+    require_file(binary)
+    executable_directory.mkdir(parents=True)
+    resources.mkdir(parents=True)
+    copy_file(binary, executable_directory / "onboard-next")
+    (executable_directory / "onboard-next").chmod(0o755)
+    with (contents / "Info.plist").open("wb") as plist:
+        plistlib.dump(
+            {
+                "CFBundleDevelopmentRegion": "en",
+                "CFBundleExecutable": "onboard-next",
+                "CFBundleIdentifier": "org.onboard.OnboardNext",
+                "CFBundleInfoDictionaryVersion": "6.0",
+                "CFBundleName": "Onboard-next Preview",
+                "CFBundlePackageType": "APPL",
+                "CFBundleShortVersionString": version,
+                "CFBundleVersion": version,
+                "LSMinimumSystemVersion": "12.0",
+            },
+            plist,
+        )
+    run(["plutil", "-lint", str(contents / "Info.plist")])
+    diagnostics = capture(
+        [str(executable_directory / "onboard-next"), "diagnose", "ar_SA"]
+    )
+    if '"direction":"rtl"' not in diagnostics:
+        raise BuildError("Arabic RTL diagnostic failed for the macOS preview binary.")
+    write_json(
+        resources / "provenance.json",
+        {
+            "product": "onboard-next",
+            "channel": "preview",
+            "platform": "macos",
+            "architecture": arch,
+            "version": version,
+            "commit": cargo_commit(),
+            "signed": False,
+            "notarized": False,
+            "input_source": "read-only-tis-pending",
+            "notes": "Preview bridge build. Do not treat as a signed or notarized stable application.",
+        },
+    )
+    output.mkdir(parents=True, exist_ok=True)
+    archive = output / f"onboard-next-preview-{version}-macos-{arch}.zip"
+    dmg = output / f"onboard-next-preview-{version}-macos-{arch}.dmg"
+    clean_paths(archive, dmg)
+    run(
+        ["ditto", "-c", "-k", "--sequesterRsrc", "--keepParent", str(app), str(archive)]
+    )
+    run(
+        [
+            "hdiutil",
+            "create",
+            "-volname",
+            "Onboard-next Preview",
+            "-srcfolder",
+            str(app),
+            "-ov",
+            "-format",
+            "UDZO",
+            str(dmg),
+        ]
+    )
+    write_checksums(output, recursive=True)
 
 
 def command_preview(args: argparse.Namespace) -> None:
     version = args.version or "0.1.0"
     if args.platform == "windows":
-        require_host("windows")
-        powershell = shutil.which("pwsh") or shutil.which("powershell")
-        if not powershell:
-            raise BuildError("PowerShell is required for the Windows preview backend.")
-        run(
-            [
-                powershell,
-                "-NoProfile",
-                "-ExecutionPolicy",
-                "Bypass",
-                "-File",
-                "packaging/windows/build-preview.ps1",
-                "-Architecture",
-                args.arch,
-                "-Version",
-                version,
-            ]
-        )
+        build_windows_preview(args.arch, version)
     else:
-        require_host("darwin")
-        require_tool("bash")
-        run(["bash", "packaging/macos/build-preview.sh", args.arch, version])
+        build_macos_preview(args.arch, version)
     log(f"{args.platform} preview completed for {args.arch}.")
 
 
@@ -283,14 +826,14 @@ def parser() -> argparse.ArgumentParser:
 
     candidate = subparsers.add_parser(
         "candidate",
-        help="Build a native release candidate using the selected package backend.",
+        help="Build a host-native candidate with the selected package recipe.",
     )
     candidate.add_argument(
-        "target", choices=sorted(CANDIDATE_BACKENDS), help="Candidate artifact family."
+        "target", choices=CANDIDATE_BACKENDS, help="Candidate artifact family."
     )
     candidate.add_argument(
         "--arch",
-        choices=("x64", "arm64"),
+        choices=ARCHITECTURES,
         default=detected_architecture(),
         help="Native target architecture.",
     )
@@ -307,7 +850,7 @@ def parser() -> argparse.ArgumentParser:
     )
     preview.add_argument(
         "--arch",
-        choices=("x64", "arm64"),
+        choices=ARCHITECTURES,
         default=detected_architecture(),
         help="Native target architecture.",
     )
