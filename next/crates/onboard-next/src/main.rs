@@ -355,7 +355,7 @@ fn print_diagnostics(locale: &str) {
 
 #[cfg(windows)]
 fn configure_non_activating_window(frame: &eframe::Frame) -> bool {
-    use raw_window_handle::{HasRawWindowHandle, RawWindowHandle};
+    use raw_window_handle::{HasWindowHandle, RawWindowHandle};
     use std::ffi::c_void;
 
     #[link(name = "User32")]
@@ -367,7 +367,10 @@ fn configure_non_activating_window(frame: &eframe::Frame) -> bool {
     const GWL_EXSTYLE: i32 = -20;
     const WS_EX_NOACTIVATE: isize = 0x0800_0000;
 
-    let RawWindowHandle::Win32(handle) = frame.raw_window_handle() else {
+    let Ok(window_handle) = frame.window_handle() else {
+        return false;
+    };
+    let RawWindowHandle::Win32(handle) = window_handle.as_raw() else {
         return false;
     };
     // SAFETY: eframe owns a valid Win32 HWND for the duration of the frame. The
