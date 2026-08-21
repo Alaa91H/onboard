@@ -10,7 +10,6 @@ previews.
 from __future__ import annotations
 
 import argparse
-import os
 import platform
 import re
 import shutil
@@ -60,7 +59,9 @@ def run(command: Sequence[str], *, cwd: Path = ROOT) -> None:
 def require_host(system: str) -> None:
     actual = platform.system().lower()
     if actual != system:
-        raise BuildError(f"This command requires {system}, but the current host is {actual}.")
+        raise BuildError(
+            f"This command requires {system}, but the current host is {actual}."
+        )
 
 
 def declared_version() -> str:
@@ -107,7 +108,15 @@ def command_doctor(_: argparse.Namespace) -> None:
     log(f"platform={platform.system().lower()}")
     log(f"architecture={detected_architecture()}")
     log(f"version={declared_version()}")
-    tools = ("cargo", "rustc", "xvfb-run", "dpkg-buildpackage", "rpmbuild", "makepkg", "flatpak-builder")
+    tools = (
+        "cargo",
+        "rustc",
+        "xvfb-run",
+        "dpkg-buildpackage",
+        "rpmbuild",
+        "makepkg",
+        "flatpak-builder",
+    )
     for tool in tools:
         print(f"{tool}={'available' if shutil.which(tool) else 'missing'}")
 
@@ -120,15 +129,23 @@ def verify_portable_artifacts() -> None:
 
     with zipfile.ZipFile(wheels[0]) as archive:
         names = archive.namelist()
-    if not any(re.fullmatch(r"Onboard/onboard_native.*\.(so|pyd)", name) for name in names):
+    if not any(
+        re.fullmatch(r"Onboard/onboard_native.*\.(so|pyd)", name) for name in names
+    ):
         raise BuildError("The wheel does not contain the native Onboard extension.")
-    if not any(name.endswith("share/locale/ar/LC_MESSAGES/onboard.mo") for name in names):
+    if not any(
+        name.endswith("share/locale/ar/LC_MESSAGES/onboard.mo") for name in names
+    ):
         raise BuildError("The wheel does not contain the compiled Arabic catalog.")
 
     with tarfile.open(sdists[0], "r:gz") as archive:
         source_names = archive.getnames()
-    if not any(name.endswith("native/onboard-native/Cargo.lock") for name in source_names):
-        raise BuildError("The source archive does not contain the locked native Cargo dependencies.")
+    if not any(
+        name.endswith("native/onboard-native/Cargo.lock") for name in source_names
+    ):
+        raise BuildError(
+            "The source archive does not contain the locked native Cargo dependencies."
+        )
 
 
 def command_portable(args: argparse.Namespace) -> None:
@@ -139,7 +156,16 @@ def command_portable(args: argparse.Namespace) -> None:
     run([sys.executable, "setup.py", "build"])
     run(["xvfb-run", "-a", sys.executable, "-m", "unittest", *FOCUSED_TESTS])
     run(["cargo", "test", "--locked"], cwd=ROOT / "native/onboard-native")
-    run([sys.executable, "i18n/scripts/check_catalog.py", "po/ar.po", "--language", "ar", "--require-complete"])
+    run(
+        [
+            sys.executable,
+            "i18n/scripts/check_catalog.py",
+            "po/ar.po",
+            "--language",
+            "ar",
+            "--require-complete",
+        ]
+    )
     run([sys.executable, "-m", "build", "--no-isolation"])
     verify_portable_artifacts()
     log("Portable source build and verification completed successfully.")
@@ -176,18 +202,20 @@ def command_preview(args: argparse.Namespace) -> None:
         powershell = shutil.which("pwsh") or shutil.which("powershell")
         if not powershell:
             raise BuildError("PowerShell is required for the Windows preview backend.")
-        run([
-            powershell,
-            "-NoProfile",
-            "-ExecutionPolicy",
-            "Bypass",
-            "-File",
-            "packaging/windows/build-preview.ps1",
-            "-Architecture",
-            args.arch,
-            "-Version",
-            version,
-        ])
+        run(
+            [
+                powershell,
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-File",
+                "packaging/windows/build-preview.ps1",
+                "-Architecture",
+                args.arch,
+                "-Version",
+                version,
+            ]
+        )
     else:
         require_host("darwin")
         require_tool("bash")
@@ -214,7 +242,9 @@ def command_validate_recipes(_: argparse.Namespace) -> None:
         ROOT / "native/onboard-native/.cargo/config.toml",
         ROOT / "packaging/flatpak/intltool-perl5.26-regex-fixes.patch",
     )
-    absent = [str(path.relative_to(ROOT)) for path in required_files if not path.is_file()]
+    absent = [
+        str(path.relative_to(ROOT)) for path in required_files if not path.is_file()
+    ]
     if absent:
         raise BuildError("Required package assets are missing: " + ", ".join(absent))
     log("Package recipe validation completed successfully.")
@@ -226,30 +256,67 @@ def parser() -> argparse.ArgumentParser:
     )
     subparsers = root.add_subparsers(dest="command", required=True)
 
-    doctor = subparsers.add_parser("doctor", help="Report host capabilities and declared project version.")
+    doctor = subparsers.add_parser(
+        "doctor", help="Report host capabilities and declared project version."
+    )
     doctor.set_defaults(handler=command_doctor)
 
-    portable = subparsers.add_parser("portable", help="Build and verify portable Linux wheel and source artifacts.")
-    portable.add_argument("--prepare", action="store_true", help="Install host build prerequisites before building.")
+    portable = subparsers.add_parser(
+        "portable", help="Build and verify portable Linux wheel and source artifacts."
+    )
+    portable.add_argument(
+        "--prepare",
+        action="store_true",
+        help="Install host build prerequisites before building.",
+    )
     portable.set_defaults(handler=command_portable)
 
-    native = subparsers.add_parser("native", help="Verify and build the native Rust bridge on the current host.")
-    native.add_argument("--check-only", action="store_true", help="Use cargo check for tests before the release build.")
+    native = subparsers.add_parser(
+        "native", help="Verify and build the native Rust bridge on the current host."
+    )
+    native.add_argument(
+        "--check-only",
+        action="store_true",
+        help="Use cargo check for tests before the release build.",
+    )
     native.set_defaults(handler=command_native)
 
-    candidate = subparsers.add_parser("candidate", help="Build a native release candidate using the selected package backend.")
-    candidate.add_argument("target", choices=sorted(CANDIDATE_BACKENDS), help="Candidate artifact family.")
-    candidate.add_argument("--arch", choices=("x64", "arm64"), default=detected_architecture(), help="Native target architecture.")
-    candidate.add_argument("--version", help="Optional exact version guard; defaults to pyproject.toml.")
+    candidate = subparsers.add_parser(
+        "candidate",
+        help="Build a native release candidate using the selected package backend.",
+    )
+    candidate.add_argument(
+        "target", choices=sorted(CANDIDATE_BACKENDS), help="Candidate artifact family."
+    )
+    candidate.add_argument(
+        "--arch",
+        choices=("x64", "arm64"),
+        default=detected_architecture(),
+        help="Native target architecture.",
+    )
+    candidate.add_argument(
+        "--version", help="Optional exact version guard; defaults to pyproject.toml."
+    )
     candidate.set_defaults(handler=command_candidate)
 
-    preview = subparsers.add_parser("preview", help="Build a host-native unsigned onboard-next preview.")
-    preview.add_argument("platform", choices=("windows", "macos"), help="Native preview platform.")
-    preview.add_argument("--arch", choices=("x64", "arm64"), default=detected_architecture(), help="Native target architecture.")
+    preview = subparsers.add_parser(
+        "preview", help="Build a host-native unsigned onboard-next preview."
+    )
+    preview.add_argument(
+        "platform", choices=("windows", "macos"), help="Native preview platform."
+    )
+    preview.add_argument(
+        "--arch",
+        choices=("x64", "arm64"),
+        default=detected_architecture(),
+        help="Native target architecture.",
+    )
     preview.add_argument("--version", help="Preview version; defaults to 0.1.0.")
     preview.set_defaults(handler=command_preview)
 
-    recipes = subparsers.add_parser("validate-recipes", help="Validate static package recipe contracts.")
+    recipes = subparsers.add_parser(
+        "validate-recipes", help="Validate static package recipe contracts."
+    )
     recipes.set_defaults(handler=command_validate_recipes)
     return root
 
@@ -262,7 +329,10 @@ def main(argv: Iterable[str] | None = None) -> int:
         print(f"[onboard-build] error: {error}", file=sys.stderr)
         return 2
     except subprocess.CalledProcessError as error:
-        print(f"[onboard-build] command failed with exit code {error.returncode}.", file=sys.stderr)
+        print(
+            f"[onboard-build] command failed with exit code {error.returncode}.",
+            file=sys.stderr,
+        )
         return error.returncode or 1
     return 0
 

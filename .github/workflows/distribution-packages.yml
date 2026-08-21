@@ -166,10 +166,19 @@ jobs:
           set -euo pipefail
           version="$(awk -F '"' '/^[[:space:]]*version[[:space:]]*=/ {print $2; exit}' pyproject.toml)"
           docker run --rm \
+            --env ONBOARD_VERSION="$version" \
             --volume "$GITHUB_WORKSPACE:/workspace" \
             --workdir /workspace \
             agners/archlinuxarm \
-            /bin/sh -lc "sed -i '/^\\[options\\]/a DisableSandbox' /etc/pacman.conf && pacman -Syu --needed --noconfirm base-devel grep && ./tools/prepare-build-env.sh --with-tests && export CC=gcc CXX=g++ && python3 tools/build.py candidate arch --arch arm64 --version '$version'"
+            /bin/sh -lc '
+              set -eu
+              sed -i "/^\\[options\\]/a DisableSandbox" /etc/pacman.conf
+              pacman -Syu --needed --noconfirm base-devel grep
+              ./tools/prepare-build-env.sh --with-tests
+              export CC=gcc CXX=g++
+              python3 tools/build.py candidate arch \
+                --arch arm64 --version "$ONBOARD_VERSION"
+            '
           candidate="release-out/arch-arm64"
           sha256sum -c "$candidate/SHA256SUMS"
           python3 ci/scripts/verify_release_candidate.py \
