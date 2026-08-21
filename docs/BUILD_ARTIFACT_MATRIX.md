@@ -1,0 +1,36 @@
+# مصفوفة بناء وحزم Onboard
+
+هذه الوثيقة هي عقد المخرجات القابلة للبناء في CI. يظل **Onboard Classic** منتج Linux المستقر أثناء الانتقال، بينما يمثل `onboard-next` نواة Rust وجسوراً تجريبية لـWindows وmacOS. لا يتحول artifact إلى إصدار مستقر لمجرد نجاح بنائه.
+
+## أهداف Linux
+
+| العائلة | المعماريات | artifact المطلوب في CI | مستوى النشر | بوابة التحقق |
+|---|---:|---|---|---|
+| Debian / Ubuntu | x64، ARM64 | حزم `.deb` من الشجرة المصدرية | مرشح قابل للتنزيل | `dpkg-buildpackage`، فحص محتوى `dpkg-deb`، واختبارات المصدر والترجمة |
+| Fedora / RHEL | x64، ARM64 | RPM وSRPM من `onboard.spec` | مرشح قابل للتنزيل | `rpmbuild` داخل Fedora أصلي، فحص RPM واختبارات المصدر |
+| openSUSE | x64، ARM64 | وصفة RPM متوافقة ومتحقق من صحتها | وصفة جاهزة للموزع | تدقيق spec وبناء openSUSE أصلي عندما تتوفر صورة/runner مدعومة |
+| Arch / مشتقاتها | x64، ARM64 | حزمة pacman من `PKGBUILD` | مرشح قابل للتنزيل | `makepkg` غير الجذري، checksum للمصدر، وفحص محتوى الحزمة |
+| Flatpak | x64، ARM64 | Flatpak bundle | معاينة sandbox | `flatpak-builder` وبناء bundle وفحص manifest والصلاحيات |
+| توزيعات أخرى | x64، ARM64 | source tarball وwheel | مرشح قابل للتنزيل | PEP 517 وSBOM وSHA-256 وبيان الإصدار |
+
+## أهداف سطح المكتب غير Linux
+
+| المنصة | المعماريات | artifact الحالي | حالة الميزة | شرط الترقية إلى مستقر |
+|---|---:|---|---|---|
+| Windows | x64، ARM64 | portable ZIP غير موقّع | `onboard-next` bootstrap؛ جسر SendInput فقط | واجهة GTK4، تخطيط صغير، TSF، اختبارات فعلية، Authenticode |
+| macOS | x64، ARM64 | `.app` وZIP/DMG preview غير موقعين | `onboard-next` bootstrap؛ Quartz مع إذن Accessibility | واجهة GTK4، TIS، status item، codesign وnotarization |
+
+## قواعد الأمان والنشر
+
+1. لا يحتوي workflow التجريبي على أسرار توقيع ولا ينشر GitHub Release.
+2. يرفق كل artifact ببيان provenance وتجزئة SHA-256؛ تضاف SBOM إلى المخرجات التي تستخدم مخطط المصدر Python/Rust الحالي.
+3. يجب أن يبنى كل artifact على نظامه ومعماريته الأصليين، ولا يكفي التحقق العابر للمنصات للنشر.
+4. يمكن أن تفشل وظائف ARM64 ذات البنية المستضافة التجريبية كتحذير موثق فقط، لكن لا تصبح artifact مستقرة قبل نجاح اختبار ARM64 أصلي.
+5. لا يدعي دليل البناء دعم format ما لم تنفذ CI مخرجه وفحصه فعلياً.
+
+## مراجع التنفيذ
+
+تدعم وثائق Flatpak الرسمية إنشاء single-file bundle من مستودع build عبر `flatpak build-bundle`، مع إمكانية تضمين مرجع runtime؛ لذا تعتمد المصفوفة bundle تجريبياً قابلاً للتنزيل ولا تدّعي أنه مستودع تحديثات دائم.[1] كما توثق GitHub runners متاحة لـUbuntu ARM64 وWindows ARM64 وmacOS Intel وApple Silicon، وهي أهداف بناء أصلية للمصفوفة.[2]
+
+[1]: https://docs.flatpak.org/en/latest/single-file-bundles.html "Flatpak single-file bundles"
+[2]: https://docs.github.com/en/actions/reference/runners/github-hosted-runners "GitHub-hosted runners reference"

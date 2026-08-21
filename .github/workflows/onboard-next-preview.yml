@@ -57,11 +57,17 @@ jobs:
           if ($metadata.platform -ne 'windows' -or $metadata.signed -ne $false) {
             throw "Unexpected Windows preview provenance."
           }
+          $archive = 'release-out/windows/${{ matrix.arch }}/onboard-next-preview-0.1.0-windows-${{ matrix.arch }}.zip'
+          $expectedHash = Get-Content -Raw "$archive.sha256"
+          $actualHash = (Get-FileHash -Algorithm SHA256 $archive).Hash.ToLowerInvariant()
+          if ($actualHash -ne $expectedHash.Trim()) {
+            throw "Windows preview archive checksum mismatch."
+          }
       - name: Upload unsigned preview artifact
         uses: actions/upload-artifact@v6
         with:
           name: onboard-next-windows-${{ matrix.arch }}-preview
-          path: release-out/windows/${{ matrix.arch }}/onboard-next-preview-0.1.0/
+          path: release-out/windows/${{ matrix.arch }}/
           if-no-files-found: error
           retention-days: 14
 
@@ -98,6 +104,13 @@ jobs:
           assert metadata["platform"] == "macos"
           assert metadata["signed"] is False
           assert metadata["notarized"] is False
+          archive = Path("release-out/macos/${{ matrix.arch }}/onboard-next-preview-0.1.0-macos-${{ matrix.arch }}.zip")
+          assert archive.is_file()
+          dmg = Path("release-out/macos/${{ matrix.arch }}/onboard-next-preview-0.1.0-macos-${{ matrix.arch }}.dmg")
+          assert dmg.is_file()
+          import zipfile
+          with zipfile.ZipFile(archive) as bundle:
+              assert "Onboard-next.app/Contents/MacOS/onboard-next" in bundle.namelist()
           PY
       - name: Upload unsigned preview artifact
         uses: actions/upload-artifact@v6

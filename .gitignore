@@ -34,3 +34,9 @@ Onboard/pypredict/__pycache__/
 
 # Local Rust build output for onboard-next
 /next/target/
+
+# Local candidate-package work directories
+/rpm-build/
+/arch-build/
+/flatpak-build-*/
+/flatpak-repo-*/

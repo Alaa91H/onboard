@@ -75,8 +75,17 @@ cat > "$resources_path/provenance.json" <<JSON
 }
 JSON
 
+archive_path="$output_root/onboard-next-preview-${version}-macos-${architecture}.zip"
+dmg_path="$output_root/onboard-next-preview-${version}-macos-${architecture}.dmg"
+rm -f "$archive_path" "$dmg_path"
+ditto -c -k --sequesterRsrc --keepParent "$app_path" "$archive_path"
+hdiutil create -volname "Onboard-next Preview" -srcfolder "$app_path" -ov -format UDZO "$dmg_path"
+
 (
   cd "$output_root"
-  find "Onboard-next.app" -type f -print0 | sort -z | xargs -0 shasum -a 256 > SHA256SUMS
+  {
+    find "Onboard-next.app" -type f -print0 | sort -z | xargs -0 shasum -a 256
+    shasum -a 256 "$(basename "$archive_path")" "$(basename "$dmg_path")"
+  } > SHA256SUMS
 )
-printf 'macOS preview app created: %s\n' "$app_path"
+printf 'macOS preview artifacts created: %s and %s\n' "$archive_path" "$dmg_path"
