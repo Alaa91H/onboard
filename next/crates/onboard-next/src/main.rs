@@ -13,6 +13,9 @@ use onboard_bridge_macos::MacOsBridge;
 use onboard_bridge_windows::WindowsBridge;
 use onboard_core::{KeyboardState, TextDirection};
 
+#[cfg(windows)]
+mod windows_tray;
+
 #[cfg(any(windows, target_os = "macos"))]
 const APP_ID: &str = "org.onboard.OnboardNext";
 #[cfg(any(windows, target_os = "macos"))]
@@ -94,6 +97,12 @@ struct OnboardApp {
     clipboard_text: String,
     status: String,
     non_activating_window_configured: bool,
+    #[cfg(windows)]
+    system_tray: Option<windows_tray::SystemTray>,
+    #[cfg(windows)]
+    window_visible: bool,
+    #[cfg(windows)]
+    allow_exit: bool,
 }
 
 #[cfg(any(windows, target_os = "macos"))]
@@ -106,6 +115,13 @@ impl OnboardApp {
         );
         let mut keyboard_state = KeyboardState::default();
         keyboard_state.set_locale(layout.locale());
+        #[cfg(windows)]
+        let (system_tray, status) = match windows_tray::SystemTray::create() {
+            Ok(tray) => (Some(tray), "جاهز للكتابة في التطبيق النشط".to_owned()),
+            Err(error) => (None, format!("تعذر إنشاء أيقونة منطقة الإعلام: {error}")),
+        };
+        #[cfg(not(windows))]
+        let status = "جاهز للكتابة في التطبيق النشط".to_owned();
 
         Self {
             bridge: bridge(),
@@ -114,8 +130,14 @@ impl OnboardApp {
             show_clipboard: false,
             show_emoji: false,
             clipboard_text: String::new(),
-            status: "جاهز للكتابة في التطبيق النشط".to_owned(),
+            status,
             non_activating_window_configured: false,
+            #[cfg(windows)]
+            system_tray,
+            #[cfg(windows)]
+            window_visible: true,
+            #[cfg(windows)]
+            allow_exit: false,
         }
     }
 
@@ -150,6 +172,42 @@ impl OnboardApp {
             Ok(()) => "تم إرسال المفتاح".to_owned(),
             Err(error) => format!("تعذر إرسال المفتاح: {error}"),
         };
+    }
+
+    #[cfg(windows)]
+    fn show_window_from_tray(&mut self, context: &egui::Context) {
+        self.window_visible = true;
+        context.send_viewport_cmd(egui::ViewportCommand::Visible(true));
+        context.send_viewport_cmd(egui::ViewportCommand::Minimized(false));
+        self.status = "تم إظهار اللوحة من منطقة الإعلام".to_owned();
+    }
+
+    #[cfg(windows)]
+    fn hide_window_to_tray(&mut self, context: &egui::Context) {
+        self.window_visible = false;
+        context.send_viewport_cmd(egui::ViewportCommand::Visible(false));
+        self.status = "التطبيق يعمل في منطقة الإعلام".to_owned();
+    }
+
+    #[cfg(windows)]
+    fn process_system_tray(&mut self, context: &egui::Context) {
+        use windows_tray::TrayAction;
+
+        let action = self
+            .system_tray
+            .as_ref()
+            .and_then(windows_tray::SystemTray::next_action);
+        match action {
+            Some(TrayAction::Show) => self.show_window_from_tray(context),
+            Some(TrayAction::Hide) => self.hide_window_to_tray(context),
+            Some(TrayAction::Toggle) if self.window_visible => self.hide_window_to_tray(context),
+            Some(TrayAction::Toggle) => self.show_window_from_tray(context),
+            Some(TrayAction::Exit) => {
+                self.allow_exit = true;
+                context.send_viewport_cmd(egui::ViewportCommand::Close);
+            }
+            None => {}
+        }
     }
 
     fn compact_button(ui: &mut egui::Ui, label: &str) -> egui::Response {
@@ -219,6 +277,22 @@ impl eframe::App for OnboardApp {
                 self.status = "جاهز للكتابة في التطبيق النشط".to_owned();
             }
         }
+        #[cfg(windows)]
+        {
+            self.process_system_tray(context);
+            if context.input(|input| input.viewport().close_requested()) && !self.allow_exit {
+                context.send_viewport_cmd(egui::ViewportCommand::CancelClose);
+                self.hide_window_to_tray(context);
+            }
+            if self.window_visible
+                && context.input(|input| input.viewport().minimized == Some(true))
+            {
+                self.hide_window_to_tray(context);
+            }
+            if self.system_tray.is_some() {
+                context.request_repaint_after(std::time::Duration::from_millis(100));
+            }
+        }
 
         let direction = match self.keyboard_state.direction {
             TextDirection::LeftToRight => egui::Layout::left_to_right(egui::Align::Center),
@@ -245,6 +319,10 @@ impl eframe::App for OnboardApp {
                     }
                     if ui.selectable_label(self.show_emoji, "الإيموجي").clicked() {
                         self.show_emoji = !self.show_emoji;
+                    }
+                    #[cfg(windows)]
+                    if ui.button("إخفاء إلى الأيقونة").clicked() {
+                        self.hide_window_to_tray(context);
                     }
                 });
 

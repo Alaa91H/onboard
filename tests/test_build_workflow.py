@@ -35,6 +35,15 @@ QUALITY_WORKFLOW = (
     REPOSITORY_ROOT / ".github" / "workflows" / "unified-build-quality.yml"
 )
 CENTRAL_CI_WORKFLOW = REPOSITORY_ROOT / ".github" / "workflows" / "ci.yml"
+WINDOWS_APP_MANIFEST = (
+    REPOSITORY_ROOT / "next" / "crates" / "onboard-next" / "Cargo.toml"
+)
+WINDOWS_APP_ENTRYPOINT = (
+    REPOSITORY_ROOT / "next" / "crates" / "onboard-next" / "src" / "main.rs"
+)
+WINDOWS_TRAY_SOURCE = (
+    REPOSITORY_ROOT / "next" / "crates" / "onboard-next" / "src" / "windows_tray.rs"
+)
 REUSABLE_WORKFLOWS = ("unified-build-quality.yml", *WORKFLOW_CONTRACTS)
 QUALITY_GATE_COMMANDS = (
     "python -m py_compile tools/build.py tests/test_build_workflow.py",
@@ -153,6 +162,21 @@ class TestUnifiedBuildWorkflow(unittest.TestCase):
         self.assertIn("choco install innosetup --version=6.7.1", workflow)
         self.assertIn("-setup.exe", workflow)
         self.assertIn("installer checksum mismatch", workflow)
+
+    def test_windows_tray_contract_preserves_minimize_to_notification_area(
+        self,
+    ) -> None:
+        manifest = WINDOWS_APP_MANIFEST.read_text(encoding="utf-8")
+        entrypoint = WINDOWS_APP_ENTRYPOINT.read_text(encoding="utf-8")
+        tray_source = WINDOWS_TRAY_SOURCE.read_text(encoding="utf-8")
+        self.assertIn('tray-icon = "=0.21.3"', manifest)
+        self.assertIn("ViewportCommand::CancelClose", entrypoint)
+        self.assertIn("ViewportCommand::Visible(false)", entrypoint)
+        self.assertIn("ViewportCommand::Visible(true)", entrypoint)
+        self.assertIn("minimized == Some(true)", entrypoint)
+        self.assertIn("إظهار اللوحة", tray_source)
+        self.assertIn("إخفاء إلى منطقة الإعلام", tray_source)
+        self.assertIn("إنهاء Onboard Next", tray_source)
 
     def test_workflow_orchestrator_is_the_only_event_entry_point(self) -> None:
         content = CENTRAL_CI_WORKFLOW.read_text(encoding="utf-8")
