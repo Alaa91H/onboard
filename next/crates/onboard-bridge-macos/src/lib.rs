@@ -115,6 +115,13 @@ impl PlatformBridge for MacOsBridge {
         }
     }
 
+    fn inject_text(&self, _text: &str) -> Result<(), BridgeError> {
+        Err(BridgeError::new(
+            "unicode-text-input-pending",
+            "macOS Unicode text injection is pending the focused-target adapter",
+        ))
+    }
+
     fn activate_next_input_source(&self) -> Result<(), BridgeError> {
         Err(BridgeError::new(
             "input-source-read-only",

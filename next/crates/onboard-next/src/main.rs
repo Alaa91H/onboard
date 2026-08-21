@@ -1,13 +1,283 @@
-//! Bootstrap executable for the independent Onboard application.
+//! Native desktop entry point for the independent Onboard application.
 //!
-//! It is intentionally a diagnostic command in this milestone. GTK4 presentation,
-//! tray integration, and installers are added only after this platform contract
-//! passes native compilation and capability tests on its target operating system.
+//! The application deliberately keeps rendering and state local. Text injection
+//! is delegated to a narrowly scoped platform bridge so the compact on-screen
+//! keyboard can remain responsive while preserving a testable capability boundary.
 
+#![cfg_attr(windows, windows_subsystem = "windows")]
+
+#[cfg(any(windows, target_os = "macos"))]
+use eframe::egui;
 use onboard_bridge_api::{BridgeCapabilities, PlatformBridge};
 use onboard_bridge_macos::MacOsBridge;
 use onboard_bridge_windows::WindowsBridge;
 use onboard_core::{KeyboardState, TextDirection};
+
+#[cfg(any(windows, target_os = "macos"))]
+const APP_ID: &str = "org.onboard.OnboardNext";
+#[cfg(any(windows, target_os = "macos"))]
+const LAYOUT_STORAGE_KEY: &str = "onboard-next.layout";
+#[cfg(any(windows, target_os = "macos"))]
+const ENGLISH_ROWS: &[&[&str]] = &[
+    &["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
+    &["a", "s", "d", "f", "g", "h", "j", "k", "l"],
+    &["z", "x", "c", "v", "b", "n", "m"],
+];
+#[cfg(any(windows, target_os = "macos"))]
+const ARABIC_ROWS: &[&[&str]] = &[
+    &["ض", "ص", "ث", "ق", "ف", "غ", "ع", "ه", "خ", "ح"],
+    &["ش", "س", "ي", "ب", "ل", "ا", "ت", "ن", "م", "ك"],
+    &["ئ", "ء", "ؤ", "ر", "لا", "ى", "ة", "و", "ز", "ظ"],
+];
+#[cfg(any(windows, target_os = "macos"))]
+const EMOJI: &[&str] = &["😀", "😁", "😂", "😊", "😍", "👍", "❤️", "🎉", "✅", "🙏"];
+
+#[cfg(any(windows, target_os = "macos"))]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+enum KeyboardLayout {
+    English,
+    Arabic,
+}
+
+#[cfg(any(windows, target_os = "macos"))]
+impl KeyboardLayout {
+    fn from_storage(value: Option<String>) -> Self {
+        match value.as_deref() {
+            Some("ar") => Self::Arabic,
+            _ => Self::English,
+        }
+    }
+
+    const fn locale(self) -> &'static str {
+        match self {
+            Self::English => "en_US",
+            Self::Arabic => "ar_SA",
+        }
+    }
+
+    const fn language_button_label(self) -> &'static str {
+        match self {
+            Self::English => "العربية",
+            Self::Arabic => "English",
+        }
+    }
+
+    const fn storage_value(self) -> &'static str {
+        match self {
+            Self::English => "en",
+            Self::Arabic => "ar",
+        }
+    }
+
+    const fn rows(self) -> &'static [&'static [&'static str]] {
+        match self {
+            Self::English => ENGLISH_ROWS,
+            Self::Arabic => ARABIC_ROWS,
+        }
+    }
+
+    fn toggle(&mut self) {
+        *self = match self {
+            Self::English => Self::Arabic,
+            Self::Arabic => Self::English,
+        };
+    }
+}
+
+#[cfg(any(windows, target_os = "macos"))]
+struct OnboardApp {
+    bridge: Box<dyn PlatformBridge>,
+    keyboard_state: KeyboardState,
+    layout: KeyboardLayout,
+    show_clipboard: bool,
+    show_emoji: bool,
+    clipboard_text: String,
+    status: String,
+    non_activating_window_configured: bool,
+}
+
+#[cfg(any(windows, target_os = "macos"))]
+impl OnboardApp {
+    fn new(creation_context: &eframe::CreationContext<'_>) -> Self {
+        let layout = KeyboardLayout::from_storage(
+            creation_context
+                .storage
+                .and_then(|storage| storage.get_string(LAYOUT_STORAGE_KEY)),
+        );
+        let mut keyboard_state = KeyboardState::default();
+        keyboard_state.set_locale(layout.locale());
+
+        Self {
+            bridge: bridge(),
+            keyboard_state,
+            layout,
+            show_clipboard: false,
+            show_emoji: false,
+            clipboard_text: String::new(),
+            status: "جاهز للكتابة في التطبيق النشط".to_owned(),
+            non_activating_window_configured: false,
+        }
+    }
+
+    fn select_layout(&mut self, layout: KeyboardLayout) {
+        self.layout = layout;
+        self.keyboard_state.set_locale(layout.locale());
+        self.status = match layout {
+            KeyboardLayout::English => "لوحة English جاهزة".to_owned(),
+            KeyboardLayout::Arabic => "لوحة العربية جاهزة".to_owned(),
+        };
+    }
+
+    fn inject_text(&mut self, text: &str) {
+        if text.is_empty() {
+            return;
+        }
+        match self.bridge.inject_text(text) {
+            Ok(()) => {
+                self.clipboard_text.push_str(text);
+                self.status = format!("تم إدخال {text}");
+            }
+            Err(error) => self.status = format!("تعذر الإدخال: {error}"),
+        }
+    }
+
+    fn inject_virtual_key(&mut self, virtual_key: u16) {
+        let result = self
+            .bridge
+            .inject_virtual_key(virtual_key, true)
+            .and_then(|_| self.bridge.inject_virtual_key(virtual_key, false));
+        self.status = match result {
+            Ok(()) => "تم إرسال المفتاح".to_owned(),
+            Err(error) => format!("تعذر إرسال المفتاح: {error}"),
+        };
+    }
+
+    fn compact_button(ui: &mut egui::Ui, label: &str) -> egui::Response {
+        ui.add_sized([58.0, 42.0], egui::Button::new(label))
+    }
+
+    fn show_key_rows(&mut self, ui: &mut egui::Ui) {
+        for row in self.layout.rows() {
+            ui.horizontal_centered(|ui| {
+                for key in *row {
+                    if Self::compact_button(ui, key).clicked() {
+                        self.inject_text(key);
+                    }
+                }
+            });
+        }
+    }
+
+    fn show_emoji_panel(&mut self, ui: &mut egui::Ui) {
+        if !self.show_emoji {
+            return;
+        }
+        ui.separator();
+        ui.horizontal_wrapped(|ui| {
+            for emoji in EMOJI {
+                if ui
+                    .add_sized([48.0, 40.0], egui::Button::new(*emoji))
+                    .clicked()
+                {
+                    self.inject_text(emoji);
+                }
+            }
+        });
+    }
+
+    fn show_clipboard_panel(&mut self, ui: &mut egui::Ui) {
+        if !self.show_clipboard {
+            return;
+        }
+        ui.separator();
+        ui.horizontal(|ui| {
+            ui.label("حافظة الجلسة:");
+            if self.clipboard_text.is_empty() {
+                ui.weak("لا توجد كتابة بعد");
+            } else if ui.button("نسخ").clicked() {
+                ui.output_mut(|output| output.copied_text = self.clipboard_text.clone());
+                self.status = "تم نسخ محتوى حافظة الجلسة".to_owned();
+            }
+            if ui.button("مسح").clicked() {
+                self.clipboard_text.clear();
+                self.status = "تم مسح حافظة الجلسة".to_owned();
+            }
+        });
+        if !self.clipboard_text.is_empty() {
+            ui.label(&self.clipboard_text);
+        }
+    }
+}
+
+#[cfg(any(windows, target_os = "macos"))]
+impl eframe::App for OnboardApp {
+    fn update(&mut self, context: &egui::Context, frame: &mut eframe::Frame) {
+        #[cfg(windows)]
+        if !self.non_activating_window_configured {
+            self.non_activating_window_configured = configure_non_activating_window(frame);
+            if self.non_activating_window_configured {
+                self.status = "جاهز للكتابة في التطبيق النشط".to_owned();
+            }
+        }
+
+        let direction = match self.keyboard_state.direction {
+            TextDirection::LeftToRight => egui::Layout::left_to_right(egui::Align::Center),
+            TextDirection::RightToLeft => egui::Layout::right_to_left(egui::Align::Center),
+        };
+
+        egui::CentralPanel::default().show(context, |ui| {
+            ui.with_layout(direction, |ui| {
+                ui.horizontal(|ui| {
+                    ui.heading("Onboard Next");
+                    ui.separator();
+                    if ui.button(self.layout.language_button_label()).clicked() {
+                        let next = match self.layout {
+                            KeyboardLayout::English => KeyboardLayout::Arabic,
+                            KeyboardLayout::Arabic => KeyboardLayout::English,
+                        };
+                        self.select_layout(next);
+                    }
+                    if ui
+                        .selectable_label(self.show_clipboard, "الحافظة")
+                        .clicked()
+                    {
+                        self.show_clipboard = !self.show_clipboard;
+                    }
+                    if ui.selectable_label(self.show_emoji, "الإيموجي").clicked() {
+                        self.show_emoji = !self.show_emoji;
+                    }
+                });
+
+                self.show_clipboard_panel(ui);
+                self.show_emoji_panel(ui);
+                self.show_key_rows(ui);
+
+                ui.horizontal_centered(|ui| {
+                    if ui.add_sized([90.0, 42.0], egui::Button::new("⌫")).clicked() {
+                        self.inject_virtual_key(0x08);
+                    }
+                    if ui
+                        .add_sized([300.0, 42.0], egui::Button::new("مسافة"))
+                        .clicked()
+                    {
+                        self.inject_text(" ");
+                    }
+                    if ui.add_sized([90.0, 42.0], egui::Button::new("↵")).clicked() {
+                        self.inject_virtual_key(0x0D);
+                    }
+                });
+
+                ui.separator();
+                ui.weak(&self.status);
+            });
+        });
+    }
+
+    fn save(&mut self, storage: &mut dyn eframe::Storage) {
+        storage.set_string(LAYOUT_STORAGE_KEY, self.layout.storage_value().to_owned());
+        storage.flush();
+    }
+}
 
 fn bridge() -> Box<dyn PlatformBridge> {
     #[cfg(windows)]
@@ -20,8 +290,6 @@ fn bridge() -> Box<dyn PlatformBridge> {
     }
     #[cfg(not(any(windows, target_os = "macos")))]
     {
-        // Constructing both adapters on non-target hosts keeps their public
-        // contracts compiled by the workspace tests without invoking platform FFI.
         let _ = (WindowsBridge::new(), MacOsBridge::new());
         Box::new(UnsupportedBridge)
     }
@@ -41,7 +309,14 @@ impl PlatformBridge for UnsupportedBridge {
     ) -> Result<(), onboard_bridge_api::BridgeError> {
         Err(onboard_bridge_api::BridgeError::new(
             "platform-unsupported",
-            "onboard-next bootstrap currently has native bridges only for Windows and macOS",
+            "onboard-next currently has native input bridges only for Windows and macOS",
+        ))
+    }
+
+    fn inject_text(&self, _text: &str) -> Result<(), onboard_bridge_api::BridgeError> {
+        Err(onboard_bridge_api::BridgeError::new(
+            "platform-unsupported",
+            "Unicode text injection needs a target platform bridge",
         ))
     }
 
@@ -66,7 +341,7 @@ fn print_diagnostics(locale: &str) {
     let capabilities = bridge().capabilities();
     println!(
         concat!(
-            "{{\"application\":\"onboard-next-bootstrap\",",
+            "{{\"application\":\"onboard-next\",",
             "\"profile\":\"windows-compact\",",
             "\"locale\":\"{}\",",
             "\"direction\":\"{}\",",
@@ -76,6 +351,53 @@ fn print_diagnostics(locale: &str) {
         direction_name(state.direction),
         capabilities.as_json(),
     );
+}
+
+#[cfg(windows)]
+fn configure_non_activating_window(frame: &eframe::Frame) -> bool {
+    use raw_window_handle::{HasRawWindowHandle, RawWindowHandle};
+    use std::ffi::c_void;
+
+    #[link(name = "User32")]
+    extern "system" {
+        fn GetWindowLongPtrW(window: *mut c_void, index: i32) -> isize;
+        fn SetWindowLongPtrW(window: *mut c_void, index: i32, value: isize) -> isize;
+    }
+
+    const GWL_EXSTYLE: i32 = -20;
+    const WS_EX_NOACTIVATE: isize = 0x0800_0000;
+
+    let RawWindowHandle::Win32(handle) = frame.raw_window_handle() else {
+        return false;
+    };
+    // SAFETY: eframe owns a valid Win32 HWND for the duration of the frame. The
+    // style update only adds WS_EX_NOACTIVATE, so a button click preserves the
+    // foreground text target instead of activating the keyboard window.
+    unsafe {
+        let style = GetWindowLongPtrW(handle.hwnd, GWL_EXSTYLE);
+        SetWindowLongPtrW(handle.hwnd, GWL_EXSTYLE, style | WS_EX_NOACTIVATE);
+    }
+    true
+}
+
+#[cfg(any(windows, target_os = "macos"))]
+fn run_app() -> eframe::Result<()> {
+    let native_options = eframe::NativeOptions {
+        viewport: egui::ViewportBuilder::default()
+            .with_title("Onboard Next")
+            .with_app_id(APP_ID)
+            .with_inner_size([860.0, 310.0])
+            .with_min_inner_size([520.0, 180.0])
+            .with_active(false)
+            .with_always_on_top(),
+        persist_window: true,
+        ..Default::default()
+    };
+    eframe::run_native(
+        "Onboard Next",
+        native_options,
+        Box::new(|creation_context| Box::new(OnboardApp::new(creation_context))),
+    )
 }
 
 fn main() {
@@ -122,8 +444,22 @@ fn main() {
                 std::process::exit(1);
             }
         },
+        Some("--help") | Some("help") => {
+            println!("Onboard Next\n\ncommands:\n  diagnose [locale]\n  key <virtual-key>\n  switch-source");
+        }
         _ => {
-            println!("onboard-next bootstrap\n\ncommands:\n  diagnose [locale]\n  key <virtual-key>\n  switch-source");
+            #[cfg(any(windows, target_os = "macos"))]
+            if let Err(error) = run_app() {
+                eprintln!("Onboard Next could not start: {error}");
+                std::process::exit(1);
+            }
+            #[cfg(not(any(windows, target_os = "macos")))]
+            {
+                eprintln!(
+                    "Onboard Next desktop UI is currently available on Windows and macOS only."
+                );
+                std::process::exit(2);
+            }
         }
     }
 }

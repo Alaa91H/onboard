@@ -12,5 +12,11 @@ onboard-bridge-api = { path = "../onboard-bridge-api" }
 onboard-bridge-windows = { path = "../onboard-bridge-windows" }
 onboard-bridge-macos = { path = "../onboard-bridge-macos" }
 
+[target.'cfg(any(windows, target_os = "macos"))'.dependencies]
+eframe = { version = "=0.27.2", default-features = false, features = ["default_fonts", "glow", "persistence"] }
+
+[target.'cfg(windows)'.dependencies]
+raw-window-handle = "=0.5.2"
+
 [lints]
 workspace = true

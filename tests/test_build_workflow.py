@@ -145,9 +145,11 @@ class TestUnifiedBuildWorkflow(unittest.TestCase):
     def test_windows_preview_installer_contract_is_pinned(self) -> None:
         recipe = WINDOWS_INSTALLER_RECIPE.read_text(encoding="utf-8")
         workflow = WINDOWS_PREVIEW_WORKFLOW.read_text(encoding="utf-8")
+        self.assertIn('#define AppName "Onboard Next"', recipe)
         self.assertIn("OutputBaseFilename=onboard-next-preview-", recipe)
         self.assertIn("ArchitecturesAllowed=", recipe)
         self.assertIn("PrivilegesRequired=lowest", recipe)
+        self.assertIn("postinstall", recipe)
         self.assertIn("choco install innosetup --version=6.7.1", workflow)
         self.assertIn("-setup.exe", workflow)
         self.assertIn("installer checksum mismatch", workflow)
@@ -174,6 +176,7 @@ class TestUnifiedBuildWorkflow(unittest.TestCase):
     def test_quality_gate_is_strict_and_read_only(self) -> None:
         content = QUALITY_WORKFLOW.read_text(encoding="utf-8")
         self.assertIn("workflow_call:\n", content)
+        self.assertIn("actions/setup-python@v6", content)
         self.assertIn("contents: read", content)
         self.assertNotIn("contents: write", content)
         self.assertIn("timeout-minutes: 10", content)

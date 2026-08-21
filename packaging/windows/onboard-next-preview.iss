@@ -16,7 +16,7 @@
   #error "OutputDir must identify the installer output directory"
 #endif
 
-#define AppName "Onboard-next Preview"
+#define AppName "Onboard Next"
 #define AppPublisher "Onboard"
 #define AppURL "https://github.com/Alaa91H/onboard"
 #define AppExecutable "onboard-next.exe"
@@ -30,7 +30,7 @@ AppPublisher={#AppPublisher}
 AppPublisherURL={#AppURL}
 AppSupportURL={#AppURL}
 AppUpdatesURL={#AppURL}
-DefaultDirName={autopf}\Onboard-next Preview
+DefaultDirName={autopf}\Onboard Next
 DefaultGroupName={#AppName}
 DisableProgramGroupPage=yes
 OutputDir={#OutputDir}
@@ -53,3 +53,6 @@ Source: "{#InputDir}\SHA256SUMS"; DestDir: "{app}"; Flags: ignoreversion
 [Icons]
 Name: "{autoprograms}\{#AppName}"; Filename: "{app}\{#AppExecutable}"
 Name: "{autoprograms}\Uninstall {#AppName}"; Filename: "{uninstallexe}"
+
+[Run]
+Filename: "{app}\{#AppExecutable}"; Description: "Launch {#AppName}"; Flags: nowait postinstall skipifsilent

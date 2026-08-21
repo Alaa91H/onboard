@@ -655,7 +655,10 @@ def build_windows_preview(arch: str, version: str) -> None:
             "installer": "inno-setup-preview",
             "installer_signed": False,
             "input_source": "read-only-tsf-pending",
-            "notes": "Preview bridge build. Do not treat as a signed stable installer.",
+            "desktop_ui": "windows-compact-native",
+            "text_injection": "sendinput-utf16",
+            "focus_policy": "non-activating-window",
+            "notes": "Unsigned preview desktop application. Do not treat as a signed stable installer.",
         },
     )
     write_checksums(output)
