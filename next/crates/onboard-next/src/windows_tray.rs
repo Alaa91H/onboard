@@ -80,6 +80,8 @@ fn keyboard_icon() -> Result<Icon, String> {
             let offset = ((y * SIZE + x) * 4) as usize;
             let inside_keyboard = (3..29).contains(&x) && (7..26).contains(&y);
             let key = inside_keyboard
+                && (5..27).contains(&x)
+                && (9..26).contains(&y)
                 && ((x - 5) % 6 < 4)
                 && ((y - 9) % 6 < 4)
                 && !(y > 20 && !(8..24).contains(&x));
