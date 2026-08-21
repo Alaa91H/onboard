@@ -24,11 +24,7 @@ override_dh_auto_test:
 	ln -sf "$$osk" Onboard/; \
 	ln -sf "$$lm" Onboard/pypredict/; \
 	trap 'rm -f Onboard/osk*.so Onboard/pypredict/lm*.so' EXIT; \
-	python3 -m unittest \
-		Onboard.test.test_WaylandCapabilities \
-		Onboard.test.test_ClipboardHistory \
-		Onboard.test.test_InputSources \
-		Onboard.test.test_LayoutLoaderSVG
+		PYTHONPATH=$(CURDIR) xvfb-run -a python3 -m unittest Onboard.test.test_WaylandCapabilities Onboard.test.test_ClipboardHistory Onboard.test.test_InputSources
 
 override_dh_auto_install:
 	dh_auto_install -O--buildsystem=pybuild

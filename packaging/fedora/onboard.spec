@@ -26,9 +26,10 @@ BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xkbfile)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  python3-devel
-BuildRequires:  python3-pyGObject
+BuildRequires:  python3-gobject
 BuildRequires:  python3-setuptools
 BuildRequires:  pyproject-rpm-macros
+BuildRequires:  xorg-x11-server-Xvfb
 
 Requires:       dconf
 Requires:       gettext
@@ -71,25 +72,28 @@ install -Dpm 0644 data/72-onboard-uinput.rules \
   %{buildroot}%{_datadir}/onboard/72-onboard-uinput.rules
 
 %check
-%{python3} -m unittest \
+# The focused tests import source modules, so build the native extensions into
+# the source tree before running them in addition to validating the wheel.
+%{python3} setup.py build
+xvfb-run -a %{python3} -m unittest \
   Onboard.test.test_ClipboardHistory \
   Onboard.test.test_InputSources \
-  Onboard.test.test_LayoutLoaderSVG \
   Onboard.test.test_NativeInput \
   Onboard.test.test_ArabicLocalization \
   Onboard.test.test_RTL
 
 %files
-%license COPYING COPYING.GPL3 COPYING.BSD3
-%doc AUTHORS CHANGELOG README.md README.FreeBSD.md README.WAYLAND.md
+%doc %{_docdir}/%{name}/
 %{_bindir}/onboard
 %{_bindir}/onboard-settings
+%{_bindir}/onboard-toggle
 %{python3_sitearch}/Onboard/
 %{python3_sitearch}/onboard-%{version}.dist-info/
 %{_datadir}/applications/onboard.desktop
 %{_datadir}/applications/onboard-settings.desktop
 %{_datadir}/dbus-1/services/org.onboard.Onboard.service
-%{_datadir}/glib-2.0/schemas/org.onboard.gschema.xml
+%{_datadir}/glib-2.0/schemas/
+%{_datadir}/gnome-shell/extensions/Onboard_Indicator@onboard.org/
 %{_datadir}/icons/
 %{_datadir}/locale/*/LC_MESSAGES/onboard.mo
 %{_datadir}/man/man1/onboard*

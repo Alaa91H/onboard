@@ -52,7 +52,13 @@ try {
         ForEach-Object { "{0}  {1}" -f $_.Hash.ToLowerInvariant(), $_.Path.Substring($OutputDirectory.Length + 1) } |
         Set-Content -NoNewline -Encoding ascii (Join-Path $OutputDirectory "SHA256SUMS")
 
-    Write-Host "Windows preview directory created: $OutputDirectory"
+    $ArchivePath = Join-Path (Split-Path -Parent $OutputDirectory) "onboard-next-preview-$Version-windows-$Architecture.zip"
+    Remove-Item -Force $ArchivePath -ErrorAction SilentlyContinue
+    Compress-Archive -Path $OutputDirectory -DestinationPath $ArchivePath -CompressionLevel Optimal
+    $ArchiveHash = (Get-FileHash -Algorithm SHA256 $ArchivePath).Hash.ToLowerInvariant()
+    Set-Content -NoNewline -Encoding ascii (Join-Path (Split-Path -Parent $OutputDirectory) "onboard-next-preview-$Version-windows-$Architecture.zip.sha256") $ArchiveHash
+
+    Write-Host "Windows preview archive created: $ArchivePath"
 }
 finally {
     Pop-Location

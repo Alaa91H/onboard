@@ -1,14 +1,12 @@
 id: org.onboard.Onboard
 runtime: org.gnome.Platform
-runtime-version: '48'
+runtime-version: '50'
 sdk: org.gnome.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.rust-stable
 build-options:
   append-path: /usr/lib/sdk/rust-stable/bin
 command: onboard
-rename-desktop-file: onboard.desktop
-rename-icon: onboard
 finish-args:
   - --share=ipc
   - --socket=fallback-x11
@@ -17,14 +15,65 @@ finish-args:
   - --talk-name=org.a11y.Bus
   - --talk-name=org.a11y.atspi.Registry
   - --filesystem=xdg-config/onboard
+  - --filesystem=xdg-run/dconf
+  - --talk-name=ca.desrt.dconf
 modules:
+  - name: dconf
+    buildsystem: meson
+    config-opts:
+      - -Dsystemduserunitdir=/app/lib/systemd/user/
+      - -Dbash_completion=false
+      - -Dman=false
+    sources:
+      - type: archive
+        url: https://download.gnome.org/sources/dconf/0.49/dconf-0.49.0.tar.xz
+        sha256: 16a47e49a58156dbb96578e1708325299e4c19eea9be128d5bd12fd0963d6c36
+  - name: libcanberra
+    buildsystem: autotools
+    config-opts:
+      - --disable-static
+      - --disable-gtk-doc
+      - --disable-oss
+      - --enable-pulse
+      - --disable-udev
+      - --disable-gtk
+      - --enable-gtk3
+      - --disable-lynx
+    sources:
+      - type: archive
+        url: http://0pointer.de/lennart/projects/libcanberra/libcanberra-0.30.tar.xz
+        mirror-urls:
+          - https://ftp2.osuosl.org/pub/blfs/conglomeration/libcanberra/libcanberra-0.30.tar.xz
+          - https://src.opensuse.org/SLFO-pool/libcanberra/media/commit/5e8635a291cd1dc4afbb1e8eee60d903ecea90da90e7719f4a432a85b4615744/libcanberra-0.30.tar.xz
+        sha256: c2b671e67e0c288a69fc33dc1b6f1b534d07882c2aceed37004bf48c601afa72
+      - type: patch
+        path: 0001-libcanberra-wayland-display.patch
+  - name: intltool
+    buildsystem: autotools
+    sources:
+      - type: archive
+        url: https://launchpad.net/intltool/trunk/0.51.0/+download/intltool-0.51.0.tar.gz
+        mirror-urls:
+          - https://gstreamer.freedesktop.org/src/mirror/intltool-0.51.0.tar.gz
+        sha256: 67c74d94196b153b774ab9f89b2fa6c6ba79352407037c8c14d5aeb334e959cd
+      - type: patch
+        path: intltool-perl5.26-regex-fixes.patch
   - name: onboard
     buildsystem: simple
     build-commands:
       - rustc --version
       - cargo --version
-      - python3 setup.py build
-      - python3 setup.py install --prefix=/app --skip-build
+      - |
+        export PKG_CONFIG_PATH="$(find /app -type d -name pkgconfig -print | paste -sd: -)${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
+        pkg-config --modversion dconf
+        pkg-config --modversion libcanberra
+        python3 setup.py install --prefix=/app
+        install -Dm644 build/desktop/onboard.desktop /app/share/applications/org.onboard.Onboard.desktop
+        sed -i 's/^Icon=onboard$/Icon=org.onboard.Onboard/' /app/share/applications/org.onboard.Onboard.desktop
+        for size in 16 22 24 28 32; do
+          install -Dm644 "icons/hicolor/$size/onboard.png" "/app/share/icons/hicolor/${size}x${size}/apps/org.onboard.Onboard.png"
+        done
+        install -Dm644 icons/hicolor/scalable/onboard.svg /app/share/icons/hicolor/scalable/apps/org.onboard.Onboard.svg
     sources:
       - type: dir
         path: ../..

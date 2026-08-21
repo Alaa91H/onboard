@@ -54,9 +54,14 @@ def main() -> None:
     by_name = {item.get("name"): item for item in artifacts}
     if len(by_name) != len(artifacts):
         fail("manifest has duplicate artifact names")
-    expected_names = {"sbom.cdx.json"}
-    expected_names.update(path.name for path in directory.glob("*.whl"))
-    expected_names.update(path.name for path in directory.glob("*.tar.gz"))
+    # The manifest is written after every candidate artifact but before itself
+    # and SHA256SUMS. This keeps the verifier format-agnostic: it can validate
+    # wheels and source archives as well as .deb, RPM, pacman and Flatpak files.
+    expected_names = {
+        path.name
+        for path in directory.iterdir()
+        if path.is_file() and path.name not in {"release-manifest.json", "SHA256SUMS"}
+    }
     if set(by_name) != expected_names:
         fail("manifest artifacts do not match candidate files")
 
