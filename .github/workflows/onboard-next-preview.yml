@@ -48,6 +48,15 @@ jobs:
           rustc --version
           cargo --version
           $env:PROCESSOR_ARCHITECTURE
+      - name: Install pinned Inno Setup compiler
+        shell: pwsh
+        run: |
+          choco install innosetup --version=6.7.1 --yes --no-progress --limit-output
+          $compiler = Get-Command ISCC.exe -ErrorAction SilentlyContinue
+          if ($null -eq $compiler) {
+            throw "Inno Setup compiler was not added to PATH."
+          }
+          & $compiler.Source /?
       - name: Build and validate portable preview
         shell: pwsh
         run: python tools/build.py preview windows --arch '${{ matrix.arch }}'
@@ -64,6 +73,19 @@ jobs:
           $actualHash = (Get-FileHash -Algorithm SHA256 $archive).Hash.ToLowerInvariant()
           if ($actualHash -ne $expectedHash.Trim()) {
             throw "Windows preview archive checksum mismatch."
+          }
+          if ($metadata.installer -ne 'inno-setup-preview' -or $metadata.installer_signed -ne $false) {
+            throw "Unexpected Windows preview installer provenance."
+          }
+          $installerName = 'onboard-next-preview-0.1.0-windows-${{ matrix.arch }}-setup.exe'
+          $installer = Join-Path 'release-out/windows/${{ matrix.arch }}' $installerName
+          if (-not (Test-Path -LiteralPath $installer) -or (Get-Item -LiteralPath $installer).Length -le 0) {
+            throw "Windows preview installer was not produced."
+          }
+          $expectedInstallerHash = Get-Content -Raw "$installer.sha256"
+          $actualInstallerHash = (Get-FileHash -Algorithm SHA256 $installer).Hash.ToLowerInvariant()
+          if ($actualInstallerHash -ne $expectedInstallerHash.Trim()) {
+            throw "Windows preview installer checksum mismatch."
           }
       - name: Upload unsigned preview artifact
         uses: actions/upload-artifact@v6
