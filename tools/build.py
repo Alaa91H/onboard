@@ -251,6 +251,8 @@ def command_doctor(_: argparse.Namespace) -> None:
         "rpmbuild",
         "makepkg",
         "flatpak-builder",
+        "msgattrib",
+        "msgfmt",
     )
     for tool in tools:
         print(f"{tool}={'available' if shutil.which(tool) else 'missing'}")
@@ -264,16 +266,7 @@ def command_portable(args: argparse.Namespace) -> None:
     run([sys.executable, "setup.py", "build"])
     run(["xvfb-run", "-a", sys.executable, "-m", "unittest", *FOCUSED_TESTS])
     run(["cargo", "test", "--locked"], cwd=ROOT / "native/onboard-native")
-    run(
-        [
-            sys.executable,
-            "i18n/scripts/check_catalog.py",
-            "po/ar.po",
-            "--language",
-            "ar",
-            "--require-complete",
-        ]
-    )
+    command_validate_translations(argparse.Namespace())
     build_source_distributions()
     log("Portable source build and verification completed successfully.")
 
@@ -655,7 +648,10 @@ def build_windows_preview(arch: str, version: str) -> None:
             "installer": "inno-setup-preview",
             "installer_signed": False,
             "input_source": "read-only-tsf-pending",
-            "notes": "Preview bridge build. Do not treat as a signed stable installer.",
+            "desktop_ui": "windows-compact-native",
+            "text_injection": "sendinput-utf16",
+            "focus_policy": "non-activating-window",
+            "notes": "Unsigned preview desktop application. Do not treat as a signed stable installer.",
         },
     )
     write_checksums(output)
@@ -792,6 +788,21 @@ def command_preview(args: argparse.Namespace) -> None:
     log(f"{args.platform} preview completed for {args.arch}.")
 
 
+def command_validate_translations(_: argparse.Namespace) -> None:
+    for tool in ("msgattrib", "msgfmt"):
+        require_tool(tool)
+    run(
+        [
+            sys.executable,
+            "i18n/scripts/check_all_catalogs.py",
+            "po",
+            "--require-complete",
+            "ar",
+        ]
+    )
+    log("All gettext catalogs passed validation; Arabic is release-complete.")
+
+
 def command_validate_recipes(_: argparse.Namespace) -> None:
     require_tool("bash")
     run(["bash", "-n", "packaging/arch/PKGBUILD"])
@@ -897,6 +908,12 @@ def parser() -> argparse.ArgumentParser:
     )
     preview.add_argument("--version", help="Preview version; defaults to 0.1.0.")
     preview.set_defaults(handler=command_preview)
+
+    translations = subparsers.add_parser(
+        "validate-translations",
+        help="Validate all gettext catalogs and require complete Arabic coverage.",
+    )
+    translations.set_defaults(handler=command_validate_translations)
 
     recipes = subparsers.add_parser(
         "validate-recipes", help="Validate static package recipe contracts."

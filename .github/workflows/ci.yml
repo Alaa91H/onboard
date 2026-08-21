@@ -20,32 +20,558 @@ concurrency:
 
 jobs:
   quality:
-    name: Quality gate
-    uses: ./.github/workflows/unified-build-quality.yml
+    name: Quality gate / Strict unified build contract
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install gettext localization tools
+        run: sudo apt-get update && sudo apt-get install --yes gettext
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: ci/requirements-quality.txt
+      - name: Install pinned quality tools
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r ci/requirements-quality.txt
+          python -m pip check
+      - name: Compile unified build sources
+        run: python -m py_compile tools/build.py tests/test_build_workflow.py
+      - name: Lint unified build sources
+        run: ruff check tools/build.py tests/test_build_workflow.py
+      - name: Enforce canonical Python formatting
+        run: ruff format --check tools/build.py tests/test_build_workflow.py
+      - name: Enforce strict static typing
+        run: mypy --strict tools/build.py tests/test_build_workflow.py
+      - name: Compile localization quality sources
+        run: >-
+          python -m py_compile i18n/scripts/check_all_catalogs.py
+          i18n/scripts/normalize_locale_headers.py Onboard/I18n.py
+      - name: Lint localization quality sources
+        run: ruff check i18n/scripts/check_all_catalogs.py i18n/scripts/normalize_locale_headers.py
+      - name: Enforce localization source formatting
+        run: ruff format --check i18n/scripts/check_all_catalogs.py i18n/scripts/normalize_locale_headers.py
+      - name: Enforce strict localization typing
+        run: mypy --strict i18n/scripts/check_all_catalogs.py i18n/scripts/normalize_locale_headers.py
+      - name: Run unified build contract tests
+        run: python -m unittest discover -s tests -v
+      - name: Validate all gettext catalogs
+        run: python tools/build.py validate-translations
+      - name: Validate YAML workflow quality
+        run: yamllint -c .yamllint .github/workflows
+      - name: Reject whitespace and patch corruption
+        run: git diff --check
+      - name: Validate package recipe contracts
+        run: python tools/build.py validate-recipes
+      - name: Report unified build environment
+        run: python tools/build.py doctor
 
-  portable:
-    name: Portable Linux builds
+  portable-ubuntu:
+    name: Portable Linux builds / Ubuntu (${{ matrix.arch }})
     needs: quality
-    uses: ./.github/workflows/portable-build.yml
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x64
+            runner: ubuntu-24.04
+          - arch: arm64
+            runner: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v5
+      - name: Record native target
+        run: |
+          echo "runner=${{ runner.os }}"
+          uname -a
+          python3 --version
+          rustc --version || true
+      - name: Install build dependencies
+        run: ./tools/prepare-build-env.sh --with-tests
+      - name: Build and verify portable artifacts
+        run: python3 tools/build.py portable
+      - name: Upload Linux distribution artifacts
+        uses: actions/upload-artifact@v6
+        with:
+          name: onboard-linux-${{ matrix.arch }}
+          path: dist/
+          if-no-files-found: error
 
-  native:
-    name: Native bridge readiness
+  portable-fedora:
+    name: Portable Linux builds / Fedora (${{ matrix.arch }})
     needs: quality
-    uses: ./.github/workflows/platform-native.yml
+    runs-on: ${{ matrix.runner }}
+    container: fedora:latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x64
+            runner: ubuntu-24.04
+          - arch: arm64
+            runner: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v5
+      - name: Record host target
+        run: uname -a
+      - name: Install build dependencies
+        run: ./tools/prepare-build-env.sh --with-tests
+      - name: Record native toolchain
+        run: |
+          python3 --version
+          rustc --version
+          cargo --version
+      - name: Build and verify portable artifacts
+        run: python3 tools/build.py portable
+      - name: Upload Linux distribution artifacts
+        uses: actions/upload-artifact@v6
+        with:
+          name: onboard-fedora-${{ matrix.arch }}
+          path: dist/
+          if-no-files-found: error
 
-  packages:
-    name: Distribution package candidates
+  arch-template:
+    name: Portable Linux builds / Arch recipe
     needs: quality
-    uses: ./.github/workflows/distribution-packages.yml
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - name: Validate package recipe contracts
+        run: python3 tools/build.py validate-recipes
+
+  windows-bridge:
+    name: Native bridge readiness / Windows (${{ matrix.arch }})
+    needs: quality
+    runs-on: ${{ matrix.runner }}
+    continue-on-error: ${{ matrix.preview }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x64
+            runner: windows-2025
+            preview: false
+          - arch: arm64
+            runner: windows-11-arm
+            preview: true
+    steps:
+      - uses: actions/checkout@v5
+      - name: Record native toolchain
+        shell: pwsh
+        run: |
+          python --version
+          rustc --version
+          cargo --version
+          $env:PROCESSOR_ARCHITECTURE
+      - name: Verify and build Rust bridge
+        shell: pwsh
+        run: python tools/build.py native
+      - name: Upload bridge diagnostic
+        uses: actions/upload-artifact@v6
+        with:
+          name: onboard-native-windows-${{ matrix.arch }}
+          path: native/onboard-native/target/release/
+          if-no-files-found: error
+
+  macos-bridge:
+    name: Native bridge readiness / macOS (${{ matrix.arch }})
+    needs: quality
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x64
+            runner: macos-15-intel
+          - arch: arm64
+            runner: macos-15
+    steps:
+      - uses: actions/checkout@v5
+      - name: Record native toolchain
+        run: |
+          python3 --version
+          rustc --version
+          cargo --version
+          uname -m
+      - name: Verify and build Rust bridge
+        run: python3 tools/build.py native --check-only
+      - name: Upload bridge diagnostic
+        uses: actions/upload-artifact@v6
+        with:
+          name: onboard-native-macos-${{ matrix.arch }}
+          path: native/onboard-native/target/release/
+          if-no-files-found: error
+
+  debian:
+    name: Distribution package candidates / Debian (${{ matrix.arch }})
+    needs: quality
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x64
+            runner: ubuntu-24.04
+          - arch: arm64
+            runner: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install Debian packaging dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          ./tools/prepare-build-env.sh --with-tests
+          sudo apt-get install -y \
+            debhelper dh-python devscripts fakeroot \
+            python3-distutils-extra python3-packaging
+      - name: Build and verify Debian candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PATH="/usr/bin:$PATH"
+          version="$(awk -F '"' '/^[[:space:]]*version[[:space:]]*=/ {print $2; exit}' pyproject.toml)"
+          python3 tools/build.py candidate debian --arch '${{ matrix.arch }}' --version "$version"
+          candidate="release-out/debian-${{ matrix.arch }}"
+          sha256sum -c "$candidate/SHA256SUMS"
+          python3 ci/scripts/verify_release_candidate.py \
+            --directory "$candidate" --version "$version" \
+            --target-os linux-debian --target-arch '${{ matrix.arch }}'
+      - name: Upload verified Debian candidate
+        uses: actions/upload-artifact@v6
+        with:
+          name: onboard-debian-${{ matrix.arch }}-candidate
+          path: release-out/debian-${{ matrix.arch }}/
+          if-no-files-found: error
+          retention-days: 30
+
+  rpm:
+    name: Distribution package candidates / Fedora RPM (${{ matrix.arch }})
+    needs: quality
+    runs-on: ${{ matrix.runner }}
+    container: fedora:latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x64
+            runner: ubuntu-24.04
+          - arch: arm64
+            runner: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install RPM packaging dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          ./tools/prepare-build-env.sh --with-tests
+          dnf install -y rpm-build rpmdevtools pyproject-rpm-macros
+      - name: Build and verify RPM candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="$(awk -F '"' '/^[[:space:]]*version[[:space:]]*=/ {print $2; exit}' pyproject.toml)"
+          python3 tools/build.py candidate rpm --arch '${{ matrix.arch }}' --version "$version"
+          candidate="release-out/rpm-${{ matrix.arch }}"
+          sha256sum -c "$candidate/SHA256SUMS"
+          python3 ci/scripts/verify_release_candidate.py \
+            --directory "$candidate" --version "$version" \
+            --target-os linux-rpm --target-arch '${{ matrix.arch }}'
+      - name: Upload verified RPM candidate
+        uses: actions/upload-artifact@v6
+        with:
+          name: onboard-rpm-${{ matrix.arch }}-candidate
+          path: release-out/rpm-${{ matrix.arch }}/
+          if-no-files-found: error
+          retention-days: 30
+
+  arch-x64:
+    name: Distribution package candidates / Arch (x64)
+    needs: quality
+    runs-on: ubuntu-24.04
+    container: archlinux:base
+    steps:
+      - uses: actions/checkout@v5
+      - name: Initialize Arch packaging prerequisites
+        shell: bash
+        run: |
+          set -euo pipefail
+          pacman -Syu --needed --noconfirm base-devel
+          ./tools/prepare-build-env.sh --with-tests
+      - name: Build and verify Arch candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="$(awk -F '"' '/^[[:space:]]*version[[:space:]]*=/ {print $2; exit}' pyproject.toml)"
+          python3 tools/build.py candidate arch --arch x64 --version "$version"
+          candidate="release-out/arch-x64"
+          sha256sum -c "$candidate/SHA256SUMS"
+          python3 ci/scripts/verify_release_candidate.py \
+            --directory "$candidate" --version "$version" \
+            --target-os linux-arch --target-arch x64
+      - name: Upload verified Arch candidate
+        uses: actions/upload-artifact@v6
+        with:
+          name: onboard-arch-x64-candidate
+          path: release-out/arch-x64/
+          if-no-files-found: error
+          retention-days: 30
+
+  arch-arm64:
+    name: Distribution package candidates / Arch (arm64)
+    needs: quality
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v5
+      - name: Build Arch Linux ARM candidate in native container
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="$(awk -F '"' '/^[[:space:]]*version[[:space:]]*=/ {print $2; exit}' pyproject.toml)"
+          docker run --rm \
+            --env ONBOARD_VERSION="$version" \
+            --volume "$GITHUB_WORKSPACE:/workspace" \
+            --workdir /workspace \
+            agners/archlinuxarm \
+            /bin/sh -lc '
+              set -eu
+              sed -i "/^\\[options\\]/a DisableSandbox" /etc/pacman.conf
+              pacman -Syu --needed --noconfirm base-devel grep
+              ./tools/prepare-build-env.sh --with-tests
+              export CC=gcc CXX=g++
+              python3 tools/build.py candidate arch \
+                --arch arm64 --version "$ONBOARD_VERSION"
+            '
+          candidate="release-out/arch-arm64"
+          sha256sum -c "$candidate/SHA256SUMS"
+          python3 ci/scripts/verify_release_candidate.py \
+            --directory "$candidate" --version "$version" \
+            --target-os linux-arch --target-arch arm64
+      - name: Upload verified Arch Linux ARM candidate
+        uses: actions/upload-artifact@v6
+        with:
+          name: onboard-arch-arm64-candidate
+          path: release-out/arch-arm64/
+          if-no-files-found: error
+          retention-days: 30
+
+  flatpak:
+    name: Distribution package candidates / Flatpak (${{ matrix.arch }})
+    needs: quality
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x64
+            runner: ubuntu-24.04
+          - arch: arm64
+            runner: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install Flatpak builder
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y flatpak flatpak-builder
+      - name: Build and verify Flatpak bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="$(awk -F '"' '/^[[:space:]]*version[[:space:]]*=/ {print $2; exit}' pyproject.toml)"
+          python3 tools/build.py candidate flatpak --arch '${{ matrix.arch }}' --version "$version"
+          candidate="release-out/flatpak-${{ matrix.arch }}"
+          sha256sum -c "$candidate/SHA256SUMS"
+          python3 ci/scripts/verify_release_candidate.py \
+            --directory "$candidate" --version "$version" \
+            --target-os linux-flatpak --target-arch '${{ matrix.arch }}'
+      - name: Upload verified Flatpak bundle
+        uses: actions/upload-artifact@v6
+        with:
+          name: onboard-flatpak-${{ matrix.arch }}-candidate
+          path: release-out/flatpak-${{ matrix.arch }}/
+          if-no-files-found: error
+          retention-days: 30
+
+  resolve-version:
+    name: Linux release candidate / Resolve version
+    needs: quality
+    runs-on: ubuntu-24.04
+    outputs:
+      version: ${{ steps.version.outputs.value }}
+    steps:
+      - uses: actions/checkout@v5
+      - id: version
+        name: Read declared package version
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="$(awk -F '"' '/^[[:space:]]*version[[:space:]]*=/ {print $2; exit}' pyproject.toml)"
+          test -n "$version"
+          requested="${{ inputs.version }}"
+          if [[ -n "$requested" && "$requested" != "$version" ]]; then
+            echo "Requested version '$requested' does not match package version '$version'." >&2
+            exit 2
+          fi
+          echo "value=$version" >> "$GITHUB_OUTPUT"
 
   linux-release-candidate:
-    name: Linux release candidate
-    needs: quality
-    uses: ./.github/workflows/release-candidate.yml
-    with:
-      version: ${{ inputs.version }}
+    name: Linux release candidate / Linux (${{ matrix.arch }})
+    needs: resolve-version
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x64
+            runner: ubuntu-24.04
+          - arch: arm64
+            runner: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v5
+      - name: Build and verify release candidate
+        run: >-
+          python3 tools/build.py candidate linux
+          --arch ${{ matrix.arch }} --version ${{ needs.resolve-version.outputs.version }}
+      - name: Verify manifest and checksums
+        shell: bash
+        run: |
+          set -euo pipefail
+          candidate="release-out/linux-${{ matrix.arch }}"
+          sha256sum -c "$candidate/SHA256SUMS"
+          python3 ci/scripts/verify_release_candidate.py \
+            --directory "$candidate" \
+            --version "${{ needs.resolve-version.outputs.version }}" \
+            --target-os linux \
+            --target-arch "${{ matrix.arch }}"
+      - name: Upload verified candidate
+        uses: actions/upload-artifact@v6
+        with:
+          name: onboard-${{ needs.resolve-version.outputs.version }}-linux-${{ matrix.arch }}
+          path: release-out/linux-${{ matrix.arch }}/
+          if-no-files-found: error
+          retention-days: 30
 
-  onboard-next-preview:
-    name: Onboard-next previews
+  windows-preview:
+    name: Onboard-next previews / Windows preview (${{ matrix.arch }})
     needs: quality
-    uses: ./.github/workflows/onboard-next-preview.yml
+    runs-on: ${{ matrix.runner }}
+    continue-on-error: ${{ matrix.preview_runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x64
+            runner: windows-2025
+            preview_runner: false
+          - arch: arm64
+            runner: windows-11-arm
+            preview_runner: true
+    steps:
+      - uses: actions/checkout@v5
+      - name: Record target toolchain
+        shell: pwsh
+        run: |
+          rustc --version
+          cargo --version
+          $env:PROCESSOR_ARCHITECTURE
+      - name: Install pinned Inno Setup compiler
+        shell: pwsh
+        run: |
+          choco install innosetup --version=6.7.1 --yes --no-progress --limit-output
+          $compiler = Get-Command ISCC.exe -ErrorAction SilentlyContinue
+          if ($null -eq $compiler) {
+            throw "Inno Setup compiler was not added to PATH."
+          }
+          Write-Host "Inno Setup compiler: $($compiler.Source)"
+          (Get-Item -LiteralPath $compiler.Source).VersionInfo.FileVersion
+      - name: Build and validate portable preview
+        shell: pwsh
+        run: python tools/build.py preview windows --arch '${{ matrix.arch }}'
+      - name: Validate preview provenance
+        shell: pwsh
+        run: |
+          $path = 'release-out/windows/${{ matrix.arch }}/onboard-next-preview-0.1.0/provenance.json'
+          $metadata = Get-Content -Raw $path | ConvertFrom-Json
+          if ($metadata.platform -ne 'windows' -or $metadata.signed -ne $false) {
+            throw "Unexpected Windows preview provenance."
+          }
+          $archive = 'release-out/windows/${{ matrix.arch }}/onboard-next-preview-0.1.0-windows-${{ matrix.arch }}.zip'
+          $expectedHash = Get-Content -Raw "$archive.sha256"
+          $actualHash = (Get-FileHash -Algorithm SHA256 $archive).Hash.ToLowerInvariant()
+          if ($actualHash -ne $expectedHash.Trim()) {
+            throw "Windows preview archive checksum mismatch."
+          }
+          if ($metadata.installer -ne 'inno-setup-preview' -or $metadata.installer_signed -ne $false) {
+            throw "Unexpected Windows preview installer provenance."
+          }
+          $installerName = 'onboard-next-preview-0.1.0-windows-${{ matrix.arch }}-setup.exe'
+          $installer = Join-Path 'release-out/windows/${{ matrix.arch }}' $installerName
+          if (-not (Test-Path -LiteralPath $installer) -or (Get-Item -LiteralPath $installer).Length -le 0) {
+            throw "Windows preview installer was not produced."
+          }
+          $expectedInstallerHash = Get-Content -Raw "$installer.sha256"
+          $actualInstallerHash = (Get-FileHash -Algorithm SHA256 $installer).Hash.ToLowerInvariant()
+          if ($actualInstallerHash -ne $expectedInstallerHash.Trim()) {
+            throw "Windows preview installer checksum mismatch."
+          }
+      - name: Upload unsigned preview artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: onboard-next-windows-${{ matrix.arch }}-preview
+          path: release-out/windows/${{ matrix.arch }}/
+          if-no-files-found: error
+          retention-days: 14
+
+  macos-preview:
+    name: Onboard-next previews / macOS preview (${{ matrix.arch }})
+    needs: quality
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x64
+            runner: macos-15-intel
+          - arch: arm64
+            runner: macos-15
+    steps:
+      - uses: actions/checkout@v5
+      - name: Record target toolchain
+        run: |
+          rustc --version
+          cargo --version
+          uname -m
+      - name: Build and validate app preview
+        run: python3 tools/build.py preview macos --arch '${{ matrix.arch }}'
+      - name: Validate preview provenance
+        run: |
+          python3 - <<'PY'
+          import json
+          import zipfile
+          from pathlib import Path
+
+          path = Path("release-out/macos/${{ matrix.arch }}/Onboard-next.app/Contents/Resources/provenance.json")
+          metadata = json.loads(path.read_text(encoding="utf-8"))
+          assert metadata["platform"] == "macos"
+          assert metadata["signed"] is False
+          assert metadata["notarized"] is False
+          archive = Path("release-out/macos/${{ matrix.arch }}/onboard-next-preview-0.1.0-macos-${{ matrix.arch }}.zip")
+          assert archive.is_file()
+          dmg = Path("release-out/macos/${{ matrix.arch }}/onboard-next-preview-0.1.0-macos-${{ matrix.arch }}.dmg")
+          assert dmg.is_file()
+          with zipfile.ZipFile(archive) as bundle:
+              assert "Onboard-next.app/Contents/MacOS/onboard-next" in bundle.namelist()
+          PY
+      - name: Upload unsigned preview artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: onboard-next-macos-${{ matrix.arch }}-preview
+          path: release-out/macos/${{ matrix.arch }}/
+          if-no-files-found: error
+          retention-days: 14
+
+# The single CI definition is candidate-only. It does not sign, notarize, publish,
+# or create a public release; the protected stable-release process remains separate.

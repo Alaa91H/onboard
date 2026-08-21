@@ -107,6 +107,7 @@ impl std::error::Error for BridgeError {}
 pub trait PlatformBridge {
     fn capabilities(&self) -> BridgeCapabilities;
     fn inject_virtual_key(&self, virtual_key: u16, pressed: bool) -> Result<(), BridgeError>;
+    fn inject_text(&self, text: &str) -> Result<(), BridgeError>;
     fn activate_next_input_source(&self) -> Result<(), BridgeError>;
 }
 

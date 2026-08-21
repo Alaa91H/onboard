@@ -16,7 +16,7 @@
   #error "OutputDir must identify the installer output directory"
 #endif
 
-#define AppName "Onboard-next Preview"
+#define AppName "Onboard Next"
 #define AppPublisher "Onboard"
 #define AppURL "https://github.com/Alaa91H/onboard"
 #define AppExecutable "onboard-next.exe"
@@ -30,7 +30,7 @@ AppPublisher={#AppPublisher}
 AppPublisherURL={#AppURL}
 AppSupportURL={#AppURL}
 AppUpdatesURL={#AppURL}
-DefaultDirName={autopf}\Onboard-next Preview
+DefaultDirName={autopf}\Onboard Next
 DefaultGroupName={#AppName}
 DisableProgramGroupPage=yes
 OutputDir={#OutputDir}
@@ -50,6 +50,25 @@ Source: "{#InputDir}\{#AppExecutable}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#InputDir}\provenance.json"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#InputDir}\SHA256SUMS"; DestDir: "{app}"; Flags: ignoreversion
 
+[Tasks]
+Name: "startup"; Description: "Start {#AppName} when I sign in"; GroupDescription: "Startup options:"; Flags: unchecked
+
+[Registry]
+Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "Onboard Next"; ValueData: """{app}\{#AppExecutable}"" --start-minimized"; Tasks: startup; Flags: uninsdeletevalue
+
 [Icons]
 Name: "{autoprograms}\{#AppName}"; Filename: "{app}\{#AppExecutable}"
 Name: "{autoprograms}\Uninstall {#AppName}"; Filename: "{uninstallexe}"
+
+[Code]
+procedure CurStepChanged(CurStep: TSetupStep);
+begin
+  if CurStep = ssPostInstall then
+  begin
+    if not WizardIsTaskSelected('startup') then
+      RegDeleteValue(HKCU, 'Software\Microsoft\Windows\CurrentVersion\Run', 'Onboard Next');
+  end;
+end;
+
+[Run]
+Filename: "{app}\{#AppExecutable}"; Description: "Launch {#AppName}"; Flags: nowait postinstall skipifsilent

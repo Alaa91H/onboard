@@ -18,33 +18,62 @@ from unittest import mock
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 BUILD_SCRIPT = REPOSITORY_ROOT / "tools" / "build.py"
-WORKFLOW_CONTRACTS = {
-    "portable-build.yml": "python3 tools/build.py portable",
-    "release-candidate.yml": "python3 tools/build.py candidate linux",
-    "distribution-packages.yml": "python3 tools/build.py candidate",
-    "platform-native.yml": "tools/build.py native",
-    "onboard-next-preview.yml": "tools/build.py preview",
-}
+LEGACY_WORKFLOWS = (
+    "distribution-packages.yml",
+    "onboard-next-preview.yml",
+    "platform-native.yml",
+    "portable-build.yml",
+    "release-candidate.yml",
+    "unified-build-quality.yml",
+)
 WINDOWS_INSTALLER_RECIPE = (
     REPOSITORY_ROOT / "packaging" / "windows" / "onboard-next-preview.iss"
 )
-WINDOWS_PREVIEW_WORKFLOW = (
-    REPOSITORY_ROOT / ".github" / "workflows" / "onboard-next-preview.yml"
-)
-QUALITY_WORKFLOW = (
-    REPOSITORY_ROOT / ".github" / "workflows" / "unified-build-quality.yml"
-)
 CENTRAL_CI_WORKFLOW = REPOSITORY_ROOT / ".github" / "workflows" / "ci.yml"
-REUSABLE_WORKFLOWS = ("unified-build-quality.yml", *WORKFLOW_CONTRACTS)
+WINDOWS_PREVIEW_WORKFLOW = CENTRAL_CI_WORKFLOW
+WORKFLOW_ROOT = REPOSITORY_ROOT / ".github" / "workflows"
+WINDOWS_APP_MANIFEST = (
+    REPOSITORY_ROOT / "next" / "crates" / "onboard-next" / "Cargo.toml"
+)
+WINDOWS_APP_ENTRYPOINT = (
+    REPOSITORY_ROOT / "next" / "crates" / "onboard-next" / "src" / "main.rs"
+)
+WINDOWS_TRAY_SOURCE = (
+    REPOSITORY_ROOT / "next" / "crates" / "onboard-next" / "src" / "windows_tray.rs"
+)
+WINDOWS_UPDATER_SOURCE = (
+    REPOSITORY_ROOT / "next" / "crates" / "onboard-next" / "src" / "windows_update.rs"
+)
+WINDOWS_INSTANCE_SOURCE = (
+    REPOSITORY_ROOT / "next" / "crates" / "onboard-next" / "src" / "windows_instance.rs"
+)
+WINDOWS_ARABIC_FONT = (
+    REPOSITORY_ROOT
+    / "next"
+    / "crates"
+    / "onboard-next"
+    / "assets"
+    / "fonts"
+    / "NotoSansArabic-Variable.ttf"
+)
+ALL_CATALOG_CHECKER = REPOSITORY_ROOT / "i18n" / "scripts" / "check_all_catalogs.py"
+I18N_MODULE = REPOSITORY_ROOT / "Onboard" / "I18n.py"
 QUALITY_GATE_COMMANDS = (
+    "sudo apt-get update && sudo apt-get install --yes gettext",
     "python -m py_compile tools/build.py tests/test_build_workflow.py",
     "ruff check tools/build.py tests/test_build_workflow.py",
     "ruff format --check tools/build.py tests/test_build_workflow.py",
     "mypy --strict tools/build.py tests/test_build_workflow.py",
+    "python -m py_compile i18n/scripts/check_all_catalogs.py",
+    "i18n/scripts/normalize_locale_headers.py Onboard/I18n.py",
+    "ruff check i18n/scripts/check_all_catalogs.py i18n/scripts/normalize_locale_headers.py",
+    "ruff format --check i18n/scripts/check_all_catalogs.py i18n/scripts/normalize_locale_headers.py",
+    "mypy --strict i18n/scripts/check_all_catalogs.py i18n/scripts/normalize_locale_headers.py",
     "python -m unittest discover -s tests -v",
     "yamllint -c .yamllint .github/workflows",
     "git diff --check",
     "python tools/build.py validate-recipes",
+    "python tools/build.py validate-translations",
 )
 LEGACY_BUILD_WRAPPERS = (
     "ci/scripts/build_linux_release_candidate.sh",
@@ -116,6 +145,8 @@ class TestUnifiedBuildWorkflow(unittest.TestCase):
         preview = parser.parse_args(["preview", "windows", "--arch", "arm64"])
         self.assertEqual(preview.platform, "windows")
         self.assertEqual(preview.arch, "arm64")
+        translations = parser.parse_args(["validate-translations"])
+        self.assertEqual(translations.command, "validate-translations")
 
     def test_candidate_rejects_mismatched_version_before_running_backend(self) -> None:
         stderr = io.StringIO()
@@ -135,57 +166,133 @@ class TestUnifiedBuildWorkflow(unittest.TestCase):
         self.assertEqual(result, 2)
         backend.assert_not_called()
 
-    def test_every_build_workflow_calls_the_unified_entry_point(self) -> None:
-        workflow_root = REPOSITORY_ROOT / ".github" / "workflows"
-        for filename, required_command in WORKFLOW_CONTRACTS.items():
-            content = (workflow_root / filename).read_text(encoding="utf-8")
-            self.assertIn("tools/build.py", content, filename)
-            self.assertIn(required_command, content, filename)
-
     def test_windows_preview_installer_contract_is_pinned(self) -> None:
         recipe = WINDOWS_INSTALLER_RECIPE.read_text(encoding="utf-8")
         workflow = WINDOWS_PREVIEW_WORKFLOW.read_text(encoding="utf-8")
+        self.assertIn('#define AppName "Onboard Next"', recipe)
         self.assertIn("OutputBaseFilename=onboard-next-preview-", recipe)
         self.assertIn("ArchitecturesAllowed=", recipe)
         self.assertIn("PrivilegesRequired=lowest", recipe)
+        self.assertIn("postinstall", recipe)
+        self.assertIn('Name: "startup"', recipe)
+        self.assertIn("--start-minimized", recipe)
+        self.assertIn("CurrentVersion\\Run", recipe)
+        self.assertIn("uninsdeletevalue", recipe)
         self.assertIn("choco install innosetup --version=6.7.1", workflow)
         self.assertIn("-setup.exe", workflow)
         self.assertIn("installer checksum mismatch", workflow)
 
-    def test_workflow_orchestrator_is_the_only_event_entry_point(self) -> None:
+    def test_windows_tray_contract_preserves_minimize_to_notification_area(
+        self,
+    ) -> None:
+        manifest = WINDOWS_APP_MANIFEST.read_text(encoding="utf-8")
+        entrypoint = WINDOWS_APP_ENTRYPOINT.read_text(encoding="utf-8")
+        tray_source = WINDOWS_TRAY_SOURCE.read_text(encoding="utf-8")
+        self.assertIn('tray-icon = "=0.21.3"', manifest)
+        self.assertIn("ViewportCommand::CancelClose", entrypoint)
+        self.assertIn("ViewportCommand::Visible(false)", entrypoint)
+        self.assertIn("ViewportCommand::Visible(true)", entrypoint)
+        self.assertIn("minimized == Some(true)", entrypoint)
+        self.assertIn("إظهار اللوحة", tray_source)
+        self.assertIn("إخفاء إلى منطقة الإعلام", tray_source)
+        self.assertIn("إنهاء Onboard Next", tray_source)
+
+    def test_windows_startup_and_update_contract_is_safe_and_user_visible(self) -> None:
+        manifest = WINDOWS_APP_MANIFEST.read_text(encoding="utf-8")
+        entrypoint = WINDOWS_APP_ENTRYPOINT.read_text(encoding="utf-8")
+        updater = WINDOWS_UPDATER_SOURCE.read_text(encoding="utf-8")
+        self.assertIn('ureq = { version = "=2.12.1"', manifest)
+        self.assertIn("START_MINIMIZED_ARGUMENT", entrypoint)
+        self.assertIn("with_visible(!start_minimized)", entrypoint)
+        self.assertIn("show_update_status", entrypoint)
+        self.assertIn("releases/latest", updater)
+        self.assertIn("CHECK_INTERVAL", updater)
+        self.assertIn("start_background_check", updater)
+        self.assertNotIn("std::process::Command", updater)
+        self.assertNotIn("std::fs::write", updater)
+
+    def test_windows_ui_contract_embeds_fonts_and_restores_one_instance(self) -> None:
+        entrypoint = WINDOWS_APP_ENTRYPOINT.read_text(encoding="utf-8")
+        instance_source = WINDOWS_INSTANCE_SOURCE.read_text(encoding="utf-8")
+        self.assertTrue(WINDOWS_ARABIC_FONT.is_file())
+        self.assertGreater(WINDOWS_ARABIC_FONT.stat().st_size, 500_000)
+        self.assertIn("configure_fonts", entrypoint)
+        self.assertIn("NotoSansArabic-Variable.ttf", entrypoint)
+        self.assertIn("ui.vertical", entrypoint)
+        self.assertIn("with_max_inner_size", entrypoint)
+        self.assertIn("PrimaryInstance::acquire_or_show_existing", entrypoint)
+        self.assertIn("CreateMutexW", instance_source)
+        self.assertIn("FindWindowW", instance_source)
+        self.assertIn("SW_RESTORE", instance_source)
+
+    def test_i18n_rtl_supports_languages_and_script_subtags(self) -> None:
+        spec = importlib.util.spec_from_file_location("onboard_i18n", I18N_MODULE)
+        self.assertIsNotNone(spec)
+        assert spec is not None and spec.loader is not None
+        i18n = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(i18n)
+        self.assertEqual(i18n.get_text_direction({"LANGUAGE": "ar_SA.UTF-8"}), "rtl")
+        self.assertEqual(i18n.get_text_direction({"LANGUAGE": "he-IL"}), "rtl")
+        self.assertEqual(i18n.get_text_direction({"LANGUAGE": "az_Arab:en_US"}), "rtl")
+        self.assertEqual(i18n.get_text_direction({"LANGUAGE": "ku@arabic"}), "rtl")
+        self.assertEqual(i18n.get_text_direction({"LANGUAGE": "en_US:ar"}), "ltr")
+
+    def test_translation_validation_contract_covers_all_catalogs(self) -> None:
+        build_source = BUILD_SCRIPT.read_text(encoding="utf-8")
+        checker = ALL_CATALOG_CHECKER.read_text(encoding="utf-8")
+        self.assertIn("check_all_catalogs.py", build_source)
+        self.assertIn("--require-complete", build_source)
+        self.assertIn('"ar"', build_source)
+        self.assertIn("msgattrib", checker)
+        self.assertIn("msgfmt", checker)
+        self.assertIn("nplurals=6", checker)
+        self.assertIn("format fields differ", checker)
+
+    def test_ci_is_the_only_workflow_and_directly_owns_all_build_jobs(self) -> None:
         content = CENTRAL_CI_WORKFLOW.read_text(encoding="utf-8")
+        self.assertEqual(
+            sorted(path.name for path in WORKFLOW_ROOT.glob("*.yml")), ["ci.yml"]
+        )
         self.assertIn("pull_request:\n", content)
         self.assertIn("push:\n    branches: [main]", content)
         self.assertIn("workflow_dispatch:\n", content)
         self.assertIn("contents: read", content)
         self.assertNotIn("contents: write", content)
-        self.assertIn("needs: quality", content)
-        for filename in REUSABLE_WORKFLOWS:
-            self.assertIn(f"uses: ./.github/workflows/{filename}", content)
-
-        workflow_root = REPOSITORY_ROOT / ".github" / "workflows"
-        for filename in REUSABLE_WORKFLOWS:
-            child = (workflow_root / filename).read_text(encoding="utf-8")
-            self.assertIn("workflow_call:\n", child, filename)
-            self.assertNotIn("\n  pull_request:", child, filename)
-            self.assertNotIn("\n  push:", child, filename)
-            self.assertNotIn("\n  workflow_dispatch:", child, filename)
+        self.assertNotIn("workflow_call:", content)
+        self.assertNotIn("uses: ./.github/workflows/", content)
+        for legacy_workflow in LEGACY_WORKFLOWS:
+            self.assertFalse(
+                (WORKFLOW_ROOT / legacy_workflow).exists(), legacy_workflow
+            )
+        for job_name in (
+            "quality:",
+            "portable-ubuntu:",
+            "windows-bridge:",
+            "debian:",
+            "rpm:",
+            "arch-x64:",
+            "arch-arm64:",
+            "flatpak:",
+            "resolve-version:",
+            "linux-release-candidate:",
+            "windows-preview:",
+            "macos-preview:",
+        ):
+            self.assertIn(job_name, content)
 
     def test_quality_gate_is_strict_and_read_only(self) -> None:
-        content = QUALITY_WORKFLOW.read_text(encoding="utf-8")
-        self.assertIn("workflow_call:\n", content)
+        content = CENTRAL_CI_WORKFLOW.read_text(encoding="utf-8")
+        self.assertIn("actions/setup-python@v6", content)
         self.assertIn("contents: read", content)
         self.assertNotIn("contents: write", content)
         self.assertIn("timeout-minutes: 10", content)
         for command in QUALITY_GATE_COMMANDS:
             self.assertIn(command, content)
 
-    def test_workflows_do_not_bypass_unified_entry_point(self) -> None:
-        workflow_root = REPOSITORY_ROOT / ".github" / "workflows"
-        for workflow in workflow_root.glob("*.yml"):
-            content = workflow.read_text(encoding="utf-8")
-            for pattern in FORBIDDEN_WORKFLOW_PATTERNS:
-                self.assertNotRegex(content, pattern, f"{workflow.name}: {pattern}")
+    def test_ci_does_not_bypass_the_unified_build_entry_point(self) -> None:
+        content = CENTRAL_CI_WORKFLOW.read_text(encoding="utf-8")
+        for pattern in FORBIDDEN_WORKFLOW_PATTERNS:
+            self.assertNotRegex(content, pattern, f"ci.yml: {pattern}")
 
 
 if __name__ == "__main__":
