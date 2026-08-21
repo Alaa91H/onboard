@@ -83,16 +83,17 @@ xvfb-run -a %{python3} -m unittest \
   Onboard.test.test_RTL
 
 %files
-%license COPYING COPYING.GPL3 COPYING.BSD3
-%doc AUTHORS CHANGELOG README.md README.FreeBSD.md README.WAYLAND.md
+%doc %{_docdir}/%{name}/
 %{_bindir}/onboard
 %{_bindir}/onboard-settings
+%{_bindir}/onboard-toggle
 %{python3_sitearch}/Onboard/
 %{python3_sitearch}/onboard-%{version}.dist-info/
 %{_datadir}/applications/onboard.desktop
 %{_datadir}/applications/onboard-settings.desktop
 %{_datadir}/dbus-1/services/org.onboard.Onboard.service
-%{_datadir}/glib-2.0/schemas/org.onboard.gschema.xml
+%{_datadir}/glib-2.0/schemas/
+%{_datadir}/gnome-shell/extensions/Onboard_Indicator@onboard.org/
 %{_datadir}/icons/
 %{_datadir}/locale/*/LC_MESSAGES/onboard.mo
 %{_datadir}/man/man1/onboard*

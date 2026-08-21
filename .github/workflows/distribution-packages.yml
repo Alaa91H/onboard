@@ -167,7 +167,7 @@ jobs:
             --volume "$GITHUB_WORKSPACE:/workspace" \
             --workdir /workspace \
             agners/archlinuxarm \
-            /bin/sh -lc "pacman -Syu --needed --noconfirm base-devel && ./tools/prepare-build-env.sh --with-tests && bash ci/scripts/build_arch_release_candidate.sh arm64 '$version'"
+            /bin/sh -lc "sed -i '/^\\[options\\]/a DisableSandbox' /etc/pacman.conf && pacman -Syu --needed --noconfirm base-devel && ./tools/prepare-build-env.sh --with-tests && bash ci/scripts/build_arch_release_candidate.sh arm64 '$version'"
           candidate="release-out/arch-arm64"
           sha256sum -c "$candidate/SHA256SUMS"
           python3 ci/scripts/verify_release_candidate.py \
