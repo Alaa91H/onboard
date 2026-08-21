@@ -652,6 +652,8 @@ def build_windows_preview(arch: str, version: str) -> None:
             "version": version,
             "commit": cargo_commit(),
             "signed": False,
+            "installer": "inno-setup-preview",
+            "installer_signed": False,
             "input_source": "read-only-tsf-pending",
             "notes": "Preview bridge build. Do not treat as a signed stable installer.",
         },
@@ -664,6 +666,30 @@ def build_windows_preview(arch: str, version: str) -> None:
             bundle.write(item, item.relative_to(output_root))
     archive.with_suffix(archive.suffix + ".sha256").write_text(
         sha256(archive) + "\n", encoding="ascii"
+    )
+    compiler = shutil.which("ISCC.exe") or shutil.which("ISCC")
+    if not compiler:
+        raise BuildError(
+            "Inno Setup ISCC compiler is required for the Windows installer."
+        )
+    recipe = ROOT / "packaging/windows/onboard-next-preview.iss"
+    require_file(recipe)
+    installer = output_root / f"onboard-next-preview-{version}-windows-{arch}-setup.exe"
+    installer.unlink(missing_ok=True)
+    run(
+        [
+            compiler,
+            f"/DAppVersion={version}",
+            f"/DArchitecture={arch}",
+            f"/DInputDir={output}",
+            f"/DOutputDir={output_root}",
+            str(recipe),
+        ]
+    )
+    if not installer.is_file() or installer.stat().st_size == 0:
+        raise BuildError("Inno Setup did not produce a non-empty installer EXE.")
+    installer.with_suffix(installer.suffix + ".sha256").write_text(
+        sha256(installer) + "\n", encoding="ascii"
     )
 
 
@@ -790,6 +816,21 @@ def command_validate_recipes(_: argparse.Namespace) -> None:
     ]
     if absent:
         raise BuildError("Required package assets are missing: " + ", ".join(absent))
+    installer_recipe = ROOT / "packaging/windows/onboard-next-preview.iss"
+    installer_markers = (
+        "OutputBaseFilename=onboard-next-preview-",
+        "PrivilegesRequired=lowest",
+        "ArchitecturesAllowed=",
+        r'Source: "{#InputDir}\{#AppExecutable}"',
+    )
+    installer_content = installer_recipe.read_text(encoding="utf-8")
+    missing_installer = [
+        marker for marker in installer_markers if marker not in installer_content
+    ]
+    if missing_installer:
+        raise BuildError(
+            "Windows installer recipe is missing: " + ", ".join(missing_installer)
+        )
     log("Package recipe validation completed successfully.")
 
 
