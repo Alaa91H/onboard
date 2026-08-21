@@ -355,7 +355,7 @@ fn print_diagnostics(locale: &str) {
 
 #[cfg(windows)]
 fn configure_non_activating_window(frame: &eframe::Frame) -> bool {
-    use raw_window_handle::{HasWindowHandle, RawWindowHandle};
+    use raw_window_handle::{borrowed::HasWindowHandle, RawWindowHandle};
     use std::ffi::c_void;
 
     #[link(name = "User32")]
@@ -377,8 +377,9 @@ fn configure_non_activating_window(frame: &eframe::Frame) -> bool {
     // style update only adds WS_EX_NOACTIVATE, so a button click preserves the
     // foreground text target instead of activating the keyboard window.
     unsafe {
-        let style = GetWindowLongPtrW(handle.hwnd, GWL_EXSTYLE);
-        SetWindowLongPtrW(handle.hwnd, GWL_EXSTYLE, style | WS_EX_NOACTIVATE);
+        let window = handle.hwnd.get() as *mut c_void;
+        let style = GetWindowLongPtrW(window, GWL_EXSTYLE);
+        SetWindowLongPtrW(window, GWL_EXSTYLE, style | WS_EX_NOACTIVATE);
     }
     true
 }

@@ -1258,7 +1258,7 @@ dependencies = [
  "onboard-bridge-macos",
  "onboard-bridge-windows",
  "onboard-core",
- "raw-window-handle 0.5.2",
+ "raw-window-handle 0.6.2",
 ]
 
 [[package]]
