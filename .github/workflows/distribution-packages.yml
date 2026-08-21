@@ -1,46 +1,10 @@
 name: Distribution package candidates
 
 on:
-  pull_request:
-    paths:
-      - 'debian/**'
-      - 'packaging/**'
-      - 'tools/build.py'
-      - 'ci/scripts/verify_release_candidate.py'
-      - 'ci/scripts/write_*.py'
-      - '.github/workflows/distribution-packages.yml'
-      - 'Onboard/**'
-      - 'native/**'
-      - 'po/**'
-      - 'i18n/**'
-      - 'setup.py'
-      - 'setup.cfg'
-      - 'pyproject.toml'
-      - 'MANIFEST.in'
-  push:
-    branches: [main]
-    paths:
-      - 'debian/**'
-      - 'packaging/**'
-      - 'ci/scripts/**'
-      - 'tools/build.py'
-      - '.github/workflows/distribution-packages.yml'
-      - 'Onboard/**'
-      - 'native/**'
-      - 'po/**'
-      - 'i18n/**'
-      - 'setup.py'
-      - 'setup.cfg'
-      - 'pyproject.toml'
-      - 'MANIFEST.in'
-  workflow_dispatch:
+  workflow_call:
 
 permissions:
   contents: read
-
-concurrency:
-  group: distribution-packages-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
 
 jobs:
   debian:

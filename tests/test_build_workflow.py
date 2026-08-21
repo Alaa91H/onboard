@@ -34,6 +34,8 @@ WINDOWS_PREVIEW_WORKFLOW = (
 QUALITY_WORKFLOW = (
     REPOSITORY_ROOT / ".github" / "workflows" / "unified-build-quality.yml"
 )
+CENTRAL_CI_WORKFLOW = REPOSITORY_ROOT / ".github" / "workflows" / "ci.yml"
+REUSABLE_WORKFLOWS = ("unified-build-quality.yml", *WORKFLOW_CONTRACTS)
 QUALITY_GATE_COMMANDS = (
     "python -m py_compile tools/build.py tests/test_build_workflow.py",
     "ruff check tools/build.py tests/test_build_workflow.py",
@@ -150,9 +152,28 @@ class TestUnifiedBuildWorkflow(unittest.TestCase):
         self.assertIn("-setup.exe", workflow)
         self.assertIn("installer checksum mismatch", workflow)
 
-    def test_quality_gate_is_strict_read_only_and_pull_request_wide(self) -> None:
-        content = QUALITY_WORKFLOW.read_text(encoding="utf-8")
+    def test_workflow_orchestrator_is_the_only_event_entry_point(self) -> None:
+        content = CENTRAL_CI_WORKFLOW.read_text(encoding="utf-8")
         self.assertIn("pull_request:\n", content)
+        self.assertIn("push:\n    branches: [main]", content)
+        self.assertIn("workflow_dispatch:\n", content)
+        self.assertIn("contents: read", content)
+        self.assertNotIn("contents: write", content)
+        self.assertIn("needs: quality", content)
+        for filename in REUSABLE_WORKFLOWS:
+            self.assertIn(f"uses: ./.github/workflows/{filename}", content)
+
+        workflow_root = REPOSITORY_ROOT / ".github" / "workflows"
+        for filename in REUSABLE_WORKFLOWS:
+            child = (workflow_root / filename).read_text(encoding="utf-8")
+            self.assertIn("workflow_call:\n", child, filename)
+            self.assertNotIn("\n  pull_request:", child, filename)
+            self.assertNotIn("\n  push:", child, filename)
+            self.assertNotIn("\n  workflow_dispatch:", child, filename)
+
+    def test_quality_gate_is_strict_and_read_only(self) -> None:
+        content = QUALITY_WORKFLOW.read_text(encoding="utf-8")
+        self.assertIn("workflow_call:\n", content)
         self.assertIn("contents: read", content)
         self.assertNotIn("contents: write", content)
         self.assertIn("timeout-minutes: 10", content)
