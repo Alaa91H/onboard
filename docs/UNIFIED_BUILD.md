@@ -42,18 +42,18 @@
 
 ملف `.github/workflows/ci.yml` هو **نقطة الدخول الوحيدة** لـGitHub Actions: يستقبل كل Pull Request، وكل دفع إلى `main`، والتشغيل اليدوي. يضبط هذا الملف الصلاحية الدنيا `contents: read` ومجموعة الإلغاء المشتركة، ثم يشغّل بوابة الجودة أولاً. لا تبدأ أي مصفوفة بناء أو معاينة قبل نجاح تلك البوابة.
 
-تبقى ملفات التنفيذ متخصصة وقابلة لإعادة الاستخدام عبر `workflow_call` فقط. لذلك لا تكرر تعريفات `pull_request` أو `push` أو `workflow_dispatch` أو سياسات التوازي، بينما تحتفظ بمصفوفة المنصات والاعتمادات الأصلية والتحققات ورفع artifacts الخاصة بها.
+يحتوي المسار `.github/workflows/` على الملف `ci.yml` فقط. يضم هذا الملف بوابة الجودة ومصفوفات Linux المحمولة وجسور Rust وحزم Debian وRPM وArch وFlatpak ومرشحات Linux ومعاينات Windows وmacOS. بذلك لا توجد ملفات workflow وسيطة أو استدعاءات `workflow_call` أو تعريفات منفصلة قد تنحرف عن سياسة التوازي والصلاحيات والحارس الأولي للجودة.
 
-| workflow قابل لإعادة الاستخدام | مسؤوليته |
+| المرحلة داخل `ci.yml` | المسؤولية |
 | --- | --- |
-| `unified-build-quality.yml` | فحوصات الصياغة والأنواع والتنسيق والاختبارات وYAML والوصفات. |
-| `portable-build.yml` | حزم Linux المحمولة على Ubuntu وFedora، x64 وARM64. |
-| `platform-native.yml` | جاهزية جسور Rust على Windows وmacOS، x64 وARM64. |
-| `distribution-packages.yml` | مرشحو Debian وRPM وArch وFlatpak لكل المعماريات المدعومة. |
-| `release-candidate.yml` | مرشح Linux وبيانات الإصدار وSBOM وchecksums. |
-| `onboard-next-preview.yml` | معاينات Windows وmacOS غير الموقعة، بما فيها مُثبّت Windows. |
+| `quality` | فحوصات الصياغة والأنواع والتنسيق والاختبارات وYAML والوصفات. |
+| `portable-*` | حزم Linux المحمولة على Ubuntu وFedora، x64 وARM64. |
+| `*-bridge` | جاهزية جسور Rust على Windows وmacOS، x64 وARM64. |
+| `debian` و`rpm` و`arch-*` و`flatpak` | مرشحو جميع صيغ حزم Linux والمعماريات المدعومة. |
+| `resolve-version` و`linux-release-candidate` | حارس الإصدار ومرشحات Linux وchecksums. |
+| `windows-preview` و`macos-preview` | معاينات التطبيق الأصلية غير الموقعة، بما فيها مُثبّت Windows. |
 
-كل workflow تنفيذي يستدعي `tools/build.py` بدلاً من تكرار أوامر Python وCargo والتغليف. لا توجد نصوص بناء وسيطة؛ تبقى فقط وصفات الحزم الأصلية التي تقرؤها الأداة مباشرةً. لا تنشئ هذه الطبقة إصداراً مستقراً أو توقيعاً أو نشرًا عاماً؛ تظل تلك العمليات محمية في workflow إصدار مستقر مستقل بعد تجهيز أسرار Apple وWindows وبيئة الموافقة المحمية.
+تستدعي مراحل البناء `tools/build.py` بدلاً من تكرار منطق Python وCargo والتغليف. لا توجد نصوص بناء أو workflows وسيطة؛ تبقى فقط وصفات الحزم الأصلية التي تقرؤها الأداة مباشرةً. لا تنشئ هذه الطبقة إصداراً مستقراً أو توقيعاً أو نشرًا عاماً؛ تظل تلك العمليات محمية في workflow إصدار مستقر مستقل بعد تجهيز أسرار Apple وWindows وبيئة الموافقة المحمية.
 
 ## بوابة الجودة الصارمة
 

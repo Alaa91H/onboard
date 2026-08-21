@@ -18,23 +18,20 @@ from unittest import mock
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 BUILD_SCRIPT = REPOSITORY_ROOT / "tools" / "build.py"
-WORKFLOW_CONTRACTS = {
-    "portable-build.yml": "python3 tools/build.py portable",
-    "release-candidate.yml": "python3 tools/build.py candidate linux",
-    "distribution-packages.yml": "python3 tools/build.py candidate",
-    "platform-native.yml": "tools/build.py native",
-    "onboard-next-preview.yml": "tools/build.py preview",
-}
+LEGACY_WORKFLOWS = (
+    "distribution-packages.yml",
+    "onboard-next-preview.yml",
+    "platform-native.yml",
+    "portable-build.yml",
+    "release-candidate.yml",
+    "unified-build-quality.yml",
+)
 WINDOWS_INSTALLER_RECIPE = (
     REPOSITORY_ROOT / "packaging" / "windows" / "onboard-next-preview.iss"
 )
-WINDOWS_PREVIEW_WORKFLOW = (
-    REPOSITORY_ROOT / ".github" / "workflows" / "onboard-next-preview.yml"
-)
-QUALITY_WORKFLOW = (
-    REPOSITORY_ROOT / ".github" / "workflows" / "unified-build-quality.yml"
-)
 CENTRAL_CI_WORKFLOW = REPOSITORY_ROOT / ".github" / "workflows" / "ci.yml"
+WINDOWS_PREVIEW_WORKFLOW = CENTRAL_CI_WORKFLOW
+WORKFLOW_ROOT = REPOSITORY_ROOT / ".github" / "workflows"
 WINDOWS_APP_MANIFEST = (
     REPOSITORY_ROOT / "next" / "crates" / "onboard-next" / "Cargo.toml"
 )
@@ -44,7 +41,6 @@ WINDOWS_APP_ENTRYPOINT = (
 WINDOWS_TRAY_SOURCE = (
     REPOSITORY_ROOT / "next" / "crates" / "onboard-next" / "src" / "windows_tray.rs"
 )
-REUSABLE_WORKFLOWS = ("unified-build-quality.yml", *WORKFLOW_CONTRACTS)
 QUALITY_GATE_COMMANDS = (
     "python -m py_compile tools/build.py tests/test_build_workflow.py",
     "ruff check tools/build.py tests/test_build_workflow.py",
@@ -144,13 +140,6 @@ class TestUnifiedBuildWorkflow(unittest.TestCase):
         self.assertEqual(result, 2)
         backend.assert_not_called()
 
-    def test_every_build_workflow_calls_the_unified_entry_point(self) -> None:
-        workflow_root = REPOSITORY_ROOT / ".github" / "workflows"
-        for filename, required_command in WORKFLOW_CONTRACTS.items():
-            content = (workflow_root / filename).read_text(encoding="utf-8")
-            self.assertIn("tools/build.py", content, filename)
-            self.assertIn(required_command, content, filename)
-
     def test_windows_preview_installer_contract_is_pinned(self) -> None:
         recipe = WINDOWS_INSTALLER_RECIPE.read_text(encoding="utf-8")
         workflow = WINDOWS_PREVIEW_WORKFLOW.read_text(encoding="utf-8")
@@ -178,28 +167,40 @@ class TestUnifiedBuildWorkflow(unittest.TestCase):
         self.assertIn("إخفاء إلى منطقة الإعلام", tray_source)
         self.assertIn("إنهاء Onboard Next", tray_source)
 
-    def test_workflow_orchestrator_is_the_only_event_entry_point(self) -> None:
+    def test_ci_is_the_only_workflow_and_directly_owns_all_build_jobs(self) -> None:
         content = CENTRAL_CI_WORKFLOW.read_text(encoding="utf-8")
+        self.assertEqual(
+            sorted(path.name for path in WORKFLOW_ROOT.glob("*.yml")), ["ci.yml"]
+        )
         self.assertIn("pull_request:\n", content)
         self.assertIn("push:\n    branches: [main]", content)
         self.assertIn("workflow_dispatch:\n", content)
         self.assertIn("contents: read", content)
         self.assertNotIn("contents: write", content)
-        self.assertIn("needs: quality", content)
-        for filename in REUSABLE_WORKFLOWS:
-            self.assertIn(f"uses: ./.github/workflows/{filename}", content)
-
-        workflow_root = REPOSITORY_ROOT / ".github" / "workflows"
-        for filename in REUSABLE_WORKFLOWS:
-            child = (workflow_root / filename).read_text(encoding="utf-8")
-            self.assertIn("workflow_call:\n", child, filename)
-            self.assertNotIn("\n  pull_request:", child, filename)
-            self.assertNotIn("\n  push:", child, filename)
-            self.assertNotIn("\n  workflow_dispatch:", child, filename)
+        self.assertNotIn("workflow_call:", content)
+        self.assertNotIn("uses: ./.github/workflows/", content)
+        for legacy_workflow in LEGACY_WORKFLOWS:
+            self.assertFalse(
+                (WORKFLOW_ROOT / legacy_workflow).exists(), legacy_workflow
+            )
+        for job_name in (
+            "quality:",
+            "portable-ubuntu:",
+            "windows-bridge:",
+            "debian:",
+            "rpm:",
+            "arch-x64:",
+            "arch-arm64:",
+            "flatpak:",
+            "resolve-version:",
+            "linux-release-candidate:",
+            "windows-preview:",
+            "macos-preview:",
+        ):
+            self.assertIn(job_name, content)
 
     def test_quality_gate_is_strict_and_read_only(self) -> None:
-        content = QUALITY_WORKFLOW.read_text(encoding="utf-8")
-        self.assertIn("workflow_call:\n", content)
+        content = CENTRAL_CI_WORKFLOW.read_text(encoding="utf-8")
         self.assertIn("actions/setup-python@v6", content)
         self.assertIn("contents: read", content)
         self.assertNotIn("contents: write", content)
@@ -207,12 +208,10 @@ class TestUnifiedBuildWorkflow(unittest.TestCase):
         for command in QUALITY_GATE_COMMANDS:
             self.assertIn(command, content)
 
-    def test_workflows_do_not_bypass_unified_entry_point(self) -> None:
-        workflow_root = REPOSITORY_ROOT / ".github" / "workflows"
-        for workflow in workflow_root.glob("*.yml"):
-            content = workflow.read_text(encoding="utf-8")
-            for pattern in FORBIDDEN_WORKFLOW_PATTERNS:
-                self.assertNotRegex(content, pattern, f"{workflow.name}: {pattern}")
+    def test_ci_does_not_bypass_the_unified_build_entry_point(self) -> None:
+        content = CENTRAL_CI_WORKFLOW.read_text(encoding="utf-8")
+        for pattern in FORBIDDEN_WORKFLOW_PATTERNS:
+            self.assertNotRegex(content, pattern, f"ci.yml: {pattern}")
 
 
 if __name__ == "__main__":
