@@ -5,12 +5,14 @@ on:
     paths:
       - 'native/**'
       - '.gitattributes'
+      - 'tools/build.py'
       - '.github/workflows/platform-native.yml'
   push:
     branches: [main, master, feat/input-source-switching]
     paths:
       - 'native/**'
       - '.gitattributes'
+      - 'tools/build.py'
       - '.github/workflows/platform-native.yml'
   workflow_dispatch:
 
@@ -38,14 +40,9 @@ jobs:
           rustc --version
           cargo --version
           $env:PROCESSOR_ARCHITECTURE
-      - name: Verify vendored Rust bridge
+      - name: Verify and build Rust bridge
         shell: pwsh
-        working-directory: native/onboard-native
-        run: cargo test --locked
-      - name: Build Rust bridge release library
-        shell: pwsh
-        working-directory: native/onboard-native
-        run: cargo build --release --locked
+        run: python tools/build.py native
       - name: Upload bridge diagnostic
         uses: actions/upload-artifact@v6
         with:
@@ -72,12 +69,8 @@ jobs:
           rustc --version
           cargo --version
           uname -m
-      - name: Compile Rust bridge tests
-        working-directory: native/onboard-native
-        run: cargo check --tests --locked
-      - name: Build Rust bridge release library
-        working-directory: native/onboard-native
-        run: cargo build --release --locked
+      - name: Verify and build Rust bridge
+        run: python3 tools/build.py native --check-only
       - name: Upload bridge diagnostic
         uses: actions/upload-artifact@v6
         with:

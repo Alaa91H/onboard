@@ -6,6 +6,7 @@ on:
       - 'debian/**'
       - 'packaging/**'
       - 'ci/scripts/build_*release_candidate.sh'
+      - 'tools/build.py'
       - 'ci/scripts/verify_release_candidate.py'
       - 'ci/scripts/write_*.py'
       - '.github/workflows/distribution-packages.yml'
@@ -23,6 +24,7 @@ on:
       - 'debian/**'
       - 'packaging/**'
       - 'ci/scripts/**'
+      - 'tools/build.py'
       - '.github/workflows/distribution-packages.yml'
       - 'Onboard/**'
       - 'native/**'
@@ -69,7 +71,7 @@ jobs:
           set -euo pipefail
           export PATH="/usr/bin:$PATH"
           version="$(awk -F '"' '/^[[:space:]]*version[[:space:]]*=/ {print $2; exit}' pyproject.toml)"
-          bash ci/scripts/build_debian_release_candidate.sh '${{ matrix.arch }}' "$version"
+          python3 tools/build.py candidate debian --arch '${{ matrix.arch }}' --version "$version"
           candidate="release-out/debian-${{ matrix.arch }}"
           sha256sum -c "$candidate/SHA256SUMS"
           python3 ci/scripts/verify_release_candidate.py \
@@ -108,7 +110,7 @@ jobs:
         run: |
           set -euo pipefail
           version="$(awk -F '"' '/^[[:space:]]*version[[:space:]]*=/ {print $2; exit}' pyproject.toml)"
-          bash ci/scripts/build_rpm_release_candidate.sh '${{ matrix.arch }}' "$version"
+          python3 tools/build.py candidate rpm --arch '${{ matrix.arch }}' --version "$version"
           candidate="release-out/rpm-${{ matrix.arch }}"
           sha256sum -c "$candidate/SHA256SUMS"
           python3 ci/scripts/verify_release_candidate.py \
@@ -139,7 +141,7 @@ jobs:
         run: |
           set -euo pipefail
           version="$(awk -F '"' '/^[[:space:]]*version[[:space:]]*=/ {print $2; exit}' pyproject.toml)"
-          bash ci/scripts/build_arch_release_candidate.sh x64 "$version"
+          python3 tools/build.py candidate arch --arch x64 --version "$version"
           candidate="release-out/arch-x64"
           sha256sum -c "$candidate/SHA256SUMS"
           python3 ci/scripts/verify_release_candidate.py \
@@ -167,7 +169,7 @@ jobs:
             --volume "$GITHUB_WORKSPACE:/workspace" \
             --workdir /workspace \
             agners/archlinuxarm \
-            /bin/sh -lc "sed -i '/^\\[options\\]/a DisableSandbox' /etc/pacman.conf && pacman -Syu --needed --noconfirm base-devel grep && ./tools/prepare-build-env.sh --with-tests && export CC=gcc CXX=g++ && bash ci/scripts/build_arch_release_candidate.sh arm64 '$version'"
+            /bin/sh -lc "sed -i '/^\\[options\\]/a DisableSandbox' /etc/pacman.conf && pacman -Syu --needed --noconfirm base-devel grep && ./tools/prepare-build-env.sh --with-tests && export CC=gcc CXX=g++ && python3 tools/build.py candidate arch --arch arm64 --version '$version'"
           candidate="release-out/arch-arm64"
           sha256sum -c "$candidate/SHA256SUMS"
           python3 ci/scripts/verify_release_candidate.py \
@@ -205,7 +207,7 @@ jobs:
         run: |
           set -euo pipefail
           version="$(awk -F '"' '/^[[:space:]]*version[[:space:]]*=/ {print $2; exit}' pyproject.toml)"
-          bash ci/scripts/build_flatpak_release_candidate.sh '${{ matrix.arch }}' "$version"
+          python3 tools/build.py candidate flatpak --arch '${{ matrix.arch }}' --version "$version"
           candidate="release-out/flatpak-${{ matrix.arch }}"
           sha256sum -c "$candidate/SHA256SUMS"
           python3 ci/scripts/verify_release_candidate.py \
