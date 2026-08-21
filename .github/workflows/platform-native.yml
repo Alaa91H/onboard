@@ -1,20 +1,7 @@
 name: Native bridge readiness
 
 on:
-  pull_request:
-    paths:
-      - 'native/**'
-      - '.gitattributes'
-      - 'tools/build.py'
-      - '.github/workflows/platform-native.yml'
-  push:
-    branches: [main, master, feat/input-source-switching]
-    paths:
-      - 'native/**'
-      - '.gitattributes'
-      - 'tools/build.py'
-      - '.github/workflows/platform-native.yml'
-  workflow_dispatch:
+  workflow_call:
 
 jobs:
   windows-bridge:

@@ -1,9 +1,7 @@
 name: Portable build
 
 on:
-  push:
-    branches: [main, master, feat/input-source-switching]
-  pull_request:
+  workflow_call:
 
 jobs:
   linux-ubuntu:

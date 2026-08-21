@@ -1,0 +1,51 @@
+name: Unified CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Optional version guard for the Linux release candidate.
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: onboard-ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  quality:
+    name: Quality gate
+    uses: ./.github/workflows/unified-build-quality.yml
+
+  portable:
+    name: Portable Linux builds
+    needs: quality
+    uses: ./.github/workflows/portable-build.yml
+
+  native:
+    name: Native bridge readiness
+    needs: quality
+    uses: ./.github/workflows/platform-native.yml
+
+  packages:
+    name: Distribution package candidates
+    needs: quality
+    uses: ./.github/workflows/distribution-packages.yml
+
+  linux-release-candidate:
+    name: Linux release candidate
+    needs: quality
+    uses: ./.github/workflows/release-candidate.yml
+    with:
+      version: ${{ inputs.version }}
+
+  onboard-next-preview:
+    name: Onboard-next previews
+    needs: quality
+    uses: ./.github/workflows/onboard-next-preview.yml

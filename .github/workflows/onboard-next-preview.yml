@@ -1,29 +1,10 @@
 name: Onboard-next native preview
 
 on:
-  pull_request:
-    paths:
-      - 'next/**'
-      - 'packaging/windows/**'
-      - 'packaging/macos/**'
-      - 'tools/build.py'
-      - '.github/workflows/onboard-next-preview.yml'
-  push:
-    branches: [main]
-    paths:
-      - 'next/**'
-      - 'packaging/windows/**'
-      - 'packaging/macos/**'
-      - 'tools/build.py'
-      - '.github/workflows/onboard-next-preview.yml'
-  workflow_dispatch:
+  workflow_call:
 
 permissions:
   contents: read
-
-concurrency:
-  group: onboard-next-preview-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
 
 jobs:
   windows-preview:
