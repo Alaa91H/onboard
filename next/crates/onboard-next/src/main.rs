@@ -14,6 +14,8 @@ use onboard_bridge_windows::WindowsBridge;
 use onboard_core::{KeyboardState, TextDirection};
 
 #[cfg(windows)]
+mod windows_instance;
+#[cfg(windows)]
 mod windows_tray;
 #[cfg(windows)]
 mod windows_update;
@@ -120,6 +122,7 @@ struct OnboardApp {
 #[cfg(any(windows, target_os = "macos"))]
 impl OnboardApp {
     fn new(creation_context: &eframe::CreationContext<'_>) -> Self {
+        configure_fonts(&creation_context.egui_ctx);
         let layout = KeyboardLayout::from_storage(
             creation_context
                 .storage
@@ -329,13 +332,20 @@ impl OnboardApp {
     }
 
     fn show_key_rows(&mut self, ui: &mut egui::Ui) {
-        for row in self.layout.rows() {
+        let layout = self.layout;
+        for row in layout.rows() {
             ui.horizontal_centered(|ui| {
-                for key in *row {
-                    if Self::compact_button(ui, key).clicked() {
-                        self.inject_text(key);
+                let direction = match layout {
+                    KeyboardLayout::English => egui::Layout::left_to_right(egui::Align::Center),
+                    KeyboardLayout::Arabic => egui::Layout::right_to_left(egui::Align::Center),
+                };
+                ui.with_layout(direction, |ui| {
+                    for key in *row {
+                        if Self::compact_button(ui, key).clicked() {
+                            self.inject_text(key);
+                        }
                     }
-                }
+                });
             });
         }
     }
@@ -409,13 +419,8 @@ impl eframe::App for OnboardApp {
             }
         }
 
-        let direction = match self.keyboard_state.direction {
-            TextDirection::LeftToRight => egui::Layout::left_to_right(egui::Align::Center),
-            TextDirection::RightToLeft => egui::Layout::right_to_left(egui::Align::Center),
-        };
-
         egui::CentralPanel::default().show(context, |ui| {
-            ui.with_layout(direction, |ui| {
+            ui.vertical(|ui| {
                 egui::Frame::none()
                     .fill(egui::Color32::from_rgb(239, 246, 255))
                     .rounding(egui::Rounding::same(12.0))
@@ -570,6 +575,25 @@ fn print_diagnostics(locale: &str) {
     );
 }
 
+#[cfg(any(windows, target_os = "macos"))]
+fn configure_fonts(context: &egui::Context) {
+    let mut fonts = egui::FontDefinitions::default();
+    fonts.font_data.insert(
+        "onboard-noto-arabic".to_owned(),
+        egui::FontData::from_static(include_bytes!(
+            "../assets/fonts/NotoSansArabic-Variable.ttf"
+        )),
+    );
+    for family in [egui::FontFamily::Proportional, egui::FontFamily::Monospace] {
+        fonts
+            .families
+            .entry(family)
+            .or_default()
+            .insert(0, "onboard-noto-arabic".to_owned());
+    }
+    context.set_fonts(fonts);
+}
+
 #[cfg(windows)]
 fn configure_non_activating_window(frame: &eframe::Frame) -> bool {
     use raw_window_handle::{HasWindowHandle, RawWindowHandle};
@@ -621,8 +645,10 @@ fn run_app(start_minimized: bool) -> eframe::Result<()> {
         viewport: egui::ViewportBuilder::default()
             .with_title("Onboard Next")
             .with_app_id(APP_ID)
-            .with_inner_size([860.0, 310.0])
-            .with_min_inner_size([520.0, 180.0])
+            .with_inner_size([740.0, 450.0])
+            .with_min_inner_size([620.0, 390.0])
+            .with_max_inner_size([900.0, 560.0])
+            .with_resizable(true)
             .with_active(false)
             .with_always_on_top()
             .with_visible(!start_minimized),
@@ -684,17 +710,26 @@ fn main() {
             println!("Onboard Next\n\ncommands:\n  diagnose [locale]\n  key <virtual-key>\n  switch-source");
         }
         _ => {
-            #[cfg(any(windows, target_os = "macos"))]
-            if let Err(error) = run_app({
-                #[cfg(windows)]
-                {
-                    started_minimized()
+            #[cfg(windows)]
+            {
+                let _primary_instance =
+                    match windows_instance::PrimaryInstance::acquire_or_show_existing() {
+                        Ok(Some(instance)) => instance,
+                        Ok(None) => return,
+                        Err(error) => {
+                            eprintln!(
+                                "Onboard Next could not reserve its primary instance: {error}"
+                            );
+                            std::process::exit(1);
+                        }
+                    };
+                if let Err(error) = run_app(started_minimized()) {
+                    eprintln!("Onboard Next could not start: {error}");
+                    std::process::exit(1);
                 }
-                #[cfg(target_os = "macos")]
-                {
-                    false
-                }
-            }) {
+            }
+            #[cfg(target_os = "macos")]
+            if let Err(error) = run_app(false) {
                 eprintln!("Onboard Next could not start: {error}");
                 std::process::exit(1);
             }

@@ -44,6 +44,18 @@ WINDOWS_TRAY_SOURCE = (
 WINDOWS_UPDATER_SOURCE = (
     REPOSITORY_ROOT / "next" / "crates" / "onboard-next" / "src" / "windows_update.rs"
 )
+WINDOWS_INSTANCE_SOURCE = (
+    REPOSITORY_ROOT / "next" / "crates" / "onboard-next" / "src" / "windows_instance.rs"
+)
+WINDOWS_ARABIC_FONT = (
+    REPOSITORY_ROOT
+    / "next"
+    / "crates"
+    / "onboard-next"
+    / "assets"
+    / "fonts"
+    / "NotoSansArabic-Variable.ttf"
+)
 QUALITY_GATE_COMMANDS = (
     "python -m py_compile tools/build.py tests/test_build_workflow.py",
     "ruff check tools/build.py tests/test_build_workflow.py",
@@ -187,6 +199,20 @@ class TestUnifiedBuildWorkflow(unittest.TestCase):
         self.assertIn("start_background_check", updater)
         self.assertNotIn("std::process::Command", updater)
         self.assertNotIn("std::fs::write", updater)
+
+    def test_windows_ui_contract_embeds_fonts_and_restores_one_instance(self) -> None:
+        entrypoint = WINDOWS_APP_ENTRYPOINT.read_text(encoding="utf-8")
+        instance_source = WINDOWS_INSTANCE_SOURCE.read_text(encoding="utf-8")
+        self.assertTrue(WINDOWS_ARABIC_FONT.is_file())
+        self.assertGreater(WINDOWS_ARABIC_FONT.stat().st_size, 500_000)
+        self.assertIn("configure_fonts", entrypoint)
+        self.assertIn("NotoSansArabic-Variable.ttf", entrypoint)
+        self.assertIn("ui.vertical", entrypoint)
+        self.assertIn("with_max_inner_size", entrypoint)
+        self.assertIn("PrimaryInstance::acquire_or_show_existing", entrypoint)
+        self.assertIn("CreateMutexW", instance_source)
+        self.assertIn("FindWindowW", instance_source)
+        self.assertIn("SW_RESTORE", instance_source)
 
     def test_ci_is_the_only_workflow_and_directly_owns_all_build_jobs(self) -> None:
         content = CENTRAL_CI_WORKFLOW.read_text(encoding="utf-8")
