@@ -6,6 +6,7 @@ on:
       - 'next/**'
       - 'packaging/windows/**'
       - 'packaging/macos/**'
+      - 'tools/build.py'
       - '.github/workflows/onboard-next-preview.yml'
   push:
     branches: [main]
@@ -13,6 +14,7 @@ on:
       - 'next/**'
       - 'packaging/windows/**'
       - 'packaging/macos/**'
+      - 'tools/build.py'
       - '.github/workflows/onboard-next-preview.yml'
   workflow_dispatch:
 
@@ -48,7 +50,7 @@ jobs:
           $env:PROCESSOR_ARCHITECTURE
       - name: Build and validate portable preview
         shell: pwsh
-        run: ./packaging/windows/build-preview.ps1 -Architecture '${{ matrix.arch }}'
+        run: python tools/build.py preview windows --arch '${{ matrix.arch }}'
       - name: Validate preview provenance
         shell: pwsh
         run: |
@@ -90,9 +92,7 @@ jobs:
           cargo --version
           uname -m
       - name: Build and validate app preview
-        run: |
-          chmod +x packaging/macos/build-preview.sh
-          ./packaging/macos/build-preview.sh '${{ matrix.arch }}'
+        run: python3 tools/build.py preview macos --arch '${{ matrix.arch }}'
       - name: Validate preview provenance
         run: |
           python3 - <<'PY'
