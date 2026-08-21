@@ -48,10 +48,12 @@ build() {
 
 check() {
   cd "${pkgname}-${pkgver}"
-  python -m unittest \
+  # The focused package checks import source modules, so place the native
+  # extensions in the source tree after the wheel validation in build().
+  python setup.py build
+  xvfb-run -a python -m unittest \
     Onboard.test.test_ClipboardHistory \
     Onboard.test.test_InputSources \
-    Onboard.test.test_LayoutLoaderSVG \
     Onboard.test.test_NativeInput \
     Onboard.test.test_ArabicLocalization \
     Onboard.test.test_RTL

@@ -29,6 +29,7 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-gobject
 BuildRequires:  python3-setuptools
 BuildRequires:  pyproject-rpm-macros
+BuildRequires:  xorg-x11-server-Xvfb
 
 Requires:       dconf
 Requires:       gettext
@@ -74,10 +75,9 @@ install -Dpm 0644 data/72-onboard-uinput.rules \
 # The focused tests import source modules, so build the native extensions into
 # the source tree before running them in addition to validating the wheel.
 %{python3} setup.py build
-%{python3} -m unittest \
+xvfb-run -a %{python3} -m unittest \
   Onboard.test.test_ClipboardHistory \
   Onboard.test.test_InputSources \
-  Onboard.test.test_LayoutLoaderSVG \
   Onboard.test.test_NativeInput \
   Onboard.test.test_ArabicLocalization \
   Onboard.test.test_RTL

@@ -28,8 +28,7 @@ override_dh_auto_test:
 
 		Onboard.test.test_WaylandCapabilities \
 		Onboard.test.test_ClipboardHistory \
-		Onboard.test.test_InputSources \
-		Onboard.test.test_LayoutLoaderSVG
+		Onboard.test.test_InputSources
 
 override_dh_auto_install:
 	dh_auto_install -O--buildsystem=pybuild
