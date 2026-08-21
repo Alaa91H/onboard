@@ -56,15 +56,23 @@ WINDOWS_ARABIC_FONT = (
     / "fonts"
     / "NotoSansArabic-Variable.ttf"
 )
+ALL_CATALOG_CHECKER = REPOSITORY_ROOT / "i18n" / "scripts" / "check_all_catalogs.py"
+I18N_MODULE = REPOSITORY_ROOT / "Onboard" / "I18n.py"
 QUALITY_GATE_COMMANDS = (
     "python -m py_compile tools/build.py tests/test_build_workflow.py",
     "ruff check tools/build.py tests/test_build_workflow.py",
     "ruff format --check tools/build.py tests/test_build_workflow.py",
     "mypy --strict tools/build.py tests/test_build_workflow.py",
+    "python -m py_compile i18n/scripts/check_all_catalogs.py",
+    "i18n/scripts/normalize_locale_headers.py Onboard/I18n.py",
+    "ruff check i18n/scripts/check_all_catalogs.py i18n/scripts/normalize_locale_headers.py",
+    "ruff format --check i18n/scripts/check_all_catalogs.py i18n/scripts/normalize_locale_headers.py",
+    "mypy --strict i18n/scripts/check_all_catalogs.py i18n/scripts/normalize_locale_headers.py",
     "python -m unittest discover -s tests -v",
     "yamllint -c .yamllint .github/workflows",
     "git diff --check",
     "python tools/build.py validate-recipes",
+    "python tools/build.py validate-translations",
 )
 LEGACY_BUILD_WRAPPERS = (
     "ci/scripts/build_linux_release_candidate.sh",
@@ -136,6 +144,8 @@ class TestUnifiedBuildWorkflow(unittest.TestCase):
         preview = parser.parse_args(["preview", "windows", "--arch", "arm64"])
         self.assertEqual(preview.platform, "windows")
         self.assertEqual(preview.arch, "arm64")
+        translations = parser.parse_args(["validate-translations"])
+        self.assertEqual(translations.command, "validate-translations")
 
     def test_candidate_rejects_mismatched_version_before_running_backend(self) -> None:
         stderr = io.StringIO()
@@ -213,6 +223,29 @@ class TestUnifiedBuildWorkflow(unittest.TestCase):
         self.assertIn("CreateMutexW", instance_source)
         self.assertIn("FindWindowW", instance_source)
         self.assertIn("SW_RESTORE", instance_source)
+
+    def test_i18n_rtl_supports_languages_and_script_subtags(self) -> None:
+        spec = importlib.util.spec_from_file_location("onboard_i18n", I18N_MODULE)
+        self.assertIsNotNone(spec)
+        assert spec is not None and spec.loader is not None
+        i18n = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(i18n)
+        self.assertEqual(i18n.get_text_direction({"LANGUAGE": "ar_SA.UTF-8"}), "rtl")
+        self.assertEqual(i18n.get_text_direction({"LANGUAGE": "he-IL"}), "rtl")
+        self.assertEqual(i18n.get_text_direction({"LANGUAGE": "az_Arab:en_US"}), "rtl")
+        self.assertEqual(i18n.get_text_direction({"LANGUAGE": "ku@arabic"}), "rtl")
+        self.assertEqual(i18n.get_text_direction({"LANGUAGE": "en_US:ar"}), "ltr")
+
+    def test_translation_validation_contract_covers_all_catalogs(self) -> None:
+        build_source = BUILD_SCRIPT.read_text(encoding="utf-8")
+        checker = ALL_CATALOG_CHECKER.read_text(encoding="utf-8")
+        self.assertIn("check_all_catalogs.py", build_source)
+        self.assertIn("--require-complete", build_source)
+        self.assertIn('"ar"', build_source)
+        self.assertIn("msgattrib", checker)
+        self.assertIn("msgfmt", checker)
+        self.assertIn("nplurals=6", checker)
+        self.assertIn("format fields differ", checker)
 
     def test_ci_is_the_only_workflow_and_directly_owns_all_build_jobs(self) -> None:
         content = CENTRAL_CI_WORKFLOW.read_text(encoding="utf-8")

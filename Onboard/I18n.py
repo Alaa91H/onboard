@@ -37,38 +37,66 @@ RTL_LANGUAGE_CODES = frozenset((
     "yi",  # Yiddish
 ))
 
+RTL_SCRIPT_CODES = frozenset((
+    "adlm",  # Adlam
+    "arab",  # Arabic
+    "arabic",  # POSIX modifier form
+    "hebr",  # Hebrew
+    "hebrew",  # POSIX modifier form
+    "mand",  # Mandaic
+    "mero",  # Meroitic Cursive
+    "nkoo",  # N'Ko
+    "rohg",  # Hanifi Rohingya
+    "samr",  # Samaritan
+    "syrc",  # Syriac
+    "thaa",  # Thaana
+))
+
 _LOCALE_VARIABLES = ("LANGUAGE", "LC_ALL", "LC_MESSAGES", "LANG")
 
 
-def normalize_language_tag(value):
-    """Return a lower-case language code from a POSIX/BCP-47 locale value."""
+def normalize_locale_tag(value):
+    """Return a lower-case BCP-47-like tag from a POSIX locale value."""
     if not value:
         return ""
     value = str(value).strip()
     if not value or value in ("C", "POSIX"):
         return ""
-    # LANGUAGE can contain a colon-separated fallback chain.  The caller
-    # handles individual candidates; this covers encoding, territory and
-    # modifier suffixes, e.g. ``ar_SA.UTF-8@calendar``.
-    value = value.split(".", 1)[0].split("@", 1)[0]
-    return value.replace("_", "-").split("-", 1)[0].lower()
+    # Preserve POSIX modifiers as pseudo-script subtags so ``ku@arabic`` and
+    # ``az_Arab`` can select RTL even though their base languages are not RTL.
+    value = value.split(".", 1)[0]
+    return value.replace("_", "-").replace("@", "-").lower()
 
 
-def locale_candidates(environ=None):
-    """Yield normalized language candidates in gettext precedence order."""
+def normalize_language_tag(value):
+    """Return a lower-case language code from a POSIX/BCP-47 locale value."""
+    return normalize_locale_tag(value).split("-", 1)[0]
+
+
+def locale_tags(environ=None):
+    """Yield normalized full locale tags in gettext precedence order."""
     environ = os.environ if environ is None else environ
     for variable in _LOCALE_VARIABLES:
         raw_value = environ.get(variable, "")
         for item in str(raw_value).split(":"):
-            language = normalize_language_tag(item)
-            if language:
-                yield language
+            tag = normalize_locale_tag(item)
+            if tag:
+                yield tag
+
+
+def locale_candidates(environ=None):
+    """Yield normalized language candidates in gettext precedence order."""
+    for tag in locale_tags(environ):
+        yield tag.split("-", 1)[0]
 
 
 def get_text_direction(environ=None):
-    """Return ``rtl`` for an RTL locale, otherwise GTK's safe ``ltr`` default."""
-    for language in locale_candidates(environ):
-        if language in RTL_LANGUAGE_CODES:
+    """Return ``rtl`` for RTL languages or RTL script subtags, else ``ltr``."""
+    for tag in locale_tags(environ):
+        subtags = tag.split("-")
+        if subtags[0] in RTL_LANGUAGE_CODES or any(
+            subtag in RTL_SCRIPT_CODES for subtag in subtags[1:]
+        ):
             return "rtl"
         # The first explicit, non-RTL locale wins, matching gettext fallback
         # semantics and avoiding accidental RTL selection from later fallbacks.

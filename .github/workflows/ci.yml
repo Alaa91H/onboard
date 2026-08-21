@@ -43,8 +43,20 @@ jobs:
         run: ruff format --check tools/build.py tests/test_build_workflow.py
       - name: Enforce strict static typing
         run: mypy --strict tools/build.py tests/test_build_workflow.py
+      - name: Compile localization quality sources
+        run: >-
+          python -m py_compile i18n/scripts/check_all_catalogs.py
+          i18n/scripts/normalize_locale_headers.py Onboard/I18n.py
+      - name: Lint localization quality sources
+        run: ruff check i18n/scripts/check_all_catalogs.py i18n/scripts/normalize_locale_headers.py
+      - name: Enforce localization source formatting
+        run: ruff format --check i18n/scripts/check_all_catalogs.py i18n/scripts/normalize_locale_headers.py
+      - name: Enforce strict localization typing
+        run: mypy --strict i18n/scripts/check_all_catalogs.py i18n/scripts/normalize_locale_headers.py
       - name: Run unified build contract tests
         run: python -m unittest discover -s tests -v
+      - name: Validate all gettext catalogs
+        run: python tools/build.py validate-translations
       - name: Validate YAML workflow quality
         run: yamllint -c .yamllint .github/workflows
       - name: Reject whitespace and patch corruption
